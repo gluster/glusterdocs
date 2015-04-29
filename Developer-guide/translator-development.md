@@ -102,7 +102,7 @@ various structures in logs. I've never used it myself, though I probably
 should. What's noteworthy here is that we don't even define dumpops. That's
 because all of the functions that might use these dispatch functions will check
  for `xl->dumpops` being `NULL` before calling through it. This is in sharp
-contrast to the behavior for `fops` and `cbks1`, which *must* be present. If
+contrast to the behavior for `fops` and `cbks`, which *must* be present. If
 they're not, translator loading will fail because these pointers are not
 checked every time and if they're `NULL` then we'll segfault. That's why we
 provide an empty definition for cbks; it's OK for the individual function
