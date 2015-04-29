@@ -51,7 +51,7 @@ if (!(xl->fini = dlsym (handle, "fini"))) {
 In this example, `xl` is a pointer to the in-memory object for the translator
 we're loading. As you can see, it's looking up various symbols *by name* in the
  shared object it just loaded, and storing pointers to those symbols. Some of
-them (e.g. init are functions, while others e.g. fops are dispatch tables
+them (e.g. init) are functions, while others (e.g. fops) are dispatch tables
 containing pointers to many functions. Together, these make up the translator's
  public interface.
 
