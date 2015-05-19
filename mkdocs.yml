@@ -2,7 +2,7 @@ site_name: Gluster Docs
 site_url: http://www.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
-repo_url: https://github.com/humblec/gluster-docs/
+repo_url: https://github.com/humblec/glusterdocs/
 
 pages:
 - ['index.md', 'Home']
@@ -12,9 +12,9 @@ pages:
 - ['Install-Guide/Overview.md', 'Install Guide', 'Overview']
 - ['Install-Guide/Common_criteria.md', 'Install Guide', 'Common Criteria']
 - ['Install-Guide/Quick_start.md', 'Install Guide', 'Quick start to Install']
-- ['Install-Guide/Setup_aws.md', 'Install Guide', 'Deploying in AWS']
 - ['Install-Guide/Setup_virt.md', 'Install Guide', 'Setting up in virtual machines']
 - ['Install-Guide/Setup_Bare_metal.md', 'Install Guide', 'Setting up on physical servers']
+- ['Install-Guide/Setup_aws.md', 'Install Guide', 'Deploying in AWS']
 - ['Install-Guide/Install.md', 'Install Guide', 'Install']
 - ['Install-Guide/Configure.md', 'Install Guide', 'Configure']
 - ['Administrator Guide/README.md', 'Administrator Guide', 'Admin Home']
@@ -103,6 +103,7 @@ pages:
 - ['Features/quota-object-count.md', 'Features', 'quota object count']
 - ['Features/glusterfs_nfs-ganesha_integration.md', 'Features', 'nfs-ganesha integration']
 - ['Features/tier.md', 'Features', 'tiering']
+- ['Features/trash_xlator.md', 'Features', 'trash_xlator']
 - ['Features/afr-statistics.md', 'Features', 'AFR Statistics']
 - ['Features/afr-v1.md', 'Features', 'AFR ver1']
 - ['Features/brick-failure-detection.md', 'Features', 'Brick Failure Detection']
