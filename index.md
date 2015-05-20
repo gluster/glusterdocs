@@ -26,4 +26,16 @@ Install Guide.
 -  [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
 
 -  [Features](./Features/README.md) - Guides for the features in the new release.
+
+**How to Contribute?**
+
+The Gluster documentation has its home on GitHub, and the easiest way to contribute is to use 
+the "Edit on GitHub" link on the top right corner of each page. If you already have a GitHub
+account, you can simply edit the document in your browser, use the preview tab, and submit
+your changes for review in a pull request.
+
+If you want to help more with Gluster documentation, please subscribe to [Gluster 
+Users](http://www.gluster.org/mailman/listinfo/gluster-users) and [Gluster 
+Developers](http://www.gluster.org/mailman/listinfo/gluster-devel) mailing lists,
+and share your ideas with the Gluster developer community.
   
