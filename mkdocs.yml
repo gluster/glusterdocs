@@ -126,4 +126,7 @@ pages:
 - ['Features/distributed-geo-rep.md', 'Features', 'Distributed Geo Replication']
 - ['Features/libgfchangelog.md', 'Features', 'libgf Changelog']
 
+# the "oops you followed an old link" -page, not shown in navigation:
+- ['redirected.md']
+
 theme: readthedocs
