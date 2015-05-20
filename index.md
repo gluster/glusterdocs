@@ -5,7 +5,7 @@ suitable for data-intensive tasks such as cloud storage and media streaming.
 GlusterFS is free and open source software and can utilize common off-the-shelf 
 hardware. To learn more, [please see the Gluster project home page](http://www.gluster.org).
 
-**Get Started: Download/Install Guide**  
+**Get Started: Quick Start/Installation Guide**  
 
 Since Gluster can be user in different ways and for different tasks, it would be difficult 
 to explain everything at once. We recommend that you follow the Quick Start Guide first. By 
@@ -21,7 +21,7 @@ Install Guide.
 
 -  [Administration Guide](./Administrator Guide/README.md) - describes the configuration and management of GlusterFS. 
 
--  [GlusterFS Developer Guide](./Developer-guide/Developers Index.md) - - describes how you can contribute to this open source project; built through the efforts of its dedicated, passionate community. 
+-  [GlusterFS Developer Guide](./Developer-guide/Developers Index.md) - describes how you can contribute to this open source project; built through the efforts of its dedicated, passionate community. 
 
 -  [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
 

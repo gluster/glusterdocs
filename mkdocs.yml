@@ -27,7 +27,7 @@ pages:
 - ['Install-Guide/Configure.md', 'Install Guide', 'Configure']
 
 # Administrator Guide:
-- ['Administrator Guide/README.md', 'Administrator Guide', 'Admin Home']
+- ['Administrator Guide/README.md', 'Administrator Guide', 'Index']
 - ['Administrator Guide/GlusterFS Introduction.md', 'Administrator Guide', 'GlusterFS Introduction']
 - ['Administrator Guide/glossary.md', 'Administrator Guide', 'Glossary']
 - ['Administrator Guide/Did You Know.md', 'Administrator Guide', 'Did You Know']
@@ -39,7 +39,7 @@ pages:
 - ['Administrator Guide/Setting Up Clients.md', 'Administrator Guide', 'Setting Up Clients']
 - ['Administrator Guide/Setting Up Volumes.md', 'Administrator Guide', 'Setting Up Volumes']
 - ['Administrator Guide/Managing Volumes.md', 'Administrator Guide', 'Managing Volumes']
-- ['Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md', 'Administrator Guide', 'Building QEMU With gfapi For Debian Based Systems']
+- ['Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md', 'Administrator Guide', 'Building QEMU with gfapi For Debian Based Systems']
 - ['Administrator Guide/GlusterFS Filter.md', 'Administrator Guide', 'GlusterFS Filter']
 - ['Administrator Guide/Resolving Peer Rejected.md', 'Administrator Guide', 'Resolving Peer Rejected State']
 - ['Administrator Guide/Logging.md', 'Administrator Guide', 'Logging']
@@ -103,13 +103,13 @@ pages:
 - ['Developer-guide/Bug reporting template.md', 'Developers Guide', 'Bug Reporting Template']
 
 # Upgrade Guide:
-- ['Upgrade-Guide/README.md', 'Upgrade-Guide', 'Upgrade-Guide Home']
+- ['Upgrade-Guide/README.md', 'Upgrade-Guide', 'Upgrade-Guide Index']
 - ['Upgrade-Guide/upgrade_to_3.5.md', 'Upgrade-Guide', 'Upgrade to 3.5']
 - ['Upgrade-Guide/upgrade_to_3.6.md', 'Upgrade-Guide', 'Upgrade to 3.6']
 - ['Upgrade-Guide/Upgrade to 3.7.md', 'Upgrade-Guide', 'Upgrade to 3.7']
 
 # Features:
-- ['Features/README.md', 'Features', 'Features Home']
+- ['Features/README.md', 'Features', 'Features List']
 - ['Features/afr-arbiter-volumes.md', 'Features', 'AFR Arbiter Volumes']
 - ['Features/bitrot-docs.md', 'Features', 'bitrot docs']
 - ['Features/memory-usage.md', 'Features', 'bitrot memory usage']
@@ -144,12 +144,12 @@ pages:
 - ['Features/meta.md', 'Features', 'meta xlator']
 
 #GlusterFS Tools
-- ['GlusterFS Tools/README.md', 'GlusterFS Tools', 'GlusterFS Tools index']
+- ['GlusterFS Tools/README.md', 'GlusterFS Tools', 'GlusterFS Tools List']
 - ['GlusterFS Tools/glusterfind.md', 'GlusterFS Tools', 'glusterfind']
 - ['GlusterFS Tools/gfind_missing_files.md', 'GlusterFS Tools', 'gfind missing files']
 
 # Troubleshooting Guide
-- ['Troubleshooting/README.md', 'Troubleshooting Guide', 'Troubleshooting index']
+- ['Troubleshooting/README.md', 'Troubleshooting Guide', 'Index']
 - ['Troubleshooting/gfid-to-path.md', 'Troubleshooting Guide', 'gfid to path']
 - ['Troubleshooting/split-brain.md', 'Troubleshooting Guide', 'Split Brain']
 - ['Troubleshooting/statedump.md', 'Troubleshooting Guide', 'Statedump']
