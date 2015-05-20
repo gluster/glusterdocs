@@ -27,6 +27,10 @@ Install Guide.
 
 -  [Features](./Features/README.md) - Guides for the features in the new release.
 
+-  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlsuterFS tools.
+
+-  [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
+
 **How to Contribute?**
 
 The Gluster documentation has its home on GitHub, and the easiest way to contribute is to use 
@@ -38,4 +42,3 @@ If you want to help more with Gluster documentation, please subscribe to [Gluste
 Users](http://www.gluster.org/mailman/listinfo/gluster-users) and [Gluster 
 Developers](http://www.gluster.org/mailman/listinfo/gluster-devel) mailing lists,
 and share your ideas with the Gluster developer community.
-  
