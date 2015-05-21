@@ -2,7 +2,7 @@ site_name: Gluster Docs
 site_url: http://www.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
-repo_url: https://github.com/shravantc/glusterdocs/
+repo_url: https://github.com/humblec/glusterdocs/
 
 pages:
 - ['index.md', 'Home']
