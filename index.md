@@ -1,16 +1,16 @@
 # GlusterFS Documentation
 
-The documentation contained here is for GlusterFS, a scalable network filesystem
+GlusterFS is a scalable network filesystem
 suitable for data-intensive tasks such as cloud storage and media streaming. 
 GlusterFS is free and open source software and can utilize common off-the-shelf 
 hardware. To learn more, [please see the Gluster project home page](http://www.gluster.org).
 
 **Get Started: Quick Start/Installation Guide**  
 
-Since Gluster can be user in different ways and for different tasks, it would be difficult 
+Since Gluster can be used in different ways and for different tasks, it would be difficult 
 to explain everything at once. We recommend that you follow the Quick Start Guide first. By 
 utilizing a number of virtual machines, you will create a functional test setup to learn the 
-basic concepts with. You will then be much better equipped to read the more detailed
+basic concepts. You will then be much better equipped to read the more detailed
 Install Guide.
 
 -  [Quick Start Guide](./Quick-Start-Guide/Quickstart.md) - Start here if you are new to Gluster!
@@ -27,7 +27,7 @@ Install Guide.
 
 -  [Features](./Features/README.md) - Guides for the features in the new release.
 
--  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlsuterFS tools.
+-  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlusterFS tools.
 
 -  [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
 
