@@ -150,6 +150,7 @@ pages:
 # Troubleshooting Guide
 - ['Troubleshooting/README.md', 'Troubleshooting Guide', 'Index']
 - ['Troubleshooting/Common Scenarios.md', 'Troubleshooting Guide', 'Common Scenarios']
+- ['Troubleshooting/troubleshootingFAQ.md', 'Troubleshooting Guide', 'FAQs']
 - ['Troubleshooting/gfid-to-path.md', 'Troubleshooting Guide', 'gfid to path']
 - ['Troubleshooting/split-brain.md', 'Troubleshooting Guide', 'Split Brain']
 - ['Troubleshooting/statedump.md', 'Troubleshooting Guide', 'Statedump']
