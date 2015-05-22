@@ -59,7 +59,6 @@ pages:
 - ['Administrator Guide/RDMA Transport.md', 'Administrator Guide', 'RDMA Transport']
 - ['Administrator Guide/GlusterFS iSCSI.md', 'Administrator Guide', 'GlusterFS iSCSI']
 - ['Administrator Guide/Linux Kernel Tuning.md', 'Administrator Guide', 'Linux Kernel Tuning']
-- ['Administrator Guide/Troubleshooting.md', 'Administrator Guide', 'Troubleshooting']
 - ['Administrator Guide/Network Configurations Techniques.md', 'Administrator Guide', 'Network Configurations Techniques']
 - ['Administrator Guide/Performance Testing.md', 'Administrator Guide', 'Performance Testing']
 
@@ -150,6 +149,7 @@ pages:
 
 # Troubleshooting Guide
 - ['Troubleshooting/README.md', 'Troubleshooting Guide', 'Index']
+- ['Troubleshooting/Common Scenarios.md', 'Troubleshooting Guide', 'Common Scenarios']
 - ['Troubleshooting/gfid-to-path.md', 'Troubleshooting Guide', 'gfid to path']
 - ['Troubleshooting/split-brain.md', 'Troubleshooting Guide', 'Split Brain']
 - ['Troubleshooting/statedump.md', 'Troubleshooting Guide', 'Statedump']
