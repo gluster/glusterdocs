@@ -2,22 +2,32 @@ site_name: Gluster Docs
 site_url: http://www.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
-repo_url: https://github.com/humblec/gluster-docs/
+repo_url: https://github.com/shravantc/glusterdocs/
 
 pages:
 - ['index.md', 'Home']
-- ['Quick-Start-Guide/Quickstart.md', 'Quickstart Guide', 'Quickstart']
+
+# **************************
+# **DROP DOWN MENU OPTIONS** 
+# **************************
+
+# Quickstart Guide:
+- ['Quick-Start-Guide/Quickstart.md', 'Quickstart Guide', 'Quick start']
 - ['Quick-Start-Guide/Terminologies.md', 'Quickstart Guide', 'Terminologies']
 - ['Quick-Start-Guide/Architecture.md', 'Quickstart Guide', 'Architecture']
+
+# Installation Guide:
 - ['Install-Guide/Overview.md', 'Install Guide', 'Overview']
 - ['Install-Guide/Common_criteria.md', 'Install Guide', 'Common Criteria']
 - ['Install-Guide/Quick_start.md', 'Install Guide', 'Quick start to Install']
-- ['Install-Guide/Setup_aws.md', 'Install Guide', 'Deploying in AWS']
 - ['Install-Guide/Setup_virt.md', 'Install Guide', 'Setting up in virtual machines']
 - ['Install-Guide/Setup_Bare_metal.md', 'Install Guide', 'Setting up on physical servers']
+- ['Install-Guide/Setup_aws.md', 'Install Guide', 'Deploying in AWS']
 - ['Install-Guide/Install.md', 'Install Guide', 'Install']
 - ['Install-Guide/Configure.md', 'Install Guide', 'Configure']
-- ['Administrator Guide/README.md', 'Administrator Guide', 'Admin Home']
+
+# Administrator Guide:
+- ['Administrator Guide/README.md', 'Administrator Guide', 'Index']
 - ['Administrator Guide/GlusterFS Introduction.md', 'Administrator Guide', 'GlusterFS Introduction']
 - ['Administrator Guide/glossary.md', 'Administrator Guide', 'Glossary']
 - ['Administrator Guide/Did You Know.md', 'Administrator Guide', 'Did You Know']
@@ -29,7 +39,7 @@ pages:
 - ['Administrator Guide/Setting Up Clients.md', 'Administrator Guide', 'Setting Up Clients']
 - ['Administrator Guide/Setting Up Volumes.md', 'Administrator Guide', 'Setting Up Volumes']
 - ['Administrator Guide/Managing Volumes.md', 'Administrator Guide', 'Managing Volumes']
-- ['Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md', 'Administrator Guide', 'Building QEMU With gfapi For Debian Based Systems']
+- ['Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md', 'Administrator Guide', 'Building QEMU with gfapi For Debian Based Systems']
 - ['Administrator Guide/GlusterFS Filter.md', 'Administrator Guide', 'GlusterFS Filter']
 - ['Administrator Guide/Resolving Peer Rejected.md', 'Administrator Guide', 'Resolving Peer Rejected State']
 - ['Administrator Guide/Logging.md', 'Administrator Guide', 'Logging']
@@ -52,6 +62,8 @@ pages:
 - ['Administrator Guide/Troubleshooting.md', 'Administrator Guide', 'Troubleshooting']
 - ['Administrator Guide/Network Configurations Techniques.md', 'Administrator Guide', 'Network Configurations Techniques']
 - ['Administrator Guide/Performance Testing.md', 'Administrator Guide', 'Performance Testing']
+
+# Developers Guide:
 - ['Developer-guide/Developers Index.md', 'Developers Guide', 'Developers Home']
 - ['Developer-guide/Simplified Development Workflow.md', 'Developers Guide', 'Simplified Development Workflow']
 - ['Developer-guide/Development Workflow.md', 'Developers Guide', 'Development Workflow']
@@ -89,11 +101,15 @@ pages:
 - ['Developer-guide/versioning.md', 'Developers Guide', 'Versioning']
 - ['Developer-guide/GlusterFS Release process.md', 'Developers Guide', 'GlusterFS Release Process']
 - ['Developer-guide/Bug reporting template.md', 'Developers Guide', 'Bug Reporting Template']
-- ['Upgrade-Guide/README.md', 'Upgrade-Guide', 'Upgrade-Guide Home']
+
+# Upgrade Guide:
+- ['Upgrade-Guide/README.md', 'Upgrade-Guide', 'Upgrade-Guide Index']
 - ['Upgrade-Guide/upgrade_to_3.5.md', 'Upgrade-Guide', 'Upgrade to 3.5']
 - ['Upgrade-Guide/upgrade_to_3.6.md', 'Upgrade-Guide', 'Upgrade to 3.6']
 - ['Upgrade-Guide/Upgrade to 3.7.md', 'Upgrade-Guide', 'Upgrade to 3.7']
-- ['Features/README.md', 'Features', 'Features Home']
+
+# Features:
+- ['Features/README.md', 'Features', 'Features List']
 - ['Features/afr-arbiter-volumes.md', 'Features', 'AFR Arbiter Volumes']
 - ['Features/bitrot-docs.md', 'Features', 'bitrot docs']
 - ['Features/memory-usage.md', 'Features', 'bitrot memory usage']
@@ -103,6 +119,7 @@ pages:
 - ['Features/quota-object-count.md', 'Features', 'quota object count']
 - ['Features/glusterfs_nfs-ganesha_integration.md', 'Features', 'nfs-ganesha integration']
 - ['Features/tier.md', 'Features', 'tiering']
+- ['Features/trash_xlator.md', 'Features', 'trash_xlator']
 - ['Features/afr-statistics.md', 'Features', 'AFR Statistics']
 - ['Features/afr-v1.md', 'Features', 'AFR ver1']
 - ['Features/brick-failure-detection.md', 'Features', 'Brick Failure Detection']
@@ -124,5 +141,17 @@ pages:
 - ['Features/worm.md', 'Features', 'Write Once Read Many']
 - ['Features/distributed-geo-rep.md', 'Features', 'Distributed Geo Replication']
 - ['Features/libgfchangelog.md', 'Features', 'libgf Changelog']
+- ['Features/meta.md', 'Features', 'meta xlator']
+
+#GlusterFS Tools
+- ['GlusterFS Tools/README.md', 'GlusterFS Tools', 'GlusterFS Tools List']
+- ['GlusterFS Tools/glusterfind.md', 'GlusterFS Tools', 'glusterfind']
+- ['GlusterFS Tools/gfind_missing_files.md', 'GlusterFS Tools', 'gfind missing files']
+
+# Troubleshooting Guide
+- ['Troubleshooting/README.md', 'Troubleshooting Guide', 'Index']
+- ['Troubleshooting/gfid-to-path.md', 'Troubleshooting Guide', 'gfid to path']
+- ['Troubleshooting/split-brain.md', 'Troubleshooting Guide', 'Split Brain']
+- ['Troubleshooting/statedump.md', 'Troubleshooting Guide', 'Statedump']
 
 theme: readthedocs
