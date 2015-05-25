@@ -39,7 +39,7 @@ pages:
 - ['Administrator Guide/Setting Up Clients.md', 'Administrator Guide', 'Setting Up Clients']
 - ['Administrator Guide/Setting Up Volumes.md', 'Administrator Guide', 'Setting Up Volumes']
 - ['Administrator Guide/Managing Volumes.md', 'Administrator Guide', 'Managing Volumes']
-- ['Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md', 'Administrator Guide', 'Building QEMU with gfapi For Debian Based Systems']
+- ['Administrator Guide/Building QEMU With gfapi for Debian Based Systems.md', 'Administrator Guide', 'Building QEMU with gfapi for Debian Based Systems']
 - ['Administrator Guide/GlusterFS Filter.md', 'Administrator Guide', 'GlusterFS Filter']
 - ['Administrator Guide/Resolving Peer Rejected.md', 'Administrator Guide', 'Resolving Peer Rejected State']
 - ['Administrator Guide/Logging.md', 'Administrator Guide', 'Logging']
