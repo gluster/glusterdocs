@@ -144,6 +144,7 @@ pages:
 - ['Features/meta.md', 'Features', 'meta xlator']
 
 #Feature Plans
+- ['Feature Planning/index.md','Feature Planning','index']
 - ['Feature Planning/Gluster 3.5/index.md','Feature Planning 3.5','index']
 - ['Feature Planning/Gluster 3.5/AFR CLI enhancements.md','Feature Planning 3.5','AFR CLI enhancements']
 - ['Feature Planning/Gluster 3.5/Exposing Volume Capabilities.md','Feature Planning 3.5','Exposing Volume Capabilities']
