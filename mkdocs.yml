@@ -145,12 +145,6 @@ pages:
 
 #Feature Plans
 - ['Feature Planning/index.md','Feature Planning','index']
-- ['Feature Planning/GlusterFS 3.5/index.md','Feature Planning 3.5','index']
-- ['Feature Planning/GlusterFS 3.5/AFR CLI enhancements.md','Feature Planning 3.5','AFR CLI enhancements']
-- ['Feature Planning/GlusterFS 3.5/Exposing Volume Capabilities.md','Feature Planning 3.5','Exposing Volume Capabilities']
-- ['Feature Planning/GlusterFS 3.6/index.md','Feature Planning 3.6','index']
-- ['Feature Planning/GlusterFS 3.6/better-ssl.md','Feature Planning 3.6','better-ssl']
-- ['Feature Planning/GlusterFS 3.6/heterogeneous-bricks.md','Feature Planning 3.6','heterogeneous-bricks']
 - ['Feature Planning/GlusterFS 3.7/index.md','Feature Planning 3.7','index']
 - ['Feature Planning/GlusterFS 3.7/Small File Performance.md','Feature Planning 3.7','Small File Performance']
 - ['Feature Planning/GlusterFS 3.7/Data Classification.md','Feature Planning 3.7','Data Classification']
@@ -172,6 +166,12 @@ pages:
 - ['Feature Planning/GlusterFS 3.7/Outcast.md','Feature Planning 3.7','Outcast']
 - ['Feature Planning/GlusterFS 3.7/rest-api.md','Feature Planning 3.7','rest-api']
 - ['Feature Planning/GlusterFS 3.7/Archipelago Integration.md','Feature Planning 3.7','Archipelago Integration']
+- ['Feature Planning/GlusterFS 3.6/index.md','Feature Planning 3.6','index']
+- ['Feature Planning/GlusterFS 3.6/better-ssl.md','Feature Planning 3.6','better-ssl']
+- ['Feature Planning/GlusterFS 3.6/heterogeneous-bricks.md','Feature Planning 3.6','heterogeneous-bricks']
+- ['Feature Planning/GlusterFS 3.5/index.md','Feature Planning 3.5','index']
+- ['Feature Planning/GlusterFS 3.5/AFR CLI enhancements.md','Feature Planning 3.5','AFR CLI enhancements']
+- ['Feature Planning/GlusterFS 3.5/Exposing Volume Capabilities.md','Feature Planning 3.5','Exposing Volume Capabilities']
 
 #GlusterFS Tools
 - ['GlusterFS Tools/README.md', 'GlusterFS Tools', 'GlusterFS Tools List']
