@@ -65,7 +65,7 @@ Feature proposal for GlusterFS 3.6
 -   [Features/new-style-replication](./New Style Replication.md):
      Log-based, chain replication.
 
--   [Features/thousand-node-glusterd](Features/Thousand Node Gluster.md):
+-   [Features/thousand-node-glusterd](./Thousand Node Gluster.md):
      Glusterd changes for higher scale.
 
 -   [Features/Trash](../GlusterFS 3.7/Trash.md):
