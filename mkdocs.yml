@@ -184,6 +184,14 @@ pages:
 - ['Feature Planning/GlusterFS 3.5/index.md','Feature Planning 3.5','index']
 - ['Feature Planning/GlusterFS 3.5/AFR CLI enhancements.md','Feature Planning 3.5','AFR CLI enhancements']
 - ['Feature Planning/GlusterFS 3.5/Exposing Volume Capabilities.md','Feature Planning 3.5','Exposing Volume Capabilities']
+- ['Feature Planning/GlusterFS 3.5/File Snapshot.md','Feature Planning 3.5','File Snapshot']
+- ['Feature Planning/GlusterFS 3.5/gfid access.md','Feature Planning 3.5','gfid access']
+- ['Feature Planning/GlusterFS 3.5/Onwire Compression-Decompression.md','Feature Planning 3.5','On wire Compression + Decompression']
+- ['Feature Planning/GlusterFS 3.5/Quota Scalability.md','Feature Planning 3.5','Quota Scalability']
+- ['Feature Planning/GlusterFS 3.5/readdir ahead.md','Feature Planning 3.5','readdir ahead']
+- ['Feature Planning/GlusterFS 3.5/Zerofill.md','Feature Planning 3.5','Zerofill']
+- ['Feature Planning/GlusterFS 3.5/Brick Failure Detection.md','Feature Planning 3.5','Brick Failure Detection']
+- ['Feature Planning/GlusterFS 3.5/Disk Encryption.md','Feature Planning 3.5','Disk Encryption']
 
 #GlusterFS Tools
 - ['GlusterFS Tools/README.md', 'GlusterFS Tools', 'GlusterFS Tools List']
