@@ -3,6 +3,7 @@ site_url: http://www.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
 repo_url: https://github.com/gluster/glusterdocs/
+docs_dir: .
 
 pages:
 - ['index.md', 'Home']
