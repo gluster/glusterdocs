@@ -28,7 +28,7 @@ that do not apply cleanly will need some manual modifications and using
 4.  Update/correct the commit message.
 
                 $ git commit -s --amend --date="$(date)"
- [This is one example](https://github.com/gluster/glusterfs/commit/40407afb529f6e5fa2f79e9778c2f527122d75eb) of the commit message that has a good description for a backport. Notice the indention of the patch-metadata like BUG, Change-ID and Reviewed-on tags. There is also the original commit-id that was cherry picked from the master branch.
+ [This is one example](https://github.com/gluster/glusterfs/commit/40407afb529f6e5fa2f79e9778c2f527122d75eb) of the commit message that has a good description for a backport. Notice the indention of the patch-metadata like BUG, Change-ID and Reviewed-on tags. There is also the original commit-id that was cherry picked from the master branch.  
  -   make sure to quote the review tags
  -   update the BUG reference, point to the BUG that is used for this
     particular release-branch
