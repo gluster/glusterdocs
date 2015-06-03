@@ -7,8 +7,8 @@ docs_dir: .
 
 pages:
 - Home: index.md
-- Quickstart Guide:
-  - Quick start: Quick-Start-Guide/Quickstart.md
+- Getting started with GlusterFS:
+  - Quick start Guide: Quick-Start-Guide/Quickstart.md
   - Terminologies: Quick-Start-Guide/Terminologies.md
   - Architecture: Quick-Start-Guide/Architecture.md
 - Install Guide:
