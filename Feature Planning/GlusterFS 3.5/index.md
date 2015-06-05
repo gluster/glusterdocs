@@ -21,7 +21,7 @@ GlusterFS 3.5
 -   [Features/readdir ahead](./readdir ahead.md)
 -   [Features/zerofill](./Zerofill.md)
 -   [Features/Brick Failure Detection](./Brick Failure Detection.md)
--   [Features/disk-encryption](./Disk-Encryption.md)
+-   [Features/disk-encryption](./Disk Encryption.md)
 -   Changelog based parallel geo-replication
 -   Improved block device translator
 
