@@ -166,7 +166,7 @@ options:
 
 **Backward Compatibility**
 
-Your existing Ge-replication environment will work with GlusterFS,
+Your existing Geo-replication environment will work with GlusterFS,
 except for the following:
 
 -   The process of secure reconfiguration affects only the glusterfs
