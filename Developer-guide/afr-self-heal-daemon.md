@@ -14,7 +14,7 @@ The shd does two types of self-heal crawls: Index heal and Full heal. For both t
 For each file encountered while crawling, perform metadata, data and entry heals under appropriate locks.  
 * An overview of how each of these heals is performed is detailed in the 'Self-healing' section of *doc/features/afr-v1.md*
 * The different file locks which the shd takes for each of these heals is detailed in *doc/developer
--guide/afr/afr-locks-evolution.md*
+-guide/afr-locks-evolution.md*
 
 Metadata heal refers to healing extended attributes, mode and permissions of a file or directory.
 Data heal refers to healing the file contents.
