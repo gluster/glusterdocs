@@ -1,88 +1,64 @@
 Now that GlusterFS 3.7.0 is out, here is the process to upgrade from
-earlier installed versions of GlusterFS.
+earlier installed versions of GlusterFS. Please read the entire howto
+before proceeding with an upgrade of your deployment
 
-If you are using GlusterFS replication ( \< 3.6) in your setup , please
-note that the new afrv2 implementation is only compatible with 3.6
+### Pre-upgrade
+
+GlusterFS contains afrv2 implementation from 3.6.0 by default.If you are
+using GlusterFS replication ( \< 3.6) in your setup , please note that
+the new afrv2 implementation is only compatible with 3.6 or greater
 GlusterFS clients. If you are not updating your clients to GlusterFS
-version 3.6 you need to disable client self healing process. You can
-perform this by below steps.
+version 3.6 along with your servers you would need to disable client
+self healing process before the upgrade. You can perform this by below
+steps.
 
-        [root@~]# gluster v set testvol cluster.entry-self-heal off
-        volume set: success
-        [root@~]#
-        [root@~]# gluster v set testvol cluster.data-self-heal off
-        volume set: success
-        [root@~]# gluster v set testvol cluster.metadata-self-heal off
-        volume set: success
-        [root@~]#
+    [root@~]# gluster v set testvol cluster.entry-self-heal off
+    volume set: success
+    [root@~]#
+    [root@~]# gluster v set testvol cluster.data-self-heal off
+    volume set: success
+    [root@~]# gluster v set testvol cluster.metadata-self-heal off
+    volume set: success
+    [root@~]#
 
-### GlusterFS upgrade from 3.5.x to 3.6.X
+### GlusterFS upgrade to 3.7.x
 
-**a) Scheduling a downtime (Recommended)**
+**a) Scheduling a downtime**
 
 For this approach, schedule a downtime and prevent all your clients from
-accessing ( umount your volumes, stop gluster Volumes..etc)the servers.
+accessing (umount your volumes, stop gluster Volumes..etc)the servers.
 
-1.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-2.  Install  GlusterFS 3.6.0
-3.  Start glusterd.
-4.  Ensure that all started volumes have processes online in “gluster volume status”.
+    1. Stop all glusterd, glusterfsd and glusterfs processes on your server.
+    2. Install  GlusterFS 3.7.0
+    3. Start glusterd.
+    4. Ensure that all started volumes have processes online in “gluster volume status”.
 
 You would need to repeat these steps on all servers that form your
 trusted storage pool.
 
 After upgrading the servers, it is recommended to upgrade all client
-installations to 3.6.0
+installations to 3.7.0
 
-### GlusterFS upgrade from 3.4.x to 3.6.X
+**b) Rolling Upgrade [TBD]**
 
-Upgrade from GlusterFS 3.4.x:
+### Special notes for upgrading from 3.4.x to 3.7.X
 
-GlusterFS 3.6.0 is compatible with 3.4.x (yes, you read it right!). You
-can upgrade your deployment by following one of the two procedures
-below.
+If you have quota or geo-replication configured in 3.4.x, please read
+below. Else you can skip this section.
 
-**a) Scheduling a downtime (Recommended)**
-
-For this approach, schedule a downtime and prevent all your clients from
-accessing ( umount your volumes, stop gluster Volumes..etc)the servers.
-
-If you have quota configured, you need to perform step 1 and 6,
-otherwise you can skip it.
-
-If you have geo-replication session running, stop the session using the
-geo-rep stop command (please refer to step 1 of geo-rep upgrade steps
-provided below)
-
-1.  Execute "pre-upgrade-script-for-quota.sh" mentioned under "Upgrade Steps For Quota" section.
-2.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-3.  Install  GlusterFS 3.6.0
-4.  Start glusterd.
-5.  Ensure that all started volumes have processes online in “gluster volume status”.
-6.  Execute "Post-Upgrade Script" mentioned under "Upgrade Steps For Quota" section.
-
-You would need to repeat these steps on all servers that form your
-trusted storage pool.
-
-To upgrade geo-replication session, please refer to geo-rep upgrade
-steps provided below (from step 2)
-
-After upgrading the servers, it is recommended to upgrade all client
-installations to 3.6.0.
-
-Do report your findings on 3.6.0 in gluster-users, \#gluster on Freenode
-and bugzilla.
-
-Please note that this may not work for all installations & upgrades. If
-you notice anything amiss and would like to see it covered here, please
-point the same.
+Architectural changes in Quota & geo-replication were introduced in
+Gluster 3.5.0. Hence scheduling a downtime is recommended for upgrading
+from 3.4.x to 3.7.x if you have these features enabled.
 
 ### **Upgrade Steps For Quota**
 
-The upgrade process for quota involves executing two upgrade scripts:
+The upgrade process for quota involves the following:
 
-1.  pre-upgrade-script-for-quota.sh, and
-2.  post-upgrade-script-for-quota.sh
+1. Run pre-upgrade-script-for-quota.sh
+2. Upgrade to 3.7.0
+2. Run post-upgrade-script-for-quota.sh
+
+More details on the scripts are as under.
 
 *Pre-Upgrade Script:*
 
@@ -91,9 +67,8 @@ What it does:
 The pre-upgrade script (pre-upgrade-script-for-quota.sh) iterates over
 the list of volumes that have quota enabled and captures the configured
 quota limits for each such volume in a file under
-
-`/var/tmp/glusterfs/quota-config-backup/vol\_\<VOLNAME\> by executing 
-'quota list' command on each one of them.`
+/var/tmp/glusterfs/quota-config-backup/vol\_\<VOLNAME\> by executing
+'quota list' command on each one of them.
 
 Pre-requisites for running Pre-Upgrade Script:
 
@@ -174,8 +149,8 @@ passed as an argument in the command-line:
 
 -   Example:
 
-For a volume "vol1" on which quota is enabled, invoke the script in the following way:
-
+        For a volume "vol1" on which quota is enabled, invoke the script in the following way:
+      
         [root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
 
 In the second case, the post-upgrade script picks on its own, the
@@ -202,52 +177,43 @@ retained after the post-upgrade procedure for reference.
 
 ### **Upgrade steps for geo replication:**
 
-Here are the steps to upgrade your existing geo-replication setup to new
-distributed geo-replication in glusterfs-3.5. The new version leverges
-all the nodes in your master volume and provides better performace.
-
-Note:
-
-Since new version of geo-rep very much different from the older one,
-this has to be done offline.
-
 New version supports only syncing between two gluster volumes via
 ssh+gluster.
 
-This doc deals with upgrading geo-rep. So upgrading the volumes are not
-covered in detail here.
-
-**Below are the steps to upgrade.**
+''Below are the steps to upgrade. ''
 
 ​1. Stop the geo-replication session in older version ( \< 3.5) using
 the below command
 
-        #gluster volume geo-replication `<master_vol>` `<slave_host>`::`<slave_vol>` stop
+        #gluster volume geo-replication <master_vol> <slave_host>::<slave_vol> stop
 
 ​2. Now since the new geo-replication requires gfids of master and slave
 volume to be same, generate a file containing the gfids of all the files
 in master
 
         cd /usr/share/glusterfs/scripts/ ;
-        bash generate-gfid-file.sh localhost:`<master_vol>` $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
-        scp /tmp/master_gfid_file.txt root@`<slave_host>`:/tmp
+        bash generate-gfid-file.sh localhost:<master_vol> $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
+        scp /tmp/master_gfid_file.txt root@<slave_host>:/tmp
 
-​3. Now go to the slave host and aplly the gfid to the slave volume.
+​3. Upgrade the slave cluster installation to 3.7.0
+
+​4. Now go to the slave host and apply the gfid to the slave volume.
 
         cd /usr/share/glusterfs/scripts/
-        bash slave-upgrade.sh localhost:`<slave_vol>` /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
+        bash slave-upgrade.sh localhost:<slave_vol> /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
 
 This will ask you for password of all the nodes in slave cluster. Please
-provide them, if asked.
+provide them, if asked. Also note that this will restart your slave
+gluster volume (stop and start)
 
-​4. Also note that this will restart your slave gluster volume (stop and
-start)
+​5. Upgrade the master cluster to 3.7.0
 
-​5. Now create and start the geo-rep session between master and slave.
-For instruction on creating new geo-rep seesion please refer
-distributed-geo-rep admin guide.
+​6. Now create and start the geo-rep session between master and slave.
+For instruction on creating new geo-rep session please refer
+distributed-geo-rep chapter in admin guide.
 
-        gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` create push-pem force
-        gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` start
+        gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> create push-pem force
+        gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> start
 
-​6. Now your session is upgraded to use distributed-geo-rep
+At this point, your distributed geo-replication should be configured
+appropriately.
