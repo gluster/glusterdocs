@@ -46,7 +46,7 @@ To display the volume info
     Brick1: server1:/exp1
     Brick2: server2:/exp2
     Brick3: server3:/exp3
-    Brick4: server4:/ex
+    Brick4: server4:/exp4
 
 ​2. **Replicated Glusterfs Volume** - In this volume we overcome the
 data loss problem faced in the distributed volume. Here exact copy of
