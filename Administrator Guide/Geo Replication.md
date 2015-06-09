@@ -570,15 +570,6 @@ Run the following command on slave (example.com):
 
 2.  Use the following command to replace the faulty brick in the master:
 
-        # gluster volume replace-brick  start
-
-    For example:
-
-        machine1# gluster volume replace-brick Volume1 machine2:/export/dir16 machine3:/export/dir16 start
-        Replace-brick started successfully
-
-3.  Use the following command to commit the migration of data:
-
         # gluster volume replace-brick  commit force
 
     For example:
@@ -586,7 +577,7 @@ Run the following command on slave (example.com):
         machine1# gluster volume replace-brick Volume1 machine2:/export/dir16 machine3:/export/dir16 commit force
         Replace-brick commit successful
 
-4.  Use the following command to verify the migration of brick by viewing the volume info:
+3.  Use the following command to verify the migration of brick by viewing the volume info:
 
         # gluster volume info
 
@@ -604,7 +595,7 @@ Run the following command on slave (example.com):
         Options Reconfigured:
         geo-replication.indexing: on
 
-5.  Run rsync command manually to sync data from slave to master
+4.  Run rsync command manually to sync data from slave to master
     volume's client (mount point).
 
     For example:
@@ -625,7 +616,7 @@ Run the following command on slave (example.com):
 
     Now Master volume and Slave directory is synced.
 
-6.  Use the following command to restart geo-replication session from master to slave:
+5.  Use the following command to restart geo-replication session from master to slave:
 
         # gluster volume geo-replication  start
 

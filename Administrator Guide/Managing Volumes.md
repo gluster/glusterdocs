@@ -257,84 +257,18 @@ set).
 
     You can use the rebalance command as described in [Rebalancing Volumes](#rebalancing-volumes)
 
-<a name="migrating-volumes" />
-##Migrating Volumes
+<a name="replace-brick" />
+##Replace faulty brick
 
-You can migrate the data from one brick to another, as needed, while the
-cluster is online and available.
+You can replace the faulty brick, as needed, while the cluster is online and
+available.
 
-**To migrate a volume**
+**To replace a faulty brick**
 
-1.  Make sure the new brick, server5 in this example, is successfully
-    added to the cluster.
+1.  Use the following command to replace the faulty brick in the master:
+        # gluster volume replace-brick test-volume server3:/exp3 server5:/exp5 commit force
 
-2.  Migrate the data from one brick to another using the following
-    command:
-
-    ` # gluster volume replace-brick  start`
-
-    For example, to migrate the data in server3:/exp3 to server5:/exp5
-    in test-volume:
-
-        # gluster volume replace-brick test-volume server3:/exp3  server5:exp5 start
-        Replace brick start operation successful
-
-    > **Note**
-    >
-    > You need to have the FUSE package installed on the server on which
-    > you are running the replace-brick command for the command to work.
-
-3.  To pause the migration operation, if needed, use the following
-    command:
-
-    `# gluster volume replace-brick  pause `
-
-    For example, to pause the data migration from server3:/exp3 to
-    server5:/exp5 in test-volume:
-
-        # gluster volume replace-brick test-volume server3:/exp3 server5:/exp5 pause
-        Replace brick pause operation successful
-
-4.  To abort the migration operation, if needed, use the following
-    command:
-
-    `# gluster volume replace-brick abort `
-
-    For example, to abort the data migration from server3:/exp3 to
-    server5:/exp5 in test-volume:
-
-        # gluster volume replace-brick test-volume server3:/exp3 server5:exp5 abort
-        Replace brick abort operation successful
-
-5.  Check the status of the migration operation using the following
-    command:
-
-    `# gluster volume replace-brick status `
-
-    For example, to check the data migration status from server3:/exp3
-    to server5:/exp5 in test-volume:
-
-        # gluster volume replace-brick test-volume server3:/exp3 server5:/exp5 status
-        Current File = /usr/src/linux-headers-2.6.31-14/block/Makefile
-        Number of files migrated = 10567
-        Migration complete
-
-    The status command shows the current file being migrated along with
-    the current total number of files migrated. After completion of
-    migration, it displays Migration complete.
-
-6.  Commit the migration of data from one brick to another using the
-    following command:
-
-    `# gluster volume replace-brick commit `
-
-    For example, to commit the data migration from server3:/exp3 to
-    server5:/exp5 in test-volume:
-
-        # gluster volume replace-brick test-volume server3:/exp3 server5:/exp5 commit
-        replace-brick commit successful
-
-7.  Verify the migration of brick by viewing the volume info using the
+2.  Verify the migration of brick by viewing the volume info using the
     following command:
 
     `# gluster volume info `
