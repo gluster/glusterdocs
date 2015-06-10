@@ -221,12 +221,12 @@ parameter for persistent tuning).
 ### Object Store tools
 
 [http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang\_\_COSBench\_Final.pdf
-COSBench](http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf COSBench "wikilink")
+COSBench](http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf)
 was developed by Intel employees and is very useful for both Swift and
 S3 workload generation.
 
 [https://pypi.python.org/pypi/ssbench
-ssbench](https://pypi.python.org/pypi/ssbench ssbench "wikilink") is
+ssbench](https://pypi.python.org/pypi/ssbench) is
 part of OpenStack Swift toolset and is command-line tool with a workload
 definition file format.
 
@@ -336,15 +336,15 @@ attention it deserves during the planning and installation phases of the
 Gluster lifecycle. Fortunately,
 [http://www.gluster.org/community/documentation/index.php/Network\_Configuration\_Techniques
 network
-performance](http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques network performance "wikilink")
+performance](http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques)
 can be enhanced significantly without additional hardware.
 
 To measure network performance, consider use of a
 [http://www.netperf.org/netperf/NetperfPage.html
-netperf-based](http://www.netperf.org/netperf/NetperfPage.html netperf-based "wikilink")
+netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
 script such as
 [https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh
-network-stream-pairs.sh](https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh network-stream-pairs.sh "wikilink")
+network-stream-pairs.sh](https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh)
 that can exercise multiple network connections in parallel, to
 understand better your network infrastructure capabilities.
 
