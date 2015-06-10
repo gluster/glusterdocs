@@ -87,7 +87,7 @@ These steps are for both Fedora and RHEL/CentOS. At the end you'll have the comp
 1. Install the needed packages
 
 		$ sudo yum -y --disablerepo=rhs* --enablerepo=*optional-rpms install git autoconf \
-		  automake bison  dos2unix flex fuse-devel glib2-devel libaio-devel \
+		  automake bison dos2unix flex fuse-devel glib2-devel libaio-devel \
 		  libattr-devel libibverbs-devel librdmacm-devel libtool libxml2-devel lvm2-devel make \
 		  openssl-devel pkgconfig pyliblzma python-devel python-eventlet python-netifaces \
 		  python-paste-deploy python-simplejson python-sphinx python-webob pyxattr readline-devel \
