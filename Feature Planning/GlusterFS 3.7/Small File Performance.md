@@ -381,7 +381,7 @@ How To Test
 
 Small-file performance testing methods are discussed in [Gluster
 performance test
-page](http://www.gluster.org/community/documentation/index.php/Performance_Testing)
+page](http://gluster.readthedocs.org/en/latest/Administrator%20Guide/Performance%20Testing/)
 
 User Experience
 ---------------
