@@ -153,7 +153,7 @@ as of March 2015, with some tiny patches, fio's capabilities for
 distributed performance testing are vastly improved, see these patches:
 
 -   [http://www.spinics.net/lists/fio/msg03862.html improve IOPS
-    accuracy](http://www.spinics.net/lists/fio/msg03862.html improve IOPS accuracy "wikilink")
+    accuracy](http://www.spinics.net/lists/fio/msg03862.html)
 -   [http://www.spinics.net/lists/fio/msg03861.html specify all fio
     server IPs in a
     file](http://www.spinics.net/lists/fio/msg03861.html specify all fio server IPs in a file "wikilink")
