@@ -292,7 +292,7 @@ time to server, this has a dramatic improvement in throughput.
 ##### object-store API
 
 Some of details are covered in
-[Features/composite-operations](Features/composite-operations "wikilink")
+[Features/composite-operations](../GlusterFS 4.0/composite-operations.md)
 
 *Status*: Librados in Ceph and Swift in OpenStack are examples. The
 proposal would be to create an API that lets you do equivalent of Swift
