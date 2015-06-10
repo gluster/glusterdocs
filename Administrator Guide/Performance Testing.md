@@ -21,16 +21,48 @@ that can be run from a single system. While single-system results are
 important, they are far from a definitive measure of the performance
 capabilities of a distributed filesystem.
 
--   [iozone](http://www.iozone.org) - for pure-workload large-file tests
+-   [fio](http://freecode.com/projects/fio) - for large file I/O tests.
 -   [smallfile](https://github.com/bengland2/smallfile) - for
     pure-workload small-file tests
--   [fio](http://freecode.com/projects/fio) - for random I/O tests or
-    single-host testing
+-   [iozone](http://www.iozone.org) - for pure-workload large-file tests
 -   [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi)
     - for pure-workload libgfapi tests
 
-The smallfile benchmark is relatively new and should be fairly
-self-explanatory. It complements but does not replace iozone.
+The "netmist" mixed-workload generator of SPECsfs2014 may be suitable in some cases, but is not technically an open-source tool. This tool was written by Don Capps, who was an author of iozone. 
+
+### fio
+
+fio is extremely powerful and is easily installed from traditional distros, unlike iozone, and has increasingly powerful distributed test capabilities described in its --client parameter upstream as of May 2015. To use this mode, start by launching an fio "server" instance on each workload generator host using: 
+
+        fio --server --daemonize=/var/run/fio-svr.pid
+        
+And make sure your firewall allows port 8765 through for it. You can now run tests on sets of hosts using syntax like:
+
+        fio --client=workload-generator.list --output-format=json my-workload.fiojob
+
+You can also use it for distributed testing, however, by launching fio instances on separate hosts, taking care to start all fio instances as close to the same time as possible, limiting per-thread throughput, and specifying the run duration rather than the amount of data, so that all fio instances end at around the same time. You can then aggregate the fio results from different hosts to get a meaningful aggregate result.
+
+fio also has different I/O engines, in particular Huamin Chen authored the ***libgfapi*** engine for fio so that you can use fio to test Gluster performance without using FUSE.
+
+Limitations of fio in distributed mode:
+
+-   stonewalling - fio calculates throughput based on when the last thread finishes a test run. In contrast, iozone calculates throughput by default based on when the FIRST thread finishes the workload. This can lead to (deceptively?) higher throughput results for iozone, since there are inevitably some "straggler" threads limping to the finish line later than others. It is possible in some cases to overcome this limitation by specifying a time limit for the test. This works well for random I/O tests, where typically you do not want to read/write the entire file/device anyway.
+-   inaccuracy when response times > 1 sec - at least in some cases fio has reported excessively high IOPS when fio threads encounter response times much greater than 1 second, this can happen for distributed storage when there is unfairness in the implementation. 
+-   io engines are not integrated.
+
+### smallfile Distributed I/O Benchmark
+
+[Smallfile](https://forge.gluster.org/smallfile-performance-testing) is a python-based small-file distributed POSIX workload generator which can be used to quickly measure performance for a variety of metadata-intensive workloads across an entire cluster. It has no dependencies on any specific filesystem or implementation AFAIK. It runs on Linux, Windows and should work on most Unixes too. It is intended to complement use of iozone benchmark for measuring performance of large-file workloads, and borrows certain concepts from iozone and Ric Wheeler's fs_mark. It was developed by Ben England starting in March 2009, and is now open-source (Apache License v2).
+
+Here is a typical simple sequence of tests where files laid down in an initial create test are then used in subsequent tests. There are many more smallfile operation types than these 5 (see doc), but these are the most commonly used ones. 
+
+        SMF="./smallfile_cli.py --top /mnt/glusterfs/smf --host-set h1,h2,h3,h4 --threads 8 --file-size 4 --files 10000 --response-times Y "
+        $SMF --operation create
+        for s in $SERVERS ; do ssh $h 'echo 3 > /proc/sys/vm/drop_caches' ; done
+        $SMF --operation read
+        $SMF --operation append
+        $SMF --operation rename
+        $SMF --operation delete
 
 ### iozone
 
@@ -137,64 +169,6 @@ example:
 If you use client with buffered I/O (the default), drop cache on the
 client machines first, then the server machines also as shown above.
 
-### fio
-
-fio is extremely powerful and is easily installed from traditional
-distros, unlike iozone, but so far has limited distributed test
-capabilities described in its --client parameter. You can use it for
-distributed testing, however, by launching fio instances on separate
-hosts, taking care to start all fio instances as close to the same time
-as possible, limiting IOPS, and specifying the run duration rather than
-the amount of data, so that all fio instances end at around the same
-time. You can then aggregate the fio results from different hosts to get
-a meaningful aggregate result.
-
-as of March 2015, with some tiny patches, fio's capabilities for
-distributed performance testing are vastly improved, see these patches:
-
--   [http://www.spinics.net/lists/fio/msg03862.html improve IOPS
-    accuracy](http://www.spinics.net/lists/fio/msg03862.html)
--   [http://www.spinics.net/lists/fio/msg03861.html specify all fio
-    server IPs in a
-    file](http://www.spinics.net/lists/fio/msg03861.html)
--   [http://www.spinics.net/lists/fio/msg03860.html fix garbled output
-    in JSON with many fio
-    servers](http://www.spinics.net/lists/fio/msg03860.html)
-
-These are sufficient for distributed OpenStack Cinder block device
-testing for example. But an additional enhancement is needed so that fio
-uses separate directories for fio servers, this has not been posted yet.
-
-fio also has different I/O engines, in particular Huamin Chen authored
-the libgfapi engine for fio so that you can use fio to test Gluster
-performance without using FUSE.
-
-### smallfile Distributed I/O Benchmark
-
-[Smallfile](https://forge.gluster.org/smallfile-performance-testing) is
-a python-based small-file distributed POSIX workload generator which can
-be used to quickly measure performance for a variety of
-metadata-intensive workloads across an entire cluster. It has no
-dependencies on any specific filesystem or implementation AFAIK. It runs
-on Windows and should work on most Unixes too. It is intended to
-complement use of iozone benchmark for measuring performance of
-large-file workloads, and borrows certain concepts from iozone and Ric
-Wheeler's fs\_mark. It was developed by Ben England starting in March
-2009, and is now open-source (Apache License v2).
-
-Here is a typical simple sequence of tests where files laid down in an
-initial create test are then used in subsequent tests. There are many
-more smallfile operation types than these 5 (see doc), but these are the
-most commonly used ones.
-
-        SMF="./smallfile_cli.py --top /mnt/glusterfs/smf --host-set h1,h2,h3,h4 --threads 8 --file-size 4 --files 10000 --response-times Y "
-        $SMF --operation create
-        for s in $SERVERS ; do ssh $h 'echo 3 > /proc/sys/vm/drop_caches' ; done
-        $SMF --operation read
-        $SMF --operation append
-        $SMF --operation rename
-        $SMF --operation delete
-
 ### parallel-libgfapi
 
 This test exercises Gluster performance using the libgfapi API,
@@ -298,20 +272,8 @@ know what your application spends its time doing, you can start by
 running the "gluster volume profile" and "gluster volume top" commands.
 These extremely useful tools will help you understand both the workload
 and the bottlenecks which are limiting performance of that workload.
-TBS: links to documentation for these tools
 
-#### Homework
-
--   gluster is a distributed filesystem, but some workloads do not
-    distribute evenly across all servers (example: single-threaded I/O
-    to a large file). Are there "hot spots" in your system?
--   is Linux optimally tuned for Gluster with your workload? (TBS: link
-    here to linux tuning page). Hint: Linux kernel defaults are not
-    optimized for storage servers. Other layers in the stack such as LVM
-    and XFS may impact performance as well.
--   Are you exploiting the features that are available in Gluster to
-    help your particular workload? Warning: translators that help with
-    one workload may reduce performance for a different workload.
+TBS: links to documentation for these tools and scripts that reduce the data to usable form. 
 
 Configuration
 -------------
