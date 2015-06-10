@@ -142,7 +142,7 @@ io-threads pool, is it?
 ##### glusterfsd stat and xattr cache
 
 Please see feature page
-[Features/stat-xattr-cache](Features/stat-xattr-cache "wikilink")
+[Features/stat-xattr-cache](../GlusterFS 4.0/stat-xattr-cache.md)
 
 *Why*: remove most system call latency from small-file read and create
 in brick process (glusterfsd)
@@ -268,7 +268,7 @@ become a significantly more frequent occurrence?
 ##### lower RPC calls per file access
 
 Please see
-[Features/composite-operations](Features/composite-operations "wikilink")
+[Features/composite-operations](../GlusterFS 4.0/composite-operations.md)
 page for details.
 
 *Status*: no proposals exist for this, but NFS compound RPC and SMB ANDX
