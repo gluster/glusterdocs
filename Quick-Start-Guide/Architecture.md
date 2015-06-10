@@ -117,8 +117,7 @@ file can be fetched faster but no data redundancy provided.
 
 Create a Striped Volume
 
-**gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma
-| tcp,rdma]] NEW-BRICK...**
+    gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...
 
 **For example**, to create a striped volume across two storage servers:
 
@@ -483,8 +482,6 @@ external utility which will calculate the diff of the two files and
 sends this difference from source to sync.
 
 ### Overall working of GlusterFS
-
-**Rough draft**
 
 As soon as GlusterFS is installed in a server node, a gluster management
 daemon(glusterd) binary will be created. This daemon should be running
