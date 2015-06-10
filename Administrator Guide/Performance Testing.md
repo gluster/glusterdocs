@@ -199,7 +199,7 @@ most commonly used ones.
 
 This test exercises Gluster performance using the libgfapi API,
 bypassing FUSE - no mountpoints are used. Available
-[here](https://github.com/bengland2/parallel-libgfapi here).
+[here](https://github.com/bengland2/parallel-libgfapi).
 
 To use it, you edit the script parameters in parallel\_gfapi\_test.sh
 script - all of them are above the comment "NO EDITABLE PARAMETERS BELOW
