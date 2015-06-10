@@ -117,7 +117,7 @@ file can be fetched faster but no data redundancy provided.
 
 Create a Striped Volume
 
-    **gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...**
+    gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...
 
 **For example**, to create a striped volume across two storage servers:
 
