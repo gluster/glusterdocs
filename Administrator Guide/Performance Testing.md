@@ -156,10 +156,10 @@ distributed performance testing are vastly improved, see these patches:
     accuracy](http://www.spinics.net/lists/fio/msg03862.html)
 -   [http://www.spinics.net/lists/fio/msg03861.html specify all fio
     server IPs in a
-    file](http://www.spinics.net/lists/fio/msg03861.html specify all fio server IPs in a file "wikilink")
+    file](http://www.spinics.net/lists/fio/msg03861.html)
 -   [http://www.spinics.net/lists/fio/msg03860.html fix garbled output
     in JSON with many fio
-    servers](http://www.spinics.net/lists/fio/msg03860.html fix garbled output in JSON with many fio servers "wikilink")
+    servers](http://www.spinics.net/lists/fio/msg03860.html)
 
 These are sufficient for distributed OpenStack Cinder block device
 testing for example. But an additional enhancement is needed so that fio
@@ -199,8 +199,7 @@ most commonly used ones.
 
 This test exercises Gluster performance using the libgfapi API,
 bypassing FUSE - no mountpoints are used. Available
-[https://github.com/bengland2/parallel-libgfapi
-here](https://github.com/bengland2/parallel-libgfapi here "wikilink").
+[here](https://github.com/bengland2/parallel-libgfapi here).
 
 To use it, you edit the script parameters in parallel\_gfapi\_test.sh
 script - all of them are above the comment "NO EDITABLE PARAMETERS BELOW
