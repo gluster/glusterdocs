@@ -135,6 +135,18 @@ pages:
   - meta xlator: Features/meta.md
 - Feature Planning:
   - index: Feature Planning/index.md
+- Feature Planning 4.0:
+  - index: Feature Planning/GlusterFS 4.0/index.md
+  - DHT Scalability: Feature Planning/GlusterFS 4.0/dht-scalability.md
+  - Caching: Feature Planning/GlusterFS 4.0/caching.md
+  - Split Network: Feature Planning/GlusterFS 4.0/Split Network.md
+  - Better brick Management: Feature Planning/GlusterFS 4.0/Better Brick Mgmt.md
+  - Compression Dedup: Feature Planning/GlusterFS 4.0/Compression Dedup.md
+  - Composite Operations: Feature Planning/GlusterFS 4.0/composite-operations.md
+  - stat-xattr-cache: Feature Planning/GlusterFS 4.0/stat-xattr-cache.md
+  - Code Generation: Feature Planning/GlusterFS 4.0/code-generation.md
+  - Volgen rewrite: Feature Planning/GlusterFS 4.0/volgen-rewrite.md
+
 - Feature Planning 3.7:
   - index: Feature Planning/GlusterFS 3.7/index.md
   - Small File Performance: Feature Planning/GlusterFS 3.7/Small File Performance.md
