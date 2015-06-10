@@ -21,9 +21,13 @@ Install the Gluster packages (do this on both servers)
 
 ###### For Ubuntu
 
-If you haven't already done so, install python-software-properties:
+Ubuntu 10 and 12: install python-software-properties:
 
-		sudo apt-get install python-software-properties
+		sudo apt-get install python-software-properties
+		
+Ubuntu 14: install software-properties-common:
+
+		sudo apt-get install software-properties-common
 
 Then add the community GlusterFS PPA:
 
