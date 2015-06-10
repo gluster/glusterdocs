@@ -25,8 +25,7 @@ capabilities of a distributed filesystem.
 -   [smallfile](https://github.com/bengland2/smallfile) - for
     pure-workload small-file tests
 -   [iozone](http://www.iozone.org) - for pure-workload large-file tests
--   [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi)
-    - for pure-workload libgfapi tests
+-   [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi) - for pure-workload libgfapi tests
 
 The "netmist" mixed-workload generator of SPECsfs2014 may be suitable in some cases, but is not technically an open-source tool. This tool was written by Don Capps, who was an author of iozone. 
 
