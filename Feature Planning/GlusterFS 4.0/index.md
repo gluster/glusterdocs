@@ -72,7 +72,7 @@ completed before voting on the final 4.0 feature set.
 Proposing New Features
 ----------------------
 
-[New Feature Template](./Feature Template.md)
+[New Feature Template](../Feature Template.md)
 
 Use the template to create a new feature page, and then link to it from the "Feature Proposals" section above.
 
