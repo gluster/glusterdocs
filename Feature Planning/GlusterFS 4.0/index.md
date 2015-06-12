@@ -68,3 +68,15 @@ completed before voting on the final 4.0 feature set.
 
 -   Features/perf-monitoring:
      Always-on performance monitoring and hotspot identification.
+
+Proposing New Features
+----------------------
+
+#####[New Feature Template](../Feature template.md)
+
+Use the template to create a new feature page, and then link to it from the "Feature Proposals" section above.
+
+Release Criterion
+-----------------
+
+-  TBD
