@@ -10,7 +10,6 @@
 [New Feature Template](./Feature Template.md)
 
 Use the template to create a new feature page, and then link to it from the "Feature Proposals" section in Release specific index page,
-
 For example:
 
-http://gluster.readthedocs.org/en/latest/Feature%20Planning/GlusterFS%204.0/
+[GlusterFS 4.0 Plans](http://gluster.readthedocs.org/en/latest/Feature Planning/GlusterFS 4.0/)
