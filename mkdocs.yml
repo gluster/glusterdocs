@@ -135,6 +135,7 @@ pages:
   - meta xlator: Features/meta.md
 - Feature Planning:
   - index: Feature Planning/index.md
+  - New Feature Template: Feature Planning/Feature Template.md
 - Feature Planning 4.0:
   - index: Feature Planning/GlusterFS 4.0/index.md
   - DHT Scalability: Feature Planning/GlusterFS 4.0/dht-scalability.md
