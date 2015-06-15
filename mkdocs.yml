@@ -133,6 +133,18 @@ pages:
   - Distributed Geo Replication: Features/distributed-geo-rep.md
   - libgf Changelog: Features/libgfchangelog.md
   - meta xlator: Features/meta.md
+- Release Notes:
+  - index: release-notes/index.md
+  - 3.7.1: release-notes/3.7.1.md
+  - 3.7.0: release-notes/3.7.0.md
+  - geo-rep in 3.7: release-notes/geo-rep-in-3.7.md
+  - 3.6.3: release-notes/3.6.3.md
+  - 3.6.0: release-notes/3.6.0.md
+  - 3.5.4: release-notes/3.5.4.md
+  - 3.5.3: release-notes/3.5.3.md
+  - 3.5.2: release-notes/3.5.2.md
+  - 3.5.1: release-notes/3.5.1.md
+  - 3.5.0: release-notes/3.5.0.md
 - Feature Planning:
   - index: Feature Planning/index.md
   - New Feature Template: Feature Planning/Feature Template.md
@@ -147,7 +159,6 @@ pages:
   - stat-xattr-cache: Feature Planning/GlusterFS 4.0/stat-xattr-cache.md
   - Code Generation: Feature Planning/GlusterFS 4.0/code-generation.md
   - Volgen rewrite: Feature Planning/GlusterFS 4.0/volgen-rewrite.md
-
 - Feature Planning 3.7:
   - index: Feature Planning/GlusterFS 3.7/index.md
   - Small File Performance: Feature Planning/GlusterFS 3.7/Small File Performance.md
