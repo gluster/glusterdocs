@@ -27,6 +27,8 @@ Install Guide.
 
 -  [Features](./Features/README.md) - Guides for the features in the new release.
 
+-  [Release Notes](./release-notes/index.md) - release notes of various releases of GlusterFS.
+
 -  [Feature Plans](./Feature Planning/index.md) - Features planning documents.
 
 -  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlusterFS tools.
