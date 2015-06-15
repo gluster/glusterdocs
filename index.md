@@ -27,7 +27,7 @@ Install Guide.
 
 -  [Features](./Features/README.md) - Guides for the features in the new release.
 
--  [Release Notes](./release-notes/index.md) - release notes of various releases of GlusterFS.
+-  [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and  additions that have been implemented in various Glusterfs releases.
 
 -  [Feature Plans](./Feature Planning/index.md) - Features planning documents.
 
