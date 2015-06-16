@@ -107,6 +107,12 @@ pages:
 - ['Upgrade-Guide/upgrade_to_3.6.md', 'Upgrade-Guide', 'Upgrade to 3.6']
 - ['Upgrade-Guide/Upgrade to 3.7.md', 'Upgrade-Guide', 'Upgrade to 3.7']
 
+# Release Notes:
+- ['release-notes/index.md', 'Release Notes', 'index']
+- ['release-notes/3.7.1.md', 'Release Notes', '3.7.1']
+- ['release-notes/3.7.0.md', 'Release Notes', '3.7.0']
+- ['release-notes/geo-rep-in-3.7.md', 'Release Notes', 'geo rep in 3.7']
+
 # Features:
 - ['Features/README.md', 'Features', 'Features List']
 - ['Features/afr-arbiter-volumes.md', 'Features', 'AFR Arbiter Volumes']
