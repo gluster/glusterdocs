@@ -137,7 +137,6 @@ pages:
   - index: release-notes/index.md
   - 3.7.1: release-notes/3.7.1.md
   - 3.7.0: release-notes/3.7.0.md
-  - geo-rep in 3.7: release-notes/geo-rep-in-3.7.md
   - 3.6.3: release-notes/3.6.3.md
   - 3.6.0: release-notes/3.6.0.md
   - 3.5.4: release-notes/3.5.4.md
