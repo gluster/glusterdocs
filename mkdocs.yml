@@ -111,7 +111,7 @@ pages:
 - ['release-notes/index.md', 'Release Notes', 'index']
 - ['release-notes/3.7.1.md', 'Release Notes', '3.7.1']
 - ['release-notes/3.7.0.md', 'Release Notes', '3.7.0']
-- ['release-notes/geo-rep-in-3.7.md', 'Release Notes', 'geo rep in 3.7']
+#- ['release-notes/geo-rep-in-3.7.md', 'Release Notes', 'geo rep in 3.7']
 
 # Features:
 - ['Features/README.md', 'Features', 'Features List']
