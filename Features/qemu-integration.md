@@ -104,7 +104,7 @@ If you are new to GlusterFS, you can take a look at [QuickStart](../QuickStart-S
 
 There are recommended settings available for virt-store. This provide good performance characteristics when enabled on the volume that was used for virt-store
 
-Refer to  http://www.gluster.org/community/documentation/index.php/Virt-store-usecase#Tunables for recommended tunables and for applying them on the volume, http://www.gluster.org/community/documentation/index.php/Virt-store-usecase#Applying_the_Tunables_on_the_volume
+Refer to  [Virt store usecases-Tunables](../Feature Planning/GlusterFS 3.5/ Virt store usecase.md#Tunables) for recommended tunables and for applying them on the volume, [refer this section](../Feature Planning/GlusterFS 3.5/ Virt store usecase.md#Applying_the_Tunables_on_the_volume)
 
 
 * Tuning glusterd to accept requests from QEMU
