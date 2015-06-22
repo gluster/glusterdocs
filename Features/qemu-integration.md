@@ -228,4 +228,4 @@ For more details on this feature implementation and its advantages, please refer
 
 http://raobharata.wordpress.com/2012/10/29/qemu-glusterfs-native-integration/
 
-http://www.gluster.org/community/documentation/index.php/Libgfapi_with_qemu_libvirt
+[Libgfapi_with_qemu_libvirt](../Feature Planning/GlusterFS 3.5/libgfapi with qemu libvirt.md
