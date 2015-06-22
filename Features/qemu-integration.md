@@ -98,7 +98,7 @@ Note: It is recommended to create sub-directories inside brick and that could be
 
     gluster volume create replica 2 <brick1> .. <brickN> force
 
-If you are new to GlusterFS, you can take a look at QuickStart (http://www.gluster.org/community/documentation/index.php/QuickStart) guide.
+If you are new to GlusterFS, you can take a look at [QuickStart](../QuickStart-Start-Guide/Quickstart.md) guide.
 
 * Tuning the volume for virt-store
 
@@ -226,6 +226,5 @@ Reference:
 
 For more details on this feature implementation and its advantages, please refer:
 
-http://raobharata.wordpress.com/2012/10/29/qemu-glusterfs-native-integration/
-
-[Libgfapi_with_qemu_libvirt](../Feature Planning/GlusterFS 3.5/libgfapi with qemu libvirt.md
+-  http://raobharata.wordpress.com/2012/10/29/qemu-glusterfs-native-integration/
+-  [Libgfapi_with_qemu_libvirt](../Feature Planning/GlusterFS 3.5/libgfapi with qemu libvirt.md)
