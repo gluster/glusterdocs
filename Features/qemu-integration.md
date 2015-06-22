@@ -3,7 +3,7 @@ Using GlusterFS volumes to host VM images and data was sub-optimal due to the FU
 - A new library called libgfapi is now available as part of GlusterFS that  provides POSIX-like C APIs for accessing gluster volumes. libgfapi support is available from GlusterFS-3.4 release.
 - QEMU (starting from QEMU-1.3) will have GlusterFS block driver that uses libgfapi and hence there is no FUSE overhead any longer when QEMU works with VM images on gluster volumes.
 
-GlusterFS with its pluggable translator model can serve as a flexible storage backend for QEMU. QEMU has to just talk to GlusterFS and GlusterFS will hide different file systems and storage types underneath. Various GlusterFS storage features like replication and striping will automatically be available for QEMU. Efforts are also on to add block device backend in Gluster via Block Device (BD) translator that will expose underlying block devices as files to QEMU. This allows GlusterFS to be a single storage backend for both file and block based storage types.
+GlusterFS, with its pluggable translator model serves as a flexible storage backend for QEMU. QEMU has to just talk to GlusterFS and GlusterFS will hide different file systems and storage types underneath. Various GlusterFS storage features like replication and striping will automatically be available for QEMU. Efforts are also on to add block device backend in Gluster via Block Device (BD) translator that will expose underlying block devices as files to QEMU. This allows GlusterFS to be a single storage backend for both file and block based storage types.
 
 ###GlusterFS specifcation in QEMU
 
@@ -102,20 +102,20 @@ If you are new to GlusterFS, you can take a look at [QuickStart](../Quick-Start-
 
 * Tuning the volume for virt-store
 
-There are recommended settings available for virt-store. This provide good performance characteristics when enabled on the volume that was used for virt-store
+There are recommended settings available for virt-store. This provides good performance characteristics when enabled on the volume which is used for virt-store
 
 Refer to  [Virt store usecases-Tunables](../Feature Planning/GlusterFS 3.5/Virt store usecase.md#tunables) for recommended tunables and for applying them on the volume, [refer this section](../Feature Planning/GlusterFS 3.5/Virt store usecase.md#applying-the-tunables-on-the-volume)
 
 
 * Tuning glusterd to accept requests from QEMU
 
-glusterd receives the request only from the applications that run with port number less than 1024 and it blocks otherwise. QEMU uses port number greater than 1024 and to make glusterd accept requests from QEMU, edit the glusterd vol file, /etc/glusterfs/glusterd.vol and add the following,
+glusterd receives requests only from the application that runs with port number less than 1024, otherwise the request is blocked. QEMU uses port number greater than 1024. To make glusterd accept requests from QEMU, you must edit the glusterd vol file, /etc/glusterfs/glusterd.vol and add the following:
 
     option rpc-auth-allow-insecure on
 
-Note: If you have installed glusterfs from source, you can find glusterd vol file at `/usr/local/etc/glusterfs/glusterd.vol`
+Note: If you have installed glusterfs from source, you can find glusterd vol file at: `/usr/local/etc/glusterfs/glusterd.vol`
 
-Restart glusterd after adding that option to glusterd vol file
+Restart glusterd after adding the option to glusterd vol file.
 
     service glusterd restart
 
@@ -125,7 +125,7 @@ Enable the option `allow-insecure` on the particular volume
 
     gluster volume set <volname> server.allow-insecure on
 
-IMPORTANT : As of now(april 2,2014)there is a bug, as allow-insecure is not dynamically set on a volume.You need to restart the volume for the change to take effect
+IMPORTANT : As of now (april 2,2014)there is a bug, as allow-insecure is not dynamically set on a volume.You need to restart the volume for the change to take effect
 
 
 * Setting ownership on the volume
