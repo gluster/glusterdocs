@@ -1,9 +1,10 @@
 ##Tiering 
 
 * ####Feature page:
-http://www.gluster.org/community/documentation/index.php/Features/data-classification
 
-* #####Design: goo.gl/bkU5qv
+[http://gluster.readthedocs.org/en/latest/Feature Planning/GlusterFS 3.7/Data Classification/](http://gluster.readthedocs.org/en/latest/Feature Planning/GlusterFS 3.7/Data Classification/)
+
+* #####Design: [goo.gl/bkU5qv]
 
 ###Theory of operation
 
