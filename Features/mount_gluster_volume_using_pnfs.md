@@ -17,6 +17,9 @@ glusterFS+NFS-ganesha integration.
        - service nfs stop
        - gluster vol set <volname> nfs.disable ON (Note: this command has to be repeated for all the volumes in the trusted-pool)
 
+  - Turn on feature.cache-invalidation for the volume.
+       - gluster v set <volname> features.cache-invalidation on
+
 ### 2.) Configure nfs-ganesha for pNFS
 
   - Disable nfs-ganesha and tear down HA cluster via gluster cli (pNFS did not need to disturb HA setup)
@@ -26,7 +29,16 @@ glusterFS+NFS-ganesha integration.
        - *#ganesha.nfsd -f <location_of_nfs-ganesha.conf_file> -L <location_of_log_file> -N <log_level> -d*
 
   - Check whether volume is exported via nfs-ganesha in all the nodes.
-       - *#showmount -e localhost*
+       - *#showmount -e localhost* 
+
+  - Configure M.D.S by adding following block to ganesha configuration file
+```sh    
+GLUSTER
+{
+ PNFS_MDS = true;
+}
+```
+
 
 ### 3.) Mount volume via pNFS
 
