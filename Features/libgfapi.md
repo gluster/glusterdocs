@@ -369,6 +369,7 @@ libgfapi bindings are available for below languages:
     - Java
     - python [2]
     - Ruby
+    - Rust
 
 For more details on these bindings,please refer :
 

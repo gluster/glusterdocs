@@ -30,3 +30,10 @@ Ruby
 
 -   [libgfapi-ruby](https://github.com/spajus/libgfapi-ruby) - Libgfapi
     bindings for Ruby using FFI
+
+Rust
+----
+
+-   [gfapi-sys](https://github.com/cholcombe973/Gfapi-sys) - Libgfapi
+    bindings for Rust using FFI
+
