@@ -87,6 +87,7 @@ pages:
   - Using Gluster Test Framework: Developer-guide/Using Gluster Test Framework.md
   - Jenkins Infrastructure: Developer-guide/Jenkins Infrastructure.md
   - Jenkins Manual Setup: Developer-guide/Jenkins Manual Setup.md
+  - Coredump Analysis: Developer-guide/coredump-analysis.md
   - Bug Reporting Guidelines: Developer-guide/Bug Reporting Guidelines.md
   - Bug Triage Guidelines: Developer-guide/Bug Triage.md
   - Bug Report Life Cycle: Developer-guide/Bug report Life Cycle.md
