@@ -17,6 +17,8 @@ Install Guide.
 
 -  [Installation Guides](./Install-Guide/Overview.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
 
+-  [Presentations](./presentations/index.md) related to Gluster from Conferences and summits.
+
 **More Documentation**  
 
 -  [Administration Guide](./Administrator Guide/README.md) - describes the configuration and management of GlusterFS. 
