@@ -14,15 +14,11 @@ Create tarball
 Notify packagers
 ----------------
 
-Notify the packagers that we need packages created
-
--   Fedora/EL RPMs - ndevos, kkeithley, hchiramm, lalatenduM
--   SuSE RPMs - kkeithley
--   Pidora RPMs - kkeithley
--   Debian/Ubuntu .debs - semiosis
--   MacOS X Homebrew - Justin Clift
--   NetBSD Port - Manu
--   FreeBSD Port - Craig Butler
+Notify the packagers that we need packages created. Provide the link to the
+source tarball from the Jenkins release job to the [packagers
+mailinglist](mailto:packagers@gluster.org). A list of the people involved in
+the package maintenance for the different distributions is in the `MAINTAINERS`
+file in the sources.
 
 Create Release Announcement
 ---------------------------
