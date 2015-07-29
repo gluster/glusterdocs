@@ -233,7 +233,7 @@ List of known translators with their current status.
   Debug            |Provide interface and statistics for errors and debugging.
   Cluster          |Handle distribution and replication of data as it relates to writing to and reading from bricks & nodes.
   Encryption       |Extension translators for on-the-fly encryption/decryption of stored data.
-  Protocol         |Extension translators for on-the-fly encryption/decryption of stored data.
+  Protocol         |Extension translators for client/server communication protocols.
   Performance      |Tuning translators to adjust for workload and I/O profiles.
   Bindings         |Add extensibility, e.g. The Python interface written by Jeff Darcy to extend API interaction with GlusterFS.
   System           |System access translators, e.g. Interfacing with file system access control.
