@@ -242,7 +242,7 @@ List of known translators with their current status.
 
 The default / general hierarchy of translators in vol files :
 
-![translator_h](https://cloud.githubusercontent.com/assets/10970993/7412605/1a533f0c-ef62-11e4-8f0d-0559fe1f5aa1.png)
+![translator_h](https://cloud.githubusercontent.com/assets/628699/9002815/07d93ce4-3771-11e5-8bda-9018871aa6fb.png)
 
 All the translators hooked together to perform a function is called a
 graph. The left-set of translators comprises of **Client-stack**.The
