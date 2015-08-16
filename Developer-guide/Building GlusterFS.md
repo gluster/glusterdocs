@@ -22,15 +22,15 @@ The following packages are required for building GlusterFS,
 -   glib2
 -   liburcu
 -   cmocka
+-   libacl
+-   sqlite
 
 ### Fedora
 
 The following yum command installs all the build requirements for
 Fedora,
 
-		# yum install automake autoconf libtool flex bison openssl-devel
-		libxml2-develpython-devel libaio-devel libibverbs-devel librdmacm-devel
-		readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel
+		# yum install automake autoconf libtool flex bison openssl-devel libxml2-devel.python-devel libaio-devel libibverbs-devel librdmacm-devel.readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel.libacl-devel.sqlite-devel
 
 ### Ubuntu
 
