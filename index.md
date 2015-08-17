@@ -27,11 +27,7 @@ Install Guide.
 
 -  [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
 
--  [Features](./Features/README.md) - Guides for the features in the new release.
-
 -  [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and  additions that have been implemented in various Glusterfs releases.
-
--  [Feature Plans](./Feature Planning/index.md) - Features planning documents.
 
 -  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlusterFS tools.
 
