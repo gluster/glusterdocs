@@ -73,7 +73,7 @@ pages:
   - Adding File Operations: Developer-guide/adding-fops.md
   - Automatic File Replication: Developer-guide/afr.md
   - History of Locking in AFR: Developer-guide/afr-locks-evolution.md
-  - Seal heal Daemon: Developer-guide/afr-self-heal-daemon.md
+  - Self heal Daemon: Developer-guide/afr-self-heal-daemon.md
   - inode datastructure: Developer-guide/datastructure-inode.md
   - iobuf datastructure: Developer-guide/datastructure-iobuf.md
   - mem-pool datastructure: Developer-guide/datastructure-mem-pool.md
