@@ -35,10 +35,10 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
     from the OS install.
 -   Note: GlusterFS stores its dynamically generated configuration files
     at /var/lib/glusterd. If at any point in time GlusterFS is unable to
-    write to these files, it will at minimum cause erratic behavior for
-    your system; or worse, take your system offline completely. It is
-    advisable to create separate partitions for directories such as
-    /var/log to ensure this does not happen.
+    write to these files (for example, when the backing filesystem is full),
+    it will at minimum cause erratic behavior for your system; or worse,
+    take your system offline completely. It is advisable to create separate
+    partitions for directories such as /var/log to ensure this does not happen.
 
 ### Step 2 - Format and mount the bricks
 
