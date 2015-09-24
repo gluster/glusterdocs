@@ -29,7 +29,7 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
 
 -   Fedora 20 on two nodes named "server1" and "server2"
 -   A working network connection
--   At two virtual disks, one for the OS installation, and one to be
+-   At least two virtual disks, one for the OS installation, and one to be
     used to serve GlusterFS storage (sdb). This will emulate a real
     world deployment, where you would want to separate GlusterFS storage
     from the OS install.
