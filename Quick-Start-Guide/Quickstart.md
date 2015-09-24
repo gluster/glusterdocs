@@ -118,9 +118,9 @@ usually in etc-glusterfs-glusterd.vol.log
 
 For this step, we will use one of the servers to mount the volume.
 Typically, you would do this from an external machine, known as a
-"client". Since using the method here would require additional packages
-be installed on the client machine, we will use the servers as a simple
-place to test first.
+"client". Since using this method would require additional packages to
+be installed on the client machine, we will use one of the servers as
+a simple place to test first, as if it were that "client".
 
 		mount -t glusterfs server1:/gv0 /mnt
 		  for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
@@ -134,8 +134,8 @@ points on each server:
 
 		ls -lA /data/brick1/gv0
 
-You should see 100 per server using the method we listed here. Without
-replication, in a distribute only volume (not detailed here), you should
-see about 50 each.
+You should see 100 files on each server using the method we listed here.
+Without replication, in a distribute only volume (not detailed here), you
+should see about 50 files on each one.
 
 [Terminologies](./Terminologies.md) you should be familiar with.
