@@ -45,16 +45,9 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
 (on both nodes): Note: These examples are going to assume the brick is
 going to reside on /dev/sdb1.
 
-	    mkfs.xfs -i size=512 /dev/sdb1
+		mkfs.xfs -i size=512 /dev/sdb1
 		mkdir -p /data/brick1
-		vi /etc/fstab
-
-Add the following:
-
-		/dev/sdb1 /data/brick1 xfs defaults 1 2
-
-Save the file and exit
-
+		echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' >> /etc/fstab
 		mount -a && mount
 
 You should now see sdb1 mounted at /data/brick1

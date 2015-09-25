@@ -9,11 +9,11 @@ types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
 ​1. **Distributed Glusterfs Volume** - This is the default glusterfs
-volume i.e, while creating a volume of you do not specify the type of
-the volume the default option is to create a distributed type of volume.
-Here files are distributed across various bricks in the volume. So file1
+volume i.e, while creating a volume if you do not specify the type of
+the volume, the default option is to create a distributed volume.
+Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
-no data redundancy. The purpose for such a storage volume is to easily
+no data redundancy. The purpose for such a storage volume is to easily & cheaply
 scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
@@ -49,13 +49,13 @@ To display the volume info
     Brick4: server4:/exp4
 
 ​2. **Replicated Glusterfs Volume** - In this volume we overcome the
-data loss problem faced in the distributed volume. Here exact copy of
-the data is maintained on all bricks. The number of replicas in the
+data loss problem faced in the distributed volume. Here exact copies of
+the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
 have at least two bricks to create a volume with 2 replicas or a minimum
 of three bricks to create a volume of 3 replicas. One major advantage of
 such a volume is that even if one brick fails the data can still be
-accessed from its replica brick. Such a volume is used for better
+accessed from its replicated bricks. Such a volume is used for better
 reliability and data redundancy.
 
 ![replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412379/d75272a6-ef5f-11e4-869a-c355e8505747.png)
@@ -155,7 +155,7 @@ GlusterFS developers initially as getting the modules into linux kernel
 is a very long and difficult process.
 
 Being a userspace filesystem, to interact with kernel VFS, GlusterFS
-makes use of FUSE(File System in Userspace). For a long time,
+makes use of FUSE (File System in Userspace). For a long time,
 implementation of a userspace filesystem was considered impossible. FUSE
 was developed as a solution for this. FUSE is a kernel module that
 support interaction between kernel VFS and non-privileged user
