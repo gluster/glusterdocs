@@ -1,3 +1,12 @@
+Open Source Backup Conference @ Cologne, Germany
+------------------------------------------------
+
+### September 30, 2015
+
+-   Scale-Out backups with Bareos and Gluster
+    ([odp](Scale-Out_backups_with_Bareos_and_Gluster.odp),
+    [pdf](Scale-Out_backups_with_Bareos_and_Gluster.pdf)) - Niels de Vos
+
 Gluster Summit 2015 @ Barcelona, Spain
 --------------------------------------
 
