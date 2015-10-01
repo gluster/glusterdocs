@@ -6,7 +6,7 @@ repo_url: https://github.com/gluster/glusterdocs/
 docs_dir: .
 
 pages:
-- Home: README.md
+- Home: index.md
 - Getting started with GlusterFS:
   - Quick start Guide: Quick-Start-Guide/Quickstart.md
   - Terminologies: Quick-Start-Guide/Terminologies.md
