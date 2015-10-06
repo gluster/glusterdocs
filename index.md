@@ -17,6 +17,8 @@ Install Guide.
 
 -  [Installation Guides](./Install-Guide/Overview.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
 
+-  [Presentations](./presentations/index.md) related to Gluster from Conferences and summits.
+
 **More Documentation**  
 
 -  [Administration Guide](./Administrator Guide/README.md) - describes the configuration and management of GlusterFS. 
@@ -25,9 +27,7 @@ Install Guide.
 
 -  [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
 
--  [Features](./Features/README.md) - Guides for the features in the new release.
-
--  [Feature Plans](./Feature Planning/index.md) - Features planning documents.
+-  [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and  additions that have been implemented in various Glusterfs releases.
 
 -  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlusterFS tools.
 

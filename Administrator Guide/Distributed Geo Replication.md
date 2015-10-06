@@ -115,6 +115,21 @@ To add multiple volumes per mountbroker user,
     /usr/libexec/glusterfs/set_geo_rep_pem_keys.sh <mountbroker_user> <master_volume> <slave_volume>
     ```
 
+NOTE:
+
+When mountbroker geo-rep session is deleted, following commands can be used to remove volumes per mountbroker user.
+If the volume to be removed is the last one for the mountbroker user, the user is also removed.
+
+To delete a volumes per mountbroker user,
+
+    ```sh
+    gluster system:: execute mountbroker volumedel geoaccount2 slavevol2
+    ```
+To delete multiple volumes per mountbroker user,
+
+    ```sh
+    gluster system:: execute mountbroker volumedel geoaccount2 slavevol1,slavevol2
+    ```
 ### Configuring meta volume
 
 NOTE: If shared meta volume is already created and mounted at '/var/run/gluster/shared_storage' as part of nfs or snapshot, please jump into section 'Configure meta volume with geo-replication'.

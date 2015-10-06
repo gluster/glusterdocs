@@ -68,7 +68,7 @@ In that list we have:
 
     -  CentOS 6.5 VM's in Rackspace. Used for automatic regression
         testing of all proposed patches (uses a Gerrit trigger).
-    -  Setup and maintained by Justin Clift
+    -  Setup and maintained by Michael Scherer
 
 Work is being done on the GlusterFS regression tests so they'll function
 on FreeBSD and NetBSD (instead of just Linux). When that's complete,
@@ -80,8 +80,8 @@ Non Jenkins VMs
 
 **backups.cloud.gluster.org**
 
-   Server holding our nightly backups. Setup and maintained by Justin
-    Clift.
+   Server holding our nightly backups. Setup and maintained by Michael
+    Scherer.
 
 **bareos-dev.cloud.gluster.org, bareos-data.cloud.gluster.org**
 
