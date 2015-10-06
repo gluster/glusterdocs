@@ -14,15 +14,24 @@ Create tarball
 Notify packagers
 ----------------
 
-Notify the packagers that we need packages created
+Notify the packagers that we need packages created. Provide the link to the
+source tarball from the Jenkins release job to the [packagers
+mailinglist](mailto:packaging@gluster.org). A list of the people involved in
+the package maintenance for the different distributions is in the `MAINTAINERS`
+file in the sources.
 
--   Fedora/EL RPMs - ndevos, kkeithley, hchiramm, lalatenduM
--   SuSE RPMs - kkeithley
--   Pidora RPMs - kkeithley
--   Debian/Ubuntu .debs - semiosis
--   MacOS X Homebrew - Justin Clift
--   NetBSD Port - Manu
--   FreeBSD Port - Craig Butler
+Create a new Tracker Bug for the next release
+---------------------------------------------
+
+The tracker bugs are used as guidance for blocker bugs and should get created when a release is made. To create one
+
+- file a [new bug in Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS)
+- base the contents on previous tracker bugs, like the one for [glusterfs-3.5.5](https://bugzilla.redhat.com/show_bug.cgi?id=glusterfs-3.5.5)
+- set the '''Alias''' (it is a text-field) of the bug to 'glusterfs-a.b.c' where a.b.c is the next minor version
+- save the new bug
+- you should now be able to use the 'glusterfs-a.b.c' to access the bug, use the alias to replace the BZ# in URLs, or '''blocks''' fields
+- bugs that were not fixed in this release, but were added to the tracker should be moved to the new tracker
+
 
 Create Release Announcement
 ---------------------------
