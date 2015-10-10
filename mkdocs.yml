@@ -60,6 +60,8 @@ pages:
   - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
+- Developers Guide:
+  - Developers Home: Developer-guide/Developers Index.md
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
