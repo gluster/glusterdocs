@@ -62,7 +62,9 @@
 
 18.  [Linux Kernel Tuning](./Linux Kernel Tuning.md)
 
-19.  Appendices
+19.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
+
+20.  Appendices
 
 	*  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
