@@ -59,6 +59,7 @@ pages:
   - Troubleshooting: Administrator Guide/Troubleshooting.md
   - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
   - Performance Testing: Administrator Guide/Performance Testing.md
+  - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers Index.md
   - Simplified Development Workflow: Developer-guide/Simplified Development Workflow.md
