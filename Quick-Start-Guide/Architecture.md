@@ -266,15 +266,15 @@ to go through is **fuse translator** which falls under the category of
     * io-cache
 
     * io-threads
-    
+
     * md-cache
-    
+
     * O-B (open behind)
-    
+
     * QR (quick read)
-    
+
     * r-a (read-ahead)
-    
+
     * w-b (write-behind)
 
 Other **Feature Translators** include:
@@ -341,7 +341,7 @@ in order to turn that file-name into a number.
 
 #### AFR(Automatic File Replication) Translator
 
-The Automatic File Replication (AFR) translator in glusterFS makes use
+The Automatic File Replication (AFR) translator in GlusterFS makes use
 of the extended attributes to keep track of the file operations.It is
 responsible for replicating the data across the bricks.
 
@@ -368,7 +368,7 @@ backup of entire data for disaster recovery.
 
 Geo-replication uses a master-slave model, whereby replication occurs
 between **Master** - a GlusterFS volume and **Slave** - which can be a
-local directory or a glusterFS volume. The slave (local directory or
+local directory or a GlusterFS volume. The slave (local directory or
 volume is accessed using SSH tunnel).
 
 Geo-replication provides an incremental replication service over Local
@@ -443,7 +443,7 @@ minimum a set of six or seven records (depending on the type of
 operation), that is sufficient to identify what type of operation the
 entity underwent. Normally this record includes the GFID of the entity,
 the type of file operation (which is an integer [an enumerated value
-which is used in Gluterfs]) and the parent GFID and the basename
+which is used in Glusterfs]) and the parent GFID and the basename
 (analogous to parent inode and basename).
 
 Changelog file is rolled over after a specific time interval. We then
@@ -487,7 +487,7 @@ As soon as GlusterFS is installed in a server node, a gluster management
 daemon(glusterd) binary will be created. This daemon should be running
 in all participating nodes in the cluster. After starting glusterd, a
 trusted server pool(TSP) can be created
-consisting of all storage server nodes(TSP can contain even a single
+consisting of all storage server nodes (TSP can contain even a single
 node). Now bricks which are the basic units of storage can be created as
 export directories in these servers. Any number of bricks from this TSP
 can be clubbed together to form a volume.
@@ -509,7 +509,7 @@ which the required volume is created.
 
 When we mount the volume in the client, the client glusterfs process
 communicates with the servers’ glusterd process. Server glusterd process
-sends a configuration file(vol file) containing the list of client
+sends a configuration file (vol file) containing the list of client
 translators and another containing the information of each brick in the
 volume with the help of which the client glusterfs process can now
 directly communicate with each brick’s glusterfsd process. The setup is
@@ -517,11 +517,11 @@ now complete and the volume is now ready for client's service.
 
 ![overallprocess](https://cloud.githubusercontent.com/assets/10970993/7412664/a9aaaece-ef62-11e4-8c87-75d8e7157739.png)
 
-When a system call(File operation or Fop) is issued by client in the
+When a system call (File operation or Fop) is issued by client in the
 mounted filesystem, the VFS (identifying the type of filesystem to be
-glustefs) will send the request to the FUSE kernel module. The FUSE
+glusterfs) will send the request to the FUSE kernel module. The FUSE
 kernel module will in turn send it to the GlusterFS in the userspace of
-the client node via /dev/fuse (this has been descibed in FUSE section).
+the client node via /dev/fuse (this has been described in FUSE section).
 The GlusterFS process in client consists of a stack of translators
 called the client translators which are defined in the configuration
 file(vol file) send by the storage server glusterd process. The first
