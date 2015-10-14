@@ -22,7 +22,7 @@ Assuming you have a brick at /dev/sdb:
 
 ###### Format the partition
 
-		mkfs.xfs -i size=512 /dev/sdb1
+		mkfs.xfs -i size=512 -n size=8192 /dev/sdb1
 
 ###### Mount the partition as a Gluster "brick"
 
@@ -41,13 +41,13 @@ Assuming you have a brick at /dev/sdb:
 ###### Run the gluster peer probe command
 
 *Note: From one node to the other nodes (do not peer probe the first
-node)*
+node itself, repeat this command for all nodes that should be in the trusted pool)*
 
-		gluster peer probe <ip or hostname of second host>
+		gluster peer probe <ip or hostname of another host>
 
 ###### Configure your Gluster volume
 
-		gluster volume create testvol rep 2 transport tcp node01:/export/sdb1/brick node02:/export/sdb1/brick
+		gluster volume create testvol replica 2 transport tcp node01:/export/sdb1/brick node02:/export/sdb1/brick
 
 ###### Test using the volume
 
