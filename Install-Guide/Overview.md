@@ -3,16 +3,19 @@
 This document will get you up to speed with some hands-on experience
 with Gluster by guiding you through the steps of setting it up for the
 first time. If you are looking to get right into things, you are in the
-right place. If you want just the bare minimum steps, see the Quick Start Guide.
+right place. If you want just the bare minimum steps, see the [Quick Start Guide](./Quick_start.md).
+
 If you want some in-depth information on each of the steps, you are in the right place.
 Both the guides will get you
 to a working Gluster cluster, so it depends on you how much time you
-want to spend. The Quick Start Guide should have you up and running in ten minutes
+want to spend. The [Quick Start Guide](./Quick_start.md) should have you up and running in ten minutes
 or less. This guide can easily be done in a lunch break, and still gives
 you time to have a quick bite to eat. The Getting Started guide can be
 done easily in a few hours, depending on how much testing you want to
-do. After you deploy Gluster by following these steps, we recommend that
-you read the Gluster Admin Guide to learn how to administer Gluster and
+do.
+
+After you deploy Gluster by following these steps, we recommend that
+you read the [Gluster Admin Guide](../Administrator Guide/README.md) to learn how to administer Gluster and
 how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
 section . We want you to be successful in as short a time as possible.
@@ -110,4 +113,4 @@ In a perfect world, sure. Having the hardware be the same means less
 troubleshooting when the fires start popping up. But plenty of people
 deploy Gluster on mix and match hardware, and successfully.
 
-Get started by checking some [Common Criteria](./Common_criteria.md) 
+Get started by checking some [Common Criteria](./Common_criteria.md)
