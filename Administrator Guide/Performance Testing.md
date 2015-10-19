@@ -5,14 +5,51 @@ Once you have created a Gluster volume, you need to verify that it has
 adequate performance for your application, and if it does not, you need
 a way to isolate the root cause of the problem.
 
-In this page, we suggest some basic workload tests that can be used to
+There are two kinds of workloads:
+
+* synthetic - run a test program such as ones below
+* application - run existing application
+
+# Profiling tools
+
+Ideally it's best to use the actual application that you want to run on Gluster, but applications often don't tell the sysadmin much about where the performance problems are, particularly latency (response-time) problems.  So there are non-invasive profiling tools built into Gluster that can measure performance as seen by the application, without changing the application.  Gluster profiling methods at present are based on the io-stats translator, and include:
+
+* client-side profiling - instrument a Gluster mountpoint or libgfapi process to sample profiling data.  In this case, the io-stats translator is at the "top" of the translator stack, so the profile data truly represents what the application (or FUSE mountpoint) is asking Gluster to do.  For example, a single application write is counted once as a WRITE FOP (file operation) call, and the latency for that WRITE FOP includes latency of the data replication done by the AFR translator lower in the stack.
+
+* server-side profiling - this is done using the "gluster volume profile" command (and "gluster volume top" can be used to identify particular hot files in use as well).  Server-side profiling can measure the throughput of an entire Gluster volume over time, and can measure server-side latencies.  However, it does not incorporate network or client-side latencies.  It is also hard to infer application behavior because of client-side translators that alter the I/O workload (examples: erasure coding, cache tiering).
+
+In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understand how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read?  is it small-file?), and how well the I/O load is spread across the volume.
+
+## client-side profiling
+
+To run client-side profiling,
+
+- gluster volume profile your-volume start
+- setfattr -n trusted.io-stats-dump -v /tmp/io-stats-pre.txt /your/mountpoint
+
+This will generate the specified file on the client.  A script like [gvp-client.sh](https://raw.githubusercontent.com/bengland2/parallel-libgfapi/master/gvp-client.sh)  can automate collection of this data.  
+
+TBS: what the different FOPs are and what they mean.
+
+## server-side profiling
+
+To run it:
+
+- gluster volume profile your-volume start
+- repeat this command periodically: gluster volume profile your-volume info
+- gluster volume profile your-volume stop
+
+A script like [gvp.sh](https://raw.githubusercontent.com/bengland2/parallel-libgfapi/master/gvp.sh) can help you automate this procedure.
+
+Scripts to post-process this data are in development now, let us know what you need and what would be a useful format for presenting the data.
+
+# Testing tools
+
+In this section, we suggest some basic workload tests that can be used to
 measure Gluster performance in an application-independent way for a wide
 variety of POSIX-like operating systems and runtime environments. We
 then provide some terminology and conceptual framework for interpreting
 these results.
-
-Testing tools
--------------
 
 The tools that we suggest here are designed to run in a distributed
 filesystem. This is still a relatively rare attribute for filesystem
