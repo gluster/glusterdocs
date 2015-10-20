@@ -54,7 +54,7 @@ pages:
   - Puppet Gluster: Administrator Guide/Puppet.md
   - RDMA Transport: Administrator Guide/RDMA Transport.md
   - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
-  - Configuring HA NFS server: Administrator Guide/Configuring HA NFS Server.md
+  - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Intergration.md
   - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
   - Troubleshooting: Administrator Guide/Troubleshooting.md
   - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
