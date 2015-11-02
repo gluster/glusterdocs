@@ -62,6 +62,14 @@ pages:
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers Index.md
+- Workflow-Guide:
+  - Index: Workflow-Guide/Index.md
+  - Bug Reporting Guidelines : Workflow-Guide/Bug-Reporting-Guidelines.md
+  - Bug Reporting Template : Workflow-Guide/Bug-reporting-template.md
+  - Bug report Cycle : Workflow-Guide/Bug-report-Life-Cycle.md
+  - Bug Triage : Workflow-Guide/Bug-Triage.md
+  - GlusterFS Release process : Workflow-Guide/GlusterFS-Release-process.md
+  - Guidelines For Maintainers : Workflow-Guide/Guidelines-For-Maintainers.md
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md

@@ -33,6 +33,8 @@ Install Guide.
 
 -  [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
 
+-  [Workflow-Guide](./Workflow-Guide/Index.md) - Guide for workflows
+
 **How to Contribute?**
 
 The Gluster documentation has its home on GitHub, and the easiest way to contribute is to use 
