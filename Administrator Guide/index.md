@@ -64,7 +64,9 @@
 
 19.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
 
-20.  Appendices
+20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Intergration.md)
+
+21.  Appendices
 
 	*  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)

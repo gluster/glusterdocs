@@ -1,15 +1,13 @@
-# Configuring Active-Active Highly Available NFS server on GlusterFS
+# Configuring NFS-Ganesha over GlusterFS
 
-NFS-Ganesha is a user space file server for the NFS protocol with support for NFSv3, v4, v4.1, pNFS. This document provides a step-by-step guide to configure Highly Available NFS-Ganesha server on GlusterFS.
+NFS-Ganesha is a user space file server for the NFS protocol with support for NFSv3, v4, v4.1, pNFS. It provides a FUSE-compatible File System Abstraction Layer(FSAL) to allow the file-system developers to plug in their own storage mechanism and access it from any NFS client. NFS-Ganesha can access the FUSE filesystems directly through its FSAL without copying any data to or from the kernel, thus potentially improving response times.
 
-## Highly Available Active-Active NFS-Ganesha
-In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
-The cluster is maintained using Pacemaker and Corosync. Pacemaker acts a resource manager and Corosync provides the communication layer of the cluster.
-Data coherency across the multi-head NFS-Ganesha servers in the cluster is achieved using the UPCALL infrastructure. UPCALL infrastructure is a generic and extensible framework that sends notifications to the respective glusterfs clients (in this case NFS-Ganesha server) in case of any changes detected in the backend filesystem.
+##  Installing nfs-ganesha
 
-### Binaries to be installed
 #### Gluster RPMs (>= 3.7)
 > glusterfs-server
+
+> glusterfs-api
 
 > glusterfs-ganesha
 
@@ -18,7 +16,82 @@ Data coherency across the multi-head NFS-Ganesha servers in the cluster is achie
 
 > nfs-ganesha-gluster
 
-#### Pacemaker & pcs RPMs
+## Start NFS-Ganesha manually
+
+- To start NFS-Ganesha manually, use the command:
+    -  *service nfs-ganesha start*
+```sh
+where:
+/var/log/ganesha.log is the default log file for the ganesha process.
+/etc/ganesha/ganesha.conf is the default configuration file
+NIV_EVENT is the default log level.
+```
+- If user want to run ganesha in prefered mode, execute the following command :
+     - *#ganesha.nfsd -f <location_of_nfs-ganesha.conf_file> -L <location_of_log_file> -N <log_level>*
+
+```sh
+For example:
+#ganesha.nfsd -f nfs-ganesha.conf -L nfs-ganesha.log -N NIV_DEBUG
+where:
+nfs-ganesha.log is the log file for the ganesha.nfsd process.
+nfs-ganesha.conf is the configuration file
+NIV_DEBUG is the log level.
+```
+- By default exportlist for the server will be Null
+
+```sh
+Note : include following paremeters in ganesha configuration file for exporting gluster volumes
+NFS_Core_Param {
+        #Use supplied name other tha IP In NSM operations
+        NSM_Use_Caller_Name = true;
+        #Copy lock states into "/var/lib/nfs/ganesha" dir
+        Clustered = false;
+        #Use a non-privileged port for RQuota
+        Rquota_Port = 4501;
+}
+```
+## Step by step procedures to exporting GlusterFS volume via NFS-Ganesha
+
+#### step 1 :
+
+To export any GlusterFS volume or directory inside volume, create the EXPORT block for each of those entries in a export configuration  file. The following paremeters are required to export any entry.
+- *#cat export.conf*
+
+```sh
+EXPORT{
+	Export_Id = 1 ;   # Export ID unique to each export
+	Path = "volume_path";  # Path of the volume to be exported. Eg: "/test_volume"
+
+	FSAL {
+		name = GLUSTER;
+		hostname = "10.xx.xx.xx";  # IP of one of the nodes in the trusted pool
+		volume = "volume_name";	 # Volume name. Eg: "test_volume"
+	}
+
+	Access_type = RW;	 # Access permissions
+	Squash = No_root_squash; # To enable/disable root squashing
+	Disable_ACL = TRUE;	 # To enable/disable ACL
+	Pseudo = "pseudo_path";	 # NFSv4 pseudo path for this export. Eg: "/test_volume_pseudo"
+	Protocols = "3","4" ;	 # NFS protocols supported
+	Transports = "UDP","TCP" ; # Transport protocols supported
+	SecType = "sys";	 # Security flavors supported
+}
+```
+
+#### step 2 :
+
+Now include the export configuration file in the ganesha configuration file(by default ).This can be done by adding the line below at the end of file
+   - %include “<path of export configuration>”
+
+#### step 3 :
+
+   - To check if the volume is exported, run
+       - *#showmount -e localhost*
+
+## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
+In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
+The cluster is maintained using Pacemaker and Corosync. Pacemaker acts a resource manager and Corosync provides the communication layer of the cluster.
+Data coherency across the multi-head NFS-Ganesha servers in the cluster is achieved using the UPCALL infrastructure. UPCALL infrastructure is a generic and extensible framework that sends notifications to the respective glusterfs clients (in this case NFS-Ganesha server) in case of any changes detected in the backend filesystem.
 
 The Highly Available cluster is configured in the following three stages:
 ### Creating the ganesha-ha.conf file
@@ -141,4 +214,40 @@ To modify the default export configurations perform the following steps on any o
     Note
         The export ID must not be changed.
 ⁠
-⁠
+## Configuring Gluster volume for pNFS
+The Parallel Network File System (pNFS) is part of the NFS v4.1 protocol that allows compute clients to access storage devices directly and in parallel. The pNFS cluster consists of MDS(Meta-Data-Server) and DS (Data-Server). The client sends all the read/write requests directly to DS and all other operations are handle by the MDS.
+
+### Step by step guide
+
+  - Turn on feature.cache-invalidation for the volume.
+       - gluster v set <volname> features.cache-invalidation on
+
+-  Select one of nodes in cluster as MDS and configure it adding following block to ganesha configuration file
+```sh
+GLUSTER
+{
+ PNFS_MDS = true;
+}
+```
+-  Mannually start NFS-Ganesha in every node in the cluster.
+
+- Check whether volume is exported via nfs-ganesha in all the nodes.
+    - *#showmount -e localhost*
+
+-  Mount the volume using NFS version 4.1 protocol with the ip of MDS
+    -  *#mount -t nfs4 -o minorversion=1 <ip of MDS>:/<volume name> <mount path>*
+
+### Points to be Noted
+
+   - Current architecture supports only single MDS and mulitple DS. The server with which client mounts will act as MDS and all severs including MDS can act as DS.
+
+   - Currently HA is not supported for pNFS(more specfically MDS). Although it is configurable, but consistency is guaranteed across the cluster.
+
+   - If any of the DS goes down, then MDS will handle those I/O's.
+
+   - Hereafter, all the subsequent NFS clients need to use same server for mounting that volume via pNFS. i.e more than one MDS for a volume is not prefered
+
+   - pNFS support is only tested with distributed, replicated or distribute-replicate volumes
+
+   - It is tested and verfied with RHEL 6.5 , fedora 20, fedora 21 nfs clients. It is always better to use latest nfs-clients
+
