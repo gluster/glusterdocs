@@ -64,22 +64,23 @@ pages:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
   - Development-Workflow : Developer-guide/Development-Workflow.md
-  - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
   - Compiling RPMS from GIT Source : Developer-guide/Compiling-RPMS.md
-  - Backport Guidelines : Developer-guide/Backport-Guidelines.md
+  - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
+  - Project Ideas : Developer-guide/Projects.md
+  - [EasyFix bugs] : Developer-guide/Easy-Fix-Bugs.md
+  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md)
   - Backport Wishlist : Developer-guide/Backport-Wishlist.md)
+  - Backport Guidelines : Developer-guide/Backport-Guidelines.md
   - Jenkins Infrastructure : Developer-guide/Jenkins-Infrastructure.md
   - Jenkins Manual Setup : Developer-guide/Jenkins-Manual-Setup.md
-  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md)
-  - Project Ideas : Developer-guide/Projects.md
-- Workflow-Guide:
-  - Index: Workflow-Guide/Index.md
-  - Bug Reporting Guidelines : Workflow-Guide/Bug-Reporting-Guidelines.md
-  - Bug Reporting Template : Workflow-Guide/Bug-reporting-template.md
-  - Bug report Cycle : Workflow-Guide/Bug-report-Life-Cycle.md
-  - Bug Triage : Workflow-Guide/Bug-Triage.md
-  - GlusterFS Release process : Workflow-Guide/GlusterFS-Release-process.md
-  - Guidelines For Maintainers : Workflow-Guide/Guidelines-For-Maintainers.md
+- Contributors Guide:
+  - Index: Contributors-Guide/Index.md
+  - Bug Reporting Guidelines : Contributors-Guide/Bug-Reporting-Guidelines.md
+  - Bug Triage : Contributors-Guide/Bug-Triage.md
+  - Bug report Cycle : Contributors-Guide/Bug-report-Life-Cycle.md
+  - Bug Reporting Template : Contributors-Guide/Bug-reporting-template.md
+  - GlusterFS Release process : Contributors-Guide/GlusterFS-Release-process.md
+  - Guidelines For Maintainers : Contributors-Guide/Guidelines-For-Maintainers.md
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
