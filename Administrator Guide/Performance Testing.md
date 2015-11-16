@@ -328,23 +328,23 @@ in order of importance:
 
 ### network testing
 
-Because Gluster is a distributed filesystem, the network configuration
-has a huge impact on performance of Gluster, but is often not given the
+Network configuration has a huge impact on performance of distributed storage, but is often not given the
 attention it deserves during the planning and installation phases of the
-Gluster lifecycle. Fortunately,
+cluster lifecycle. Fortunately,
 [http://www.gluster.org/community/documentation/index.php/Network\_Configuration\_Techniques
 network
 performance](http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques)
-can be enhanced significantly without additional hardware.
+can be enhanced significantly, often without additional hardware.
 
 To measure network performance, consider use of a
 [http://www.netperf.org/netperf/NetperfPage.html
 netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
 script such as
-[https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh
-network-stream-pairs.sh](https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh)
-that can exercise multiple network connections in parallel, to
-understand better your network infrastructure capabilities.
+- [https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-stream-pairs.sh 
+network-stream-pairs.sh] - sets up unidirectional TCP streams between pairs of hosts
+- [https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-rpc-pairs.sh network-rpc-pairs.sh] - sets up request-response flows between pairs of hosts
+
+The purpose of these two tools is to characterize the capacity of your entire network infrastructure to support the desired level of traffic induced by distributed storage, using multiple network connections in parallel.   The latter script is probably the most realistic network workload for distributed storage.
 
 The two most common hardware problems impacting distributed storage are,
 not surprisingly, disk drive failures and network failures. Some of
@@ -384,6 +384,10 @@ If on the other hand you want to simulate reads, you can use these
 To simulate a mixed read-write workload, use both sets of pairs:
 
         (c1,s1), (c2, s2), (c3, s1), (c4, s2), (s1, c1), (s2, c2), (s1, c3), (s2, c4)
+
+More complicated flows can model behavior of non-native protocols, where a cluster node acts as a proxy server- it is a server (for non-native protocol) and a client (for native protocol).   For example, such protocols often induce full-duplex traffic which can stress the network differently than unidirectional in/out traffic.  For example, try adding this set of flows to preceding flow:
+
+        (s1, s2),.(s2, s3),.(s3, s4),.(s4, s1)
 
 The comments at the top of the script describe the input syntax, but
 here are some suggestions on how to best utilize it. You typically run
