@@ -68,7 +68,7 @@ pages:
   - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
   - Project Ideas : Developer-guide/Projects.md
   - EasyFix bugs : Developer-guide/Easy-Fix-Bugs.md
-  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md)
+  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md
   - Backport Wishlist : Developer-guide/Backport-Wishlist.md)
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
   - Jenkins Infrastructure : Developer-guide/Jenkins-Infrastructure.md
