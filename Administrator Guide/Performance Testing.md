@@ -331,18 +331,15 @@ in order of importance:
 Network configuration has a huge impact on performance of distributed storage, but is often not given the
 attention it deserves during the planning and installation phases of the
 cluster lifecycle. Fortunately,
-[http://www.gluster.org/community/documentation/index.php/Network\_Configuration\_Techniques
-network
-performance](http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques)
+[network configuration]
+(http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques)
 can be enhanced significantly, often without additional hardware.
 
 To measure network performance, consider use of a
-[http://www.netperf.org/netperf/NetperfPage.html
-netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
+[netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
 script such as
-- [https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-stream-pairs.sh 
-network-stream-pairs.sh] - sets up unidirectional TCP streams between pairs of hosts
-- [https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-rpc-pairs.sh network-rpc-pairs.sh] - sets up request-response flows between pairs of hosts
+* [network-stream-pairs.sh](https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-stream-pairs.sh) - sets up unidirectional TCP streams between pairs of hosts
+* [network-rpc-pairs.sh](https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-rpc-pairs.sh) - sets up request-response flows between pairs of hosts
 
 The purpose of these two tools is to characterize the capacity of your entire network infrastructure to support the desired level of traffic induced by distributed storage, using multiple network connections in parallel.   The latter script is probably the most realistic network workload for distributed storage.
 
