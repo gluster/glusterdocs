@@ -1,14 +1,16 @@
-Open Source Backup Conference @ Cologne, Germany
-------------------------------------------------
-
-### Nov 8, 2015
 
 Usenix LISA 2015 @ Washington DC, USA
+-------------------------------------
+
+### Nov 8, 2015
 
 -   [GlusterFS Tutorial - Architecture](./LISA-2015-GlusterFS-Introduction.odp) -
     Rajesh Joseph & Poornima Gurusiddaiah
 -   [GlusterFS Tutorial - Hands-on](./LISA-2015-GlusterFS-Hands-on.odp) -
     Rajesh Joseph & Poornima Gurusiddaiah
+
+Open Source Backup Conference @ Cologne, Germany
+------------------------------------------------
 
 ### September 30, 2015
 
