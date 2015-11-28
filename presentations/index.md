@@ -1,4 +1,13 @@
 
+[T-DOSE](http://www.t-dose.org/) 2015 @ Eindhoven, The Netherlands
+------------------------------------------------
+
+### November 28, 2015
+
+-   Introduction into Scale-out Storage with Gluster
+    ([odp](Gluster-Intro-TDOSE.odp), [pdf](Gluster-Intro-TDOSE.pdf)) - Niels de
+    Vos
+
 Usenix LISA 2015 @ Washington DC, USA
 -------------------------------------
 
