@@ -61,7 +61,7 @@ pages:
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
 - Developers Guide:
-  - Index: Developers Home: Developer-guide/Developers-Index.md
+  - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
   - Development-Workflow : Developer-guide/Development-Workflow.md
   - Compiling RPMS from GIT Source : Developer-guide/Compiling-RPMS.md
