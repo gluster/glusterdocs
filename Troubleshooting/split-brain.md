@@ -87,10 +87,10 @@ Brick             |    Replica set        |    Brick subvolume index
 ```
 
 Each file in a brick maintains the changelog of itself and that of the files
-present in all the other bricks in it's replica set as seen by that brick.
+present in all the other bricks in its replica set as seen by that brick.
 
 In the example volume given above, all files in brick-a will have 2 entries, 
-one for itself and the other for the file present in it's replica pair, i.e.brick-b:  
+one for itself and the other for the file present in its replica pair, i.e.brick-b:  
 trusted.afr.vol-client-0=0x000000000000000000000000 -->changelog for itself (brick-a)  
 trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for brick-b as seen by brick-a  
 
