@@ -493,22 +493,22 @@ export directories in these servers. Any number of bricks from this TSP
 can be clubbed together to form a volume.
 
 Once a volume is created,
-a glusterfsd process starts running in each of the participating brick.
+a glusterfsd process starts running on each of the participating bricks.
 Along with this, configuration files known as vol files will be
 generated inside /var/lib/glusterd/vols/. There will be configuration
-files corresponding to each brick in the volume. This will contain all
-the details about that particular brick. Configuration file required by
+files corresponding to each brick in the volume. They will contain all
+the details about that particular brick. The configuration file required by
 a client process will also be created. Now our filesystem is ready to
-use. We can mount this volume on a client machine very easily as follows
+be used. We can mount this volume on a client machine very easily as follows
 and use it like we use a local storage:
 
     mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>
 
-IP or hostname can be that of any node in the trusted server pool in
+IP or hostname can be that of any node in the trusted server pool on
 which the required volume is created.
 
 When we mount the volume in the client, the client glusterfs process
-communicates with the servers’ glusterd process. Server glusterd process
+communicates with the servers’ glusterd process. The server glusterd process
 sends a configuration file (vol file) containing the list of client
 translators and another containing the information of each brick in the
 volume with the help of which the client glusterfs process can now
@@ -524,27 +524,27 @@ kernel module will in turn send it to the GlusterFS in the userspace of
 the client node via /dev/fuse (this has been described in FUSE section).
 The GlusterFS process in client consists of a stack of translators
 called the client translators which are defined in the configuration
-file(vol file) send by the storage server glusterd process. The first
+file(vol file) sent by the storage server glusterd process. The first
 among these translators being the FUSE translator which consists of the
-FUSE library(libfuse). Each translator has got functions corresponding
+FUSE library(libfuse). Each translator has functions corresponding
 to each file operation or fop supported by glusterfs. The request will
-hit the corresponding function in each of the translator. Main client
+hit the corresponding function in each of the translator. The main client
 translators include:
 
 -   FUSE translator
--   DHT translator- DHT translator maps the request to the correct brick
+-   DHT translator - Мaps the request to the correct brick
     that contains the file or directory required.
--   AFR translator- It receives the request from the previous translator
-    and if the volume type is replicate, it duplicates the request and
+-   AFR translator - Receives the request from the previous translator
+    and if the volume type is *replicate*, it duplicates the request and
     pass it on to the Protocol client translators of the replicas.
--   Protocol Client translator- Protocol Client translator is the last
+-   Protocol Client translator - The Protocol Client translator is the last
     in the client translator stack. This translator is divided into
     multiple threads, one for each brick in the volume. This will
     directly communicate with the glusterfsd of each brick.
 
-In the storage server node that contains the brick in need, the request
+On the storage server node that contains the brick in question, the request
 again goes through a series of translators known as server translators,
-main ones being:
+the main ones being:
 
 -   Protocol server translator
 -   POSIX translator
