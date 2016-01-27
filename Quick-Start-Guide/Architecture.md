@@ -522,13 +522,13 @@ mounted filesystem, the VFS (identifying the type of filesystem to be
 glusterfs) will send the request to the FUSE kernel module. The FUSE
 kernel module will in turn send it to the GlusterFS in the userspace of
 the client node via /dev/fuse (this has been described in FUSE section).
-The GlusterFS process in client consists of a stack of translators
+The GlusterFS process on the client consists of a stack of translators
 called the client translators which are defined in the configuration
 file(vol file) send by the storage server glusterd process. The first
 among these translators being the FUSE translator which consists of the
 FUSE library(libfuse). Each translator has got functions corresponding
 to each file operation or fop supported by glusterfs. The request will
-hit the corresponding function in each of the translator. Main client
+hit the corresponding function in each of the translators. Main client
 translators include:
 
 -   FUSE translator
