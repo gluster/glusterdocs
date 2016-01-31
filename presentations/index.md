@@ -1,4 +1,13 @@
 
+[FOSDEM](http://www.fosdem.org/2016) 2016 @ Brussels, Belgium
+------------------------------------------------------------------
+
+### January 30, 2016
+
+-   Gluster roadmap: Recent improvements and upcoming features
+    ([odp](20160130-Guster-Roadmap.odp), [pdf](20160130-Guster-Roadmap.pdf)) - 
+    Niels de Vos
+
 [T-DOSE](http://www.t-dose.org/) 2015 @ Eindhoven, The Netherlands
 ------------------------------------------------------------------
 
