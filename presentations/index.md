@@ -1,3 +1,11 @@
+[LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia
+---------------------------------------------------------------
+
+### February 03, 2016
+
+-   GlusterD thread synchronization using Userspace Read Copy Update (URCU)
+    ([odp](GlusterD_thread_synchronization_using_URCU_LCA2016.odp)) -
+    Atin Mukherjee
 
 [FOSDEM](http://www.fosdem.org/2016) 2016 @ Brussels, Belgium
 ------------------------------------------------------------------
