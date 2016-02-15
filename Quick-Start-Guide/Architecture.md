@@ -324,7 +324,7 @@ information to find your file, the file-name. To determine where that
 file is, the translator runs the file-name through a hashing algorithm
 in order to turn that file-name into a number.
 
-**Few Observations of DHT hash-values assignment**:
+**A few Observations of DHT hash-values assignment**:
 
 1.  The assignment of hash ranges to bricks is determined by extended
     attributes stored on directories, hence distribution is
