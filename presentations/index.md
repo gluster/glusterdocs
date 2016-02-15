@@ -1,4 +1,13 @@
 
+[DevConf.CZ](http://devconf.cz/) 2016 @ Brno, Czech Republic
+------------------------------------------------------------
+
+### February 5, 2016
+
+-    [Ceph, Gluster, Swift : Similarities and differences]
+     (https://speakerdeck.com/prashanthpai/ceph-gluster-swift-similarities-and-differences) - 
+    Prashanth Pai, Thiago da Silva
+
 [FOSDEM](http://www.fosdem.org/2016) 2016 @ Brussels, Belgium
 ------------------------------------------------------------------
 
