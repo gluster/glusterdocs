@@ -389,7 +389,7 @@ on the bug.
 Resolving bug reports
 ---------------------
 
-See the [Bug report life cycle](./Bug report Life Cycle.md) for
+See the [Bug report life cycle](./Bug-report-Life-Cycle.md) for
 the meaning of the bug status and resolutions.
 
 Example of Triaged Bugs
