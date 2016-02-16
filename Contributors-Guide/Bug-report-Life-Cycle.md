@@ -33,9 +33,11 @@ This page describes the life of a bug report.
     failed.
 -   When a report has been solved it is given **CLOSED** status. This
     can mean:
-    -   **CLOSED/CURRENTRELEASE** when a code change that fixes the
-        reported problem has been merged in
-        [Gerrit](http://review.gluster.org).
+    -   **CLOSED/NEXTRELEASE** when backport of the code change that
+        fixes the reported mainline problem has been merged.
+    -   **CLOSED/CURRENTRELEASE** when the code change that fixes the
+        reported bug has been merged in the corresponding release-branch
+        and a version is released with the fix.
     -   **CLOSED/WONTFIX** when the reported problem or suggestion is
         valid, but any fix of the reported problem or implementation of
         the suggestion would be barred from approval by the project's
