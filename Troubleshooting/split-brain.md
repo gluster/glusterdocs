@@ -199,7 +199,7 @@ Hence execute
 
 On /gfs/brick-a/a:  
 For trusted.afr.vol-client-1  
-0x0000000000000000ffffffff to 0x000003d70000000000000000  
+0x000003d70000000100000000 to 0x000003d70000000000000000  
 (Note that the data part is still not all zeros)  
 Hence execute  
 `setfattr -n trusted.afr.vol-client-1 -v 0x000003d70000000000000000 /gfs/brick-a/a`
