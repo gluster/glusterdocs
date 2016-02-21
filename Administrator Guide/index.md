@@ -19,6 +19,7 @@
 4.  [POSIX Access Control Lists](./Access Control Lists.md)
 
 5.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
+	*  [Handling of users that belong to many groups](./Handling-of-users-with-many-groups.md)
 
 6.  Volume Options
 
