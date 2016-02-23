@@ -112,4 +112,4 @@ stored.
 Replicate is generally done to make a redundancy of the storage for data
 availability.
 
-Once familiar with terminilogies, Understand the [Architecture of GlusterFS](./Architecture.md)
+Once familiar with terminologies, Understand the [Architecture of GlusterFS](./Architecture.md)
