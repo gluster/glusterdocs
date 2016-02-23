@@ -4,7 +4,7 @@ Installing GlusterFS - a Quick Start Guide
 #### Purpose of this document
 This document is intended to give you a step by step guide to setting up
 GlusterFS for the first time. For this tutorial, we will assume you are
-using Fedora 21 (or later) virtual machines (other distributions and methods can be
+using Fedora 22 (or later) virtual machines (other distributions and methods can be
 found in the new user guide, below. We also do not explain the steps in
 detail here, this guide is just to help you get it up and running as
 soon as possible. After you deploy GlusterFS by following these steps,
@@ -27,7 +27,7 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
 
 ### Step 1 – Have at least two nodes
 
--   Fedora 20 on two nodes named "server1" and "server2"
+-   Fedora 22 (or later) on two nodes named "server1" and "server2"
 -   A working network connection
 -   At least two virtual disks, one for the OS installation, and one to be
     used to serve GlusterFS storage (sdb). This will emulate a real
