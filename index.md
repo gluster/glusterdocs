@@ -13,9 +13,11 @@ utilizing a number of virtual machines, you will create a functional test setup 
 basic concepts. You will then be much better equipped to read the more detailed
 Install Guide.
 
+-  [Overview](./overview.md)
+
 -  [Quick Start Guide](./Quick-Start-Guide/Quickstart.md) - Start here if you are new to Gluster!
 
--  [Installation Guides](./Install-Guide/Overview.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
+-  [Installation Guide](./Installation-Guide/Install.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
 
 -  [Presentations](./presentations/index.md) related to Gluster from Conferences and summits.
 

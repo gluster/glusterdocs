@@ -1,74 +1,85 @@
 # Administration Guide
 
-1.  Platform introduction
+1.  Introduction
+	*  [About GlusterFS](../overview.md)
+	*  [Architecture](./architecture.md)
 
-	*  [About GlusterFS](./GlusterFS Introduction.md)
-	*  [Terminologies](../Quick-Start-Guide/Terminologies.md)
-	
-2.  GlusterFS Architecture and Concepts
+2.  Getting Started
+    * [Prerequisites](./prerequisites.md)
+    * [Install Guide](../Installation-Guide/install.md) 
+    * [Quick Start](../Quick-Start-Guide/Quickstart.md)
 
-	*  [Architecture](../Quick-Start-Guide/Architecture.md)
-	*  [GlusterFS Concepts](./glossary.md)
-	*  [Other Features of GlusterFS](./Did You Know.md)
-	*  [Setting Up Trusted Storage Pools](./Storage Pools.md)
-	*  [Compiling RPMS](./Compiling RPMS.md)
-	*  [Managing the Gluster Service](./Start Stop Daemon.md)
-	
-3.  [Gluster Console Guide](./Console.md)
 
-4.  [POSIX Access Control Lists](./Access Control Lists.md)
+5.  [Trusted Pool Creation and Maintenance](./storage_pool_setup_and_scaling.md)
 
-5.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
-	*  [Handling of users that belong to many groups](./Handling-of-users-with-many-groups.md)
+6.  Volume Creation
+	*  [Distribute](./distribute.md)
+	*  [Replicate](./replicate.md)
+	*  [Disperse](./disperse.md)
+	*  [Distribute Replicate](./distribute_replicate.md)
+	*  [Distribute Disperse](./distribute_disperse.md)
+	*  [Striped](./striped.md)
 
-6.  Volume Options
+7.  Volume Management
+	*  [Volume lifecycle](./volume_lifecycle.md)
+	*  [Expanding volume](./expanding_volume.md)
+	*  [Shrinking volume](./shrinking_volume.md)
+	*  [Replacing bricks](./replace_bricks.md)
+        *  [Volume Configurations](./volume_configurations.md)
 
-	*  [Setting Up Volumes](./Setting Up Volumes.md)
-	*  [Managing Volumes](./Managing Volumes.md)
-	*  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
-	*  [Modifying .vol files with a filter](./GlusterFS Filter.md)
-	*  [Resolving Peer Rejected](./Resolving Peer Rejected.md)
-	
-7.  [GlusterFS Service Logs and Locations](./Logging.md)
+8.  Access Mechanisms:
+        *  [FUSE](./fuse.md)
+        *  NFS
+                *  [Gluster NFS](./gluster_NFS.md)
+                *  [NFS Ganesha](./NFS_Ganesha.md)
+        *  [SMB](./SMB.md)
+        *  [Object](./object.md)
+        *  [libgfapi](./libgfapi.md)
 
-8.  [Brick Naming Conventions](./Brick Naming Conventions.md)
+9.  Key Features and Setup Instructions:
+	*  [Volume Transport Type](./volume_transport_types.md)
+        *  [SSL](./ssl.md)
+	*  [Rebalance](./rebalance.md)
+	*  [AFR- File Replicate](./afr.md)
+	*  [Disperse](./disperse.md)
+	*  [Geo-Replication](./geo_replication.md)
+	*  [Sharding](./sharding.md)
+	*  [Quota](./quota.md)
+	*  [Tiering](./tiering.md)
+	*  [Snapshot](./snapshot.md)
+	*  [Posix ACLs](./posix_acls.md)
+	*  [Trash](./trash.md)
 
-9.  Geo Replication
+10. Migration of Data:
+	*  [TO/OUT of Gluster](./data_into_or_out_of_gluster.md)
+	*  [Across Volumes](./data_across_volume.md)
 
-	*  [Geo Replication](./Geo Replication.md)
-	*  [Distributed Geo Replication](./Distributed Geo Replication.md)
-	
-10.  [Managing Directory Quotas](./Directory Quota.md)
+11. Integration With Other Ecosystems:
+	*  [Docker](./docker.md)
+	*  [Container](./container.md)
+	*  [Hadoop](./hadoop.md)
+	*  [Cinder](./cinder.md)
+	*  [Manilla](./manilla.md)
+	*  [Qemu](./qemu.md)
+	*  [Bareos](./bareos.md)
+	*  [ZFS](./zfs.md)
 
-11.  [Managing Snapshots](./Managing Snapshots.md)
+12. Management and Monitoring Tools:
+	*  [Console](./console.md)
+	*  [Puppet](./puppet.md)
+	*  [Ansible](./ansible.md)
+	*  [Nagios](./nagios.md)
 
-12.  [Monitoring Workload](./Monitoring Workload.md)
+13. Toubleshooting:
+	*  [Logging](./logging.md)
+        *  [Processes](./processes_gluster.md)
+	*  [Gluster Internal Store](./gluster_internal_store.md)
+	*  [FAQs](./troubleshooting_FAQs.md)
 
-13.  Data Access With Other Interfaces
+14. Performance Tunables:
+	*  [Kernel Perf Tunables](./kernel_perf_tunables.md)
+	*  [Small Files](./small_files.md)
+	*  [Virtual Machine store](./virtual_machine_store.md)
+	*  [Others](./perf_others.md)
 
-	*  [Managing Object Store](./Object Storage.md)
-	*  [Accessing GlusterFS using Cinder Hosts](./GlusterFS Cinder.md)
-	*  [GlusterFS with Keystone](./GlusterFS Keystone Quickstart.md)
-	*  [Hadoop Compatiable Storage with GlusterFS](./Hadoop.md)
-	*  [Install Gluster on Top of ZFS](./Gluster On ZFS.md)
-	*  [Configuring Bareos to store backups on Gluster](./Bareos.md)
-	
-14.  [Securing GlusterFS Communication using SSL](./SSL.md)	
-	
-15.  [Puppet Gluster](./Puppet.md)
-
-16.  [RDMA Transport](./RDMA Transport.md)
-	
-17.  [GlusterFS iSCSI](./GlusterFS iSCSI.md)
-
-18.  [Linux Kernel Tuning](./Linux Kernel Tuning.md)
-
-19.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
-
-20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Intergration.md)
-
-21.  Appendices
-
-	*  [Troubleshooting](./Troubleshooting.md)
-	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
-	*  [Performance Testing](./Performance Testing.md)
+15. [Glossery](./glossery.md)
