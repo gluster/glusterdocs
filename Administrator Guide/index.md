@@ -67,7 +67,7 @@
 
 20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Intergration.md)
 
-21. [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
+21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
 22.  Appendices
 
