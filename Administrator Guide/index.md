@@ -69,7 +69,9 @@
 
 21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
-22.  Appendices
+22.  [Trash for GlusterFS](./Trash.md)
+
+23.  Appendices
 
 	*  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
