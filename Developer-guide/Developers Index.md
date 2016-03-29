@@ -86,6 +86,12 @@ Translators
 -   [Storage/posix Translator](./posix.md)
 -   [Compression translator](./network_compression.md)
 
+Static Analysis
+---------------
+
+-   [Clang static analysis in gluster](./clang-static-analysis.md) -
+    How to run clang static analysis before you submit a patch.
+
 Testing
 -------
 
