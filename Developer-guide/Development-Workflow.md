@@ -255,6 +255,14 @@ as part of the patch. This is so that code changes and accompanying test
 cases are reviewed together. All new commits now come under the
 following categories w.r.t test cases:
 
+For any new feature that is posted for review, there should be
+accompanying set of tests in
+[distaf](https://github.com/gluster/distaf/blob/master/README.md). These
+tests will be run nightly and/or before release to determine the health
+of the feature. Please read the
+[HOWTO](https://github.com/gluster/distaf/blob/master/docs/HOWTO.md) for
+more information on how to write and execute the tests in distaf.
+
 #### New 'group' directory and/or 'script.t'
 
 This is typically when code is adding a new module and/or feature
