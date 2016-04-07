@@ -1,3 +1,12 @@
+[Incontro DevOps Italia](http://www.incontrodevops.it/events/idi2016/) 2016 @ Bologna, Italy
+--------------------------------------------------------------------------------------------
+
+### April 1, 2016
+
+-   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
+    ([odp](20160401-Guster-Roadmap.odp), [pdf](20160401-Guster-Roadmap.pdf))
+    Niels de Vos
+
 [LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia
 ---------------------------------------------------------------
 
