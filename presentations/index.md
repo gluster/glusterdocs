@@ -1,11 +1,20 @@
-[Incontro DevOps Italia](http://www.incontrodevops.it/events/idi2016/) 2016 @ Bologna, Italy
+[Vault](http://events.linuxfoundation.org/events/vault) 2016 @ Raleigh, NC, US
+------------------------------------------------------------------------------
+
+### April 20-21, 2016
+
+-   [GlusterD 2.0](https://vault2016.sched.org/event/68kl/glusterd-20-managing-distributed-file-system-using-a-centralized-store-atin-mukherjee-red-hat)
+    ([odp](GlusterD2.odp), [pdf](GlusterD2.pdf))
+    Atin Mukherjee
+
+[incontro devops italia](http://www.incontrodevops.it/events/idi2015/) 2016 @ bologna, italy
 --------------------------------------------------------------------------------------------
 
-### April 1, 2016
+### april 1, 2016
 
--   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
-    ([odp](20160401-Guster-Roadmap.odp), [pdf](20160401-Guster-Roadmap.pdf))
-    Niels de Vos
+-   [gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
+    ([odp](20160401-guster-roadmap.odp), [pdf](20160401-guster-roadmap.pdf))
+    niels de vos
 
 [LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia
 ---------------------------------------------------------------
