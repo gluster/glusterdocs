@@ -7,14 +7,14 @@
     ([odp](GlusterD2.odp), [pdf](GlusterD2.pdf))
     Atin Mukherjee
 
-[incontro devops italia](http://www.incontrodevops.it/events/idi2015/) 2016 @ bologna, italy
+[Incontro DevOps Italia](http://www.incontrodevops.it/events/idi2016/) 2016 @ Bologna, Italy
 --------------------------------------------------------------------------------------------
 
-### april 1, 2016
+### April 1, 2016
 
--   [gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
-    ([odp](20160401-guster-roadmap.odp), [pdf](20160401-guster-roadmap.pdf))
-    niels de vos
+-   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
+    ([odp](20160401-Guster-Roadmap.odp), [pdf](20160401-Guster-Roadmap.pdf))
+    Niels de Vos
 
 [LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia
 ---------------------------------------------------------------
