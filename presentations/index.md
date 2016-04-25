@@ -1,3 +1,12 @@
+[Vault](http://events.linuxfoundation.org/events/vault) 2016 @ Raleigh, NC, US
+------------------------------------------------------------------------------
+
+### April 20-21, 2016
+
+-   [GlusterD 2.0](https://vault2016.sched.org/event/68kl/glusterd-20-managing-distributed-file-system-using-a-centralized-store-atin-mukherjee-red-hat)
+    ([odp](GlusterD2.odp), [pdf](GlusterD2.pdf))
+    Atin Mukherjee
+
 [Incontro DevOps Italia](http://www.incontrodevops.it/events/idi2016/) 2016 @ Bologna, Italy
 --------------------------------------------------------------------------------------------
 
