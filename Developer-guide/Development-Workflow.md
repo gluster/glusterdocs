@@ -5,7 +5,7 @@ This document provides a detailed overview of the development model
 followed by the GlusterFS project.
 
 For a simpler overview visit
-[Simplified develoment workflow](./Simplified Development Workflow.md).
+[Simplified develoment workflow](./Simplified-Development-Workflow.md).
 
 Basics
 ------
@@ -157,7 +157,7 @@ Building
 ### Environment Setup
 
 **For details about the required packages for the build environment
-refer : [Building GlusterFS](./Building GlusterFS.md)**
+refer : [Building GlusterFS](./Building-GlusterFS.md)**
 
 Ubuntu:
 
@@ -172,7 +172,7 @@ command to install the required packages:
 CentOS/RHEL/Fedora:
 
 On Fedora systems, install the required packages by following the
-instructions in [CompilingRPMS](./Compiling RPMS.md).
+instructions in [CompilingRPMS](./Compiling-RPMS.md).
 
 ### Creating build environment
 
@@ -197,14 +197,14 @@ CentOS/RHEL/Fedora:
 
 In an rpm based system, there are two methods to build GlusterFS. One is
 to use the method describe above for *Ubuntu*. The other is to build and
-install RPMS as described in [CompilingRPMS](./Compiling RPMS.md).
+install RPMS as described in [CompilingRPMS](./Compiling-RPMS.md).
 
 #### GlusterFS UFO/SWIFT
 
 To build and run Gluster UFO you can do the following:
 
 1.  Build, create, and install the RPMS as described in
-    [CompilingRPMS](./Compiling RPMS.md).
+    [CompilingRPMS](./Compiling-RPMS.md).
 2.  Configure UFO/SWIFT as described in [Howto Using UFO SWIFT - A quick
     and dirty setup
     guide](http://www.gluster.org/2012/09/howto-using-ufo-swift-a-quick-and-dirty-setup-guide)

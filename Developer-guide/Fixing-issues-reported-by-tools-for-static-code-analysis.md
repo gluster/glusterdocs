@@ -2,7 +2,7 @@ Static Code Analysis Tools
 --------------------------
 
 Bug fixes for issues reported by *Static Code Analysis Tools* should
-follow [Development Work Flow](./Development Workflow.md)
+follow [Development Work Flow](./Development-Workflow.md)
 
 ### Coverity
 

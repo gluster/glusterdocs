@@ -145,4 +145,4 @@ will need to install the rpmbuild requirements including rpmbuild and
 mock)*
 
 A more detailed description for building RPMs can be found at
-[CompilingRPMS](./Compiling RPMS.md).
+[CompilingRPMS](./Compiling-RPMS.md).
