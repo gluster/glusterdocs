@@ -85,6 +85,9 @@ pages:
   - Bug Reporting Template : Contributors-Guide/Bug-reporting-template.md
   - GlusterFS Release process : Contributors-Guide/GlusterFS-Release-process.md
   - Guidelines For Maintainers : Contributors-Guide/Guidelines-For-Maintainers.md
+- Ops Guide:
+  - Index: Ops-Guide/Overview.md
+  - Tools: Ops-Guide/Tools.md
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
