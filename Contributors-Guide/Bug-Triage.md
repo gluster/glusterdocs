@@ -101,7 +101,7 @@ Is there enough information?
 ----------------------------
 
 To make a report useful, the same rules apply as for
-[bug reporting guidelines](./Bug Reporting Guidelines.md).
+[bug reporting guidelines](./Bug-Reporting-Guidelines.md).
 
 It's hard to generalize what makes a good report. For "average"
 reporters is definitely often helpful to have good steps to reproduce,
@@ -254,7 +254,7 @@ her/him.
 To get an idea who works in which area, check To know component owners ,
 you can check the "MAINTAINERS" file in root of glusterfs code directory
 or querying changes in [Gerrit](http://review.gluster.org) (see
-[Simplified dev workflow](./Simplified Development Workflow.md))
+[Simplified dev workflow](/Developer-guide/Simplified-Development-Workflow.md))
 
 ### Severity And Priority
 
@@ -337,7 +337,7 @@ ready to be picked up by a developer.
 
 **EasyFix**
 :   By adding the **EasyFix** keyword, the bug gets added to the [list
-    of bugs that should be simple to fix](./Easy Fix Bugs.md).
+    of bugs that should be simple to fix](/Developer-guide/Easy-Fix-Bugs.md).
     Adding this keyword is encouraged for simple and well defined bugs
     or feature enhancements.
 
@@ -347,7 +347,7 @@ ready to be picked up by a developer.
     for the development has been done already. If course, it would have
     been nicer if the patch was sent to Gerrit for review, but not
     everyone is ready to pass the Gerrit hurdle when they report a bug.
- 
+
 You can also add the **Patch** keyword when a bug has been fixed in
     mainline and the patch(es) has been identified. Add a link to the
     Gerrit change(s) so that backporting to a stable release is made

@@ -33,7 +33,7 @@ Reporting A Bug
 -   Here is the link to file a bug:
     [Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS)
 -   The template for filing a bug can be found [
-    *here*](./Bug reporting template.md)
+    *here*](./Bug-Reporting-Guidelines.md)
 
 *Note: Please go through all below sections to understand what
 information we need to put in a bug. So it will help the developer to
