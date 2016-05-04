@@ -15,7 +15,7 @@ done easily in a few hours, depending on how much testing you want to
 do.
 
 After you deploy Gluster by following these steps, we recommend that
-you read the [Gluster Admin Guide](../Administrator Guide/README.md) to learn how to administer Gluster and
+you read the [Gluster Admin Guide](../Administrator Guide/) to learn how to administer Gluster and
 how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
 section . We want you to be successful in as short a time as possible.

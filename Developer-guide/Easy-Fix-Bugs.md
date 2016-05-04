@@ -10,7 +10,7 @@ Gluster.
     -   When you pick an EasyFix you want to work on, assign it to
         yourself and move it to ASSIGNED
     -   Check
-        [Bug report life cycle](./Bug report Life Cycle.md) and
+        [Bug report life cycle](/Contributors-Guide/Bug-report-Life-Cycle.md) and
         follow it.
     -   Check Developers page for details about development workflow,
         GlusterFS design documents etc.

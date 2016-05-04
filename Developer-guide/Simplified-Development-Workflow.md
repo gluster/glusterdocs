@@ -5,7 +5,7 @@ This page gives a simplified model of the development workflow used by
 the GlusterFS project. This will give the steps required to get a patch
 accepted into the GlusterFS source.
 
-Visit [Development Work Flow](./Development Workflow.md) a more
+Visit [Development Work Flow](./Development-Workflow.md) a more
 detailed description of the workflow.
 
 Initial preperation
@@ -36,7 +36,7 @@ To generate a key pair do,
 and follow the instructions.
 
 Next, install the build requirements for GlusterFS. Refer
-[Building GlusterFS - Build Requirements](./Building GlusterFS.md#Build Requirements)
+[Building GlusterFS - Build Requirements](./Building-GlusterFS.md#Build Requirements)
 for the actual requirements.
 
 ### Gerrit setup
@@ -79,7 +79,7 @@ branch, first checkout the upstream branch you want to work on and
 update it. More details on the upstream branching model for GlusterFS
 can be found at
 
-[Development Work Flow - Branching\_policy](./Development Workflow.md#branching-policy).
+[Development Work Flow - Branching\_policy](./Development-Workflow.md#branching-policy).
 For example if you want to develop on the master branch,
 
 		$ git checkout master
@@ -109,9 +109,9 @@ Unless your changes are very minor and trivial, you should also add a
 test for your change. Tests are used to ensure that the changes you did
 are not broken inadvertently. More details on tests can be found at
 
-[Development Workflow - Test cases](./Development Workflow.md#test-cases)
+[Development Workflow - Test cases](./Development-Workflow.md#test-cases)
 and
-[Development Workflow - Regression tests and test cases](./Development Workflow.md#regression-tests-and-test-cases)
+[Development Workflow - Regression tests and test cases](./Development-Workflow.md#regression-tests-and-test-cases)
 
 ### Regression test
 
@@ -139,7 +139,7 @@ Now, commit these changes using
 Provide a meaningful commit message. The commit message policy is
 described at
 
-[Development Work Flow - Commit policy](./Development Workflow.md#commit-policy).
+[Development Work Flow - Commit policy](./Development-Workflow.md#commit-policy).
 
 It is essential that you commit with the '-s' option, which will
 sign-off the commit with your configured email, as gerrit is configured
@@ -159,7 +159,7 @@ If the patch is submitted for review, the rfc.sh script will return the
 gerrit url for the review request.
 
 More details on the rfc.sh script are available at
-[Development Work Flow - rfc.sh](./Development Workflow.md#rfc.sh).
+[Development Work Flow - rfc.sh](./Development-Workflow.md#rfc.sh).
 
 Review process
 --------------
@@ -181,7 +181,7 @@ associated bug-id.
 
 More details can be found at
 
-[Development Work Flow - Auto verification](./Development Workflow.md#auto-verification).
+[Development Work Flow - Auto verification](./Development-Workflow.md#auto-verification).
 
 ### Formal review
 
@@ -193,9 +193,9 @@ comments on the reasons.
 More information regarding the review qualifiers and disqualifiers is
 available at
 
-[Development Work Flow - Submission Qualifiers](./Development Workflow.md#submission-qualifiers)
+[Development Work Flow - Submission Qualifiers](./Development-Workflow.md#submission-qualifiers)
 and
-[Development Work Flow - Submission Disqualifiers](./Development Workflow.md#submission-disqualifiers).
+[Development Work Flow - Submission Disqualifiers](./Development-Workflow.md#submission-disqualifiers).
 
 If your change gets a negative review, you will need to address the
 comments and resubmit your change.
