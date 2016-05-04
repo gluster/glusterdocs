@@ -1,6 +1,6 @@
 Template for bug description
 ----------------------------
-This template should be in-line to the [Bug reporting guidelines](./Bug Reporting Guidelines.md).
+This template should be in-line to the [Bug reporting guidelines](./Bug-Reporting-Guidelines.md).
 The template is replacement for the default description template present in [Bugzilla](https://bugzilla.redhat.com)
 
     work in progress
