@@ -43,7 +43,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 ### January 30, 2016
 
 -   Gluster roadmap: Recent improvements and upcoming features
-    ([slideshare](http://www.slideshare.net/GlusterCommunity/20160130-glusterroadmap)
+    [slideshare](http://www.slideshare.net/GlusterCommunity/20160130-glusterroadmap)
     Niels de Vos
 
 [T-DOSE](http://www.t-dose.org/) 2015 @ Eindhoven, The Netherlands
@@ -52,7 +52,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 ### November 28, 2015
 
 -   Introduction into Scale-out Storage with Gluster
-    ([slideshare](http://www.slideshare.net/GlusterCommunity/gluster-introtdose-62086654)
+    [slideshare](http://www.slideshare.net/GlusterCommunity/gluster-introtdose-62086654)
     Niels de Vos
 
 Usenix LISA 2015 @ Washington DC, USA
@@ -118,8 +118,8 @@ Gluster Conference @ NMAMIT, Nitte
 -   [Quality of Service](http://www.slideshare.net/GlusterCommunity/qos-62086668) - Karthik US & Sukumar
     Poojary, 4th SEM, MCA, NMAMIT, Nitte
 
-[Ceph & Gluster FS - Software Defined Storage MeetupCeph & Gluster FS - Software Defined Storage Meetup](http://www.meetup.com/RedHatFinland/events/218774694/)
----------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Ceph & Gluster FS - Software Defined Storage Meetup](http://www.meetup.com/RedHatFinland/events/218774694/)
+------------------------------------------------------------------------------------------------------------
 
 ### January 22, 2015
 
@@ -209,14 +209,12 @@ Gluster Community Summit, Bangalore
 ### March 7 & 8, 2013
 
 -   [SMB-GlusterDevMar2013](http://www.slideshare.net/GlusterCommunity/smb-gluster-devmar2013) - Chris Hertel, Red Hat
-    -   [https://www.youtube.com/watch?v=2RHemtFzIUM Video
-        recording](https://www.youtube.com/watch?v=2RHemtFzIUM_Video_recording)
+    -   [Video recording](https://www.youtube.com/watch?v=2RHemtFzIUM)
 -   [kkeithley-UFONFS-GlusterSummit](http://www.slideshare.net/GlusterCommunity/kkeithley-ufonfsgluster-summit) - Kaleb Keithley, Red Hat
--   [https://www.youtube.com/watch?v=Wl3EMX7Sm6o HDFS + GlusterFS
-    integration](https://www.youtube.com/watch?v=Wl3EMX7Sm6o_HDFS_+_GlusterFS_integration) -
+-   [HDFS + GlusterFS integration](https://www.youtube.com/watch?v=Wl3EMX7Sm6o) -
     Jay Vyas Video
 -   [Join_the_SuperColony_-_Feb2013.odp](http://www.slideshare.net/GlusterCommunity/join-the-supercolonyfeb2013)  - JMW, Red Hat
--   API Introduction
+-   GlusterFS API Introduction
     [slideshare](http://www.slideshare.net/GlusterCommunity/gsummit-apis2013)
     (Jeff Darcy, Red Hat)
 
@@ -236,8 +234,7 @@ Gluster Community Workshop at LinuxCon Europe
 
 ### November 8, 2012
 
--   [Gluster_for_Sysadmins_Dustin_Black.pdf](./Gluster_for_Sysadmins_Dustin_Black.pdf) - Gluster for
-    Sysadmins, Dustin Black, Red Hat
+-   [Gluster for Sysadmins](http://www.slideshare.net/GlusterCommunity/gluster-for-sysadmins) - Dustin Black, Red Hat
 -   [On-demand\_File\_Caching\_-\_Gustavo\_Brand](http://www.slideshare.net/GlusterCommunity/on-demand-filecachinggustavobrand) -
     On-demand File Caching, Gustavo Brand, Scalus Project
 -   [Gluster\_Wireshark\_Niels\_de\_Vos](http://www.slideshare.net/GlusterCommunity/gluster-wireshark-nielsdevos) -
@@ -248,9 +245,6 @@ Gluster Community Workshop at LinuxCon Europe
     Disperse Translator, Ramon , Datalab
 -   [State\_of\_the\_Gluster\_-\_LCEU.pdf](http://www.slideshare.net/GlusterCommunity/state-of-theglusterlceu)
     State of the Gluster Community, John Mark Walker, Red Hat
--   [GlusterFS in High Availability Clusters: Integration with the
-    Pacemaker cluster stack - Florian Haas,
-    Hastexo](http://www.hastexo.com/misc/static/presentations/lceu2012/glusterfs.html)
 -   [QEMU_GlusterFS](http://www.slideshare.net/GlusterCommunity/qemu-gluster-fs) - QEMU integration
     with GlusterFS, Bharata Rao, IBM Linux Technology Center
 
