@@ -26,4 +26,9 @@ Patch Acceptance
     Maintainers](./Guidelines-For-Maintainers.md) explains when
     maintainers can merge patches.
 
+Blogging about gluster
+----------------
+
+-   The [Adding your gluster blog](./Adding-your-blog.md) explains how to add your
+gluster blog to Community blogger. 
  
