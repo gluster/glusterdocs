@@ -71,7 +71,9 @@
 
 22.  [Trash for GlusterFS](./Trash.md)
 
-23.  Appendices
+23.  [Mandatory Locks](./Mandatory Locks.md)
+
+24.  Appendices
 
 	*  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
