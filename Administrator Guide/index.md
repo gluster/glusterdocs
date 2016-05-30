@@ -73,7 +73,9 @@
 
 23.  [Mandatory Locks](./Mandatory Locks.md)
 
-24.  Appendices
+24.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+
+25.  Appendices
 
 	*  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
