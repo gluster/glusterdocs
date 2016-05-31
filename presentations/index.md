@@ -17,6 +17,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 -   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
     [slideshare](http://www.slideshare.net/GlusterCommunity/20160401-glusterroadmap)
+    [Vimeo recording](https://vimeo.com/album/3949155/video/167706951)
     Niels de Vos
 
 [LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia
