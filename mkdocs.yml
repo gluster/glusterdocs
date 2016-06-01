@@ -65,6 +65,7 @@ pages:
   - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
   - Trash for GlusterFS: Administrator Guide/Trash.md
   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
+  - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
