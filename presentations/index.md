@@ -1,6 +1,15 @@
 This is a collection of Gluster presentations from all over the world. 
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored. 
 
+[OpenStack Days Istanbul ](http://openstackdaysistanbul.com/) 2016 @ Istanbul, Turkey
+------------------------------------------------------------------------------
+
+### May 31, 2016
+
+-   [“Building Clouds That Scale-Out with GlusterFS”](https://goo.gl/QnHhr6)
+    Mustafa Resul CETINEL
+
+
 [Vault](http://events.linuxfoundation.org/events/vault) 2016 @ Raleigh, NC, US
 ------------------------------------------------------------------------------
 
