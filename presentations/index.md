@@ -1,6 +1,15 @@
 This is a collection of Gluster presentations from all over the world. 
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored. 
 
+[GlusterFS Meetup Bangalore](http://www.meetup.com/glusterfs-India/events/229929410/) 2016 @ Bangalore, India
+-------------------------------------------------------------------------------------------------------------
+
+### June 4, 2016
+
+-   [“GlusterFS Containers (slideshare)”](http://www.slideshare.net/AshiqAshiq/glusterfs-containers) -
+    Mohamed Ashiq Liyazudeen, Humble Devassy Chirammal
+
+
 [OpenStack Days Istanbul ](http://openstackdaysistanbul.com/) 2016 @ Istanbul, Turkey
 ------------------------------------------------------------------------------
 
