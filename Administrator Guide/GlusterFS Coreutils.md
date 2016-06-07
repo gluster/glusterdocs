@@ -18,8 +18,6 @@ OR
 
     yum install glusterfs-coreutils
 
-RPMs are also available at <http://download.gluster.org/gluster/glusterfs-coreutils/>
-
 ## Usage
 glusterfs-coreutils provides a set of basic utilities such as cat, cp, flock, ls, mkdir, rm, stat and tail that are implemented specifically using the GlusterFS API commonly known as libgfapi. These utilities can be used either inside a gluster remote
 shell or as standalone commands with 'gf' prepended to their respective base names. For example, glusterfs cat utility is named as gfcat and so on with an exception to flock core utility for which a standalone gfflock command is not provided as such(see the notes section on why flock is designed in that way).
