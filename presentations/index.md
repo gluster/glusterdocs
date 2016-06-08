@@ -22,6 +22,16 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
     Mustafa Resul CETINEL
 
 
+[NLUUG Voorjaarsconferentie](https://www.nluug.nl/activiteiten/events/vj16/programma.html) 2016 @ Bunnik, The Netherlands
+---------------------------------------------------------------------------------------------------------
+
+### May 26, 2016
+
+-   [Replication Techniques in Gluster](https://www.nluug.nl/activiteiten/events/vj16/abstracts/ab07.html)
+    ([.odp](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.odp))
+    ([.pdf](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.pdf))
+    Niels de Vos
+
 [Vault](http://events.linuxfoundation.org/events/vault) 2016 @ Raleigh, NC, US
 ------------------------------------------------------------------------------
 
