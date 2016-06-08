@@ -1,5 +1,5 @@
-This is a collection of Gluster presentations from all over the world. 
-We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored. 
+This is a collection of Gluster presentations from all over the world.
+We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
 [GlusterFS Meetup Bangalore](http://www.meetup.com/glusterfs-India/events/229929410/) 2016 @ Bangalore, India
 -------------------------------------------------------------------------------------------------------------
@@ -8,6 +8,9 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 -   [“GlusterFS Containers (slideshare)”](http://www.slideshare.net/AshiqAshiq/glusterfs-containers) -
     Mohamed Ashiq Liyazudeen, Humble Devassy Chirammal
+
+- ["gdeploy 2.0 (slideshare)"](http://www.slideshare.net/sac2279/gdeploy-20) -
+  Sachidananda Urs, Nandaja Varma
 
 
 [OpenStack Days Istanbul ](http://openstackdaysistanbul.com/) 2016 @ Istanbul, Turkey
@@ -53,7 +56,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 ### February 5, 2016
 
 -    [Ceph, Gluster, Swift : Similarities and differences]
-     (https://speakerdeck.com/prashanthpai/ceph-gluster-swift-similarities-and-differences) - 
+     (https://speakerdeck.com/prashanthpai/ceph-gluster-swift-similarities-and-differences) -
     Prashanth Pai, Thiago da Silva
 
 [FOSDEM](http://www.fosdem.org/2016) 2016 @ Brussels, Belgium
@@ -91,8 +94,8 @@ Open Source Backup Conference @ Cologne, Germany
 
 -   Scale-Out backups with Bareos and Gluster
     ([slideshare](http://www.slideshare.net/GlusterCommunity/scale-out-backupswithbareosandgluster-62086631)) - Niels de Vos
-    
-2015 Storage Developer Conference 
+
+2015 Storage Developer Conference
 --------------------------------------
 
 -  Achieving Coherent and Aggressive Client Caching in Gluster, a Distributed System
@@ -124,14 +127,14 @@ Gluster Conference @ NMAMIT, Nitte
 
 -   [Introduction to Open
     Source](http://www.slideshare.net/GlusterCommunity/introduction-to-open-source-62086626) - Niels de Vos, Red Hat
-    
+
 -   [Software Defined
     Storage](http://www.slideshare.net/GlusterCommunity/software-defined-storage-62086656) - Dan
     Lambright, Red Hat
-    
+
 -   [Introduction to
     GlusterFS](http://www.slideshare.net/GlusterCommunity/gluster-technical-overview) -  Kaleb S. KEITHLEY, Red Hat
-    
+
 -   [Data Deduplication](http://www.slideshare.net/GlusterCommunity/dedupe-nmamit) - Joseph
     Fernandes, Red Hat
 -   [Quality of Service](http://www.slideshare.net/GlusterCommunity/qos-62086668) - Karthik US & Sukumar
@@ -160,7 +163,7 @@ Red Hat Summit 2014, San Francisco, California, USA
 ### April 14-17, 2014
 
 -   [Red Hat Storage Server Administration Deep
-    Dive](http://people.redhat.com/dblack/summit2014/black_w_1650_Red_Hat_Storage_Server_administration_deep_dive.odp) - 
+    Dive](http://people.redhat.com/dblack/summit2014/black_w_1650_Red_Hat_Storage_Server_administration_deep_dive.odp) -
     [slideshare](http://www.slideshare.net/GlusterCommunity/dustin-black-red-hat-storage-server-administration-deep-dive)
     Dustin Black, Red Hat
     -   [GlusterFS Stack
@@ -275,8 +278,8 @@ Software Developers' Conference (SNIA)
 -   Challenges and Futures
     [slideshare](http://www.slideshare.net/GlusterCommunity/sdc-challenges2012)
     (Jeff Darcy, Red Hat)
-    
-    
+
+
 Gluster Workshop at LinuxCon North America
 ------------------------------------------
 
