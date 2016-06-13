@@ -15,7 +15,7 @@ operations, including the following:
 - [Triggering Self-Heal on Replicate](#triggering-self-heal-on-replicate)
 - [Non Uniform File Allocation(NUFA)](#non-uniform-file-allocation)
 
-<a name="tuning-options" />
+<a name="tuning-options"></a>
 ##Tuning Volume Options
 
 You can tune volume options, as needed, while the cluster is online and
@@ -99,7 +99,7 @@ You can view the changed volume options using command:
 
      # gluster volume info
 
-<a name="configuring-transport-types-for-a-volume" />
+<a name="configuring-transport-types-for-a-volume"></a>
 ##Configuring Transport Types for a Volume
 
 A volume can support one or more transport types for communication between clients and brick processes.
@@ -123,7 +123,7 @@ To change the supported transport types of a volume, follow the procedure:
 
         # mount -t glusterfs -o transport=rdma server1:/test-volume /mnt/glusterfs
 
-<a name="expanding-volumes" />
+<a name="expanding-volumes"></a>
 ##Expanding Volumes
 
 You can expand volumes, as needed, while the cluster is online and
@@ -184,7 +184,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 
     You can use the rebalance command as described in [Rebalancing Volumes](#rebalancing-volumes)
 
-<a name="shrinking-volumes" />
+<a name="shrinking-volumes"></a>
 ##Shrinking Volumes
 
 You can shrink volumes, as needed, while the cluster is online and
@@ -258,7 +258,7 @@ set).
 
     You can use the rebalance command as described in [Rebalancing Volumes](#rebalancing-volumes)
 
-<a name="replace-brick" />
+<a name="replace-brick"></a>
 ##Replace faulty brick
 
 **Replacing a brick in *pure* distribute volume**
@@ -462,7 +462,7 @@ Steps:
             Brick Server2:/home/gfs/r2_3
             Number of entries: 0
 
-<a name="rebalancing-volumes" />
+<a name="rebalancing-volumes"></a>
 ##Rebalancing Volumes
 
 After expanding or shrinking a volume (using the add-brick and
@@ -597,7 +597,7 @@ You can stop the rebalance operation, as needed.
         617c923e-6450-4065-8e33-865e28d9428f               59   590      244       stopped
         Stopped rebalance process on volume test-volume
 
-<a name="stopping-volumes" />
+<a name="stopping-volumes"></a>
 ##Stopping Volumes
 
 1.  Stop the volume using the following command:
@@ -614,7 +614,7 @@ You can stop the rebalance operation, as needed.
 
         Stopping volume test-volume has been successful
 
-<a name="deleting-volumes" />
+<a name="deleting-volumes"></a>
 ##Deleting Volumes
 
 1.  Delete the volume using the following command:
@@ -631,7 +631,7 @@ You can stop the rebalance operation, as needed.
 
         Deleting volume test-volume has been successful
 
-<a name="triggering-self-heal-on-replicate" />
+<a name="triggering-self-heal-on-replicate"></a>
 ##Triggering Self-Heal on Replicate
 
 In replicate module, previously you had to manually trigger a self-heal
@@ -761,7 +761,7 @@ volume or only on the files which need *healing*.
         /69.txt
         ...
 
-<a name="non-uniform-file-allocation" />
+<a name="non-uniform-file-allocation"></a>
 ##Non Uniform File Allocation
 
 NUFA translator or Non Uniform File Access translator is designed for giving higher preference

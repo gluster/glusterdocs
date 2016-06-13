@@ -27,7 +27,7 @@ performing the following operations:
 -   [Displaying the I/0 Information](#displaying-io)
 -   [Stop Profiling](#stop-profiling)
 
-<a name="start-profiling" />
+<a name="start-profiling"></a>
 ###Start Profiling
 
 You must start the Profiling to view the File Operation information for
@@ -48,7 +48,7 @@ options are displayed in the Volume Info:
     diagnostics.count-fop-hits: on
     diagnostics.latency-measurement: on
 
-<a name="displaying-io" />
+<a name="displaying-io"></a>
 ###Displaying the I/0 Information
 
 You can view the I/O information of each brick by using the following command:
@@ -106,7 +106,7 @@ For example, to see the I/O information on test-volume:
 
     BytesWritten : 195571980
 
-<a name="stop-profiling" />
+<a name="stop-profiling"></a>
 ###Stop Profiling
 
 You can stop profiling the volume, if you do not need profiling
@@ -140,7 +140,7 @@ GlusterFS Top commands:
 -   [Viewing List of Read Performance on each Brick](#read-perf)
 -   [Viewing List of Write Performance on each Brick](#write-perf)
 
-<a name="open-fd-count" />
+<a name="open-fd-count"></a>
 ###Viewing Open fd Count and Maximum fd Count
 
 You can view both current open fd count (list of files that are
@@ -199,7 +199,7 @@ displayed.
         9               /clients/client8/~dmtmp/PARADOX/
                         STUDENTS.DB
 
-<a name="file-read" />
+<a name="file-read"></a>
 ###Viewing Highest File Read Calls
 
 You can view highest read calls on each brick. If brick name is not
@@ -241,7 +241,7 @@ specified, then by default, list of 100 files will be displayed.
 
         54               /clients/client8/~dmtmp/SEED/LARGE.FIL
 
-<a name="file-write" />
+<a name="file-write"></a>
 ###Viewing Highest File Write Calls
 
 You can view list of files which has highest file write calls on each
@@ -282,7 +282,7 @@ files will be displayed.
 
         59                /clients/client3/~dmtmp/SEED/LARGE.FIL
 
-<a name="open-dir" />
+<a name="open-dir"></a>
 ###Viewing Highest Open Calls on Directories
 
 You can view list of files which has highest open calls on directories
@@ -325,7 +325,7 @@ the bricks belonging to that volume will be displayed.
 
         402               /clients/client4/~dmtmp
 
-<a name="read-dir" />
+<a name="read-dir"></a>
 ###Viewing Highest Read Calls on Directory
 
 You can view list of files which has highest directory read calls on
@@ -368,7 +368,7 @@ bricks belonging to that volume will be displayed.
 
         800                     /clients/client4/~dmtmp
 
-<a name="read-perf" />
+<a name="read-perf"></a>
 ###Viewing List of Read Performance on each Brick
 
 You can view the read throughput of files on each brick. If brick name
@@ -462,7 +462,7 @@ and measures the corresponding throughput.
         2184.00  /clients/client5/~dmtmp/WORD/       -2011-01-31
                  BASEMACH.DOC                    15:39:09.336572
                                                    
-<a name="write-perf" />
+<a name="write-perf"></a>
 ###Viewing List of Write Performance on each Brick
 
 You can view list of write throughput of files on each brick. If brick

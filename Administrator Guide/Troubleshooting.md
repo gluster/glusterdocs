@@ -11,7 +11,7 @@ troubleshooting scenarios related to GlusterFS.
 * [Troubleshooting NFS](#nfs)
 * [Troubleshooting File Locks](#file-locks)
 
-<a name="logs" />
+<a name="logs"></a>
 ##Managing GlusterFS Logs
 
 ###Rotating Logs
@@ -31,7 +31,7 @@ For example, to rotate the log file on test-volume:
 > When a log file is rotated, the contents of the current log file
 > are moved to log-file- name.epoch-time-stamp.
 
-<a name="georep" />
+<a name="georep"></a>
 ##Troubleshooting Geo-replication
 
 This section describes the most common troubleshooting scenarios related
@@ -196,7 +196,7 @@ geo-replication module has detected change in primary master. If this is
 the desired behavior, delete the config option volume-id in the session
 initiated from the intermediate master.
 
-<a name="posix-acls" />
+<a name="posix-acls"></a>
 ##Troubleshooting POSIX ACLs
 
 This section describes the most common troubleshooting issues related to
@@ -211,7 +211,7 @@ server "Posix access control list is not supported".
 
 **Solution**: Remount the backend file system with "-o acl" option.
 
-<a name="hadoop" />
+<a name="hadoop"></a>
 ##Troubleshooting Hadoop Compatible Storage
 
 ###Time Sync
@@ -221,7 +221,7 @@ the hosts in the cluster.
 
 **Solution**: Sync the time on all hosts using ntpd program.
 
-<a name="nfs" />
+<a name="nfs"></a>
 ##Troubleshooting NFS
 
 This section describes the most common troubleshooting issues related to
@@ -412,7 +412,7 @@ using the following flag with gcc:
 
 ` -D_FILE_OFFSET_BITS=64`
 
-<a name="file-locks" />
+<a name="file-locks"></a>
 ##Troubleshooting File Locks
 
 In GlusterFS 3.3 you can use `statedump` command to list the locks held
