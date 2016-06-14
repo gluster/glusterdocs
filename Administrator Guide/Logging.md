@@ -8,7 +8,7 @@ Below lists the component, services, and functionality based logs in the Gluster
 glusterd logs are located at `/var/log/glusterfs/etc-glusterfs-glusterd.vol.log`. One glusterd log file per server. This log file also contains the snapshot and user logs.
 
 ##gluster cli command:
-gluster cli logs  are located at `/var/log/glusterfs/cmd_history.log`   Gluster commands executed on a node in a GlusterFS Trusted Storage Pool is logged in the `.cmd_log_history` file.
+gluster cli logs  are located at `/var/log/glusterfs/cli.log`. Gluster commands executed on a node in a GlusterFS Trusted Storage Pool is logged in `/var/log/glusterfs/cmd_history.log`.
 
 ##bricks:
 Bricks logs are located at `/var/log/glusterfs/bricks/<path extraction of brick path>.log` .    One log file per brick on the server
