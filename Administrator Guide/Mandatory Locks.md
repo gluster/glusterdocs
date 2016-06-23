@@ -1,8 +1,6 @@
 Mandatory Locks
 ===============
-Support for mandatory locks inside GlusterFS does not converge all by itself to what Linux kernel provides to user space file systems. Here we enforce core mandatory lock semantics with and without the help of file mode bits. Please read through the following design specification which explains the whole concept behind the mandatory locks implementation done for GlusterFS.
-
-<https://github.com/gluster/glusterfs-specs/blob/master/done/GlusterFS%203.8/Mandatory%20Locks.md>
+Support for mandatory locks inside GlusterFS does not converge all by itself to what Linux kernel provides to user space file systems. Here we enforce core mandatory lock semantics with and without the help of file mode bits. Please read through the [design specification](https://github.com/gluster/glusterfs-specs/blob/master/done/GlusterFS%203.8/Mandatory%20Locks.md) which explains the whole concept behind the mandatory locks implementation done for GlusterFS.
 
 ## Implications and Usage
 By default, mandatory locking will be disabled for a volume and a volume set options is available to configure volume to operate under 3 different mandatory locking modes.
