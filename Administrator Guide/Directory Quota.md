@@ -77,10 +77,10 @@ being treated as "/".
     > In a multi-level directory hierarchy, the strictest disk limit
     > will be considered for enforcement. Also, whenever quota limit
     > is set for the first time, an auxiliary mount point will be
-    > created under /run/gluster/<VOLNAME>. This is just like any other 
-    > mount point with some special permissions and remains until
-    > quota is disabled, which is being used by quota to set and display
-    > limits and lists respectively.
+    > created under /var/run/gluster/<VOLNAME>. This is just like any
+    > other mount point with some special permissions and remains until
+    > quota is disabled. This mount point is being used by quota to set
+    > and display limits and lists respectively.
 
 ##Displaying Disk Limit Information
 
