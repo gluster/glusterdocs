@@ -43,14 +43,10 @@ LTS*
 
 ###### For Red Hat/CentOS
 
-Download the packages (modify URL for your specific release and
-architecture).
+RPMs for CentOS and other RHEL clones are available from the
+CentOS Storage SIG mirrors.
 
-		wget -P /etc/yum.repos.d http://download.gluster.org/pub/gluster/glusterfs/LATEST/RHEL/glusterfs-epel.repo
-
-Install the Gluster packages (do this on both servers)
-
-		yum install glusterfs-server
+For more installation details refer [Gluster Quick start guide](https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart) from CentOS Storage SIG.
 
 ###### For Fedora
 
