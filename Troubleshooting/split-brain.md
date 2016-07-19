@@ -1,6 +1,9 @@
 Steps to recover from File split-brain.
 ======================================
 
+Note: There below steps are manual. What you really want to use is the newer CLI (server)
+and mount (client) based split-brain resolution methods explained in [heal-info-and-split-brain-resolution](./heal-info-and-split-brain-resolution.md)
+
 Quick Start:
 ============
 1. Get the path of the file that is in split-brain:  

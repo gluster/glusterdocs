@@ -114,7 +114,8 @@ pages:
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
   - gfid to path: Troubleshooting/gfid-to-path.md
-  - Split Brain: Troubleshooting/split-brain.md
+  - Split Brain (Manual): Troubleshooting/split-brain.md
+  - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
   - Statedump: Troubleshooting/statedump.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
