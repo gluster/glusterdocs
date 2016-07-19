@@ -19,7 +19,7 @@ which is in split-brain because of gfid split-brain of file "/dir/a".
 Files in split-brain cannot be healed without resolving the split-brain.
 
 b) 'Is possibly undergoing heal'  
-When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs heal. But if the self-heal daemon had already started healing the file, it would have taken locks due to which glfsheal wouldn't be able to acquire them. In such a case it could prints this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g., multiple users ran heal info command at the same time), competing for same lock.
+When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs heal. But if the self-heal daemon had already started healing the file, it would have taken locks due to which glfsheal wouldn't be able to acquire them. In such a case it could print this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g., multiple users ran heal info command at the same time), competing for same lock.
 
 The following is an example of heal info command's output.
 ### Example
@@ -92,8 +92,8 @@ file with bigger size is to be considered as source.
 `gluster volume heal <VOLNAME> split-brain bigger-file <FILE>`  
 Here, `<FILE>` can be either the full file name as seen from the root of the volume
 (or) the gfid-string representation of the file, which sometimes gets displayed
-in the heal info command's output. Once this command is executed, the replica containing the <FILE> with bigger
-size is found out and heal is completed with that bricks as a source.
+in the heal info command's output. Once this command is executed, the replica containing the `<FILE>` with bigger
+size is found out and heal is completed with that brick as a source.
 
 ### Example :
 Consider the earlier output of heal info split-brain command.
