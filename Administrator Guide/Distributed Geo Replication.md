@@ -1,23 +1,16 @@
-# Distributed Geo-Replication in glusterfs-3.5
+# Distributed Geo-Replication
 
-This is a admin how-to guide for new dustributed-geo-replication being released as part of glusterfs-3.5
+This is a admin how-to guide for distributed-geo-replication
 
 ##### Note:
-This article is targeted towards users/admins who want to try new geo-replication, without going much deeper into internals and technology used.
-
-### How is it different from earlier geo-replication?
-
-- Up until now, in geo-replication, only one of the nodes in master volume would participate in geo-replication. This meant that all the data syncing is taken care by only one node while other nodes in the cluster would sit idle (not participate in data syncing). With distributed-geo-replication, each node of the master volume takes the repsonsibility of syncing the data present in that node. In case of replicate configuration, one of them would 'Active'ly sync the data while other node of the replica pair would be 'Passive'. The 'Passive' node only becomes 'Active' when the 'Active' pair goes down. This way new geo-rep leverages all the nodes in the volume and remove the bottleneck of syncing from one single node. 
-- New change detection mechanism is the other thing which has been improved with new geo-rep. So far geo-rep used to crawl through glusterfs file system to figure out the files that need to synced. And because crawling filesystem can be an expensive operation, this used to be a major bottleneck for performance. With distributed geo-rep, all the files that need to be synced are identified through changelog xlator. Changelog xlator journals all the fops that modifes the file and these journals are then consumed by geo-rep to effectively identify the files that need to be synced.
-- A new syncing method tar+ssh, has been introduced to improve the performance of few specific data sets. You can switch between rsync and tar+ssh syncing method via CLI to suite your data set needs. This tar+ssh is better suited for data sets which have large number of small files.
-
+This article is targeted towards users/admins who want to try geo-replication, without going much deeper into internals and technology used.
 
 ### Using Distributed geo-replication:
 
 #### Prerequisites:
 - There should be a password-less ssh setup between at least one node in master volume to one node in slave volume. The geo-rep create command should be executed from this node which has password-less ssh setup to slave.
 
-- Unlike previous version, slave **must** be a gluster volume. Slave can not be a directory. And both the master and slave volumes should have been created and started before creating geo-rep session.
+- The slave **must** be a gluster volume. Both the master and slave volumes must have been created and started before creating geo-rep session.
 
 #### Creating secret pem pub file
 - Execute the below command from the node where you setup the password-less ssh to slave. This will create the secret pem pub file which would have information of RSA key of all the nodes in the master volume. And when geo-rep create command is executed, glusterd uses this file to establish a geo-rep specific ssh connections
@@ -46,7 +39,7 @@ In this case the master node rsa-key distribution to slave node does not happen 
 
 ### Creating Non Root Geo-replication session
 
-`mountbroker` is a new service of glusterd. This service allows an
+The `mountbroker` service allows an
 unprivileged process to own a GlusterFS mount by registering a label
 (and DSL (Domain-specific language) options ) with glusterd through a
 glusterd volfile. Using CLI, you can send a mount request to glusterd to
@@ -145,7 +138,7 @@ scenarios when master volume is configured with EC(Erasure Code)/AFR.
 Create a 3 way replicated meta volume in the master cluster with all three bricks from different nodes as follows.
 
         gluster volume create gluster_shared_storage replica 3 <host1>:<brick_path> <host2>:<brick_path> <host3>:<brick_path>
-    
+
 Start the meta volume as follows.
 
         gluster volume start <meta_vol>
