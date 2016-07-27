@@ -19,7 +19,7 @@ that do not apply cleanly will need some manual modifications and using
 2.  Create and checkout a new branch for your work, based on the branch
     for the backport version
 
-                git checkout -t -b bug-123456/release-3.5 origin/release-3.5
+                git checkout -t -b bug-123456/release-3.8 origin/release-3.8
 
 3.  Cherry pick the change from master.
 

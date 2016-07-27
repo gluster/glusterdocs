@@ -55,10 +55,10 @@ Gerrit can be used to list patches that need reviews and/or can get
 merged. Some queries have been prepared for this, edit the search box in
 Gerrit to make your own variation:
 
--   [3.5 open reviewed/verified (non
-    rfc)](http://review.gluster.org/#/q/project:glusterfs+branch:release-3.5+status:open+%28label:Code-Review%253D%252B1+OR+label:Code-Review%253D%252B2+OR+label:Verified%253D%252B1%29+NOT+topic:rfc+NOT+label:Code-Review%253D-2,n,z)
--   [All open 3.5 patches (non
-    rfc)](http://review.gluster.org/#/q/project:glusterfs+branch:release-3.5+status:open+NOT+topic:rfc,n,z)
+-   [3.8 open reviewed/verified (non
+    rfc)](http://review.gluster.org/#/q/project:glusterfs+branch:release-3.8+status:open+%28label:Code-Review%253D%252B1+OR+label:Code-Review%253D%252B2+OR+label:Verified%253D%252B1%29+NOT+topic:rfc+NOT+label:Code-Review%253D-2,n,z)
+-   [All open 3.8 patches (non
+    rfc)](http://review.gluster.org/#/q/project:glusterfs+branch:release-3.8+status:open+NOT+topic:rfc,n,z)
 -   [Open NFS (master
     branch)](http://review.gluster.org/#/q/project:glusterfs+branch:master+status:open+message:nfs,n,z)
 

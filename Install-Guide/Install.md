@@ -7,17 +7,23 @@ such as compat-readline5
 
 ###### For Debian
 
-Download the packages
+Add the GPG key to apt:
 
-		wget -nd -nc -r -A.deb http://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/wheezy/
+    wget -O - http://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
 
-(Note from reader: The above does not work. Check
-<http://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/> for
-3.5 version or use http://packages.debian.org/wheezy/glusterfs-server 
+Add the source:
 
-Install the Gluster packages (do this on both servers)
+    DEBVER=$(awk '/^VERSION=/{print gensub(/.*[(](.*)[)].*/,"\\1",1)}' /etc/os-release)
+    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBVER}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list 
 
-		dpkg -i glusterfs_3.5.2-4_amd64.deb
+Update package list:
+
+    apt-get update
+
+Install:
+
+    apt-get install glusterfs-server
+
 
 ###### For Ubuntu
 
@@ -31,7 +37,7 @@ Ubuntu 14: install software-properties-common:
 
 Then add the community GlusterFS PPA:
 
-		sudo add-apt-repository ppa:gluster/glusterfs-3.5
+		sudo add-apt-repository ppa:gluster/glusterfs-3.8
 		sudo apt-get update
 
 Finally, install the packages:
@@ -50,8 +56,14 @@ For more installation details refer [Gluster Quick start guide](https://wiki.cen
 
 ###### For Fedora
 
-Install the Gluster packages (do this on both servers)
+Install the Gluster packages:
 
 		yum install glusterfs-server
 
 Once you are finished installing, you can move on to [configuration](./Configure.md) section.
+
+###### For Arch Linux
+
+Install the Gluster package:
+
+        pacman -S glusterfs
