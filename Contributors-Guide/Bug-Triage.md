@@ -43,7 +43,7 @@ The detailed discussion about the above points are below.
 Weekly meeting about Bug Triaging
 ---------------------------------
 
-We try to meet every week in \#gluster-meeting on Freenode. The meeting
+We try to meet every week in `#gluster-meeting` on Freenode. The meeting
 date and time for the next meeting is normally updated in the
 [agenda](https://public.pad.fsfe.org/p/gluster-bug-triage).
 
@@ -55,38 +55,21 @@ triage. One easy way is to use these pre-defined Bugzilla reports (a
 report is completely structured in the URL and can manually be
 modified):
 
--   New **bugs** that do not have the 'Triaged' keyword [Bugzilla
-    link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&f1=keywords&keywords=Triaged%2CFutureFeature&keywords_type=nowords&list_id=3014117&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
+-   New **bugs** that do not have the 'Triaged' keyword [Bugzilla link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&f1=keywords&keywords=Triaged%2CFutureFeature&keywords_type=nowords&list_id=3014117&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
 -   New **features** that do not have the 'Triaged' keyword (identified
     by FutureFeature keyword, probably of interest only to project
-    leaders) [Bugzilla
-    link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&f1=keywords&f2=keywords&list_id=3014699&o1=nowords&o2=allwords&product=GlusterFS&query_format=advanced&v1=Triaged&v2=FutureFeature)
--   New glusterd bugs: [Bugzilla
-    link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&o1=nowords&v1=Triaged&component=glusterd)
--   New Replication(afr) bugs: [Bugzilla
-    link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=replicate&f1=keywords&list_id=2816133&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
--   New distribute(DHT) bugs: [Bugzilla
-    links](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=distribute&f1=keywords&list_id=2816148&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
+    leaders) [Bugzilla link](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&f1=keywords&f2=keywords&list_id=3014699&o1=nowords&o2=allwords&product=GlusterFS&query_format=advanced&v1=Triaged&v2=FutureFeature)
+-   [New glusterd bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&o1=nowords&v1=Triaged&component=glusterd)
+-   [New Replication(afr) bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=replicate&f1=keywords&list_id=2816133&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
+-   [New distribute(DHT) bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=distribute&f1=keywords&list_id=2816148&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
 
--   New bugs against version 3.6:
-    [<https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2>=\^3.6
-    Bugzilla link]
--   New bugs against version 3.5:
-    [<https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2>=\^3.5
-    Bugzilla link]
--   New bugs against version 3.4:
-    [<https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2>=\^3.4
-    Bugzilla link]
+-   [New bugs against version 3.7](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^3.7)
+-   [New bugs against version 3.8](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^3.8)
+-   [New bugs against mainline](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&o1=nowords&v1=Triaged&version=mainline) (development branch)
 
--   [<https://bugzilla.redhat.com/page.cgi?id=browse.html&product=GlusterFS&product_version>=&bug\_status=all&tab=recents
-    bugzilla tracker] (can include already Triaged bugs)
-
--   [Untriaged NetBSD
-    bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=NetBSD&product=GlusterFS)
--   [Untriaged FreeBSD
-    bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=FreeBSD&product=GlusterFS)
--   [Untriaged Mac OS
-    bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=Mac%20OS&product=GlusterFS)
+-   [Untriaged NetBSD bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=NetBSD&product=GlusterFS)
+-   [Untriaged FreeBSD bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=FreeBSD&product=GlusterFS)
+-   [Untriaged Mac OS bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=Mac%20OS&product=GlusterFS)
 
 In addition to manually checking Bugzilla for bugs to triage, it is also
 possible to receive emails when new
@@ -148,9 +131,9 @@ sure, just add a comment like "This bug looks related to bug XXXXX" (and
 replace XXXXX by the bug number) so somebody else can take a look and
 help judging.
 
-You can also take a look at
-https://bugzilla.redhat.com/page.cgi?id=browse.html&product=GlusterFS&product_version>=&bug\_status=all&tab=duplicates's
-list of existing duplicates
+The [webui for bug triage](http://bugs.cloud.gluster.org) gathers a list of
+bugs every night. This website can be used to identify duplicates relatively
+easily.
 
 Is it assigned to correct component of GlusterFS?
 -------------------------------------------------
