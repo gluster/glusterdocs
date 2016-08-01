@@ -230,7 +230,7 @@ Glossary
     For example, adding additional disk capacity to an existing trusted storage pool.
 
 **Scale-Out Storage**
-    Scale out systems are designed to scale on both capacity and performance.
+:   Scale out systems are designed to scale on both capacity and performance.
     It increases the capability of a storage device in single dimension.
     For example, adding more systems of the same size, or adding servers to a trusted storage pool
     that increases CPU, disk capacity, and throughput for the trusted storage pool.
@@ -261,7 +261,6 @@ Glossary
     subvolumes which are not hashed-subvolume.
 
 **Linkto-file**
-
 :   For a newly created file, the hashed and cached subvolumes are the same.
     When directory entry operations like rename (which can change the name and hence hashed
     subvolume of the file) are performed on the file, instead of moving the entire data in the file
