@@ -79,8 +79,8 @@ Glossary
     servers/bricks in a trusted storage pool. Data sharing among multiple locations is fundamental
     to all distributed file systems.
 
-**Virtual File System (VFS)
-    VFS is a kernel software layer which handles all system calls related to the standard Linux file system.
+**Virtual File System (VFS)**
+:   VFS is a kernel software layer which handles all system calls related to the standard Linux file system.
     It provides a common interface to several kinds of file systems.
 
 **POSIX**
