@@ -37,11 +37,9 @@ You would need to repeat these steps on all servers that form your
 trusted storage pool.
 
 After upgrading the servers, it is recommended to upgrade all client
-installations to 3.7.0
+installations to 3.7.0.
 
-**b) Rolling Upgrade **
-
-
+**b) Rolling Upgrade**
 
 If you have replicated or distributed replicated volumes with bricks placed in the right fashion for redundancy, have no data to be self-healed and feel adventurous, you can perform a rolling upgrade through the following procedure:
 
