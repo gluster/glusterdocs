@@ -151,6 +151,3 @@ The [close-bugs.sh](https://github.com/gluster/release-tools/blob/master/close-b
 #### Upgrade documentation
 
 If required, an upgrade document having any upgrade instructions specific the the release needs to be prepared. This document must be added under the [Upgrade Guide](https://github.com/gluster/glusterdocs/tree/master/Upgrade-Guide) section of the [glusterdocs](https://github.com/gluster/glusterdocs) repository.
-
-
-- Upgrade document
