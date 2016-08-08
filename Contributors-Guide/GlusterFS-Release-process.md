@@ -129,15 +129,18 @@ Examples:
 - [release notes](https://github.com/gluster/glusterfs/blob/v3.5.3/doc/release-notes/3.5.3.md)
 
 #### Send Release Announcement
+
 Once the Fedora/EL RPMs are ready (and any others that are ready by then), send the release announcement:
 
 - Gluster Mailing lists
-  - gluster-announce, gluster-devel, gluster-users
-- Gluster Blog
-- Gluster Twitter account
-- Gluster Facebook page
-- Gluster LinkedIn group
-- Gluster G+
+  - [gluster-announce](https://www.gluster.org/mailman/listinfo/announce/)
+  - [gluster-devel](https://www.gluster.org/mailman/listinfo/gluster-devel/)
+  - [gluster-users](https://www.gluster.org/mailman/listinfo/gluster-users/)
+- [Gluster Blog](https://blog.gluster.org)
+- [Gluster Twitter account](https://twitter.com/gluster)
+- [Gluster Facebook page](https://www.facebook.com/GlusterInc)
+- [Gluster LinkedIn group]()
+- [Gluster G+](https://plus.google.com/communities/110022816028412595292)
 
 #### Close Bugs
 
