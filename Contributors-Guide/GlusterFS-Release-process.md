@@ -142,6 +142,8 @@ Once the Fedora/EL RPMs are ready (and any others that are ready by then), send 
 - [Gluster LinkedIn group]()
 - [Gluster G+](https://plus.google.com/communities/110022816028412595292)
 
+For help with posting to the social media pages, please reach out to Amye.
+
 #### Close Bugs
 
 Close the bugs that have all their patches included in the release. Leave a note in the bug report with a pointer to the release announcement.
