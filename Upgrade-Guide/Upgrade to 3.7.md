@@ -37,9 +37,21 @@ You would need to repeat these steps on all servers that form your
 trusted storage pool.
 
 After upgrading the servers, it is recommended to upgrade all client
-installations to 3.7.0
+installations to 3.7.0.
 
-**b) Rolling Upgrade [TBD]**
+**b) Rolling Upgrade**
+
+If you have replicated or distributed replicated volumes with bricks placed in the right fashion for redundancy, have no data to be self-healed and feel adventurous, you can perform a rolling upgrade through the following procedure:
+
+    1.Stop all glusterd, glusterfs and glusterfsd processes on your server.
+    2.Install GlusterFS 3.7.0.
+    3.Start glusterd.
+    4.Run “gluster volume heal <volname> info” on all volumes and ensure that there is nothing left to be 5.self-healed on every volume. If you have pending data for self-heal, run “gluster volume heal <volname>” and wait for self-heal to complete.
+    6.Ensure that all started volumes have processes online in “gluster volume status”.
+
+Repeat the above steps on all servers that are part of your trusted storage pool.
+
+Again after upgrading the servers, it is recommended to upgrade all client installations to 3.7.0.
 
 ### Special notes for upgrading from 3.4.x to 3.7.X
 
