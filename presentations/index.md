@@ -1,7 +1,7 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
-[Openshift Meetup Bangalore India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, india 
+[Openshift Meetup  India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, india 
 -------------------------------------------------------------------------------------------------------
 ### June 11, 2016
 
