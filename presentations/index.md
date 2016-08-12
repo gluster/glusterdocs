@@ -3,7 +3,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 ### June 11, 2016
 
-[Openshift Meetup Bangalore India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, india
+- [Openshift Meetup Bangalore India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, india -
 
 -   [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs)-  Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
     
