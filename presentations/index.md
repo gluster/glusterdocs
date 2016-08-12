@@ -6,8 +6,6 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 ### June 11, 2016
 
 -   [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs)-  Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
-    
-http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs
 
 [GlusterFS Meetup Bangalore](http://www.meetup.com/glusterfs-India/events/229929410/) 2016 @ Bangalore, India
 -------------------------------------------------------------------------------------------------------------
