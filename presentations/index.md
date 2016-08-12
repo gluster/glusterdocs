@@ -1,13 +1,21 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
+### June 11, 2016
+
+[Openshift Meetup Bangalore India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, india
+
+-   [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs)-  Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
+    
+http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs
+
 [GlusterFS Meetup Bangalore](http://www.meetup.com/glusterfs-India/events/229929410/) 2016 @ Bangalore, India
 -------------------------------------------------------------------------------------------------------------
 
 ### June 4, 2016
 
 -   [“GlusterFS Containers (slideshare)”](http://www.slideshare.net/AshiqAshiq/glusterfs-containers) -
-    Mohamed Ashiq Liyazudeen, Humble Devassy Chirammal
+    Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
 
 - ["gdeploy 2.0 (slideshare)"](http://www.slideshare.net/sac2279/gdeploy-20) -
   Sachidananda Urs, Nandaja Varma
