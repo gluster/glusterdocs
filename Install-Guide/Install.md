@@ -13,8 +13,9 @@ Add the GPG key to apt:
 
 Add the source:
 
-    DEBVER=$(grep 'VERSION_ID' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
-    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBVER}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list 
+    DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
+    DEBVER=$(grep 'VERSION=' /etc/os-release | grep -Eo '[a-z]+')
+    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list 
 
 Update package list:
 
