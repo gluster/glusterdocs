@@ -9,7 +9,7 @@ compatibility issues.
 
 Once Gluster is upgraded, ensure that the op-version is also updated.
 
-    [root@~]#cat /var/lib/glusterd/vols/tv1/info  | grep ^op-version
+    [root@~]#gluster volume get  <volume name> cluster.op-version
 
 
 If this is not done automatically set op-version as below.
