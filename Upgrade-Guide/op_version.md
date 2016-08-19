@@ -2,6 +2,8 @@
 ###op-version
 op-version is the operating version of the Gluster which is running.
 
+op-version was introduced to ensure gluster bits running with different version of bits do not end up in a problem and backward compatibility issues can be tackled.
+
 After Gluster upgrade, it is advisable to have op-version updated.
 
 ###Updating op-version
