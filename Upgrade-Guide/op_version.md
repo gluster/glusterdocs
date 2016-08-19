@@ -2,20 +2,21 @@
 ###op-version
 op-version is the operating version of the Gluster which is running.
 
-After Gluster upgrade, it is important that op-version is updated in all peers to avoid any 
-compatibility issues.
+After Gluster upgrade, it is advisable to have op-version updated.
 
 ###Updating op-version
 
-Once Gluster is upgraded, ensure that the op-version is also updated.
+Current op-version can be queried as below:
 
     [root@~]#gluster volume get  <volume name> cluster.op-version
 
-
-If this is not done automatically set op-version as below.
+op-version can be updated as below.
 For example, after upgrading to glusterfs-3.7.1, set op-version as:
 
     [root@~]#gluster volume set all cluster.op-version 30701
+
+Note: 
+This is not mandatory, but advisable to have updated op-version if you wants to make use of latest features in the updated gluster.
 
 ### Understanding op-version
 
@@ -25,5 +26,3 @@ should allow for some gaps between two Y releases for backports of features
 in Z releases.
  
 So, for glusterfs-X.Y.Z, the op-version is X0Y0Z.
-
-
