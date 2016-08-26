@@ -18,5 +18,5 @@ For example, after upgrading to glusterfs-3.7.1, set op-version as:
     [root@~]#gluster volume set all cluster.op-version 30701
 
 Note: 
-This is not mandatory, but advisable to have updated op-version if you wants to make use of latest features in the updated gluster.
+This is not mandatory, but advisable to have updated op-version if you want to make use of latest features in the updated gluster.
 
