@@ -96,6 +96,7 @@ pages:
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
   - Upgrade to 3.6: Upgrade-Guide/upgrade_to_3.6.md
   - Upgrade to 3.7: Upgrade-Guide/Upgrade to 3.7.md
+  - Op-version: Upgrade-Guide/op_version.md
 - Release Notes:
   - index: release-notes/index.md
   - 3.7.1: release-notes/3.7.1.md
