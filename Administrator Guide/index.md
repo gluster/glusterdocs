@@ -75,8 +75,10 @@
 
 24.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
 
-25.  Appendices
+25.  [Events APIs](./Events APIs.md)
 
-	*  [Troubleshooting](./Troubleshooting.md)
+26.  Appendices
+
+    *  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)
