@@ -66,6 +66,7 @@ pages:
   - Trash for GlusterFS: Administrator Guide/Trash.md
   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
   - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
+  - Events APIs: Administrator Guide/Events APIs.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
