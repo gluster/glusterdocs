@@ -61,7 +61,7 @@ Gluster exports a fully POSIX compliant file system.
 
 ### RAID
 
-Redundant Array of Inexpensive Disks”, is a technology that provides
+Redundant Array of Inexpensive Disks (RAID) is a technology that provides
 increased storage reliability through redundancy, combining multiple
 low-cost, less-reliable disk drives components into a logical unit where
 all drives in the array are interdependent.
