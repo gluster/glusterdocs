@@ -41,7 +41,7 @@ replication service from site to another over Local Area Networks
 ### Metadata
 
 Metadata is defined as data providing information about one or more
-other pieces of data.There is no special metadata storage concept in
+other pieces of data. There is no special metadata storage concept in
 GlusterFS. The metadata is stored with the file data itself.
 
 ### Namespace
