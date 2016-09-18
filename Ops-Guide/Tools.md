@@ -4,10 +4,10 @@
 |----------------------|------------------------------------|-----------------|
 | Gerrit               | Code Review                        |  Temporary Racks|
 | Jenkins              | CI, build-verification-test        |  Temporary Racks|
-| Backups              | Website, Gerrit and Jenkins backup |  Temporary Racks|
-| Bugs WebUI           | A dashboard for all OPEN bugs      |  Temporary Racks|
+| Backups              | Website, Gerrit and Jenkins backup |  Rackspace|
+| Bugs WebUI           | A dashboard for all OPEN bugs      |  Rackspace|
 | Docs                 | Documentation content              | readthedocs.org |
-| download.gluster.org | Official download site of the binaries | Temporary Racks|
+| download.gluster.org | Official download site of the binaries | Rackspace|
 | Sonar                | Static analysis                    | Rackspace |
 | Salt-master          | Manage part of the infra           | Rackspace |
 | Web-Builder          | Cronjob building and deploying the website | Rackspace |
