@@ -46,7 +46,7 @@ Cppcheck is available in Fedora and EL's EPEL repo
 
 -   Clone GlusterFS code
 
-        git clone https://github.com/gluster/glusterfs) glusterfs
+        git clone https://github.com/gluster/glusterfs
 
 -   Run Cpp check
 
