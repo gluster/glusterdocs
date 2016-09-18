@@ -4,8 +4,8 @@ before proceeding with an upgrade of your deployment
 
 ### Pre-upgrade
 
-GlusterFS contains afrv2 implementation from 3.6.0 by default.If you are
-using GlusterFS replication ( \< 3.6) in your setup , please note that
+GlusterFS contains afrv2 implementation from 3.6.0 by default. If you are
+using GlusterFS replication ( \< 3.6) in your setup, please note that
 the new afrv2 implementation is only compatible with 3.6 or greater
 GlusterFS clients. If you are not updating your clients to GlusterFS
 version 3.6 along with your servers you would need to disable client
@@ -26,7 +26,7 @@ steps.
 **a) Scheduling a downtime**
 
 For this approach, schedule a downtime and prevent all your clients from
-accessing (umount your volumes, stop gluster Volumes..etc)the servers.
+accessing (umount your volumes, stop gluster Volumes..etc) the servers.
 
     1. Stop all glusterd, glusterfsd and glusterfs processes on your server.
     2. Install  GlusterFS 3.7.0
