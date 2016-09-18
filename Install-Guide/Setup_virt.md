@@ -23,10 +23,10 @@ Create or clone two VM’s, with the following setup on each:
 disk space at once.*
 
 -   2 NIC’s using VirtIO driver. The second NIC is not strictly
-    required, but can be used to demonstrate setting up a seperate
+    required, but can be used to demonstrate setting up a separate
     network for storage and management traffic.
 
-*Note: Attach each NIC to a seperate network.*
+*Note: Attach each NIC to a separate network.*
 
 Other notes: Make sure that if you clone the VM, that Gluster has not
 already been installed. Gluster generates a UUID to “fingerprint” each
