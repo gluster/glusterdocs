@@ -79,7 +79,6 @@ pages:
   - Backport Wishlist : Developer-guide/Backport-Wishlist.md
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
   - Jenkins Infrastructure : Developer-guide/Jenkins-Infrastructure.md
-  - Jenkins Manual Setup : Developer-guide/Jenkins-Manual-Setup.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
   - Bug Reporting Guidelines : Contributors-Guide/Bug-Reporting-Guidelines.md

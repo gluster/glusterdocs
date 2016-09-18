@@ -51,8 +51,5 @@ Testing
 -   [Our Jenkins Infrastructure](./Jenkins-Infrastructure.md) - A
     braindump of the Jenkins infrastructure we have in place for
     automated testing
--   [Manual steps for setting up a Jenkins slave VM in
-    Rackspace](./Jenkins-Manual-Setup.md) - Steps for setting up a slave
-    VM in Rackspace
 
 Other Gluster Developer documentation can be found [here](https://github.com/gluster/glusterfs/tree/master/doc/developer-guide)
