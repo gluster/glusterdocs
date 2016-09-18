@@ -25,11 +25,11 @@ mode. You can also use the gluster command remotely using SSH.
 
 -   To run commands directly:
 
-    ` # gluster peer `
+    `# gluster peer`
 
     For example:
 
-    ` # gluster peer status `
+    `# gluster peer status`
 
 -   To run the Gluster Console Manager in interactive mode
 
@@ -37,13 +37,13 @@ mode. You can also use the gluster command remotely using SSH.
 
     You can execute gluster commands from the Console Manager prompt:
 
-    ` gluster> `
+    `gluster>`
 
     For example, to view the status of the peer server:
 
-    \# `gluster `
+    `# gluster`
 
-    `gluster > peer status `
+    `gluster > peer status`
 
     Display the status of the peer.
 
