@@ -59,8 +59,8 @@ Cppcheck is available in Fedora and EL's EPEL repo
 ### Daily Runs
 
 We now have daily runs of various static source code analysis tools on
-the glusterfs sources. There are daily analyses of the master,
-release-3.6, and release-3.5 branches.
+the glusterfs sources. There are daily analyses of the master and 
+on currently supported branches.
 
 Results are posted at
 <http://download.gluster.org/pub/gluster/glusterfs/static-analysis/>
