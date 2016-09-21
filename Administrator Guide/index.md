@@ -33,10 +33,7 @@
 
 8.  [Brick Naming Conventions](./Brick Naming Conventions.md)
 
-9.  Geo Replication
-
-	*  [Geo Replication](./Geo Replication.md)
-	*  [Distributed Geo Replication](./Distributed Geo Replication.md)
+9.  [Geo Replication](./Geo Replication.md)
 	
 10.  [Managing Directory Quotas](./Directory Quota.md)
 
