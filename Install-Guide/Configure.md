@@ -19,23 +19,25 @@ execute the same command on all other servers.
 Notice that running \`gluster peer status\` from the second node shows
 that the first node has already been added.
 
-### Partition, Format and mount the bricks
+### Partition the disk
 
-Assuming you have a brick at /dev/sdb:
+Assuming you have a empty disk at /dev/sdb:
 
-		fdisk /dev/sdb and create a single partition
+		fdisk /dev/sdb 
+
+And then create a single XFS partition using fdisk
 
 ### Format the partition
 
 		mkfs.xfs -i size=512 /dev/sdb1
 
-### Mount the partition as a Gluster "brick"
-
-		mkdir -p /export/sdb1 && mount /dev/sdb1 /export/sdb1 && mkdir -p /export/sdb1/brick
-
 ### Add an entry to /etc/fstab
 
 		echo "/dev/sdb1 /export/sdb1 xfs defaults 0 0"  >> /etc/fstab
+
+### Mount the partition as a Gluster "brick"
+
+		mkdir -p /export/sdb1 && mount -a && mkdir -p /export/sdb1/brick
 
 #### Set up a Gluster volume
 
