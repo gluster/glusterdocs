@@ -4,10 +4,10 @@ This document explains the  heal info command available in gluster for monitorin
 
 # 1. Volume heal info:  
 Usage: `gluster volume heal <VOLNAME> info`  
-This lists all the files that need healing (and will be processed by the self-heal daemon). It prints either their path or their GFID.
-### Interpretting the output
+This list all the files that need healing (and will be processed by the self-heal daemon). It prints either their path or their GFID.
+### Interpreting the output
 All the files that are listed in the output of this command need healing to be
-done.The files listed may also be accompained by the following tags:
+done.The files listed may also be accompanied by the following tags:
 
 a) 'Is in split-brain'  
 A file in data or metadata split-brain will 
