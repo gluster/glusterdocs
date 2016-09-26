@@ -1,6 +1,14 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
+[PyCon India 2016](https://in.pycon.org/2016/) @ New Delhi, India
+------------------------------------------------------------------
+
+### September 25, 2016
+
+-   [Python bindings to GlusterFS - a distributed filesystem](https://speakerdeck.com/prashanthpai/python-bindings-to-glusterfs-a-distributed-filesystem) - Prashanth Pai
+
+
 [Openshift Meetup  India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, India 
 -------------------------------------------------------------------------------------------------------
 ### June 11, 2016
