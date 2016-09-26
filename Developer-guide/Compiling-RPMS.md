@@ -47,8 +47,8 @@ the "Common steps" section.
 
 ​1. Install EPEL first:
 
-		$ curl -OL http://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-		$ sudo yum -y install epel-release-5-4.noarch.rpm --nogpgcheck
+		$ curl -OL https://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+		$ sudo yum -y install epel-release-5-4.noarch.rpm
 
 ​2. Install the packages required only on CentOS 5.x:
 
@@ -65,7 +65,7 @@ the "Common steps" section.
 
 ​1. Install EPEL first:
 
-		$ sudo yum -y install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+		$ sudo yum -y install https://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 ​2. Install the packages required only on CentOS:
 
@@ -81,7 +81,7 @@ the "Common steps" section.
 
 ​1. Install EPEL first:
 
-		$ sudo yum -y install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+		$ sudo yum -y install https://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 ​2. Install the packages required only on RHEL:
 
@@ -115,7 +115,7 @@ installed.
 
 ​2. Clone the GlusterFS git repository
 
-		$ git clone git://git.gluster.org/glusterfs
+		$ git clone https://git.gluster.org/glusterfs
 		$ cd glusterfs
 
 ​3. Choose which branch to compile
