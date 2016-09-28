@@ -1,9 +1,9 @@
 ### Community Packages
 
-An **X** means packages are planned to be in the repository.
-A **—** means we have no plans to build the version for the repository.
-**d.g.o** means packages will (also) be provided on https://download.gluster.org
-**DNF/YUM** means the packages are included in the Fedora updates or updates-testing repos.
+An **X** means packages are planned to be in the repository.  
+A **—** means we have no plans to build the version for the repository.  
+**d.g.o** means packages will (also) be provided on https://download.gluster.org  
+**DNF/YUM** means the packages are included in the Fedora updates or updates-testing repos.  
 
 |                   |             |   3.9    |   3.8    |   3.7    |   3.6    |
 |-------------------|-------------|:--------:|:--------:|:--------:|:--------:|
@@ -34,3 +34,11 @@ A **—** means we have no plans to build the version for the repository.
 |                   |Leap 42.X    |    X     |    X     |    X     |    —     |
 |                   |SLES11       |    —     |    —     |    —     |    X     |
 |                   |SLES12       |    X     |    X     |    X     |    X     |
+
+
+	SLES12 	X
+	X 	X 	X
+
+¹ https://wiki.centos.org/SpecialInterestGroup/Storage
+² https://launchpad.net/~gluster
+³ https://build.opensuse.org/project/subprojects/home:kkeithleatredhat
