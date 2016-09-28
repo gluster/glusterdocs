@@ -19,6 +19,7 @@ pages:
   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
   - Deploying in AWS: Install-Guide/Setup_aws.md
   - Install: Install-Guide/Install.md
+  - Community Packages: Install-Guide/Community_Packages.md
   - Configure: Install-Guide/Configure.md
 - Presentations: presentations/index.md
 - Administrator Guide:

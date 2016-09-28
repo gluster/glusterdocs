@@ -5,6 +5,10 @@ glusterfs RDMA package to the installations. For RPM based systems, yum
 is used as the install method in order to satisfy external depencies
 such as compat-readline5
 
+###### Community Packages
+
+Packages are provided according to this [table](./Community_Packages.md).
+
 ###### For Debian
 
 Add the GPG key to apt:
