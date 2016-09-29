@@ -35,10 +35,6 @@ A **—** means we have no plans to build the version for the repository.
 |                   |SLES11       |    —     |    —     |    —     |    X     |
 |                   |SLES12       |    X     |    X     |    X     |    X     |
 
-
-	SLES12 	X
-	X 	X 	X
-
 ¹ https://wiki.centos.org/SpecialInterestGroup/Storage  
 ² https://launchpad.net/~gluster  
 ³ https://build.opensuse.org/project/subprojects/home:kkeithleatredhat  
