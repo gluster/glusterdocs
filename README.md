@@ -13,4 +13,4 @@ Then you need to run mkdocs from the root of that repository:
 
     $ mkdocs build
 
-The result will be in the site/ subdirectory, in HTML
+The result will be in the `site/` subdirectory, in HTML.

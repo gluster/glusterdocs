@@ -1,1 +1,3 @@
 site/
+env/
+.env
