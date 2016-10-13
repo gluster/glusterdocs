@@ -42,7 +42,6 @@ pages:
   - Logging: Administrator Guide/Logging.md
   - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
   - Geo Replication: Administrator Guide/Geo Replication.md
-  - Distributed Geo Replication: Administrator Guide/Distributed Geo Replication.md
   - Directory Quota: Administrator Guide/Directory Quota.md
   - Managing Snapshots: Administrator Guide/Managing Snapshots.md
   - Monitoring Workload: Administrator Guide/Monitoring Workload.md
