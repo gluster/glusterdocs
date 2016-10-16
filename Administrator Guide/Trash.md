@@ -1,6 +1,6 @@
 Trash Translator
 ================
-Trash translator will allow users to access deleted or truncated files. Every brick will maintain a hidden .trashcan directory , which will be used to store the files deleted or truncated from the respective brick .The aggreagate of all those .trashcan directory can be accesed from the mount point. In order to avoid name collisions , a time stamp is appended to the original file name while it is being moved to trash directory.
+Trash translator will allow users to access deleted or truncated files. Every brick will maintain a hidden .trashcan directory , which will be used to store the files deleted or truncated from the respective brick .The aggregate of all those .trashcan directory can be accessed from the mount point. In order to avoid name collisions , a time stamp is appended to the original file name while it is being moved to trash directory.
 
 ## Implications and Usage
 Apart from the primary use-case of accessing files deleted or truncated by user , the trash translator can be helpful for internal operations such as self-heal and rebalance. During self-heal and rebalance it is possible to lose crucial data. In those circumstances the trash translator can assist in recovery of the lost data. The trash translator is designed to intercept unlink, truncate and ftruncate fops, store a copy of the current file in the trash directory, and then perform the fop on the original file. For the internal operations , the files are stored under 'internal_op' folder inside trash directory.
@@ -17,7 +17,7 @@ Apart from the primary use-case of accessing files deleted or truncated by user 
 
 * ***gluster volume set &lt;VOLNAME> features.trash-max-filesize &lt;size>***
 
-    This command can be used to filter files entering trash directory based on their size. Files above trash_max_filesize are deleted/truncated directly. Value for size may be followed by mutliplicative suffixes as KB(=1024 bytes), MB(=1024\*1024 bytes) and GB(=1024\*1024\*1024 bytes). Default size is set to 5MB. Considering the fact that trash directory is consuming the glusterfs volume space, trash feature is implemented to function in such a way that it directly deletes/truncates files with size > 1GB even if this option is set to some value greater than 1GB.
+    This command can be used to filter files entering trash directory based on their size. Files above trash_max_filesize are deleted/truncated directly.Value for size may be followed by multiplicative suffixes as KB(=1024 bytes), MB(=1024\*1024 bytes) and GB(=1024\*1024\*1024 bytes). Default size is set to 5MB. Considering the fact that trash directory is consuming the glusterfs volume space, trash feature is implemented to function in such a way that it directly deletes/truncates files with size > 1GB even if this option is set to some value greater than 1GB.
 
 * ***gluster volume set &lt;VOLNAME> features.trash-eliminate-path &lt;path1> [ , &lt;path2> , . . . ]***
 
@@ -72,7 +72,7 @@ For example,
 
 ##### Points to be remembered
 * As soon as the volume is started, trash directory will be created inside the volume and will be visible through mount. Disabling trash will not have any impact on its visibilty from the mount.
-* Eventhough deletion of trash-directory is not permitted, currently residing trash contents will be removed on issuing delete on it and only an empty trash-directory exists.
+* Even though deletion of trash-directory is not permitted, currently residing trash contents will be removed on issuing delete on it and only an empty trash-directory exists.
 
 ##### Known issue
 Since trash translator resides on the server side higher translator like AFR, DHT are unaware of rename and truncate operations being done by this translator which eventually moves the files to trash directory. Unless and until a complete-path-based lookup comes on trashed files, those may not be visible from the mount.

@@ -48,7 +48,7 @@ An user should have the ability to check the validity of the files before applyi
 
 2. The files `/var/lib/glusterd/nfs/export` and `/var/lib/glusterd/nfs/netgroup` should be created before setting the `nfs.exports-auth-enable` option in every node in Trusted Storage Pool.
 
-3. These files are handled mannually by the users. So that, their contents can be  different among the gluster nfs servers across Trusted Storage Pool . i.e  it is possible to have different authenticate mechanism for the gluster NFS servers in the same cluster.
+3. These files are handled manually by the users. So that, their contents can be  different among the gluster nfs servers across Trusted Storage Pool . i.e  it is possible to have different authenticate mechanism for the gluster NFS servers in the same cluster.
 
 4. Do not mixup this feature and authentication using `nfs.rpc-auth-allow`, `nfs.export-dir` which may result in inconsistency.
 

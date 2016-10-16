@@ -42,7 +42,7 @@ Gluster.
 -   The term **Global Namespace** is a fancy way of saying a Gluster
     volume
 -   A **Gluster volume** is a collection of one or more bricks (of
-    course, typically this is two or more). This is analagous to
+    course, typically this is two or more). This is analogous to
     /etc/exports entries for NFS.
 -   **GNFS** and **kNFS**. GNFS is how we refer to our inline NFS
     server. kNFS stands for kernel NFS, or, as most people would say,

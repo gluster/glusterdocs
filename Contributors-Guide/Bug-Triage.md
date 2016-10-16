@@ -26,7 +26,7 @@ developers will be able to assist the triagers, answer questions and
 suggest approaches to debug and data to gather. Over time, triagers get
 more experienced and will rely less on developers.
 
-**Bug triage can be summarised as below points:**
+**Bug triage can be summarized as below points:**
 
 -   Is there enough information in the bug description?
 -   Is it a duplicate bug?

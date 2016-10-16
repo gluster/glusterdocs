@@ -61,7 +61,7 @@ $ionice -c 2 -p <pid of gfind_missing_files.sh>
 
 2. We do not recommend interrupting the tool when it is running
    (e.g. by doing CTRL^C). It is better to wait for the tool to finish
-    execution. In case it is interupted, manually unmount the Slave Volume.
+    execution. In case it is interrupted, manually unmount the Slave Volume.
 ```sh
     umount <MOUNT_POINT>
 ```

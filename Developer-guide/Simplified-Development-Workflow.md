@@ -8,7 +8,7 @@ accepted into the GlusterFS source.
 Visit [Development Work Flow](./Development-Workflow.md) a more
 detailed description of the workflow.
 
-Initial preperation
+Initial preparation
 -------------------
 
 The GlusterFS development workflow revolves around

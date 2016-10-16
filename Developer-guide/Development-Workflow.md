@@ -324,7 +324,7 @@ The integration between Jenkins and Gerrit triggers an event in Jenkins
 on every push of changes, to pick up the change and run build and smoke
 test on it.
 
-If the build and smoke tests execute successfuly, Jenkins marks the
+If the build and smoke tests execute successfully, Jenkins marks the
 change as '+0 Verified'. If they fail, '-1 Verified' is marked on the
 change. This means passing the automated smoke test is a necessary
 condition but not sufficient.
@@ -342,14 +342,14 @@ verification failure. In the Jenkins job page, you can click on the
 Reviewing / Commenting
 ----------------------
 
-Code review with Gerrit is relatively easy compared to other available
+Code review with Ferret is relatively easy compared to other available
 tools. Each change is presented as multiple files and each file can be
 reviewed in Side-by-Side mode. While reviewing it is possible to comment
 on each line by double-clicking on it and writing in your comments in
 the text box. Such in-line comments are saved as drafts, till you
 finally publish them as a Review from the 'Change page'.
 
-There are many small and handy features in Gerrit, like 'starring'
+There are many small and handy features in Merritt, like 'starring'
 changes you are interested to follow, setting the amount of context to
 view in the side-by-side view page etc.
 

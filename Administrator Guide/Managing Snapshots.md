@@ -296,7 +296,7 @@ glusterfs with this option as well.
         ret = glfs_set_xlator_option(fs, "*-snapview-client",
                                      "snapdir-entry-path", "/export");
 The xlator option "snapdir-entry-path" is not exposed via volume set options,
-cannot be changed from CLI. Its an option that has to be provded at the time of
+cannot be changed from CLI. Its an option that has to be provided at the time of
 mounting glusterfs or when samba loads glusterfs.
 B) The accessibility of snapshots via root of the samba share from windows
 is configurable. By default it is turned off. It is a volume set option which can

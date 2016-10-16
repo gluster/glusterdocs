@@ -187,7 +187,7 @@ Glossary
     clusters.
 
 **Rebalance**
-:   A process of fixing layout and resdistributing data in a volume when a
+:   A process of fixing layout and redistributing data in a volume when a
     brick is added or removed.
 
 **RRDNS**
@@ -210,7 +210,7 @@ Glossary
 **Split-brain**
 :   This is a situation where data on two or more bricks in a replicated
     volume start to diverge in terms of content or metadata. In this state,
-    one cannot determine programitically which set of data is "right" and
+    one cannot determine programmatically which set of data is "right" and
     which is "wrong".
 
 **Translator**

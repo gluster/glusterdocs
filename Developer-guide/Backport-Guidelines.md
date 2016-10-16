@@ -46,7 +46,7 @@ particular release-branch
    one is to specify the branch to which this particular change needs to be
 cherry-picked and second one for modifying the already existing commit message.
 
-3. Start entering the branch name in the corresponsing field and you can select
+3. Start entering the branch name in the corresponding field and you can select
    the required branch from the list of available branches.
 
 4. Make sure that you only edit the following from the commit message:

@@ -24,7 +24,9 @@ Note:- Please refer the design doc for more information on these key values.
 * Due to some outstanding issues, it is recommended to turn off the performance translators in order to have the complete functionality of mandatory-locks when volume is configured in any one of the above described mandatory-locking modes. Please see the 'Known issue' section below for more details.
 
 ##### Known issues
-* Since the whole logic of mandatory-locks are implemented within the locks translator loaded at the server side, early success returned to fops like open, read, write to upper/application layer by preformance translators residing at the client side will impact the intended fucntionality of mandatory-locks. One such issue is being tracked in the following bugzilla report:
+* Since the whole logic of mandatory-locks are implemented within the locks
+* translator loaded at the server side, early success returned to fops like
+* open, read, write to upper/application layer by performance translators residing at the client side will impact the intended functionality of mandatory-locks. One such issue is being tracked in the following bugzilla report:
 
     <https://bugzilla.redhat.com/show_bug.cgi?id=1194546>
 

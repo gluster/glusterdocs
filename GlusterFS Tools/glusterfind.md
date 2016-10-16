@@ -1,8 +1,8 @@
 # glusterfind - A tool to find Modified files/dirs
 
-A tool which helps to get full/incremental list of files/dirs from GlusterFS Volume using Changelog/Find. In Gluster volumes, detecting the modified files is challenging. Readdir on a directory leads to multiple network calls since files in a directory are distributed accross nodes.
+A tool which helps to get full/incremental list of files/dirs from GlusterFS Volume using Changelog/Find. In Gluster volumes, detecting the modified files is challenging. Readdir on a directory leads to multiple network calls since files in a directory are distributed across nodes.
 
-This tool should be run in one of the node, which will get Volume info and gets the list of nodes and brick paths. For each brick, it spawns the process and runs crawler command in respective node. Crawler will be run in brick FS(xfs, ext4 etc) and not in Gluster Mount. Crawler generates output file with the list of files modified after last run or after the session creation.
+This tool should be run in one of the node, which will get Volume info and gets the list of nodes and brick paths. For each brick, it spawns the process and runs crawler command in respective node. Crawler will be run in brick S(xfs, ext4 etc) and not in Gluster Mount. Crawler generates output file with the list of files modified after last run or after the session creation.
 
 ## Session Management
 
