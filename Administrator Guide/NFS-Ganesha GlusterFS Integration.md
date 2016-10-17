@@ -54,9 +54,7 @@ NFS_Core_Param {
 
 #### step 1 :
 
-To export any GlusterFS volume or directory inside volume, create the EXPORT
-block for each of those entries in a export configuration  file. The following
-parameters are required to export any entry.
+To export any GlusterFS volume or directory inside volume, create the EXPORTblock for each of those entries in a export configuration  file. The following parameters are required to export any entry.
 - *#cat export.conf*
 
 ```sh

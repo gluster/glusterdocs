@@ -342,14 +342,14 @@ verification failure. In the Jenkins job page, you can click on the
 Reviewing / Commenting
 ----------------------
 
-Code review with Ferret is relatively easy compared to other available
+Code review with Gerrit is relatively easy compared to other available
 tools. Each change is presented as multiple files and each file can be
 reviewed in Side-by-Side mode. While reviewing it is possible to comment
 on each line by double-clicking on it and writing in your comments in
 the text box. Such in-line comments are saved as drafts, till you
 finally publish them as a Review from the 'Change page'.
 
-There are many small and handy features in Merritt, like 'starring'
+There are many small and handy features in Gerrit, like 'starring'
 changes you are interested to follow, setting the amount of context to
 view in the side-by-side view page etc.
 
