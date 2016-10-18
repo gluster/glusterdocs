@@ -20,7 +20,7 @@ services available.
 The guiding principle for the assessment has been the need to migrate services
 to "Software-as-a-Service" models and providers wherever applicable and deemed
 fit. To illustrate this specific directive - the documentation/docs aspect of
-Gluster.org has been continously migrating artifacts to readthedocs.org while
+Gluster.org has been continuously migrating artifacts to readthedocs.org while
 focusing on simple integration with the website. The website itself has been
 put within the Gluster.org Github.com account to enable ease of maintenance and
 sustainability.

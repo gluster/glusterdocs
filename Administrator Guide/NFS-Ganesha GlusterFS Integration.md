@@ -40,7 +40,7 @@ NIV_DEBUG is the log level.
 - By default exportlist for the server will be Null
 
 ```sh
-Note : include following paremeters in ganesha configuration file for exporting gluster volumes
+Note : include following parameters in ganesha configuration file for exporting gluster volumes
 NFS_Core_Param {
         #Use supplied name other tha IP In NSM operations
         NSM_Use_Caller_Name = true;
@@ -54,7 +54,7 @@ NFS_Core_Param {
 
 #### step 1 :
 
-To export any GlusterFS volume or directory inside volume, create the EXPORT block for each of those entries in a export configuration  file. The following paremeters are required to export any entry.
+To export any GlusterFS volume or directory inside volume, create the EXPORT block for each of those entries in a export configuration  file. The following parameters are required to export any entry.
 - *#cat export.conf*
 
 ```sh
@@ -241,7 +241,7 @@ GLUSTER
 
    - Current architecture supports only single MDS and mulitple DS. The server with which client mounts will act as MDS and all severs including MDS can act as DS.
 
-   - Currently HA is not supported for pNFS(more specfically MDS). Although it is configurable, but consistency is guaranteed across the cluster.
+   - Currently HA is not supported for pNFS(more specifically MDS). Although it is configurable, but consistency is guaranteed across the cluster.
 
    - If any of the DS goes down, then MDS will handle those I/O's.
 
@@ -249,5 +249,5 @@ GLUSTER
 
    - pNFS support is only tested with distributed, replicated or distribute-replicate volumes
 
-   - It is tested and verfied with RHEL 6.5 , fedora 20, fedora 21 nfs clients. It is always better to use latest nfs-clients
+   - It is tested and verified with RHEL 6.5 , fedora 20, fedora 21 nfs clients. It is always better to use latest nfs-clients
 

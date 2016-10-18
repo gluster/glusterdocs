@@ -14,7 +14,7 @@ handled.
 ## tl;dr
 
 - if users belong to more than 90 groups, the brick processes need to resolve
-  the secondary/auxilary groups with the `server.manage-gids` volume option
+  the secondary/auxiliary groups with the `server.manage-gids` volume option
 - the linux kernels `/proc` filesystem provides up to 32 groups of a running
   process, if this is not sufficient the mount option `resolve-gids` can be
   used

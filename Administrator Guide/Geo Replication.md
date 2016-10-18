@@ -278,7 +278,7 @@ size of master, the command will throw error message. In such cases
 
 In use cases where the rsa-keys of nodes in master volume is
 distributed to slave nodes through an external agent and following
-slave side verifications are taken care by the external agent, then
+slave side verifications are taken care of by the external agent, then
 
 - if ssh port 22 or custom port is open in slave
 - has proper passwordless ssh login setup

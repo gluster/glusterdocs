@@ -104,7 +104,7 @@ command:
 
 Permissions must be a combination of the characters r (read), w (write), and x (execute). Specify the ACL entry_type as described below, separating multiple entry types with commas.
 
-u:*user_name:permissons*
+u:*user_name:permissions*
     Sets the access ACLs for a user. Specify the user name, or the UID.
 
 g:*group_name:permissions*

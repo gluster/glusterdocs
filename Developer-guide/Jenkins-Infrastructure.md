@@ -25,7 +25,7 @@ In that list we have:
 -   bulk\*.cloud.gluster.org\
 
     -  Temporary VM's used for running bulk regression tests on, for
-        analysing our spurious regression failure problem
+        analyzing our spurious regression failure problem
     -  Setup and maintained by Justin Clift
 
 -   freebsd0.cloud.gluster.org\

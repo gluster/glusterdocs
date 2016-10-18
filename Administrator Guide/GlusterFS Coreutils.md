@@ -5,7 +5,7 @@ Operations include things like getting files from the server to the local machin
 
 ## Installation
 #### Install GlusterFS
-For information on prerequsities, instructions and configuration of GlusterFS, see Installation Guides from <http://gluster.readthedocs.org/en/latest/>.
+For information on prerequisites, instructions and configuration of GlusterFS, see Installation Guides from <http://gluster.readthedocs.org/en/latest/>.
 
 #### Install glusterfs-coreutils
 For now glusterfs-coreutils will be packaged only as rpm. Other package formats will be supported very soon.

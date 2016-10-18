@@ -62,7 +62,7 @@
 
 19.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
 
-20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Intergration.md)
+20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Integration.md)
 
 21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 

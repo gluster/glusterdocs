@@ -1,6 +1,6 @@
-This howto has been tested on Ubuntu 13.10 in a clean, up to date
+This how-to has been tested on Ubuntu 13.10 in a clean, up to date
 environment. Older Ubuntu distros required some hacks if I remembered
-rightly. Other debian based distros should be able to follow this
+rightly. Other Debian based distros should be able to follow this
 adjusting for dependencies. Please update this if you get it working on
 another distro.
 
@@ -11,10 +11,10 @@ Make the first stab at getting qemu dependencies
         apt-get  build-dep qemu 
 
 This next command grabs all the dependencies specified in the debian
-control file as asked for from upstream debian sid You can look into the
+control file as asked for from upstream Debian sid You can look into the
 options specified there and adjust to taste.
 
-        # get almost all the rest and the tools to work up the debian magic
+        # get almost all the rest and the tools to work up the Debian magic
         apt-get install devscripts quilt libiscsi-dev libusbredirparser-dev libssh2-1-dev libvdeplug-dev libjpeg-dev glusterfs*
 
 we need a newer version of libseccomp for Ubuntu 13.10

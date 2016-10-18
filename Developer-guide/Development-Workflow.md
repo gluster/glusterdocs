@@ -324,7 +324,7 @@ The integration between Jenkins and Gerrit triggers an event in Jenkins
 on every push of changes, to pick up the change and run build and smoke
 test on it.
 
-If the build and smoke tests execute successfuly, Jenkins marks the
+If the build and smoke tests execute successfully, Jenkins marks the
 change as '+0 Verified'. If they fail, '-1 Verified' is marked on the
 change. This means passing the automated smoke test is a necessary
 condition but not sufficient.
