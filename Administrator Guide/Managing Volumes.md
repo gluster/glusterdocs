@@ -32,7 +32,7 @@ available.
 
 Tune volume options using the following command:
 
-    # gluster volume set
+`# gluster volume set`
 
 For example, to specify the performance cache size for test-volume:
 
@@ -86,7 +86,7 @@ nfs.disable | Turn-off volume being exported by NFS | Off | On/Off
 performance.write-behind-window-size | Size of the per-file write-behind buffer. | 1MB | Write-behind cache size
 performance.io-thread-count | The number of threads in IO threads translator. | 16 | 0-65
 performance.flush-behind | If this option is set ON, instructs write-behind translator to perform flush in background, by returning success (or any errors, if any of previous writes were failed) to application even before flush is sent to backend filesystem. | On | On/Off
-performance.cache-max-file-size | Sets the maximum file size cached by the io-cache translator. Can use the normal size descriptors of KB, MB, GB,TB or PB (for example, 6GB). Maximum size uint64. | 2 \^ 64 -1 bytes | size in bytes
+performance.cache-max-file-size | Sets the maximum file size cached by the io-cache translator. Can use the normal size descriptors of KB, MB, GB,TB or PB (for example, 6GB). Maximum size uint64. | 2 ^ 64 -1 bytes | size in bytes
 performance.cache-min-file-size | Sets the minimum file size cached by the io-cache translator. Values same as "max" above | 0B | size in bytes
 performance.cache-refresh-timeout | The cached data for a file will be retained till 'cache-refresh-timeout' seconds, after which data re-validation is performed. | 1s | 0-61
 performance.cache-size | Size of the read cache. | 32 MB |  size in bytes
@@ -97,7 +97,7 @@ storage.health-check-interval | Number of seconds between health-checks done on 
 
 You can view the changed volume options using command:
 
-     # gluster volume info
+`# gluster volume info`
 
 <a name="configuring-transport-types-for-a-volume"></a>
 ##Configuring Transport Types for a Volume
@@ -109,19 +109,19 @@ To change the supported transport types of a volume, follow the procedure:
 
 1.  Unmount the volume on all the clients using the following command:
 
-        # umount mount-point
+    `# umount mount-point`
 
 2.  Stop the volumes using the following command:
 
-        # gluster volume stop volname
+    `# gluster volume stop volname`
 
 3.  Change the transport type. For example, to enable both tcp and rdma execute the followimg command:
 
-        # gluster volume set volname config.transport tcp,rdma OR tcp OR rdma
+    `# gluster volume set volname config.transport tcp,rdma OR tcp OR rdma`
 
 4.  Mount the volume on all the clients. For example, to mount using rdma transport, use the following command:
 
-        # mount -t glusterfs -o transport=rdma server1:/test-volume /mnt/glusterfs
+    `# mount -t glusterfs -o transport=rdma server1:/test-volume /mnt/glusterfs`
 
 <a name="expanding-volumes"></a>
 ##Expanding Volumes
@@ -210,7 +210,7 @@ set).
 
 1.  Remove the brick using the following command:
 
-    `# gluster volume remove-brick ` `start`
+    `# gluster volume remove-brick  start`
 
     For example, to remove server2:/exp2:
 
@@ -265,7 +265,7 @@ set).
 
 To replace a brick on a distribute only volume, user needs to remove the brick using remove-brick. Then add a new-brick and rebalance the cluster.
 
-NOTE: Replacing a brick using 'replace-brick' command in gluster is supported only for distributed-replicate or *pure* replicate volumes.
+> NOTE: Replacing a brick using 'replace-brick' command in gluster is supported only for distributed-replicate or *pure* replicate volumes.
 
 Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 
@@ -285,17 +285,17 @@ Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 2.  Here are the files that are present on the mount:
 
 
-        ⚡ ls
+        # ls
         1  10  2  3  4  5  6  7  8  9
 
 3.  Add the new brick - Server1:/home/gfs/r2_2 now:
 
-        ⚡ gluster volume add-brick r2 Server1:/home/gfs/r2_2
+        # gluster volume add-brick r2 Server1:/home/gfs/r2_2
         volume add-brick: success
 
 4.  Start remove-brick using the following command:
 
-        ⚡ gluster volume remove-brick r2 Server1:/home/gfs/r2_1 start
+        # gluster volume remove-brick r2 Server1:/home/gfs/r2_1 start
         volume remove-brick start: success
         ID: fba0a488-21a4-42b7-8a41-b27ebaa8e5f4
 
@@ -303,7 +303,7 @@ Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 shows the following output:
 
 
-        ⚡ gluster volume remove-brick r2 Server1:/home/gfs/r2_1 status
+        # gluster volume remove-brick r2 Server1:/home/gfs/r2_1 status
                                         Node Rebalanced-files          size       scanned      failures       skipped               status   run time in secs
                                    ---------      -----------   -----------   -----------   -----------   -----------         ------------     --------------
                                    localhost                5       20Bytes            15             0             0            completed               0.00
@@ -311,7 +311,7 @@ shows the following output:
 
 6.  Now we can safely remove the old brick, so commit the changes:
 
-        ⚡ gluster volume remove-brick r2 Server1:/home/gfs/r2_1 commit
+        # gluster volume remove-brick r2 Server1:/home/gfs/r2_1 commit
         Removing brick(s) can result in data loss. Do you want to Continue? (y/n) y
         volume remove-brick commit: success
 
@@ -329,7 +329,7 @@ shows the following output:
 
 8.  Check the contents of the mount:
 
-        ⚡ ls
+        # ls
         1  10  2  3  4  5  6  7  8  9
 
 **Replacing brick in Replicate/Distributed Replicate volumes**
@@ -357,7 +357,7 @@ Steps:
 
     -  Get the pid of the brick by executing 'gluster volume <volname> status'
 
-            ⚡ gluster volume status
+            # gluster volume status
             Status of volume: r2
             Gluster process                        Port    Online    Pid
             ------------------------------------------------------------------------------
@@ -368,22 +368,22 @@ Steps:
 
     -  Login to the machine where the brick is running and kill the brick.
 
-            ⚡ kill -15 5342
+            # kill -15 5342
 
     -  Confirm that the brick is not running anymore and the other bricks are running fine.
 
-            ⚡ gluster volume status
+            # gluster volume status
             Status of volume: r2
             Gluster process                        Port    Online    Pid
             ------------------------------------------------------------------------------
-            Brick Server1:/home/gfs/r2_0            N/A    N    5342 <<---- brick     is not running, others are running fine.
+            Brick Server1:/home/gfs/r2_0            N/A      N    5342 <<---- brick is not running, others are running fine.
             Brick Server2:/home/gfs/r2_1            49153    Y    5354
             Brick Server1:/home/gfs/r2_2            49154    Y    5365
             Brick Server2:/home/gfs/r2_3            49155    Y    5376
 
 4.  Using the gluster volume fuse mount (In this example: `/mnt/r2`) set up metadata so that data will be synced to new brick (In this case it is from `Server1:/home/gfs/r2_1` to `Server1:/home/gfs/r2_5`)
 
-    -  Create a directory on the mount point that doesn't already exist. Then delete that directory, do the same for metadata changelog by doing setfattr. This operation marks the pending changelog which will tell self-heal damon/mounts to perform self-heal from /home/gfs/r2_1 to /home/gfs/r2_5.
+    -  Create a directory on the mount point that doesn't already exist. Then delete that directory, do the same for metadata changelog by doing setfattr. This operation marks the pending changelog which will tell self-heal damon/mounts to perform self-heal from `/home/gfs/r2_1` to `/home/gfs/r2_5`.
 
             mkdir /mnt/r2/<name-of-nonexistent-dir>
             rmdir /mnt/r2/<name-of-nonexistent-dir>
@@ -395,7 +395,7 @@ Steps:
             getfattr -d -m. -e hex /home/gfs/r2_1
             # file: home/gfs/r2_1
             security.selinux=0x756e636f6e66696e65645f753a6f626a6563745f723a66696c655f743a733000
-            trusted.afr.r2-client-0=0x000000000000000300000002 <<---- xattrs are marked     from source brick Server2:/home/gfs/r2_1
+            trusted.afr.r2-client-0=0x000000000000000300000002 <<---- xattrs are marked from source brick Server2:/home/gfs/r2_1
             trusted.afr.r2-client-1=0x000000000000000000000000
             trusted.gfid=0x00000000000000000000000000000001
             trusted.glusterfs.dht=0x0000000100000000000000007ffffffe
@@ -403,7 +403,7 @@ Steps:
 
 5.  Volume heal info will show that '/' needs healing.(There could be more entries based on the work load. But '/' must exist)
 
-            ⚡ gluster volume heal r2 info
+            # gluster volume heal r2 info
             Brick Server1:/home/gfs/r2_0
             Status: Transport endpoint is not connected
 
@@ -421,24 +421,24 @@ Steps:
 
     -  Execute replace-brick command
 
-            ⚡ gluster volume replace-brick r2 Server1:/home/gfs/r2_0 Server1:/home/gfs/r2_5 commit force
+            # gluster volume replace-brick r2 Server1:/home/gfs/r2_0 Server1:/home/gfs/r2_5 commit force
             volume replace-brick: success: replace-brick commit successful
 
     -  Check that the new brick is now online
 
-            ⚡ gluster volume status
+            # gluster volume status
             Status of volume: r2
             Gluster process                        Port    Online    Pid
             ------------------------------------------------------------------------------
-            Brick Server1:/home/gfs/r2_5            49156    Y    5731 <<<---- new     brick is online
+            Brick Server1:/home/gfs/r2_5            49156    Y    5731 <<<---- new brick is online
             Brick Server2:/home/gfs/r2_1            49153    Y    5354
             Brick Server1:/home/gfs/r2_2            49154    Y    5365
             Brick Server2:/home/gfs/r2_3            49155    Y    5376
 
-    -  Users can track the progress of self-heal using: "gluster volume heal <volname> info".
+    -  Users can track the progress of self-heal using: `gluster volume heal [volname] info`.
       Once self-heal completes the changelogs will be removed.
 
-            ⚡ getfattr -d -m. -e hex /home/gfs/r2_1
+            # getfattr -d -m. -e hex /home/gfs/r2_1
             getfattr: Removing leading '/' from absolute path names
             # file: home/gfs/r2_1
             security.selinux=0x756e636f6e66696e65645f753a6f626a6563745f723a66696c655f743a733000
@@ -448,8 +448,9 @@ Steps:
             trusted.glusterfs.dht=0x0000000100000000000000007ffffffe
             trusted.glusterfs.volume-id=0xde822e25ebd049ea83bfaa3c4be2b440
 
-    - gluster volume heal <volname> info will show that no heal is required.
-            ⚡ gluster volume heal r2 info
+    -  `# gluster volume heal [volname] info` will show that no heal is required.
+
+            # gluster volume heal r2 info
             Brick Server1:/home/gfs/r2_5
             Number of entries: 0
 
@@ -486,8 +487,8 @@ storage environment, using the following common scenarios:
 Fixing the layout is necessary because the layout structure is static
 for a given directory. In a scenario where new bricks have been added to
 the existing volume, newly created files in existing directories will
-still be distributed only among the old bricks. The
-`# gluster volume rebalance fix-layout start `command will fix the
+still be distributed only among the old bricks. The command
+`gluster volume rebalance fix-layout  start` will fix the
 layout information so that the files can also go to newly added nodes.
 When this command is issued, all the file stat information which is
 already cached will get revalidated.
@@ -500,7 +501,7 @@ share of files.
 
 A fix-layout rebalance will only fix the layout changes and does not
 migrate data. If you want to migrate the existing data,
-use`# gluster volume rebalance  start ` command to rebalance data among
+use `gluster volume rebalance  start` command to rebalance data among
 the servers.
 
 **To rebalance a volume to fix layout changes**
@@ -533,7 +534,7 @@ among the servers.
         # gluster volume rebalance test-volume start
         Starting rebalancing on volume test-volume has been successful
 
--   Start the migration operation forcefully on any one of the server
+-   Start the migration operation forcefully on any one of the servers
     using the following command:
 
     `# gluster volume rebalance start force`
@@ -673,10 +674,10 @@ volume or only on the files which need *healing*.
     *healing*:
 
         # gluster volume heal test-volume info
-        Brick :/gfs/test-volume_0
+        Brick server1:/gfs/test-volume_0
         Number of entries: 0
 
-        Brick :/gfs/test-volume_1
+        Brick server2:/gfs/test-volume_1
         Number of entries: 101
         /95.txt
         /32.txt
@@ -697,10 +698,10 @@ volume or only on the files which need *healing*.
     self-healed:
 
         # gluster volume heal test-volume info healed
-        Brick :/gfs/test-volume_0
+        Brick Server1:/gfs/test-volume_0
         Number of entries: 0
 
-        Brick :/gfs/test-volume_1
+        Brick Server2:/gfs/test-volume_1
         Number of entries: 69
         /99.txt
         /93.txt
@@ -725,10 +726,10 @@ volume or only on the files which need *healing*.
     self-healed:
 
         # gluster volume heal test-volume info failed
-        Brick :/gfs/test-volume_0
+        Brick Server1:/gfs/test-volume_0
         Number of entries: 0
 
-        Brick server2:/gfs/test-volume_3
+        Brick Server2:/gfs/test-volume_3
         Number of entries: 72
         /90.txt
         /95.txt
@@ -747,14 +748,14 @@ volume or only on the files which need *healing*.
     split-brain state:
 
         # gluster volume heal test-volume info split-brain
-        Brick server1:/gfs/test-volume_2
+        Brick Server1:/gfs/test-volume_2
         Number of entries: 12
         /83.txt
         /28.txt
         /69.txt
         ...
 
-        Brick :/gfs/test-volume_2
+        Brick Server2:/gfs/test-volume_3
         Number of entries: 12
         /83.txt
         /28.txt
@@ -782,14 +783,14 @@ NUFA should be enabled before creating any data in the volume.
 
 Use the following command to enable NUFA:
 
-     # gluster volume set VOLNAME cluster.nufa enable on
+`# gluster volume set VOLNAME cluster.nufa enable on`
 
 **Important**
 
 NUFA is supported under the following conditions:
 
 - Volumes with only with one brick per server.
-- For use with a FUSE client.NUFA is not supported with NFS or SMB.
+- For use with a FUSE client. **NUFA is not supported with NFS or SMB**.
 - A client that is mounting a NUFA-enabled volume must be present within the trusted storage pool.
 
 The NUFA scheduler also exists, for use with the Unify translator; see below.
@@ -827,46 +828,41 @@ sub-commands.
 
 1. To enable bitrot detection for a given volume <VOLNAME>:
 
-        # gluster volume bitrot <VOLNAME> enable
+    `# gluster volume bitrot <VOLNAME> enable`
 
-   and similarly to disable bitrot use:
+    and similarly to disable bitrot use:
 
-        # gluster volume bitrot <VOLNAME> disable
+    `# gluster volume bitrot <VOLNAME> disable`
 
-NOTE: Enabling bitrot spanws the Signer & Scrubber daemon per node. Signer is responsible
+> NOTE: Enabling bitrot spanws the Signer & Scrubber daemon per node. Signer is responsible
       for signing (calculating checksum for each file) an object and scrubber verifies the
       calculated checksum against the objects data.
 
 2. Scrubber daemon has three (3) throttling modes that adjusts the rate at which objects
-   are verified.
+   are verified. 
 
         # volume bitrot <VOLNAME> scrub-throttle lazy
-
         # volume bitrot <VOLNAME> scrub-throttle normal
-
         # volume bitrot <VOLNAME> scrub-throttle aggressive
 
 3. By default scrubber scrubs the filesystem biweekly. It's possible to tune it to scrub
    based on predefined frequency such as monthly, etc. This can be done as shown below:
 
         # volume bitrot <VOLNAME> scrub-frequency daily
-
         # volume bitrot <VOLNAME> scrub-frequency weekly
-
         # volume bitrot <VOLNAME> scrub-frequency biweekly
-
         # volume bitrot <VOLNAME> scrub-frequency monthly
 
-NOTE: Daily scrubbing would not be available with GA release.
+> NOTE: Daily scrubbing would not be available with GA release.
 
 4. Scrubber daemon can be paused and later resumed when required. This can be done as
    shown below:
 
-        # volume bitrot <VOLNAME> scrub pause
+    `# volume bitrot <VOLNAME> scrub pause`
 
-and to resume scrubbing
+   and to resume scrubbing:
 
-        # volume bitrot <VOLNAME> scrub resume
+    `# volume bitrot <VOLNAME> scrub resume`
 
-NOTE: Signing cannot be paused (and resumed) and would always be active as long as
+> NOTE: Signing cannot be paused (and resumed) and would always be active as long as
       bitrot is enabled for that particular volume.
