@@ -259,9 +259,11 @@ high-availability and high-reliability are critical.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node replicated volume with a more that one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> replica 4 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
@@ -398,9 +400,11 @@ environments.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
@@ -443,10 +447,11 @@ Map Reduce workloads.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
-
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
 ## Creating Striped Replicated Volumes
@@ -494,10 +499,11 @@ of this volume type is supported only for Map Reduce workloads.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.```
-
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
 ## Creating Dispersed Volumes
@@ -611,12 +617,14 @@ a RMW cycle for many writes (of course this always depends on the use case).
 
     > - GlusterFS will fail to create a dispersed volume if more than one brick of a disperse set is present on the same peer.
 
-    > ```
+    > 
+    ```
     # gluster volume create <volname> disperse 3 server1:/brick{1..3}
     volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    Do you still want to continue creating the volume? (y/n)```
-
+    Do you still want to continue creating the volume? (y/n)
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
+
 
 ## Creating Distributed Dispersed Volumes
 
@@ -648,12 +656,14 @@ volumes, but using dispersed subvolumes instead of replicated ones.
 
     > - GlusterFS will fail to create a distributed dispersed volume if more than one brick of a disperse set is present on the same peer.
 
-    > ```
+    > 
+    ```
     # gluster volume create <volname> disperse 3 server1:/brick{1..6}
     volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    Do you still want to continue creating the volume? (y/n)```
-
+    Do you still want to continue creating the volume? (y/n)
+    ```
     > Use the `force` option at the end of command if you want to create the volume in this case.
+
 
 ## Starting Volumes
 
