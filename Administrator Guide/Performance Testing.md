@@ -162,18 +162,20 @@ within that host, and iozone-pathname is the full pathname of the iozone
 executable to use on that host. Be sure that every target host can
 resolve the hostname of host where the iozone command was run. All
 target hosts must permit password-less ssh access from the host running
-the command. For example:
+the command. 
+
+For example: (Here, my-ip-address refers to the machine from where the iozone is being run)
 
         export RSH=ssh
         iozone -+m ioz.cfg -+h my-ip-address -w -c -e -i 0 -+n -C -r 64k -s 1g -t 4
 
 And the file ioz.cfg contains these records (where /mnt/glusterfs is the
-Gluster mountpoint on each test machine):
+Gluster mountpoint on each test machine and test-client-ip is the IP address of a client). Also note that, Each record in the file is a thread in IOZone terminology. Since we have defined the number of threads to be 4 in the above example, we have four records(threads) for a single client.
 
-        g01  /mnt/glusterfs  /usr/local/bin/iozone
-        g02  /mnt/glusterfs  /usr/local/bin/iozone
-        g03  /mnt/glusterfs  /usr/local/bin/iozone
-        g04  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
 
 Restriction: Since iozone uses non-privileged ports it may be necessary
 to temporarily shut down or alter iptables on some/all of the hosts.
