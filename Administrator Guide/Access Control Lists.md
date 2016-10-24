@@ -17,7 +17,7 @@ POSIX ACLs.
 To use POSIX ACLs for a file or directory, the partition of the file or
 directory must be mounted with POSIX ACLs support.
 
-###Activating POSIX ACLs Support on Sever
+###Activating POSIX ACLs Support on Server
 
 To mount the backend export directories for POSIX ACLs support, use the
 following command:
@@ -81,7 +81,7 @@ commas.
   m:\<permission\> | Sets the effective rights mask. The mask is the combination of all access permissions of the owning group and all of the user and group entries.
   o:\<permission\> | Sets the access ACLs for users other than the ones in the group for the file.
 
-If a file or directory already has an POSIX ACLs, and the setfacl
+If a file or directory already has a POSIX ACLs, and the setfacl
 command is used, the additional permissions are added to the existing
 POSIX ACLs or the existing rule is modified.
 
