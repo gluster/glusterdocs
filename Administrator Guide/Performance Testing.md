@@ -232,13 +232,11 @@ parameter for persistent tuning).
 
 ### Object Store tools
 
-[http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang\_\_COSBench\_Final.pdf
-COSBench](http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf)
+[COSBench](http://www.snia.org/sites/default/files/files2/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf)
 was developed by Intel employees and is very useful for both Swift and
 S3 workload generation.
 
-[https://pypi.python.org/pypi/ssbench
-ssbench](https://pypi.python.org/pypi/ssbench) is
+[ssbench](https://pypi.python.org/pypi/ssbench) is
 part of OpenStack Swift toolset and is command-line tool with a workload
 definition file format.
 
