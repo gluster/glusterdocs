@@ -1,1 +1,1 @@
-mkdocs
+mkdocs<0.16.0
