@@ -92,7 +92,7 @@ must be probed from the pool.
 
 On both server1 and server2:
 
-		mkdir /data/brick1/gv0
+		mkdir -p /data/brick1/gv0
 
 From any single server:
 
