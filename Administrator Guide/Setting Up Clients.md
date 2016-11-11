@@ -197,7 +197,8 @@ volumes to access data. There are two methods you can choose:
 > in the client machine. You can use appropriate /etc/hosts entries or
 > DNS server to resolve server names to IP addresses.
 
-<a name="manual-mount" />
+<a name="manual-mount"></a>
+
 ### Manually Mounting Volumes
 
 -   To mount a volume, use the following command:
@@ -258,7 +259,7 @@ round-robin DNS is configured for the server-name..
 If `use-readdirp` is set to ON, it forces the use of readdirp
 mode in fuse kernel module
 
-<a name="auto-mount" />
+<a name="auto-mount"></a>
 ### Automatically Mounting Volumes
 
 You can configure your system to automatically mount the Gluster volume
@@ -319,7 +320,7 @@ To test mounted volumes
     example:
 
         # df -h /mnt/glusterfs
-        Filesystem               Size Used Avail Use% Mounted on 
+        Filesystem               Size Used Avail Use% Mounted on
         server1:/test-volume     28T 22T 5.4T 82% /mnt/glusterfs
 
 -   Change to the directory and list the contents by entering the
@@ -365,7 +366,7 @@ You can use either of the following methods to mount Gluster volumes:
 
 `$ sudo aptitude install nfs-common `
 
-<a name="manual-nfs" />
+<a name="manual-nfs"></a>
 ### Manually Mounting Volumes Using NFS
 
 **To manually mount a Gluster volume using NFS**
@@ -406,7 +407,7 @@ You can use either of the following methods to mount Gluster volumes:
 
     ` # mount -o proto=tcp,vers=3 nfs://server1:38467/test-volume /mnt/glusterfs`
 
-<a name="auto-nfs" />
+<a name="auto-nfs"></a>
 ### Automatically Mounting Volumes Using NFS
 
 You can configure your system to automatically mount Gluster volumes
@@ -470,8 +471,8 @@ You can confirm that Gluster directories are mounting successfully.
     For example, the output of df command on the client will display the
     aggregated storage space from all the bricks in a volume.
 
-        # df -h /mnt/glusterfs 
-        Filesystem              Size Used Avail Use% Mounted on 
+        # df -h /mnt/glusterfs
+        Filesystem              Size Used Avail Use% Mounted on
         server1:/test-volume    28T  22T  5.4T  82%  /mnt/glusterfs
 
 -   Change to the directory and list the contents by entering the
@@ -508,7 +509,7 @@ You can use either of the following methods to mount Gluster volumes:
 You can also use Samba for exporting Gluster Volumes through CIFS
 protocol.
 
-<a name="export-samba" />
+<a name="export-samba"></a>
 ### Exporting Gluster Volumes Through Samba
 
 We recommend you to use Samba for exporting Gluster volumes through the
@@ -545,7 +546,7 @@ scripts (/etc/init.d/smb [re]start).
 > repeat these steps on each Gluster node. For more advanced
 > configurations, see Samba documentation.
 
-<a name="cifs-manual" />
+<a name="cifs-manual"></a>
 ### Manually Mounting Volumes Using CIFS
 
 You can manually mount Gluster volumes using CIFS on Microsoft
@@ -565,10 +566,10 @@ Windows-based client machines.
 
 The network drive (mapped to the volume) appears in the Computer window.
 
-Alternatively, to manually mount a Gluster volume using CIFS by going to 
+Alternatively, to manually mount a Gluster volume using CIFS by going to
 **Start \> Run** and entering Network path manually.
 
-<a name="cifs-auto" />
+<a name="cifs-auto"></a>
 ### Automatically Mounting Volumes Using CIFS
 
 You can configure your system to automatically mount Gluster volumes
