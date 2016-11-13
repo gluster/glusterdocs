@@ -149,8 +149,10 @@ To build and install Gluster Native Client from the source code
 
 1.  Create a new directory using the following commands:
 
+~~~
     `# mkdir glusterfs `
     `# cd glusterfs`
+~~~
 
 2.  Download the source code.
 
@@ -178,9 +180,10 @@ To build and install Gluster Native Client from the source code
 
 5.  Build the Gluster Native Client software using the following
     commands:
-
+~~~
     `# make `
     `# make install`
+~~~
 
 6.  Verify that the correct version of Gluster Native Client is
     installed, using the following command:
@@ -334,14 +337,17 @@ To test mounted volumes
 
 -   Change to the directory and list the contents by entering the
     following:
-
+~~~
     `# cd MOUNTDIR `
     `# ls`
+~~~
 
 -   For example,
 
+~~~
     `# cd /mnt/glusterfs `
     `# ls`
+~~~
 
 #NFS
 
