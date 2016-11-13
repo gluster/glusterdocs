@@ -55,10 +55,10 @@ To install Gluster Native Client on RPM distribution-based systems
     five bricks, you need to have ports 49152 to 49156 open.
 
     You can use the following chains with iptables:
-
+~~~
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
-
+~~~
     > **Note**
     >
     > If you already have iptable chains, make sure that the above
@@ -75,14 +75,17 @@ To install Gluster Native Client on RPM distribution-based systems
     You can download the software at [GlusterFS download page][1].
 
 4.  Install Gluster Native Client on the client.
+~~~
+    `$ sudo rpm -i glusterfs-3.8.5-1.x86_64`
+    `$ sudo rpm -i glusterfs-fuse-3.8.5-1.x86_64`
+    `$ sudo rpm -i glusterfs-rdma-3.8.5-1.x86_64`
+~~~
 
-    `$ sudo rpm -i glusterfs-3.3.0qa30-1.x86_64.rpm `
-    `$ sudo rpm -i glusterfs-fuse-3.3.0qa30-1.x86_64.rpm `
-    `$ sudo rpm -i glusterfs-rdma-3.3.0qa30-1.x86_64.rpm`
+```
+ **Note**
 
-    > **Note**
-    >
-    > The RDMA module is only required when using Infiniband.
+     The RDMA module is only required when using Infiniband.
+```
 
 ### Installing on Debian-based Distributions
 
@@ -119,7 +122,7 @@ To install Gluster Native Client on Debian-based distributions
 
     For example:
 
-    `$ sudo dpkg -i glusterfs-3.3.x.deb `
+    `$ sudo dpkg -i glusterfs-3.8.x.deb `
 
 6.  Ensure that TCP and UDP ports 24007 and 24008 are open on all
     Gluster servers. Apart from these ports, you need to open one port
@@ -130,9 +133,10 @@ To install Gluster Native Client on Debian-based distributions
 
     You can use the following chains with iptables:
 
+~~~
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
-
+~~~
     > **Note**
     >
     > If you already have iptable chains, make sure that the above
@@ -228,6 +232,7 @@ You can specify the following options when using the
 `mount -t glusterfs` command. Note that you need to separate all options
 with commas.
 
+~~~
 backupvolfile-server=server-name
 
 volfile-max-fetch-attempts=number of attempts
@@ -241,6 +246,8 @@ transport=transport-type
 direct-io-mode=[enable|disable]
 
 use-readdirp=[yes|no]
+
+~~~
 
 For example:
 
@@ -284,6 +291,7 @@ volfile (which might not even include the one used for mount).
 You can specify the following options when updating the /etc/fstab file.
 Note that you need to separate all options with commas.
 
+~~~
 log-level=loglevel
 
 log-file=logfile
@@ -293,6 +301,7 @@ transport=transport-type
 direct-io-mode=[enable|disable]
 
 use-readdirp=no
+~~~
 
 For example:
 
@@ -527,6 +536,7 @@ CIFS protocol.
     smb.conf file in an editor and add the following lines for a simple
     configuration:
 
+~~~
     [glustertest]
 
     comment = For testing a Gluster volume exported through CIFS
@@ -536,6 +546,7 @@ CIFS protocol.
     read only = no
 
     guest ok = yes
+~~~
 
 Save the changes and start the smb service using your systems init
 scripts (/etc/init.d/smb [re]start).
