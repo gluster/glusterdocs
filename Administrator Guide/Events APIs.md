@@ -2,6 +2,14 @@
 
 *New in version 3.9*
 
+## Set PYTHONPATH(Only in case of Source installation)
+If Gluster is installed using source install, `cliutils` will get
+installed under `/usr/local/lib/python.2.7/site-packages` Set
+PYTHONPATH by adding in `~/.bashrc`
+
+    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+
+
 ## Enable and Start Events APIs
 
 Enable and Start glustereventsd in all peer nodes
@@ -88,7 +96,7 @@ Test and Register webhook using following commands,
 
 Example(Webhook server is running in `192.168.122.188:9000`),
 
-    gluster-eventing webhook-test http://192.168.122.188:9000/listen
+    gluster-eventsapi webhook-test http://192.168.122.188:9000/listen
 
     +-----------+-------------+----------------+
     |    NODE   | NODE STATUS | WEBHOOK STATUS |
@@ -112,7 +120,7 @@ using,
 
 Example,
 
-    gluster-eventing webhook-add http://192.168.122.188:9000/listen
+    gluster-eventsapi webhook-add http://192.168.122.188:9000/listen
 
     +-----------+-------------+-------------+
     |    NODE   | NODE STATUS | SYNC STATUS |
@@ -138,7 +146,7 @@ To unsubscribe from events, delete the webhook using following command
 
 Example,
 
-    gluster-eventing webhook-del http://192.168.122.188:9000/listen
+    gluster-eventsapi webhook-del http://192.168.122.188:9000/listen
 
 ## Configuration
 
@@ -245,7 +253,7 @@ Event Type                     | Attribute            | Description
 VOLUME_CREATE                  | name                 | Volume Name
 VOLUME_START                   | force                | Force option used or not during Start
                                | name                 | Volume Name
-VOLUME_STOP                    | force                | Volume Stop used or not during Stop
+VOLUME_STOP                    | force                | Force option used or not during Stop
                                | name                 | Volume Name
 VOLUME_DELETE                  | name                 | Volume Name
 VOLUME_SET                     | name                 | Volume Name
