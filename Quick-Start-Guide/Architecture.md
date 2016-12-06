@@ -426,7 +426,7 @@ identifier is used. Normally, the entity on which the operation is
 performed would be identified by the pathname, but we choose to use
 GlusterFS internal file identifier (GFID) instead (as GlusterFS supports
 GFID based backend and the pathname field may not always be valid and
-other reasons which are out of scope of this this document). Therefore,
+other reasons which are out of scope of this document). Therefore,
 the format of the record for the three types of operation can be
 summarized as follows:
 
