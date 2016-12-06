@@ -9,6 +9,12 @@ mkdocs, with the following command (replace yum by dnf on Fedora):
 
     # yum install mkdocs
 
+Install mkdocs in Fedora 23+
+    
+    #pip install --upgrade pip
+    #python get-pip.py
+    #pip install mkdocs
+
 Then you need to run mkdocs from the root of that repository:
 
     $ mkdocs build
