@@ -536,7 +536,7 @@ translators include:
     that contains the file or directory required.
 -   AFR translator- It receives the request from the previous translator
     and if the volume type is replicate, it duplicates the request and
-    pass it on to the Protocol client translators of the replicas.
+    passes it on to the Protocol client translators of the replicas.
 -   Protocol Client translator- Protocol Client translator is the last
     in the client translator stack. This translator is divided into
     multiple threads, one for each brick in the volume. This will
