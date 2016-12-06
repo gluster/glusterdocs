@@ -426,7 +426,7 @@ identifier is used. Normally, the entity on which the operation is
 performed would be identified by the pathname, but we choose to use
 GlusterFS internal file identifier (GFID) instead (as GlusterFS supports
 GFID based backend and the pathname field may not always be valid and
-other reasons which are out of scope of this this document). Therefore,
+other reasons which are out of scope of this document). Therefore,
 the format of the record for the three types of operation can be
 summarized as follows:
 
@@ -524,7 +524,7 @@ kernel module will in turn send it to the GlusterFS in the userspace of
 the client node via /dev/fuse (this has been described in FUSE section).
 The GlusterFS process on the client consists of a stack of translators
 called the client translators which are defined in the configuration
-file(vol file) send by the storage server glusterd process. The first
+file(vol file) sent by the storage server glusterd process. The first
 among these translators being the FUSE translator which consists of the
 FUSE library(libfuse). Each translator has got functions corresponding
 to each file operation or fop supported by glusterfs. The request will
@@ -536,7 +536,7 @@ translators include:
     that contains the file or directory required.
 -   AFR translator- It receives the request from the previous translator
     and if the volume type is replicate, it duplicates the request and
-    pass it on to the Protocol client translators of the replicas.
+    passes it on to the Protocol client translators of the replicas.
 -   Protocol Client translator- Protocol Client translator is the last
     in the client translator stack. This translator is divided into
     multiple threads, one for each brick in the volume. This will
