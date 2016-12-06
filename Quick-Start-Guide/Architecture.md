@@ -524,7 +524,7 @@ kernel module will in turn send it to the GlusterFS in the userspace of
 the client node via /dev/fuse (this has been described in FUSE section).
 The GlusterFS process on the client consists of a stack of translators
 called the client translators which are defined in the configuration
-file(vol file) send by the storage server glusterd process. The first
+file(vol file) sent by the storage server glusterd process. The first
 among these translators being the FUSE translator which consists of the
 FUSE library(libfuse). Each translator has got functions corresponding
 to each file operation or fop supported by glusterfs. The request will
