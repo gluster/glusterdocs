@@ -789,7 +789,7 @@ Use the following command to enable NUFA:
 
 NUFA is supported under the following conditions:
 
-- Volumes with only with one brick per server.
+- Volumes with only one brick per server.
 - For use with a FUSE client. **NUFA is not supported with NFS or SMB**.
 - A client that is mounting a NUFA-enabled volume must be present within the trusted storage pool.
 
