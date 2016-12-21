@@ -11,12 +11,11 @@ A **—** means we have no plans to build the version for the repository.
 |                   |el6          |    X     |    X     | X, d.g.o |
 |                   |el7          |    X     |    X     | X, d.g.o |
 |                   |             |          |          |          |
-|Fedora             |`F23`        |   `—`    | `d.g.o`  |`DNF/YUM` |
-|                   |F24          |  d.g.o   | DNF/YUM  |  d.g.o   |
+|Fedora             |F24          |  d.g.o   | DNF/YUM  |  d.g.o   |
 |                   |F25          | DNF/YUM  |  d.g.o   |  d.g.o   |
 |                   |F26          | DNF/YUM  |  d.g.o   |  d.g.o   |
 |                   |             |          |          |          |
-|Ubuntu             |Trusty/14.04 |    —     |    X     |    X     |
+|Ubuntu²            |Trusty/14.04 |    —     |    X     |    X     |
 |                   |Xenial/16.04 |    X     |    X     |    X     |
 |                   |Yakkety/16.10|    X     |    X     |    —     |
 |                   |             |          |          |          |
