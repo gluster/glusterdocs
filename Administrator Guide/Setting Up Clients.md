@@ -555,7 +555,20 @@ CIFS protocol.
 ~~~
 
 Save the changes and start the smb service using your systems init
-scripts (/etc/init.d/smb [re]start).
+scripts (/etc/init.d/smb [re]start). Abhove steps is needed for doing
+multiple mount. If you want only samba mount then in your smb.conf you 
+need to add
+
+~~~
+    kernel share modes = no
+    kernel oplocks = no
+    map archive = no
+    map hidden = no
+    map read only = no
+    map system = no
+    store dos attributes = yes
+~~~
+
 
 > **Note**
 >
