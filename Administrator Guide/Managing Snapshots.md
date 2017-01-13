@@ -17,7 +17,7 @@ pre-requisites:
 * gluster version should be 3.6 and above.
 
 Details of how to create thin volume can be found at the following link.
-https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Logical_Volume_Manager_Administration/thinly_provisioned_volume_creation.html
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Logical_Volume_Manager_Administration/LV.html#thinly_provisioned_volume_creation
 
 
 Few features of snapshot are:
