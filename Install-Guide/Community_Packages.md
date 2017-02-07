@@ -7,8 +7,7 @@ A **—** means we have no plans to build the version for the repository.
 
 |              |             | 3.10 ltm | 3.9 stm⁴ | 3.8 ltm  | 3.7 eol⁴ |
 |--------------|-------------|:--------:|:--------:|:--------:|:--------:|
-|CentOS        |             |          |          |          |          |
-|Storage SIG¹  |el5          |    —     |    —     |    —     |   d.g.o  |
+|CentOS Storage SIG¹  |el5          |    —     |    —     |    —     |   d.g.o  |
 |              |el6          |    X     |    X     |    X     | X, d.g.o |
 |              |el7          |    X     |    X     |    X     | X, d.g.o |
 |              |             |          |          |          |          |
@@ -25,8 +24,7 @@ A **—** means we have no plans to build the version for the repository.
 |              |Jessie/8     |  d.g.o   |  d.g.o   |  d.g.o   |  d.g.o   |
 |              |Stretch/9    |  d.g.o   |  d.g.o   |  d.g.o   |  d.g.o   |
 |              |             |          |          |          |          |
-|OpenSuSE      |             |          |          |          |          |
-|Build System³ |OpenSuSE13   |    —     |    X     |    X     |    X     |
+|OpenSuSE Build System³ |OpenSuSE13   |    —     |    X     |    X     |    X     |
 |              |Leap 42.X    |    X     |    X     |    X     |    X     |
 |              |SLES11       |    —     |    —     |    —     |    —     |
 |              |SLES12       |    X     |    X     |    X     |    X     |
