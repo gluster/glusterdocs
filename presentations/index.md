@@ -1,6 +1,13 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
+[Software Defined Storage Devroom - FOSDEM 2017](https://fosdem.org/2017/schedule/track/software_defined_storage/) @ Brussels, Belgium
+--------------------------------------------------------------------------------------------------------------------------------------
+### February 4-5, 2017
+
+- [GlusterD-2.0 The next generation of GlusterFS management](http://redhat.slides.com/kmadappa/glusterd-20-fosdem-2017?token=nqXI_v3N) _([PDF](https://drive.google.com/file/d/0B6dvOu916HEzdXVjbndRaXZVNzQ/view?usp=sharing))_
+
+
 [PyCon India 2016](https://in.pycon.org/2016/) @ New Delhi, India
 ------------------------------------------------------------------
 
