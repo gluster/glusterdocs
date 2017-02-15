@@ -14,7 +14,7 @@ Here export name can be gluster volume or subdirectory path inside that volume. 
 
 The file `/var/lib/glusterd/nfs/netgroup` should mention the expansion of each netgroup which mentioned  in the export file. An typical netgroup entry will look like :
 
-        <netgroup name> ng1000\nng1000 ng999\nng999 ng1\nng1 ng2\nng2 (ip1, ip2,..)
+        <netgroup name> ng1000\nng1000 ng999\nng999 ng1\nng1 ng2\nng2 (ip1,ip2,..)
 
 The gluster NFS server will check the contents of these file after specific time intervals
 
