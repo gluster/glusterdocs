@@ -1,6 +1,18 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
+[FOSDEM 2017](https://fosdem.org/2017/) @ Brussels, Belgium
+-----------------------------------------------------------
+
+### February 5, 2017
+
+- [GlusterD-2.0: The next generation of GlusterFS management](https://fosdem.org/2017/schedule/event/glusterd2/) - Kaushal M
+- [Gluster Roadmap and Features](https://fosdem.org/2017/schedule/event/cephglustercommunity/) - Niels de Vos
+- [SELinux Support over GlusterFS](https://fosdem.org/2017/schedule/event/glusterselinux/) - Jiffin Tony Thottan
+- [Hyper-converged, persistent storage for containers with GlusterFS](https://fosdem.org/2017/schedule/event/glustercontainer/) - Jose Rivera, Mohamed Ashiq Liyazudeen
+- [Kubernetes+GlusterFS Lightning Ver.](https://fosdem.org/2017/schedule/event/kubegluster/) - Jose Rivera, Mohamed Ashiq Liyazudeen
+
+
 [PyCon India 2016](https://in.pycon.org/2016/) @ New Delhi, India
 ------------------------------------------------------------------
 
@@ -9,7 +21,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 -   [Python bindings to GlusterFS - a distributed filesystem](https://speakerdeck.com/prashanthpai/python-bindings-to-glusterfs-a-distributed-filesystem) - Prashanth Pai
 
 
-[Openshift Meetup  India] (http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, India 
+[Openshift Meetup  India](http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, India
 -------------------------------------------------------------------------------------------------------
 ### June 11, 2016
 
