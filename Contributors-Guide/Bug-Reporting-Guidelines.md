@@ -70,7 +70,7 @@ You should gather the information below before creating the bug report.
 -   Output of `gluster volume status`
 -   Get the statedump of the volume with the problem
 
-`   $ gluster volume statedump `<vol-name>
+`   $ gluster volume statedump <vol-name>`
 
 This dumps statedump per brick process in `/var/run/gluster`
 
@@ -96,7 +96,7 @@ collected directories could be archived,compressed and attached to bug
 -   OS Type ( Windows, RHEL )
 -   OS Version : In case of Linux distro get the following :
 
-`   $ uname -r`\
+`   $ uname -r`
 `   $ cat /etc/issue`
 
 -   Fuse or NFS Mount point on the client with output of mount commands
