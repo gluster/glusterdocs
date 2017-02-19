@@ -37,9 +37,9 @@ healthcare, government, education, web 2.0, and financial services.
 
 ## Commercial offerings and support ##
 
-Several companies offer support or consulting - http://www.gluster.org/consultants/.
+Several companies offer support or [consulting](http://www.gluster.org/consultants/).
 
-Red Hat Storage (http://www.redhat.com/en/technologies/storage/storage-server)
+[Red Hat Storage](http://www.redhat.com/en/technologies/storage/storage-server)
 is a commercial storage software product, based on GlusterFS.
 
 
