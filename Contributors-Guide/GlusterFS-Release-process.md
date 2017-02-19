@@ -24,8 +24,8 @@ STM releases are only supported until the next major release. STM releases may g
 
 The discussions around release schedules and lifecycles happened in the following mail threads on the GlusterFS maintainers mailing list.
 
-- https://www.gluster.org/pipermail/maintainers/2016-June/000892.html
-- https://www.gluster.org/pipermail/maintainers/2016-August/001174.html
+- [2016-June/000892](https://www.gluster.org/pipermail/maintainers/2016-June/000892.html)
+- [2016-August/001174](https://www.gluster.org/pipermail/maintainers/2016-August/001174.html)
 
 
 ## GlusterFS major release window
