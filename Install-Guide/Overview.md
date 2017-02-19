@@ -86,7 +86,11 @@ restore the database would be fine - Gluster is traditionally better
 when using file sizes at of least 16KB (with a sweet spot around 128KB
 or so).
 
-#### How many billions of dollars is it going to cost to setup a cluster? Don’t I need redundant networking, super fast SSD’s, technology from Alpha Centauri delivered by men in black, etc…?
+#### What is the cost and complexity required to set up cluster?
+
+Question: How many billions of dollars is it going to cost to setup a cluster?
+Don’t I need redundant networking, super fast SSD’s,
+technology from Alpha Centauri delivered by men in black, etc…?
 
 I have never seen anyone spend even close to a billion, unless they got
 the rust proof coating on the servers. You don’t seem like the type that
