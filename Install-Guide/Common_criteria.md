@@ -7,6 +7,7 @@ To start, we will go over some common things you will need to know for
 setting up Gluster.
 
 Next, choose the method you want to use to set up your first cluster:
+
 -  Within a virtual machine
 -  To bare metal servers
 -  To EC2 instances in Amazon
