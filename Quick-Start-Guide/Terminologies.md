@@ -92,9 +92,9 @@ management operations happen on the volume.
 
 ### Vol file
 
-.vol files are configuration files used by glusterfs process. Volfiles
-will be usually located at /var/lib/glusterd/vols/volume-name/.
-Eg:vol-name-fuse.vol,export-brick-name.vol,etc.. Sub-volumes in the .vol
+`.vol` files are configuration files used by glusterfs process. Volfiles
+will be usually located at `/var/lib/glusterd/vols/volume-name/`.
+Eg: `vol-name-fuse.vol`, `export-brick-name.vol` etc. Sub-volumes in the `.vol`
 files are present in the bottom-up approach and then after tracing forms
 a tree structure, where in the hierarchy last comes the client volumes.
 
