@@ -16,9 +16,9 @@ execute the same command on all other servers.
 
 Replace `nodename` with hostname of the other server in the cluster,
 or IP address if you don’t have DNS or `/etc/hosts` entries.
-Let say we want to connect to `node01`:
+Let say we want to connect to `node02`:
 
-		gluster peer probe node01
+		gluster peer probe node02
 
 Notice that running `gluster peer status` from the second node shows
 that the first node has already been added.
