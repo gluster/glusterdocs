@@ -50,7 +50,7 @@ All changes will be accepted during the Open phase. The changes have a few requi
 #### Stability phase
 This phase is used to stabilize any new features introduced in the open phase, or general bug fixes for already existing features.
 
-A new release-<version> branch is created at the beginning of this phase. All changes need to be sent to the master branch before getting backported to the new release branch.
+A new `release-<version>` branch is created at the beginning of this phase. All changes need to be sent to the master branch before getting backported to the new release branch.
 
 No new features will be merged in this phase. At the end of this phase, any new feature introduced that hasn't been declared stable will be disabled, if possible removed, to prevent confusion and set clear expectations towards users and developers.
 
