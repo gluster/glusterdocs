@@ -30,5 +30,5 @@ Blogging about gluster
 ----------------
 
 -   The [Adding your gluster blog](./Adding-your-blog.md) explains how to add your
-gluster blog to Community blogger. 
- 
+gluster blog to Community blogger.
+
