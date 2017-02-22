@@ -10,7 +10,11 @@ After Gluster upgrade, it is advisable to have op-version updated.
 
 Current op-version can be queried as below:
 
-    [root@~]#gluster volume get  <volume name> cluster.op-version
+    [root@~]#gluster volume get all cluster.op-version
+
+To check maximum op-version supported by the cluster, the following query can be used:
+
+    [root@~]#gluster volume get all cluster.max-op-version
 
 op-version can be updated as below.
 For example, after upgrading to glusterfs-3.7.1, set op-version as:
@@ -19,4 +23,10 @@ For example, after upgrading to glusterfs-3.7.1, set op-version as:
 
 Note: 
 This is not mandatory, but advisable to have updated op-version if you want to make use of latest features in the updated gluster.
+
+###Client op-version
+
+To check op-version information for clients the following query can be used:
+
+    [root@~]#gluster volume status <all|VOLNAME> clients
 
