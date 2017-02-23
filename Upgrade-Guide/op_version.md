@@ -10,9 +10,15 @@ After Gluster upgrade, it is advisable to have op-version updated.
 
 Current op-version can be queried as below:
 
+For 3.10 onwards:
+
     [root@~]#gluster volume get all cluster.op-version
 
-To get the maximum possible op-version a cluster can support, the following query can be used:
+For release < 3.10:
+
+    [root@~]#gluster volume get <VOLNAME> cluster.op-version
+
+To get the maximum possible op-version a cluster can support, the following query can be used (this is available 3.10 release onwards):
 
     [root@~]#gluster volume get all cluster.max-op-version
 
@@ -30,7 +36,7 @@ This is not mandatory, but advisable to have updated op-version if you want to m
 
 When trying to set a volume option, it might happen that one or more of the connected clients cannot support the feature being set and might need to be upgraded to the op-version the cluster is currently running on.
 
-To check op-version information for the connected clients and find the offending client, the following query can be used:
+To check op-version information for the connected clients and find the offending client, the following query can be used for 3.10 release onwards:
 
     [root@~]#gluster volume status <all|VOLNAME> clients
 
