@@ -15,7 +15,7 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
 
 #### Repeat the following steps, on each server in the trusted storage pool, to upgrade the entire pool to 3.10 version:
 1. Stop all gluster services, either using the command below, or through other means,
-    ```bash
+    ```sh
     #killall glusterfs glusterfsd glusterd
     ```
 
@@ -24,27 +24,27 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
 3. Install Gluster 3.10
 
 4. Ensure that version reflects 3.10.0 in the output of,
-    ```bash
+    ```sh
     #gluster --version
     ```
 
 5. Start glusterd on the upgraded server
-    ```bash
+    ```sh
     #glusterd
     ```
 
 6. Ensure that all gluster processes are online by checking the output of,
-    ```bash
+    ```sh
     #gluster volume status
     ```
 
 7. Self-heal all gluster volumes by running
-    ```bash
+    ```sh
     #for i in `gluster volume list`; do gluster volume heal $i; done
     ```
 
 8. Ensure that there is no heal backlog by running the below command for all volumes
-    ```bash
+    ```sh
     #gluster volume heal <volname> info
     ```
 > NOTE: If there is a heal backlog, wait till the backlog is empty, or the backlog does not have any entries needing a sync to the just upgraded server, before proceeding to upgrade the next server in the pool
@@ -56,7 +56,8 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 
 #### Steps to perform an offline upgrade:
 1. On every server in the trusted storage pool, stop all gluster services, either using the command below, or through other means,
-    ```bash
+
+    ```sh
     #killall glusterfs glusterfsd glusterd
     ```
 2. Stop all applications that access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.), across all servers
@@ -64,16 +65,16 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 3. Install Gluster 3.10, on all servers
 
 4. Ensure that version reflects 3.10.0 in the output of the following command on all servers,
-    ```bash
+    ```sh
     #gluster --version
     ```
 
 5. Start glusterd on all the upgraded servers
-    ```bash
+    ```sh
     #glusterd
     ```
 6. Ensure that all gluster processes are online by checking the output of,
-    ```bash
+    ```sh
     #gluster volume status
     ```
 
