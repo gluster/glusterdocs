@@ -1,12 +1,11 @@
 ## Upgrade procedure from Gluster 3.8.x and 3.7.x
- ### Pre-upgrade Notes 
+### Pre-upgrade Notes 
   - Online upgrade is only possible with replicated and distributed replicate volumes.
   - Online upgrade is not yet supported for dispersed or distributed dispersed volumes.
   - Ensure no configuration changes are done during the upgrade.
   - If you are using geo-replication, please upgrade the slave cluster(s) before upgrading the master.
   - Upgrading the servers ahead of the clients is recommended.
   - Upgrade the clients after the servers are upgraded. It is recommended to have the same client and server major versions.
-
 
 ### Online Upgrade Procedure for Servers
 
