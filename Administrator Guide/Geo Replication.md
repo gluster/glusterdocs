@@ -157,35 +157,35 @@ Following steps to be performed to setup Non root Slave user
 file(`/etc/glusterfs/glusterd.vol`)
     in rpm installations and `/usr/local/etc/glusterfs/glusterd.vol` in Source installation.
 
-    ```sh
+```sh
     gluster system:: execute mountbroker opt mountbroker-root /var/mountbroker-root
     gluster system:: execute mountbroker opt geo-replication-log-group geogroup
     gluster system:: execute mountbroker opt rpc-auth-allow-insecure on
-    ```
+```
 
 5.  In any one of the Slave node, Add Mountbroker user to glusterd vol file using,
 
-    ```sh
+```sh
     gluster system:: execute mountbroker user geoaccount slavevol
-    ```
+```
 
     where slavevol is the Slave Volume name
 
     If you host multiple slave volumes on Slave, for each of them and add the following options
 to the volfile using,
 
-    ```sh
+```sh
     gluster system:: execute mountbroker user geoaccount2 slavevol2
     gluster system:: execute mountbroker user geoaccount3 slavevol3
-    ```
+```
 
     To add multiple volumes per mountbroker user,
 
-    ```sh
+```sh
     gluster system:: execute mountbroker user geoaccount1 slavevol11,slavevol12,slavevol13
     gluster system:: execute mountbroker user geoaccount2 slavevol21,slavevol22
     gluster system:: execute mountbroker user geoaccount3 slavevol31
-    ```
+```
 6.  Restart `glusterd` service on all Slave nodes.
 
 ## Setting Up the Environment for Geo-replication
