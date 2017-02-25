@@ -101,6 +101,7 @@ pages:
   - Upgrade to 3.10: Upgrade-Guide/upgrade_to_3.10.md
 - Release Notes:
   - index: release-notes/index.md
+  - 3.10.0: release-notes/3.10.0.md
   - 3.9.0: release-notes/3.9.0.md
   - 3.7.1: release-notes/3.7.1.md
   - 3.7.0: release-notes/3.7.0.md
