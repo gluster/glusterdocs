@@ -104,7 +104,7 @@ internals.
 The first option allows the user to set the certificate depth, as mentioned
 above.
 
-	gluster volume set MYVOLUME ssl.cert-depth 2
+	gluster volume set MYVOLUME ssl.certificate-depth 2
 
 Here, we're setting our certificate depth to two, as in the introductory
 example.  By default this value is zero, meaning that only certificates which
