@@ -122,11 +122,32 @@ The tracker bugs are used as guidance for blocker bugs and should get created wh
 - bugs that were not fixed in this release, but were added to the tracker should be moved to the new tracker
 
 #### Create Release Announcement
-Create the Release Announcement (this is often done while people are making the packages). The contents of the release announcement can be based on the release notes, or should at least have a pointer to them.
+(Major releases) 
+The Release Announcement is based off the release notes. This needs to indicate:
+ * What this release's overall focus is
+ * Which versions will stop receiving updates as of this release
+ * Links to the direct download folder 
+ * Feature set 
+ 
+Best practice as of 3.10 to create a collaborative version of the release notes that both the release manager and community lead work on together, and the release manager posts to the mailing lists (gluster-users@, gluster-devel@, announce@). 
 
-Examples:
-- [blog](http://blog.gluster.org/2014/11/glusterfs-3-5-3beta2-is-now-available-for-testing/)
-- [release notes](https://github.com/gluster/glusterfs/blob/v3.5.3/doc/release-notes/3.5.3.md)
+- [blog](https://blog.gluster.org/2017/02/announcing-gluster-3-10/)
+- [release notes](https://github.com/gluster/glusterfs/blob/release-3.10/doc/release-notes/3.10.0.md)
+
+#### Create Upgrade Guide
+(Major releases) 
+If required, as in the case of a major release, an upgrade guide needs to be available at the same time as the release. 
+This document should go under the [Upgrade Guide](https://github.com/gluster/glusterdocs/tree/master/Upgrade-Guide) section of the [glusterdocs](https://github.com/gluster/glusterdocs) repository.
+
+#### Submit PR for Website updates 
+(Major releases) 
+With major releases, the gluster.org website needs to reflect the latest release. Update the website through GitHub PR. 
+
+- [Gluster.org homepage:](https://github.com/gluster/glusterweb/blob/master/source/index.haml)
+- [Gluster.org download page](https://github.com/gluster/glusterweb/tree/master/source/download)
+- [Gluster.org release schedule page](https://github.com/gluster/glusterweb/blob/master/source/community/release-schedule.md)
+
+Give extra time for this, TravisCI needs a bit of time to check to make sure we're not breaking the website. (Note: 3.10 may be the last release cycle that has this tooling.) 
 
 #### Send Release Announcement
 
@@ -136,13 +157,14 @@ Once the Fedora/EL RPMs are ready (and any others that are ready by then), send 
   - [gluster-announce](https://www.gluster.org/mailman/listinfo/announce/)
   - [gluster-devel](https://www.gluster.org/mailman/listinfo/gluster-devel/)
   - [gluster-users](https://www.gluster.org/mailman/listinfo/gluster-users/)
-- [Gluster Blog](https://blog.gluster.org)
-- [Gluster Twitter account](https://twitter.com/gluster)
-- [Gluster Facebook page](https://www.facebook.com/GlusterInc)
-- [Gluster LinkedIn group]()
-- [Gluster G+](https://plus.google.com/communities/110022816028412595292)
-
-For help with posting to the social media pages, please reach out to Amye.
+  
+- [Gluster Blog](https://blog.gluster.org) 
+The blog will automatically post to both Facebook and Twitter. Be careful with this! 
+  - [Gluster Twitter account](https://twitter.com/gluster)
+  - [Gluster Facebook page](https://www.facebook.com/GlusterInc)
+- [Gluster LinkedIn group](https://www.linkedin.com/company-beta/4822513)
+- [Gluster Google Plus account 1 of 2](https://plus.google.com/communities/110022816028412595292)
+- [Gluster Google Plus account 2 of 2](https://plus.google.com/u/3/+GlusterCommunity)
 
 #### Close Bugs
 
@@ -150,9 +172,3 @@ Close the bugs that have all their patches included in the release. Leave a note
 The [close-bugs.sh](https://github.com/gluster/release-tools/blob/master/close-bugs.sh) in the glusterfs [release-tools](https://github.com/gluster/release-tools/) repository can be used to do this.
 
 
-
-### Other things to consider
-
-#### Upgrade documentation
-
-If required, an upgrade document having any upgrade instructions specific the the release needs to be prepared. This document must be added under the [Upgrade Guide](https://github.com/gluster/glusterdocs/tree/master/Upgrade-Guide) section of the [glusterdocs](https://github.com/gluster/glusterdocs) repository.
