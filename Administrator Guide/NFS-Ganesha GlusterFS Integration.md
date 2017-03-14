@@ -4,14 +4,14 @@ NFS-Ganesha is a user space file server for the NFS protocol with support for NF
 
 ##  Installing nfs-ganesha
 
-#### Gluster RPMs (>= 3.7)
+#### Gluster RPMs (>= 3.8)
 > glusterfs-server
 
 > glusterfs-api
 
 > glusterfs-ganesha
 
-#### Ganesha RPMs (>= 2.2)
+#### Ganesha RPMs (>= 2.4)
 > nfs-ganesha
 
 > nfs-ganesha-gluster
@@ -47,7 +47,7 @@ NFS_Core_Param {
         #Copy lock states into "/var/lib/nfs/ganesha" dir
         Clustered = false;
         #Use a non-privileged port for RQuota
-        Rquota_Port = 4501;
+        Rquota_Port = 875;
 }
 ```
 ## Step by step procedures to exporting GlusterFS volume via NFS-Ganesha
@@ -83,10 +83,38 @@ EXPORT{
 Now include the export configuration file in the ganesha configuration file(by default ).This can be done by adding the line below at the end of file
    - %include “<path of export configuration>”
 
-#### step 3 :
+```sh
+Note :
+The above two steps can be done with following script
+#/usr/libexec/ganesha/create-export-ganesha.sh <ganesha directory> on <volume name>
+By default ganesha directory is "/etc/ganesha"
+This will create export configuration file in <ganesha directory>/exports/export.<volume name>.conf
+Also it will add above entry to ganesha.conf
+```
 
+#### step 3 :
+Turn on features.cache-invalidation for that volume
+-   gluster volume set <volume name> features.cache-invalidation on
+
+#### step 4 :
+dbus commands are used to export/unexport volume
+- export
+#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"
+
+- unexport
+#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport string:uint16:<export id>
+
+```sh
+Note :
+Step 4 can be performed via following script
+#/usr/libexec/ganesha/create-export-ganesha.sh <ganesha directory> [on|off] <volume name>
+```
+
+#### step 5 :
    - To check if the volume is exported, run
        - *#showmount -e localhost*
+- Or else use the following dbus command
+#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports
 
 ## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
 In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
@@ -101,10 +129,6 @@ sample ganesha-ha.conf file:
 > \# Name of the HA cluster created. must be unique within the subnet
 
 > HA_NAME="ganesha-ha-360"
-
-> \# The gluster server from which to mount the shared data volume.
-
-> HA_VOL_SERVER="server1"
 
 > \# The subset of nodes of the Gluster Trusted Pool that form the ganesha HA cluster.
 
@@ -131,7 +155,7 @@ Post the cluster creation any further modification can be done using the `ganesh
 #### Pre-requisites to run NFS-Ganesha
 Ensure that the following pre-requisites are taken into consideration before you run NFS-Ganesha in your environment:
 
- * A Gluster Storage volume must be available for export and NFS-Ganesha rpms are installed.
+ * A Gluster Storage volume must be available for export and NFS-Ganesha rpms are installed on all the nodes.
  * IPv6 must be enabled on the host interface which is used by the NFS-Ganesha daemon. To enable IPv6 support, perform the following steps:
     - Comment or remove the line options ipv6 disable=1 in the /etc/modprobe.d/ipv6.conf file.
     - Reboot the system.
@@ -140,6 +164,7 @@ Ensure that the following pre-requisites are taken into consideration before you
 * Disable and stop NetworkManager service.
 * Enable and start network service on all machines.
 * Create and mount a gluster shared volume.
+	* gluster volume set all cluster.enable-shared storage enable
 * Install Pacemaker and Corosync on all machines.
 * Set the cluster auth password on all the machines.
 * Passwordless ssh needs to be enabled on all the HA nodes. Follow these steps,
@@ -150,6 +175,7 @@ Ensure that the following pre-requisites are taken into consideration before you
         - ssh-copy-id -i /var/lib/glusterd/nfs/secret.pem.pub root@$node
     - Copy the keys to _all_ nodes in the cluster, run:
         - scp /var/lib/glusterd/nfs/secret.*  $node:/var/lib/glusterd/nfs/
+* Create a directory named "nfs-ganesha" in shared storage path and create ganesha.conf & ganesha-ha.conf in it
 
 #### Configuring the HA Cluster
 To setup the HA cluster, enable NFS-Ganesha by executing the following command:
@@ -159,8 +185,20 @@ To setup the HA cluster, enable NFS-Ganesha by executing the following command:
 To tear down the HA cluster, execute the following command:
 
     #gluster nfs-ganesha disable
+```sh
+Note :
+Enable command performs the following
+* create a symlink ganesha.conf in /etc/ganesha using ganesha.conf in shared storage
+* start nfs-ganesha process on nodes part of ganesha cluster
+* set up ha cluster
+and disable does the reversal of enable
+Also if gluster nfs-ganesha [enable/disable] fails of please check following logs
+* /var/log/glusterfs/glusterd.log
+* /var/log/messages (and grep for pcs commands)
+* /var/log/pcsd/pcsd.log
+```
 
-#### Exporting Volumes through NFS-Ganesha
+#### Exporting Volumes through NFS-Ganesha using cli
 To export a Red Hat Gluster Storage volume, execute the following command:
 
     #gluster volume set <volname> ganesha.enable on
@@ -174,7 +212,7 @@ This command unexports the Red Hat Gluster Storage volume without affecting othe
 To verify the status of the volume set options, follow the guidelines mentioned below:
 
 * Check if NFS-Ganesha is started by executing the following command:
-    - ps aux | grep ganesha
+    - ps aux | grep ganesha.nfsd
 * Check if the volume is exported.
     - showmount -e localhost
 
@@ -214,6 +252,11 @@ To modify the default export configurations perform the following steps on any o
     Note
         The export ID must not be changed.
 ⁠
+### Configure ganesha ha cluster outside of gluster nodes
+
+Currently ganesha HA cluster creationg tightly integrated with glusterd. So here user need to create a another TSP using ganesha nodes. Then create ganesha HA cluster using above mentioned steps till executing "gluster nfs-ganesha enable"
+Exporting/Unexporting should be performed with out using glusterd cli (follow the manual steps, before perfoming step4 replace localhost with required hostname/ip "hostname=localhost;" in export configuration file)
+
 ## Configuring Gluster volume for pNFS
 The Parallel Network File System (pNFS) is part of the NFS v4.1 protocol that allows compute clients to access storage devices directly and in parallel. The pNFS cluster consists of MDS(Meta-Data-Server) and DS (Data-Server). The client sends all the read/write requests directly to DS and all other operations are handle by the MDS.
 
