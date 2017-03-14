@@ -175,7 +175,7 @@ Ensure that the following pre-requisites are taken into consideration before you
         - ssh-copy-id -i /var/lib/glusterd/nfs/secret.pem.pub root@$node
     - Copy the keys to _all_ nodes in the cluster, run:
         - scp /var/lib/glusterd/nfs/secret.*  $node:/var/lib/glusterd/nfs/
-* Create a directory named "nfs-ganesha" in shared storage path and create ganesha.conf & ganesha-ha.conf in it
+* Create a directory named "nfs-ganesha" in shared storage path and create ganesha.conf & ganesha-ha.conf in it(from glusterfs 3.9 onwards)
 
 #### Configuring the HA Cluster
 To setup the HA cluster, enable NFS-Ganesha by executing the following command:
