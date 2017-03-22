@@ -45,11 +45,4 @@ Developing
 -   [Backport Guidelines](./Backport-Guidelines.md) describe the steps that
     branches too.
 
-Testing
--------
-
--   [Our Jenkins Infrastructure](./Jenkins-Infrastructure.md) - A
-    braindump of the Jenkins infrastructure we have in place for
-    automated testing
-
 Other Gluster Developer documentation can be found [here](https://github.com/gluster/glusterfs/tree/master/doc/developer-guide)
