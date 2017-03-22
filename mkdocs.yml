@@ -78,7 +78,6 @@ pages:
   - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md
   - Backport Wishlist : Developer-guide/Backport-Wishlist.md
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
-  - Jenkins Infrastructure : Developer-guide/Jenkins-Infrastructure.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
   - Bug Reporting Guidelines : Contributors-Guide/Bug-Reporting-Guidelines.md
