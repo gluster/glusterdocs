@@ -4,12 +4,15 @@
 Split brain is a situation where two or more replicated copies of a file become divergent. When a file is in split brain, there is an inconsistency in either data or metadata of the file amongst the bricks of a replica and do not have enough information to authoritatively pick a copy as being pristine and heal the bad copies, despite all bricks being up and online. For a directory, there is also an entry split brain where a file inside it can have different gfid/file-type across the bricks of a replica. Split brain can happen mainly because of 2 reasons:
 1. Due to network disconnect:
 Where a client temporarily loses connection to the bricks.
+    - There is a replica pair of 2 bricks, brick1 on server1 and brick2 on server2.
+    - Client1 loses connection to brick2 and client2 loses connection to brick1 due to network split.
+    - Writes from client1 goes to brick1 and from client2 goes to brick2, which is nothing but split-brain.
 2. Gluster brick processes going down or returning error:
     - Server1 is down and server2 is up: Writes happen on server 2.
     - Server1 comes up, server2 goes down (Heal not happened / data on server 2 is not replicated on server1): Writes happen on server1.
     - Server2 comes up: Both server1 and server2 has data independent of each other.
 
-If we use the replica 2 volume, then there are high chances of ending up in split-brain.
+If we use the replica 2 volume, it is not possible to prevent split-brain without losing availability.
 
 ### Ways to deal with split brain:
 In glusterfs there are ways to resolve split brain. You can see the detailed description of automatically resolving split-brain [here](../Troubleshooting/heal-info-and-split-brain-resolution.md) and manual resolution [here](../Troubleshooting/split-brain.md). Moreover, there are ways which can reduce the chances of ending up in split-brain situations. They are:
@@ -19,7 +22,7 @@ In glusterfs there are ways to resolve split brain. You can see the detailed des
 Both of these uses the client-quorum option of glusterfs to avoid the split-brain situations.
 
 ### Client quorum:
-This is a feature implemented in AFR to prevent split-brains in the I/O path for replicate/distributed-replicate volumes. By default, if the client-quorum is not met for a particular replica subvol, it becomes read-only. The other subvols (in a dist-rep volume) will still have R/W access. [Here](arbiter-volumes-and-quorum.md#client-quorum) you can see more details about client-quorum.
+This is a feature implemented in Automatic File Replication (AFR here on) module, to prevent split-brains in the I/O path for replicate/distributed-replicate volumes. By default, if the client-quorum is not met for a particular replica subvol, it becomes read-only. The other subvols (in a dist-rep volume) will still have R/W access. [Here](arbiter-volumes-and-quorum.md#client-quorum) you can see more details about client-quorum.
 
 #### Client quorum in replica 2 volumes:
 In a replica 2 volume it is not possible to achieve high availability and consistency at the same time, without sacrificing tolerance to partition. If we set the client-quorum option to auto, then the first brick must always be up, irrespective of the status of the second brick. If only the second brick is up, the subvolume becomes read-only.
@@ -30,7 +33,7 @@ If the quorum-type is set to fixed, and the quorum-count is set to 1, then we ma
 To avoid this we have to set the quorum-count to 2, which will cost the availability. Even if we have one replica brick up and running, the quorum is not met and we end up seeing EROFS.
 
 ### 1. Replica 3 volume:
-When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a replica 3 volume and this should not be changed. Here is how it prevent files from ending up in split brain:
+When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a replica 3 volume and this should not be changed. Here is how it prevents files from ending up in split brain:
 
 B1, B2, and B3 are the 3 bricks of a replica 3 volume.
 1. B1 & B2 are up and B3 is down. Quorum is met and write happens on B1 & B2.
@@ -41,7 +44,6 @@ Command to create a replica 3 volume:
 ```sh
 $gluster volume create <volname> replica 3 host1:brick1 host2:brick2 host3:brick3
 ```
-There is a corner case even with replica 3 volumes where the file can end up in a split-brain. AFR usually takes range locks for the {offset, length} of the write. If 3 writes happen on the same file at non-overlapping {offset, length} and each write fails on (only) one different brick, then we have AFR xattrs of the file blaming each other.
 
 ### 2. Arbiter volume:
 Arbiter offers the sweet spot between replica 2 and replica 3, where user wants the split-brain protection offered by replica 3 but does not want to invest in 3x storage space. Arbiter is also an replica 3 volume where the third brick of the replica is automatically configured as an arbiter node. This means that the third brick stores only the file name and metadata, but not any data. This will help in avoiding split brain while providing the same level of consistency as a normal replica 3 volume.
