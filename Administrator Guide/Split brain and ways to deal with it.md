@@ -21,7 +21,7 @@ Both of these uses the client-quorum option of glusterfs to avoid the split-brai
 ### Client quorum:
 This is a feature implemented in AFR to prevent split-brains in the I/O path for replicate/distributed-replicate volumes. By default, if the client-quorum is not met for a particular replica subvol, it becomes read-only. The other subvols (in a dist-rep volume) will still have R/W access. [Here](arbiter-volumes-and-quorum.md#client-quorum) you can see more details about client-quorum.
 
-### Replica 2 volume:
+#### Client quorum in replica 2 volumes:
 In a replica 2 volume it is not possible to achieve high availability and consistency at the same time, without sacrificing tolerance to partition. If we set the client-quorum option to auto, then the first brick must always be up, irrespective of the status of the second brick. If only the second brick is up, the subvolume becomes read-only.
 If the quorum-type is set to fixed, and the quorum-count is set to 1, then we may end up in split brain.
     - Brick1 is up and brick2 is down. Quorum is met and write happens on brick1.
@@ -29,7 +29,7 @@ If the quorum-type is set to fixed, and the quorum-count is set to 1, then we ma
     - Brick1 comes up. Quorum is met, but both the bricks have independent writes - split-brain.
 To avoid this we have to set the quorum-count to 2, which will cost the availability. Even if we have one replica brick up and running, the quorum is not met and we end up seeing EROFS.
 
-#### 1. Replica 3 volume:
+### 1. Replica 3 volume:
 When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a replica 3 volume and this should not be changed. Here is how it prevent files from ending up in split brain:
 
 B1, B2, and B3 are the 3 bricks of a replica 3 volume.
