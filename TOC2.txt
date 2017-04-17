@@ -1,0 +1,367 @@
+Quickstart Guide			
+	What is Gluster?		
+	Pre-requisites		
+	Tutorial overview				
+		Installing Gluster	
+		Starting the management daemon	
+		Configuring the trusted pool
+		Setting up storage	
+		Creating Gluster volumes	
+		Testing the Gluster volume	
+	Automatically deploying Gluster with ...		 <--- ?
+			
+Gluster concepts			
+	What is Gluster	?	
+	Gluster advantages and business fit	<<<<<< Should be the 4nd item	[I would say the reader would want to know if it fits his use case before learning more abt the product]
+	Terminology				<<<<<< Should be the 2nd item   [Would stay here]
+	Architecture				<<<<<< Should be the 3nd item   [Would stay here]]
+	Environment expectations		
+	Resources and help		
+			
+Installation Guide			
+	Choosing a cluster style   <--- what content should this contain?
+	Prerequisites
+		Physical server clusters		
+			Machine specifications	
+			Machine configuration	
+			BIOS configuration	
+			Notes		
+ 		Virtual machine clusters		
+			Virtual machine creation and setup	
+			Allocating disk space	
+			Notes
+		Deploying in AWS		
+			Cloud considerations	
+			Best practices	
+			Handling nodes	
+
+
+	Installation              [This is good. Keeping]
+		Types of installation
+
+		   RPM installation:
+			Server Installation:
+				Mention packages required
+				Creating the trusted pool
+				Setting up bricks
+				Creating a Gluster volume				
+
+			Client Installation:
+				Mention packages required
+				Mounting and using the volume
+		
+		   Source installation:
+			Give pointer to deverloper guide section.
+
+		Installation of different flavours:
+		<Flavour1>
+			<client/server installation>
+		<Flavour2>
+			<client/server installation>
+
+	
+
+	Starting Gluster					<<<<< Should be moved to Admin Guide - under "Creating Volumes" [These would be the steps post install just to make sure everything]
+		Configuring the firewall			<<<<< Should be moved to Prerequisites
+		Configuring the storage pool			<<<<< Should be moved to "Setting up bricks" section
+		
+
+	Upgrading the Cluster
+		etc etc
+	
+
+
+Administration Guide			
+	<<Gluster concepts>>	
+
+	Managing the Glusterd Service		
+		Starting and stopping the service manually	
+		Starting automatically		
+
+	Gluster Command Line Utility		
+		Console configuration	
+		Command list	
+
+	Managing Trusted Storage Pools		
+		Adding servers	
+		Removing servers
+		Setting up SSL	
+		Setting up Events
+
+	Volume Types
+		<< Should have information about the various types, pros and cons of each, when to use a particular type and any pre-reqs>
+		Distributed Volumes
+		Replicated Volumes
+		Arbiter Volumes
+			Overview	
+			Arbiter configuration	
+			Arbiter brick sizing	
+		Dispersed Volumes 
+		etc etc
+
+	Setting up Storage
+		Partition, format, mount etc etc
+		Controlling User Access 
+			ACLS
+			Groups
+
+	Creating Volumes		
+		Creating distributed volumes	
+		Creating replicated volumes	
+		Creating arbiter volumes
+		Creating distributed replicated volumes	
+		Creating striped replicated volumes	
+		Creating dispersed volumes
+		Creating striped volumes	
+		Creating distributed striped volumes
+		Creating distributed striped replicated volumes			
+
+	Managing Volumes
+		Setting up SSL 			
+		Starting volumes
+		Stopping volumes	
+		Expanding volumes	
+		Shrinking volumes	
+		Replacing a faulty brick	
+			Distributed volume
+			Replicated/distributed replicate volumes
+		Deleting volumes
+		Tuning volume options	
+		Best practices
+
+	NFS-Ganesha server		<<<<< This concept should be moved to next guide "Managing Additional Features" [This would be part of the initial install/setup if they want to use NFS. It would not be an additional feature]
+		Overview	
+		Pre-requisites	
+		Installing nfs-ganesha	
+		Starting NFS-Ganesha manually	
+		Exporting GlusterFS volume using NFS-Ganesha	
+		Configuring the HA Cluster	
+		Using highly available active-active NFS-Ganesha and Gluster FS cli	
+			Creating the ganesha-ha.conf file
+			Configuring NFS-Ganesha using Gluster CLI
+			Modifying the HA cluster
+			Adding a node to the cluster
+			Deleting a node from the cluster
+			Modifying the default export configuration
+		Configuring the Gluster volume for pNFS		
+
+	Configuring Gluster Clients		<<<< Gluster Client configuration
+		Gluster Native Client	
+			Installing          <---- Should this be removed?
+				Installing on RedHat
+				Installing on Debian
+				Installing from source
+			Mounting volumes	
+				Manually mount
+				Automatically mount
+				Mounting options
+				Testing mounted volumes
+		NFS mounting volumes	
+			Manually mounting with NFS
+			Automatically mounting with NFS
+			Testing NFS mounted volumes
+		CIFS mounting volumes	
+			Export through Samba
+			Manually mounting CIFS
+			Automatically mounting CIFS
+			Testing CIFS mounted volumes
+
+
+	Logging		
+		Available logs and locations
+
+
+
+Managing Additional Features         <--- Needs a better title here
+
+	Bitrot Detection
+		Enabling bitrot
+		Disabling bitrot
+		etc etc
+
+	Directory quota		
+		Enabling directory quota	
+		Disabling directory quota	
+		Managing disk limits	
+		Displaying disk limit information	
+			Displaying quota limit information using the df utility
+		Updating memory cache size	
+			Setting timeout
+		Setting alert time	
+
+
+	Geo Replication		
+		Overview and concepts	
+		Pre-requisites	
+		Slave user setup	
+		Configuing an environment for geo-replication	
+			Time synchronization
+			No password SSH
+			Create pem pub file
+		Creating the geo replication session	
+		After creation	
+		Configuration	
+			Configurable options
+		Starting geo replication	
+		Stopping geo replication	
+		Checking geo replication status	
+			Possible status
+		Deleting the session	
+		Geo status checkpoint time	
+		Log files for geo status	
+		Gluster snapshots and geo-replicated volumes	
+
+
+		
+	Gluster Snapshots		
+		Pre-requisites	
+		Creating snapshots	
+		Cloning snapshots	
+		Restoring snapshots	
+		Deleting snapshots	
+		Listing available snapshots	
+		Viewing snapshot status	
+		Configuring snapshot behavior	
+			Possible snapshot values
+		Activating a snapshot	
+		Deactivating a snapshot	
+		Accessing a snapshot	
+			Accessing via the mount
+			Accessing via the hidden directory
+			Accessing from Windows
+
+
+	Selfhealing Volumes  <--- Not very happy about where this is positioned 
+		Configuration
+		etc etc
+
+	Rebalancing Volumes <--- Not very happy about where this is positioned 
+		When is this required
+		Starting rebalance
+		Displaying rebalance status
+		Stopping rebalance
+
+	Trash for Gluster FS		
+		Overview	
+		Volume options	
+		Sample	
+
+	Mandatory locks		
+		Overview	
+		Volume options	
+
+
+
+
+	Monitoring workloads		
+		Running the Volume Profile command	
+			Starting profiling
+			Displaying the I/O information
+			Stopping profiling
+		Running the Volume Top Command	
+			Commands available for viewing
+		Displaying Volume information	
+			Volume commands available
+		Statedumping a volume	
+			Possible statedump options
+		Displaying volume status	
+			Possible volume status options
+
+
+	Troubleshooting:
+		Logs
+		Resources
+		etc etc
+
+
+Others:   <--- Need a better title here
+
+
+	Accessing Gluster using Cinder hosts		
+		<<Gluster Overview>>	
+		Cinder Overview	
+		Installing Gluster on Cinder hosts	
+		Configuring Cinder to Add Gluster	
+		Creating the Gluster volume list	
+		Update Cinder node firewalls for Gluster	
+		Restart Cinder services	
+		Verify integration	
+	Hadoop		
+		Hadoop overview	
+		Pre-requisites	
+		Installing and configuring	
+
+	Gluster on ZFS		
+		ZFS Overview	
+		Pre-requisites	
+		Installing ZFS on Linux	
+			Installing DKMS
+			Build and install SPL
+			Build and install ZFS
+			Finish ZFS configuration
+		Installing GlusterFS	
+
+	Storing Bareos backups on Gluster		
+		Installing Bareos	
+		Pre-requisites	
+		Preparing the Gluster volume	
+		Configuring Bareos	
+		Creating your first backup	
+		Further reading	
+
+	Puppet-Gluster		
+		Overview	
+		Simple setup	
+		Elastic setup	
+		Advanced setup	
+		Best practices	
+		Reference	
+			Available classes and types
+		Examples	
+		Limitations	
+
+	RDMA Transport		
+		Overview	
+		Set up RDMA	
+		Changing transport of a volume	
+		Mounting a volume using RDMA	
+		Transport used by auxillary processes	
+
+	GlusterFS iSCSI		
+		Overview	
+		Setting up Gluster for iSCSI	
+		Running the iSCSI target on the Gluster client	
+		References	
+
+
+
+	GlusterFS Core Utilities		
+		Overview	
+		Installation	
+		Usage	
+			Invoke a new shell
+			Connect to a gluster volume
+			Terminate the client connection from the volume
+			Exit from shell
+		Using standalone glusterfs coreutil commands	
+
+
+
+****************************************************************************************************
+			
+Orphan topics			
+	Ok, but if...		
+	Did you know?		
+	Building QEMU with gfapi for Debian		
+	Modifying .vol files with a filter		
+	Resolving peer-rejected state		
+	Brick Naming Conventions		
+	Object storage/Swift on file		
+	Gluster FS Keystone QS		
+
+
+
+
+
+
+

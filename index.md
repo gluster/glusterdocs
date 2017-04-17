@@ -9,7 +9,7 @@ hardware. To learn more, [please see the Gluster project home page](http://www.g
 
 Since Gluster can be used in different ways and for different tasks, it would be difficult
 to explain everything at once. We recommend that you follow the Quick Start Guide first. By
-utilizing a number of virtual machines, you will create a functional test setup to learn the
+using several virtual machines, you will create a functional test setup to learn the
 basic concepts. You will then be much better equipped to read the more detailed
 Install Guide.
 

@@ -1,5 +1,47 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
+For your convenience, we have grouped the presentations by topic at the top of the page, and by date at the bottom of the page.
+
+General Gluster Concepts
+------------------------
+- [GlusterD-2.0: The next generation of GlusterFS management](https://fosdem.org/2017/schedule/event/glusterd2/) - Kaushal M
+- [Gluster Roadmap and Features](https://fosdem.org/2017/schedule/event/cephglustercommunity/) - Niels de Vos
+-   [Replication Techniques in Gluster](https://www.nluug.nl/activiteiten/events/vj16/abstracts/ab07.html)
+    ([.odp](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.odp))
+    ([.pdf](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.pdf))
+    Niels de Vos
+-   [GlusterD 2.0](https://vault2016.sched.org/event/68kl/glusterd-20-managing-distributed-file-system-using-a-centralized-store-atin-mukherjee-red-hat)
+    ([slideshare](http://www.slideshare.net/GlusterCommunity/gluster-d2-62086643))
+    Atin Mukherjee
+-   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
+    [slideshare](http://www.slideshare.net/GlusterCommunity/20160401-glusterroadmap)
+    [Vimeo recording](https://vimeo.com/album/3949155/video/167706951)
+    Niels de Vos
+
+
+Gluster Scaling
+---------------
+-   [“Building Clouds That Scale-Out with GlusterFS”](https://goo.gl/QnHhr6)
+    Mustafa Resul CETINEL
+
+
+Gluster + Other software 
+------------------------
+- [SELinux Support over GlusterFS](https://fosdem.org/2017/schedule/event/glusterselinux/) - Jiffin Tony Thottan
+- [Python bindings to GlusterFS - a distributed filesystem](https://speakerdeck.com/prashanthpai/python-bindings-to-glusterfs-a-distributed-filesystem) - Prashanth Pai
+- [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs)-  Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
+
+
+
+Gluster and Containers
+----------------------
+- [Hyper-converged, persistent storage for containers with GlusterFS](https://fosdem.org/2017/schedule/event/glustercontainer/) - Jose Rivera, Mohamed Ashiq Liyazudeen
+- [Kubernetes+GlusterFS Lightning Ver.](https://fosdem.org/2017/schedule/event/kubegluster/) - Jose Rivera, Mohamed Ashiq Liyazudeen
+- [“GlusterFS Containers (slideshare)”](http://www.slideshare.net/AshiqAshiq/glusterfs-containers) - Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
+
+Gluster Troubleshooting
+-----------------------
+
 
 [FOSDEM 2017](https://fosdem.org/2017/) @ Brussels, Belgium
 -----------------------------------------------------------
