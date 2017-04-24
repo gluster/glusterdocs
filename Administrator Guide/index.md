@@ -64,17 +64,19 @@
 
 20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Integration.md)
 
-21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
+21.  [Split brain and ways to deal with it](Split brain and ways to deal with it.md)
 
-22.  [Trash for GlusterFS](./Trash.md)
+22.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
-23.  [Mandatory Locks](./Mandatory Locks.md)
+23.  [Trash for GlusterFS](./Trash.md)
 
-24.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+24.  [Mandatory Locks](./Mandatory Locks.md)
 
-25.  [Events APIs](./Events APIs.md)
+25.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
 
-26.  Appendices
+26.  [Events APIs](./Events APIs.md)
+
+27.  Appendices
 
     *  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
