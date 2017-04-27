@@ -3,6 +3,7 @@
 1.  Platform introduction
 
 	*  [About GlusterFS](./GlusterFS Introduction.md)
+	*  [Prerequisites](./GlusterPreReqs.md)
 	*  [Terminologies](../Quick-Start-Guide/Terminologies.md)
 	
 2.  GlusterFS Architecture and Concepts
@@ -14,15 +15,35 @@
 	*  [Compiling RPMS](./Compiling RPMS.md)
 	*  [Managing the Gluster Service](./Start Stop Daemon.md)
 	
-3.  [Gluster Console Guide](./Console.md)
+3.  [Managing Trusted Storage Pools](./ManageTrustedPools.md)
 
-4.  [POSIX Access Control Lists](./Access Control Lists.md)
+	* Adding servers
+	* Removing servers
+	
+4.  Compiling GlusterFS RPMS for different platforms
 
-5.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
-	*  [Handling of users that belong to many groups](./Handling-of-users-with-many-groups.md)
+	* RHEL/CentOS and Fedora
+	* Fedora 16-20
+	* CentOS 5.x
+	* CentOS 6.x
+	* RHEL 6.x
+	* Shared steps
 
+5.  [Gluster Command Line Utility](./Console.md)
+
+	* Console configuration
+	* Available commands
+
+4. User access
+
+	* Configuring Access Control Lists [POSIX Access Control Lists](./Access Control Lists.md)
+	* [Handling users in groups](./Handling-of-users-with-many-groups.md)
+
+5.  [Configuring Gluster Clients](./Setting Up Clients.md)
+	
 6.  Volume Options
 
+	*  Volume types listing
 	*  [Setting Up Volumes](./Setting Up Volumes.md)
 	*  [Managing Volumes](./Managing Volumes.md)
 	*  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
