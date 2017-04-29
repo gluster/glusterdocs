@@ -19,7 +19,7 @@ General Gluster Concepts
     Niels de Vos
 -   Gluster roadmap: Recent improvements and upcoming features
     [slideshare](http://www.slideshare.net/GlusterCommunity/20160130-glusterroadmap)
-    Niels de Vos
+    - Niels de Vos
 -   [GlusterFS Tutorial - Architecture](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fsintroduction) -
     Rajesh Joseph & Poornima Gurusiddaiah
 -   [GlusterFS Tutorial - Hands-on](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fshandson) -
