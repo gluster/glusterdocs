@@ -27,4 +27,9 @@ Introductory paragraph about why someone would want to do this procedure.
 
 Expected outcome of procedure.
 
+## Related topics
+
+* Topic link
+* Topic link
+
 Link to next step (if relevant)

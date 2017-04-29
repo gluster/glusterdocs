@@ -20,6 +20,8 @@ Then you need to run mkdocs from the root of that repository:
 
 The result will be in the `site/` subdirectory, in HTML.
 
+** Advanced topic: changing the TOC. The TOC is mkdocs.yml, NOT index.md is the base directory. **
+
 # Writing the docs
 
 This documentation set uses the Commonmark markdown set. You can read more about Commonmark here: [Commonmark Specification](http://spec.commonmark.org/0.27/)
