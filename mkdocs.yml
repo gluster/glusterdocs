@@ -124,5 +124,9 @@ pages:
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
   - Statedump: Troubleshooting/statedump.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
+- Templates:
+  - Procedure: Templates/procedure_template.md
+  - Best Practice: Templates/best_practice_template.md
+  - Concept: Templates/concept_template.md
 
 theme: readthedocs
