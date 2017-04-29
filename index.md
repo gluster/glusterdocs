@@ -44,3 +44,8 @@ If you want to help more with Gluster documentation, please subscribe to [Gluste
 Users](http://www.gluster.org/mailman/listinfo/gluster-users) and [Gluster
 Developers](http://www.gluster.org/mailman/listinfo/gluster-devel) mailing lists,
 and share your ideas with the Gluster developer community.
+
+### Gluster templates ###
+[Procedural topics](./Templates/procedure_template.md)  
+[Conceptual topics](./Templates/concept_template.md)  
+[Best practices topics](./Templates/best_practice_template.md)
