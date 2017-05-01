@@ -10,41 +10,42 @@ pages:
 - Gluster File System Quickstart:
   - Quick start Guide: Quick-Start-Guide/Quickstart.md
   - Architecture: Quick-Start-Guide/Architecture.md
-- Gluster Concepts and Terminology
- -  Terminologies: Quick-Start-Guide/Terminologies.md
- -  Glossary: Administrator Guide/glossary.md
- -  Architecture: Quick-Start-Guide/Architecture.md
- -  Presentations: presentations/index.md
+  - Gluster Concepts and Terminology:
+    - Terminologies: Quick-Start-Guide/Terminologies.md
+    - Glossary: Administrator Guide/glossary.md
+    - Architecture: Quick-Start-Guide/Architecture.md
+    - Presentations: presentations/index.md
 - Install Guide:
   - Overview: Install-Guide/Overview.md
   - Common Criteria: Install-Guide/Common_criteria.md
   - Install: Install-Guide/Install.md
-   - Setting up in virtual machines: Install-Guide/Setup_virt.md
-   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
-   - Deploying in AWS: Install-Guide/Setup_aws.md
+    Install:
+    - Setting up in virtual machines: Install-Guide/Setup_virt.md
+    - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
+    - Deploying in AWS: Install-Guide/Setup_aws.md
   - Community Packages: Install-Guide/Community_Packages.md
   - Configuring Gluster: Install-Guide/Configure.md
 - Administrator Guide:
   - Index: Administrator Guide/index.md
   - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
-  - Creating and configuring your environment
-   - Storage Pools: Administrator Guide/Storage Pools.md
-   - Access Control Lists: Administrator Guide/Access Control Lists.md
-   - Setting Up Clients: Administrator Guide/Setting Up Clients.md
-   - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
-   - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
-   - Geo Replication: Administrator Guide/Geo Replication.md
-   - Directory Quota: Administrator Guide/Directory Quota.md
-  - Using Gluster with other software
-   - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
-   - GlusterFS Keystone Quickstart: Administrator Guide/GlusterFS Keystone Quickstart.md
-   - Hadoop: Administrator Guide/Hadoop.md
-   - Gluster On ZFS: Administrator Guide/Gluster On ZFS.md
-   - Configuring Bareos to store backups on Gluster: Administrator Guide/Bareos.md
-   - Puppet Gluster: Administrator Guide/Puppet.md
-   - RDMA Transport: Administrator Guide/RDMA Transport.md
-   - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
-   - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
+  - Creating and configuring your environment:
+    - Storage Pools: Administrator Guide/Storage Pools.md
+    - Access Control Lists: Administrator Guide/Access Control Lists.md
+    - Setting Up Clients: Administrator Guide/Setting Up Clients.md
+    - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
+    - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
+    - Geo Replication: Administrator Guide/Geo Replication.md
+    - Directory Quota: Administrator Guide/Directory Quota.md
+  - Using Gluster with other software:
+    - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
+    - GlusterFS Keystone Quickstart: Administrator Guide/GlusterFS Keystone Quickstart.md
+    - Hadoop: Administrator Guide/Hadoop.md
+    - Gluster On ZFS: Administrator Guide/Gluster On ZFS.md
+    - Configuring Bareos to store backups on Gluster: Administrator Guide/Bareos.md
+    - Puppet Gluster: Administrator Guide/Puppet.md
+    - RDMA Transport: Administrator Guide/RDMA Transport.md
+    - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
+    - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
   - SSL: Administrator Guide/SSL.md
   - Did You Know: Administrator Guide/Did You Know.md
   - Compiling RPMS: Administrator Guide/Compiling RPMS.md
