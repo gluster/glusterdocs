@@ -8,25 +8,25 @@ docs_dir: .
 pages:
 - Home: index.md
 - Gluster File System Quickstart:
-  - Quick start Guide: Quick-Start-Guide/Quickstart.md
-  - Architecture: Quick-Start-Guide/Architecture.md
+  - Quickstart Guide: Quick-Start-Guide/Quickstart.md
 - Gluster Concepts and Terminology
  -  Terminologies: Quick-Start-Guide/Terminologies.md
  -  Glossary: Administrator Guide/glossary.md
  -  Architecture: Quick-Start-Guide/Architecture.md
  -  Presentations: presentations/index.md
-- Install Guide:
+- Installation Guide:
   - Overview: Install-Guide/Overview.md
   - Common Criteria: Install-Guide/Common_criteria.md
   - Install: Install-Guide/Install.md
    - Setting up in virtual machines: Install-Guide/Setup_virt.md
    - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
    - Deploying in AWS: Install-Guide/Setup_aws.md
-  - Community Packages: Install-Guide/Community_Packages.md
+  - Adding Community Packages: Install-Guide/Community_Packages.md
   - Configuring Gluster: Install-Guide/Configure.md
 - Administrator Guide:
-  - Index: Administrator Guide/index.md
-  - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
+   - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
+   - Architecture: Quick-Start-Guide/Architecture.md
+   - Glossary: Administrator Guide/glossary.md
   - Creating and configuring your environment
    - Storage Pools: Administrator Guide/Storage Pools.md
    - Access Control Lists: Administrator Guide/Access Control Lists.md
@@ -35,7 +35,29 @@ pages:
    - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
    - Geo Replication: Administrator Guide/Geo Replication.md
    - Directory Quota: Administrator Guide/Directory Quota.md
-  - Using Gluster with other software
+   - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
+  - Gluster Administration Tools
+   - Gluster Console Guide: Administrator Guide/Console.md
+   - Events APIs: Administrator Guide/Events APIs.md
+   - SSL: Administrator Guide/SSL.md
+  - Managing Gluster
+   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
+   - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
+   - Managing Volumes: Administrator Guide/Managing Volumes.md
+   - Managing Snapshots: Administrator Guide/Managing Snapshots.md
+   - Monitoring Workload: Administrator Guide/Monitoring Workload.md
+   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
+   - Object Storage: Administrator Guide/Object Storage.md
+   - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
+   - Resolving Peer Rejected State: Administrator Guide/Resolving Peer Rejected.md
+   - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
+   - Performance Testing: Administrator Guide/Performance Testing.md
+   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
+   - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
+   - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
+   - Trash for GlusterFS: Administrator Guide/Trash.md
+   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
+ - Using Gluster with other software
    - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
    - GlusterFS Keystone Quickstart: Administrator Guide/GlusterFS Keystone Quickstart.md
    - Hadoop: Administrator Guide/Hadoop.md
@@ -45,32 +67,13 @@ pages:
    - RDMA Transport: Administrator Guide/RDMA Transport.md
    - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
    - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
-  - SSL: Administrator Guide/SSL.md
-  - Did You Know: Administrator Guide/Did You Know.md
-  - Compiling RPMS: Administrator Guide/Compiling RPMS.md
-  - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
-  - Gluster Console Guide: Administrator Guide/Console.md
-  - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
-  - Managing Volumes: Administrator Guide/Managing Volumes.md
-  - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
-  - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
-  - Resolving Peer Rejected State: Administrator Guide/Resolving Peer Rejected.md
-  - Logging: Administrator Guide/Logging.md
-  - Managing Snapshots: Administrator Guide/Managing Snapshots.md
-  - Monitoring Workload: Administrator Guide/Monitoring Workload.md
-  - Object Storage: Administrator Guide/Object Storage.md
-  - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
-  - Troubleshooting: Administrator Guide/Troubleshooting.md
-  - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
-  - Performance Testing: Administrator Guide/Performance Testing.md
-  - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
-  - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
-  - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
-  - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
-  - Trash for GlusterFS: Administrator Guide/Trash.md
-  - Mandatory Locks: Administrator Guide/Mandatory Locks.md
-  - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
-  - Events APIs: Administrator Guide/Events APIs.md
+   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
+   - Compiling RPMS: Administrator Guide/Compiling RPMS.md
+ - Logging and troubleshooting with Gluster  
+   - Did You Know: Administrator Guide/Did You Know.md
+   - Logging: Administrator Guide/Logging.md  
+   - Troubleshooting: Administrator Guide/Troubleshooting.md
+   - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
@@ -91,11 +94,11 @@ pages:
   - GlusterFS Release process : Contributors-Guide/GlusterFS-Release-process.md
   - Guidelines For Maintainers : Contributors-Guide/Guidelines-For-Maintainers.md
   - Adding your gluster blog : Contributors-Guide/Adding-your-blog.md
-- Ops Guide:
+- Operations Guide:
   - Index: Ops-Guide/Overview.md
   - Tools: Ops-Guide/Tools.md
-- Upgrade-Guide:
-  - Upgrade-Guide Index: Upgrade-Guide/README.md
+- Upgrade Guide:
+  - Upgrade-Guide Contents: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op_version.md
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
   - Upgrade to 3.6: Upgrade-Guide/upgrade_to_3.6.md
