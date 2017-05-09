@@ -13,6 +13,10 @@ pages:
   - Terminologies: Quick-Start-Guide/Terminologies.md
   - Glossary: Administrator Guide/glossary.md
   - Architecture: Quick-Start-Guide/Architecture.md
+  - Design: Concepts-Guide/Design.md
+  - Security: Concepts-Guide/Security.md
+  - Scaling: Concepts-Guide/Scaling.md
+  - Resiliency: Concepts-Guide/Resiliency.md
   - Presentations: presentations/index.md
 - Installation Guide:
   - Overview: Install-Guide/Overview.md

@@ -2,7 +2,7 @@
 
 *New in version 3.9*
 
-## Set PYTHONPATH(Only in case of Source installation)
+## Set PYTHONPATH (Only in case of Source installation)
 If Gluster is installed using source install, `cliutils` will get
 installed under `/usr/local/lib/python.2.7/site-packages` Set
 PYTHONPATH by adding in `~/.bashrc`
@@ -34,7 +34,7 @@ SysVInit(CentOS 6),
 
 ## Status
 
-Status Can be checked using,
+Status can be checked using,
 
     gluster-eventsapi status
 
@@ -57,7 +57,7 @@ server which listens on a URL, this can be deployed outside of the
 Cluster. Gluster nodes should be able to access this Webhook server on
 the configured port.
 
-Example Webhook written in python,
+Example Webhook written in Python:
 
     from flask import Flask, request
 
@@ -150,7 +150,7 @@ Example,
 
 ## Configuration
 
-View all configurations using,
+View all configurations using
 
     usage: gluster-eventsapi config-get [-h] [--name NAME]
 
@@ -187,7 +187,7 @@ Example output,
     | node2     |          UP |          OK |
     +-----------+-------------+-------------+
 
-To Reset any configuration,
+To reset any configuration,
 
     usage: gluster-eventsapi config-reset [-h] name
 
@@ -197,7 +197,7 @@ To Reset any configuration,
     optional arguments:
       -h, --help  show this help message and exit
 
-Example output,
+Example output
 
     +-----------+-------------+-------------+
     |    NODE   | NODE STATUS | SYNC STATUS |
@@ -209,14 +209,14 @@ Example output,
 **Note**: If any node status is not UP or sync status is not OK, make
 sure to run `gluster-eventsapi sync` from a peer node.
 
-## Add node to the Cluster
-When a new node added to the cluster,
+## Add a node to the Cluster
+When a new node is added to the cluster,
 
 - Enable and Start Eventsd in the new node using the steps mentioned above
 - Run `gluster-eventsapi sync` command from a peer node other than the new node.
 
 
-## APIs documentation
+## API documentation
 Glustereventsd pushes the Events in JSON format to configured
 Webhooks. All Events will have following attributes.
 
@@ -587,3 +587,5 @@ VOLUME_REBALANCE_START         | volume               | Volume Name
 VOLUME_REBALANCE_STOP          | volume               | Volume Name
 VOLUME_REBALANCE_FAILED        | volume               | Volume Name
 VOLUME_REBALANCE_COMPLETE      | volume               | Volume Name
+
+<!---This is good stuff, we need to make sure it's indexed properly.--->

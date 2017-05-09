@@ -1,4 +1,4 @@
-##Using the Gluster Console Manager – Command Line Utility
+# Using the Gluster Console Manager – Command Line Utility
 
 The Gluster Console Manager is a single command line utility that
 simplifies configuration and management of your storage environment. The
@@ -17,34 +17,34 @@ You can also use the commands to create scripts for automation, as well
 as use the commands as an API to allow integration with third-party
 applications.
 
-###Running the Gluster Console Manager
+## Running the Gluster Console Manager
 
 You can run the Gluster Console Manager on any GlusterFS server either
 by invoking the commands or by running the Gluster CLI in interactive
 mode. You can also use the gluster command remotely using SSH.
 
--   To run commands directly:
+###   To run commands directly
 
     `# gluster peer`
 
-    For example:
+   For example:
 
     `# gluster peer status`
 
--   To run the Gluster Console Manager in interactive mode
+###   To run the Gluster Console Manager in interactive mode
 
     `# gluster`
 
-    You can execute gluster commands from the Console Manager prompt:
+   You can execute gluster commands from the Console Manager prompt:
 
     `gluster>`
 
-    For example, to view the status of the peer server:
+   For example, to view the status of the peer server:
 
     `# gluster`
 
     `gluster > peer status`
 
-    Display the status of the peer.
+   Display the status of the peer.
 
-
+<!---And then what --->

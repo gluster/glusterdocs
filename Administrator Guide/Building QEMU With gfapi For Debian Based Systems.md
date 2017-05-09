@@ -1,24 +1,21 @@
+# How to build QEMU with gfapi for Debian-based systems
 This how-to has been tested on Ubuntu 13.10 in a clean, up to date
-environment. Older Ubuntu distros required some hacks if I remembered
-rightly. Other Debian based distros should be able to follow this
+environment. Older Ubuntu distros required some hacks. Other Debian-based distros should be able to follow this,
 adjusting for dependencies. Please update this if you get it working on
 another distro.
 
-### Satisfying dependencies
+## Satisfying dependencies
+### To get the qemu dependencies
+1. Enter ```apt-get  build-dep qemu```
+2. To get all the dependencies specified in the debian
+control file as asked for from upstream Debian sid 
+You can look into the
+options specified there and adjust to your needs.
 
-Make the first stab at getting qemu dependencies
+```        apt-get install devscripts quilt libiscsi-dev libusbredirparser-dev libssh2-1-dev libvdeplug-dev libjpeg-dev glusterfs* ```
 
-        apt-get  build-dep qemu 
-
-This next command grabs all the dependencies specified in the debian
-control file as asked for from upstream Debian sid You can look into the
-options specified there and adjust to taste.
-
-        # get almost all the rest and the tools to work up the Debian magic
-        apt-get install devscripts quilt libiscsi-dev libusbredirparser-dev libssh2-1-dev libvdeplug-dev libjpeg-dev glusterfs*
-
-we need a newer version of libseccomp for Ubuntu 13.10
-
+1. Get a newer version of libseccomp for Ubuntu 13.10
+```
         mkdir libseccomp
         cd libseccomp
         # grab it from upstream sid
@@ -36,14 +33,14 @@ we need a newer version of libseccomp for Ubuntu 13.10
         cd ..
         # install it
         dpkg -i *.deb
-
-### Building QEMU
-
-This next part is straightforward if your dependencies are met. For the
+```
+### To Build QEMU
+ For the
 advanced reader look around debian/control once it is extracted before
 you install as you may want to change what options QEMU is built with
 and what targets are requested.
-
+2. Enter the following commands. Comments are noted with #.
+```
         cd ..
         mkdir qemu
         cd qemu
@@ -74,6 +71,5 @@ and what targets are requested.
         # build packages
         debuild -i -us -uc -b
         cd ..
-
-Your debs now available to install. It is up to the reader to determine
-what targets they want installed.
+```
+3. Your debs now available to install. Determine what targets you want to install.

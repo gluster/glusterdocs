@@ -1,3 +1,4 @@
 site/
 env/
 .env
+mkdocs_broken.yml

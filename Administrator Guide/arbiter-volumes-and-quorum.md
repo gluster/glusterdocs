@@ -2,7 +2,7 @@
 
 The arbiter volume is special subset of replica volumes that is aimed at
 preventing split-brains and providing the same consistency guarantees as a normal
-replica 3 volume without consuming 3x space. 
+replica 3 volume without consuming 3 times as much space. 
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
