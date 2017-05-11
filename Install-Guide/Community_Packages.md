@@ -1,9 +1,9 @@
 ### Community Packages
 
 An **X** means packages are provided in the respective repository.  
-An **x** means packages are planned.
-An **?** means packages are tentative planned as soon as is practical.
-A **—** means no plans to build new updates. Existing packages will remain in the repos.
+An **x** means packages are planned.  
+An **?** means packages are tentative planned as soon as is practical.  
+A **—** means no plans to build new updates. Existing packages will remain in the repos.  
 **d.g.o** means packages are (or will be) provided on https://download.gluster.org  
 
 |              |               | 3.11 stm | 3.10 ltm | 3.9 stm⁴ | 3.8 ltm  |
