@@ -16,6 +16,7 @@ Tested on:
 * selinux permissive (yay!)
 * consul server/agents version `v0.7.5`
 * gluster servers with glusterfs 3.8.x on CentOS 7.3 + samba 4 with simple auth and vfs gluster module
+* gluster volume set as distributed-replicated + 'features.shard: true' and 'features.shard-block-size: 512MB'
 * gluster agents with glusterfs 3.8.x on Ubuntu 14.04
 * gluster agents with glusterfs 3.8.x on CentOS 7.3
 * gluster agents with glusterfs 3.7.x on CentOS 5.9
@@ -39,6 +40,7 @@ We want to create shared storage accessible via different operating systems - Li
 * consul health checks introduce delay, also remember that consul can cache DNS entries to increase performance
 * the way Windows share works is that it will connect to one of the samba servers, if this server die then transfers are
   aborted, and we must retry operation, but watch out for delay.
+* anything other than gluster volume distributed-replicated was not tested - it may not work for Windows.
 
 # Requirements
 
