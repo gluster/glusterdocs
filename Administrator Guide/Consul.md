@@ -5,10 +5,29 @@
 It consists of consul server and agents connecting to it.
 Apps can get configuration data from consul via HTTP API or DNS queries.
 
+Long story short, instead of using standard hostnames and relying on official DNS servers which we may not control,
+we can use consul to resolve hosts with services under ``.consul`` domain, which turns this classic setup:
+
+```bash
+
+    mount -t glusterfs -o backupvolfile-server=gluster-poc-02 gluster-poc-01:/g0 /mnt/gluster/g0
+
+```
+
+into more convenient entry:
+
+```bash
+
+    mount -t glusterfs gluster.service.consul:/g0 /mnt/gluster/g0
+
+```
+
+which is especially useful when using image-based servers without further provisioning, and spreading load across all healthy servers registered in consul.
+
 # Warning
 
 In this document you will get a proof-of-concept basic setup - gluster servers and gluster clients configured,
-which should be a point to expand. You should read [Further steps](# Further steps for improvements) section to harden it.
+which should be a point to expand. You should read [Further steps](#Further steps for improvements) section to harden it.
 
 Tested on:
 
