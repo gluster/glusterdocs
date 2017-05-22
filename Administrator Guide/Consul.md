@@ -27,7 +27,7 @@ which is especially useful when using image-based servers without further provis
 # Warning
 
 In this document you will get a proof-of-concept basic setup - gluster servers and gluster clients configured,
-which should be a point to expand. You should read [Further steps](#Further steps for improvements) section to harden it.
+which should be a point to expand. You should read [Further steps](#further-steps-for-improvements) section to harden it.
 
 Tested on:
 
