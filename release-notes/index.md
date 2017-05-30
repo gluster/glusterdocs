@@ -1,6 +1,10 @@
 Release Notes
 -------------
 
+###GlusterFS 3.11 release notes
+
+- [3.11.0](./3.11.0.md)
+
 ###GlusterFS 3.10 release notes
 
 - [3.10.1](./3.10.1.md)
