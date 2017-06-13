@@ -80,7 +80,7 @@ how many files you plan to store in the volume. A good estimate will be
 ## Split-brains in replica volumes
 
 When a file is in split-brain, there is an inconsistency in either data or
-metadata (permissions, uid/gid, extended attributes etc.)of the file amongst the
+metadata (permissions, uid/gid, extended attributes etc.) of the file amongst the
 bricks of a replica *and* we do not have enough information to authoritatively
 pick a copy as being pristine and heal to the bad copies, despite all bricks
 being up and online. For directories, there
