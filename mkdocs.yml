@@ -7,6 +7,14 @@ docs_dir: .
 
 pages:
 - Home: index.md
+- Contributing to Gluster:
+  - Introduction: Developer-guide-v2/Developers-Index.md
+  - Getting Started: Developer-guide-v2/Developer-Getting-Started.md
+  - Tools: Developer-guide-v2/Developer-Tools.md
+  - The Gluster Source Tree: Developer-guide-v2/Developer-Source-Tree.md
+  - Development Workflow: Developer-guide-v2/Developer-Workflow.md
+  - Testing : Developer-guide-v2/Developer-Testing.md
+  - Resources: Developer-guide-v2/Developer-Resources.md
 - Gluster File System Quickstart:
   - Quickstart Guide: Quick-Start-Guide/Quickstart.md
 - Gluster Concepts and Terminology:
@@ -79,17 +87,17 @@ pages:
     - Logging: Administrator Guide/Logging.md
     - Troubleshooting: Administrator Guide/Troubleshooting.md
     - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
-- Developers Guide:
-  - Developers Home: Developer-guide/Developers-Index.md
-  - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
-  - Development-Workflow : Developer-guide/Development-Workflow.md
-  - Compiling RPMS from GIT Source : Developer-guide/Compiling-RPMS.md
-  - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
-  - Project Ideas : Developer-guide/Projects.md
-  - EasyFix bugs : Developer-guide/Easy-Fix-Bugs.md
-  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md
-  - Backport Wishlist : Developer-guide/Backport-Wishlist.md
-  - Backport Guidelines : Developer-guide/Backport-Guidelines.md
+#- Developers Guide:
+#  - Developers Home: Developer-guide/Developers-Index.md
+#  - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
+#  - Development-Workflow : Developer-guide/Development-Workflow.md
+#  - Compiling RPMS from GIT Source : Developer-guide/Compiling-RPMS.md
+#  - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
+#  - Project Ideas : Developer-guide/Projects.md
+#  - EasyFix bugs : Developer-guide/Easy-Fix-Bugs.md
+#  - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md
+#  - Backport Wishlist : Developer-guide/Backport-Wishlist.md
+#  - Backport Guidelines : Developer-guide/Backport-Guidelines.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
   - Bug Reporting Guidelines : Contributors-Guide/Bug-Reporting-Guidelines.md
