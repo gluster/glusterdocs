@@ -96,7 +96,7 @@ the gluster brick processes going down or returning an error.
 
 ## Server-quorum and some pitfalls
 
-This [document](http://www.gluster.org/community/documentation/index.php/Features/Server-quorum)
+This [document](https://web.archive.org/web/20141129120318/http://www.gluster.org/community/documentation/index.php/Features/Server-quorum)
 provides a detailed description of this feature.
 The volume options for server-quorum are:
 
