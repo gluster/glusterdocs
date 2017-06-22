@@ -27,7 +27,7 @@ To run client-side profiling,
 - gluster volume profile your-volume start
 - setfattr -n trusted.io-stats-dump -v /tmp/io-stats-pre.txt /your/mountpoint
 
-This will generate the specified file on the client.  A script like [gvp-client.sh](https://raw.githubusercontent.com/bengland2/parallel-libgfapi/master/gvp-client.sh)  can automate collection of this data.  
+This will generate the specified file on the client.  A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis)  can automate collection of this data.  
 
 TBS: what the different FOPs are and what they mean.
 
@@ -39,7 +39,7 @@ To run it:
 - repeat this command periodically: gluster volume profile your-volume info
 - gluster volume profile your-volume stop
 
-A script like [gvp.sh](https://raw.githubusercontent.com/bengland2/parallel-libgfapi/master/gvp.sh) can help you automate this procedure.
+A script like [gvp.sh](https://github.com/bengland2/gluster-profile-analysis) can help you automate this procedure.
 
 Scripts to post-process this data are in development now, let us know what you need and what would be a useful format for presenting the data.
 
