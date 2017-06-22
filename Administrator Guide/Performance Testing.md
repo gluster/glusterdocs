@@ -331,7 +331,7 @@ in order of importance:
 Network configuration has a huge impact on performance of distributed storage, but is often not given the
 attention it deserves during the planning and installation phases of the
 cluster lifecycle. Fortunately,
-[network configuration](http://gluster.readthedocs.io/en/latest/Administrator%20Guide/Network%20Configurations%20Techniques/)
+[network configuration](./Network%20Configurations%20Techniques.md)
 can be enhanced significantly, often without additional hardware.
 
 To measure network performance, consider use of a
