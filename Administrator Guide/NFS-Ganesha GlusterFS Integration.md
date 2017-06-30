@@ -164,7 +164,7 @@ Ensure that the following pre-requisites are taken into consideration before you
 * Disable and stop NetworkManager service.
 * Enable and start network service on all machines.
 * Create and mount a gluster shared volume.
-	* gluster volume set all cluster.enable-shared storage enable
+	* gluster volume set all cluster.enable-shared-storage enable
 * Install Pacemaker and Corosync on all machines.
 * Set the cluster auth password on all the machines.
 * Passwordless ssh needs to be enabled on all the HA nodes. Follow these steps,
