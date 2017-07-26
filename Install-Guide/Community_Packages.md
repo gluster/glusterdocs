@@ -1,36 +1,41 @@
 ### Community Packages
 
-An **X** means packages are provided in the respective repository.  
+An **X** means packages are (or will be) provided in the respective repository.  
 A **—** means no plans to build new updates. Existing packages will remain in the repos.  
-**d.g.o.** means packages are (or will be) provided on https://download.gluster.org  
 
-|              |               | 3.11 stm | 3.10 ltm | 3.9 stm⁴ | 3.8 ltm  |
-|--------------|---------------|:--------:|:--------:|:--------:|:--------:|
-|CentOS Storage|el6            |    X     |    X     |    —     |    X     |
-|SIG¹          |el7            |    X     |    X     |    —     |    X     |
-|              |               |          |          |          |          |
-|Fedora        |F24            |    —     |  d.g.o.  |    —     |    X     |
-|              |F25            |  d.g.o.  |    X     |    —     |  d.g.o.  |
-|              |F26            |  d.g.o.  |    X     |    —     |  d.g.o.  |
-|              |F27            |    X     |  d.g.o.  |    —     |  d.g.o.  |
-|              |               |          |          |          |          |
-|Ubuntu        |Trusty/14.04   |    —     |    X     |    —     |    X     |
-|Launchpad²    |Xenial/16.04   |    X     |    X     |    —     |    X     |
-|              |Yakkety/16.10  |    X     |    X     |    —     |    X     |
-|              |Zesty/17.04    |    X     |    X     |    —     |    X     |
-|              |Artful/17.10   |    X     |    X     |    —     |    X     |
-|              |               |          |          |          |          |
-|Debian        |Jessie/8       |  d.g.o.  |  d.g.o.  |    —     |  d.g.o.  |
-|              |Stretch/9      |  d.g.o.  |  d.g.o.  |    —     |  d.g.o.  |
-|              |Buster(Sid)/10 |  d.g.o.  |  d.g.o.  |    —     |    —     |
-|              |               |          |          |          |          |
-|OpenSuSE Build|OpenSuSE13     |    —     |    —     |    —     |    X     |
-|Service³      |Leap 42.X      |    X     |    X     |    —     |    X     |
-|              |Leap 15        |    ?     |    ?     |    —     |    —     |
-|              |SLES12         |    X     |    X     |    —     |    X     |
+|              |               | 4.0 stm¹ | 3.12 ltm | 3.11 stm² | 3.10 ltm | 3.8 ltm³ |
+|--------------|---------------|:--------:|:--------:|:---------:|:--------:|:--------:|
+|CentOS Storage|el6            |    —     |    X     |    X      |    X     |    X     |
+|SIG[1]        |el7            |    X     |    X     |    X      |    X     |    X     |
+|              |               |          |          |           |          |          |
+|Fedora[2]     |F24            |    —     |    —     |    —      |    X     |    X⁴    |
+|              |F25            |    X     |    X     |    X      |    X⁴    |    X     |
+|              |F26            |    X     |    X     |    X      |    X⁴    |    X     |
+|              |F27            |    X     |    X⁴    |    X      |    X     |    X     |
+|              |               |          |          |           |          |          |
+|Ubuntu        |Trusty/14.04   |    —     |    —     |    —      |    X     |    X     |
+|Launchpad[3]  |Xenial/16.04   |    X     |    X     |    X      |    X     |    X     |
+|              |Yakkety/16.10⁵ |    —     |    —     |    X      |    X     |    X     |
+|              |Zesty/17.04    |    X     |    X     |    X      |    X     |    X     |
+|              |Artful/17.10   |    X     |    X     |    X      |    X     |    X     |
+|              |               |          |          |           |          |          |
+|Debian[2]     |Jessie/8       |    X     |    X     |    X      |    X     |    X     |
+|              |Stretch/9      |    X     |    X     |    X      |    X     |    X     |
+|              |Buster(Sid)/10 |    X     |    X     |    X      |    X     |    —     |
+|              |               |          |          |           |          |          |
+|OpenSuSE Build|OpenSuSE13     |    —     |    —     |    —      |    —     |    X     |
+|Service[4]    |Leap 42.X      |    X     |    X     |    X      |    X     |    X     |
+|              |Leap 15        |    X     |    X     |    X      |    X     |    —     |
+|              |SLES12         |    X     |    X     |    X      |    X     |    X     |
 
-¹ <https://wiki.centos.org/SpecialInterestGroup/Storage>  
-² <https://launchpad.net/~gluster>  
-³ <https://build.opensuse.org/project/subprojects/home:glusterfs> and/or
-  <https://build.opensuse.org/project/subprojects/home:kkeithleatredhat>  
-⁴ support ended with 3.10 GA  
+[1] <https://wiki.centos.org/SpecialInterestGroup/Storage>  
+[2] <http://download.gluster.org/pub/gluster/glusterfs>  
+[3] <https://launchpad.net/~gluster>  
+[4] <https://build.opensuse.org/project/subprojects/home:glusterfs>  
+  
+¹ Tentative release date August, 2017.  
+² 3.11 will EOL when 4.0 is released.  
+³ 3.8 will EOL when 3.12 is released.  
+⁴ Fedora Updates or UpdatesTesting repository. Use dnf to install.  
+⁵ Ubuntu Yakkety reached EOL in July 2017. No further updates.  
+
