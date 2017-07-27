@@ -46,7 +46,6 @@
 	*  [Managing Object Store](./Object Storage.md)
 	*  [Accessing GlusterFS using Cinder Hosts](./GlusterFS Cinder.md)
 	*  [GlusterFS with Keystone](./GlusterFS Keystone Quickstart.md)
-	*  [Hadoop Compatiable Storage with GlusterFS](./Hadoop.md)
 	*  [Install Gluster on Top of ZFS](./Gluster On ZFS.md)
 	*  [Configuring Bareos to store backups on Gluster](./Bareos.md)
 	

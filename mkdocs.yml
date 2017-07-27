@@ -48,7 +48,6 @@ pages:
   - Object Storage: Administrator Guide/Object Storage.md
   - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
   - GlusterFS Keystone Quickstart: Administrator Guide/GlusterFS Keystone Quickstart.md
-  - Hadoop: Administrator Guide/Hadoop.md
   - Gluster On ZFS: Administrator Guide/Gluster On ZFS.md
   - Configuring Bareos to store backups on Gluster: Administrator Guide/Bareos.md
   - SSL: Administrator Guide/SSL.md
