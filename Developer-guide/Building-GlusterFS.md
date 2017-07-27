@@ -31,7 +31,7 @@ The following packages are required for building GlusterFS,
 The following dnf command installs all the build requirements for
 Fedora,
 
-		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config userspace-rcu-devel sqlite-devel libacl-devel bison libtool
+		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config
 
 ### Ubuntu
 
@@ -76,13 +76,23 @@ configure script should give the below configure summary,
 		georeplication       : yes
 		Linux-AIO            : yes
 		Enable Debug         : no
-		systemtap            : no
 		Block Device xlator  : yes
 		glupy                : yes
 		Use syslog           : yes
 		XML output           : yes
-		QEMU Block formats   : yes
 		Encryption xlator    : yes
+		Unit Tests	     : no
+		Track priv ports     : yes
+		POSIX ACLs           : yes
+		Data Classification  : yes
+		SELinux features     : yes
+		firewalld-config     : no
+		Experimental xlators : yes
+		Events		     : yes
+		EC dynamic support   : x64 sse avx
+		Use memory pools     : yes
+		Nanosecond m/atimes  : yes
+		Legacy gNFS server   : no
 
 During development it is good to enable a debug build. To do this run
 configure with a '--enable-debug' flag.
