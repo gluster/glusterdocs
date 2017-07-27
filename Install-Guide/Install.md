@@ -1,7 +1,7 @@
 ### Installing Gluster
 
 For RPM based distributions, if you will be using InfiniBand, add the
-glusterfs RDMA package to the installations. For RPM based systems, yum
+glusterfs RDMA package to the installations. For RPM based systems, yum/dnf
 is used as the install method in order to satisfy external depencies
 such as compat-readline5
 
@@ -63,7 +63,7 @@ For more installation details refer [Gluster Quick start guide](https://wiki.cen
 
 Install the Gluster packages:
 
-		yum install glusterfs-server
+		dnf install glusterfs-server
 
 Once you are finished installing, you can move on to [configuration](./Configure.md) section.
 

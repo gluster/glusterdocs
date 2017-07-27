@@ -28,10 +28,10 @@ The following packages are required for building GlusterFS,
 
 ### Fedora
 
-The following yum command installs all the build requirements for
+The following dnf command installs all the build requirements for
 Fedora,
 
-		# yum install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config
+		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config userspace-rcu-devel sqlite-devel libacl-devel bison libtool
 
 ### Ubuntu
 
