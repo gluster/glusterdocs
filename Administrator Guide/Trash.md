@@ -1,6 +1,6 @@
 Trash Translator
 ================
-Trash translator will allow users to access deleted or truncated files. Every brick will maintain a hidden .trashcan directory , which will be used to store the files deleted or truncated from the respective brick .The aggregate of all those .trashcan directory can be accessed from the mount point. In order to avoid name collisions , a time stamp is appended to the original file name while it is being moved to trash directory.
+Trash translator will allow users to access deleted or truncated files. Every brick will maintain a hidden .trashcan directory , which will be used to store the files deleted or truncated from the respective brick. The aggregate of all those .trashcan directory can be accessed from the mount point. In order to avoid name collisions, a time stamp is appended to the original file name while it is being moved to trash directory.
 
 ## Implications and Usage
 Apart from the primary use-case of accessing files deleted or truncated by user , the trash translator can be helpful for internal operations such as self-heal and rebalance. During self-heal and rebalance it is possible to lose crucial data. In those circumstances the trash translator can assist in recovery of the lost data. The trash translator is designed to intercept unlink, truncate and ftruncate fops, store a copy of the current file in the trash directory, and then perform the fop on the original file. For the internal operations , the files are stored under 'internal_op' folder inside trash directory.
