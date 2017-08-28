@@ -50,7 +50,7 @@
    * @returns GitHub branch name
    */
   function determineSelectedBranch() {
-    var branch = 'dev', path = window.location.pathname;
+    var branch = 'latest', path = window.location.pathname;
     if (window.location.origin.indexOf('readthedocs') > -1) {
       // path is like /en/<branch>/<lang>/build/ -> extract 'lang'
       // split[0] is an '' because the path starts with the separator
