@@ -126,3 +126,5 @@ pages:
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme: readthedocs
+extra_javascript:
+- js/fix-docs.js
