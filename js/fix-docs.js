@@ -2,38 +2,15 @@
   'use strict';
 
   $(document).ready(function () {
-    addToc();
+    fixSearchResults();
     fixSearch();
   });
 
   /**
    * Adds a TOC-style table to each page in the 'Modules' section.
    */
-  function addToc() {
-    var func, intro, tocHtmlTable;
-    if (isModulePage()) {
-      tocHtmlTable = '<table class="docutils">';
-      $('h2').each(function (index) {
-        // 'slice' cuts off the single permalink character at the end of the text (e.g. '¶')
-        func = $(this).text().slice(0, -1);
-        // get the first sentence of the paragraph directly below h2
-        intro = $(this).next().text();
-        intro = intro.substring(0, intro.indexOf('.') + 1);
-        tocHtmlTable += createTocTableRow(func, intro);
-      });
-      tocHtmlTable += '</table>';
-      $(tocHtmlTable).insertBefore($('h2').first())
-    }
-    function isModulePage() {
-      // if the breadcrumb contains 'Modules »' it must be an API page
-      return $("ul.wy-breadcrumbs li:contains('Modules »')").size() > 0;
-    }
-    function createTocTableRow(func, intro) {
-      // fragile attempt to auto-create the in-page anchor
-      var href = func.replace(/\.|:/g, '').replace('()', '').replace(' --', '-').replace(/ /g, '-');
-      var link = '<a href="#' + href.toLowerCase() + '">' + func + '</a>';
-      return '<tr><td>' + link + '</td><td>' + intro + '</td></tr>';
-    }
+  function fixSearchResults() {
+    $('#mkdocs-search-results').text('Searching...');
   }
 
   /*
