@@ -1,5 +1,5 @@
 site_name: Gluster Docs
-site_url: http://www.gluster.org
+site_url: http://docs.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
 repo_url: https://github.com/gluster/glusterdocs/
@@ -136,5 +136,6 @@ pages:
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme: readthedocs
+theme_dir: glustertheme
 extra_javascript:
 - js/fix-docs.js
