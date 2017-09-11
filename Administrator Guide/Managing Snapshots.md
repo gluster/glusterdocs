@@ -17,7 +17,7 @@ pre-requisites:
 * gluster version should be 3.6 and above.
 
 Details of how to create thin volume can be found at the following link.
-https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Logical_Volume_Manager_Administration/thinly_provisioned_volume_creation.html
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Logical_Volume_Manager_Administration/LV.html#thinly_provisioned_volume_creation
 
 
 Few features of snapshot are:
@@ -296,7 +296,7 @@ glusterfs with this option as well.
         ret = glfs_set_xlator_option(fs, "*-snapview-client",
                                      "snapdir-entry-path", "/export");
 The xlator option "snapdir-entry-path" is not exposed via volume set options,
-cannot be changed from CLI. Its an option that has to be provded at the time of
+cannot be changed from CLI. Its an option that has to be provided at the time of
 mounting glusterfs or when samba loads glusterfs.
 B) The accessibility of snapshots via root of the samba share from windows
 is configurable. By default it is turned off. It is a volume set option which can

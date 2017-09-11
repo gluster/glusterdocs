@@ -14,7 +14,7 @@ following ways:
 
 > **Note**: You must start glusterd on all GlusterFS servers.
 
-<a name="manual" />
+<a name="manual"></a>
 ##Starting and Stopping glusterd Manually
 
 This section describes how to start and stop glusterd manually
@@ -27,7 +27,7 @@ This section describes how to start and stop glusterd manually
 
     `# /etc/init.d/glusterd stop`
 
-<a name="auto" />
+<a name="auto"></a>
 ##Starting glusterd Automatically
 
 This section describes how to configure the system to automatically

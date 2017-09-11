@@ -5,14 +5,51 @@ Once you have created a Gluster volume, you need to verify that it has
 adequate performance for your application, and if it does not, you need
 a way to isolate the root cause of the problem.
 
-In this page, we suggest some basic workload tests that can be used to
+There are two kinds of workloads:
+
+* synthetic - run a test program such as ones below
+* application - run existing application
+
+# Profiling tools
+
+Ideally it's best to use the actual application that you want to run on Gluster, but applications often don't tell the sysadmin much about where the performance problems are, particularly latency (response-time) problems.  So there are non-invasive profiling tools built into Gluster that can measure performance as seen by the application, without changing the application.  Gluster profiling methods at present are based on the io-stats translator, and include:
+
+* client-side profiling - instrument a Gluster mountpoint or libgfapi process to sample profiling data.  In this case, the io-stats translator is at the "top" of the translator stack, so the profile data truly represents what the application (or FUSE mountpoint) is asking Gluster to do.  For example, a single application write is counted once as a WRITE FOP (file operation) call, and the latency for that WRITE FOP includes latency of the data replication done by the AFR translator lower in the stack.
+
+* server-side profiling - this is done using the "gluster volume profile" command (and "gluster volume top" can be used to identify particular hot files in use as well).  Server-side profiling can measure the throughput of an entire Gluster volume over time, and can measure server-side latencies.  However, it does not incorporate network or client-side latencies.  It is also hard to infer application behavior because of client-side translators that alter the I/O workload (examples: erasure coding, cache tiering).
+
+In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understand how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read?  is it small-file?), and how well the I/O load is spread across the volume.
+
+## client-side profiling
+
+To run client-side profiling,
+
+- gluster volume profile your-volume start
+- setfattr -n trusted.io-stats-dump -v /tmp/io-stats-pre.txt /your/mountpoint
+
+This will generate the specified file on the client.  A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis)  can automate collection of this data.  
+
+TBS: what the different FOPs are and what they mean.
+
+## server-side profiling
+
+To run it:
+
+- gluster volume profile your-volume start
+- repeat this command periodically: gluster volume profile your-volume info
+- gluster volume profile your-volume stop
+
+A script like [gvp.sh](https://github.com/bengland2/gluster-profile-analysis) can help you automate this procedure.
+
+Scripts to post-process this data are in development now, let us know what you need and what would be a useful format for presenting the data.
+
+# Testing tools
+
+In this section, we suggest some basic workload tests that can be used to
 measure Gluster performance in an application-independent way for a wide
 variety of POSIX-like operating systems and runtime environments. We
 then provide some terminology and conceptual framework for interpreting
 these results.
-
-Testing tools
--------------
 
 The tools that we suggest here are designed to run in a distributed
 filesystem. This is still a relatively rare attribute for filesystem
@@ -125,18 +162,20 @@ within that host, and iozone-pathname is the full pathname of the iozone
 executable to use on that host. Be sure that every target host can
 resolve the hostname of host where the iozone command was run. All
 target hosts must permit password-less ssh access from the host running
-the command. For example:
+the command. 
+
+For example: (Here, my-ip-address refers to the machine from where the iozone is being run)
 
         export RSH=ssh
         iozone -+m ioz.cfg -+h my-ip-address -w -c -e -i 0 -+n -C -r 64k -s 1g -t 4
 
 And the file ioz.cfg contains these records (where /mnt/glusterfs is the
-Gluster mountpoint on each test machine):
+Gluster mountpoint on each test machine and test-client-ip is the IP address of a client). Also note that, Each record in the file is a thread in IOZone terminology. Since we have defined the number of threads to be 4 in the above example, we have four records(threads) for a single client.
 
-        g01  /mnt/glusterfs  /usr/local/bin/iozone
-        g02  /mnt/glusterfs  /usr/local/bin/iozone
-        g03  /mnt/glusterfs  /usr/local/bin/iozone
-        g04  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
+        test-client-ip  /mnt/glusterfs  /usr/local/bin/iozone
 
 Restriction: Since iozone uses non-privileged ports it may be necessary
 to temporarily shut down or alter iptables on some/all of the hosts.
@@ -193,13 +232,11 @@ parameter for persistent tuning).
 
 ### Object Store tools
 
-[http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang\_\_COSBench\_Final.pdf
-COSBench](http://www.snia.org/sites/default/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf)
+[COSBench](http://www.snia.org/sites/default/files/files2/files2/SDC2013/presentations/Cloud/YaguangWang__COSBench_Final.pdf)
 was developed by Intel employees and is very useful for both Swift and
 S3 workload generation.
 
-[https://pypi.python.org/pypi/ssbench
-ssbench](https://pypi.python.org/pypi/ssbench) is
+[ssbench](https://pypi.python.org/pypi/ssbench) is
 part of OpenStack Swift toolset and is command-line tool with a workload
 definition file format.
 
@@ -291,23 +328,19 @@ in order of importance:
 
 ### network testing
 
-Because Gluster is a distributed filesystem, the network configuration
-has a huge impact on performance of Gluster, but is often not given the
+Network configuration has a huge impact on performance of distributed storage, but is often not given the
 attention it deserves during the planning and installation phases of the
-Gluster lifecycle. Fortunately,
-[http://www.gluster.org/community/documentation/index.php/Network\_Configuration\_Techniques
-network
-performance](http://www.gluster.org/community/documentation/index.php/Network_Configuration_Techniques)
-can be enhanced significantly without additional hardware.
+cluster lifecycle. Fortunately,
+[network configuration](./Network Configurations Techniques.md)
+can be enhanced significantly, often without additional hardware.
 
 To measure network performance, consider use of a
-[http://www.netperf.org/netperf/NetperfPage.html
-netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
+[netperf-based](http://www.netperf.org/netperf/NetperfPage.html)
 script such as
-[https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh
-network-stream-pairs.sh](https://s3.amazonaws.com/ben.england/netperf-stream-pairs.sh)
-that can exercise multiple network connections in parallel, to
-understand better your network infrastructure capabilities.
+* [network-stream-pairs.sh](https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-stream-pairs.sh) - sets up unidirectional TCP streams between pairs of hosts
+* [network-rpc-pairs.sh](https://github.com/bengland2/parallel-libgfapi/blob/master/netperf-rpc-pairs.sh) - sets up request-response flows between pairs of hosts
+
+The purpose of these two tools is to characterize the capacity of your entire network infrastructure to support the desired level of traffic induced by distributed storage, using multiple network connections in parallel.   The latter script is probably the most realistic network workload for distributed storage.
 
 The two most common hardware problems impacting distributed storage are,
 not surprisingly, disk drive failures and network failures. Some of
@@ -347,6 +380,10 @@ If on the other hand you want to simulate reads, you can use these
 To simulate a mixed read-write workload, use both sets of pairs:
 
         (c1,s1), (c2, s2), (c3, s1), (c4, s2), (s1, c1), (s2, c2), (s1, c3), (s2, c4)
+
+More complicated flows can model behavior of non-native protocols, where a cluster node acts as a proxy server- it is a server (for non-native protocol) and a client (for native protocol).   For example, such protocols often induce full-duplex traffic which can stress the network differently than unidirectional in/out traffic.  For example, try adding this set of flows to preceding flow:
+
+        (s1, s2),.(s2, s3),.(s3, s4),.(s4, s1)
 
 The comments at the top of the script describe the input syntax, but
 here are some suggestions on how to best utilize it. You typically run

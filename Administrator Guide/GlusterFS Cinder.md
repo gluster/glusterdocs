@@ -20,12 +20,12 @@ These instructions have been tested with both GlusterFS 3.3 and GlusterFS 3.4. O
 GlusterFS
 ---------
 
-For information on prerequsities and instructions for installing GlusterFS, see <http://www.gluster.org/community/documentation/index.php>.
+For information on prerequisites and instructions for installing GlusterFS, see <http://www.gluster.org/community/documentation/index.php>.
 
 Cinder
 ------
 
-For information on prerequsities and instructions for installing Cinder, see <http://docs.openstack.org/>.
+For information on prerequisites and instructions for installing Cinder, see <http://docs.openstack.org/>.
 
 Before beginning, you must ensure there are **no existing volumes** in Cinder. Use "cinder delete" to remove any, and "cinder list" to verify that they are deleted. If you do not delete the existing cinder volumes, it will cause errors later in the process, breaking your Cinder installation.
 

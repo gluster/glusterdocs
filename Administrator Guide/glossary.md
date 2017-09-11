@@ -79,8 +79,8 @@ Glossary
     servers/bricks in a trusted storage pool. Data sharing among multiple locations is fundamental
     to all distributed file systems.
 
-**Virtual File System (VFS)
-    VFS is a kernel software layer which handles all system calls related to the standard Linux file system.
+**Virtual File System (VFS)**
+:   VFS is a kernel software layer which handles all system calls related to the standard Linux file system.
     It provides a common interface to several kinds of file systems.
 
 **POSIX**
@@ -187,7 +187,7 @@ Glossary
     clusters.
 
 **Rebalance**
-:   A process of fixing layout and resdistributing data in a volume when a
+:   A process of fixing layout and redistributing data in a volume when a
     brick is added or removed.
 
 **RRDNS**
@@ -210,7 +210,7 @@ Glossary
 **Split-brain**
 :   This is a situation where data on two or more bricks in a replicated
     volume start to diverge in terms of content or metadata. In this state,
-    one cannot determine programitically which set of data is "right" and
+    one cannot determine programmatically which set of data is "right" and
     which is "wrong".
 
 **Translator**
@@ -230,7 +230,7 @@ Glossary
     For example, adding additional disk capacity to an existing trusted storage pool.
 
 **Scale-Out Storage**
-    Scale out systems are designed to scale on both capacity and performance.
+:   Scale out systems are designed to scale on both capacity and performance.
     It increases the capability of a storage device in single dimension.
     For example, adding more systems of the same size, or adding servers to a trusted storage pool
     that increases CPU, disk capacity, and throughput for the trusted storage pool.
@@ -261,7 +261,6 @@ Glossary
     subvolumes which are not hashed-subvolume.
 
 **Linkto-file**
-
 :   For a newly created file, the hashed and cached subvolumes are the same.
     When directory entry operations like rename (which can change the name and hence hashed
     subvolume of the file) are performed on the file, instead of moving the entire data in the file

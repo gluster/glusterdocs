@@ -6,7 +6,8 @@ cluster up and running. Here is a rundown of the steps we need to do.
 To start, we will go over some common things you will need to know for
 setting up Gluster.
 
-Next, choose the method you want to use to set up your first cluster: 
+Next, choose the method you want to use to set up your first cluster:
+
 -  Within a virtual machine
 -  To bare metal servers
 -  To EC2 instances in Amazon
@@ -42,7 +43,7 @@ Gluster.
 -   The term **Global Namespace** is a fancy way of saying a Gluster
     volume
 -   A **Gluster volume** is a collection of one or more bricks (of
-    course, typically this is two or more). This is analagous to
+    course, typically this is two or more). This is analogous to
     /etc/exports entries for NFS.
 -   **GNFS** and **kNFS**. GNFS is how we refer to our inline NFS
     server. kNFS stands for kernel NFS, or, as most people would say,
@@ -66,6 +67,9 @@ Other notes:
     at will during your testing.
 -   Firewalls are great, except when they aren’t. For storage servers,
     being able to operate in a trusted environment without firewalls can
-    mean huge gains in performance, and is recommended.
+    mean huge gains in performance, and is recommended. In case you absolutely
+    need to set up a firewall, have a look at
+    [Setting up clients](../Administrator Guide/Setting Up Clients.md) for
+    information on the ports used.
 
 Click here to [get started](./Quick_start.md)

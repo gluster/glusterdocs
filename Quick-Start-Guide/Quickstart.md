@@ -4,8 +4,8 @@ Installing GlusterFS - a Quick Start Guide
 #### Purpose of this document
 This document is intended to give you a step by step guide to setting up
 GlusterFS for the first time. For this tutorial, we will assume you are
-using Fedora 21 (or later) virtual machines (other distributions and methods can be
-found in the new user guide, below. We also do not explain the steps in
+using Fedora 22 (or later) virtual machines (other distributions and methods can be
+found in the new user guide, below). We also do not explain the steps in
 detail here, this guide is just to help you get it up and running as
 soon as possible. After you deploy GlusterFS by following these steps,
 we recommend that you read the GlusterFS Admin Guide to learn how to
@@ -27,34 +27,27 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
 
 ### Step 1 – Have at least two nodes
 
--   Fedora 20 on two nodes named "server1" and "server2"
+-   Fedora 22 (or later) on two nodes named "server1" and "server2"
 -   A working network connection
--   At two virtual disks, one for the OS installation, and one to be
+-   At least two virtual disks, one for the OS installation, and one to be
     used to serve GlusterFS storage (sdb). This will emulate a real
     world deployment, where you would want to separate GlusterFS storage
     from the OS install.
 -   Note: GlusterFS stores its dynamically generated configuration files
     at /var/lib/glusterd. If at any point in time GlusterFS is unable to
-    write to these files, it will at minimum cause erratic behavior for
-    your system; or worse, take your system offline completely. It is
-    advisable to create separate partitions for directories such as
-    /var/log to ensure this does not happen.
+    write to these files (for example, when the backing filesystem is full),
+    it will at minimum cause erratic behavior for your system; or worse,
+    take your system offline completely. It is advisable to create separate
+    partitions for directories such as /var/log to ensure this does not happen.
 
 ### Step 2 - Format and mount the bricks
 
 (on both nodes): Note: These examples are going to assume the brick is
 going to reside on /dev/sdb1.
 
-	    mkfs.xfs -i size=512 /dev/sdb1
+		mkfs.xfs -i size=512 /dev/sdb1
 		mkdir -p /data/brick1
-		vi /etc/fstab
-
-Add the following:
-
-		/dev/sdb1 /data/brick1 xfs defaults 1 2
-
-Save the file and exit
-
+		echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' >> /etc/fstab
 		mount -a && mount
 
 You should now see sdb1 mounted at /data/brick1
@@ -99,7 +92,7 @@ must be probed from the pool.
 
 On both server1 and server2:
 
-		mkdir /data/brick1/gv0
+		mkdir -p /data/brick1/gv0
 
 From any single server:
 
@@ -118,9 +111,9 @@ usually in etc-glusterfs-glusterd.vol.log
 
 For this step, we will use one of the servers to mount the volume.
 Typically, you would do this from an external machine, known as a
-"client". Since using the method here would require additional packages
-be installed on the client machine, we will use the servers as a simple
-place to test first.
+"client". Since using this method would require additional packages to
+be installed on the client machine, we will use one of the servers as
+a simple place to test first, as if it were that "client".
 
 		mount -t glusterfs server1:/gv0 /mnt
 		  for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
@@ -134,8 +127,8 @@ points on each server:
 
 		ls -lA /data/brick1/gv0
 
-You should see 100 per server using the method we listed here. Without
-replication, in a distribute only volume (not detailed here), you should
-see about 50 each.
+You should see 100 files on each server using the method we listed here.
+Without replication, in a distribute only volume (not detailed here), you
+should see about 50 files on each one.
 
 [Terminologies](./Terminologies.md) you should be familiar with.

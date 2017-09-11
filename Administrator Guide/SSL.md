@@ -104,7 +104,7 @@ internals.
 The first option allows the user to set the certificate depth, as mentioned
 above.
 
-	gluster volume set MYVOLUME ssl.cert-depth 2
+	gluster volume set MYVOLUME ssl.certificate-depth 2
 
 Here, we're setting our certificate depth to two, as in the introductory
 example.  By default this value is zero, meaning that only certificates which
@@ -113,7 +113,7 @@ certificates at all).
 
 The second option allows the user to specify the set of allowed TLS ciphers.
 
-	gluster volume set MYVOLUME ssl.cipher-list HIGH:!SSLv2
+	gluster volume set MYVOLUME ssl.cipher-list 'HIGH:!SSLv2'
 
 Cipher lists are negotiated between the two parties to a TLS connection, so
 that both sides' security needs are satisfied.  In this example, we're setting

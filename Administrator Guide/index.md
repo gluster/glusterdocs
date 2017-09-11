@@ -19,6 +19,7 @@
 4.  [POSIX Access Control Lists](./Access Control Lists.md)
 
 5.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
+	*  [Handling of users that belong to many groups](./Handling-of-users-with-many-groups.md)
 
 6.  Volume Options
 
@@ -32,10 +33,7 @@
 
 8.  [Brick Naming Conventions](./Brick Naming Conventions.md)
 
-9.  Geo Replication
-
-	*  [Geo Replication](./Geo Replication.md)
-	*  [Distributed Geo Replication](./Distributed Geo Replication.md)
+9.  [Geo Replication](./Geo Replication.md)
 	
 10.  [Managing Directory Quotas](./Directory Quota.md)
 
@@ -48,8 +46,8 @@
 	*  [Managing Object Store](./Object Storage.md)
 	*  [Accessing GlusterFS using Cinder Hosts](./GlusterFS Cinder.md)
 	*  [GlusterFS with Keystone](./GlusterFS Keystone Quickstart.md)
-	*  [Hadoop Compatiable Storage with GlusterFS](./Hadoop.md)
 	*  [Install Gluster on Top of ZFS](./Gluster On ZFS.md)
+	*  [Configuring Bareos to store backups on Gluster](./Bareos.md)
 	
 14.  [Securing GlusterFS Communication using SSL](./SSL.md)	
 	
@@ -61,8 +59,24 @@
 
 18.  [Linux Kernel Tuning](./Linux Kernel Tuning.md)
 
-19.  Appendices
+19.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
 
-	*  [Troubleshooting](./Troubleshooting.md)
+20.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Integration.md)
+
+21.  [Split brain and ways to deal with it](Split brain and ways to deal with it.md)
+
+22.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
+
+23.  [Trash for GlusterFS](./Trash.md)
+
+24.  [Mandatory Locks](./Mandatory Locks.md)
+
+25.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+
+26.  [Events APIs](./Events APIs.md)
+
+27.  Appendices
+
+    *  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)

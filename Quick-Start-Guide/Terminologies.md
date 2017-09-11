@@ -41,7 +41,7 @@ replication service from site to another over Local Area Networks
 ### Metadata
 
 Metadata is defined as data providing information about one or more
-other pieces of data.There is no special metadata storage concept in
+other pieces of data. There is no special metadata storage concept in
 GlusterFS. The metadata is stored with the file data itself.
 
 ### Namespace
@@ -61,7 +61,7 @@ Gluster exports a fully POSIX compliant file system.
 
 ### RAID
 
-Redundant Array of Inexpensive Disks”, is a technology that provides
+Redundant Array of Inexpensive Disks (RAID) is a technology that provides
 increased storage reliability through redundancy, combining multiple
 low-cost, less-reliable disk drives components into a logical unit where
 all drives in the array are interdependent.
@@ -92,9 +92,9 @@ management operations happen on the volume.
 
 ### Vol file
 
-.vol files are configuration files used by glusterfs process. Volfiles
-will be usually located at /var/lib/glusterd/vols/volume-name/.
-Eg:vol-name-fuse.vol,export-brick-name.vol,etc.. Sub-volumes in the .vol
+`.vol` files are configuration files used by glusterfs process. Volfiles
+will be usually located at `/var/lib/glusterd/vols/volume-name/`.
+Eg: `vol-name-fuse.vol`, `export-brick-name.vol` etc. Sub-volumes in the `.vol`
 files are present in the bottom-up approach and then after tracing forms
 a tree structure, where in the hierarchy last comes the client volumes.
 
@@ -112,4 +112,4 @@ stored.
 Replicate is generally done to make a redundancy of the storage for data
 availability.
 
-Once familiar with terminilogies, Understand the [Architecture of GlusterFS](./Architecture.md)
+Once familiar with terminologies, Understand the [Architecture of GlusterFS](./Architecture.md)

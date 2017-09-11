@@ -9,11 +9,11 @@ types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
 ​1. **Distributed Glusterfs Volume** - This is the default glusterfs
-volume i.e, while creating a volume of you do not specify the type of
-the volume the default option is to create a distributed type of volume.
-Here files are distributed across various bricks in the volume. So file1
+volume i.e, while creating a volume if you do not specify the type of
+the volume, the default option is to create a distributed volume.
+Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
-no data redundancy. The purpose for such a storage volume is to easily
+no data redundancy. The purpose for such a storage volume is to easily & cheaply
 scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
@@ -49,13 +49,13 @@ To display the volume info
     Brick4: server4:/exp4
 
 ​2. **Replicated Glusterfs Volume** - In this volume we overcome the
-data loss problem faced in the distributed volume. Here exact copy of
-the data is maintained on all bricks. The number of replicas in the
+data loss problem faced in the distributed volume. Here exact copies of
+the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
 have at least two bricks to create a volume with 2 replicas or a minimum
 of three bricks to create a volume of 3 replicas. One major advantage of
 such a volume is that even if one brick fails the data can still be
-accessed from its replica brick. Such a volume is used for better
+accessed from its replicated bricks. Such a volume is used for better
 reliability and data redundancy.
 
 ![replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412379/d75272a6-ef5f-11e4-869a-c355e8505747.png)
@@ -155,7 +155,7 @@ GlusterFS developers initially as getting the modules into linux kernel
 is a very long and difficult process.
 
 Being a userspace filesystem, to interact with kernel VFS, GlusterFS
-makes use of FUSE(File System in Userspace). For a long time,
+makes use of FUSE (File System in Userspace). For a long time,
 implementation of a userspace filesystem was considered impossible. FUSE
 was developed as a solution for this. FUSE is a kernel module that
 support interaction between kernel VFS and non-privileged user
@@ -233,7 +233,7 @@ List of known translators with their current status.
   Debug            |Provide interface and statistics for errors and debugging.
   Cluster          |Handle distribution and replication of data as it relates to writing to and reading from bricks & nodes.
   Encryption       |Extension translators for on-the-fly encryption/decryption of stored data.
-  Protocol         |Extension translators for on-the-fly encryption/decryption of stored data.
+  Protocol         |Extension translators for client/server communication protocols.
   Performance      |Tuning translators to adjust for workload and I/O profiles.
   Bindings         |Add extensibility, e.g. The Python interface written by Jeff Darcy to extend API interaction with GlusterFS.
   System           |System access translators, e.g. Interfacing with file system access control.
@@ -242,7 +242,7 @@ List of known translators with their current status.
 
 The default / general hierarchy of translators in vol files :
 
-![translator_h](https://cloud.githubusercontent.com/assets/10970993/7412605/1a533f0c-ef62-11e4-8f0d-0559fe1f5aa1.png)
+![translator_h](https://cloud.githubusercontent.com/assets/628699/9002815/07d93ce4-3771-11e5-8bda-9018871aa6fb.png)
 
 All the translators hooked together to perform a function is called a
 graph. The left-set of translators comprises of **Client-stack**.The
@@ -266,15 +266,15 @@ to go through is **fuse translator** which falls under the category of
     * io-cache
 
     * io-threads
-    
+
     * md-cache
-    
+
     * O-B (open behind)
-    
+
     * QR (quick read)
-    
+
     * r-a (read-ahead)
-    
+
     * w-b (write-behind)
 
 Other **Feature Translators** include:
@@ -324,7 +324,7 @@ information to find your file, the file-name. To determine where that
 file is, the translator runs the file-name through a hashing algorithm
 in order to turn that file-name into a number.
 
-**Few Observations of DHT hash-values assignment**:
+**A few Observations of DHT hash-values assignment**:
 
 1.  The assignment of hash ranges to bricks is determined by extended
     attributes stored on directories, hence distribution is
@@ -341,7 +341,7 @@ in order to turn that file-name into a number.
 
 #### AFR(Automatic File Replication) Translator
 
-The Automatic File Replication (AFR) translator in glusterFS makes use
+The Automatic File Replication (AFR) translator in GlusterFS makes use
 of the extended attributes to keep track of the file operations.It is
 responsible for replicating the data across the bricks.
 
@@ -368,7 +368,7 @@ backup of entire data for disaster recovery.
 
 Geo-replication uses a master-slave model, whereby replication occurs
 between **Master** - a GlusterFS volume and **Slave** - which can be a
-local directory or a glusterFS volume. The slave (local directory or
+local directory or a GlusterFS volume. The slave (local directory or
 volume is accessed using SSH tunnel).
 
 Geo-replication provides an incremental replication service over Local
@@ -426,7 +426,7 @@ identifier is used. Normally, the entity on which the operation is
 performed would be identified by the pathname, but we choose to use
 GlusterFS internal file identifier (GFID) instead (as GlusterFS supports
 GFID based backend and the pathname field may not always be valid and
-other reasons which are out of scope of this this document). Therefore,
+other reasons which are out of scope of this document). Therefore,
 the format of the record for the three types of operation can be
 summarized as follows:
 
@@ -443,7 +443,7 @@ minimum a set of six or seven records (depending on the type of
 operation), that is sufficient to identify what type of operation the
 entity underwent. Normally this record includes the GFID of the entity,
 the type of file operation (which is an integer [an enumerated value
-which is used in Gluterfs]) and the parent GFID and the basename
+which is used in Glusterfs]) and the parent GFID and the basename
 (analogous to parent inode and basename).
 
 Changelog file is rolled over after a specific time interval. We then
@@ -487,7 +487,7 @@ As soon as GlusterFS is installed in a server node, a gluster management
 daemon(glusterd) binary will be created. This daemon should be running
 in all participating nodes in the cluster. After starting glusterd, a
 trusted server pool(TSP) can be created
-consisting of all storage server nodes(TSP can contain even a single
+consisting of all storage server nodes (TSP can contain even a single
 node). Now bricks which are the basic units of storage can be created as
 export directories in these servers. Any number of bricks from this TSP
 can be clubbed together to form a volume.
@@ -509,7 +509,7 @@ which the required volume is created.
 
 When we mount the volume in the client, the client glusterfs process
 communicates with the servers’ glusterd process. Server glusterd process
-sends a configuration file(vol file) containing the list of client
+sends a configuration file (vol file) containing the list of client
 translators and another containing the information of each brick in the
 volume with the help of which the client glusterfs process can now
 directly communicate with each brick’s glusterfsd process. The setup is
@@ -517,18 +517,18 @@ now complete and the volume is now ready for client's service.
 
 ![overallprocess](https://cloud.githubusercontent.com/assets/10970993/7412664/a9aaaece-ef62-11e4-8c87-75d8e7157739.png)
 
-When a system call(File operation or Fop) is issued by client in the
+When a system call (File operation or Fop) is issued by client in the
 mounted filesystem, the VFS (identifying the type of filesystem to be
-glustefs) will send the request to the FUSE kernel module. The FUSE
+glusterfs) will send the request to the FUSE kernel module. The FUSE
 kernel module will in turn send it to the GlusterFS in the userspace of
-the client node via /dev/fuse (this has been descibed in FUSE section).
-The GlusterFS process in client consists of a stack of translators
+the client node via /dev/fuse (this has been described in FUSE section).
+The GlusterFS process on the client consists of a stack of translators
 called the client translators which are defined in the configuration
-file(vol file) send by the storage server glusterd process. The first
+file(vol file) sent by the storage server glusterd process. The first
 among these translators being the FUSE translator which consists of the
 FUSE library(libfuse). Each translator has got functions corresponding
 to each file operation or fop supported by glusterfs. The request will
-hit the corresponding function in each of the translator. Main client
+hit the corresponding function in each of the translators. Main client
 translators include:
 
 -   FUSE translator
@@ -536,7 +536,7 @@ translators include:
     that contains the file or directory required.
 -   AFR translator- It receives the request from the previous translator
     and if the volume type is replicate, it duplicates the request and
-    pass it on to the Protocol client translators of the replicas.
+    passes it on to the Protocol client translators of the replicas.
 -   Protocol Client translator- Protocol Client translator is the last
     in the client translator stack. This translator is divided into
     multiple threads, one for each brick in the volume. This will

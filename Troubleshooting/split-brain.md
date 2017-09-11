@@ -1,6 +1,9 @@
 Steps to recover from File split-brain.
 ======================================
 
+Note: There below steps are manual. What you really want to use is the newer CLI (server)
+and mount (client) based split-brain resolution methods explained in [heal-info-and-split-brain-resolution](./heal-info-and-split-brain-resolution.md)
+
 Quick Start:
 ============
 1. Get the path of the file that is in split-brain:  
@@ -87,10 +90,10 @@ Brick             |    Replica set        |    Brick subvolume index
 ```
 
 Each file in a brick maintains the changelog of itself and that of the files
-present in all the other bricks in it's replica set as seen by that brick.
+present in all the other bricks in its replica set as seen by that brick.
 
 In the example volume given above, all files in brick-a will have 2 entries, 
-one for itself and the other for the file present in it's replica pair, i.e.brick-b:  
+one for itself and the other for the file present in its replica pair, i.e.brick-b:  
 trusted.afr.vol-client-0=0x000000000000000000000000 -->changelog for itself (brick-a)  
 trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for brick-b as seen by brick-a  
 
@@ -199,7 +202,7 @@ Hence execute
 
 On /gfs/brick-a/a:  
 For trusted.afr.vol-client-1  
-0x0000000000000000ffffffff to 0x000003d70000000000000000  
+0x000003d70000000100000000 to 0x000003d70000000000000000  
 (Note that the data part is still not all zeros)  
 Hence execute  
 `setfattr -n trusted.afr.vol-client-1 -v 0x000003d70000000000000000 /gfs/brick-a/a`

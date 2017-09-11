@@ -14,86 +14,85 @@ start it before attempting to mount it.
 
 To create a thinly provisioned logical volume, proceed with the following steps:
 
-    1. Create a physical volume(PV) by using the pvcreate command.
-    For example:
+  1. Create a physical volume(PV) by using the pvcreate command.
+  For example:
 
-        `pvcreate --dataalignment 1280K /dev/sdb`
+  `# pvcreate --dataalignment 1280K /dev/sdb`
 
-    Here, /dev/sdb is a storage device.
-    Use the correct dataalignment option based on your device.
+  Here, /dev/sdb is a storage device.
+  Use the correct dataalignment option based on your device.
 
-    >**Note**
-    >
-    >The device name and the alignment value will vary based on the device you are using.
+  >**Note**
+  >
+  >The device name and the alignment value will vary based on the device you are using.
 
-    2. Create a Volume Group (VG) from the PV using the vgcreate command:
+  2. Create a Volume Group (VG) from the PV using the vgcreate command: 
+  For example:
 
-For example:
+  `# vgcreate --physicalextentsize 128K gfs_vg /dev/sdb`
 
-    `vgcreate --physicalextentsize 128K gfs_vg /dev/sdb`
+  It is recommended that only one VG must be created from one storage device.
 
-    It is recommended that only one VG must be created from one storage device.
+  3. Create a thin-pool using the following commands:
 
-    3. Create a thin-pool using the following commands:
+      1. Create an LV to serve as the metadata device using the following command:
 
-        1. Create an LV to serve as the metadata device using the following command:
+      `# lvcreate -L metadev_sz --name metadata_device_name VOLGROUP`
 
-        `lvcreate -L metadev_sz --name metadata_device_name VOLGROUP`
+      For example:
 
-        For example:
+      `# lvcreate -L 16776960K --name gfs_pool_meta gfs_vg`
 
-        `lvcreate -L 16776960K --name gfs_pool_meta gfs_vg`
+      2. Create an LV to serve as the data device using the following command:
 
-        2. Create an LV to serve as the data device using the following command:
+      `# lvcreate -L datadev_sz --name thin_pool VOLGROUP`
 
-        `lvcreate -L datadev_sz --name thin_pool VOLGROUP`
+      For example:
 
-        For example:
+      `# lvcreate -L 536870400K --name gfs_pool gfs_vg`
 
-        `lvcreate -L 536870400K --name gfs_pool gfs_vg`
+      3. Create a thin pool from the data LV and the metadata LV using the following command:
 
-        3. Create a thin pool from the data LV and the metadata LV using the following command:
+      `# lvconvert --chunksize STRIPE_WIDTH --thinpool VOLGROUP/thin_pool --poolmetadata VOLGROUP/metadata_device_name`
 
-        `lvconvert --chunksize STRIPE_WIDTH --thinpool VOLGROUP/thin_pool --poolmetadata VOLGROUP/metadata_device_name`
+      For example:
 
-        For example:
+      `# lvconvert --chunksize 1280K --thinpool gfs_vg/gfs_pool --poolmetadata gfs_vg/gfs_pool_meta`
 
-        `lvconvert --chunksize 1280K --thinpool gfs_vg/gfs_pool --poolmetadata gfs_vg/gfs_pool_meta`
+  >**Note**
+  >
+  >By default, the newly provisioned chunks in a thin pool are zeroed to prevent data leaking between different block devices.
 
-    >**Note**
-    >
-    >By default, the newly provisioned chunks in a thin pool are zeroed to prevent data leaking between different block devices.
+  `# lvchange --zero n VOLGROUP/thin_pool`
 
-    `lvchange --zero n VOLGROUP/thin_pool`
+  For example:
 
-    For example:
+  `# lvchange --zero n gfs_vg/gfs_pool`
 
-        `lvchange --zero n gfs_vg/gfs_pool`
+  4. Create a thinly provisioned volume from the previously created pool using the lvcreate command:
 
-    4. Create a thinly provisioned volume from the previously created pool using the lvcreate command:
+  For example:
 
-    For example:
+  `# lvcreate -V 1G -T gfs_vg/gfs_pool -n gfs_lv`
 
-    `lvcreate -V 1G -T gfs_vg/gfs_pool -n gfs_lv`
-
-    It is recommended that only one LV should be created in a thin pool.
+  It is recommended that only one LV should be created in a thin pool.
 
 Format bricks using the supported XFS configuration, mount the bricks, and verify the bricks are mounted correctly.
 
-    1. Run # mkfs.xfs -f -i size=512 -n size=8192 -d su=128K,sw=10 DEVICE to format the bricks to the supported XFS file system format. Here, DEVICE is the thin LV. The inode size is set to 512 bytes to accommodate for the extended attributes used by GlusterFS.
+  1. Run `# mkfs.xfs -f -i size=512 -n size=8192 -d su=128K,sw=10 DEVICE` to format the bricks to the supported XFS file system format. Here, DEVICE is the thin LV. The inode size is set to 512 bytes to accommodate for the extended attributes used by GlusterFS.
 
-    Run # mkdir /mountpoint to create a directory to link the brick to.
+  Run `# mkdir /mountpoint` to create a directory to link the brick to.
 
-    Add an entry in /etc/fstab:
+  Add an entry in /etc/fstab:
 
-        `/dev/gfs_vg/gfs_lv    /mountpoint  xfs rw,inode64,noatime,nouuid      1 2`
+      /dev/gfs_vg/gfs_lv    /mountpoint  xfs rw,inode64,noatime,nouuid      1 2
 
-    Run # mount /mountpoint to mount the brick.
+  Run `# mount /mountpoint` to mount the brick.
 
-    Run the df -h command to verify the brick is successfully mounted:
+  Run the `df -h` command to verify the brick is successfully mounted:
 
-        `# df -h
-        /dev/gfs_vg/gfs_lv   16G  1.2G   15G   7% /exp1`
+      # df -h
+      /dev/gfs_vg/gfs_lv   16G  1.2G   15G   7% /exp1
 
 -   Volumes of the following types can be created in your storage
     environment:
@@ -165,7 +164,7 @@ Format bricks using the supported XFS configuration, mount the bricks, and verif
         Creation of test-volume has been successful
         Please start the volume to access data.
 
-##Creating Distributed Volumes
+## Creating Distributed Volumes
 
 In a distributed volumes files are spread randomly across the bricks in
 the volume. Use distributed volumes where you need to scale storage and
@@ -223,7 +222,7 @@ hardware/software layers.
     > Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-##Creating Replicated Volumes
+## Creating Replicated Volumes
 
 Replicated volumes create copies of files across multiple bricks in the
 volume. You can use replicated volumes in environments where
@@ -260,25 +259,27 @@ high-availability and high-reliability are critical.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node replicated volume with a more that one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> replica 4 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
-###Arbiter configuration for replica volumes
+### Arbiter configuration for replica volumes
 
 Arbiter  volumes are replica 3 volumes where the 3rd brick acts as the arbiter brick. This configuration has mechanisms that prevent occurrence of split-brains.
 
 It can be created with the following command:
 
-        # gluster volume create  <VOLNAME>  replica 3 arbiter 1 host1:brick1 host2:brick2 host3:brick3
+    `# gluster volume create  <VOLNAME>  replica 3 arbiter 1 host1:brick1 host2:brick2 host3:brick3`
 
 More information about this configuration can be found at *Features : afr-arbiter-volumes*
 
 Note that the arbiter configuration for replica 3 can be used to create distributed-replicate volumes as well.
 
-##Creating Striped Volumes
+## Creating Striped Volumes
 
 Striped volumes stripes data across bricks in the volume. For best
 results, you should use striped volumes only in high concurrency
@@ -296,7 +297,7 @@ environments accessing very large files.
 
 2.  Create the striped volume:
 
-        # gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma]
+    `# gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma]`
 
     For example, to create a striped volume across two storage servers:
 
@@ -312,7 +313,7 @@ environments accessing very large files.
     > Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-##Creating Distributed Striped Volumes
+## Creating Distributed Striped Volumes
 
 Distributed striped volumes stripes files across two or more nodes in
 the cluster. For best results, you should use distributed striped
@@ -348,7 +349,7 @@ concurrency environments accessing very large files is critical.
     > Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-##Creating Distributed Replicated Volumes
+## Creating Distributed Replicated Volumes
 
 Distributes files across replicated bricks in the volume. You can use
 distributed replicated volumes in environments where the requirement is
@@ -399,14 +400,16 @@ environments.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
 
-##Creating Distributed Striped Replicated Volumes
+## Creating Distributed Striped Replicated Volumes
 
 Distributed striped replicated volumes distributes striped data across
 replicated bricks in the cluster. For best results, you should use
@@ -444,13 +447,14 @@ Map Reduce workloads.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.```
-
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
-##Creating Striped Replicated Volumes
+## Creating Striped Replicated Volumes
 
 Striped replicated volumes stripes data across replicated bricks in the
 cluster. For best results, you should use striped replicated volumes in
@@ -495,13 +499,14 @@ of this volume type is supported only for Map Reduce workloads.
     > else client operations after the mount will hang.
 
     > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of replica set is present on the same peer.
-    > ```
+    > 
+    ```
     # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.```
-
+    volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
-##Creating Dispersed Volumes
+## Creating Dispersed Volumes
 
 Dispersed volumes are based on erasure codes. It stripes the encoded data of
 files, with some redundancy addedd, across multiple bricks in the volume. You
@@ -612,14 +617,16 @@ a RMW cycle for many writes (of course this always depends on the use case).
 
     > - GlusterFS will fail to create a dispersed volume if more than one brick of a disperse set is present on the same peer.
 
-    > ```
+    > 
+    ```
     # gluster volume create <volname> disperse 3 server1:/brick{1..3}
     volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    Do you still want to continue creating the volume? (y/n)```
-
+    Do you still want to continue creating the volume? (y/n)
+    ```
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
-##Creating Distributed Dispersed Volumes
+
+## Creating Distributed Dispersed Volumes
 
 Distributed dispersed volumes are the equivalent to distributed replicated
 volumes, but using dispersed subvolumes instead of replicated ones.
@@ -649,14 +656,16 @@ volumes, but using dispersed subvolumes instead of replicated ones.
 
     > - GlusterFS will fail to create a distributed dispersed volume if more than one brick of a disperse set is present on the same peer.
 
-    > ```
+    > 
+    ```
     # gluster volume create <volname> disperse 3 server1:/brick{1..6}
     volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    Do you still want to continue creating the volume? (y/n)```
-
+    Do you still want to continue creating the volume? (y/n)
+    ```
     > Use the `force` option at the end of command if you want to create the volume in this case.
 
-##Starting Volumes
+
+## Starting Volumes
 
 You must start your volumes before you try to mount them.
 

@@ -1,37 +1,48 @@
 ### Installing Gluster
 
 For RPM based distributions, if you will be using InfiniBand, add the
-glusterfs RDMA package to the installations. For RPM based systems, yum
+glusterfs RDMA package to the installations. For RPM based systems, yum/dnf
 is used as the install method in order to satisfy external depencies
 such as compat-readline5
 
+###### Community Packages
+
+Packages are provided according to this [table](./Community_Packages.md).
+
 ###### For Debian
 
-Download the packages
+Add the GPG key to apt:
 
-		wget -nd -nc -r -A.deb http://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/wheezy/
+    wget -O - http://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
 
-(Note from reader: The above does not work. Check
-<http://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/> for
-3.5 version or use http://packages.debian.org/wheezy/glusterfs-server 
+Add the source:
 
-Install the Gluster packages (do this on both servers)
+    DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
+    DEBVER=$(grep 'VERSION=' /etc/os-release | grep -Eo '[a-z]+')
+    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list
 
-		dpkg -i glusterfs_3.5.2-4_amd64.deb
+Update package list:
+
+    apt-get update
+
+Install:
+
+    apt-get install glusterfs-server
+
 
 ###### For Ubuntu
 
 Ubuntu 10 and 12: install python-software-properties:
 
 		sudo apt-get install python-software-properties
-		
+
 Ubuntu 14: install software-properties-common:
 
 		sudo apt-get install software-properties-common
 
 Then add the community GlusterFS PPA:
 
-		sudo add-apt-repository ppa:gluster/glusterfs-3.5
+		sudo add-apt-repository ppa:gluster/glusterfs-3.8
 		sudo apt-get update
 
 Finally, install the packages:
@@ -43,19 +54,21 @@ LTS*
 
 ###### For Red Hat/CentOS
 
-Download the packages (modify URL for your specific release and
-architecture).
+RPMs for CentOS and other RHEL clones are available from the
+CentOS Storage SIG mirrors.
 
-		wget -P /etc/yum.repos.d http://download.gluster.org/pub/gluster/glusterfs/LATEST/RHEL/glusterfs-epel.repo
-
-Install the Gluster packages (do this on both servers)
-
-		yum install glusterfs-server
+For more installation details refer [Gluster Quick start guide](https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart) from CentOS Storage SIG.
 
 ###### For Fedora
 
-Install the Gluster packages (do this on both servers)
+Install the Gluster packages:
 
-		yum install glusterfs-server
+		dnf install glusterfs-server
 
 Once you are finished installing, you can move on to [configuration](./Configure.md) section.
+
+###### For Arch Linux
+
+Install the Gluster package:
+
+        pacman -S glusterfs
