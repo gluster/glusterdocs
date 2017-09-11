@@ -4,7 +4,7 @@ Bugzilla sends emails with many headers. The following headers can be very usefu
 * X-Bugzilla-Product: should always be 'GlusterFS' for Gluster bugs
 * X-Bugzilla-Component: the component of the bug (like 'glusterd')
 * X-Bugzilla-Status: you may want to filter 'NEW' bugs in a special folder
-* X-Bugzilla-Keywords: new contributors may want to filter bugs marked with [EasyFix](http://gluster.readthedocs.org/en/latest/Developer-guide/Easy-Fix-Bugs)
+* X-Bugzilla-Keywords: new contributors may want to filter bugs marked with [EasyFix](http://docs.gluster.org/en/latest/Developer-guide/Easy-Fix-Bugs)
 
 It is recommended to filter the emails from the list in a dedicated folder. Some users only move/label messages on certain headers and delete everything else that comes through the mailinglist.
 
@@ -53,7 +53,7 @@ Configuration instructions:
 # RSS Feeds
 The URLs below can be added to an RSS reader (like Mozilla Thunderbird or [feedly](https://feedly.com)). When you prefer a list of bugs on the bugzilla website, open the RSS-feed in your browser and remove the *ctype=atom* from the end of the URL.
 
-For [Bug Triagers](http://gluster.readthedocs.org/en/latest/Contributors-Guide/Bug-Triage/):
+For [Bug Triagers](http://docs.gluster.org/en/latest/Contributors-Guide/Bug-Triage/):
 * [NEW Gluster Bugs to Triage](http://goo.gl/llNxe9) (any version)
 * [NEW Gluster 3.4 Bugs](http://goo.gl/QwF1cM)
 * [NEW Gluster 3.5 Bugs](http://goo.gl/agtGd2)

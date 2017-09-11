@@ -1,6 +1,6 @@
 # glusterdocs
 
-Source code to gluster documentation: http://gluster.readthedocs.io
+Source code to gluster documentation: http://docs.gluster.org/
 
 # Building the docs
 
