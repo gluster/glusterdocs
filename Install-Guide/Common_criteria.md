@@ -72,4 +72,4 @@ Other notes:
     [Setting up clients](../Administrator Guide/Setting Up Clients.md) for
     information on the ports used.
 
-Click here to [get started](./Quick_start.md)
+Click here to [get started](../Quick-Start-Guide/Quickstart.md)
