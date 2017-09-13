@@ -19,7 +19,8 @@ you read the [Gluster Admin Guide](../Administrator Guide/) to learn how to admi
 how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
 section . We want you to be successful in as short a time as possible.
-Overview:
+
+### Overview
 
 Before we begin, let’s talk about what Gluster is, dispel a few myths
 and misconceptions, and define a few terms. This will help you to avoid
@@ -44,7 +45,7 @@ this is accomplished without a centralized metadata server.
     it back online, you don’t have to do anything to get the data back
     except wait. In the mean time, the most current copy of your data
     keeps getting served from the node that was still running.
--   You can build a clustered filesystem in a matter of minutes…it is
+-   You can build a clustered filesystem in a matter of minutes… it is
     trivially easy for basic setups
 -   It takes advantage of what we refer to as “commodity hardware”,
     which means, we run on just about any hardware you can think of,
@@ -94,7 +95,7 @@ technology from Alpha Centauri delivered by men in black, etc…?
 
 I have never seen anyone spend even close to a billion, unless they got
 the rust proof coating on the servers. You don’t seem like the type that
-would get bamboozled like that, so have no fear. For purpose of this
+would get bamboozled like that, so have no fear. For the purpose of this
 tutorial, if your laptop can run two VM’s with 1GB of memory each, you
 can get started testing and the only thing you are going to pay for is
 coffee (assuming the coffee shop doesn’t make you pay them back for the
