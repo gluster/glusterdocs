@@ -4,13 +4,13 @@ Installing GlusterFS - a Quick Start Guide
 #### Purpose of this document
 This document is intended to give you a step by step guide to setting up
 GlusterFS for the first time. For this tutorial, we will assume you are
-using Fedora 22 (or later) virtual machines (other distributions and methods can be
-found in the new user guide, below). We also do not explain the steps in
-detail here, this guide is just to help you get it up and running as
-soon as possible. After you deploy GlusterFS by following these steps,
+using Fedora 22 (or later) virtual machines.
+We also do not explain the steps in detail here as this guide is just to help
+you get it up and running as soon as possible.
+After you deploy GlusterFS by following these steps,
 we recommend that you read the GlusterFS Admin Guide to learn how to
 administer GlusterFS and how to select a volume type that fits your
-needs. Read the GlusterFS New User Guide for a more detailed explanation
+needs. Read the GlusterFS Install Guide for a more detailed explanation
 of the steps we took here. We want you to be successful in as short a
 time as possible.
 
@@ -24,6 +24,7 @@ guide.
 If you'd like to deploy GlusterFS automatically using
 Puppet-Gluster+Vagrant, have a look at [this
 article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterfs-with-puppet-gluster-vagrant/).
+
 
 ### Step 1 – Have at least two nodes
 
@@ -40,10 +41,11 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
     take your system offline completely. It is advisable to create separate
     partitions for directories such as /var/log to ensure this does not happen.
 
+
 ### Step 2 - Format and mount the bricks
 
-(on both nodes): Note: These examples are going to assume the brick is
-going to reside on /dev/sdb1.
+(on both nodes): Note: We are going to use the XFS filesystem for the backend bricks.
+These examples are going to assume the brick is going to reside on /dev/sdb1.
 
 		mkfs.xfs -i size=512 /dev/sdb1
 		mkdir -p /data/brick1
@@ -52,9 +54,10 @@ going to reside on /dev/sdb1.
 
 You should now see sdb1 mounted at /data/brick1
 
+
 ### Step 3 - Installing GlusterFS
 
-(on both servers) Install the software
+(on both nodes) Install the software
 
 		yum install glusterfs-server
 
@@ -71,7 +74,19 @@ Start the GlusterFS management daemon:
 		       ├ 19304 /usr/sbin/glusterfsd --xlator-option georep-server.listen-port=24009 -s localhost...
 		       └ 19309 /usr/sbin/glusterfs -f /var/lib/glusterd/nfs/nfs-server.vol -p /var/lib/glusterd/...
 
-### Step 4 - Configure the trusted pool
+
+        
+### Step 4 - Configure the firewall
+
+The gluster processes on the nodes need to be able to communicate with each other.
+To simplify this setup, configure the firewall on each node to accept all traffic from the other node.
+
+                iptables -I INPUT -p all -s <ip-address> -j ACCEPT
+
+where ip-address is the address of the other node.
+
+
+### Step 5 - Configure the trusted pool
 
 From "server1"
 
@@ -88,7 +103,20 @@ Note: Once this pool has been established, only trusted members may
 probe new servers into the pool. A new server cannot probe the pool, it
 must be probed from the pool.
 
-### Step 5 - Set up a GlusterFS volume
+Check the peer status on server1
+
+                gluster peer status
+
+You should see somthing like this (the UUID will differ)
+
+                Number of Peers: 1
+
+                Hostname: server2
+                Uuid: f0e7b138-4874-4bc0-ab91-54f20c7068b4
+                State: Peer in Cluster (Connected)
+
+
+### Step 6 - Set up a GlusterFS volume
 
 On both server1 and server2:
 
@@ -103,11 +131,28 @@ Confirm that the volume shows "Started":
 
 		gluster volume info
 
-Note: If the volume is not started, clues as to what went wrong will be
-in log files under /var/log/glusterfs on one or both of the servers -
-usually in etc-glusterfs-glusterd.vol.log
 
-### Step 6 - Testing the GlusterFS volume
+You should see something like this (the Volume ID will differ):
+
+                Volume Name: gv0
+                Type: Replicate
+                Volume ID: f25cc3d8-631f-41bd-96e1-3e22a4c6f71f
+                Status: Started
+                Snapshot Count: 0
+                Number of Bricks: 1 x 2 = 2
+                Transport-type: tcp
+                Bricks:
+                Brick1: server1:/data/brick1/gv0
+                Brick2: server2:/data/brick1/gv0
+                Options Reconfigured:
+                transport.address-family: inet
+
+
+Note: If the volume is not started, clues as to what went wrong will be
+in log files under /var/log/glusterfs/glusterd.log on one or both of the servers.
+
+
+### Step 7 - Testing the GlusterFS volume
 
 For this step, we will use one of the servers to mount the volume.
 Typically, you would do this from an external machine, known as a
@@ -118,17 +163,16 @@ a simple place to test first, as if it were that "client".
 		mount -t glusterfs server1:/gv0 /mnt
 		  for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
 
-First, check the mount point:
+First, check the client mount point:
 
-		ls -lA /mnt | wc -l
+		ls -lA /mnt/copy* | wc -l
 
-You should see 100 files returned. Next, check the GlusterFS mount
+You should see 100 files returned. Next, check the GlusterFS brick mount
 points on each server:
 
-		ls -lA /data/brick1/gv0
+		ls -lA /data/brick1/gv0/copy*
 
 You should see 100 files on each server using the method we listed here.
 Without replication, in a distribute only volume (not detailed here), you
 should see about 50 files on each one.
 
-[Terminologies](./Terminologies.md) you should be familiar with.
