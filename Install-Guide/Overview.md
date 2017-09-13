@@ -20,7 +20,7 @@ how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
 section . We want you to be successful in as short a time as possible.
 
-### Overview:
+### Overview
 
 Before we begin, let’s talk about what Gluster is, dispel a few myths
 and misconceptions, and define a few terms. This will help you to avoid
