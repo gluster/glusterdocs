@@ -4,7 +4,7 @@ Installing GlusterFS - a Quick Start Guide
 #### Purpose of this document
 This document is intended to give you a step by step guide to setting up
 GlusterFS for the first time. For this tutorial, we will assume you are
-using Fedora 22 (or later) virtual machines.
+using Fedora 26 (or later) virtual machines.
 We also do not explain the steps in detail here as this guide is just to help
 you get it up and running as soon as possible.
 After you deploy GlusterFS by following these steps,
