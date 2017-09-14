@@ -113,11 +113,11 @@ To change the supported transport types of a volume, follow the procedure:
 
 2.  Stop the volumes using the following command:
 
-    `# gluster volume stop volname`
+    `# gluster volume stop <VOLNAME>`
 
 3.  Change the transport type. For example, to enable both tcp and rdma execute the followimg command:
 
-    `# gluster volume set volname config.transport tcp,rdma OR tcp OR rdma`
+    `# gluster volume set test-volume config.transport tcp,rdma OR tcp OR rdma`
 
 4.  Mount the volume on all the clients. For example, to mount using rdma transport, use the following command:
 
