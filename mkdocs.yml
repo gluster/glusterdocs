@@ -14,7 +14,6 @@ pages:
 - Install Guide:
   - Overview: Install-Guide/Overview.md
   - Common Criteria: Install-Guide/Common_criteria.md
-#  - Quick start to Install: Install-Guide/Quick_start.md
   - Setting up in virtual machines: Install-Guide/Setup_virt.md
   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
   - Deploying in AWS: Install-Guide/Setup_aws.md
