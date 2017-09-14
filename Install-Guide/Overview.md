@@ -3,12 +3,12 @@
 This document will get you up to speed with some hands-on experience
 with Gluster by guiding you through the steps of setting it up for the
 first time. If you are looking to get right into things, you are in the
-right place. If you want just the bare minimum steps, see the [Quick Start Guide](./Quick_start.md).
+right place. If you want just the bare minimum steps, see the [Quick Start Guide](../Quick-Start-Guide/Quickstart.md).
 
 If you want some in-depth information on each of the steps, you are in the right place.
 Both the guides will get you
 to a working Gluster cluster, so it depends on you how much time you
-want to spend. The [Quick Start Guide](./Quick_start.md) should have you up and running in ten minutes
+want to spend. The [Quick Start Guide](../Quick-Start-Guide/Quickstart.md) should have you up and running in ten minutes
 or less. This guide can easily be done in a lunch break, and still gives
 you time to have a quick bite to eat. The Getting Started guide can be
 done easily in a few hours, depending on how much testing you want to
