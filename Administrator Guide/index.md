@@ -27,7 +27,6 @@
 	*  [Managing Volumes](./Managing Volumes.md)
 	*  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
 	*  [Modifying .vol files with a filter](./GlusterFS Filter.md)
-	*  [Resolving Peer Rejected](./Resolving Peer Rejected.md)
 	
 7.  [GlusterFS Service Logs and Locations](./Logging.md)
 

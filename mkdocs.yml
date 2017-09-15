@@ -37,7 +37,6 @@ pages:
   - Managing Volumes: Administrator Guide/Managing Volumes.md
   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
-  - Resolving Peer Rejected State: Administrator Guide/Resolving Peer Rejected.md
   - Logging: Administrator Guide/Logging.md
   - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
   - Geo Replication: Administrator Guide/Geo Replication.md
@@ -131,6 +130,7 @@ pages:
   - gfind missing files: GlusterFS Tools/gfind_missing_files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
+  - Peer Rejected: Troubleshooting/resolving-peer-rejected.md
   - gfid to path: Troubleshooting/gfid-to-path.md
   - Split Brain (Manual): Troubleshooting/split-brain.md
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
