@@ -1,4 +1,4 @@
-##Fixing "Peer Rejected" 
+## Fixing "Peer Rejected" 
 
 If you run 
 
