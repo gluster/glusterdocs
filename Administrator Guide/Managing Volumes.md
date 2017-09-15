@@ -147,7 +147,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 1.  On the first server in the cluster, probe the server to which you
     want to add the new brick using the following command:
 
-    `# gluster peer probe `
+    `# gluster peer probe <SERVERNAME>`
 
     For example:
 
@@ -156,7 +156,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 
 2.  Add the brick using the following command:
 
-    `# gluster volume add-brick <VOLNAME>`
+    `# gluster volume add-brick <VOLNAME> <NEW-BRICK>`
 
     For example:
 
@@ -210,7 +210,7 @@ set).
 
 1.  Remove the brick using the following command:
 
-    `# gluster volume remove-brick <VOLNAME> start`
+    `# gluster volume remove-brick <VOLNAME> <BRICKNAME> start`
 
     For example, to remove server2:/exp2:
 
@@ -227,7 +227,7 @@ set).
 3.  (Optional) View the status of the remove brick operation using the
     following command:
 
-    `# gluster volume remove-brick <VOLNAME> status`
+    `# gluster volume remove-brick <VOLNAME> <BRICKNAME> status`
 
     For example, to view the status of remove brick operation on
     server2:/exp2 brick:
