@@ -448,7 +448,7 @@ Steps:
             trusted.glusterfs.dht=0x0000000100000000000000007ffffffe
             trusted.glusterfs.volume-id=0xde822e25ebd049ea83bfaa3c4be2b440
 
-    -  `# gluster volume heal [volname] info` will show that no heal is required.
+    -  `# gluster volume heal <VOLNAME> info` will show that no heal is required.
 
             # gluster volume heal r2 info
             Brick Server1:/home/gfs/r2_5
