@@ -99,15 +99,15 @@ Turn on features.cache-invalidation for that volume
 #### step 4 :
 dbus commands are used to export/unexport volume
 - export
-#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"
+	- *#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"*
 
 - unexport
-#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport string:uint16:<export id>
+	- *#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport string:uint16:<export id>*
 
 ```sh
 Note :
 Step 4 can be performed via following script
-#/usr/libexec/ganesha/create-export-ganesha.sh <ganesha directory> [on|off] <volume name>
+#/usr/libexec/ganesha/dbus-send.sh <ganesha directory> [on|off] <volume name>
 ```
 
 #### step 5 :
