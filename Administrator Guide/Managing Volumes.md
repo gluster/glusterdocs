@@ -32,7 +32,7 @@ available.
 
 Tune volume options using the following command:
 
-`# gluster volume set`
+`# gluster volume set <VOLNAME>`
 
 For example, to specify the performance cache size for test-volume:
 
@@ -113,11 +113,11 @@ To change the supported transport types of a volume, follow the procedure:
 
 2.  Stop the volumes using the following command:
 
-    `# gluster volume stop volname`
+    `# gluster volume stop <VOLNAME>`
 
 3.  Change the transport type. For example, to enable both tcp and rdma execute the followimg command:
 
-    `# gluster volume set volname config.transport tcp,rdma OR tcp OR rdma`
+    `# gluster volume set test-volume config.transport tcp,rdma OR tcp OR rdma`
 
 4.  Mount the volume on all the clients. For example, to mount using rdma transport, use the following command:
 
@@ -147,7 +147,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 1.  On the first server in the cluster, probe the server to which you
     want to add the new brick using the following command:
 
-    `# gluster peer probe `
+    `# gluster peer probe <SERVERNAME>`
 
     For example:
 
@@ -156,7 +156,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 
 2.  Add the brick using the following command:
 
-    `# gluster volume add-brick `
+    `# gluster volume add-brick <VOLNAME> <NEW-BRICK>`
 
     For example:
 
@@ -165,7 +165,7 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 
 3.  Check the volume information using the following command:
 
-    `# gluster volume info `
+    `# gluster volume info <VOLNAME>`
 
     The command displays information similar to the following:
 
@@ -210,11 +210,11 @@ set).
 
 1.  Remove the brick using the following command:
 
-    `# gluster volume remove-brick  start`
+    `# gluster volume remove-brick <VOLNAME> <BRICKNAME> start`
 
     For example, to remove server2:/exp2:
 
-        # gluster volume remove-brick test-volume server2:/exp2 force
+        # gluster volume remove-brick test-volume server2:/exp2 start
 
         Removing brick(s) can result in data loss. Do you want to Continue? (y/n)
 
@@ -227,7 +227,7 @@ set).
 3.  (Optional) View the status of the remove brick operation using the
     following command:
 
-    `# gluster volume remove-brick  status`
+    `# gluster volume remove-brick <VOLNAME> <BRICKNAME> status`
 
     For example, to view the status of remove brick operation on
     server2:/exp2 brick:
@@ -448,7 +448,7 @@ Steps:
             trusted.glusterfs.dht=0x0000000100000000000000007ffffffe
             trusted.glusterfs.volume-id=0xde822e25ebd049ea83bfaa3c4be2b440
 
-    -  `# gluster volume heal [volname] info` will show that no heal is required.
+    -  `# gluster volume heal <VOLNAME> info` will show that no heal is required.
 
             # gluster volume heal r2 info
             Brick Server1:/home/gfs/r2_5
@@ -509,7 +509,7 @@ the servers.
 -   Start the rebalance operation on any one of the server using the
     following command:
 
-    `# gluster volume rebalance fix-layout start`
+    `# gluster volume rebalance <VOLNAME> fix-layout start`
 
     For example:
 
@@ -527,7 +527,7 @@ among the servers.
 -   Start the rebalance operation on any one of the server using the
     following command:
 
-    `# gluster volume rebalance start`
+    `# gluster volume rebalance <VOLNAME> start`
 
     For example:
 
@@ -537,7 +537,7 @@ among the servers.
 -   Start the migration operation forcefully on any one of the servers
     using the following command:
 
-    `# gluster volume rebalance start force`
+    `# gluster volume rebalance <VOLNAME> start force`
 
     For example:
 
@@ -552,7 +552,7 @@ as needed.
 -   Check the status of the rebalance operation, using the following
     command:
 
-    `# gluster volume rebalance  status`
+    `# gluster volume rebalance <VOLNAME> status`
 
     For example:
 
@@ -588,7 +588,7 @@ You can stop the rebalance operation, as needed.
 
 -   Stop the rebalance operation using the following command:
 
-    `# gluster volume rebalance  stop`
+    `# gluster volume rebalance <VOLNAME> stop`
 
     For example:
 
@@ -603,7 +603,7 @@ You can stop the rebalance operation, as needed.
 
 1.  Stop the volume using the following command:
 
-    `# gluster volume stop `
+    `# gluster volume stop <VOLNAME>`
 
     For example, to stop test-volume:
 
@@ -620,7 +620,7 @@ You can stop the rebalance operation, as needed.
 
 1.  Delete the volume using the following command:
 
-    `# gluster volume delete `
+    `# gluster volume delete <VOLNAME>`
 
     For example, to delete test-volume:
 
@@ -648,7 +648,7 @@ volume or only on the files which need *healing*.
 
 -   Trigger self-heal only on the files which requires *healing*:
 
-    `# gluster volume heal `
+    `# gluster volume heal <VOLNAME>`
 
     For example, to trigger self-heal on files which requires *healing*
     of test-volume:
@@ -658,7 +658,7 @@ volume or only on the files which need *healing*.
 
 -   Trigger self-heal on all the files of a volume:
 
-    `# gluster volume heal full`
+    `# gluster volume heal <VOLNAME> full`
 
     For example, to trigger self-heal on all the files of of
     test-volume:
@@ -668,7 +668,7 @@ volume or only on the files which need *healing*.
 
 -   View the list of files that needs *healing*:
 
-    `# gluster volume heal info`
+    `# gluster volume heal <VOLNAME> info`
 
     For example, to view the list of files on test-volume that needs
     *healing*:
@@ -692,7 +692,7 @@ volume or only on the files which need *healing*.
 
 -   View the list of files that are self-healed:
 
-    `# gluster volume heal info healed`
+    `# gluster volume heal <VOLNAME> info healed`
 
     For example, to view the list of files on test-volume that are
     self-healed:
@@ -720,7 +720,7 @@ volume or only on the files which need *healing*.
 -   View the list of files of a particular volume on which the self-heal
     failed:
 
-    `# gluster volume heal info failed`
+    `# gluster volume heal <VOLNAME> info failed`
 
     For example, to view the list of files of test-volume that are not
     self-healed:
@@ -742,7 +742,7 @@ volume or only on the files which need *healing*.
 -   View the list of files of a particular volume which are in
     split-brain state:
 
-    `# gluster volume heal info split-brain`
+    `# gluster volume heal <VOLNAME> info split-brain`
 
     For example, to view the list of files of test-volume which are in
     split-brain state:
@@ -783,7 +783,7 @@ NUFA should be enabled before creating any data in the volume.
 
 Use the following command to enable NUFA:
 
-`# gluster volume set VOLNAME cluster.nufa enable on`
+`# gluster volume set <VOLNAME> cluster.nufa enable on`
 
 **Important**
 
