@@ -1,4 +1,4 @@
-#Statedump
+# Statedump
 
 A statedump is, as the name suggests, a dump of the internal state of a glusterfs process. It captures information about in-memory structures such as frames, call stacks, active inodes, fds, mempools, iobufs, and locks as well as xlator specific data structures. This can be an invaluable tool for debugging memory leaks and hung processes.
 
@@ -11,7 +11,7 @@ A statedump is, as the name suggests, a dump of the internal state of a glusterf
 ************************
 
 
-##Generate a Statedump
+## Generate a Statedump
 Run the command
 
                 gluster --print-statedumpdir
@@ -43,11 +43,11 @@ The statedumps for brick processes will be created in `statedump-directory` with
 
 ***
 
-##Read a Statedump
+## Read a Statedump
 
 Statedumps are text files and can be opened in any text editor. The first and last lines of the file contain the start and end time (in UTC)respectively of when the statedump file was written.
 
-###Mallinfo
+### Mallinfo
 The mallinfo return status is printed in the following format. Please read _man mallinfo_ for more information about what each field means.
 
 ```
@@ -64,7 +64,7 @@ mallinfo_fordblks=3310112   /* Total free space (bytes) */
 mallinfo_keepcost=133712    /* Top-most, releasable space (bytes) */
 ```
 
-###Memory accounting stats
+### Memory accounting stats
 Each xlator defines data structures specific to its requirements. The statedump captures information about the memory usage and allocations of these structures for each xlator in the call-stack and prints them in the following format:
 
 For the xlator with the name _glusterfs_
@@ -88,7 +88,7 @@ total_allocs=7    #Number of times this data-type was allocated in the life of t
 
 This information is useful while debugging high memory usage issues as steadily increasing values for num_allocs may indicate a memory leak for that data-type.
 
-###Mempools
+### Mempools
 
 Mempools are an optimization intended to reduce the number of allocations of a data type. By creating a mempool of 1024 elements for a data-type, new elements of that type will be allocated from the heap using syscalls like calloc only if all the 1024 elements in the pool are in active use.
 
@@ -111,7 +111,7 @@ max-stdalloc=0      #Maximum number of allocations from heap that were in active
 This information is also useful while debugging high memory usage issues as large hot_count and cur-stdalloc values may point to an element not being freed after it has been used.
 
 
-###Iobufs
+### Iobufs
 ```
 [iobuf.global]
 iobuf_pool=0x1f0d970                #The memory pool for iobufs
@@ -160,7 +160,7 @@ arena.6.active_iobuf.2.ptr=0x7fdb92189000
 A lot of filled arenas at any given point in time could be a sign of iobuf leaks.
 
 
-###Call stack
+### Call stack
 
 The fops received by gluster are handled using call stacks. A call stack contains information about the uid/gid/pid etc of the process that is executing the fop. Each call stack contains different call-frames for each xlator which handles that fop.
 
@@ -177,7 +177,7 @@ type=1                       #Type of the op i.e. FOP/MGMT-OP
 cnt=9                        #Number of frames in this stack.
 ```
 
-###Call-frame
+### Call-frame
 Each frame will have information about which xlator the frame belongs to, which function it wound to/from and which it will be unwound to, and whether it has unwound.
 
 ```
@@ -195,7 +195,7 @@ unwind_to=afr_lookup_cbk          #Parent xlator function to unwind to
 To debug hangs in the system, see which xlator has not yet unwound its fop by checking the value of the _complete_ tag in the statedump. (_complete=0_ indicates the xlator has not yet unwound).
 
 
-###FUSE Operation History
+### FUSE Operation History
 
 Gluster Fuse maintains a history of the operations that it has performed.
 
@@ -211,7 +211,7 @@ TIME=2014-07-09 16:44:57.523394
 message=[0] fuse_getattr_resume: 4591, STAT, path: (/iozone.tmp), gfid: (3afb4968-5100-478d-91e9-76264e634c9f)
 ```
 
-###Xlator configuration
+### Xlator configuration
 ```
 [cluster/replicate.r2-replicate-0] #Xlator type, name information
 child_count=2                      #Number of children for the xlator
@@ -231,7 +231,7 @@ favorite_child=-1
 wait_count=1
 ```
 
-###Graph/inode table
+### Graph/inode table
 ```
 [active graph - 1]
 
@@ -243,7 +243,7 @@ conn.1.bound_xl./data/brick01a/homegfs.lru_size=183    #Number of inodes present
 conn.1.bound_xl./data/brick01a/homegfs.purge_size=0    #Number of inodes present in purge list
 ```
 
-###Inode
+### Inode
 ```
 [conn.1.bound_xl./data/brick01a/homegfs.active.324] #324th inode in active inode list
 gfid=e6d337cf-97eb-44b3-9492-379ba3f6ad42           #Gfid of the inode
@@ -260,7 +260,7 @@ ref=0
 ia_type=2
 ```
 
-###Inode context
+### Inode context
 Each xlator can store information specific to it in the inode context. This context can also be printed in the statedump. Here is the inode context of the locks xlator
 ```
 [xlator.features.locks.homegfs-locks.inode]
@@ -279,14 +279,14 @@ inodelk.inodelk[0](ACTIVE)=type=WRITE, whence=0, start=11141120, len=131072, pid
  
 *** 
 
-##Debug With Statedumps
-###Memory leaks
+## Debug With Statedumps
+### Memory leaks
 
 Statedumps can be used to determine whether the high memory usage of a process is caused by leak. To debug the issue, generate statedumps for that process at regular intervals, or before and after running the steps that lead to high memory usage. Once we have multiple statedumps, compare the memory allocation stats to see if any of them are increasing steadily as those could indicate a potential memory leak.
 
 The following examples walk through using statedumps to debug two different memory leaks.
 
-####With the memory accounting feature:
+#### With the memory accounting feature:
 
 [BZ 1120151](https://bugzilla.redhat.com/show_bug.cgi?id=1120151) reported high memory usage by the self heal daemon whenever one of the bricks was wiped in a replicate volume and a full self-heal was invoked to heal the contents. This issue was debugged using statedumps to determine which data-structure was leaking memory.
 
@@ -319,7 +319,7 @@ On checking the afr-code for allocations with tag `gf_common_mt_char`, it was fo
 Please check [http://review.gluster.org/8316](http://review.gluster.org/8316) for more info about the patch/code.
 
 
-####Leaks in mempools:
+#### Leaks in mempools:
 The statedump output of mempools was used to test and verify the fixes for [BZ 1134221](https://bugzilla.redhat.com/show_bug.cgi?id=1134221). On code analysis, dict_t objects were found to be leaking (due to missing unref's) during name self-heal. 
 
 Glusterfs was compiled with the -DDEBUG flags to have cold count set to 0 by default. The test involved creating 100 files on plain replicate volume, removing them from one of the backend bricks, and then triggering lookups on them from the mount point. A statedump of the mount process was taken before executing the test case and after it was completed.
@@ -388,7 +388,7 @@ max-stdalloc=119
 ```
 The value of cur-stdalloc remained 14 after the test, indicating that the fix indeed does what it's supposed to do.
 
-###Hangs caused by frame loss
+### Hangs caused by frame loss
 [BZ 994959](https://bugzilla.redhat.com/show_bug.cgi?id=994959) reported that the Fuse mount hangs on a readdirp operation.
 Here are the steps used to locate the cause of the hang using statedump.
 
