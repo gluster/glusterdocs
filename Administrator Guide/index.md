@@ -3,12 +3,11 @@
 1.  Platform introduction
 
 	*  [About GlusterFS](./GlusterFS Introduction.md)
-	*  [Terminologies](../Quick-Start-Guide/Terminologies.md)
 	
 2.  GlusterFS Architecture and Concepts
 
 	*  [Architecture](../Quick-Start-Guide/Architecture.md)
-	*  [GlusterFS Concepts](./glossary.md)
+	*  [Glossary](../glossary.md)
 	*  [Other Features of GlusterFS](./Did You Know.md)
 	*  [Setting Up Trusted Storage Pools](./Storage Pools.md)
 	*  [Compiling RPMS](./Compiling RPMS.md)
