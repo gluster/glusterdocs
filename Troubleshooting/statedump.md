@@ -23,7 +23,7 @@ To generate a statedump, run
 
                 kill -USR1 <pid-of-gluster-process>
 
-There are specific commands to generate statedumps for brick processes/nfs server/quotad.
+There are also specific commands to generate statedumps for all brick processes/nfs server/quotad which can be used instead of the above.
 
 
 For bricks:
@@ -354,7 +354,7 @@ cur-stdalloc=214
 max-stdalloc=220
 
 ```
-Here, as cold count was 0 by default, cur-stdalloc indicates the number of dict_t objects that were allocated from the heap using mem_get(), and are yet to be freed using mem_put() (See https://github.com/gluster/glusterfs/blob/master/doc/data-structures/mem-pool.md for more details on how mempool works). After running the test case (named selfheal of 100 files), there was a rise in the cur-stdalloc value (from 14 to 214) for dict_t.
+Here, as cold count was 0 by default, cur-stdalloc indicates the number of dict_t objects that were allocated from the heap using mem_get(), and are yet to be freed using mem_put(). After running the test case (named selfheal of 100 files), there was a rise in the cur-stdalloc value (from 14 to 214) for dict_t.
 
 After the leaks were fixed, glusterfs was again compiled with -DDEBUG flags and the steps were repeated. Statedumps of the FUSE mount were taken before and after executing the test case to ascertain the validity of the fix. And the results were as follows:
 
