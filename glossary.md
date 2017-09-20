@@ -162,7 +162,7 @@ Source: [Wikipedia][3]
 
 **Self-Heal**
 :   The self-heal daemon that runs in the background, identifies
-    inconsistencies in files/dirs in a replicated volume and then resolves
+    inconsistencies in files/dirs in a replicated or erasure coded volume and then resolves
     or heals them. This healing process is usually required when one or more
     bricks of a volume goes down and then comes up later.
 
