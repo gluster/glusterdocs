@@ -11,7 +11,6 @@
 	*  [GlusterFS Concepts](./glossary.md)
 	*  [Other Features of GlusterFS](./Did You Know.md)
 	*  [Setting Up Trusted Storage Pools](./Storage Pools.md)
-	*  [Compiling RPMS](./Compiling RPMS.md)
 	*  [Managing the Gluster Service](./Start Stop Daemon.md)
 	
 3.  [Gluster Console Guide](./Console.md)

@@ -18,6 +18,7 @@ pages:
   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
   - Deploying in AWS: Install-Guide/Setup_aws.md
   - Install: Install-Guide/Install.md
+  - Compiling RPMS: Install-Guide/compiling-rpms.md
   - Community Packages: Install-Guide/Community_Packages.md
   - Configure: Install-Guide/Configure.md
 - Presentations: presentations/index.md
@@ -27,7 +28,6 @@ pages:
   - Glossary: Administrator Guide/glossary.md
   - Did You Know: Administrator Guide/Did You Know.md
   - Storage Pools: Administrator Guide/Storage Pools.md
-  - Compiling RPMS: Administrator Guide/Compiling RPMS.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
   - Gluster Console Guide: Administrator Guide/Console.md
   - Access Control Lists: Administrator Guide/Access Control Lists.md
