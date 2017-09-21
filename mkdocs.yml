@@ -9,7 +9,6 @@ pages:
 - Home: index.md
 - Getting started with GlusterFS:
   - Quick Start Guide: Quick-Start-Guide/Quickstart.md
-  - Terminologies: Quick-Start-Guide/Terminologies.md
   - Architecture: Quick-Start-Guide/Architecture.md
 - Install Guide:
   - Overview: Install-Guide/Overview.md
@@ -25,7 +24,6 @@ pages:
 - Administrator Guide:
   - Index: Administrator Guide/index.md
   - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
-  - Glossary: Administrator Guide/glossary.md
   - Did You Know: Administrator Guide/Did You Know.md
   - Storage Pools: Administrator Guide/Storage Pools.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
@@ -135,6 +133,7 @@ pages:
   - Split Brain (Manual): Troubleshooting/split-brain.md
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
   - Statedump: Troubleshooting/statedump.md
+- Glossary: ./glossary.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme: readthedocs
