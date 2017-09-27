@@ -25,8 +25,8 @@ pages:
   - Index: Administrator Guide/index.md
   - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
   - Did You Know: Administrator Guide/Did You Know.md
-  - Storage Pools: Administrator Guide/Storage Pools.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
+  - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
   - Gluster Console Guide: Administrator Guide/Console.md
   - Access Control Lists: Administrator Guide/Access Control Lists.md
   - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
