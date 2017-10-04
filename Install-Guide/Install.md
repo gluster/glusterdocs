@@ -14,6 +14,8 @@ Packages are provided according to this [table](./Community_Packages.md).
 Add the GPG key to apt:
 
     wget -O - http://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
+or:
+    wget -O - http://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub | apt-key add -
 
 Add the source:
 
