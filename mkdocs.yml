@@ -128,7 +128,7 @@ pages:
   - gfind missing files: GlusterFS Tools/gfind_missing_files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
-  - Peer Rejected: Troubleshooting/resolving-peer-rejected.md
+  - Troubleshooting CLI and glusterd: Troubleshooting/troubleshooting-glusterd.md
   - gfid to path: Troubleshooting/gfid-to-path.md
   - Split Brain (Manual): Troubleshooting/split-brain.md
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
