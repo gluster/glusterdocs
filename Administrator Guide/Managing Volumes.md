@@ -8,7 +8,6 @@ operations, including the following:
 - [Expanding Volumes](#expanding-volumes)
 - [Shrinking Volumes](#shrinking-volumes)
 - [Replacing Bricks](#replace-brick)
-- [Migrating Volumes](#migrating-volumes)
 - [Rebalancing Volumes](#rebalancing-volumes)
 - [Stopping Volumes](#stopping-volumes)
 - [Deleting Volumes](#deleting-volumes)
@@ -16,7 +15,7 @@ operations, including the following:
 - [Non Uniform File Allocation(NUFA)](#non-uniform-file-allocation)
 
 <a name="tuning-options"></a>
-##Tuning Volume Options
+## Tuning Volume Options
 
 You can tune volume options, as needed, while the cluster is online and
 available.
@@ -100,7 +99,7 @@ You can view the changed volume options using command:
 `# gluster volume info`
 
 <a name="configuring-transport-types-for-a-volume"></a>
-##Configuring Transport Types for a Volume
+## Configuring Transport Types for a Volume
 
 A volume can support one or more transport types for communication between clients and brick processes.
 There are three types of supported transport, which are tcp, rdma, and tcp,rdma.
@@ -124,7 +123,7 @@ To change the supported transport types of a volume, follow the procedure:
     `# mount -t glusterfs -o transport=rdma server1:/test-volume /mnt/glusterfs`
 
 <a name="expanding-volumes"></a>
-##Expanding Volumes
+## Expanding Volumes
 
 You can expand volumes, as needed, while the cluster is online and
 available. For example, you might want to add a brick to a distributed
@@ -136,16 +135,16 @@ replicated volume, increasing the capacity of the GlusterFS volume.
 
 > **Note**
 >
-> When expanding distributed replicated and distributed striped volumes,
+> When expanding distributed replicated and distributed dispersed volumes,
 > you need to add a number of bricks that is a multiple of the replica
-> or stripe count. For example, to expand a distributed replicated
+> or disperse count. For example, to expand a distributed replicated
 > volume with a replica count of 2, you need to add bricks in multiples
 > of 2 (such as 4, 6, 8, etc.).
 
 **To expand a volume**
 
-1.  On the first server in the cluster, probe the server to which you
-    want to add the new brick using the following command:
+1.  If they are not already part of the TSP, probe the servers which contain the bricks you
+    want to add to the volume using the following command:
 
     `# gluster peer probe <SERVERNAME>`
 
@@ -179,13 +178,13 @@ replicated volume, increasing the capacity of the GlusterFS volume.
         Brick3: server3:/exp3
         Brick4: server4:/exp4
 
-4.  Rebalance the volume to ensure that all files are distributed to the
+4.  Rebalance the volume to ensure that files are distributed to the
     new brick.
 
     You can use the rebalance command as described in [Rebalancing Volumes](#rebalancing-volumes)
 
 <a name="shrinking-volumes"></a>
-##Shrinking Volumes
+## Shrinking Volumes
 
 You can shrink volumes, as needed, while the cluster is online and
 available. For example, you might need to remove a brick that has become
@@ -198,13 +197,16 @@ inaccessible in a distributed volume due to hardware or network failure.
 > configuration information is removed - you can continue to access the
 > data directly from the brick, as necessary.
 
-When shrinking distributed replicated and distributed striped volumes,
+When shrinking distributed replicated and distributed dispersed volumes,
 you need to remove a number of bricks that is a multiple of the replica
-or stripe count. For example, to shrink a distributed striped volume
-with a stripe count of 2, you need to remove bricks in multiples of 2
+or stripe count. For example, to shrink a distributed replicate volume
+with a replica count of 2, you need to remove bricks in multiples of 2
 (such as 4, 6, 8, etc.). In addition, the bricks you are trying to
-remove must be from the same sub-volume (the same replica or stripe
+remove must be from the same sub-volume (the same replica or disperse
 set).
+
+Running remove-brick with the _start_ option will automatically trigger a rebalance
+operation to migrate data from the removed-bricks to the rest of the volume.
 
 **To shrink a volume**
 
@@ -215,16 +217,9 @@ set).
     For example, to remove server2:/exp2:
 
         # gluster volume remove-brick test-volume server2:/exp2 start
+        volume remove-brick start: success
 
-        Removing brick(s) can result in data loss. Do you want to Continue? (y/n)
-
-2.  Enter "y" to confirm the operation. The command displays the
-    following message indicating that the remove brick operation is
-    successfully started:
-
-        Remove Brick successful
-
-3.  (Optional) View the status of the remove brick operation using the
+2.  View the status of the remove brick operation using the
     following command:
 
     `# gluster volume remove-brick <VOLNAME> <BRICKNAME> status`
@@ -236,6 +231,18 @@ set).
                                         Node  Rebalanced-files  size  scanned       status
                                    ---------  ----------------  ----  -------  -----------
         617c923e-6450-4065-8e33-865e28d9428f               34   340      162   in progress
+
+3.  Once the status displays "completed", commit the remove-brick operation
+
+        # gluster volume remove-brick <VOLNAME> <BRICKNAME> commit
+
+    In this example:
+
+        # gluster volume remove-brick test-volume server2:/exp2 commit
+        Removing brick(s) can result in data loss. Do you want to Continue? (y/n) y
+        volume remove-brick commit: success
+        Check the removed bricks to ensure all files are migrated.
+        If files with data are found on the brick path, copy them via a gluster mount point before re-purposing the removed brick.
 
 4.  Check the volume information using the following command:
 
@@ -253,19 +260,15 @@ set).
         Brick3: server3:/exp3
         Brick4: server4:/exp4
 
-5.  Rebalance the volume to ensure that all files are distributed to the
-    new brick.
-
-    You can use the rebalance command as described in [Rebalancing Volumes](#rebalancing-volumes)
 
 <a name="replace-brick"></a>
-##Replace faulty brick
+## Replace faulty brick
 
-**Replacing a brick in *pure* distribute volume**
+**Replacing a brick in a *pure* distribute volume**
 
-To replace a brick on a distribute only volume, user needs to remove the brick using remove-brick. Then add a new-brick and rebalance the cluster.
+To replace a brick on a distribute only volume, add the new brick and then remove the brick you want to replace. This will trigger a rebalance operation which will move data from the removed brick.
 
-> NOTE: Replacing a brick using 'replace-brick' command in gluster is supported only for distributed-replicate or *pure* replicate volumes.
+> NOTE: Replacing a brick using the 'replace-brick' command in gluster is supported only for distributed-replicate or *pure* replicate volumes.
 
 Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 
@@ -299,8 +302,7 @@ Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
         volume remove-brick start: success
         ID: fba0a488-21a4-42b7-8a41-b27ebaa8e5f4
 
-5.  Wait until remove-brick is completed. Once remove-brick is completed it
-shows the following output:
+5.  Wait until remove-brick status indicates that it is complete.
 
 
         # gluster volume remove-brick r2 Server1:/home/gfs/r2_1 status
@@ -315,7 +317,7 @@ shows the following output:
         Removing brick(s) can result in data loss. Do you want to Continue? (y/n) y
         volume remove-brick commit: success
 
-7.  Here is how the volume configuration will be after the remove-brick.
+7.  Here is the new volume configuration.
 
         Volume Name: r2
         Type: Distribute
@@ -332,9 +334,9 @@ shows the following output:
         # ls
         1  10  2  3  4  5  6  7  8  9
 
-**Replacing brick in Replicate/Distributed Replicate volumes**
+**Replacing bricks in Replicate/Distributed Replicate volumes**
 
-This section of the document contains how brick: `Server1:/home/gfs/r2_0` is replaced with brick: `Server1:/home/gfs/r2_5` in volume `r2` with replica count `2`.
+This section of the document describes how brick: `Server1:/home/gfs/r2_0` is replaced with brick: `Server1:/home/gfs/r2_5` in volume `r2` with replica count `2`.
 
         Volume Name: r2
         Type: Distributed-Replicate
@@ -464,10 +466,9 @@ Steps:
             Number of entries: 0
 
 <a name="rebalancing-volumes"></a>
-##Rebalancing Volumes
+## Rebalancing Volumes
 
-After expanding or shrinking a volume (using the add-brick and
-remove-brick commands respectively), you need to rebalance the data
+After expanding a volume using the add-brick command, you may need to rebalance the data
 among the servers. New directories created after expanding or shrinking
 of the volume will be evenly distributed automatically. For all the
 existing directories, the distribution can be fixed by rebalancing the
@@ -476,20 +477,19 @@ layout and/or data.
 This section describes how to rebalance GlusterFS volumes in your
 storage environment, using the following common scenarios:
 
--   **Fix Layout** - Fixes the layout changes so that the files can actually
-    go to newly added nodes.
+-   **Fix Layout** - Fixes the layout to use the new volume topology so that files can
+    be distributed to newly added nodes.
 
 -   **Fix Layout and Migrate Data** - Rebalances volume by fixing the layout
-    changes and migrating the existing data.
+    to use the new volume topology and migrating the existing data.
 
-###Rebalancing Volume to Fix Layout Changes
+### Rebalancing Volume to Fix Layout Changes
 
 Fixing the layout is necessary because the layout structure is static
-for a given directory. In a scenario where new bricks have been added to
-the existing volume, newly created files in existing directories will
-still be distributed only among the old bricks. The command
-`gluster volume rebalance fix-layout  start` will fix the
-layout information so that the files can also go to newly added nodes.
+for a given directory. Even after new bricks are added to the volume, newly created
+files in existing directories will still be distributed only among the original bricks.
+The command `gluster volume rebalance <volname> fix-layout start` will fix the
+layout information so that the files can be created on the newly added bricks.
 When this command is issued, all the file stat information which is
 already cached will get revalidated.
 
@@ -500,13 +500,13 @@ treated as equal regardless of size, and would have been assigned an equal
 share of files.
 
 A fix-layout rebalance will only fix the layout changes and does not
-migrate data. If you want to migrate the existing data,
+migrate data. If you want to migrate the existing data, 
 use `gluster volume rebalance  start` command to rebalance data among
 the servers.
 
-**To rebalance a volume to fix layout changes**
+**To rebalance a volume to fix layout**
 
--   Start the rebalance operation on any one of the server using the
+-   Start the rebalance operation on any Gluster server using the
     following command:
 
     `# gluster volume rebalance <VOLNAME> fix-layout start`
@@ -516,11 +516,10 @@ the servers.
         # gluster volume rebalance test-volume fix-layout start
         Starting rebalance on volume test-volume has been successful
 
-###Rebalancing Volume to Fix Layout and Migrate Data
+### Rebalancing Volume to Fix Layout and Migrate Data
 
-After expanding or shrinking a volume (using the add-brick and
-remove-brick commands respectively), you need to rebalance the data
-among the servers.
+After expanding a volume using the add-brick respectively, you need to rebalance the data
+among the servers. A remove-brick command will automatically trigger a rebalance.
 
 **To rebalance a volume to fix layout and migrate the existing data**
 
@@ -544,7 +543,7 @@ among the servers.
         # gluster volume rebalance test-volume start force
         Starting rebalancing on volume test-volume has been successful
 
-###Displaying Status of Rebalance Operation
+### Displaying the Status of Rebalance Operation
 
 You can display the status information about rebalance volume operation,
 as needed.
@@ -582,9 +581,9 @@ as needed.
                                    ---------  ----------------  ----  -------  -----------
         617c923e-6450-4065-8e33-865e28d9428f               502  1873      334   completed
 
-###Stopping Rebalance Operation
+### Stopping an Ongoing Rebalance Operation
 
-You can stop the rebalance operation, as needed.
+You can stop the rebalance operation, if needed.
 
 -   Stop the rebalance operation using the following command:
 
@@ -599,7 +598,7 @@ You can stop the rebalance operation, as needed.
         Stopped rebalance process on volume test-volume
 
 <a name="stopping-volumes"></a>
-##Stopping Volumes
+## Stopping Volumes
 
 1.  Stop the volume using the following command:
 
@@ -616,7 +615,7 @@ You can stop the rebalance operation, as needed.
         Stopping volume test-volume has been successful
 
 <a name="deleting-volumes"></a>
-##Deleting Volumes
+## Deleting Volumes
 
 1.  Delete the volume using the following command:
 
@@ -633,7 +632,7 @@ You can stop the rebalance operation, as needed.
         Deleting volume test-volume has been successful
 
 <a name="triggering-self-heal-on-replicate"></a>
-##Triggering Self-Heal on Replicate
+## Triggering Self-Heal on Replicate
 
 In replicate module, previously you had to manually trigger a self-heal
 when a brick goes offline and comes back online, to bring all the
@@ -763,7 +762,7 @@ volume or only on the files which need *healing*.
         ...
 
 <a name="non-uniform-file-allocation"></a>
-##Non Uniform File Allocation
+## Non Uniform File Allocation
 
 NUFA translator or Non Uniform File Access translator is designed for giving higher preference
 to a local drive when used in a HPC type of environment. It can be applied to Distribute and Replica translators;
@@ -801,7 +800,7 @@ The NUFA scheduler also exists, for use with the Unify translator; see below.
       subvolumes brick1 brick2 brick3 brick4 brick5 brick6 brick7
     end-volume
 
-#####NUFA additional options
+##### NUFA additional options
 
 -   lookup-unhashed
 
@@ -815,7 +814,7 @@ The NUFA scheduler also exists, for use with the Unify translator; see below.
 
     This option lists the subvolumes that are part of this 'cluster/nufa' volume. This translator requires more than one subvolume.
 
-##BitRot Detection
+## BitRot Detection
 
 With BitRot detection in Gluster, it's possible to identify "insidious" type of disk
 errors where data is silently corrupted with no indication from the disk to the storage
