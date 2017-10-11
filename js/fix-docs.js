@@ -4,6 +4,7 @@
   $(document).ready(function () {
     fixSearchResults();
     fixSearch();
+    warnDomain();
   });
 
   /**
@@ -11,6 +12,17 @@
    */
   function fixSearchResults() {
     $('#mkdocs-search-results').text('Searching...');
+  }
+
+  /**
+   * Warn if the domain is gluster.readthedocs.io
+   *
+   */
+  function warnDomain() {
+    var domain = window.location.hostname;
+    if (domain.indexOf('readthedocs.io') != -1) {
+      $('div.section').prepend('<div class="warning"><p>You are viewing outdated content. We have moved to <a href="http://docs.gluster.org' + window.location.pathname + '">docs.gluster.org.</a></p></div>');
+    }
   }
 
   /*
