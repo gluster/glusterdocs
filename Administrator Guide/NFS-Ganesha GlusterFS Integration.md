@@ -99,7 +99,7 @@ Turn on features.cache-invalidation for that volume
 #### step 4 :
 dbus commands are used to export/unexport volume
 - export
-	- *#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"*
+	- *#dbus-send  --system --print-reply --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"*
 
 - unexport
 	- *#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport string:uint16:<export id>*
@@ -113,8 +113,8 @@ Step 4 can be performed via following script
 #### step 5 :
    - To check if the volume is exported, run
        - *#showmount -e localhost*
-- Or else use the following dbus command
-#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports
+   - Or else use the following dbus command
+       - *#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports*
 
 ## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
 In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
