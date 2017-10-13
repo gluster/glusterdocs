@@ -5,6 +5,7 @@ Release Notes
 
 - [3.12.0](./3.12.0.md)
 - [3.12.1](./3.12.1.md)
+- [3.12.2](./3.12.2.md)
 
 ###GlusterFS 3.11 release notes
 
