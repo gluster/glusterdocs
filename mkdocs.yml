@@ -8,29 +8,25 @@ docs_dir: .
 pages:
 - Home: index.md
 - Getting started with GlusterFS:
-  - Quick start Guide: Quick-Start-Guide/Quickstart.md
-  - Terminologies: Quick-Start-Guide/Terminologies.md
+  - Quick Start Guide: Quick-Start-Guide/Quickstart.md
   - Architecture: Quick-Start-Guide/Architecture.md
 - Install Guide:
   - Overview: Install-Guide/Overview.md
   - Common Criteria: Install-Guide/Common_criteria.md
-  - Quick start to Install: Install-Guide/Quick_start.md
   - Setting up in virtual machines: Install-Guide/Setup_virt.md
   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
   - Deploying in AWS: Install-Guide/Setup_aws.md
   - Install: Install-Guide/Install.md
+  - Compiling RPMS: Install-Guide/compiling-rpms.md
   - Community Packages: Install-Guide/Community_Packages.md
   - Configure: Install-Guide/Configure.md
 - Presentations: presentations/index.md
 - Administrator Guide:
   - Index: Administrator Guide/index.md
   - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
-  - Glossary: Administrator Guide/glossary.md
   - Did You Know: Administrator Guide/Did You Know.md
-  - Storage Pools: Administrator Guide/Storage Pools.md
-  - Compiling RPMS: Administrator Guide/Compiling RPMS.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
-  - Gluster Console Guide: Administrator Guide/Console.md
+  - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
   - Access Control Lists: Administrator Guide/Access Control Lists.md
   - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
   - Setting Up Clients: Administrator Guide/Setting Up Clients.md
@@ -38,7 +34,6 @@ pages:
   - Managing Volumes: Administrator Guide/Managing Volumes.md
   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
-  - Resolving Peer Rejected State: Administrator Guide/Resolving Peer Rejected.md
   - Logging: Administrator Guide/Logging.md
   - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
   - Geo Replication: Administrator Guide/Geo Replication.md
@@ -68,6 +63,8 @@ pages:
   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
   - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
   - Events APIs: Administrator Guide/Events APIs.md
+- CLI Reference:
+  - Overview: CLI-Reference/cli-main.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
@@ -104,11 +101,13 @@ pages:
   - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
 - Release Notes:
   - index: release-notes/index.md
+  - 3.12.1: release-notes/3.12.1.md
   - 3.12.0: release-notes/3.12.0.md
   - 3.11.3: release-notes/3.11.3.md
   - 3.11.2: release-notes/3.11.2.md
   - 3.11.1: release-notes/3.11.1.md
   - 3.11.0: release-notes/3.11.0.md
+  - 3.10.6: release-notes/3.10.6.md
   - 3.10.5: release-notes/3.10.5.md
   - 3.10.4: release-notes/3.10.4.md
   - 3.10.3: release-notes/3.10.3.md
@@ -131,10 +130,12 @@ pages:
   - gfind missing files: GlusterFS Tools/gfind_missing_files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
+  - Peer Rejected: Troubleshooting/resolving-peer-rejected.md
   - gfid to path: Troubleshooting/gfid-to-path.md
   - Split Brain (Manual): Troubleshooting/split-brain.md
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
   - Statedump: Troubleshooting/statedump.md
+- Glossary: ./glossary.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme: readthedocs

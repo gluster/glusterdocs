@@ -27,7 +27,7 @@ where:
 NIV_EVENT is the default log level.
 ```
 - If user want to run ganesha in prefered mode, execute the following command :
-     - *#ganesha.nfsd -f <location_of_nfs-ganesha.conf_file> -L <location_of_log_file> -N <log_level>*
+     - *#ganesha.nfsd -f \<location_of_nfs-ganesha.conf_file\> -L \<location_of_log_file\> -N \<log_level\>*
 
 ```sh
 For example:
@@ -81,7 +81,7 @@ EXPORT{
 #### step 2 :
 
 Now include the export configuration file in the ganesha configuration file(by default ).This can be done by adding the line below at the end of file
-   - %include “<path of export configuration>”
+   - %include “\<path of export configuration\>”
 
 ```sh
 Note :
@@ -94,27 +94,29 @@ Also it will add above entry to ganesha.conf
 
 #### step 3 :
 Turn on features.cache-invalidation for that volume
--   gluster volume set <volume name> features.cache-invalidation on
+-   gluster volume set \<volume name\> features.cache-invalidation on
 
 #### step 4 :
-dbus commands are used to export/unexport volume
+dbus commands are used to export/unexport volume <br />
 - export
-#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/<volume name>)"
+	- *#dbus-send  --system --print-reply --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.AddExport  string:<ganesha directory>/exports/export.<volume name>.conf string:"EXPORT(Path=/\<volume name\>)"*
 
 - unexport
-#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport string:uint16:<export id>
+	- *#dbus-send  --system --dest=org.ganesha.nfsd  /org/ganesha/nfsd/ExportMgr org.ganesha.nfsd.exportmgr.RemoveExport uint16:\<export id\>*
 
 ```sh
 Note :
 Step 4 can be performed via following script
-#/usr/libexec/ganesha/create-export-ganesha.sh <ganesha directory> [on|off] <volume name>
+#/usr/libexec/ganesha/dbus-send.sh <ganesha directory> [on|off] <volume name>
 ```
 
 #### step 5 :
    - To check if the volume is exported, run
        - *#showmount -e localhost*
-- Or else use the following dbus command
-#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports
+   - Or else use the following dbus command
+       - *#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports*
+   - To see clients
+       - *#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ClientMgr org.ganesha.nfsd.clientmgr.ShowClients*
 
 ## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
 In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
@@ -263,7 +265,7 @@ The Parallel Network File System (pNFS) is part of the NFS v4.1 protocol that al
 ### Step by step guide
 
   - Turn on feature.cache-invalidation for the volume.
-       - gluster v set <volname> features.cache-invalidation on
+       - gluster v set \<volname\> features.cache-invalidation on
 
 -  Select one of nodes in cluster as MDS and configure it adding following block to ganesha configuration file
 ```sh
@@ -278,7 +280,7 @@ GLUSTER
     - *#showmount -e localhost*
 
 -  Mount the volume using NFS version 4.1 protocol with the ip of MDS
-    -  *#mount -t nfs4 -o minorversion=1 <ip of MDS>:/<volume name> <mount path>*
+    -  *#mount -t nfs4 -o minorversion=1 \<ip of MDS\>:/\<volume name\> \<mount path\>*
 
 ### Points to be Noted
 
