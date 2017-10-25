@@ -14,7 +14,7 @@ needs. Read the GlusterFS Install Guide for a more detailed explanation
 of the steps we took here. We want you to be successful in as short a
 time as possible.
 
-If you would like a more detailed walk through with instructions for
+If you would like a more detailed walkthrough with instructions for
 installing using different methods (in local virtual machines, EC2 and
 baremetal) and different distributions, then have a look at the Install
 guide.
@@ -31,7 +31,7 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
 -   Fedora 22 (or later) on two nodes named "server1" and "server2"
 -   A working network connection
 -   At least two virtual disks, one for the OS installation, and one to be
-    used to serve GlusterFS storage (sdb). This will emulate a real
+    used to serve GlusterFS storage (sdb). This will emulate a real-
     world deployment, where you would want to separate GlusterFS storage
     from the OS install.
 -   Note: GlusterFS stores its dynamically generated configuration files
@@ -107,7 +107,7 @@ Check the peer status on server1
 
                 gluster peer status
 
-You should see somthing like this (the UUID will differ)
+You should see something like this (the UUID will differ)
 
                 Number of Peers: 1
 
@@ -158,7 +158,7 @@ For this step, we will use one of the servers to mount the volume.
 Typically, you would do this from an external machine, known as a
 "client". Since using this method would require additional packages to
 be installed on the client machine, we will use one of the servers as
-a simple place to test first, as if it were that "client".
+a simple place to test first , as if it were that "client".
 
 		mount -t glusterfs server1:/gv0 /mnt
 		  for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
