@@ -6,7 +6,7 @@ Bugzilla sends emails with many headers. The following headers can be very usefu
 * X-Bugzilla-Status: you may want to filter 'NEW' bugs in a special folder
 * X-Bugzilla-Keywords: new contributors may want to filter bugs marked with [EasyFix](http://docs.gluster.org/en/latest/Developer-guide/Easy-Fix-Bugs)
 
-It is recommended to filter the emails from the list in a dedicated folder. Some users only move/label messages on certain headers and delete everything else that comes through the mailinglist.
+It is recommended to filter the emails from the list in a dedicated folder. Some users only move/label messages on certain headers and delete everything else that comes through the mailing list.
 
 For example, to receive mails of the component *glusterd*,
 
@@ -32,7 +32,7 @@ using Mozilla Thunderbird mail client,
 The [bugs@gluster.org](http://gluster.org/mailman/listinfo/bugs) mailing list gets added by default to new bugs. Anyone can subscribe to the list in order to receive all updates on all Gluster bugs.
 
 # 'Watch' a user in Bugzilla
-It is possible to use the Bugzilla "watches" function to receive updates on bug reports where the bugs@gluster.org pseudo user is on CC.
+It is possible to use the Bugzilla "watches" function to receive updates on bug reports where the bugs@gluster.org pseudo-user is on CC.
 
 Configuration instructions:
 
@@ -51,7 +51,7 @@ Configuration instructions:
    ![alt text](../images/Bugzilla-watching_bugs@gluster.org.png "Bugzilla-watching_bugs@gluster.org")
 
 # RSS Feeds
-The URLs below can be added to an RSS reader (like Mozilla Thunderbird or [feedly](https://feedly.com)). When you prefer a list of bugs on the bugzilla website, open the RSS-feed in your browser and remove the *ctype=atom* from the end of the URL.
+The URLs below can be added to an RSS reader (like Mozilla Thunderbird or [feedly](https://feedly.com)). When you prefer a list of bugs on the Bugzilla website, open the RSS-feed in your browser and remove the *ctype=atom* from the end of the URL.
 
 For [Bug Triagers](http://docs.gluster.org/en/latest/Contributors-Guide/Bug-Triage/):
 * [NEW Gluster Bugs to Triage](http://goo.gl/llNxe9) (any version)
