@@ -1,9 +1,9 @@
-#Troubleshooting GlusterFS
+# Troubleshooting GlusterFS
 
 This section describes how to manage GlusterFS logs and most common
 troubleshooting scenarios related to GlusterFS.
 
-##Contents
+## Contents
 * [Managing GlusterFS Logs](#logs)
 * [Troubleshooting Geo-replication](#georep)
 * [Troubleshooting POSIX ACLs](#posix-acls)
@@ -12,9 +12,9 @@ troubleshooting scenarios related to GlusterFS.
 * [Troubleshooting File Locks](#file-locks)
 
 <a name="logs"></a>
-##Managing GlusterFS Logs
+## Managing GlusterFS Logs
 
-###Rotating Logs
+### Rotating Logs
 
 Administrators can rotate the log file in a volume, as needed.
 
@@ -32,12 +32,12 @@ For example, to rotate the log file on test-volume:
 > are moved to log-file- name.epoch-time-stamp.
 
 <a name="georep"></a>
-##Troubleshooting Geo-replication
+## Troubleshooting Geo-replication
 
 This section describes the most common troubleshooting scenarios related
 to GlusterFS Geo-replication.
 
-###Locating Log Files
+### Locating Log Files
 
 For every Geo-replication session, the following three log files are
 associated to it (four, if the slave is a gluster volume):
@@ -63,7 +63,7 @@ For example:
 
 **Slave Log File**
 
-To get the log file for Geo-replication on slave (glusterd must be
+To get the log file for geo-replication on slave (glusterd must be
 running on slave machine), use the following commands:
 
 1.  On master, run the following command:
@@ -77,12 +77,12 @@ running on slave machine), use the following commands:
     `# gluster volume geo-replication /data/remote_dir config log-file /var/log/gluster/${session-owner}:remote-mirror.log `
 
 3.  Replace the session owner details (output of Step 1) to the output
-    of the Step 2 to get the location of the log file.
+    of Step 2 to get the location of the log file.
 
     `/var/log/gluster/5f6e5200-756f-11e0-a1f0-0800200c9a66:remote-mirror.log`
 
-###Rotating Geo-replication Logs
-
+### Rotating Geo-replication Logs
+ 
 Administrators can rotate the log file of a particular master-slave
 session, as needed. When you run geo-replication's ` log-rotate`
 command, the log file is backed up with the current timestamp suffixed
@@ -121,19 +121,19 @@ log file.
         # gluster volume geo-replication log rotate
         log rotate successful
 
-###Synchronization is not complete
+### Synchronization is not complete
 
-**Description**: GlusterFS Geo-replication did not synchronize the data
-completely but still the geo- replication status displayed is OK.
+**Description**: GlusterFS geo-replication did not synchronize the data
+completely but still the geo-replication status displayed is OK.
 
 **Solution**: You can enforce a full sync of the data by erasing the
-index and restarting GlusterFS Geo- replication. After restarting,
-GlusterFS Geo-replication begins synchronizing all the data. All files
+index and restarting GlusterFS geo-replication. After restarting,
+GlusterFS geo-replication begins synchronizing all the data. All files
 are compared using checksum, which can be a lengthy and high resource
 utilization operation on large data sets.
 
 
-###Issues in Data Synchronization
+### Issues in Data Synchronization
 
 **Description**: Geo-replication display status as OK, but the files do
 not get synced, only directories and symlink gets synced with the
@@ -146,7 +146,7 @@ following error message in the log:
 and the remote machine. You must verify if you have installed the
 required version.
 
-###Geo-replication status displays Faulty very often
+### Geo-replication status displays Faulty very often
 
 **Description**: Geo-replication displays status as faulty very often
 with a backtrace similar to the following:
@@ -181,7 +181,7 @@ pre-requisites:
     location, configure the `remote-gsyncd-command` for it to point to
     the exact place where gsyncd is located.
 
-###Intermediate Master goes to Faulty State
+### Intermediate Master goes to Faulty State
 
 **Description**: In a cascading set-up, the intermediate master goes to
 faulty state with the following log:
@@ -197,7 +197,7 @@ the desired behavior, delete the config option volume-id in the session
 initiated from the intermediate master.
 
 <a name="posix-acls"></a>
-##Troubleshooting POSIX ACLs
+## Troubleshooting POSIX ACLs
 
 This section describes the most common troubleshooting issues related to
 POSIX ACLs.
@@ -212,9 +212,9 @@ server "Posix access control list is not supported".
 **Solution**: Remount the backend file system with "-o acl" option.
 
 <a name="hadoop"></a>
-##Troubleshooting Hadoop Compatible Storage
+## Troubleshooting Hadoop Compatible Storage
 
-###Time Sync
+### Time Sync
 
 **Problem**: Running MapReduce job may throw exceptions if the time is out-of-sync on
 the hosts in the cluster.
@@ -222,12 +222,12 @@ the hosts in the cluster.
 **Solution**: Sync the time on all hosts using ntpd program.
 
 <a name="nfs"></a>
-##Troubleshooting NFS
+## Troubleshooting NFS
 
 This section describes the most common troubleshooting issues related to
 NFS .
 
-###mount command on NFS client fails with “RPC Error: Program not registered”
+### mount command on NFS client fails with “RPC Error: Program not registered”
 
     Start portmap or rpcbind service on the NFS server.
 
@@ -244,7 +244,7 @@ following command is required:
 After starting portmap or rpcbind, gluster NFS server needs to be
 restarted.
 
-###NFS server start-up fails with “Port is already in use” error in the log file.
+### NFS server start-up fails with “Port is already in use” error in the log file.
 
 Another Gluster NFS server is running on the same machine.
 
@@ -264,7 +264,7 @@ To resolve this error one of the Gluster NFS servers will have to be
 shutdown. At this time, Gluster NFS server does not support running
 multiple NFS servers on the same machine.
 
-###mount command fails with “rpc.statd” related error message
+### mount command fails with “rpc.statd” related error message
 
 If the mount command fails with the following error message:
 
@@ -276,7 +276,7 @@ running on the clients. Start rpc.statd service by running the following command
 
 `$ rpc.statd `
 
-###mount command takes too long to finish.
+### mount command takes too long to finish.
 
 **Start rpcbind service on the NFS client**
 
@@ -291,7 +291,7 @@ following command is required:
 
 `$ /etc/init.d/rpcbind start`
 
-###NFS server glusterfsd starts but initialization fails with “nfsrpc- service: portmap registration of program failed” error message in the log.
+### NFS server glusterfsd starts but initialization fails with “nfsrpc- service: portmap registration of program failed” error message in the log.
 
 NFS start-up can succeed but the initialization of the NFS service can
 still fail preventing clients from accessing the mount points. Such a
@@ -340,7 +340,7 @@ file:
 
 3.  **Restart Gluster NFS server**
 
-###mount command fails with NFS server failed error.
+### mount command fails with NFS server failed error.
 
 mount command fails with following error
 
@@ -384,14 +384,14 @@ Perform one of the following to resolve this issue:
 
     `$ mount  -o vers=3 `
 
-###showmount fails with clnt\_create: RPC: Unable to receive
+### showmount fails with clnt\_create: RPC: Unable to receive
 
 Check your firewall setting to open ports 111 for portmap
 requests/replies and Gluster NFS server requests/replies. Gluster NFS
 server operates over the following port numbers: 38465, 38466, and
 38467.
 
-###Application fails with "Invalid argument" or "Value too large for defined data type" error.
+### Application fails with "Invalid argument" or "Value too large for defined data type" error.
 
 These two errors generally happen for 32-bit nfs clients or applications
 that do not support 64-bit inode numbers or large files. Use the
