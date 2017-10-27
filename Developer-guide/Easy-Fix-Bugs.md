@@ -2,7 +2,7 @@ Fixing easy bugs is an excellent method to start contributing patches to
 Gluster.
 
 -   Bugs which are marked with EasyFix flag can be found from below
-    BugZilla query.
+    Bugzilla query.
     -   [Bugzilla Query For EasyFix
         Bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=EasyFix&list_id=2626252&product=GlusterFS)
     -   [RSS-feed for EasyFix Gluster Bugs](http://goo.gl/OpQwlv)
