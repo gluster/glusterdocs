@@ -5,13 +5,13 @@ Here are the steps to configure Highly Available Samba cluster to export Gluster
 
 _Note: These configuration steps are applicable to Samba version = 4.1.* and Gluster Version >= 3.7.* ctdb >= 2.5_**
 
-#####Step 1: Choose the servers that will export the Gluster volume.
+##### Step 1: Choose the servers that will export the Gluster volume.
 The servers may/may not be part of the trusted storage pool. Preferable number of servers is <=4. Install Samba and ctdb packages on these servers.
 
-#####Step 2: Enable/Disable the auto export of Gluster volume via SMB
+##### Step 2: Enable/Disable the auto export of Gluster volume via SMB
 ```# gluster volume set VOLNAME user.smb disable/enable```
 
-#####Step 3: Setup the CTDB Cluster:
+##### Step 3: Setup the CTDB Cluster:
  1. Create a ctdb meta volume with replica N, N being the number of the servers that are used as Samba servers.
    This volume will host only a zero byte lock file, hence choose the minimal sized bricks.
    To create the n replica volume run the following command:  
@@ -59,7 +59,7 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    192.168.1.21/24 eth0
    ```
 
-#####Step 4: Suggested settings before exporting the volume
+##### Step 4: Suggested settings before exporting the volume
   1. Permit insecure ports for clients to brick and clients to glusterd connections  
    ```# gluster volume set VOLNAME server.allow-insecure```
 
@@ -87,16 +87,16 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    ```
 
    Note:
-   Setting 'store dos attributes = no' is recommended if archive/hidden/read only dos attributes are not used.
+   Setting 'store dos attributes = no' is recommended if archive/hidden/read-only dos attributes are not used.
    This can give better performance.
 
-  5. If selinux is enabled and enforcing, try the following command if ctdb fails.  
+  5. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
    ```
    # setsebool -P use_fusefs_home_dirs 1
    # setsebool -P samba_load_libgfapi 1
    ```
 
-#####Step 5: Mount the volume using SMB
+##### Step 5: Mount the volume using SMB
   1. If no Active directory setup add the user on all the samba server and set the password  
    ```
    # adduser USERNAME
