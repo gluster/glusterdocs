@@ -115,7 +115,7 @@ The second option allows the user to specify the set of allowed TLS ciphers.
 
 	gluster volume set MYVOLUME ssl.cipher-list 'HIGH:!SSLv2'
 
-Cipher lists are negotiated between the two parties to a TLS connection, so
+Cipher lists are negotiated between the two parties to a TLS connection so
 that both sides' security needs are satisfied.  In this example, we're setting
 the initial cipher list to HIGH, representing ciphers that the cryptography
 community still believes to be unbroken.  We are also explicitly disallowing
