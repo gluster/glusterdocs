@@ -9,7 +9,7 @@ If you want some in-depth information on each of the steps, you are in the right
 Both the guides will get you
 to a working Gluster cluster, so it depends on you how much time you
 want to spend. The [Quick Start Guide](../Quick-Start-Guide/Quickstart.md) should have you up and running in ten minutes
-or less. This guide can easily be done in a lunch break, and still gives
+or less. This guide can easily be done in a lunch break, and still, gives
 you time to have a quick bite to eat. The Getting Started guide can be
 done easily in a few hours, depending on how much testing you want to
 do.
@@ -18,7 +18,7 @@ After you deploy Gluster by following these steps, we recommend that
 you read the [Gluster Admin Guide](../Administrator Guide/) to learn how to administer Gluster and
 how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
-section . We want you to be successful in as short a time as possible.
+section. We want you to be successful in as short a time as possible.
 
 ### Overview
 
@@ -28,7 +28,7 @@ some of the common issues that others encounter most frequently.
 
 #### What is Gluster
 
-Gluster is a distributed scale out filesystem that allows rapid
+Gluster is a distributed scale-out filesystem that allows rapid
 provisioning of additional storage based on your storage consumption
 needs. It incorporates automatic failover as a primary feature. All of
 this is accomplished without a centralized metadata server.
@@ -43,7 +43,7 @@ this is accomplished without a centralized metadata server.
     down, you don’t lose access to the data. No manual steps are
     required for failover. When you fix the server that failed and bring
     it back online, you don’t have to do anything to get the data back
-    except wait. In the mean time, the most current copy of your data
+    except wait. In the meantime, the most current copy of your data
     keeps getting served from the node that was still running.
 -   You can build a clustered filesystem in a matter of minutes… it is
     trivially easy for basic setups
@@ -65,7 +65,7 @@ this is accomplished without a centralized metadata server.
     machines for this, but as you will see, they are quite small).
 -   There are even more advanced features than this, but for now we will
     focus on the basics.
--   It’s not just a toy. Gluster is enterprise ready, and commercial
+-   It’s not just a toy. Gluster is enterprise-ready, and commercial
     support is available if you need it. It is used in some of the most
     taxing environments like media serving, natural resource
     exploration, medical imaging, and even as a filesystem for Big Data.
