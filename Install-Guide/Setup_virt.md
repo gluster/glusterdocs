@@ -10,13 +10,13 @@ of choice. Platforms I have used to test on include Xen, VMware ESX and
 Workstation, VirtualBox, and KVM. For purpose of this article, all steps
 assume KVM but the concepts are expected to be simple to translate to
 other platforms as well. The article assumes you know the particulars of
-how to create a virtual machine and have installed a 64 bit linux
+how to create a virtual machine and have installed a 64-bit Linux
 distribution already.
 
 Create or clone two VM’s, with the following setup on each:
 
 -   2 disks using the VirtIO driver, one for the base OS and one that we
-    will use as a Gluster “brick”. You can add more later to try testing
+    will use as a Gluster “brick”. You can add more to try testing
     some more advanced configurations, but for now let’s keep it simple.
 
 *Note: If you have ample space available, consider allocating all the
@@ -28,7 +28,7 @@ disk space at once.*
 
 *Note: Attach each NIC to a separate network.*
 
-Other notes: Make sure that if you clone the VM, that Gluster has not
+Other notes: If you cloning the VM, make sure that Gluster has not
 already been installed. Gluster generates a UUID to “fingerprint” each
 system, so cloning a previously deployed system will result in errors
 later on.
