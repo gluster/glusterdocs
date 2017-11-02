@@ -10,7 +10,7 @@ cloud platforms.
     instances (I even go as far as using spot instances in most cases).
     Debates rage on what size instance to use in production, and there
     is really no correct answer. As with most things, the real answer is
-    “whatever works for you”, where the trade-offs betweeen cost and
+    “whatever works for you”, where the trade-offs between cost and
     performance are balanced in a continual dance of trying to make your
     project successful while making sure there is enough money left over
     in the budget for you to get that sweet new ping pong table in the
@@ -45,7 +45,7 @@ Other notes:
     but keep in mind that this is the perfect place to take advantage of
     the scale-out capability of Gluster. While it is not true in all
     cases that deploying more instances will necessarily result in a
-    “faster” cluster, in general you will see that adding more nodes
+    “faster” cluster, in general, you will see that adding more nodes
     means more performance for the cluster overall.
 -   If a node reboots, you will typically need to do some extra work to
     get Gluster running again using the default EC2 configuration. If a
