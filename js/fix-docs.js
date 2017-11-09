@@ -48,7 +48,7 @@
       }).appendTo(form);
     });
 
-    if (window.location.origin.indexOf('readthedocs') > -1) {
+    if (window.location.origin.indexOf('readthedocs') > -1 || window.location.origin.indexOf('docs.gluster.org') > -1) {
       observer.observe(target, config);
     }
   }
