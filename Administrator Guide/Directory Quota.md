@@ -32,7 +32,7 @@ You must enable Quota to set disk limits.
 
 -   Use the following command to enable quota:
 
-        # gluster volume quota  enable
+        # gluster volume quota VOLNAME enable
 
     For example, to enable quota on the test-volume:
 
@@ -47,7 +47,7 @@ You can disable Quota, if needed.
 
 -   Use the following command to disable quota:
 
-        # gluster volume quota  disable
+        # gluster volume quota VOLNAME disable
 
     For example, to disable quota translator on the test-volume:
 
@@ -65,7 +65,7 @@ being treated as "/".
 
 -   Set the disk limit using the following command:
 
-        # gluster volume quota  limit-usage /
+        # gluster volume quota VOLNAME limit-usage DIR HARD_LIMIT
 
     For example, to set limit on data directory on the test-volume where
     data is a directory under the export directory:
@@ -92,7 +92,7 @@ the limit is set.
 -   Display disk limit information of all the directories on which limit
     is set, using the following command:
 
-        # gluster volume quota  list
+        # gluster volume quota VOLNAME list
 
     For example, to see the set disks limit on the test-volume:
 
@@ -103,7 +103,7 @@ the limit is set.
 -   Display disk limit information on a particular directory on which
     limit is set, using the following command:
 
-        # gluster volume quota  list
+        # gluster volume quota VOLNAME list DIR
 
     For example, to view the set limit on /data directory of test-volume:
 
@@ -180,7 +180,7 @@ on client side.
 
 -   Use the following command to update the memory cache size:
 
-        # gluster volume set  features.quota-timeout
+        # gluster volume set VOLNAME features.quota-timeout time
 
     For example, to update the memory cache size for every 5 seconds on
     test-volume:
@@ -215,7 +215,7 @@ You can remove set disk limit, if you do not want quota anymore.
 
 -   Use the following command to remove the disk limit set on a particular directory:
 
-        # gluster volume quota  remove
+        # gluster volume quota VOLNAME remove DIR
 
     For example, to remove the disk limit on /data directory of
     test-volume:
