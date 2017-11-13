@@ -207,7 +207,7 @@ Syntax:
 Details:
 Activates the mentioned snapshot.
 
-Note : By default the snapshot is activated during snapshot creation.
+Note : By default the snapshot will not be activated during snapshot creation.
 
 -------------------------------------------------------------------------
 
@@ -223,7 +223,7 @@ Deactivates the mentioned snapshot.
 
 **Accessing the snapshot**
 
-Snapshots can be activated in 2 ways.
+Snapshots can be accessed in 2 ways.
 
 1) Mounting the snapshot:
 
@@ -259,7 +259,8 @@ present for that volume. Say if there are 3 snapshots ("snap1", "snap2",
 directory entries. They represent the state of the directory from which .snaps
 was entered, at different points in time.
 
-NOTE: The access to the snapshots are read-only.
+NOTE: The access to the snapshots are read-only. The snapshot needs to be 
+activated for it to be accessible inside .snaps directory.
 
 Also, the name of the hidden directory (or the access point to the snapshot
 world) can be changed using the below command.
