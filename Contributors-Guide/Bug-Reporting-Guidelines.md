@@ -77,11 +77,11 @@ This dumps statedump per brick process in `/var/run/gluster`
 *NOTE: Collect statedumps from one gluster Node in a directory.*
 
 Repeat it in all Nodes containing the bricks of the volume. All the so
-collected directories could be archived,compressed and attached to bug
+collected directories could be archived, compressed and attached to bug
 
 #### Brick Information
 
--   xfs options when brick partition was done
+-   xfs options when a brick partition was done
     -   This could be obtained with this command :
 
 `   $ xfs_info /dev/mapper/vg1-brick`
@@ -94,7 +94,7 @@ collected directories could be archived,compressed and attached to bug
 #### Client Information
 
 -   OS Type ( Windows, RHEL )
--   OS Version : In case of Linux distro get the following :
+-   OS Version: In case of Linux distro get the following :
 
 `   $ uname -r`
 `   $ cat /etc/issue`
@@ -109,7 +109,7 @@ collected directories could be archived,compressed and attached to bug
 
 #### Logs Information
 
--   You can check logs for check for issues/warnings/errors.
+-   You can check logs for issues/warnings/errors.
     -   Self-heal logs
     -   Rebalance logs
     -   Glusterd logs

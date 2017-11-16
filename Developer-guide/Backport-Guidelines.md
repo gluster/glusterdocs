@@ -1,7 +1,7 @@
 Bugs often get fixed in master before release branches. When a bug is
 fixed in the master branch, it might be desirable or necessary in a
-stable branch. To put the fix in stable branch we need to backport the
-fix to stable branch.
+stable branch. To put the fix in the stable branch we need to backport the
+fix to the stable branch.
 
 Anyone in the community can suggest a backport. If you are interested to
 suggest a backport, please check the [Backport
@@ -21,15 +21,15 @@ that do not apply cleanly will need some manual modifications and using
 
                 git checkout -t -b bug-123456/release-3.8 origin/release-3.8
 
-3.  Cherry pick the change from master.
+3.  Cherry pick the change from the master branch.
 
                 $ git cherry-pick -x a0b1c2d3e4f5
- -   verify that the change has been merged in the master branch.
+ -   verify that the change has been merged into the master branch.
 
 4.  Update/correct the commit message.
 
                 $ git commit -s --amend --date="$(date)"
-[This is one example](https://github.com/gluster/glusterfs/commit/40407afb529f6e5fa2f79e9778c2f527122d75eb) of the commit message that has a good description for a backport. Notice the indention of the patch-metadata like BUG, Change-ID and Reviewed-on tags. There is also the original commit-id that was cherry picked from the master branch.
+[This is one example](https://github.com/gluster/glusterfs/commit/40407afb529f6e5fa2f79e9778c2f527122d75eb) of the commit message that has a good description for a backport. Notice the indention of the patch-metadata like BUG, Change-ID and Reviewed-on tags. There is also the original commit-id that was cherry-picked from the master branch.
  -make sure to quote the review tags
  -update the BUG reference, point to the BUG that is used for this
 particular release-branch
@@ -40,7 +40,7 @@ particular release-branch
                 ./rfc.sh
 
 ## via Gerrit web interface
-1. Navigate to the required change in Gerrit from browser.
+1. Navigate to the required change in Gerrit from any web browser.
 
 2. Click on 'Cherry Pick' button. You will now be presented with a dialogue box with two editable fields. First
    one is to specify the branch to which this particular change needs to be
@@ -52,7 +52,7 @@ cherry-picked and second one for modifying the already existing commit message.
 4. Make sure that you only edit the following from the commit message:
 
    * BUG: Replace with the correct bug-id reported against the branch to which change is going to be backported.
-   * Prefix all other lines except the commit message, Signed-off-by, cherry picked and Change-Id lines with a greater than symbol and a whitespace '> ' and re-arrange as a whole to have the following format:
+   * Prefix all other lines except the commit message, Signed-off-by, cherry-picked and Change-Id lines with a greater than symbol and a whitespace '> ' and re-arrange as a whole to have the following format:
 
                 <commit message>
                 . . .
@@ -72,7 +72,7 @@ cherry-picked and second one for modifying the already existing commit message.
                 BUG: <bug-id>
                 Signed-off-by: username <user@example.com>
 
-5. Click on 'Cherry Pick Change'. You will now be re-directed to the new change url.
+5. Click on 'Cherry Pick Change'. You will now be re-directed to the new change URL.
 
 6. Click on the edit button adjacent to the field named 'Topic'.
 
@@ -83,5 +83,5 @@ cherry-picked and second one for modifying the already existing commit message.
 
 8. Click on 'Update' or 'Submit'.
 
-After submitting patch(es), make sure to move the bug to the *POST*
+After submitting the patch(es), make sure to move the bug to the *POST*
 status.
