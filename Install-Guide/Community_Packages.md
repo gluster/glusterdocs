@@ -23,7 +23,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |           |           |           |           |           |
 |Debian[2]     |Jessie/8      |     —     |     —     |     X     |     X     |     X     |
 |              |Stretch/9     |     X     |     X     |     X     |     X     |     X     |
-|              |Buster(Sid)/10|     X     |     X     |     X     |     X     |     X     |
+|              |Buster/10(Sid)|     X     |     X     |     X     |     X     |     X     |
 |              |              |           |           |           |           |           |
 |OpenSuSE Build|Leap 42.3     |     X     |     X     |     X     |     X     |     X     |
 |Service[4]    |SLES12SP3     |     X     |     X     |     X     |     X     |     X     |
