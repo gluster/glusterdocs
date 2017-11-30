@@ -15,15 +15,15 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F27           |     X     |     X     |     X     |     X²    |     X     |
 |              |F28(rawhide)  |     X     |     X     |     X²     |    X     |     X     |
 |              |              |           |           |           |           |           |
+|Debian[2]     |Jessie/8      |     —     |     —     |     X     |     X     |     X     |
+|              |Stretch/9     |     X     |     X     |     X     |     X     |     X     |
+|              |Buster/10(Sid)|     X     |     X     |     X     |     X     |     X     |
+|              |              |           |           |           |           |           |
 |Ubuntu        |Trusty/14.04  |     —     |     —     |     —     |     —     |     X     |
-|Launchpad[2]  |Xenial/16.04  |     X     |     X     |     X     |     X     |     X     |
+|Launchpad[3]  |Xenial/16.04  |     X     |     X     |     X     |     X     |     X     |
 |              |Zesty/17.04   |     —     |     —     |     X     |     X     |     X     |
 |              |Artful/17.10  |     X     |     X     |     X     |     X     |     X     |
 |              |Bionic/18.04  |     X     |     X     |     X     |     X     |     X     |
-|              |              |           |           |           |           |           |
-|Debian[3]     |Jessie/8      |     —     |     —     |     X     |     X     |     X     |
-|              |Stretch/9     |     X     |     X     |     X     |     X     |     X     |
-|              |Buster/10(Sid)|     X     |     X     |     X     |     X     |     X     |
 |              |              |           |           |           |           |           |
 |OpenSuSE Build|Leap 42.3     |     X     |     X     |     X     |     X     |     X     |
 |Service[4]    |SLES12SP3     |     X     |     X     |     X     |     X     |     X     |
@@ -40,23 +40,23 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F27           |       X       |         X           |      X      |   ?   |
 |              |F28(rawhide)  |       X       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
+|Debian        |Jessie/8      |       –       |         X           |      X      |   ?   |
+|              |Stretch/9     |       –       |         X           |      X      |   ?   |
+|              |Buster/10(Sid)|       –       |         X           |      X      |   ?   |
+|              |              |               |                     |             |       |
 |Ubuntu        |Trusty/14.04  |       –       |         X           |      X      |   ?   |
 |Launchpad     |Xenial/16.04  |       –       |         X           |      X      |   ?   |
 |              |Zesty/17.04   |       –       |         X           |      X      |   ?   |
 |              |Artful/17.10  |       –       |         X           |      X      |   ?   |
 |              |Bionic/18.04  |       –       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
-|Debian        |Jessie/8      |       –       |         X           |      X      |   ?   |
-|              |Stretch/9     |       –       |         X           |      X      |   ?   |
-|              |Buster/10(Sid)|       –       |         X           |      X      |   ?   |
-|              |              |               |                     |             |       |
 |OpenSuSE Build|Leap 42.3     |     X         |         X           |      X      |   ?   |
 |Service       |SLES12SP3     |     X         |         X           |      X      |   ?   |
 
 
 [1] <https://wiki.centos.org/SpecialInterestGroup/Storage>  
-[2] <https://launchpad.net/~gluster>  
-[3] <http://download.gluster.org/pub/gluster/glusterfs>  
+[2] <http://download.gluster.org/pub/gluster/glusterfs>  
+[3] <https://launchpad.net/~gluster>  
 [4] <https://build.opensuse.org/project/subprojects/home:glusterfs>  
 
 ¹ Tentative date 2018  
