@@ -15,6 +15,11 @@ Add the GPG key to apt:
 
     wget -O - http://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
 
+If the rsa.pub is not available at the above location, please look here https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub and add the GPG key to apt:
+
+    wget -O - https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub | apt-key add -    
+   
+
 Add the source:
 
     DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
