@@ -5,15 +5,15 @@
 An **X** means packages are (or will be) provided in the respective repository.  
 A **—** means no plans to build new updates. Existing packages will remain in the repos.  
 
-|              |              |  4.1 ltm¹ |  4.0 stm¹ | 3.13 stm² | 3.12 ltm  | 3.10 ltm  |
+|              |              |  4.1 stm¹ |  4.0 stm¹ | 3.13 stm  | 3.12 ltm  | 3.10 ltm  |
 |--------------|--------------|:---------:|:---------:|:---------:|:---------:|:---------:|
-|CentOS Storage|el6           |     —     |     —     |     —     |     X     |     X     |
+|CentOS Storage|el6           |     —     |     —     |     ?     |     X     |     X     |
 |SIG[1]        |el7           |     X     |     X     |     X     |     X     |     X     |
 |              |              |           |           |           |           |           |
-|Fedora[2]     |F25           |     —     |     —     |     X     |     X     |     X³    |
-|              |F26           |     —     |     X     |     X     |     X     |     X³    |
-|              |F27           |     X     |     X     |     X     |     X³    |     X     |
-|              |F28(rawhide)  |     X     |     X     |     X     |     X³    |     X     |
+|Fedora[2]     |F25           |     —     |     —     |     X     |     X     |     X²    |
+|              |F26           |     —     |     X     |     X     |     X     |     X²    |
+|              |F27           |     X     |     X     |     X     |     X²    |     X     |
+|              |F28(rawhide)  |     X     |     X     |     X²     |    X     |     X     |
 |              |              |           |           |           |           |           |
 |Ubuntu        |Trusty/14.04  |     —     |     —     |     —     |     —     |     X     |
 |Launchpad[3]  |Xenial/16.04  |     X     |     X     |     X     |     X     |     X     |
@@ -48,7 +48,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |               |                     |             |       |
 |Debian        |Jessie/8      |       –       |         X           |      X      |   ?   |
 |              |Stretch/9     |       –       |         X           |      X      |   ?   |
-|              |Buster[Sid]/10|       –       |         X           |      X      |   ?   |
+|              |Buster/10(Sid)|       –       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
 |OpenSuSE Build|Leap 42.3     |     X         |         X           |      X      |   ?   |
 |Service       |SLES12SP3     |     X         |         X           |      X      |   ?   |
@@ -60,5 +60,4 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 [4] <https://build.opensuse.org/project/subprojects/home:glusterfs>  
 
 ¹ Tentative date 2018  
-² Tentative date December 2017  
-³ Fedora Updates or UpdatesTesting repository. Use dnf to install.  
+² Fedora Updates or UpdatesTesting repository. Use dnf to install.  
