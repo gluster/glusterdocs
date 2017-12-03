@@ -11,3 +11,4 @@ If you are using GlusterFS version 3.4.x or below, you can upgrade it to followi
 -   [Upgrading to 3.10](./upgrade_to_3.10.md)
 -   [Upgrading to 3.11](./upgrade_to_3.11.md)
 -   [Upgrading to 3.12](./upgrade_to_3.12.md)
+-   [Upgrading to 3.13](./upgrade_to_3.13.md)
