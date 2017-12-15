@@ -7,13 +7,12 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 
 |              |              |  4.1 stm¹ |  4.0 stm¹ | 3.13 stm  | 3.12 ltm  | 3.10 ltm  |
 |--------------|--------------|:---------:|:---------:|:---------:|:---------:|:---------:|
-|CentOS Storage|el6           |     —     |     —     |     ?     |     X     |     X     |
+|CentOS Storage|el6           |     —     |     —     |     X     |     X     |     X     |
 |SIG[1]        |el7           |     X     |     X     |     X     |     X     |     X     |
 |              |              |           |           |           |           |           |
-|Fedora[2]     |F25           |     —     |     —     |     X     |     X     |     X²    |
-|              |F26           |     —     |     X     |     X     |     X     |     X²    |
+|Fedora[2]     |F26           |     —     |     X     |     X     |     X     |     X²    |
 |              |F27           |     X     |     X     |     X     |     X²    |     X     |
-|              |F28(rawhide)  |     X     |     X     |     X²     |    X     |     X     |
+|              |F28(rawhide)  |     X     |     X     |     X²    |     X     |     X     |
 |              |              |           |           |           |           |           |
 |Debian[2]     |Jessie/8      |     —     |     —     |     X     |     X     |     X     |
 |              |Stretch/9     |     X     |     X     |     X     |     X     |     X     |
@@ -27,6 +26,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |           |           |           |           |           |
 |OpenSuSE Build|Leap 42.3     |     X     |     X     |     X     |     X     |     X     |
 |Service[4]    |SLES12SP3     |     X     |     X     |     X     |     X     |     X     |
+|              |Tumbleweed    |     X     |     X     |     X     |     X     |     X     |
+
 
 #### Related Packages
 
@@ -35,8 +36,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |CentOS Storage|el6           |       X       |         X           |      X      |   ?   |
 |SIG           |el7           |       X       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
-| Fedora       |F25           |       X       |         X           |      X      |   ?   |
-|              |F26           |       X       |         X           |      X      |   ?   |
+|Fedora        |F26           |       X       |         X           |      X      |   ?   |
 |              |F27           |       X       |         X           |      X      |   ?   |
 |              |F28(rawhide)  |       X       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
@@ -52,6 +52,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |               |                     |             |       |
 |OpenSuSE Build|Leap 42.3     |     X         |         X           |      X      |   ?   |
 |Service       |SLES12SP3     |     X         |         X           |      X      |   ?   |
+|              |Tumbleweed    |     X         |         X           |      X      |   ?   |
 
 
 [1] <https://wiki.centos.org/SpecialInterestGroup/Storage>  
