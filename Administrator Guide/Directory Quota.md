@@ -119,7 +119,7 @@ You can create a report of the disk usage using the df utility by taking quota l
 In this case, the total disk space of the directory is taken as the quota hard limit set on the directory of the volume.
 
 >**Note**
->The default value for quota-deem-statfs is off. However, it is recommended to set quota-deem-statfs to on.
+>The default value for quota-deem-statfs is on when quota is enabled and it is recommended to keep quota-deem-statfs on.
 
 The following example displays the disk usage when quota-deem-statfs is off:
 

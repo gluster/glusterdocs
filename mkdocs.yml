@@ -99,8 +99,11 @@ pages:
   - Upgrade to 3.10: Upgrade-Guide/upgrade_to_3.10.md
   - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
   - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
+  - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
 - Release Notes:
   - index: release-notes/index.md
+  - 3.13.0: release-notes/3.13.0.md
+  - 3.12.3: release-notes/3.12.3.md
   - 3.12.2: release-notes/3.12.2.md
   - 3.12.1: release-notes/3.12.1.md
   - 3.12.0: release-notes/3.12.0.md
@@ -108,6 +111,7 @@ pages:
   - 3.11.2: release-notes/3.11.2.md
   - 3.11.1: release-notes/3.11.1.md
   - 3.11.0: release-notes/3.11.0.md
+  - 3.10.8: release-notes/3.10.8.md
   - 3.10.7: release-notes/3.10.7.md
   - 3.10.6: release-notes/3.10.6.md
   - 3.10.5: release-notes/3.10.5.md
@@ -132,7 +136,7 @@ pages:
   - gfind missing files: GlusterFS Tools/gfind_missing_files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
-  - Peer Rejected: Troubleshooting/resolving-peer-rejected.md
+  - Troubleshooting CLI and glusterd: Troubleshooting/troubleshooting-glusterd.md
   - gfid to path: Troubleshooting/gfid-to-path.md
   - Split Brain (Manual): Troubleshooting/split-brain.md
   - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
