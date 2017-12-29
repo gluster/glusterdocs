@@ -16,14 +16,23 @@ Run the command
 
                 gluster --print-statedumpdir
 
-to find out which directory the statedumps will be created in. This directory may need to be created if not already present.
-In this document, we will refer to this directory as `statedump-directory`.
+on a gluster server node to find out which directory the statedumps will be created in. This directory may need to be created if not already present.
+For the rest of this document, we will refer to this directory as `statedump-directory`.
 
-To generate a statedump, run 
+To generate a statedump for a process, run
 
                 kill -USR1 <pid-of-gluster-process>
 
-There are also specific commands to generate statedumps for all brick processes/nfs server/quotad which can be used instead of the above.
+
+For client mounts:
+
+Run the following command on the client system
+
+                kill -USR1 <pid-of-gluster-mount-process>
+
+
+There are specific commands to generate statedumps for all brick processes/nfs server/quotad which can be used instead of the above. Run the following
+commands on one of the server nodes:
 
 
 For bricks:
@@ -34,12 +43,12 @@ For the NFS server:
 
                 gluster volume statedump <volname> nfs
 
-For quotad: 
+For quotad:
 
                 gluster volume statedump <volname> quotad
 
 
-The statedumps for brick processes will be created in `statedump-directory` with the filename `hyphenated-brick-path.<pid>.dump.timestamp`. For all other processes it will be `glusterdump.<pid>.dump.timestamp`.
+The statedumps will be created in `statedump-directory` on each node. The statedumps for brick processes will be created with the filename `hyphenated-brick-path.<pid>.dump.timestamp` while for all other processes it will be `glusterdump.<pid>.dump.timestamp`.
 
 ***
 
@@ -282,7 +291,7 @@ inodelk.inodelk[0](ACTIVE)=type=WRITE, whence=0, start=11141120, len=131072, pid
 ## Debug With Statedumps
 ### Memory leaks
 
-Statedumps can be used to determine whether the high memory usage of a process is caused by leak. To debug the issue, generate statedumps for that process at regular intervals, or before and after running the steps that lead to high memory usage. Once we have multiple statedumps, compare the memory allocation stats to see if any of them are increasing steadily as those could indicate a potential memory leak.
+Statedumps can be used to determine whether the high memory usage of a process is caused by a leak. To debug the issue, generate statedumps for that process at regular intervals, or before and after running the steps that cause the memory used to increase. Once you have multiple statedumps, compare the memory allocation stats to see if any of them are increasing steadily as those could indicate a potential memory leak.
 
 The following examples walk through using statedumps to debug two different memory leaks.
 
