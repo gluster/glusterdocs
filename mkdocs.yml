@@ -55,7 +55,6 @@ pages:
   - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
-  - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
   - Consul integration: Administrator Guide/Consul.md
   - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
   - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
