@@ -48,7 +48,7 @@ For quotad:
                 gluster volume statedump <volname> quotad
 
 
-The statedumps for brick processes will be created with the filename `hyphenated-brick-path.<pid>.dump.timestamp`. For all other processes it will be `glusterdump.<pid>.dump.timestamp`.
+The statedumps will be created in `statedump-directory` on each node. The statedumps for brick processes will be created with the filename `hyphenated-brick-path.<pid>.dump.timestamp` while for all other processes it will be `glusterdump.<pid>.dump.timestamp`.
 
 ***
 
