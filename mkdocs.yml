@@ -137,11 +137,16 @@ pages:
   - gfind missing files: GlusterFS Tools/gfind_missing_files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
-  - Troubleshooting CLI and glusterd: Troubleshooting/troubleshooting-glusterd.md
-  - gfid to path: Troubleshooting/gfid-to-path.md
-  - Split Brain (Manual): Troubleshooting/split-brain.md
-  - Split Brain (Auto): Troubleshooting/heal-info-and-split-brain-resolution.md
-  - Statedump: Troubleshooting/statedump.md
+  - Components:
+    - Troubleshooting CLI and glusterd: Troubleshooting/troubleshooting-glusterd.md
+    - Troubleshooting Geo-replication: Troubleshooting/troubleshooting-georep.md
+    - Troubleshooting gNFS: Troubleshooting/troubleshooting-gnfs.md
+    - Troubleshooting Split-Brains: Troubleshooting/resolving-splitbrain.md
+  - Issues:
+    - Debugging Memory Leaks: Troubleshooting/troubleshooting-memory.md
+  - Tools:
+    - Statedump: Troubleshooting/statedump.md
+    - gfid to path: Troubleshooting/gfid-to-path.md
 - Glossary: ./glossary.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
