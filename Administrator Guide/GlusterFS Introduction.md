@@ -39,7 +39,7 @@ healthcare, government, education, web 2.0, and financial services.
 
 Several companies offer support or [consulting](http://www.gluster.org/consultants/).
 
-[Red Hat Storage](http://www.redhat.com/en/technologies/storage/storage-server)
+[Red Hat Gluster Storage](http://www.redhat.com/en/technologies/storage/gluster)
 is a commercial storage software product, based on GlusterFS.
 
 
