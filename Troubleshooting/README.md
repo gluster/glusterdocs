@@ -1,15 +1,26 @@
 Troubleshooting Guide
 ---------------------
-This guide lists issues you may run into on your Gluster setup and provides information on how to recover from them.
-You can also reach out to the Gluster community for help.
+This guide describes some commonly seen issues and steps to recover from them.
+If that doesn’t help, you can also reach out to the [Gluster community](https://www.gluster.org/community/), in which case the guide also describes what information needs to be provided in order to debug the issue. At minimum, we need the version of gluster running and, in most cases, the output of `gluster volume info`.
 
 
-The first step in troubleshooting is identifying the problem and which process or component to look at.
-The following tools/utilities are helpful.
+### Where Do I Start?
 
--  [Troubleshooting the CLI and glusterd](./troubleshooting-glusterd.md)
--  [Troubleshooting Self heal and split-brains](./heal-info-and-split-brain-resolution.md)
--  [gfid to path](./gfid-to-path.md)
--  [Heal info and split-brain resolution](./heal-info-and-split-brain-resolution.md)
--  [Split Brain](./split-brain.md)
--  [Statedump](./statedump.md)
+See if the issue is already listed in the component troubleshooting sections
+
+- [CLI and Glusterd Issues](./troubleshooting-glusterd.md)
+- [Resolving Split brains](./resolving-splitbrain.md)
+- [Geo-replication Issues](./troubleshooting-georep.md)
+
+
+If that didn't help, here is how to debug further.
+
+When things go wrong, identifying the problem and getting the necessary information in order to diagnose it is the first step in troubleshooting your Gluster setup. As Gluster operations involve interactions between multiple processes, this can involve multiple steps.
+
+### What Happened?
+
+- An operation failed
+- [High Memory Usage](./troubleshooting-memory.md)
+- A Gluster process crashed
+
+

@@ -15,7 +15,7 @@ Where a client temporarily loses connection to the bricks.
 If we use the replica 2 volume, it is not possible to prevent split-brain without losing availability.
 
 ### Ways to deal with split brain:
-In glusterfs there are ways to resolve split brain. You can see the detailed description of automatically resolving split-brain [here](../Troubleshooting/heal-info-and-split-brain-resolution.md) and manual resolution [here](../Troubleshooting/split-brain.md). Moreover, there are ways which can reduce the chances of ending up in split-brain situations. They are:
+In glusterfs there are ways to resolve split brain. You can see the detailed description of how to resolve a split-brain [here](../Troubleshooting/resolving-splitbrain.md). Moreover, there are ways to reduce the chances of ending up in split-brain situations. They are:
 1. Replica 3 volume
 2. Arbiter volume
 
