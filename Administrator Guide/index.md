@@ -9,34 +9,38 @@
 	*  [Architecture](../Quick-Start-Guide/Architecture.md)
 	*  [Glossary](../glossary.md)
 	*  [Other Features of GlusterFS](./Did You Know.md)
-	*  [Setting Up Trusted Storage Pools](./Storage Pools.md)
-	*  [Managing the Gluster Service](./Start Stop Daemon.md)
 	
-3.  [POSIX Access Control Lists](./Access Control Lists.md)
+3.  Getting Started
 
-4.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
+	*  [Managing the Gluster Service](./Start Stop Daemon.md)
+	*  [Setting Up Trusted Storage Pools](./Storage Pools.md)
+       
+4. Setting Up Storage
+
+	*  [Brick Naming Conventions](./Brick Naming Conventions.md)
+	*  [Formatting and Mounting Bricks](./formatting-and-mounting-bricks.md)
+	*  [POSIX Access Control Lists](./Access Control Lists.md)
+       
+5.  [Accessing Data - Setting Up Clients](./Setting Up Clients.md)
 	*  [Handling of users that belong to many groups](./Handling-of-users-with-many-groups.md)
-
-5.  Volume Options
+       
+6.  Volumes
 
 	*  [Setting Up Volumes](./Setting Up Volumes.md)
 	*  [Managing Volumes](./Managing Volumes.md)
-	*  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
 	*  [Modifying .vol files with a filter](./GlusterFS Filter.md)
 	
-6.  [GlusterFS Service Logs and Locations](./Logging.md)
-
-7.  [Brick Naming Conventions](./Brick Naming Conventions.md)
+7.  [GlusterFS Service Logs and Locations](./Logging.md)
 
 8.  [Geo Replication](./Geo Replication.md)
 	
 9.  [Managing Directory Quotas](./Directory Quota.md)
 
-10.  [Managing Snapshots](./Managing Snapshots.md)
+10. [Managing Snapshots](./Managing Snapshots.md)
 
-11.  [Monitoring Workload](./Monitoring Workload.md)
+11. [Monitoring Workload](./Monitoring Workload.md)
 
-12.  Data Access With Other Interfaces
+12. Data Access With Other Interfaces
 
 	*  [Managing Object Store](./Object Storage.md)
 	*  [Accessing GlusterFS using Cinder Hosts](./GlusterFS Cinder.md)
@@ -70,8 +74,10 @@
 
 25.  [Events APIs](./Events APIs.md)
 
-26.  Appendices
+26.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
+
+27.  Appendices
 
     *  [Troubleshooting](./Troubleshooting.md)
-	*  [Network Configurations Techniques](./Network Configurations Techniques.md)
+	*  [Network Configuration Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)
