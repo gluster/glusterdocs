@@ -1,142 +1,35 @@
-#Setting up GlusterFS Server Volumes
+# Setting up GlusterFS Volumes
 
 A volume is a logical collection of bricks where each brick is an export
-directory on a server in the trusted storage pool. Most of the gluster
-management operations are performed on the volume.
-
+directory on a server in the trusted storage pool.
 To create a new volume in your storage environment, specify the bricks
 that comprise the volume. After you have created a new volume, you must
 start it before attempting to mount it.
 
-###Formatting and Mounting Bricks
 
-####Creating a Thinly Provisioned Logical Volume
+See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
 
-To create a thinly provisioned logical volume, proceed with the following steps:
 
-  1. Create a physical volume(PV) by using the pvcreate command.
-  For example:
-
-  `# pvcreate --dataalignment 1280K /dev/sdb`
-
-  Here, /dev/sdb is a storage device.
-  Use the correct dataalignment option based on your device.
-
-  >**Note**
-  >
-  >The device name and the alignment value will vary based on the device you are using.
-
-  2. Create a Volume Group (VG) from the PV using the vgcreate command: 
-  For example:
-
-  `# vgcreate --physicalextentsize 128K gfs_vg /dev/sdb`
-
-  It is recommended that only one VG must be created from one storage device.
-
-  3. Create a thin-pool using the following commands:
-
-      1. Create an LV to serve as the metadata device using the following command:
-
-      `# lvcreate -L metadev_sz --name metadata_device_name VOLGROUP`
-
-      For example:
-
-      `# lvcreate -L 16776960K --name gfs_pool_meta gfs_vg`
-
-      2. Create an LV to serve as the data device using the following command:
-
-      `# lvcreate -L datadev_sz --name thin_pool VOLGROUP`
-
-      For example:
-
-      `# lvcreate -L 536870400K --name gfs_pool gfs_vg`
-
-      3. Create a thin pool from the data LV and the metadata LV using the following command:
-
-      `# lvconvert --chunksize STRIPE_WIDTH --thinpool VOLGROUP/thin_pool --poolmetadata VOLGROUP/metadata_device_name`
-
-      For example:
-
-      `# lvconvert --chunksize 1280K --thinpool gfs_vg/gfs_pool --poolmetadata gfs_vg/gfs_pool_meta`
-
-  >**Note**
-  >
-  >By default, the newly provisioned chunks in a thin pool are zeroed to prevent data leaking between different block devices.
-
-  `# lvchange --zero n VOLGROUP/thin_pool`
-
-  For example:
-
-  `# lvchange --zero n gfs_vg/gfs_pool`
-
-  4. Create a thinly provisioned volume from the previously created pool using the lvcreate command:
-
-  For example:
-
-  `# lvcreate -V 1G -T gfs_vg/gfs_pool -n gfs_lv`
-
-  It is recommended that only one LV should be created in a thin pool.
-
-Format bricks using the supported XFS configuration, mount the bricks, and verify the bricks are mounted correctly.
-
-  1. Run `# mkfs.xfs -f -i size=512 -n size=8192 -d su=128k,sw=10 DEVICE` to format the bricks to the supported XFS file system format. Here, DEVICE is the thin LV. The inode size is set to 512 bytes to accommodate for the extended attributes used by GlusterFS.
-
-  Run `# mkdir /mountpoint` to create a directory to link the brick to.
-
-  Add an entry in /etc/fstab:
-
-      /dev/gfs_vg/gfs_lv    /mountpoint  xfs rw,inode64,noatime,nouuid      1 2
-
-  Run `# mount /mountpoint` to mount the brick.
-
-  Run the `df -h` command to verify the brick is successfully mounted:
-
-      # df -h
-      /dev/gfs_vg/gfs_lv   16G  1.2G   15G   7% /exp1
+## Volume Types
 
 -   Volumes of the following types can be created in your storage
     environment:
 
-    -   **Distributed** - Distributed volumes distributes files throughout
+    -   **Distributed** - Distributed volumes distribute files across
         the bricks in the volume. You can use distributed volumes where
         the requirement is to scale storage and the redundancy is either
         not important or is provided by other hardware/software layers.
 
-    -   **Replicated** – Replicated volumes replicates files across bricks
+    -   **Replicated** – Replicated volumes replicate files across bricks
         in the volume. You can use replicated volumes in environments
         where high-availability and high-reliability are critical.
 
-    -   **Striped** – Striped volumes stripes data across bricks in the
-        volume. For best results, you should use striped volumes only in
-        high concurrency environments accessing very large files.
-
-    -   **Distributed Striped** - Distributed striped volumes stripe data
-        across two or more nodes in the cluster. You should use
-        distributed striped volumes where the requirement is to scale
-        storage and in high concurrency environments accessing very
-        large files is critical.
-
     -   **Distributed Replicated** - Distributed replicated volumes
-        distributes files across replicated bricks in the volume. You
+        distribute files across replicated bricks in the volume. You
         can use distributed replicated volumes in environments where the
         requirement is to scale storage and high-reliability is
         critical. Distributed replicated volumes also offer improved
         read performance in most environments.
-
-    -   **Distributed Striped Replicated** – Distributed striped replicated
-        volumes distributes striped data across replicated bricks in the
-        cluster. For best results, you should use distributed striped
-        replicated volumes in highly concurrent environments where
-        parallel access of very large files and performance is critical.
-        In this release, configuration of this volume type is supported
-        only for Map Reduce workloads.
-
-    -   **Striped Replicated** – Striped replicated volumes stripes data
-        across replicated bricks in the cluster. For best results, you
-        should use striped replicated volumes in highly concurrent
-        environments where there is parallel access of very large files
-        and performance is critical. In this release, configuration of
-        this volume type is supported only for Map Reduce workloads.
 
     -   **Dispersed** - Dispersed volumes are based on erasure codes,
         providing space-efficient protection against disk or server failures.
@@ -151,11 +44,37 @@ Format bricks using the supported XFS configuration, mount the bricks, and verif
         distribute replicate volumes, but using disperse to store the data
         into the bricks.
 
+    -   **Striped [Deprecated]** – Striped volumes stripes data across bricks in the
+        volume. For best results, you should use striped volumes only in
+        high concurrency environments accessing very large files.
+
+    -   **Distributed Striped [Deprecated]** - Distributed striped volumes stripe data
+        across two or more nodes in the cluster. You should use
+        distributed striped volumes where the requirement is to scale
+        storage and in high concurrency environments accessing very
+        large files is critical.
+
+    -   **Distributed Striped Replicated [Deprecated]** – Distributed striped replicated
+        volumes distributes striped data across replicated bricks in the
+        cluster. For best results, you should use distributed striped
+        replicated volumes in highly concurrent environments where
+        parallel access of very large files and performance is critical.
+        In this release, configuration of this volume type is supported
+        only for Map Reduce workloads.
+
+    -   **Striped Replicated [Deprecated]** – Striped replicated volumes stripes data
+        across replicated bricks in the cluster. For best results, you
+        should use striped replicated volumes in highly concurrent
+        environments where there is parallel access of very large files
+        and performance is critical. In this release, configuration of
+        this volume type is supported only for Map Reduce workloads.
+
+
 **To create a new volume**
 
 -   Create a new volume :
 
-    `# gluster volume create [stripe  | replica | disperse] [transport tcp | rdma | tcp,rdma] `
+    `# gluster volume create [stripe | replica | disperse] [transport tcp | rdma | tcp,rdma] `
 
     For example, to create a volume called test-volume consisting of
     server3:/exp3 and server4:/exp4:
@@ -166,7 +85,7 @@ Format bricks using the supported XFS configuration, mount the bricks, and verif
 
 ## Creating Distributed Volumes
 
-In a distributed volumes files are spread randomly across the bricks in
+In a distributed volume files are spread randomly across the bricks in
 the volume. Use distributed volumes where you need to scale storage and
 redundancy is either not important or is provided by other
 hardware/software layers.
@@ -258,13 +177,13 @@ high-availability and high-reliability are critical.
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node replicated volume with a more that one brick of a replica set is present on the same peer.
+    > - GlusterFS will fail to create a replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node replicated volume where more than one brick of a replica set is present on the same peer.
     > 
 
     >         # gluster volume create <volname> replica 4 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
     >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
 
-    >  Use the `force` option at the end of command if you want to create the volume in this case.
+    >  Use the `force` option at the end of command if you still want to create the volume with this configuration.
 
 ### Arbiter configuration for replica volumes
 
@@ -285,7 +204,7 @@ results, you should use striped volumes only in high concurrency
 environments accessing very large files.
 
 > **Note**:
-> The number of bricks should be a equal to the stripe count for a
+> The number of bricks should be equal to the stripe count for a
 > striped volume.
 
 ![striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412387/f411fa56-ef5f-11e4-8e78-a0896a47625a.png)
@@ -376,7 +295,7 @@ environments.
 
     `# gluster volume create  [replica ] [transport tcp | rdma | tcp,rdma] `
 
-    For example, four node distributed (replicated) volume with a
+    For example, a four node distributed (replicated) volume with a
     two-way mirror:
 
         # gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
@@ -398,7 +317,7 @@ environments.
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
+    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. for a four node distribute (replicated) volume where more than one brick of a replica set is present on the same peer.
     > 
 
     >         # gluster volume create <volname> replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
@@ -444,7 +363,7 @@ Map Reduce workloads.
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of a replica set is present on the same peer.
+    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of a replica set is present on the same peer.
     > 
 
     >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
@@ -496,7 +415,7 @@ of this volume type is supported only for Map Reduce workloads.
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. four node distribute (replicated) volume with a more than one brick of replica set is present on the same peer.
+    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of replica set is present on the same peer.
     > 
 
     >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
@@ -507,8 +426,8 @@ of this volume type is supported only for Map Reduce workloads.
 ## Creating Dispersed Volumes
 
 Dispersed volumes are based on erasure codes. It stripes the encoded data of
-files, with some redundancy addedd, across multiple bricks in the volume. You
-can use dispersed volumes to have a configurable level of reliability with a
+files, with some redundancy added, across multiple bricks in the volume. You
+can use dispersed volumes to have a configurable level of reliability with 
 minimum space waste.
 
 **Redundancy**
@@ -521,7 +440,7 @@ usable space of the volume using this formula:
     <Usable size> = <Brick size> * (#Bricks - Redundancy)
 
 All bricks of a disperse set should have the same capacity otherwise, when
-the smaller brick becomes full, no additional data will be allowed in the
+the smallest brick becomes full, no additional data will be allowed in the
 disperse set.
 
 It's important to note that a configuration with 3 bricks and redundancy 1
@@ -530,7 +449,7 @@ configuration with 10 bricks and redundancy 1 (90%). However the first one
 will be safer than the second one (roughly the probability of failure of
 the second configuration if more than 4.5 times bigger than the first one).
 
-For example, a dispersed volume composed by 6 bricks of 4TB and a redundancy
+For example, a dispersed volume composed of 6 bricks of 4TB and a redundancy
 of 2 will be completely operational even with two bricks inaccessible. However
 a third inaccessible brick will bring the volume down because it won't be
 possible to read or write to it. The usable space of the volume will be equal

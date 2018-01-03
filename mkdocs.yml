@@ -27,15 +27,18 @@ pages:
   - Did You Know: Administrator Guide/Did You Know.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
   - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
-  - Access Control Lists: Administrator Guide/Access Control Lists.md
+  - Setting Up Storage:
+     - Setting Up Storage : Administrator Guide/setting-up-storage.md
+     - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
+     - Formatting and Mounting Bricks: Administrator Guide/formatting-and-mounting-bricks.md
+     - Access Control Lists: Administrator Guide/Access Control Lists.md
   - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
-  - Setting Up Clients: Administrator Guide/Setting Up Clients.md
   - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
+  - Setting Up Clients: Administrator Guide/Setting Up Clients.md
   - Managing Volumes: Administrator Guide/Managing Volumes.md
   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
   - Logging: Administrator Guide/Logging.md
-  - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
   - Geo Replication: Administrator Guide/Geo Replication.md
   - Directory Quota: Administrator Guide/Directory Quota.md
   - Managing Snapshots: Administrator Guide/Managing Snapshots.md
