@@ -115,7 +115,7 @@ installed.
 
 ​2. Clone the GlusterFS git repository
 
-		$ git clone https://git.gluster.org/glusterfs
+		$ git clone https://review.gluster.org/glusterfs
 		$ cd glusterfs
 
 ​3. Choose which branch to compile
