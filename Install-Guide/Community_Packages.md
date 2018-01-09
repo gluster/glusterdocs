@@ -5,7 +5,7 @@
 An **X** means packages are (or will be) provided in the respective repository.  
 A **—** means no plans to build new updates. Existing packages will remain in the repos.  
 
-|              |              |  4.1 stm¹ |  4.0 stm¹ | 3.13 stm  | 3.12 ltm  | 3.10 ltm  |
+|              |              |  4.1 ltm¹ |  4.0 stm¹ | 3.13 stm  | 3.12 ltm  | 3.10 ltm  |
 |--------------|--------------|:---------:|:---------:|:---------:|:---------:|:---------:|
 |CentOS Storage|el6           |     —     |     —     |     X     |     X     |     X     |
 |SIG[1]        |el7           |     X     |     X     |     X     |     X     |     X     |
