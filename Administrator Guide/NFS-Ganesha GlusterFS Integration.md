@@ -109,7 +109,7 @@ Note :
 Step 4 can be performed via following script
 #/usr/libexec/ganesha/dbus-send.sh <ganesha directory> [on|off] <volume name>
 ```
-Above scripts(meniotned in step 3 and step 4) is only available in glusterfs 3.10 rpms
+Above scripts(mentioned in step 3 and step 4) are available in glusterfs 3.10 rpms.
 You can download it from [here](https://github.com/gluster/glusterfs/blob/release-3.10/extras/ganesha/scripts/)
 
 #### step 5 :
@@ -122,7 +122,7 @@ You can download it from [here](https://github.com/gluster/glusterfs/blob/releas
 
 ## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
 
-### Please Note currently HA solution for nfs-ganesha is only available in 3.10 From 3.12 onwards HA will be handled by different project known as [storhaug](https://github.com/linux-ha-storage/storhaug) which is under development.
+> Please Note currently HA solution for nfs-ganesha is available in 3.10. From 3.12 onwards HA will be handled by different project known as [storhaug](https://github.com/linux-ha-storage/storhaug) which is under development.
 
 In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
 The cluster is maintained using Pacemaker and Corosync. Pacemaker acts a resource manager and Corosync provides the communication layer of the cluster.
