@@ -4,14 +4,14 @@ NFS-Ganesha is a user space file server for the NFS protocol with support for NF
 
 ##  Installing nfs-ganesha
 
-#### Gluster RPMs (>= 3.8)
+#### Gluster RPMs (>= 3.10)
 > glusterfs-server
 
 > glusterfs-api
 
 > glusterfs-ganesha
 
-#### Ganesha RPMs (>= 2.4)
+#### Ganesha RPMs (>= 2.5)
 > nfs-ganesha
 
 > nfs-ganesha-gluster
@@ -109,6 +109,8 @@ Note :
 Step 4 can be performed via following script
 #/usr/libexec/ganesha/dbus-send.sh <ganesha directory> [on|off] <volume name>
 ```
+Above scripts(mentioned in step 3 and step 4) are available in glusterfs 3.10 rpms.
+You can download it from [here](https://github.com/gluster/glusterfs/blob/release-3.10/extras/ganesha/scripts/)
 
 #### step 5 :
    - To check if the volume is exported, run
@@ -119,6 +121,9 @@ Step 4 can be performed via following script
        - *#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ClientMgr org.ganesha.nfsd.clientmgr.ShowClients*
 
 ## Using Highly Available Active-Active NFS-Ganesha And GlusterFS cli
+
+> Please Note currently HA solution for nfs-ganesha is available in 3.10. From 3.12 onwards HA will be handled by different project known as [storhaug](https://github.com/linux-ha-storage/storhaug) which is under development.
+
 In a highly available active-active environment, if a NFS-Ganesha server that is connected to a NFS client running a particular application crashes, the application/NFS client is seamlessly connected to another NFS-Ganesha server without any administrative intervention.
 The cluster is maintained using Pacemaker and Corosync. Pacemaker acts a resource manager and Corosync provides the communication layer of the cluster.
 Data coherency across the multi-head NFS-Ganesha servers in the cluster is achieved using the UPCALL infrastructure. UPCALL infrastructure is a generic and extensible framework that sends notifications to the respective glusterfs clients (in this case NFS-Ganesha server) in case of any changes detected in the backend filesystem.
