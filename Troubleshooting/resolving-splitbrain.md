@@ -11,7 +11,7 @@ There are 3 types of split-brains:
 
 -  Data split-brain: The data in the file differs on the bricks in the replica set
 -  Metadata split-brain: The metada differs on the bricks
--  Entry/gfid split-brian: The GFID of the file is different on the bricks in the replica. This cannot be healed automatically.
+-  Entry/gfid split-brain: The GFID of the file is different on the bricks in the replica. This cannot be healed automatically.
 
 
 ## 1) Volume heal info:  
