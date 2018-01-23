@@ -20,7 +20,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |           |           |           |           |           |
 |Ubuntu        |Trusty/14.04  |     —     |     —     |     —     |     —     |     X     |
 |Launchpad[3]  |Xenial/16.04  |     X     |     X     |     X     |     X     |     X     |
-|              |Zesty/17.04   |     —     |     —     |     X     |     X     |     X     |
 |              |Artful/17.10  |     X     |     X     |     X     |     X     |     X     |
 |              |Bionic/18.04  |     X     |     X     |     X     |     X     |     X     |
 |              |              |           |           |           |           |           |
@@ -46,7 +45,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |               |                     |             |       |
 |Ubuntu        |Trusty/14.04  |       –       |         X           |      X      |   ?   |
 |Launchpad     |Xenial/16.04  |       –       |         X           |      X      |   ?   |
-|              |Zesty/17.04   |       –       |         X           |      X      |   ?   |
 |              |Artful/17.10  |       –       |         X           |      X      |   ?   |
 |              |Bionic/18.04  |       –       |         X           |      X      |   ?   |
 |              |              |               |                     |             |       |
