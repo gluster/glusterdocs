@@ -1,6 +1,8 @@
 Accessing GlusterFS using Cinder Hosts
 ======================================
 
+*Note: GlusterFS driver was removed from Openstack since Ocata. This guide applies only to older Openstack releases.*
+
 1. Introduction
 ===============
 
