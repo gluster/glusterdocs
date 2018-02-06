@@ -6,7 +6,7 @@ A statedump is, as the name suggests, a dump of the internal state of a glusterf
 
  - [Generate a Statedump](#generate-a-statedump)
  - [Read a Statedump](#read-a-statedump)
- - [Debug with a Statedump](#debugging-with-statedumps)
+ - [Debug with a Statedump](#debug-with-statedumps)
 
 ************************
 
