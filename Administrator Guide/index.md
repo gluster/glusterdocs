@@ -32,11 +32,12 @@
 	
 7.  [GlusterFS Service Logs and Locations](./Logging.md)
 
-8.  [Geo Replication](./Geo Replication.md)
-	
-9.  [Managing Directory Quotas](./Directory Quota.md)
+8.  Features
 
-10. [Managing Snapshots](./Managing Snapshots.md)
+        *   [Geo Replication](./Geo Replication.md)
+        *   [Directory Quotas](./Directory Quota.md)
+        *   [Snapshots](./Managing Snapshots.md)
+        *   [Trash](./Trash.md)
 
 11. [Monitoring Workload](./Monitoring Workload.md)
 
@@ -62,21 +63,17 @@
 
 19.  [Configuring NFS-Ganesha server](./NFS-Ganesha GlusterFS Integration.md)
 
-20.  [Split brain and ways to deal with it](Split brain and ways to deal with it.md)
+20.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
-21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
+21.  [Mandatory Locks](./Mandatory Locks.md)
 
-22.  [Trash for GlusterFS](./Trash.md)
+22.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
 
-23.  [Mandatory Locks](./Mandatory Locks.md)
+23.  [Events APIs](./Events APIs.md)
 
-24.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+24.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
 
-25.  [Events APIs](./Events APIs.md)
-
-26.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
-
-27.  Appendices
+25.  Appendices
 
     *  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configuration Techniques](./Network Configurations Techniques.md)
