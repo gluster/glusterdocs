@@ -77,6 +77,5 @@
 26.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
 
 27.  Appendices
-
         *  [Network Configuration Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)
