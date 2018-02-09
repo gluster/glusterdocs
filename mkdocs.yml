@@ -39,9 +39,10 @@ pages:
   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
   - Logging: Administrator Guide/Logging.md
-  - Geo Replication: Administrator Guide/Geo Replication.md
-  - Directory Quota: Administrator Guide/Directory Quota.md
-  - Managing Snapshots: Administrator Guide/Managing Snapshots.md
+  - Features:
+     - Geo Replication: Administrator Guide/Geo Replication.md
+     - Directory Quota: Administrator Guide/Directory Quota.md
+     - Managing Snapshots: Administrator Guide/Managing Snapshots.md
   - Monitoring Workload: Administrator Guide/Monitoring Workload.md
   - Object Storage: Administrator Guide/Object Storage.md
   - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
