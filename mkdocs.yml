@@ -43,6 +43,7 @@ pages:
      - Geo Replication: Administrator Guide/Geo Replication.md
      - Directory Quota: Administrator Guide/Directory Quota.md
      - Managing Snapshots: Administrator Guide/Managing Snapshots.md
+     - Trash: Administrator Guide/Trash.md
   - Monitoring Workload: Administrator Guide/Monitoring Workload.md
   - Object Storage: Administrator Guide/Object Storage.md
   - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
@@ -62,7 +63,6 @@ pages:
   - Consul integration: Administrator Guide/Consul.md
   - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
   - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
-  - Trash for GlusterFS: Administrator Guide/Trash.md
   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
   - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
   - Events APIs: Administrator Guide/Events APIs.md
@@ -152,6 +152,7 @@ pages:
     - Troubleshooting Split-Brains: Troubleshooting/resolving-splitbrain.md
   - Issues:
     - Debugging Memory Leaks: Troubleshooting/troubleshooting-memory.md
+    - Crashes: Troubleshooting/gluster-crash.md
   - Tools:
     - Statedump: Troubleshooting/statedump.md
     - gfid to path: Troubleshooting/gfid-to-path.md
