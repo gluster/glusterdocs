@@ -78,6 +78,5 @@
 
 27.  Appendices
 
-    *  [Troubleshooting](./Troubleshooting.md)
-	*  [Network Configuration Techniques](./Network Configurations Techniques.md)
+        *  [Network Configuration Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)

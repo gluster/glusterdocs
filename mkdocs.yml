@@ -54,8 +54,7 @@ pages:
   - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
   - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
   - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
-  - Troubleshooting: Administrator Guide/Troubleshooting.md
-  - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
+  - Network Configuration Techniques: Administrator Guide/Network Configurations Techniques.md
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
   - Consul integration: Administrator Guide/Consul.md
@@ -149,8 +148,10 @@ pages:
     - Troubleshooting Geo-replication: Troubleshooting/troubleshooting-georep.md
     - Troubleshooting gNFS: Troubleshooting/troubleshooting-gnfs.md
     - Troubleshooting Split-Brains: Troubleshooting/resolving-splitbrain.md
+    - Troubleshooting File Locks: Troubleshooting/troubleshooting-filelocks.md
   - Issues:
     - Debugging Memory Leaks: Troubleshooting/troubleshooting-memory.md
+    - Crashes: Troubleshooting/gluster-crash.md
   - Tools:
     - Statedump: Troubleshooting/statedump.md
     - gfid to path: Troubleshooting/gfid-to-path.md

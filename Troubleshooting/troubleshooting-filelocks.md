@@ -1,63 +1,8 @@
-# Troubleshooting GlusterFS
+Troubleshooting File Locks
+==========================
 
-This section describes how to manage GlusterFS logs and most common
-troubleshooting scenarios related to GlusterFS.
 
-## Contents
-* [Managing GlusterFS Logs](#logs)
-* [Troubleshooting POSIX ACLs](#posix-acls)
-* [Troubleshooting Hadoop Compatible Storage](#hadoop)
-* [Troubleshooting File Locks](#file-locks)
-
-<a name="logs"></a>
-## Managing GlusterFS Logs
-
-### Rotating Logs
-
-Administrators can rotate the log file in a volume, as needed.
-
-**To rotate a log file**
-
-    `# gluster volume log rotate `
-
-For example, to rotate the log file on test-volume:
-
-    # gluster volume log rotate test-volume
-    log rotate successful
-
-> **Note**
-> When a log file is rotated, the contents of the current log file
-> are moved to log-file- name.epoch-time-stamp.
-
-<a name="posix-acls"></a>
-## Troubleshooting POSIX ACLs
-
-This section describes the most common troubleshooting issues related to
-POSIX ACLs.
-
-    setfacl command fails with “setfacl: \<file or directory name\>: Operation not supported” error
-
-You may face this error when the backend file systems in one of the
-servers is not mounted with the "-o acl" option. The same can be
-confirmed by viewing the following error message in the log file of the
-server "Posix access control list is not supported".
-
-**Solution**: Remount the backend file system with "-o acl" option.
-
-<a name="hadoop"></a>
-## Troubleshooting Hadoop Compatible Storage
-
-### Time Sync
-
-**Problem**: Running MapReduce job may throw exceptions if the time is out-of-sync on
-the hosts in the cluster.
-
-**Solution**: Sync the time on all hosts using ntpd program.
-
-<a name="file-locks"></a>
-##Troubleshooting File Locks
-
-In GlusterFS 3.3 you can use `statedump` command to list the locks held
+Use [statedumps](./statedump.md) to find and list the locks held
 on files. The statedump output also provides information on each lock
 with its range, basename, PID of the application holding the lock, and
 so on. You can analyze the output to know about the locks whose
@@ -131,7 +76,7 @@ lock using the following `clear lock` commands.
         Volume clear-locks successful
         vol-locks: inode blocked locks=0 granted locks=1
 
-    You can perform statedump on test-volume again to verify that the
+    Perform statedump on test-volume again to verify that the
     above inode and entry locks are cleared.
 
 

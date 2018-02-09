@@ -8,6 +8,7 @@ If you are unable to figure out where the leak is, please [file a bug](https://b
 
 - Gluster version
 - The affected process
+- The output of `gluster volume info`
 - Steps to reproduce the issue if available
 - Statedumps for the process collected at intervals as the memory utilization increases
 - The Gluster log files for the process (if possible)
