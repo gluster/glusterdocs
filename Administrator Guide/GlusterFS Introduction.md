@@ -1,7 +1,7 @@
 What is Gluster ?
 =================
 
-Gluster is a scalable, distributed file system that aggregates disk and memory resources into a single global namespace.
+Gluster is a scalable, distributed file system that aggregates disk storage resources into a single global namespace.
 
 ### Advantages
 
