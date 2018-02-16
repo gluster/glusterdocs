@@ -24,7 +24,8 @@ Add the source:
 
     DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
     DEBVER=$(grep 'VERSION=' /etc/os-release | grep -Eo '[a-z]+')
-    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list
+    DEBARCH=$(dpkg --print-architecture)
+    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/${DEBARCH}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list
 
 Update package list:
 
