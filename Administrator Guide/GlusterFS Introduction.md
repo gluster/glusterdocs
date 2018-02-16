@@ -16,7 +16,7 @@ Gluster is a scalable, distributed file system that aggregates disk storage reso
   * Open Source
 
 
-![640px-glusterfs_architecture](https://cloud.githubusercontent.com/assets/10970993/7412187/dbb94286-ef5d-11e4-93ca-d4959a94db85.png)
+![640px-glusterfs_architecture](../images/640px-GlusterFS_Architecture.png)
 
 
 
