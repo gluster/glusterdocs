@@ -1,14 +1,21 @@
 # Managing Trusted Storage Pools
 
-A storage pool is a trusted network of storage servers.  Before you can configure a
-GlusterFS volume, you must create a trusted storage pool consisting of the storage servers
-that will provide bricks to the volume.
 
-When you start the first server, the storage pool consists of that server alone. To add
-additional storage servers to the storage pool, run the `peer probe` command on that server.
+### Overview
 
+A trusted storage pool(TSP) is a trusted network of storage servers. Before you can configure a
+GlusterFS volume, you must create a trusted storage pool of the storage servers
+that will provide bricks to the volume by peer probing the servers.
+The servers in a TSP are peers of each other.
 
-**Note**: Do not self-probe the first server/localhost from itself.
+After installing Gluster on your servers and before creating a trusted storage pool,
+each server belongs to a storage pool consisting of only that server.
+
+-  [Adding Servers](#adding-servers)
+-  [Listing Servers](#listing-servers)
+-  [Viewing Peer Status](#peer-status)
+-  [Removing Servers](#removing-servers)
+
 
 
 **Before you start**:
@@ -20,27 +27,22 @@ want to add to the storage pool. See [Managing the glusterd Service](./Start Sto
 
 - The firewall on the servers must be configured to allow access to port 24007.
 
+The following commands were run on a TSP consisting of 3 servers - server1, server2,
+and server3.
 
-### Adding Servers to a Trusted Storage Pool
+<a name="adding-servers"></a>
+### Adding Servers
 
-1. To add a server to a storage pool, peer probe it from a server already in the pool.
-   When you start the first server, the storage pool consists of that server alone.
+To add a server to a TSP, peer probe it from a server already in the pool.
 
         # gluster peer probe <server>
 
-    For example, to create a trusted storage pool of four servers - server1, server2, server3
-    and server4 - probe the other three servers from server1:
+For example, to add a new server4 to the cluster described above, probe it from one of the other servers:
 
-        server1#  gluster peer probe server2
+        server1#  gluster peer probe server4
         Probe successful
 
-        server1# gluster peer probe server3
-        Probe successful
-
-        server1# gluster peer probe server4
-        Probe successful
-
-2.  Verify the peer status from the first server (server1):
+Verify the peer status from the first server (server1):
 
         server1# gluster peer status
         Number of Peers: 3
@@ -54,23 +56,35 @@ want to add to the storage pool. See [Managing the glusterd Service](./Start Sto
         State: Peer in Cluster (Connected)
 
         Hostname: server4
-        Uuid: 3e0caba-9df7-4f66-8e5d-cbc348f29ff7
+        Uuid: 3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7
         State: Peer in Cluster (Connected)
 
 
-3.  Assign the hostname to the first server (server1) by probing it from another server:
 
-        server2# gluster peer probe server1
-        Probe successful
+<a name="listing-servers"></a>
+### Listing Servers
+
+To list all nodes in the TSP:
+
+        server1# gluster pool list
+        UUID                                    Hostname        State
+        d18d36c5-533a-4541-ac92-c471241d5418    localhost       Connected
+        5e987bda-16dd-43c2-835b-08b7d55e94e5    server2         Connected
+        1e0ca3aa-9ef7-4f66-8f15-cbc348f29ff7    server3         Connected
+        3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7    server4         Connected
 
 
-4.  Verify the peer status from the same server you used in step 3:
 
-        server2# gluster peer status
+<a name="peer-status"></a>
+### Viewing Peer Status
+
+To view the status of the peers in the TSP:
+
+        server1# gluster peer status
         Number of Peers: 3
 
-        Hostname: server1
-        Uuid: ceed91d5-e8d1-434d-9d47-63e914c93424
+        Hostname: server2
+        Uuid: 5e987bda-16dd-43c2-835b-08b7d55e94e5
         State: Peer in Cluster (Connected)
 
         Hostname: server3
@@ -78,15 +92,15 @@ want to add to the storage pool. See [Managing the glusterd Service](./Start Sto
         State: Peer in Cluster (Connected)
 
         Hostname: server4
-        Uuid: 3e0caba-9df7-4f66-8e5d-cbc348f29ff7
+        Uuid: 3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7
         State: Peer in Cluster (Connected)
 
-You now have a trusted storage pool with four servers.
 
 
-### Removing Servers from the Trusted Storage Pool
+<a name="removing-servers"></a>
+### Removing Servers
 
-To remove a server from the storage pool, run the following command from another server in the pool:
+To remove a server from the TSP, run the following command from another server in the pool:
 
         # gluster peer detach <server>
 
