@@ -20,7 +20,9 @@
 	*  [Managing Volumes](./Managing Volumes.md)
 	*  [Modifying .vol files with a filter](./GlusterFS Filter.md)
 	
-5.  [Configuring NFS-Ganesha](./NFS-Ganesha GlusterFS Integration.md)
+5. Data Access Mechanisms 
+	*  [NFS access](./NFS-Ganesha GlusterFS Integration.md)
+	*  [SMB access](./Accessing Gluster from Windows.md)
 
 6.   Features
 
