@@ -103,6 +103,7 @@ pages:
   - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
   - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
   - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
+  - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
 - Release Notes:
   - index: release-notes/index.md
   - 4.0.0: release-notes/4.0.0.md
