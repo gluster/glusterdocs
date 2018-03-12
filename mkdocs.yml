@@ -105,6 +105,7 @@ pages:
   - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
 - Release Notes:
   - index: release-notes/index.md
+  - 4.0.0: release-notes/4.0.0.md
   - 3.13.2: release-notes/3.13.2.md
   - 3.13.1: release-notes/3.13.1.md
   - 3.13.0: release-notes/3.13.0.md
