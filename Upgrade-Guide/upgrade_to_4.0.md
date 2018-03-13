@@ -91,7 +91,7 @@ Perform the following steps post upgrading the entire trusted storage pool,
 
 - It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op_version.md) section for further details
 - Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to 4.0 version as well
-- Post upgrading the clients, for replicate volumes, it is recommended to enable the option `gluster volume set <volname> fips-mode-rchecksum on` to turn off usage od MD5 checksums during healing. This enables running Gluster on FIPS compliant systems.
+- Post upgrading the clients, for replicate volumes, it is recommended to enable the option `gluster volume set <volname> fips-mode-rchecksum on` to turn off usage of MD5 checksums during healing. This enables running Gluster on FIPS compliant systems.
 
 ### Upgrade procedure for clients
 Following are the steps to upgrade clients to the 4.0.x version,
