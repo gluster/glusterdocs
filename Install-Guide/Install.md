@@ -38,11 +38,7 @@ Install:
 
 ###### For Ubuntu
 
-Ubuntu 10 and 12: install python-software-properties:
-
-		sudo apt-get install python-software-properties
-
-Ubuntu 14: install software-properties-common:
+Install software-properties-common:
 
 		sudo apt-get install software-properties-common
 
