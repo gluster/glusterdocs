@@ -25,11 +25,11 @@ To get the maximum possible op-version a cluster can support, the following quer
 For example, if some nodes in a cluster have been upgraded to X and some to X+, then the maximum op-version supported by the cluster is X, and the cluster.op-version can be bumped up to X to support new features.
 
 op-version can be updated as below.
-For example, after upgrading to glusterfs-3.7.1, set op-version as:
+For example, after upgrading to glusterfs-4.0.0, set op-version as:
 
-    [root@~]#gluster volume set all cluster.op-version 30701
+    [root@~]#gluster volume set all cluster.op-version 40000
 
-Note: 
+Note:
 This is not mandatory, but advisable to have updated op-version if you want to make use of latest features in the updated gluster.
 
 ###Client op-version
