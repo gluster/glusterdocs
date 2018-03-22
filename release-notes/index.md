@@ -3,6 +3,7 @@ Release Notes
 
 ### GlusterFS 4.0 release notes
 
+- [4.0.1](./4.0.1.md)
 - [4.0.0](./4.0.0.md)
 
 ### GlusterFS 3.13 release notes
