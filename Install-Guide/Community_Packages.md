@@ -12,8 +12,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |           |           |           |           |
 |Fedora[2]     |F26           |     —     |     X     |     X     |     X²    |
 |              |F27           |     X     |     X     |     X²    |     X     |
-|              |F28           |     X     |     X²    |     X     |     X     |
-|              |F29(rawhide)  |     X     |     X²    |     X     |     —     |     
+|              |F28           |     X     |     X²    |     —     |     —     |
+|              |F29(rawhide)  |     X     |     X²    |     —     |     —     |     
 |              |              |           |           |           |           |
 |Debian[2]     |Jessie/8      |     —     |     —     |     X     |     X     |
 |              |Stretch/9     |     X     |     X     |     X     |     X     |
@@ -28,7 +28,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |Service[4]    |Leap42.3      |     X     |     X     |     X     |     X     |
 |              |Leap15        |     X     |     X     |     —     |     —     |
 |              |SLES15        |     X     |     X     |     —     |     —     |
-|              |Tumbleweed    |     X     |     X     |     X     |     X     |
+|              |Tumbleweed    |     X     |     X     |     —     |     —     |
 
 
 #### Related Packages
