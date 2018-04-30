@@ -106,11 +106,13 @@ pages:
   - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
 - Release Notes:
   - index: release-notes/index.md
+  - 4.0.2: release-notes/4.0.2.md
   - 4.0.1: release-notes/4.0.1.md
   - 4.0.0: release-notes/4.0.0.md
   - 3.13.2: release-notes/3.13.2.md
   - 3.13.1: release-notes/3.13.1.md
   - 3.13.0: release-notes/3.13.0.md
+  - 3.12.9: release-notes/3.12.9.md
   - 3.12.8: release-notes/3.12.8.md
   - 3.12.7: release-notes/3.12.7.md
   - 3.12.6: release-notes/3.12.6.md
@@ -124,6 +126,7 @@ pages:
   - 3.11.2: release-notes/3.11.2.md
   - 3.11.1: release-notes/3.11.1.md
   - 3.11.0: release-notes/3.11.0.md
+  - 3.10.12: release-notes/3.10.12.md
   - 3.10.11: release-notes/3.10.11.md
   - 3.10.10: release-notes/3.10.10.md
   - 3.10.9: release-notes/3.10.9.md
