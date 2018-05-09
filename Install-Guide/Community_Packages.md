@@ -16,13 +16,14 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F29(rawhide)  |     X     |     X²    |     —     |     —     |     
 |              |              |           |           |           |           |
 |Debian[2]     |Jessie/8      |     —     |     —     |     X     |     X     |
-|              |Stretch/9     |     X     |     X     |     X     |     X     |
-|              |Buster/10(Sid)|     X     |     X     |     X     |     X     |
+|              |Stretch/9     |     X⁴    |     X⁴    |     X     |     X     |
+|              |Buster/10(Sid)|     X⁴    |     X⁴    |     X     |     X     |
 |              |              |           |           |           |           |
 |Ubuntu        |Trusty/14.04  |     —     |     —     |     —     |     X     |
-|Launchpad[3]  |Xenial/16.04  |     X     |     X     |     X     |     X     |
-|              |Artful/17.10  |     X     |     X     |     X     |     X     |
-|              |Bionic/18.04  |     X     |     X     |     X     |     X     |
+|Launchpad[3]  |Xenial/16.04  |     X⁴    |     X⁴    |     X     |     X     |
+|              |Artful/17.10  |     X⁴    |     X⁴    |     X     |     X     |
+|              |Bionic/18.04  |     X⁴    |     X⁴    |     X     |     X     |
+|              |Cosmic/18.10  |     X⁴    |     X⁴    |     —     |     —     |
 |              |              |           |           |           |           |
 |OpenSuSE Build|SLES12SP3     |     X     |     X     |     X     |     X     |
 |Service[4]    |Leap42.3      |     X     |     X     |     X     |     X     |
@@ -43,13 +44,14 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F28           |    X    |       X       |         X           |      X      |   ?   |
 |              |F29(rawhide)  |    X    |       X       |         X           |      X      |   ?   |
 |              |              |         |               |                     |             |       |
-|Debian        |Jessie/8      |    —    |       –       |         X           |      X      |   ?   |
-|              |Stretch/9     |    —    |       –       |         X           |      X      |   ?   |
-|              |Buster/10(Sid)|    —    |       –       |         X           |      X      |   ?   |
-|Ubuntu        |Trusty/14.04  |    —    |       –       |         X           |      X      |   ?   |
-|Launchpad     |Xenial/16.04  |    —    |       –       |         X           |      X      |   ?   |
-|              |Artful/17.10  |    —    |       –       |         X           |      X      |   ?   |
-|              |Bionic/18.04  |    —    |       –       |         X           |      X      |   ?   |
+|Debian        |Jessie/8      |    —    |       —       |         X           |      X      |   ?   |
+|              |Stretch/9     |    —    |       —       |         X           |      X      |   ?   |
+|              |Buster/10(Sid)|    —    |       —       |         X           |      X      |   ?   |
+|Ubuntu        |Trusty/14.04  |    —    |       —       |         X           |      X      |   ?   |
+|Launchpad     |Xenial/16.04  |    —    |       —       |         X           |      X      |   ?   |
+|              |Artful/17.10  |    —    |       —       |         X           |      X      |   ?   |
+|              |Bionic/18.04  |    —    |       —       |         X           |      X      |   ?   |
+|              |Cosmic/18.10  |    —    |       —       |         X           |      X      |   ?   |
 |              |              |         |               |                     |             |       |
 |OpenSuSE Build|SLES12SP3     |    X    |     X         |         X           |      X      |   ?   |
 |Service       |Leap42.3      |    X    |     X         |         X           |      X      |   ?   |
@@ -67,3 +69,4 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 ¹ Tentative date June 2018  
 ² Fedora Updates, UpdatesTesting, or Rawhide repository. Use dnf to install.  
 ³ Client only  
+⁴ glusterd2 packging needed
