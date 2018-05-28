@@ -66,17 +66,19 @@
 
 21.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
-22.  [Trash for GlusterFS](./Trash.md)
+22.  [Thin Arbiter volumes](./Thin-Arbiter-Volumes.md)
 
-23.  [Mandatory Locks](./Mandatory Locks.md)
+23.  [Trash for GlusterFS](./Trash.md)
 
-24.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+24.  [Mandatory Locks](./Mandatory Locks.md)
 
-25.  [Events APIs](./Events APIs.md)
+25.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
 
-26.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
+26.  [Events APIs](./Events APIs.md)
 
-27.  Appendices
+27.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
+
+28.  Appendices
 
     *  [Troubleshooting](./Troubleshooting.md)
 	*  [Network Configuration Techniques](./Network Configurations Techniques.md)
