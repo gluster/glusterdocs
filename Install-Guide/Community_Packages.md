@@ -33,8 +33,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 
 #### Related Packages
 
-|              |              | gdeploy | gluster- | glusterfs- | nfs-ganesha | storhaug | Samba |
-|              |              |         | block    | coreutils  |             |          |       |
+|              |              | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | storhaug | Samba |
 |--------------|--------------|:-------:|:--------:|:----------:|:-----------:|:--------:|:-----:|
 |CentOS Storage SIG[1]|el6           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el7           |    X    |     X    |     X      |      X      |     X    |   ?   |
