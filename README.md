@@ -2,6 +2,10 @@
 
 Source code to gluster documentation: http://docs.gluster.org/
 
+**Important Note:
+This repo had its git history re-written on 19 May 2016.
+Please create a fresh fork or clone if you have an older local clone.**
+
 # Building the docs
 
 If you are on EPEL 7 or Fedora, the first thing you will need is to install
