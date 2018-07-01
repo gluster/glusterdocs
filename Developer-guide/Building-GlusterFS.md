@@ -28,7 +28,7 @@ The following packages are required for building GlusterFS,
 
 ### Fedora
 
-The following dnf/yum command installs all the build requirements for
+The following dnf command installs all the build requirements for
 Fedora,
 
 		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config
@@ -40,6 +40,13 @@ Ubuntu,
 
 		$ sudo apt-get install make automake autoconf libtool flex bison pkg-config libssl-dev libxml2-dev python-dev libaio-dev libibverbs-dev librdmacm-dev libreadline-dev liblvm2-dev libglib2.0-dev liburcu-dev libcmocka-dev libsqlite3-dev libacl1-dev
 
+### CentOS / Enterprise Linux
+
+The following yum command installs the build requirements for CentOS / Enterprise Linux,
+
+		# yum install autoconf automake bison cmockery2-devel dos2unix flex fuse-devel glib2-devel libacl-devel libaio-devel libattr-devel libcurl-devel libibverbs-devel librdmacm-devel libtirpc-devel libtool libxml2-devel lvm2-devel make openssl-devel pkgconfig pyliblzma python-devel python-eventlet python-netifaces python-paste-deploy python-simplejson python-sphinx python-webob pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel tar userspace-rcu-devel
+
+             
 Building from Source
 --------------------
 
@@ -61,6 +68,10 @@ Once autogen completes successfully a configure script is generated. Run
 the configure script to generate the makefiles.
 
 		$ ./configure
+		
+For CentOS, use:
+
+		$ ./configure --without-libtirpc
 
 If the above build requirements have been installed, running the
 configure script should give the below configure summary,
