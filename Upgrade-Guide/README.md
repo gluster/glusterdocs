@@ -2,7 +2,13 @@ Upgrading GlusterFS
 -------------------
 -   [About op-version](./op_version.md)
 
-If you are using GlusterFS version 3.4.x or below, you can upgrade it to following: 
+If you are using GlusterFS version 3.10.x or above, you can upgrade it to the following:
+
+-   [Upgrading to 4.1](./upgrade_to_4.1.md)
+-   [Upgrading to 3.12](./upgrade_to_3.12.md)
+
+
+If you are using GlusterFS version 3.4.x or above, you can upgrade it to following:
 
 -   [Upgrading to 3.5](./upgrade_to_3.5.md)
 -   [Upgrading to 3.6](./upgrade_to_3.6.md)

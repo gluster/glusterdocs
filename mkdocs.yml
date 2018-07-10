@@ -8,6 +8,7 @@ docs_dir: .
 pages:
 - Home: index.md
 - Getting started with GlusterFS:
+  - Introduction: Administrator Guide/GlusterFS Introduction.md
   - Quick Start Guide: Quick-Start-Guide/Quickstart.md
   - Architecture: Quick-Start-Guide/Architecture.md
 - Install Guide:
@@ -20,11 +21,9 @@ pages:
   - Compiling RPMS: Install-Guide/compiling-rpms.md
   - Community Packages: Install-Guide/Community_Packages.md
   - Configure: Install-Guide/Configure.md
-- Presentations: presentations/index.md
-- Administrator Guide:
+- Administration Guide:
+  - Overview: Administrator Guide/overview.md
   - Index: Administrator Guide/index.md
-  - GlusterFS Introduction: Administrator Guide/GlusterFS Introduction.md
-  - Did You Know: Administrator Guide/Did You Know.md
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
   - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
   - Setting Up Storage:
@@ -39,9 +38,12 @@ pages:
   - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
   - Logging: Administrator Guide/Logging.md
-  - Geo Replication: Administrator Guide/Geo Replication.md
-  - Directory Quota: Administrator Guide/Directory Quota.md
-  - Managing Snapshots: Administrator Guide/Managing Snapshots.md
+  - Features:
+     - Setting Up Storage : Administrator Guide/setting-up-storage.md
+     - Geo Replication: Administrator Guide/Geo Replication.md
+     - Quotas: Administrator Guide/Directory Quota.md
+     - Snapshots: Administrator Guide/Managing Snapshots.md
+     - Trash: Administrator Guide/Trash.md
   - Monitoring Workload: Administrator Guide/Monitoring Workload.md
   - Object Storage: Administrator Guide/Object Storage.md
   - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
@@ -54,8 +56,7 @@ pages:
   - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
   - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
   - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
-  - Troubleshooting: Administrator Guide/Troubleshooting.md
-  - Network Configurations Techniques: Administrator Guide/Network Configurations Techniques.md
+  - Network Configuration Techniques: Administrator Guide/Network Configurations Techniques.md
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
   - Consul integration: Administrator Guide/Consul.md
@@ -68,6 +69,7 @@ pages:
   - Events APIs: Administrator Guide/Events APIs.md
 - CLI Reference:
   - Overview: CLI-Reference/cli-main.md
+- Presentations: presentations/index.md
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
@@ -103,10 +105,25 @@ pages:
   - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
   - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
   - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
+  - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
+  - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
 - Release Notes:
   - index: release-notes/index.md
+  - 4.1.1: release-notes/4.1.1.md
+  - 4.1.0: release-notes/4.1.0.md
+  - 4.0.2: release-notes/4.0.2.md
+  - 4.0.1: release-notes/4.0.1.md
+  - 4.0.0: release-notes/4.0.0.md
+  - 3.13.2: release-notes/3.13.2.md
   - 3.13.1: release-notes/3.13.1.md
   - 3.13.0: release-notes/3.13.0.md
+  - 3.12.11: release-notes/3.12.11.md
+  - 3.12.10: release-notes/3.12.10.md
+  - 3.12.9: release-notes/3.12.9.md
+  - 3.12.8: release-notes/3.12.8.md
+  - 3.12.7: release-notes/3.12.7.md
+  - 3.12.6: release-notes/3.12.6.md
+  - 3.12.5: release-notes/3.12.5.md
   - 3.12.4: release-notes/3.12.4.md
   - 3.12.3: release-notes/3.12.3.md
   - 3.12.2: release-notes/3.12.2.md
@@ -116,6 +133,9 @@ pages:
   - 3.11.2: release-notes/3.11.2.md
   - 3.11.1: release-notes/3.11.1.md
   - 3.11.0: release-notes/3.11.0.md
+  - 3.10.12: release-notes/3.10.12.md
+  - 3.10.11: release-notes/3.10.11.md
+  - 3.10.10: release-notes/3.10.10.md
   - 3.10.9: release-notes/3.10.9.md
   - 3.10.8: release-notes/3.10.8.md
   - 3.10.7: release-notes/3.10.7.md
@@ -147,8 +167,10 @@ pages:
     - Troubleshooting Geo-replication: Troubleshooting/troubleshooting-georep.md
     - Troubleshooting gNFS: Troubleshooting/troubleshooting-gnfs.md
     - Troubleshooting Split-Brains: Troubleshooting/resolving-splitbrain.md
+    - Troubleshooting File Locks: Troubleshooting/troubleshooting-filelocks.md
   - Issues:
     - Debugging Memory Leaks: Troubleshooting/troubleshooting-memory.md
+    - Crashes: Troubleshooting/gluster-crash.md
   - Tools:
     - Statedump: Troubleshooting/statedump.md
     - gfid to path: Troubleshooting/gfid-to-path.md
