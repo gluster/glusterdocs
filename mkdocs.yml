@@ -62,6 +62,8 @@ pages:
   - Consul integration: Administrator Guide/Consul.md
   - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
   - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
+  - Thin Arbiter volumes: Administrator Guide/Thin-Arbiter-Volumes.md
+  - Trash for GlusterFS: Administrator Guide/Trash.md
   - Mandatory Locks: Administrator Guide/Mandatory Locks.md
   - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
   - Events APIs: Administrator Guide/Events APIs.md

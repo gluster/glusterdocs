@@ -54,19 +54,22 @@
 
 15.  [Export and Netgroup Authentication](./Export And Netgroup Authentication.md)
 
+16.  [Thin Arbiter volumes](./Thin-Arbiter-Volumes.md)
 
-16.  [Split brain and ways to deal with it](Split brain and ways to deal with it.md)
+17.  [Trash for GlusterFS](./Trash.md)
 
-17.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
+18.  [Split brain and ways to deal with it](Split brain and ways to deal with it.md)
 
-18.  [Mandatory Locks](./Mandatory Locks.md)
+19.  [Arbiter volumes and quorum options](./arbiter-volumes-and-quorum.md)
 
-19.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
+20.  [Mandatory Locks](./Mandatory Locks.md)
 
-20.  [Events APIs](./Events APIs.md)
+21.  [GlusterFS coreutilities](./GlusterFS Coreutils.md)
 
-21.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
+22.  [Events APIs](./Events APIs.md)
 
-22.  Appendices
+23.  [Building QEMU With gfapi For Debian Based Systems](./Building QEMU With gfapi For Debian Based Systems.md)
+
+24.  Appendices
 	*  [Network Configuration Techniques](./Network Configurations Techniques.md)
 	*  [Performance Testing](./Performance Testing.md)
