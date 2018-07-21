@@ -60,9 +60,9 @@ code.
 
 ### Register
 
-Sign up for an account at <http://review.gluster.org> by clicking
-'Register' on the right-hand top. You can use your gmail login as the
-openID identity.
+You need to have a github.com account to register for 'review.gluster.org'.
+Once you open https://review.gluster.org, click on 'Register' button, and
+use your github account to register.
 
 ### Preferred email
 
@@ -116,12 +116,12 @@ This is where new features come in first. In fact this is where almost
 every change (commit) comes in first. The master branch is always kept
 in a buildable state and smoke tests pass.
 
-Release trains (3.1.z, 3.2.z, 3.2.z) each have a branch originating from
+Release trains (3.1.z, 3.2.z, 4.y, 5.y) each have a branch originating from
 master. Code freeze of each new release train is marked by the creation
-of the release-3.y branch. At this point no new features are added to
-the release-3.y branch. All fixes and commits first get into master.
+of the `release-x.y` branch. At this point no new features are added to
+the release-x.y branch. All fixes and commits first get into master.
 From there, only bug fixes get backported to the relevant release
-branches. From the release-3.y branch, actual release code snapshots
+branches. From the release-x.y branch, actual release code snapshots
 (e.g. glusterfs-3.2.2 etc.) are tagged (git annotated tag with 'git tag
 -a') shipped as a tarball.
 
@@ -137,21 +137,6 @@ local task branch like this -
         sh$ git branch bug-XYZ && git checkout bug-XYZ
         ... <hack, commit>
 
-If you are backporting a fix to a release branch, or making a new change
-to a release branch, your commands would be slightly different. If you
-are checking out a release branch in your local working tree for the
-first time, make sure to set it up as a remote tracking branch like this
--
-
-        sh$ git checkout -b release-3.2 origin/release-3.2
-
-The above step is not necessary to be repeated. In the future if you
-want to work to the release branch -
-
-        sh$ git checkout release-3.2
-        sh$ git branch bug-XYZ-release-3.2 && git checkout bug-XYZ-release-3.2
-        ... <cherry-pick, hack, commit>
-
 Building
 --------
 
@@ -159,16 +144,6 @@ Building
 
 **For details about the required packages for the build environment
 refer : [Building GlusterFS](./Building-GlusterFS.md)**
-
-Ubuntu:
-
-To setup the build environment on an Ubuntu system, type the following
-command to install the required packages:
-
-        sudo apt-get -y install python-pyxattr libreadline-dev systemtap-sdt-dev
-        tar python-pastedeploy python-simplejson python-sphinx python-webob libssl-dev
-        pkg-config python-dev python-eventlet python-netifaces libaio-dev libibverbs-dev
-        libtool libxml2-dev liblvm2-dev make autoconf automake bison dos2unix flex libfuse-dev
 
 ### Creating build environment
 
@@ -184,30 +159,12 @@ generate the build configuration:
 
  sh$ make install
 
-#### GlusterFS UFO/SWIFT
-
-To build and run Gluster UFO you can do the following:
-
-1.  Configure UFO/SWIFT as described in [Howto Using UFO SWIFT - A quick
-    and dirty setup
-    guide](http://www.gluster.org/2012/09/howto-using-ufo-swift-a-quick-and-dirty-setup-guide)
-
 Commit policy
 -------------
 
 For a Gerrit based work flow, each commit should be an independent,
 buildable and testable change. Typically you would have a local branch
 per task, and most of the times that branch will have one commit.
-
-If you have a second task at hand which depends on the changes of the
-first one, then technically you can have it as a separate commit on top
-of the first commit. But it is important that the first commit should be
-a testable change by itself (if not, it is an indication that the two
-commits are essentially part of a single change). Gerrit accommodates
-these situations by marking Change 1 as a "dependency" of Change 2
-(there is a 'Dependencies' tab in the Change page in Gerrit)
-automatically when you push the changes for review from the same local
-branch.
 
 You will need to sign-off your commit (git commit -s) before sending the
 patch for review. By signing off your patch, you agree to the terms
@@ -223,32 +180,22 @@ the following format
 -   Description of the code changes
 -   Reason for doing it this way (compared to others)
 -   Description of test cases
+-   A reference ID
 
 ### Test cases
 
 Part of the workflow is to aggregate and execute pre-commit test cases
 which accompany patches, cumulatively for every new patch. This
 guarantees that tests which are working till the present are not broken
-with the new patch. Every change submitted to Gerrit much include test
-cases in
-
-        tests/group/script.t
-
-as part of the patch. This is so that code changes and accompanying test
-cases are reviewed together. All new commits now come under the
-following categories w.r.t test cases:
+with the new patch. This is so that code changes and accompanying test
+cases are reviewed together.
 
 For any new feature that is posted for review, there should be
 accompanying set of tests in
-[distaf](https://github.com/gluster/distaf/blob/master/README.md). These
+[glusto-tests](https://github.com/gluster/glusto-tests). These
 tests will be run nightly and/or before release to determine the health
-of the feature. Please read the
-[HOWTO](https://github.com/gluster/distaf/blob/master/docs/HOWTO.md) for
-more information on how to write and execute the tests in distaf.
-
-#### New 'group' directory and/or 'script.t'
-
-This is typically when code is adding a new module and/or feature
+of the feature. Please go through glusto-tests project to understand
+more information on how to write and execute the tests in glusto.
 
 #### Extend/Modify old test cases in existing scripts
 
@@ -300,23 +247,26 @@ This script does the following:
 On a successful push, you will see a URL pointing to the change in
 review.gluster.org
 
-Auto verification
------------------
+Verification
+------------
 
 The integration between Jenkins and Gerrit triggers an event in Jenkins
 on every push of changes, to pick up the change and run build and smoke
 test on it.
 
 If the build and smoke tests execute successfully, Jenkins marks the
-change as '+0 Verified'. If they fail, '-1 Verified' is marked on the
+change as '+0 Smoke'. If they fail, '-1 Smoke' is marked on the
 change. This means passing the automated smoke test is a necessary
 condition but not sufficient.
+
+Currently marking 'Verified' flag is manual, and should be done once
+the 'smoke' tests pass. Once this flag is set, the elaborate regression tests will start running.
 
 It is important to note that Jenkins verification is only a generic
 verification of high level tests. More concentrated testing effort for
 the patch is necessary with manual verification.
 
-If auto verification fails, it is a good reason to skip code review till
+If regression fails, it is a good reason to skip code review till
 a fixed change is pushed later. You can click on the build URL
 automatically put as a comment to inspect the reason for auto
 verification failure. In the Jenkins job page, you can click on the
@@ -385,6 +335,11 @@ in the review/resubmit cycle. Instead it is triggered by the
 maintainers, after code review. Passing the regression test is a
 necessary condition for merge along with code review points.
 
+To run all regession tests locally, run below script from glusterfs root directory.
+
+  sh$ ./run-tests.sh
+
+
 Submission Qualifiers
 ---------------------
 
@@ -393,6 +348,9 @@ by the Gerrit system. They are - A change should have at least one '+2
 Reviewed', and a change should have at least one '+1 Verified'
 (regression test). The project maintainer will merge the changes once a
 patch meets these qualifiers.
+
+NOTE: The regression tests gets triggered only after marking Verified
+as +1 to your patch, which later votes for 'Regression' field.
 
 Submission Disqualifiers
 ------------------------
