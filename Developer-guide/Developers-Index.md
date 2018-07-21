@@ -38,8 +38,6 @@ Developing
     analysis](./Fixing-issues-reported-by-tools-for-static-code-analysis.md)
     - This is a good starting point for developers to fix bugs in
     GlusterFS project.
--   [EasyFix Bugs](./Easy-Fix-Bugs.md) - Easy to fix bugs of
-    GlusterFS. One of the best place to start contributing to GlusterFS.
 
 Releases and Backports
 ----------------------

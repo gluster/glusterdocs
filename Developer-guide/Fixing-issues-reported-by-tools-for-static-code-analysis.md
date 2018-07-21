@@ -19,12 +19,8 @@ program.
 -   Once admins for the GlusterFS Coverity scan approve your request,
     you will be able to see the defects raised by Coverity.
 -   [BZ 789278](https://bugzilla.redhat.com/show_bug.cgi?id=789278)
-    should be used as a umbrella bug for Coverity issues in master
+    can be used as a umbrella bug for Coverity issues in master
     branch unless you are trying to fix a specific bug in Bugzilla.
-    -   While sending patches for fixing Coverity issues please use the
-        same bug number.
-    -   For 3.6 branch the Coverity tracking bug is
-        [1122834](https://bugzilla.redhat.com/show_bug.cgi?id=1122834)
 -   When you decide to work on some issue, please assign it to your name
     in the same Coverity website. So that we don't step on each others
     work.
@@ -42,7 +38,7 @@ Cppcheck is available in Fedora and EL's EPEL repo
 
 -   Install Cppcheck
 
-        yum install cppcheck
+        dnf install cppcheck
 
 -   Clone GlusterFS code
 
@@ -52,9 +48,6 @@ Cppcheck is available in Fedora and EL's EPEL repo
 
         cppcheck glusterfs/ 2>cppcheck.log
 
--   [BZ 1091677](https://bugzilla.redhat.com/show_bug.cgi?id=1091677)
-    should be used for submitting patches to master branch for Cppcheck
-    reported issues.
 
 ### Daily Runs
 
