@@ -152,11 +152,15 @@ To submit your change for review, run the rfc.sh script,
 		$ ./rfc.sh
 
 The script will ask you to enter a bugzilla bug id. Every change
-submitted to GlusterFS needs a bugzilla entry to be accepted. If you do
-not already have a bug id, file a new bug at [Red Hat
+submitted to GlusterFS needs a reference ID to be accepted. If you do
+not already have a reference id, file a new bug at [Red Hat
 Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS).
 If the patch is submitted for review, the rfc.sh script will return the
 gerrit url for the review request.
+
+Also note, all the feature development of GlusterFS is tracked using
+[github issues](https://github.com/gluster/glusterfs/issues). Github
+Issue number can also serve as a reference ID while submitting the patch.
 
 More details on the rfc.sh script are available at
 [Development Work Flow - rfc.sh](./Development-Workflow.md#rfc.sh).
