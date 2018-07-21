@@ -1,28 +1,44 @@
 This page contains a list of project ideas which will be suitable for
 students (for GSOC, internship etc.)
 
+Projects/Features which needs contributors
+------------------------------------------
+
+### glusterd2
+
+Repo: https://github.com/gluster/glusterd2
+
+New management layer for glusterfs. Has native ReST API, and uses etcd to
+store the data, and hence would solve more common GlusterD scale issues seen today.
+
+### RIO
+
+Issue: https://github.com/gluster/glusterfs/issues/243
+
+This is a new distribution logic, which can scale Gluster to 1000s of nodes.
+
+### gluster-block
+
+Repo: https://github.com/gluster/gluster-block
+
+The project tries to expose files in glusterfs as iSCSI block devices. A very good
+way to get the transaction workload work on GlusterFS.
+
+### GlusterFS UFO/SWIFT
+
+To build and run Gluster UFO you can do the following:
+
+1.  Configure UFO/SWIFT as described in [Howto Using UFO SWIFT - A quick
+    and dirty setup
+    guide](https://github.com/gluster/gluster-swift/blob/master/doc/markdown/quick_start_guide.md)
+
+
 Projects with mentors
 ---------------------
 
 ### gfsck - A GlusterFS filesystem check
 
 -   A tool to check filesystem integrity and repairing
--   I'm currently working on it
--   Owner: Xavier Hernandez (Datalab)
-
-### Sub-directory mount support for native GlusterFS mounts
-
-Allow clients to directly mount directories inside a GlusterFS volume,
-like how NFS clients can mount directories inside an NFS export.
-
-Mentor: Kaushal <kshlmster at gmail dot com>
-
-### GlusterD services high availablity
-
-GlusterD should restart the processes it manages, bricks, nfs server,
-self-heal daemon and quota daemon, whenever it detects they have died.
-
-Mentor : Atin Mukherjee <atin.mukherjee83@gmail.com>
 
 ### Language bindings for libgfapi
 
@@ -62,21 +78,13 @@ be a special rebalance process.
 
 Improve rebalance performance.
 
-### Meta translator
-
-The meta xlator provides a /proc like interface to GlusterFS xlators.
-This could be improved upon and the meta xlator could be made a standard
-part of the volume graph.
-
-### Geo-replication using rest-api
-
-Might be suitable for geo replication over WAN.
-
 ### Quota using underlying FS' quota
 
 GlusterFS quota is currently maintained completely in GlusterFSs
 namespace using xattrs. We could make use of the quota capabilities of
 the underlying fs (XFS) for better performance.
+
+Check [#184](https://github.com/gluster/glusterfs/184)
 
 ### Snapshot pluggability
 
