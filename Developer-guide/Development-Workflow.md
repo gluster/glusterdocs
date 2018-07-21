@@ -170,11 +170,6 @@ command to install the required packages:
         pkg-config python-dev python-eventlet python-netifaces libaio-dev libibverbs-dev
         libtool libxml2-dev liblvm2-dev make autoconf automake bison dos2unix flex libfuse-dev
 
-CentOS/RHEL/Fedora:
-
-On Fedora systems, install the required packages by following the
-instructions in [CompilingRPMS](./Compiling-RPMS.md).
-
 ### Creating build environment
 
 Once the required packages are installed for your appropiate system,
@@ -187,26 +182,13 @@ generate the build configuration:
 
 #### GlusterFS
 
-Ubuntu:
-
-Type the following to build and install GlusterFS on the system:
-
-        sh$ make
-        sh$ make install
-
-CentOS/RHEL/Fedora:
-
-In an rpm based system, there are two methods to build GlusterFS. One is
-to use the method describe above for *Ubuntu*. The other is to build and
-install RPMS as described in [CompilingRPMS](./Compiling-RPMS.md).
+ sh$ make install
 
 #### GlusterFS UFO/SWIFT
 
 To build and run Gluster UFO you can do the following:
 
-1.  Build, create, and install the RPMS as described in
-    [CompilingRPMS](./Compiling-RPMS.md).
-2.  Configure UFO/SWIFT as described in [Howto Using UFO SWIFT - A quick
+1.  Configure UFO/SWIFT as described in [Howto Using UFO SWIFT - A quick
     and dirty setup
     guide](http://www.gluster.org/2012/09/howto-using-ufo-swift-a-quick-and-dirty-setup-guide)
 

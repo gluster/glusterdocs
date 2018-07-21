@@ -31,7 +31,7 @@ The following packages are required for building GlusterFS,
 The following dnf command installs all the build requirements for
 Fedora,
 
-		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config
+		# dnf install automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel redhat-rpm-config rpcgen libtirpc-devel make
 
 ### Ubuntu
 
@@ -169,6 +169,3 @@ steps to build RPMs,
 This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
 mock)*
-
-A more detailed description for building RPMs can be found at
-[CompilingRPMS](./Compiling-RPMS.md).

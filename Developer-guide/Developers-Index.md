@@ -24,8 +24,6 @@ Workflow
 Compiling Gluster
 -----------------
 
--   [Compiling RPMS](./Compiling-RPMS.md) - Step by step
-    instructions for compiling Gluster RPMS
 -   [Building GlusterFS](./Building-GlusterFS.md) - How to compile
     Gluster from source code.
 
