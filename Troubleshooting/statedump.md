@@ -46,7 +46,10 @@ For the NFS server:
 For quotad:
 
                 gluster volume statedump <volname> quotad
+                
+For gfapi clients: (like nfs-ganesha/samba)
 
+                gluster volume statedump <volname> client localhost:<process-id>
 
 The statedumps will be created in `statedump-directory` on each node. The statedumps for brick processes will be created with the filename `hyphenated-brick-path.<pid>.dump.timestamp` while for all other processes it will be `glusterdump.<pid>.dump.timestamp`.
 
