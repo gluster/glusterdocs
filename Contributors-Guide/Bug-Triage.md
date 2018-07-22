@@ -40,13 +40,6 @@ more experienced and will rely less on developers.
 
 The detailed discussion about the above points are below.
 
-Weekly meeting about Bug Triaging
----------------------------------
-
-We try to meet every week in `#gluster-meeting` on Freenode. The meeting
-date and time for the next meeting is normally updated in the
-[agenda](https://public.pad.fsfe.org/p/gluster-bug-triage).
-
 Getting Started: Find reports to triage
 ---------------------------------------
 
@@ -74,6 +67,9 @@ modified):
 In addition to manually checking Bugzilla for bugs to triage, it is also
 possible to receive emails when new
 bugs are filed or existing bugs get updated.
+
+Plus weekly basis(Monday) there will be mail about new untriaged bugs
+sent to gluster-devel list
 
 If at any point you feel like you do not know what to do with a certain
 report, please first ask [irc or mailing
