@@ -213,4 +213,8 @@ accessing or mounting a Samba share.
 ##NFS and ACLs
 
 Currently GlusterFS supports POSIX ACL configuration through NFS mount,
-i.e. setfacl and getfacl commands work through NFS mount.
+i.e. setfacl and getfacl commands work through NFS mount. By default for
+gNFS ACLs are enabled, it can be turned off from client side using *noacl*. 
+
+
+NFS-Ganesha supports only nfsv4 ACLS.
