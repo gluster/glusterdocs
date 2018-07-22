@@ -48,6 +48,7 @@ Logs Information:
 -   Provide possible issues, warnings, errors as a comment to the bug
     -   Look for issues/warnings/errors in self-heal logs, rebalance logs, glusterd logs, brick logs, mount logs/nfs logs/smb logs
     -   Add the entire logs as attachment, if it is very large to paste as a comment
+- If possible, please mention about the system time when the issue has happened and cross check the log with that time frame
 
 Additional info:
 
