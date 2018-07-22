@@ -16,9 +16,8 @@ Workflow
 -   [Simplified Developer Workflow](./Simplified-Development-Workflow.md)
     - A simpler and faster intro to developing with GlusterFS, than the
     doc below.
--   [Developer Workflow](./Development-Workflow.md) - this tells
-    you about our patch requirements, tools we use, and more. Required
-    reading if you want to contribute code.
+-   [Developer Workflow](./Development-Workflow.md) - covers detail about requirements from a patch; tools and toolkits used by developers. This is recommended reading in order to begin contributions to the project.
+-   [GD2 Developer Workflow](https://github.com/gluster/glusterd2/blob/master/doc/development-guide.md) - Helps in on-boarding developers to contribute in GlusterD2 project.
 
 Compiling Gluster
 -----------------
