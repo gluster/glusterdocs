@@ -68,6 +68,7 @@ The volume commands are used to setup and manage Gluster volumes.
 | volume replace-brick | volume replace-brick _volname_ _old-brick_ _new-brick_| Replace _old-brick_ of _volname_ with _new-brick_ |
 | volume delete        | volume delete _volname_    | Delete _volname_ |
 
+For additional detail of all the available CLI commands, please refer to `man gluster` output.
 
 
 
