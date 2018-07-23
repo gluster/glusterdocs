@@ -68,8 +68,7 @@ In addition to manually checking Bugzilla for bugs to triage, it is also
 possible to receive emails when new
 bugs are filed or existing bugs get updated.
 
-Plus weekly basis(Monday) there will be mail about new untriaged bugs
-sent to gluster-devel list
+Each week, on the Monday, an email is sent to gluster-devel about new bugs which are yet to be triaged.
 
 If at any point you feel like you do not know what to do with a certain
 report, please first ask [irc or mailing
