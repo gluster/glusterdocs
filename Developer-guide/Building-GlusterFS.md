@@ -114,6 +114,10 @@ Further configuration flags can be found by running configure with a
 '--help' flag,
 
 		$ ./configure --help
+		
+Please note to enable gNFS use the following flag
+
+		$ ./configure --enable-gnfs
 
 ### Building
 
