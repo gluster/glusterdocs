@@ -28,6 +28,7 @@ mirrors.
 A good introduction to Git can be found at
 <http://www-cs-students.stanford.edu/~blynn/gitmagic/>.
 
+
 ### Gerrit
 
 Gerrit is an excellent code review system which is developed with a git
@@ -306,13 +307,13 @@ This script does the following:
 -   Rebase your commit against the latest upstream HEAD. This rebase
     also causes your commits to undergo massaging from the just
     downloaded commit-msg hook.
--   Prompt for a Bug Id for each commit (if it was not already provded)
-    and include it as a "BUG:" tag in the commit log. You can just hit
+-   Prompt for a Reference Id for each commit (if it was not already provded)
+    and include it as a "fixes: #n" tag in the commit log. You can just hit
     <enter> at this prompt if your submission is purely for review
     purposes.
 -   Push the changes to review.gluster.org for review. If you had
-    provided a bug id, it assigns the topic of the change as "bug-XYZ".
-    If not it sets the topic as "rfc".
+    provided a reference id, it assigns the topic of the change as
+    "ref-XYZ". If not it sets the topic as "rfc".
 
 On a successful push, you will see a URL pointing to the change in
 review.gluster.org
