@@ -19,7 +19,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Buster/10(Sid)|     X³    |     X     |
 |              |              |           |           |
 |Ubuntu Launchpad[3]|Xenial/16.04  |     X³    |     X     |
-|              |Artful/17.10  |     X³    |     X     |
 |              |Bionic/18.04  |     X³    |     X     |
 |              |Cosmic/18.10  |     X³    |     —     |
 |              |              |           |           |
@@ -46,9 +45,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Stretch/9     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10(Sid)|    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
-|Ubuntu Launchpad[3]|Trusty/14.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
-|              |Xenial/16.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
-|              |Artful/17.10  |    —    |     —    |     X      |      X      |     X    |   ?   |
+|Ubuntu Launchpad[3]|Xenial/16.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Bionic/18.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Cosmic/18.10  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
