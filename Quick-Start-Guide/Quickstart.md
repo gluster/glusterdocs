@@ -3,9 +3,9 @@ Installing GlusterFS - a Quick Start Guide
 
 #### Purpose of this document
 
-This document is intended to give you a step by step guide to setting up
-GlusterFS for the first time. For this tutorial, we will assume you are
-using Fedora 26 (or later) virtual machines.
+This document is intended to provide a step-by-step guide to setting up
+GlusterFS for the first time. For the purposes of this guide, it is
+required to use Fedora 26 (or, higher) virtual machine instances.
 
 After you deploy GlusterFS by following these steps,
 we recommend that you read the GlusterFS Admin Guide to learn how to
@@ -21,14 +21,13 @@ guide.
 
 #### Using Ansible to deploy and manage GlusterFS
 
-If you are already an ansible user, and are more comfortable with setting
+If you are already an Ansible user, and are more comfortable with setting
 up distributed systems with Ansible, we recommend you to skip all these and
 move over to [gluster-ansible](https://github.com/gluster/gluster-ansible) repository, which gives most of the details to get the systems running faster.
 
 #### Automatically deploying GlusterFS with Puppet-Gluster+Vagrant
 
-If you'd like to deploy GlusterFS automatically using
-Puppet-Gluster+Vagrant, have a look at [this
+To deploy GlusterFS using scripted methods, please read [this
 article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterfs-with-puppet-gluster-vagrant/).
 
 
@@ -40,14 +39,16 @@ article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterf
     used to serve GlusterFS storage (sdb), on each of these VMs. This will
     emulate a real-world deployment, where you would want to separate
     GlusterFS storage from the OS install.
+-   Setup NTP on each of these servers to get the proper functioning of
+    many applications on top of filesystem.
+
 
 **Note**: GlusterFS stores its dynamically generated configuration files
     at `/var/lib/glusterd`. If at any point in time GlusterFS is unable to
     write to these files (for example, when the backing filesystem is full),
     it will at minimum cause erratic behavior for your system; or worse,
-    take your system offline completely. It is advisable to create separate
-    partitions for directories such as `/var/log` to ensure this does not
-    happen.
+    take your system offline completely. It is recommended to create separate
+    partitions for directories such as `/var/log` to reduce the chances of this happening.
 
 
 ### Step 2 - Format and mount the bricks
@@ -56,7 +57,7 @@ Perform this step on all the nodes, "server{1,2,3}"
 
 **Note**: We are going to use the XFS filesystem for the backend bricks. But Gluster is designed to work on top of any filesystem, which supports extended attributes.
 
-These examples are going to assume the brick is going to reside on /dev/sdb1.
+The following examples assume that the brick will be residing on /dev/sdb1.
 
 		mkfs.xfs -i size=512 /dev/sdb1
 		mkdir -p /data/brick1
@@ -165,8 +166,10 @@ You should see something like this (the Volume ID will differ):
                 transport.address-family: inet
 
 
-Note: If the volume is not started, clues as to what went wrong will be
-in log files under `/var/log/glusterfs/glusterd.log` on one or all of the servers.
+Note: If the volume does not show "Started", the files under
+`/var/log/glusterfs/glusterd.log` should be checked in order to debug and
+diagnose the situation. These logs can be looked at on one or, all the
+servers configured.
 
 
 ### Step 7 - Testing the GlusterFS volume
