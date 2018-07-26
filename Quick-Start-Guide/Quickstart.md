@@ -25,6 +25,15 @@ If you are already an Ansible user, and are more comfortable with setting
 up distributed systems with Ansible, we recommend you to skip all these and
 move over to [gluster-ansible](https://github.com/gluster/gluster-ansible) repository, which gives most of the details to get the systems running faster.
 
+#### Deploying GlusterFS with GlusterD2, the next gen management interface of Gluster
+
+While [GlusterD2](https://github.com/gluster/glusterd2) project continues to be
+under active development, contributors can start by setting up the cluster to
+understand the aspect of peer and volume management.Please refer to GD2 quick
+start guide [here](https://github.com/gluster/glusterd2/blob/master/doc/quick-start-user-guide.md).
+Feedback on the new CLI and the ReST APIs are welcome at
+gluster-users@gluster.org & gluster-devel@gluster.org.
+
 #### Automatically deploying GlusterFS with Puppet-Gluster+Vagrant
 
 To deploy GlusterFS using scripted methods, please read [this
