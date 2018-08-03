@@ -6,42 +6,40 @@ Developers
 
 Are you itching to send in patches and participate as a developer in the
 Gluster community? Here are a number of starting points for getting
-involved. We don't require a signed contributor license agreement or
-copyright assignment, but we do require a "signed-off-by" line on each
-code check-in.
+involved. All you need is your 'github' account to be handy.
+
+Remember that, [Gluster community](https://github.com/gluster) has multiple projects, each of which has its own way of handling PRs and patches. Decide on which project you want to contribute. Below document is mostly concerned about 'GlusterFS' project, which is the core of Gluster Community.
 
 Workflow
 --------
 
 -   [Simplified Developer Workflow](./Simplified-Development-Workflow.md)
-    - A simpler and faster intro to developing with GlusterFS, than the
-    doc below.
--   [Developer Workflow](./Development-Workflow.md) - covers detail about requirements from a patch; tools and toolkits used by developers. This is recommended reading in order to begin contributions to the project.
--   [GD2 Developer Workflow](https://github.com/gluster/glusterd2/blob/master/doc/development-guide.md) - Helps in on-boarding developers to contribute in GlusterD2 project.
+    - A simpler and faster intro to developing with GlusterFS, than the document below
+-   [Developer Workflow](./Development-Workflow.md)
+    - Covers detail about requirements from a patch; tools and toolkits used by developers.
+    This is recommended reading in order to begin contributions to the project.
+-   [GD2 Developer Workflow](https://github.com/gluster/glusterd2/blob/master/doc/development-guide.md)
+    - Helps in on-boarding developers to contribute in GlusterD2 project.
 
 Compiling Gluster
 -----------------
 
--   [Compiling RPMS](./Compiling-RPMS.md) - Step by step
-    instructions for compiling Gluster RPMS
 -   [Building GlusterFS](./Building-GlusterFS.md) - How to compile
-    Gluster from source code. Including instructions for Ubuntu.
+    Gluster from source code.
 
 Developing
 ----------
 
 -   [Projects](./Projects.md) - Ideas for projects you could
     create
--   [EasyFix Bugs](./Easy-Fix-Bugs.md) - Easy to fix bugs of
-    GlusterFS. One of the best place to start contributing to GlusterFS.
 -   [Fixing issues reported by tools for static code
     analysis](./Fixing-issues-reported-by-tools-for-static-code-analysis.md)
     - This is a good starting point for developers to fix bugs in
     GlusterFS project.
--   [Backport Wishlist](./Backport-Wishlist.md) - Problems fixed
-    in the master branch might need to get fixed in stable release
-    branches too.
--   [Backport Guidelines](./Backport-Guidelines.md) describe the steps that
-    branches too.
 
-Other Gluster Developer documentation can be found [here](https://github.com/gluster/glusterfs/tree/master/doc/developer-guide)
+Releases and Backports
+----------------------
+
+-   [Backport Guidelines](./Backport-Guidelines.md) describe the steps that branches too.
+
+Some more GlusterFS Developer documentation can be found [in glusterfs documentation directory](https://github.com/gluster/glusterfs/tree/master/doc/developer-guide)
