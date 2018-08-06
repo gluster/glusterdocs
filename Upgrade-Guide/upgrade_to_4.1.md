@@ -11,6 +11,9 @@
 - It is recommended to have the same client and server, major versions running eventually
 
 ### Online upgrade procedure for servers
+
+Online upgrade is only possible with replicated and distributed replicate volumes
+
 This procedure involves upgrading **one server at a time**, while keeping the volume(s) online and client IO ongoing. This procedure assumes that multiple replicas of a replica set, are not part of the same server in the trusted storage pool.
 
 > **ALERT**: If any of your volumes, in the trusted storage pool that is being upgraded, uses disperse or is a pure distributed volume, this procedure is **NOT** recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
@@ -87,7 +90,7 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 7. Restart any gfapi based application stopped previously in step (2)
 
 ### Post upgrade steps
-Perform the following steps post upgrading the entire trusted storage pool,
+Complete the following steps post upgrading the entire trusted storage pool,
 
 - It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op_version.md) section for further details
 - Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to 4.1 version as well
