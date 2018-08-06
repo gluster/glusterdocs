@@ -177,6 +177,8 @@ nav:
 - Glossary: ./glossary.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
-theme: readthedocs
+theme:
+  name: readthedocs
+  custom_dir: glustertheme
 extra_javascript:
 - js/fix-docs.js
