@@ -65,10 +65,7 @@ Other notes:
     disk (not recommended), make sure to carve out a free partition or
     two to be used by Gluster later, so that you can format or reformat
     at will during your testing.
--   Firewalls are great, except when they aren’t. For storage servers,
-    being able to operate in a trusted environment without firewalls can
-    mean huge gains in performance, and is recommended. In case you absolutely
-    need to set up a firewall, have a look at
+-  Deployments will have their specific standard operating procedures about firewalls. To be able to set up a firewall have a look at
     [Setting up clients](../Administrator Guide/Setting Up Clients.md) for
     information on the ports used.
 
