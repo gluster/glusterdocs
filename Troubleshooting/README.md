@@ -1,7 +1,9 @@
 Troubleshooting Guide
 ---------------------
-This guide describes some commonly seen issues and steps to recover from them.
-If that doesn’t help, reach out to the [Gluster community](https://www.gluster.org/community/), in which case the guide also describes what information needs to be provided in order to debug the issue. At minimum, we need the version of gluster running and the output of `gluster volume info`.
+
+This guide is intended to help the user understand and troubleshoot issues with a Gluster deployment. This document is being extended. If the topic/error is not found, please reach out to the [Gluster community](https://www.gluster.org/community/). 
+
+The guide includes the aspects of information which are required to be provided in order to help debug the issue. If the initial conversation contains the version of gluster running and the output of `gluster volume info` that helps us get started.
 
 
 ### Where Do I Start?
