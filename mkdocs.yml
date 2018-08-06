@@ -3,9 +3,9 @@ site_url: http://docs.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
 repo_url: https://github.com/gluster/glusterdocs/
-docs_dir: .
+docs_dir: docs
 
-pages:
+nav:
 - Home: index.md
 - Getting started with GlusterFS:
   - Introduction: Administrator Guide/GlusterFS Introduction.md
@@ -178,6 +178,5 @@ pages:
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme: readthedocs
-theme_dir: glustertheme
 extra_javascript:
 - js/fix-docs.js

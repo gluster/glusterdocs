@@ -74,7 +74,7 @@ For component maintainers and developers looking for a bug to start working on:
 Bugs that can get tested
 * ...
 
-Feel free to add more feeds to this page yourself, request them via [gluster-devel](gluster-devel@gluster.org) or [Github issue tracker](https://github.com/gluster/glusterdocs/issues).
+Feel free to add more feeds to this page yourself, request them via [gluster-devel](mailto:gluster-devel@gluster.org) or [Github issue tracker](https://github.com/gluster/glusterdocs/issues).
 
 
 
