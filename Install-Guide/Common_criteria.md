@@ -1,12 +1,10 @@
 ### Getting Started
 
-This tutorial will cover different options for getting a Gluster
-cluster up and running. Here is a rundown of the steps we need to do.
+This document will allow the user to get a Gluster cluster up and running. There are a small number of steps, to be undertaken in sequence, which enable one to achieve that outcome.
 
-To start, we will go over some common things you will need to know for
-setting up Gluster.
+Before getting started, it is important to go over some of the key concepts one will need to be aware of.
 
-Next, choose the method you want to use to set up your first cluster:
+Next, select the target deployment environment for the Gluster cluster:
 
 -  Within a virtual machine
 -  To bare metal servers
@@ -18,14 +16,13 @@ them.
 #### Common Setup Criteria
 
 No matter where you will be installing Gluster, it helps to understand a
-few key concepts on what the moving parts are.
+few key concepts.
 
-First, it is important to understand that GlusterFS isn’t really a
-filesystem in and of itself. It concatenates existing filesystems into
+GlusterFS concatenates existing filesystems into
 one (or more) big chunks so that data being written into or read out of
 Gluster gets distributed across multiple hosts simultaneously. This
 means that you can use space from any host that you have available.
-Typically, XFS is recommended but it can be used with other filesystems
+Typically, XFS is recommended (and is the one with which GlusterFS is extensively tested) but it can be used with other filesystems
 as well. Most commonly EXT4 is used when XFS isn’t, but you can (and
 many, many people do) use another filesystem that suits you. Now that we
 understand that, we can define a few of the common terms used in
