@@ -1,11 +1,11 @@
 #POSIX Access Control Lists
 
 POSIX Access Control Lists (ACLs) allows you to assign different
-permissions for different users or groups even though they do not
+permissions for different users or groups even when they do not
 correspond to the original owner or the owning group.
 
-For example: User john creates a file but does not want to allow anyone
-to do anything with this file, except another user, antony (even though
+For example: User John creates a file but does not want to allow anyone
+to do anything with this file, except another user, Antony (even though
 there are other users that belong to the group john).
 
 This means, in addition to the file owner, the file group, and others,
