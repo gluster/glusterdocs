@@ -1,34 +1,11 @@
 Linux kernel tuning for GlusterFS
 ---------------------------------
 
-Every now and then, questions come up here internally and with many
-enthusiasts on what Gluster has to say about kernel tuning, if anything.
+The Gluster community mailing lists often have questions from users/administrators about how tunables in the Linux kernel can have an impact on the end user experience of Gluster.
 
-The rarity of kernel tuning is on account of the Linux kernel doing a
-pretty good job on most workloads. But there is a flip side to this
-design. The Linux kernel historically has eagerly eaten up a lot of RAM,
-provided there is some, or driven towards caching as the primary way to
-improve performance.
+The latest releases of the Linux kernel does takes a very pragmatic approach towards memory management across a range of workloads. For more detail on the virtual memory (VM) sub-system, please refer to documentation (here)[https://www.kernel.org/doc/Documentation/sysctl/vm.txt]
 
-For most cases, this is fine, but as the amount of workload increases
-over time and clustered load is thrown upon the servers, this turns out
-to be troublesome, leading to catastrophic failures of jobs etc.
-
-Having had a fair bit of experience looking at large memory systems with
-heavily loaded regressions, be it CAD, EDA or similar tools, we've
-sometimes encountered stability problems with Gluster. We had to
-carefully analyse the memory footprint and amount of disk wait times
-over days. This gave us a rather remarkable story of disk trashing, huge
-iowaits, kernel oops, disk hangs etc.
-
-This article is the result of my many experiences with tuning options
-which were performed on many sites. The tuning not only helped with
-overall responsiveness, but it dramatically stabilized the cluster
-overall.
-
-When it comes to memory tuning the journey starts with the 'VM'
-subsystem which has a bizarre number of options, which can cause a lot
-of confusion.
+To be able to recommend specific sets of values for the tunables, it is important to consider the entire aspect of the application workload as well as patterns. Below are a small set of options that are relevant and important in context of Gluster.
 
 ### vm.swappiness
 
@@ -69,9 +46,7 @@ to prefer to reclaim dentries and inodes.
 With GlusterFS, many users with a lot of storage and many small files
 easily end up using a lot of RAM on the server side due to
 'inode/dentry' caching, leading to decreased performance when the kernel
-keeps crawling through data-structures on a 40GB RAM system. Changing
-this value higher than 100 has helped many users to achieve fair caching
-and more responsiveness from the kernel.
+keeps crawling through data-structures on a 40GB RAM system. Discussions about changing this value to something higher than 100 have been there on the (mailing list)[https://lists.gluster.org/pipermail/gluster-devel/2017-September/053628.html] but further citations are required to be able to go ahead and make a recommendation.
 
 ### vm.dirty\_background\_ratio
 
