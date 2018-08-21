@@ -13,7 +13,7 @@
 ### Online upgrade procedure for servers
 This procedure involves upgrading **one server at a time**, while keeping the volume(s) online and client IO ongoing. This procedure assumes that multiple replicas of a replica set, are not part of the same server in the trusted storage pool.
 
-> **ALERT:** If any of your volumes, in the trusted storage pool that is being upgraded, uses disperse or is a pure distributed volume, this procedure is **NOT** recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
+> **ALERT:** If there are disperse or, pure distributed volumes in the storage pool being upgraded, this procedure is NOT recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
 
 #### Repeat the following steps, on each server in the trusted storage pool, to upgrade the entire pool to 3.12 version:
 1. Stop all gluster services, either using the command below, or through other means,
