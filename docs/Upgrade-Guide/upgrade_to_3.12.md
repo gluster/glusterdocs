@@ -1,6 +1,6 @@
 ## Upgrade procedure to Gluster 3.12, from Gluster 3.11.x, 3.10.x, and 3.8.x
 
-**NOTE:** Upgrade procedure remains the same as with 3.11 and 3.10 releases
+> **NOTE:** Upgrade procedure remains the same as with 3.11 and 3.10 releases
 
 ### Pre-upgrade notes
 - Online upgrade is only possible with replicated and distributed replicate volumes
@@ -13,12 +13,13 @@
 ### Online upgrade procedure for servers
 This procedure involves upgrading **one server at a time**, while keeping the volume(s) online and client IO ongoing. This procedure assumes that multiple replicas of a replica set, are not part of the same server in the trusted storage pool.
 
-> **ALERT**: If any of your volumes, in the trusted storage pool that is being upgraded, uses disperse or is a pure distributed volume, this procedure is **NOT** recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
+> **ALERT:** If any of your volumes, in the trusted storage pool that is being upgraded, uses disperse or is a pure distributed volume, this procedure is **NOT** recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
 
 #### Repeat the following steps, on each server in the trusted storage pool, to upgrade the entire pool to 3.12 version:
 1. Stop all gluster services, either using the command below, or through other means,
 ```sh
     #killall glusterfs glusterfsd glusterd
+    #systemctl stop glustereventsd
 ```
 
 2. Stop all applications that run on this server and access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.)
@@ -30,7 +31,7 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
     #gluster --version
 ```
 
-**NOTE:** x is the minor release number for the release
+> **NOTE:** x is the minor release number for the release
 
 5. Start glusterd on the upgraded server
 ```sh
@@ -42,18 +43,23 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
     #gluster volume status
 ```
 
-7. Self-heal all gluster volumes by running
+7. Start glustereventsd service (if it was enabled before), either using the command below, or through other means,
+```sh
+    #systemctl start glustereventsd
+```
+
+8. Self-heal all gluster volumes by running
 ```sh
     #for i in `gluster volume list`; do gluster volume heal $i; done
 ```
 
-8. Ensure that there is no heal backlog by running the below command for all volumes
+9. Ensure that there is no heal backlog by running the below command for all volumes
 ```sh
     #gluster volume heal <volname> info
 ```
-> NOTE: If there is a heal backlog, wait till the backlog is empty, or the backlog does not have any entries needing a sync to the just upgraded server, before proceeding to upgrade the next server in the pool
+> **NOTE:** If there is a heal backlog, wait till the backlog is empty, or the backlog does not have any entries needing a sync to the just upgraded server, before proceeding to upgrade the next server in the pool
 
-9. Restart any gfapi based application stopped previously in step (2)
+10. Restart any gfapi based application stopped previously in step (2)
 
 ### Offline upgrade procedure
 This procedure involves cluster downtime and during the upgrade window, clients are not allowed access to the volumes.
@@ -62,7 +68,8 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 1. On every server in the trusted storage pool, stop all gluster services, either using the command below, or through other means,
 
 ```sh
-    #killall glusterfs glusterfsd glusterd
+    #killall glusterfs glusterfsd glusterd glustereventsd
+    #systemctl stop glustereventsd
 ```
 2. Stop all applications that access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.), across all servers
 
@@ -73,7 +80,7 @@ This procedure involves cluster downtime and during the upgrade window, clients 
     #gluster --version
 ```
 
-**NOTE:** x is the minor release number for the release
+> **NOTE:** x is the minor release number for the release
 
 5. Start glusterd on all the upgraded servers
 ```sh
@@ -84,7 +91,12 @@ This procedure involves cluster downtime and during the upgrade window, clients 
     #gluster volume status
 ```
 
-7. Restart any gfapi based application stopped previously in step (2)
+7. Start glustereventsd service (if it was enabled before), either using the command below, or through other means,
+```sh
+    #systemctl start glustereventsd
+```
+
+8. Restart any gfapi based application stopped previously in step (2)
 
 ### Post upgrade steps
 Perform the following steps post upgrading the entire trusted storage pool,
@@ -95,7 +107,7 @@ Perform the following steps post upgrading the entire trusted storage pool,
 ### Upgrade procedure for clients
 Following are the steps to upgrade clients to the 3.12.x version,
 
-**NOTE:** x is the minor release number for the release
+> **NOTE:** x is the minor release number for the release
 
 1. Unmount all glusterfs mount points on the client
 2. Stop all applications that access the volumes via gfapi (qemu, etc.)
