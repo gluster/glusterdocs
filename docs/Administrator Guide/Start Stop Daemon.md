@@ -33,7 +33,7 @@ This section describes how to start and stop glusterd manually
 This section describes how to configure the system to automatically
 start the glusterd service every time the system boots.
 
-###Red Hat and Fedora distros
+###Red Hat and Fedora distributions
 
 To configure Red Hat-based systems to automatically start the glusterd
 service every time the system boots, enter the following from the
@@ -49,7 +49,7 @@ command line:
 
 `# update-rc.d glusterd defaults`
 
-###Systems Other than Red Hat and Debain
+###Systems Other than Red Hat and Debian
 
 To configure systems other than Red Hat or Debian to automatically start
 the glusterd service every time the system boots, enter the following

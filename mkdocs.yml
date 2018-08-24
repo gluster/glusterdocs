@@ -3,9 +3,9 @@ site_url: http://docs.gluster.org
 site_description: Project documentation for Gluster Filesystem
 
 repo_url: https://github.com/gluster/glusterdocs/
-docs_dir: .
+docs_dir: docs
 
-pages:
+nav:
 - Home: index.md
 - Getting started with GlusterFS:
   - Introduction: Administrator Guide/GlusterFS Introduction.md
@@ -74,12 +74,10 @@ pages:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
   - Development-Workflow : Developer-guide/Development-Workflow.md
-  - Compiling RPMS from GIT Source : Developer-guide/Compiling-RPMS.md
   - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
   - Project Ideas : Developer-guide/Projects.md
   - EasyFix bugs : Developer-guide/Easy-Fix-Bugs.md
   - Fixing issues reported by tools for static code analysis : Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis.md
-  - Backport Wishlist : Developer-guide/Backport-Wishlist.md
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
@@ -109,6 +107,7 @@ pages:
   - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
 - Release Notes:
   - index: release-notes/index.md
+  - 4.1.2: release-notes/4.1.2.md
   - 4.1.1: release-notes/4.1.1.md
   - 4.1.0: release-notes/4.1.0.md
   - 4.0.2: release-notes/4.0.2.md
@@ -178,7 +177,8 @@ pages:
 - Glossary: ./glossary.md
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
-theme: readthedocs
-theme_dir: glustertheme
+theme:
+  name: readthedocs
+  custom_dir: glustertheme
 extra_javascript:
 - js/fix-docs.js
