@@ -119,6 +119,15 @@ Please note to enable gNFS use the following flag
 
 		$ ./configure --enable-gnfs
 
+If you are looking at contributing by fixing some of the memory issues,
+use `--enable-asan` option
+
+    $ ./configure --enable-asan
+
+The above option will build with `-fsanitize=address -fno-omit-frame-pointer`
+options and uses the libasan.so shared library, so that needs to be available.
+
+
 ### Building
 
 Once configured, GlusterFS can be built with a simple make command.
@@ -136,6 +145,12 @@ the appropriate option to configure. If installing into the default
 prefix, you might need to use 'sudo' or 'su -c' to install.
 
 		$ sudo make install
+
+NOTE: glusterfs can be installed on any target path. However, the
+`mount.glusterfs` script has to be in `/sbin/mount.glusterfs` for
+mounting via command `mount -t glusterfs` to work. See -t section
+in man 8 mount for more details.
+
 
 ### Running GlusterFS
 
