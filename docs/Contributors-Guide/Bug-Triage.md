@@ -56,8 +56,8 @@ modified):
 -   [New Replication(afr) bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=replicate&f1=keywords&list_id=2816133&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
 -   [New distribute(DHT) bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&component=distribute&f1=keywords&list_id=2816148&o1=nowords&product=GlusterFS&query_format=advanced&v1=Triaged)
 
--   [New bugs against version 3.7](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^3.7)
--   [New bugs against version 3.8](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^3.8)
+-   [New bugs against version 3.12](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^3.12)
+-   [New bugs against version 4.1](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&f2=version&o1=nowords&o2=regexp&v1=Triaged&v2=^4.1)
 -   [New bugs against mainline](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&product=GlusterFS&f1=keywords&o1=nowords&v1=Triaged&version=mainline) (development branch)
 
 -   [Untriaged NetBSD bugs](https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&keywords=Triaged&keywords_type=nowords&op_sys=NetBSD&product=GlusterFS)
@@ -272,12 +272,15 @@ During triaging you might come across a particular bug which is present
 across multiple version of GlusterFS. Here are the course of actions:
 
 -   We should have separate bugs for each release (We should
-    clone bugs if required)
--   Bugs in released versions should be depended on bug for mainline
-    (master branch) if the bug is applicable for mainline.
-    -   This will make sure that the fix would get merged in master
-        branch first then the fix can get ported to other stable
-        releases.
+    clone bugs if required), the bug needs to be fixed.
+
+-   Bug reported for any specific version neednot be cloned for
+    'mainline', as by default, as a policy, we need to submit the fix
+    for 'master' branch before backporting fix to specific branch.
+    Only when a bug needs to be fixed in multiple
+    ['maintained'](https://www.gluster.org/community/release-schedule/)
+    versions, then there is a clone requried. We hope the below examples
+    make the process clear for you.
 
 *Note: When a bug depends on other bugs, that means the bug cannot be
 fixed unless other bugs are fixed (depends on), or this bug stops other
@@ -285,18 +288,23 @@ bugs being fixed (blocks)*
 
 Here are some examples:
 
--   A bug is raised for GlusterFS 3.5 and the same issue is present in
-    mainline (master branch) and GlusterFS 3.6
-    -   Clone the original bug for mainline.
-    -   Clone another for 3.6.
-    -   And have the GlusterFS 3.6 bug and GlusterFS 3.5 bug 'depend on'
-        the 'mainline' bug
+-   A bug is raised for GlusterFS 4.1 (bz#ABCD) and the same issue is present in
+    mainline (master branch) and GlusterFS 5.0.
+    -   See if the bug is of severity 'Urgent'/'High', and only if yes,
+        clone it for 5.0 (bug#XYZA)
+    -   Set 'Depends on:' field in bug#XYZA to bz#ABCD.
+    -   No need to track the bug for master, as the bz#ABCD itself can be used
+        for the same.
 
 -   A bug is already present for mainline, and the same issue is seen in
-    GlusterFS 3.5.
-    -   Clone the original bug for GlusterFS 3.5.
-    -   And have the cloned bug (for 3.5) 'depend on' the 'mainline'
-        bug.
+    GlusterFS 5.0.
+    -   If it meets the [criteria for backporting](../Developer-guide/Backport-Guidelines.md),
+        clone the bug for 5.0.
+    -   Mark bug in mainline as 'Depends on:' in newly cloned bug.
+
+-   A bug is seen only in 'mainline', not seen in any released branch.
+    - No need to clone the bug to any release branch.
+
 
 ### Keywords
 
