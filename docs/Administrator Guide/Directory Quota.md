@@ -21,8 +21,8 @@ You can set the quota at the following levels:
 -   **Volume level** – limits the usage at the volume level
 
 > **Note**
-> You can set the disk limit on the directory even if it is not created.
-> The disk limit is enforced immediately after creating that directory.
+> You can set the quota limit on an empty directory. The quota limit will be
+> automatically enforced when files are added to the directory.
 
 ##Enabling Quota
 
