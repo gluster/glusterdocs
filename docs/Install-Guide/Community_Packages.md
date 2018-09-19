@@ -9,7 +9,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |--------------|--------------|:---------:|:---------:|:---------:|
 |CentOS Storage SIG[1]|el6          |     X¹    |     X¹    |     X     |
 |              |el7           |     X     |     X     |     X     |
-|              |(el8*)        |     X     |     —     |     —     |
+|              |(el8[2])      |     X     |     —     |     —     |
 |              |              |           |           |           |
 |Fedora[2]     |F27           |     —     |     X²    |     X     |
 |              |F28           |     X²    |     X     |     —     |
@@ -17,10 +17,10 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F30(rawhide)  |     X     |     X²    |     —     | 
 |              |              |           |           |           |
 |Debian[2]     |Jessie/8      |     —     |     —     |     X     |
-|              |Stretch/9     |     X³    |     X³    |     X     |
+|              |Stretch/9     |     X     |     X     |     X     |
 |              |Buster/10(Sid)|     X     |     X     |     X     |
 |              |              |           |           |           |
-|Ubuntu Launchpad[3]|Xenial/16.04  |     X³    |     X³    |     X     |
+|Ubuntu Launchpad[3]|Xenial/16.04  |     X     |     X     |     X     |
 |              |Bionic/18.04  |     X     |     X     |     X     |
 |              |Cosmic/18.10  |     X     |     X     |     —     |
 |              |              |           |           |           |
@@ -66,8 +66,5 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 [3] <https://launchpad.net/~gluster>  
 [4] <https://build.opensuse.org/project/subprojects/home:glusterfs>  
 
-* el8 RPMs are on download.gluster.org.
-
 ¹ Client-side only.  
 ² Fedora Updates, UpdatesTesting, or Rawhide repository. Use dnf to install.  
-³ no glusterd2, base golang 1.6 (xenial) and 1.7 (stretch) is too old.  
