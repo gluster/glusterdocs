@@ -40,7 +40,7 @@ the "Edit on GitHub" link on the top right corner of each page. If you already h
 account, you can simply edit the document in your browser, use the preview tab, and submit
 your changes for review in a pull request.
 
-If you want to help more with Gluster documentation, please subscribe to [Gluster
-Users](http://www.gluster.org/mailman/listinfo/gluster-users) and [Gluster
-Developers](http://www.gluster.org/mailman/listinfo/gluster-devel) mailing lists,
+If you want to help more with Gluster documentation, please subscribe to the [Gluster
+Users](https://lists.gluster.org/mailman/listinfo/gluster-users) and [Gluster
+Developers](https://lists.gluster.org/mailman/listinfo/gluster-devel) mailing lists,
 and share your ideas with the Gluster developer community.
