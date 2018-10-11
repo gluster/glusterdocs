@@ -94,17 +94,18 @@ nav:
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op_version.md
-  - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
-  - Upgrade to 3.6: Upgrade-Guide/upgrade_to_3.6.md
-  - Upgrade to 3.7: Upgrade-Guide/upgrade_to_3.7.md
-  - Upgrade to 3.8: Upgrade-Guide/upgrade_to_3.8.md
-  - Upgrade to 3.9: Upgrade-Guide/upgrade_to_3.9.md
-  - Upgrade to 3.10: Upgrade-Guide/upgrade_to_3.10.md
-  - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
-  - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
-  - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
-  - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
+  - Upgrade to 5: Upgrade-Guide/upgrade_to_5.md
   - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
+  - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
+  - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
+  - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
+  - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
+  - Upgrade to 3.10: Upgrade-Guide/upgrade_to_3.10.md
+  - Upgrade to 3.9: Upgrade-Guide/upgrade_to_3.9.md
+  - Upgrade to 3.8: Upgrade-Guide/upgrade_to_3.8.md
+  - Upgrade to 3.7: Upgrade-Guide/upgrade_to_3.7.md
+  - Upgrade to 3.6: Upgrade-Guide/upgrade_to_3.6.md
+  - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
 - Release Notes:
   - index: release-notes/index.md
   - 4.1.5: release-notes/4.1.5.md
