@@ -5,7 +5,7 @@ This document provides a detailed overview of the development model
 followed by the GlusterFS project.
 
 For a simpler overview visit
-[Simplified develoment workflow](./Simplified-Development-Workflow.md).
+[Simplified development workflow](./Simplified-Development-Workflow.md).
 
 Basics
 ------
