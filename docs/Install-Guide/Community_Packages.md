@@ -1,35 +1,37 @@
 ### Community Packages
 
-#### GlusterFS and GlusterD2 (4.x and later)
+#### GlusterFS and GlusterD2
+
+Tentative plans for community convenience packages.
 
 An **X** means packages are (or will be) provided in the respective repository.  
 A **—** means no plans to build new updates. Existing packages will remain in the repos.  
 
-|              |              |     5     |    4.1    | 3.12 ltm  |
+|              |              |     6     |     5     |    4.1    |
 |--------------|--------------|:---------:|:---------:|:---------:|
-|CentOS Storage SIG[1]|el6          |     X¹    |     X¹    |     X     |
+|CentOS Storage SIG[1]|el6          |     X¹     |     X¹    |     X¹    |
 |              |el7           |     X     |     X     |     X     |
-|              |(el8[2])      |     X     |     —     |     —     |
+|              |(el8[2])      |     X     |     X     |     —     |
 |              |              |           |           |           |
-|Fedora[2]     |F27           |     —     |     X²    |     X     |
-|              |F28           |     X²    |     X     |     —     |
-|              |F29           |     X²    |     X     |     —     | 
-|              |F30(rawhide)  |     X     |     X²    |     —     | 
+|Fedora[2]     |F27           |     —     |     —     |     X     |
+|              |F28           |     X     |     X     |     X²    |
+|              |F29           |     X²    |     X²    |     X     |
+|              |F30(rawhide)  |     X²    |     X²    |     X     |
 |              |              |           |           |           |
-|Debian[2]     |Jessie/8      |     —     |     —     |     X     |
-|              |Stretch/9     |     X     |     X     |     X     |
+|Debian[2]     |Stretch/9     |     X     |     X     |     X     |
 |              |Buster/10(Sid)|     X     |     X     |     X     |
 |              |              |           |           |           |
-|Ubuntu Launchpad[3]|Xenial/16.04  |     X     |     X     |     X     |
+|Ubuntu Launchpad[3]|Xenial/16.04  |     —     |     X     |     X     |
 |              |Bionic/18.04  |     X     |     X     |     X     |
-|              |Cosmic/18.10  |     X     |     X     |     —     |
+|              |Cosmic/18.10  |     —     |     X     |     X     |
+|              |D-----/19.04  |     X     |     X     |     X     |
 |              |              |           |           |           |
-|OpenSUSE Build Service[4]|SLES12SP3  |     —     |     X     |     X     |
+|OpenSUSE Build Service[4]|SLES12SP3  |     —     |     —     |     X     |
 |              |SLES12SP4     |     X     |     X     |     X     |
-|              |Leap42.3      |     —     |     X     |     X     |
-|              |Leap15        |     X     |     X     |     —     |
-|              |SLES15        |     X     |     X     |     —     |
-|              |Tumbleweed    |     X     |     X     |     —     |
+|              |Leap42.3      |     —     |     —     |     X     |
+|              |Leap15        |     X     |     X     |     X     |
+|              |SLES15        |     X     |     X     |     X     |
+|              |Tumbleweed    |     X     |     X     |     X     |
 
 
 #### Related Packages
@@ -44,13 +46,13 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F29           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F30(rawhide)  |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
-|Debian[2]     |Jessie/8      |    —    |     —    |     X      |      X      |     X    |   ?   |
-|              |Stretch/9     |    —    |     —    |     X      |      X      |     X    |   ?   |
+|Debian[2]     |Stretch/9     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10(Sid)|    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
 |Ubuntu Launchpad[3]|Xenial/16.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Bionic/18.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Cosmic/18.10  |    —    |     —    |     X      |      X      |     X    |   ?   |
+|              |D-----/19.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
 |OpenSUSE Build Service[4]|SLES12SP3     |    X     |     X    |     X       |      X      |     X    |   ?   |
 |              |SLES12SP4     |    X    |     X    |     X      |      X      |     X    |   ?   |
