@@ -7,11 +7,11 @@ This document explains the  heal info command available in gluster for monitorin
 A file is said to be in split-brain when Gluster AFR cannot determine which copy in the replica
 is the correct one.
 
-There are 3 types of split-brains:
+There are three types of split-brains:
 
 -  Data split-brain: The data in the file differs on the bricks in the replica set
--  Metadata split-brain: The metada differs on the bricks
--  Entry/gfid split-brain: The GFID of the file is different on the bricks in the replica. This cannot be healed automatically.
+-  Metadata split-brain: The metadata differs on the bricks
+-  Entry/GFID split-brain: The GFID of the file is different on the bricks in the replica. This cannot be healed automatically.
 
 
 ## 1) Volume heal info:  
@@ -24,19 +24,19 @@ The files listed may also be accompanied by the following tags:
 
 a) 'Is in split-brain'  
 A file in data or metadata split-brain will 
-be listed with " - Is in split-brain" appended after its path/gfid. Eg., 
-"/file4" in the output provided below. But for a file in gfid split-brain,
+be listed with " - Is in split-brain" appended after its path/GFID. E.g. 
+"/file4" in the output provided below. However, for a file in GFID split-brain,
  the parent directory of the file is shown to be in split-brain and the file 
-itself is shown to be needing heal. Eg., "/dir" in the output provided below 
-which is in split-brain because of gfid split-brain of file "/dir/a".
+itself is shown to be needing healing, e.g. "/dir" in the output provided below 
+is in split-brain because of GFID split-brain of file "/dir/a".
 Files in split-brain cannot be healed without resolving the split-brain.
 
 b) 'Is possibly undergoing heal'  
-When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs heal. But if the self-heal daemon had already started healing the file, it would have taken locks due to which glfsheal wouldn't be able to acquire them. In such a case it could print this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g., multiple users ran heal info command at the same time), competing for same lock.
+When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs healing. However, if the self-heal daemon had already started healing the file, it would have taken locks which glfsheal wouldn't be able to acquire. In such a case, it could print this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g. multiple users ran a heal info command at the same time) and competing for same lock.
 
 The following is an example of heal info command's output.
 ### Example
-Consider a replica volume "test" with 2 bricks b1 and b2;
+Consider a replica volume "test" with two bricks b1 and b2;
 self-heal daemon off, mounted at /mnt.
 
 `gluster volume heal test info`
@@ -63,13 +63,13 @@ Number of entries: 6
 
 ### Analysis of the output
 It can be seen that  
-A) from brick b1, 4 entries need healing:   
+A) from brick b1, four entries need healing:   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) file with gfid:6dc78b20-7eb6-49a3-8edb-087b90142246 needs healing  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) "aaca219f-0e25-4576-8689-3bfd93ca70c2",
 "39f301ae-4038-48c2-a889-7dac143e82dd" and "c3c94de2-232d-4083-b534-5da17fc476ac"
  are in split-brain
 
-B) from brick b2 6 entries need healing-  
+B) from brick b2 six entries need healing-  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) "a", "file2" and "file3" need healing  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) "file1", "file4" & "/dir" are in split-brain  
 
@@ -92,24 +92,24 @@ Brick <hostname:brickpath-b2>
 /file4
 Number of entries in split-brain: 3
 ~~~
-Note that similar to the heal info command, for gfid split-brains (same filename but different gfid) 
+Note that similar to the heal info command, for GFID split-brains (same filename but different GFID) 
 their parent directories are listed to be in split-brain.
 
 # 3. Resolution of split-brain using gluster CLI
 Once the files in split-brain are identified, their resolution can be done
-from the gluster command line using various policies. Entry/gfid split-brain resolution is not supported via this method. Split-brain resolution commands let the user resolve data and metadata split-brain using the following policies:
+from the gluster command line using various policies. Entry/GFID split-brain resolution is not supported via this method. Split-brain resolution commands let the user resolve data and metadata split-brain using the following policies:
 
 ## i) Select the bigger-file as source
 This command is useful for per file healing where it is known/decided that the
 file with bigger size is to be considered as source.   
 `gluster volume heal <VOLNAME> split-brain bigger-file <FILE>`  
 Here, `<FILE>` can be either the full file name as seen from the root of the volume
-(or) the gfid-string representation of the file, which sometimes gets displayed
-in the heal info command's output. Once this command is executed, the replica containing the `<FILE>` with bigger
-size is found out and heal is completed with that brick as a source.
+(or) the GFID-string representation of the file, which sometimes gets displayed
+in the heal info command's output. Once this command is executed, the replica containing the `<FILE>` with a bigger
+size is found and healing is completed with that brick as a source.
 
 ### Example :
-Consider the earlier output of heal info split-brain command.
+Consider the earlier output of the heal info split-brain command.
 
 Before healing the file, notice file size and md5 checksums :  
 ~~~
@@ -175,14 +175,14 @@ Change: 2015-03-06 14:17:12.881343955 +0530
 ~~~
 ## ii) Select the file with the latest mtime as source  
 `gluster volume heal <VOLNAME> split-brain latest-mtime <FILE>`  
-As is perhaps self-explanatory, this command uses the brick which has the latest modification time for `<FILE>` and uses it as the source.
+As is perhaps self-explanatory, this command uses the brick having the latest modification time for `<FILE>` as the source for healing.
 
 ## iii) Select one of the bricks in the replica as the source for a particular file
 `gluster volume heal <VOLNAME> split-brain source-brick <HOSTNAME:BRICKNAME> <FILE>`  
-Here, `<HOSTNAME:BRICKNAME>` is selected as source brick and `<FILE>` present in the source brick is taken as source for healing.
+Here, `<HOSTNAME:BRICKNAME>` is selected as source brick and `<FILE>` present in the source brick is taken as the source for healing.
 
 ### Example :
-Notice the md5 checksums and file size before and after heal.
+Notice the md5 checksums and file size before and after healing.
 
 Before heal :
 ~~~
