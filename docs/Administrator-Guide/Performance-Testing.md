@@ -64,14 +64,14 @@ capabilities of a distributed filesystem.
 -   [iozone](http://www.iozone.org) - for pure-workload large-file tests
 -   [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi) - for pure-workload libgfapi tests
 
-The "netmist" mixed-workload generator of SPECsfs2014 may be suitable in some cases, but is not technically an open-source tool. This tool was written by Don Capps, who was an author of iozone. 
+The "netmist" mixed-workload generator of SPECsfs2014 may be suitable in some cases, but is not technically an open-source tool. This tool was written by Don Capps, who was an author of iozone.
 
 ### fio
 
-fio is extremely powerful and is easily installed from traditional distros, unlike iozone, and has increasingly powerful distributed test capabilities described in its --client parameter upstream as of May 2015. To use this mode, start by launching an fio "server" instance on each workload generator host using: 
+fio is extremely powerful and is easily installed from traditional distros, unlike iozone, and has increasingly powerful distributed test capabilities described in its --client parameter upstream as of May 2015. To use this mode, start by launching an fio "server" instance on each workload generator host using:
 
         fio --server --daemonize=/var/run/fio-svr.pid
-        
+
 And make sure your firewall allows port 8765 through for it. You can now run tests on sets of hosts using syntax like:
 
         fio --client=workload-generator.list --output-format=json my-workload.fiojob
@@ -83,14 +83,14 @@ fio also has different I/O engines, in particular Huamin Chen authored the ***li
 Limitations of fio in distributed mode:
 
 -   stonewalling - fio calculates throughput based on when the last thread finishes a test run. In contrast, iozone calculates throughput by default based on when the FIRST thread finishes the workload. This can lead to (deceptively?) higher throughput results for iozone, since there are inevitably some "straggler" threads limping to the finish line later than others. It is possible in some cases to overcome this limitation by specifying a time limit for the test. This works well for random I/O tests, where typically you do not want to read/write the entire file/device anyway.
--   inaccuracy when response times > 1 sec - at least in some cases fio has reported excessively high IOPS when fio threads encounter response times much greater than 1 second, this can happen for distributed storage when there is unfairness in the implementation. 
+-   inaccuracy when response times > 1 sec - at least in some cases fio has reported excessively high IOPS when fio threads encounter response times much greater than 1 second, this can happen for distributed storage when there is unfairness in the implementation.
 -   io engines are not integrated.
 
 ### smallfile Distributed I/O Benchmark
 
 [Smallfile](https://github.com/distributed-system-analysis/smallfile) is a python-based small-file distributed POSIX workload generator which can be used to quickly measure performance for a variety of metadata-intensive workloads across an entire cluster. It has no dependencies on any specific filesystem or implementation AFAIK. It runs on Linux, Windows and should work on most Unixes too. It is intended to complement use of iozone benchmark for measuring performance of large-file workloads, and borrows certain concepts from iozone and Ric Wheeler's fs_mark. It was developed by Ben England starting in March 2009, and is now open-source (Apache License v2).
 
-Here is a typical simple sequence of tests where files laid down in an initial create test are then used in subsequent tests. There are many more smallfile operation types than these 5 (see doc), but these are the most commonly used ones. 
+Here is a typical simple sequence of tests where files laid down in an initial create test are then used in subsequent tests. There are many more smallfile operation types than these 5 (see doc), but these are the most commonly used ones.
 
         SMF="./smallfile_cli.py --top /mnt/glusterfs/smf --host-set h1,h2,h3,h4 --threads 8 --file-size 4 --files 10000 --response-times Y "
         $SMF --operation create
@@ -162,7 +162,7 @@ within that host, and iozone-pathname is the full pathname of the iozone
 executable to use on that host. Be sure that every target host can
 resolve the hostname of host where the iozone command was run. All
 target hosts must permit password-less ssh access from the host running
-the command. 
+the command.
 
 For example: (Here, my-ip-address refers to the machine from where the iozone is being run)
 
@@ -309,7 +309,7 @@ running the "gluster volume profile" and "gluster volume top" commands.
 These extremely useful tools will help you understand both the workload
 and the bottlenecks which are limiting performance of that workload.
 
-TBS: links to documentation for these tools and scripts that reduce the data to usable form. 
+TBS: links to documentation for these tools and scripts that reduce the data to usable form.
 
 Configuration
 -------------
@@ -331,7 +331,7 @@ in order of importance:
 Network configuration has a huge impact on performance of distributed storage, but is often not given the
 attention it deserves during the planning and installation phases of the
 cluster lifecycle. Fortunately,
-[network configuration](./Network Configurations Techniques.md)
+[network configuration](./Network-Configurations-Techniques.md)
 can be enhanced significantly, often without additional hardware.
 
 To measure network performance, consider use of a
