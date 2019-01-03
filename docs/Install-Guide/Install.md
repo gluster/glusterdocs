@@ -7,7 +7,7 @@ such as compat-readline5
 
 ###### Community Packages
 
-Packages are provided according to this [table](./Community_Packages.md).
+Packages are provided according to this [table](./Community-Packages.md).
 
 ###### For Debian
 
@@ -18,7 +18,7 @@ Add the GPG key to apt:
 If the rsa.pub is not available at the above location, please look here https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub and add the GPG key to apt:
 
     wget -O - https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub | apt-key add -    
-   
+
 
 Add the source:
 

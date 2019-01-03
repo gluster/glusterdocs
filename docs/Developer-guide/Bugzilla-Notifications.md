@@ -48,7 +48,7 @@ Configuration instructions:
 
 5. the result
 
-   ![alt text](../images/Bugzilla-watching_bugs@gluster.org.png "Bugzilla-watching_bugs@gluster.org")
+   ![alt text](../images/Bugzilla-watching-bugs@gluster.org.png "Bugzilla-watching_bugs@gluster.org")
 
 # RSS Feeds
 The URLs below can be added to an RSS reader (like Mozilla Thunderbird or [feedly](https://feedly.com)). When you prefer a list of bugs on the Bugzilla website, open the RSS-feed in your browser and remove the *ctype=atom* from the end of the URL.
@@ -75,6 +75,3 @@ Bugs that can get tested
 * ...
 
 Feel free to add more feeds to this page yourself, request them via [gluster-devel](mailto:gluster-devel@gluster.org) or [Github issue tracker](https://github.com/gluster/glusterdocs/issues).
-
-
-

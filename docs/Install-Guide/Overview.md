@@ -15,7 +15,7 @@ done easily in a few hours, depending on how much testing you want to
 do.
 
 After you deploy Gluster by following these steps, we recommend that
-you read the [Gluster Admin Guide](../Administrator Guide/index.md) to learn how to administer Gluster and
+you read the [Gluster Admin Guide](../Administrator-Guide/index.md) to learn how to administer Gluster and
 how to select a volume type that fits your needs. Also, be sure to
 enlist the help of the Gluster community via the IRC channel or Q&A
 section. We want you to be successful in as short a time as possible.
@@ -120,4 +120,4 @@ In a perfect world, sure. Having the hardware be the same means less
 troubleshooting when the fires start popping up. But plenty of people
 deploy Gluster on mix and match hardware, and successfully.
 
-Get started by checking some [Common Criteria](./Common_criteria.md)
+Get started by checking some [Common Criteria](./Common-criteria.md)

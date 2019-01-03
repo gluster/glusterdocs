@@ -2,7 +2,7 @@
 
 > **NOTE:** Upgrade procedure remains the same as with 4.1 release
 
-Refer, to the [Upgrading to 4.1](./upgrade_to_4.1.md) guide and follow
+Refer, to the [Upgrading to 4.1](./upgrade-to-4.1.md) guide and follow
 documented instructions, replacing 5 when you encounter 4.1 in the guide as the
 version reference.
 

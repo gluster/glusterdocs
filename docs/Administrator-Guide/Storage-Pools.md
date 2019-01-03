@@ -23,7 +23,7 @@ each server belongs to a storage pool consisting of only that server.
 - The servers used to create the storage pool must be resolvable by hostname.
 
 - The glusterd daemon must be running on all storage servers that you
-want to add to the storage pool. See [Managing the glusterd Service](./Start Stop Daemon.md) for details.
+want to add to the storage pool. See [Managing the glusterd Service](./Start-Stop-Daemon.md) for details.
 
 - The firewall on the servers must be configured to allow access to port 24007.
 
@@ -122,5 +122,3 @@ Verify the peer status:
         Hostname: server3
         Uuid: 1e0ca3aa-9ef7-4f66-8f15-cbc348f29ff7
         State: Peer in Cluster (Connected)
-
-

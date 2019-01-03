@@ -2,7 +2,7 @@
 
 **NOTE:** Upgrade procedure remains the same as with the 3.10 release
 
-### Pre-upgrade notes 
+### Pre-upgrade notes
 - Online upgrade is only possible with replicated and distributed replicate volumes
 - Online upgrade is not supported for dispersed or distributed dispersed volumes
 - Ensure no configuration changes are done during the upgrade
@@ -88,7 +88,7 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 
 ### Post upgrade steps
 Perform the following steps post upgrading the entire trusted storage pool,
-- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op_version.md) section for further details
+- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op-version.md) section for further details
 - Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to 3.11 version as well
 
 ### Upgrade procedure for clients

@@ -1,4 +1,4 @@
-## Upgrade procedure to Gluster 3.13, from Gluster 3.12.x, and 3.10.x
+## Upgrade procedure to Gluster 4.0, from Gluster 3.13.x, 3.12.x, and 3.10.x
 
 **NOTE:** Upgrade procedure remains the same as with 3.12 and 3.10 releases
 
@@ -15,7 +15,7 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
 
 > **ALERT**: If any of your volumes, in the trusted storage pool that is being upgraded, uses disperse or is a pure distributed volume, this procedure is **NOT** recommended, use the [Offline upgrade procedure](#offline-upgrade-procedure) instead.
 
-#### Repeat the following steps, on each server in the trusted storage pool, to upgrade the entire pool to 3.13 version:
+#### Repeat the following steps, on each server in the trusted storage pool, to upgrade the entire pool to 4.0 version:
 1. Stop all gluster services, either using the command below, or through other means,
 ```sh
     #killall glusterfs glusterfsd glusterd
@@ -23,9 +23,9 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
 
 2. Stop all applications that run on this server and access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.)
 
-3. Install Gluster 3.13
+3. Install Gluster 4.0
 
-4. Ensure that version reflects 3.13.x in the output of,
+4. Ensure that version reflects 4.0.x in the output of,
 ```sh
     #gluster --version
 ```
@@ -66,9 +66,9 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 ```
 2. Stop all applications that access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.), across all servers
 
-3. Install Gluster 3.13, on all servers
+3. Install Gluster 4.0, on all servers
 
-4. Ensure that version reflects 3.13.x in the output of the following command on all servers,
+4. Ensure that version reflects 4.0.x in the output of the following command on all servers,
 ```sh
     #gluster --version
 ```
@@ -89,16 +89,17 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 ### Post upgrade steps
 Perform the following steps post upgrading the entire trusted storage pool,
 
-- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op_version.md) section for further details
-- Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to 3.13 version as well
+- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op-version.md) section for further details
+- Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to 4.0 version as well
+- Post upgrading the clients, for replicate volumes, it is recommended to enable the option `gluster volume set <volname> fips-mode-rchecksum on` to turn off usage of MD5 checksums during healing. This enables running Gluster on FIPS compliant systems.
 
 ### Upgrade procedure for clients
-Following are the steps to upgrade clients to the 3.13.x version,
+Following are the steps to upgrade clients to the 4.0.x version,
 
 **NOTE:** x is the minor release number for the release
 
 1. Unmount all glusterfs mount points on the client
 2. Stop all applications that access the volumes via gfapi (qemu, etc.)
-3. Install Gluster 3.13
+3. Install Gluster 4.0
 4. Mount all gluster shares
 5. Start any applications that were stopped previously in step (2)
