@@ -188,7 +188,7 @@ To build and install Gluster Native Client from the source code
 6.  Verify that the correct version of Gluster Native Client is
     installed, using the following command:
 
-    `# glusterfs –-version`
+    `# glusterfs --version`
 
 ##Mounting Volumes
 
