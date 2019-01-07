@@ -543,6 +543,11 @@ among the servers. A remove-brick command will automatically trigger a rebalance
         # gluster volume rebalance test-volume start force
         Starting rebalancing on volume test-volume has been successful
 
+A rebalance operation will attempt to balance the diskusage across nodes, therefore it will skip 
+files where the move will result in a less balanced volume. This leads to link files that are still 
+left behind in the system and hence may cause performance issues. The behaviour can be overridden 
+with the `force` argument.
+
 ### Displaying the Status of Rebalance Operation
 
 You can display the status information about rebalance volume operation,
