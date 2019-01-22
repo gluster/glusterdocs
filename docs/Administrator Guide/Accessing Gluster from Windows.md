@@ -58,24 +58,17 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    192.168.1.20/24 eth0
    192.168.1.21/24 eth0
    ```
+ 7. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
+   ```
+   # setsebool -P use_fusefs_home_dirs 1
+   # setsebool -P samba_load_libgfapi 1
+   ```
 
-##### Step 4: Suggested settings before exporting the volume
-  1. Permit insecure ports for clients to brick and clients to glusterd connections  
-   ```# gluster volume set VOLNAME server.allow-insecure```
-
-     Also edit /etc/glusterfs/glusterd.vol on all nodes in trusted storage pool and add the following setting:  
-     ```option rpc-auth-allow-insecure on```
-
-     Restart glusterd service on all nodes:  
-     ```systemctl restart glusterd```
-
-  2. Disable metadata caching in gluster client:  
-   ```gluster volume set VOLNAME stat-prefetch off```
-
-  3. To ensure lock and IO coherency:  
+##### Step 4: Performance tunings before exporting the volume
+  1. To ensure lock and IO coherency:  
    ```#gluster volume set VOLNAME storage.batch-fsync-delay-usec 0```
 
-  4. If using Samba 4.X version add the following line in smb.conf for all gluster volume or in the global section  
+  2. If using Samba 4.X version add the following line in smb.conf in the global section  
    ```
    kernel share modes = no
    kernel oplocks = no
@@ -90,10 +83,26 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    Setting 'store dos attributes = no' is recommended if archive/hidden/read-only dos attributes are not used.
    This can give better performance.
 
-  5. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
+   3. If you are using gluster5 or higher execute the following to improve performance:
+   ```#gluster volume set VOLNAME group samba```
+   On older version, please execute the following:
    ```
-   # setsebool -P use_fusefs_home_dirs 1
-   # setsebool -P samba_load_libgfapi 1
+   #gluster volume set VOLNAME features.cache-invalidation=on
+   #gluster volume set VOLNAME features.cache-invalidation-timeout 600
+   #gluster volume set VOLNAME performance.cache-samba-metadata on
+   #gluster volume set VOLNAME performance.stat-prefetch on
+   #gluster volume set VOLNAME performance.cache-invalidation on
+   #gluster volume set VOLNAME performance.md-cache-timeout 600
+   #gluster volume set VOLNAME network.inode-lru-limit 200000
+   #gluster volume set VOLNAME performance.nl-cache on
+   #gluster volume set VOLNAME performance.nl-cache-timeout 600
+   #gluster volume set VOLNAME performance.readdir-ahead on
+   #gluster volume set VOLNAME performance.parallel-readdir on
+   ```
+   4. Tune the number of threads in gluster for better performance:
+   ```
+   #gluster volume set VOLNAME client.event-threads 4
+   #gluster volume set VOLNAME server.event-threads 4 #Increasing to a very high value will reduce the performance
    ```
 
 ##### Step 5: Mount the volume using SMB
