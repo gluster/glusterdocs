@@ -13,8 +13,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |el7           |     X     |     X     |     X     |
 |              |(el8[2])      |     X     |     X     |     —     |
 |              |              |           |           |           |
-|Fedora[2]     |F27           |     —     |     —     |     X     |
-|              |F28           |     X     |     X     |     X²    |
+|Fedora[2]     |F28           |     X     |     X     |     X²    |
 |              |F29           |     X²    |     X²    |     X     |
 |              |F30(rawhide)  |     X²    |     X²    |     X     |
 |              |              |           |           |           |
@@ -41,8 +40,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |CentOS Storage SIG[1]|el6           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el7           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
-|Fedora[2]     |F27           |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F28           |    X    |     X    |     X      |      X      |     X    |   ?   |
+|Fedora[2]     |F28           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F29           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F30(rawhide)  |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
