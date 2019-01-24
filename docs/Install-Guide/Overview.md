@@ -75,17 +75,19 @@ this is accomplished without a centralized metadata server.
 Most likely, yes. People use Gluster for all sorts of things. You are
 encouraged to ask around in our IRC channel or Q&A forums to see if
 anyone has tried something similar. That being said, there are a few
-places where Gluster is going to need more consideration than others. -
-Accessing Gluster from SMB/CIFS is often going to be slow by most
-people’s standards. If you only moderate access by users, then it most
-likely won’t be an issue for you. On the other hand, adding enough
-Gluster servers into the mix, some people have seen better performance
-with us than other solutions due to the scale out nature of the
-technology - Gluster does not support so called “structured data”,
-meaning live, SQL databases. Of course, using Gluster to backup and
-restore the database would be fine - Gluster is traditionally better
-when using file sizes at of least 16KB (with a sweet spot around 128KB
-or so).
+places where Gluster is going to need more consideration than others.
+
+- Accessing Gluster from SMB/CIFS is often going to be slow by most
+  people’s standards. If you only moderate access by users, then it most
+  likely won’t be an issue for you. On the other hand, adding enough
+  Gluster servers into the mix, some people have seen better performance
+  with us than other solutions due to the scale out nature of the
+  technology
+- Gluster does not support so called “structured data”, meaning
+  live, SQL databases. Of course, using Gluster to backup and
+  restore the database would be fine
+- Gluster is traditionally better when using file sizes of at least 16KB
+  (with a sweet spot around 128KB or so).
 
 #### What is the cost and complexity required to set up cluster?
 
