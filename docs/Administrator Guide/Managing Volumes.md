@@ -22,7 +22,7 @@ available.
 
 > **Note**
 >
-> It is recommended that you to set server.allow-insecure option to ON if
+> It is recommended to set server.allow-insecure option to ON if
 > there are too many bricks in each volume or if there are too many
 > services which have already utilized all the privileged ports in the
 > system. Turning this option ON allows ports to accept/reject messages
