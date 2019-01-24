@@ -31,7 +31,7 @@ available.
 
 Tune volume options using the following command:
 
-`# gluster volume set <VOLNAME>`
+`# gluster volume set <VOLNAME> <OPT-NAME> <OPT-VALUE>`
 
 For example, to specify the performance cache size for test-volume:
 
@@ -501,7 +501,7 @@ share of files.
 
 A fix-layout rebalance will only fix the layout changes and does not
 migrate data. If you want to migrate the existing data, 
-use `gluster volume rebalance  start` command to rebalance data among
+use `gluster volume rebalance <volume> start` command to rebalance data among
 the servers.
 
 **To rebalance a volume to fix layout**
