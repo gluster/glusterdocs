@@ -72,7 +72,7 @@ means each server will house a copy of the data.
 important when you have more bricks.
 
 It is possible (as of the most current release as of this writing, Gluster 3.3)
-to specify the bricks in a such a way that you would make both copies of the data reside on a
+to specify the bricks in such a way that you would make both copies of the data reside on a
 single node. This would make for an embarrassing explanation to your
 boss when your bulletproof, completely redundant, always on super
 cluster comes to a grinding halt when a single point of failure occurs.
