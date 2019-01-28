@@ -22,7 +22,7 @@ available.
 
 > **Note**
 >
-> It is recommended that you to set server.allow-insecure option to ON if
+> It is recommended to set server.allow-insecure option to ON if
 > there are too many bricks in each volume or if there are too many
 > services which have already utilized all the privileged ports in the
 > system. Turning this option ON allows ports to accept/reject messages
@@ -31,7 +31,7 @@ available.
 
 Tune volume options using the following command:
 
-`# gluster volume set <VOLNAME>`
+`# gluster volume set <VOLNAME> <OPT-NAME> <OPT-VALUE>`
 
 For example, to specify the performance cache size for test-volume:
 
@@ -501,7 +501,7 @@ share of files.
 
 A fix-layout rebalance will only fix the layout changes and does not
 migrate data. If you want to migrate the existing data, 
-use `gluster volume rebalance  start` command to rebalance data among
+use `gluster volume rebalance <volume> start` command to rebalance data among
 the servers.
 
 **To rebalance a volume to fix layout**
