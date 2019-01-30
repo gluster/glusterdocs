@@ -3,7 +3,7 @@
 You can access gluster volumes in multiple ways. You can use Gluster
 Native Client method for high concurrency, performance and transparent
 failover in GNU/Linux clients. You can also use NFS v3 to access gluster
-volumes. Extensive testing has be done on GNU/Linux clients and NFS
+volumes. Extensive testing has been done on GNU/Linux clients and NFS
 implementation in other operating system, such as FreeBSD, and Mac OS X,
 as well as Windows 7 (Professional and Up) and Windows Server 2003.
 Other NFS client implementations may work with gluster NFS server.
