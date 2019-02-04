@@ -191,7 +191,6 @@ nav:
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme:
-  name: readthedocs
-  custom_dir: glustertheme
+  name: 'material'
 extra_javascript:
 - js/fix-docs.js
