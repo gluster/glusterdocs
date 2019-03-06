@@ -1,6 +1,6 @@
 ### Community Packages
 
-#### GlusterFS and GlusterD2
+#### GlusterFS
 
 Tentative plans for community convenience packages.
 
@@ -14,8 +14,9 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |(el8[2])      |     X     |     X     |     —     |
 |              |              |           |           |           |
 |Fedora[2]     |F28           |     X     |     X     |     X²    |
-|              |F29           |     X²    |     X²    |     X     |
-|              |F30(rawhide)  |     X²    |     X²    |     X     |
+|              |F29           |     X     |     X²    |     X     |
+|              |F30           |     X²    |     X     |     X     |
+|              |F31(rawhide)  |     X²    |     X     |     X     |
 |              |              |           |           |           |
 |Debian[2]     |Stretch/9     |     X     |     X     |     X     |
 |              |Buster/10(Sid)|     X     |     X     |     X     |
@@ -28,7 +29,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |OpenSUSE Build Service[4]|SLES12SP3  |     —     |     —     |     X     |
 |              |SLES12SP4     |     X     |     X     |     X     |
 |              |Leap42.3      |     —     |     —     |     X     |
-|              |Leap15        |     X     |     X     |     X     |
+|              |Leap15.1      |     X     |     X     |     X     |
 |              |SLES15        |     X     |     X     |     X     |
 |              |Tumbleweed    |     X     |     X     |     X     |
 
@@ -42,7 +43,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |         |          |            |             |          |       |
 |Fedora[2]     |F28           |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F29           |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F30(rawhide)  |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F30           |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F31(rawhide)  |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
 |Debian[2]     |Stretch/9     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10(Sid)|    —    |     —    |     X      |      X      |     X    |   ?   |
@@ -55,7 +57,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |OpenSUSE Build Service[4]|SLES12SP3     |    X     |     X    |     X       |      X      |     X    |   ?   |
 |              |SLES12SP4     |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |Leap42.3      |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |Leap15        |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |Leap15.1      |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |SLES15        |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |Tumbleweed    |    X    |     X    |     X      |      X      |     X    |   ?   |
 
