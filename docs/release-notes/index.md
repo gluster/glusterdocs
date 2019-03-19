@@ -3,6 +3,7 @@ Release Notes
 
 ### GlusterFS 5 release notes
 
+- [5.5](./5.5.md)
 - [5.3](./5.3.md)
 - [5.2](./5.2.md)
 - [5.1](./5.1.md)
