@@ -48,6 +48,8 @@ NFS_Core_Param {
         Clustered = false;
         #Use a non-privileged port for RQuota
         Rquota_Port = 875;
+	#please note add below option for Mac clients
+	#Enable_RQUOTA = false;
 }
 ```
 ## Step by step procedures to exporting GlusterFS volume via NFS-Ganesha
