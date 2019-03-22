@@ -88,7 +88,7 @@ Limitations of fio in distributed mode:
 
 ### smallfile Distributed I/O Benchmark
 
-[Smallfile](https://forge.gluster.org/smallfile-performance-testing) is a python-based small-file distributed POSIX workload generator which can be used to quickly measure performance for a variety of metadata-intensive workloads across an entire cluster. It has no dependencies on any specific filesystem or implementation AFAIK. It runs on Linux, Windows and should work on most Unixes too. It is intended to complement use of iozone benchmark for measuring performance of large-file workloads, and borrows certain concepts from iozone and Ric Wheeler's fs_mark. It was developed by Ben England starting in March 2009, and is now open-source (Apache License v2).
+[Smallfile](https://github.com/distributed-system-analysis/smallfile) is a python-based small-file distributed POSIX workload generator which can be used to quickly measure performance for a variety of metadata-intensive workloads across an entire cluster. It has no dependencies on any specific filesystem or implementation AFAIK. It runs on Linux, Windows and should work on most Unixes too. It is intended to complement use of iozone benchmark for measuring performance of large-file workloads, and borrows certain concepts from iozone and Ric Wheeler's fs_mark. It was developed by Ben England starting in March 2009, and is now open-source (Apache License v2).
 
 Here is a typical simple sequence of tests where files laid down in an initial create test are then used in subsequent tests. There are many more smallfile operation types than these 5 (see doc), but these are the most commonly used ones. 
 
