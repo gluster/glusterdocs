@@ -18,7 +18,9 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F31(rawhide)  |     X²    |     X     |     X     |
 |              |              |           |           |           |
 |Debian[2]     |Stretch/9     |     X     |     X     |     X     |
-|              |Buster/10(Sid)|     X     |     X     |     X     |
+|              |Buster/10     |     X     |     X     |     X     |
+|              |Bullseye/11(Sid)|     X     |     X     |     —     |
+
 |              |              |           |           |           |
 |Ubuntu Launchpad[3]|Xenial/16.04  |     X     |     X     |     X     |
 |              |Bionic/18.04  |     X     |     X     |     X     |
@@ -31,6 +33,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Leap42.3      |     —     |     —     |     X     |
 |              |Leap15.1      |     X     |     X     |     X     |
 |              |SLES15        |     X     |     X     |     X     |
+|              |SLES15SP1     |     X     |     X     |     —     |
 |              |Tumbleweed    |     X     |     X     |     X     |
 
 
@@ -47,6 +50,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |              |         |          |            |             |          |       |
 |Debian[2]     |Stretch/9     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10(Sid)|    —    |     —    |     X      |      X      |     X    |   ?   |
+|              |Bullseye/11(Sid)|    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |              |         |          |            |             |          |       |
 |Ubuntu Launchpad[3]|Xenial/16.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Bionic/18.04  |    —    |     —    |     X      |      X      |     X    |   ?   |
@@ -59,6 +63,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Leap42.3      |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |Leap15.1      |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |SLES15        |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |SLES15SP1     |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |Tumbleweed    |    X    |     X    |     X      |      X      |     X    |   ?   |
 
 
