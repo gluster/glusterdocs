@@ -9,7 +9,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 
 |              |                |     7     |     6     |     5     |    4.1    |
 |--------------|----------------|:---------:|:---------:|:---------:|:---------:|
-|CentOS Storage SIG[1]|el6            |     X¹     |     X¹     |     X¹    |     X¹    |
+|CentOS Storage SIG[1]|el6¹           |     X      |     X      |     X     |     X     |
 |              |el7             |     X     |     X     |     X     |     X     |
 |              |(el8[2])        |     X     |     X     |     X     |     —     |
 |              |                |           |           |           |           |
