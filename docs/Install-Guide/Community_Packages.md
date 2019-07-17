@@ -25,7 +25,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Bionic/18.04    |     X     |     X     |     X     |     X     |
 |              |Cosmic/18.10    |     X     |     X     |     X     |     X     |
 |              |Disco/19.04     |     X     |     X     |     X     |     X     |
-|              |Eoan/19.10      |     X     |     X     |     X     |     —     |
+|              |Eoan/19.10      |     X     |     X     |     X     |     X     |
 |              |                |           |           |           |
 |OpenSUSE Build Service[4]|SLES12SP3    |     —     |     —     |     —     |     X     |
 |              |SLES12SP4       |     X     |     X     |     X     |     X     |
