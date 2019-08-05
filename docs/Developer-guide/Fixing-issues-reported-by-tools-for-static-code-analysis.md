@@ -29,7 +29,7 @@ program.
     understand the reasoning behind it.
 
 *If you have more questions please send it to
-[gluster-devel](http://www.gluster.org/interact/mailinglists) mailing
+[gluster-devel](https://lists.gluster.org/mailman/listinfo/gluster-devel) mailing
 list*
 
 ### CPP Check

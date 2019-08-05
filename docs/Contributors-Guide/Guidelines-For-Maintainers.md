@@ -22,6 +22,8 @@ explicitly called out.
      multiple components.
    - Ensure that regression tests pass for all patches before merging.
    - Ensure that regression tests accompany all patch submissions.
+   - Ensure the related Bug or GitHub Issue has sufficient details about the
+     cause of the problem, or description of the introduction for the change.
    - Ensure that documentation is updated for a noticeable change in user
      perceivable behavior or design.
    - Encourage code unit tests from patch submitters to improve the overall

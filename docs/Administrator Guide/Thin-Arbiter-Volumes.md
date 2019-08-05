@@ -1,4 +1,5 @@
 # Thin Arbiter volumes in gluster
+(Currently supported only by GlusterD2)
 
 Thin Arbiter is a new type of quorum node where granularity of what is
 good and what is bad data is less compared to the traditional arbiter brick.
