@@ -44,15 +44,13 @@ Install software-properties-common:
 
 Then add the community GlusterFS PPA:
 
-		sudo add-apt-repository ppa:gluster/glusterfs-3.8
+		sudo add-apt-repository ppa:gluster/glusterfs-6
 		sudo apt-get update
 
 Finally, install the packages:
 
 		sudo apt-get install glusterfs-server
 
-*Note: Packages exist for Ubuntu 12.04 LTS, 12.10, 13.10, and 14.04
-LTS*
 
 ###### For Red Hat/CentOS
 
