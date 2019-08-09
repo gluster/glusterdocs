@@ -1,3 +1,5 @@
+# GlusterFS Keystone Quickstart
+
 This is a document in progress, and may contain some errors or missing information.
 
 I am currently in the process of building an AWS Image with this installed, however if you can't wait, and want to install this with a script, here are the commands from both articles, with defaults appropriate for an Amazon CentOS/RHEL 6 AMI, such as ami-a6e15bcf
