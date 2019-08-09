@@ -1,4 +1,4 @@
-#Managing Directory Quota
+# Managing Directory Quota
 
 Directory quotas in GlusterFS allows you to set limits on usage of the disk
 space by directories or volumes. The storage administrators can control
@@ -24,7 +24,7 @@ You can set the quota at the following levels:
 > You can set the quota limit on an empty directory. The quota limit will be
 > automatically enforced when files are added to the directory.
 
-##Enabling Quota
+## Enabling Quota
 
 You must enable Quota to set disk limits.
 
@@ -39,7 +39,7 @@ You must enable Quota to set disk limits.
         # gluster volume quota test-volume enable
         Quota is enabled on /test-volume
 
-##Disabling Quota
+## Disabling Quota
 
 You can disable Quota, if needed.
 
@@ -54,7 +54,7 @@ You can disable Quota, if needed.
         # gluster volume quota test-volume disable
         Quota translator is disabled on /test-volume
 
-##Setting or Replacing Disk Limit
+## Setting or Replacing Disk Limit
 
 You can create new directories in your storage environment and set the
 disk limit or set disk limit for the existing directories. The directory
@@ -82,7 +82,7 @@ being treated as "/".
     > quota is disabled. This mount point is being used by quota to set
     > and display limits and lists respectively.
 
-##Displaying Disk Limit Information
+## Displaying Disk Limit Information
 
 You can display disk limit information on all the directories on which
 the limit is set.
@@ -110,7 +110,7 @@ the limit is set.
         # gluster volume quota test-volume list /data
         /Test/data    10 GB       6 GB
 
-###Displaying Quota Limit Information Using the df Utility
+### Displaying Quota Limit Information Using the df Utility
 
 You can create a report of the disk usage using the df utility by taking quota limits into consideration. To generate a report, run the following command:
 
@@ -155,7 +155,7 @@ Disk usage for volume test-volume as seen on client1:
 
 The quota-deem-statfs option when set to on, allows the administrator to make the user view the total disk space available on the directory as the hard limit set on it.
 
-##Updating Memory Cache Size
+## Updating Memory Cache Size
 
 ### Setting Timeout
 
@@ -188,7 +188,7 @@ on client side.
         # gluster volume set test-volume features.quota-timeout 5
         Set volume successful
 
-##Setting Alert Time
+## Setting Alert Time
 
 Alert time is the frequency at which you want your usage information to be logged after you reach the soft limit.
 
@@ -207,7 +207,7 @@ Alert time is the frequency at which you want your usage information to be logge
         # gluster volume quota test-volume alert-time 1d
         volume quota : success
 
-##Removing Disk Limit
+## Removing Disk Limit
 
 You can remove set disk limit, if you do not want quota anymore.
 
