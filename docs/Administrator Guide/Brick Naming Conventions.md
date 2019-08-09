@@ -1,3 +1,5 @@
+# Brick Naming Conventions
+
 FHS-2.3 isn't entirely clear on where data shared by the server should reside. It does state that "_/srv contains site-specific data which is served by this system_", but is GlusterFS data site-specific?
 
 The consensus seems to lean toward using `/data`. A good hierarchical method for placing bricks is:
