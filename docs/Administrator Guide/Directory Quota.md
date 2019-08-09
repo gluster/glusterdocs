@@ -34,7 +34,8 @@ You must enable Quota to set disk limits.
 ```
 # gluster volume quota VOLNAME enable
 ```
-    For example, to enable quota on the test-volume:
+
+For example, to enable quota on the test-volume:
 ```
 # gluster volume quota test-volume enable
 Quota is enabled on /test-volume
@@ -49,7 +50,7 @@ You can disable Quota, if needed.
 ```
 # gluster volume quota VOLNAME disable
 ```
-    For example, to disable quota translator on the test-volume:
+For example, to disable quota translator on the test-volume:
 ```
 # gluster volume quota test-volume disable
 Quota translator is disabled on /test-volume
@@ -68,20 +69,20 @@ being treated as "/".
 ```
 # gluster volume quota VOLNAME limit-usage DIR HARD_LIMIT
 ```
-    For example, to set limit on data directory on the test-volume where
-    data is a directory under the export directory:
+For example, to set limit on data directory on the test-volume where
+data is a directory under the export directory:
 ```
 # gluster volume quota test-volume limit-usage /data 10GB
 Usage limit has been set on /data
 ```
-    > **Note**
-    > In a multi-level directory hierarchy, the strictest disk limit
-    > will be considered for enforcement. Also, whenever quota limit
-    > is set for the first time, an auxiliary mount point will be
-    > created under /var/run/gluster/<VOLNAME>. This is just like any
-    > other mount point with some special permissions and remains until
-    > quota is disabled. This mount point is being used by quota to set
-    > and display limits and lists respectively.
+> **Note**
+> In a multi-level directory hierarchy, the strictest disk limit
+> will be considered for enforcement. Also, whenever quota limit
+> is set for the first time, an auxiliary mount point will be
+> created under /var/run/gluster/<VOLNAME>. This is just like any
+> other mount point with some special permissions and remains until
+> quota is disabled. This mount point is being used by quota to set
+> and display limits and lists respectively.
 
 ## Displaying Disk Limit Information
 
@@ -95,7 +96,7 @@ the limit is set.
 ```
 # gluster volume quota VOLNAME list
 ```
-    For example, to see the set disks limit on the test-volume:
+For example, to see the set disks limit on the test-volume:
 ```
 # gluster volume quota test-volume list
   /Test/data    10 GB       6 GB
@@ -106,7 +107,7 @@ the limit is set.
 ```
 # gluster volume quota VOLNAME list DIR
 ```
-    For example, to view the set limit on /data directory of test-volume:
+For example, to view the set limit on /data directory of test-volume:
 ```
 # gluster volume quota test-volume list /data
   /Test/data    10 GB       6 GB
@@ -184,8 +185,8 @@ on client side.
 ```
 # gluster volume set VOLNAME features.quota-timeout time
 ```
-    For example, to update the memory cache size for every 5 seconds on
-    test-volume:
+For example, to update the memory cache size for every 5 seconds on
+test-volume:
 ```
 # gluster volume set test-volume features.quota-timeout 5
 Set volume successful
@@ -200,11 +201,11 @@ Alert time is the frequency at which you want your usage information to be logge
 ```
 # gluster volume quota VOLNAME alert-time time
 ```
-    >**Note**
-    >
-    >The default alert-time is one week.
+>**Note**
+>
+>The default alert-time is one week.
 
-    For example, to set the alert time to one day:
+For example, to set the alert time to one day:
 ```
 # gluster volume quota test-volume alert-time 1d
 volume quota : success
@@ -219,8 +220,9 @@ You can remove set disk limit, if you do not want quota anymore.
 ```
 # gluster volume quota VOLNAME remove DIR
 ```
-    For example, to remove the disk limit on /data directory of
-    test-volume:
+For example, to remove the disk limit on /data directory of
+test-volume:
+
 ```
 # gluster volume quota test-volume remove /data
 Usage limit set on /data is removed
