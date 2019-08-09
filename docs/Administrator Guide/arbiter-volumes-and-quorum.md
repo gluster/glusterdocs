@@ -22,14 +22,18 @@ replica 3 volume without consuming 3x space.
 
 The syntax for creating the volume is:
 ```
-# gluster volume create <VOLNAME>  replica 3 arbiter 1 <NEW-BRICK> ...
+# gluster volume create <VOLNAME>  replica 2 arbiter 1 <NEW-BRICK> ...
 ```
-_**Note:** Volumes using the arbiter feature can **only** be ```replica 3 arbiter 1```_
+**Note**: The earlier syntax used to be ```replica 3 arbiter 1``` but that was 
+leading to confusions among users about the total no. of data bricks. For the 
+sake of backward compatibility, the old syntax also works. In any case, the 
+implied meaning is that there are 2 data bricks and 1 arbiter brick in a nx(2+1)
+arbiter volume.
 
 
 For example:
 ```
-# gluster volume create testvol replica 3 arbiter 1  server{1..6}:/bricks/brick
+# gluster volume create testvol replica 2 arbiter 1  server{1..6}:/bricks/brick
 volume create: testvol: success: please start the volume to access data
 ```
 
@@ -74,7 +78,17 @@ _client-quorum to 'auto'. This setting is **not** to be changed._
 Since the arbiter brick does not store file data, its disk usage will be considerably
 less than the other bricks of the replica. The sizing of the brick will depend on
 how many files you plan to store in the volume. A good estimate will be
-4kb times the number of files in the replica.
+4KB times the number of files in the replica. Note that the estimate also 
+depends on the inode space alloted by the underlying filesystem for a given 
+disk size. 
+
+The `maxpct` value in XFS for volumes of size 1TB to 50TB is only 5%. 
+If you want to store say 300 million files, 4KB x 300M gives us 1.2TB.
+5% of this is around 60GB. Assuming the recommended inode size of 512 bytes, 
+that gives us the ability to store only 60GB/512 ~= 120 million files. So it is
+better to choose a higher `maxpct` value (say 25%) while formatting an XFS disk
+of size greater than
+1TB. Refer the man page of `mkfs.xfs` for details.
 
 # Why Arbiter?
 ## Split-brains in replica volumes
@@ -138,7 +152,7 @@ node (for the participating volumes) making even reads impossible.
 
 Client-quorum is a feature implemented in AFR to prevent split-brains in the I/O
 path for replicate/distributed-replicate volumes. By default, if the client-quorum
-is not met for a particular replica subvol, it becomes read-only. The other subvols
+is not met for a particular replica subvol, it becomes unavailable. The other subvols
 (in a dist-rep volume) will still have R/W access.
 
 The following volume set options are used to configure it:
@@ -162,13 +176,10 @@ The following volume set options are used to configure it:
     to specify the number of bricks to be active to participate in quorum.
     If the quorum-type is auto then this option has no significance.
 
-> Option: cluster.quorum-reads
-Default Value: no
-Value Description: yes|no
-If quorum-reads is set to 'yes' (or 'true' or 'on'), read will be allowed
-only if quorum is met, without which read (and write) will return ENOTCONN.
-If set to 'no' (or 'false' or 'off'), then reads will be served even when quorum is
-not met, but write will fail with EROFS.
+Earlier, when quorm was not met, the replica subvolume turned read-only. But 
+since [glusterfs-3.13](https://docs.gluster.org/en/latest/release-notes/3.13.0/#addition-of-checks-for-allowing-lookups-in-afr-and-removal-of-clusterquorum-reads-volume-option) and upwards, the subvolume becomes unavailable, i.e. all 
+the file operations fail with ENOTCONN error instead of becoming EROFS.
+This means the ```cluster.quorum-reads``` volume option is also not supported.
 
 
 ## Replica 2 and Replica 3 volumes
@@ -194,13 +205,6 @@ Say B1, B2 and B3 are the bricks:
 that B2 and B3's pending xattrs blame each other and therefore the write is not
 allowed and is failed with an EIO.
 
-There is a corner case even with replica 3 volumes where the file can
-end up in a split-brain. AFR usually takes range locks for the {offset, length}
-of the write. If 3 writes happen on the same file at non-overlapping {offset, length}
-and each write fails on (only) one different brick, then we have AFR xattrs of the
-file blaming each other.
-
-
 # How Arbiter works
 
 There are 2 components to the arbiter volume. One is the arbiter xlator that is
@@ -213,14 +217,10 @@ entry operations to hit POSIX, blocks certain inode operations like
 read (unwinds the call with ENOTCONN) and unwinds other inode operations
 like write, truncate etc. with success without winding it down to POSIX.
 
-The latter. i.e. the arbitration logic present in AFR does the following:
-
-- Takes full file locks when writing to a file as opposed to range locks in a
-normal replicate volume. This prevents the corner-case split-brain described
-earlier for 3 way replicas.
-
-The behavior of arbiter volumes in allowing/failing write FOPS in conjunction
-with client-quorum can be summarized in the below steps:
+The latter i.e. the arbitration logic present in AFR takes full file locks
+when writing to a file, just like in normal replica volumes. The behavior of 
+arbiter volumes in allowing/failing write FOPS in conjunction with 
+client-quorum can be summarized in the below steps:
 
 - If all 3 bricks are up (happy case), then there is no issue and the FOPs are allowed.
 
