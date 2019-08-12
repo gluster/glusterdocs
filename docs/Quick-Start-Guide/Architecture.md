@@ -502,7 +502,7 @@ a client process will also be created. Now our filesystem is ready to
 use. We can mount this volume on a client machine very easily as follows
 and use it like we use a local storage:
 
-    mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>
+    mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
 
 IP or hostname can be that of any node in the trusted server pool in
 which the required volume is created.
