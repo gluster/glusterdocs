@@ -368,9 +368,7 @@ backup of entire data for disaster recovery.
 
 Geo-replication uses a master-slave model, whereby replication occurs
 between **Master** - a GlusterFS volume and **Slave** - which can be a
-local directory or a GlusterFS volume. The slave (local directory or
-volume is accessed using SSH tunnel).
-
+local directory or a GlusterFS volume.
 Geo-replication provides an incremental replication service over Local
 Area Networks (LANs), Wide Area Network (WANs), and across the
 Internet.
