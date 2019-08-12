@@ -1,3 +1,4 @@
+# Setup on Virtual Machine
 *Note: You only need one of the three setup methods!*
 
 ### Setup, Method 1 – Setting up in virtual machines
