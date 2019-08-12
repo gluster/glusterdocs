@@ -439,7 +439,7 @@ usable space of the volume using this formula:
 
     <Usable size> = <Brick size> * (#Bricks - Redundancy)
 
-All bricks of a disperse set should have the same capacity otherwise, when
+All bricks of a disperse set should have the same capacity, otherwise, when
 the smallest brick becomes full, no additional data will be allowed in the
 disperse set.
 
