@@ -6,7 +6,7 @@ As we just mentioned, to set up Gluster using virtual machines, you will
 need at least two virtual machines with at least 1GB of RAM each. You
 may be able to test with less but most users will find it too slow for
 their tastes. The particular virtualization product you use is a matter
-of choice. Platforms I have used to test on include Xen, VMware ESX and
+of choice. Common platforms include include Xen, VMware ESX and
 Workstation, VirtualBox, and KVM. For purpose of this article, all steps
 assume KVM but the concepts are expected to be simple to translate to
 other platforms as well. The article assumes you know the particulars of
