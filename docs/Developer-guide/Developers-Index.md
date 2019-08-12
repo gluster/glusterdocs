@@ -8,7 +8,7 @@ Are you itching to send in patches and participate as a developer in the
 Gluster community? Here are a number of starting points for getting
 involved. All you need is your 'github' account to be handy.
 
-Remember that, [Gluster community](https://github.com/gluster) has multiple projects, each of which has its own way of handling PRs and patches. Decide on which project you want to contribute. Below document is mostly concerned about 'GlusterFS' project, which is the core of Gluster Community.
+Remember that, [Gluster community](https://github.com/gluster) has multiple projects, each of which has its own way of handling PRs and patches. Decide on which project you want to contribute. Below documents are mostly about 'GlusterFS' project, which is the core of Gluster Community.
 
 Workflow
 --------
