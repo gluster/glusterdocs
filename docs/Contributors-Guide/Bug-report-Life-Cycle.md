@@ -1,3 +1,4 @@
+# Bug report Life Cycle
 This page describes the life of a bug report.
 
 -   When a bug is first reported, it is given the **NEW** status.
