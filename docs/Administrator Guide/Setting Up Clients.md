@@ -624,6 +624,6 @@ and is reconnected each time the system starts.
 You can confirm that Gluster directories are mounting successfully by
 navigating to the directory using Windows Explorer.
 
-[]: http://bits.gluster.com/gluster/glusterfs/3.3.0qa30/x86_64/
 [1]: http://www.gluster.org/download/
 [2]: http://download.gluster.com/pub/gluster/glusterfs
+[3]: http://bits.gluster.com/gluster/glusterfs/3.3.0qa30/x86_64/
