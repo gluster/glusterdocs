@@ -1,3 +1,5 @@
+# Projects
+
 This page contains a list of project ideas which will be suitable for
 students (for GSOC, internship etc.)
 
