@@ -11,8 +11,7 @@ After you deploy GlusterFS by following these steps,
 we recommend that you read the GlusterFS Admin Guide to learn how to
 administer GlusterFS and how to select a volume type that fits your
 needs. Read the GlusterFS Install Guide for a more detailed explanation
-of the steps we took here. We want you to be successful in as short a
-time as possible.
+of the steps we took here. We want you to be successful as fast as possible.
 
 If you would like a more detailed walkthrough with instructions for
 installing using different methods (in local virtual machines, EC2 and
