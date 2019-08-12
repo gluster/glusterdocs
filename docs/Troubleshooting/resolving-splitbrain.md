@@ -722,7 +722,7 @@ in the top-level directory of the brick. If the gfid of the file is
 from the getfattr command earlier),the gfid-link file can be found at
 > /gfs/brick-a/.glusterfs/30/7a/307a5c9efddd4e7c96e94fd4bcdcbd1b
 
-####Word of caution:
+#### Word of caution:
 Before deleting the gfid-link, we have to ensure that there are no hard links
 to the file present on that brick. If hard-links exist,they must be deleted as
 well.
