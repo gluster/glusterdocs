@@ -251,34 +251,34 @@ finite-state machine (FSM) to decide when the cluster has settled and volume
 creation can begin. For more information on the FSM in Puppet-Gluster see:
 [https://ttboj.wordpress.com/2013/09/28/finite-state-machines-in-puppet/](https://ttboj.wordpress.com/2013/09/28/finite-state-machines-in-puppet/)
 
-####`replica`
+#### replica
 The replica count. Can't be changed automatically after initial deployment.
 
-####`volume`
+#### volume
 The volume name or list of volume names to create.
 
-####`path`
+#### path
 The valid brick path for each host. Defaults to local file system. If you need
 a different path per host, then Gluster::Simple will not meet your needs.
 
-####`vip`
+#### vip
 The virtual IP address to be used for the cluster distributed lock manager.
 
-####`shorewall`
+#### shorewall
 Boolean to specify whether puppet-shorewall integration should be used or not.
 
-###gluster::elastic
+### gluster::elastic
 Under construction.
 
-###gluster::server
+### gluster::server
 Main server class for the cluster. Must be included when building the GlusterFS
 cluster manually. Wrapper classes such as [gluster::simple](#glustersimple)
 include this automatically.
 
-####`vip`
+#### vip
 The virtual IP address to be used for the cluster distributed lock manager.
 
-####`shorewall`
+#### shorewall
 Boolean to specify whether puppet-shorewall integration should be used or not.
 
 ### gluster::host
@@ -286,14 +286,14 @@ Main host type for the cluster. Each host participating in the GlusterFS
 cluster must define this type on itself, and on every other host. As a result,
 this is not a singleton like the [gluster::server](#glusterserver) class.
 
-####`ip`
+#### ip 
 Specify which IP address this host is using. This defaults to the
 _$::ipaddress_ variable. Be sure to set this manually if you're declaring this
 yourself on each host without using exported resources. If each host thinks the
 other hosts should have the same IP address as itself, then Puppet-Gluster and
 GlusterFS won't work correctly.
 
-####`uuid`
+#### uuid
 Universally unique identifier (UUID) for the host. If empty, Puppet-Gluster
 will generate this automatically for the host. You can generate your own
 manually with _uuidgen_, and set them yourself. I found this particularly
@@ -348,41 +348,41 @@ never caused me to lose data. If you're uncertain, feel free to look at the
 code, or avoid using this feature entirely. If you think there's a way to make
 it even safer, then feel free to let me know.
 
-####`dev`
+#### dev
 Block device, such as _/dev/sdc_ or _/dev/disk/by-id/scsi-0123456789abcdef_. By
 default, Puppet-Gluster will assume you're using a folder to store the brick
 data, if you don't specify this parameter.
 
-####`fsuuid`
+#### fsuuid
 File system UUID. This ensures we can distinctly identify a file system. You
 can set this to be used with automatic file system creation, or you can specify
 the file system UUID that you'd like to use.
 
-####`labeltype`
+#### labeltype
 Only _gpt_ is supported. Other options include _msdos_, but this has never been
 used because of it's size limitations.
 
-####`fstype`
+#### fstype
 This should be _xfs_ or _ext4_. Using _xfs_ is recommended, but _ext4_ is also
 quite common. This only affects a file system that is getting created by this
 module. If you provision a new machine, with a root file system of _ext4_, and
 the brick you create is a root file system path, then this option does nothing.
 
-####`xfs_inode64`
+#### xfs_inode64
 Set _inode64_ mount option when using the _xfs_ fstype. Choose _true_ to set.
 
-####`xfs_nobarrier`
+#### xfs_nobarrier
 Set _nobarrier_ mount option when using the _xfs_ fstype. Choose _true_ to set.
 
-####`ro`
+#### ro
 Whether the file system should be mounted read only. For emergencies only.
 
-####`force`
+#### force
 If _true_, this will overwrite any xfs file system it sees. This is useful for
 rebuilding GlusterFS repeatedly and wiping data. There are other safeties in
 place to stop this. In general, you probably don't ever want to touch this.
 
-####`areyousure`
+#### areyousure
 Do you want to allow Puppet-Gluster to do dangerous things? You have to set
 this to _true_ to allow Puppet-Gluster to _fdisk_ and _mkfs_ your file system.
 
@@ -394,7 +394,7 @@ FSM based error checking to verify that no changes occur, but it has been left
 out so that this code base can eventually support such changes, and so that the
 user can manually change a parameter if they know that it is safe to do so.
 
-####`bricks`
+#### bricks
 List of bricks to use for this volume. If this is left at the default value of
 _true_, then this list is built automatically. The algorithm that determines
 this order does not support all possible situations, and most likely can't
@@ -406,11 +406,11 @@ manually, you must choose the order to match your desired volume layout. If you
 aren't sure about how to order the bricks, you should review the GlusterFS
 documentation first.
 
-####`transport`
+#### transport
 Only _tcp_ is supported. Possible values can include _rdma_, but this won't get
 any testing if I don't have access to infiniband hardware. Donations welcome.
 
-####`replica`
+#### replica
 Replica count. Usually you'll want to set this to _2_. Some users choose _3_.
 Other values are seldom seen. A value of _1_ can be used for simply testing a
 distributed setup, when you don't care about your data or high availability. A
@@ -418,17 +418,17 @@ value greater than _4_ is probably wasteful and unnecessary. It might even
 cause performance issues if a synchronous write is waiting on a slow fourth
 server.
 
-####`stripe`
+#### stripe
 Stripe count. Thoroughly unsupported and untested option. Not recommended for
 use by GlusterFS.
 
-####`ping`
+#### ping
 Do we want to include ping checks with _fping_?
 
-####`settle`
+#### settle
 Do we want to run settle checks?
 
-####`start`
+#### start 
 Requested state for the volume. Valid values include: _true_ (start), _false_
 (stop), or _undef_ (un-managed start/stop state).
 
@@ -445,7 +445,7 @@ Because this feature is an awesome way to _document as code_ the volume
 specific optimizations that you've made, make sure you use this feature even if
 you don't use all the others.
 
-####`value`
+#### value
 The value to be used for this volume property.
 
 ## Examples
