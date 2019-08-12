@@ -1,4 +1,4 @@
-#Puppet-Gluster
+# Puppet-Gluster
 <!---
 GlusterFS module by James
 Copyright (C) 2010-2013+ James Shubin
@@ -17,11 +17,11 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-##A GlusterFS Puppet module by [James](https://ttboj.wordpress.com/)
-####Available from:
-####[https://github.com/purpleidea/puppet-gluster/](https://github.com/purpleidea/puppet-gluster/)
+## A GlusterFS Puppet module by [James](https://ttboj.wordpress.com/)
+#### Available from:
+#### [https://github.com/purpleidea/puppet-gluster/](https://github.com/purpleidea/puppet-gluster/)
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Module description - What the module does](#module-description)
@@ -44,18 +44,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 8. [Development - Background on module development](#development)
 9. [Author - Author and contact information](#author)
 
-##Overview
+## Overview
 
 The Puppet-Gluster module installs, configures, and manages a GlusterFS cluster.
 
-##Module Description
+## Module Description
 
 This Puppet-Gluster module handles installation, configuration, and management
 of GlusterFS across all of the hosts in the cluster.
 
-##Setup
+## Setup
 
-###What can Puppet-Gluster manage?
+### What can Puppet-Gluster manage?
 
 Puppet-Gluster is designed to be able to manage as much or as little of your
 GlusterFS cluster as you wish. All features are optional. If there is a feature
@@ -78,7 +78,7 @@ moment it can manage:
 * GlusterFS volume properties (gluster volume set)
 * And much more...
 
-###Simple setup
+### Simple setup
 
 include '::gluster::simple' is enough to get you up and running. When using the
 gluster::simple class, or with any other Puppet-Gluster configuration,
@@ -102,11 +102,11 @@ class { '::gluster::simple':
 }
 ```
 
-###Elastic setup
+### Elastic setup
 
 The gluster::elastic class is not yet available. Stay tuned!
 
-###Advanced setup
+### Advanced setup
 
 Some system administrators may wish to manually itemize each of the required
 components for the Puppet-Gluster deployment. This happens automatically with
@@ -165,7 +165,7 @@ gluster::volume::property { 'examplevol#auth.reject':
 }
 ```
 
-##Usage and frequently asked questions
+## Usage and frequently asked questions
 
 All management should be done by manipulating the arguments on the appropriate
 Puppet-Gluster classes and types. Since certain manipulations are either not
@@ -173,7 +173,7 @@ yet possible with Puppet-Gluster, or are not supported by GlusterFS, attempting
 to manipulate the Puppet configuration in an unsupported way will result in
 undefined behaviour, and possible even data loss, however this is unlikely.
 
-###How do I change the replica count?
+### How do I change the replica count?
 
 You must set this before volume creation. This is a limitation of GlusterFS.
 There are certain situations where you can change the replica count by adding
@@ -182,7 +182,7 @@ are not yet supported by Puppet-Gluster. If you want to use Puppet-Gluster
 before and / or after this transition, you can do so, but you'll have to do the
 changes manually.
 
-###Do I need to use a virtual IP?
+###  Do I need to use a virtual IP?
 
 Using a virtual IP (VIP) is strongly recommended as a distributed lock manager
 (DLM) and also to provide a highly-available (HA) IP address for your clients
@@ -197,7 +197,7 @@ private RFC1918 IP address as the DLM VIP. Remember that a layer 3 IP can
 co-exist on the same layer 2 network with the layer 3 network that is used by
 your cluster.
 
-###Is it possible to have Puppet-Gluster complete in a single run?
+### Is it possible to have Puppet-Gluster complete in a single run?
 
 No. This is a limitation of Puppet, and is related to how GlusterFS operates.
 For example, it is not reliably possible to predict which ports a particular
@@ -210,31 +210,31 @@ You should notice that each run should complete without error. If you do see an
 error, it means that either something is wrong with your system and / or
 configuration, or because there is a bug in Puppet-Gluster.
 
-###Can you integrate this with vagrant?
+### Can you integrate this with vagrant?
 
 Not until vagrant properly supports libvirt/KVM. I have no desire to use
 VirtualBox for fun.
 
-###Awesome work, but it's missing support for a feature and/or platform!
+### Awesome work, but it's missing support for a feature and/or platform!
 
 Since this is an Open Source / Free Software project that I also give away for
 free (as in beer, free as in gratis, free as in libre), I'm unable to provide
 unlimited support. Please consider donating funds, hardware, virtual machines,
 and other resources. For specific needs, you could perhaps sponsor a feature!
 
-###You didn't answer my question, or I have a question!
+### You didn't answer my question, or I have a question!
 
 Contact me through my [technical blog](https://ttboj.wordpress.com/contact/)
 and I'll do my best to help. If you have a good question, please remind me to
 add my answer to this documentation!
 
-##Reference
+## Reference
 Please note that there are a number of undocumented options. For more
 information on these options, please view the source at:
 [https://github.com/purpleidea/puppet-gluster/](https://github.com/purpleidea/puppet-gluster/).
 If you feel that a well used option needs documenting here, please contact me.
 
-###Overview of classes and types
+### Overview of classes and types
 
 * [gluster::simple](#glustersimple): Simple Puppet-Gluster deployment.
 * [gluster::elastic](#glusterelastic): Under construction.
@@ -244,7 +244,7 @@ If you feel that a well used option needs documenting here, please contact me.
 * [gluster::volume](#glustervolume): Volume type for each defined volume.
 * [gluster::volume::property](#glustervolumeproperty): Manages properties for each volume.
 
-###gluster::simple
+### gluster::simple
 This is gluster::simple. It should probably take care of 80% of all use cases.
 It is particularly useful for deploying quick test clusters. It uses a
 finite-state machine (FSM) to decide when the cluster has settled and volume
@@ -281,7 +281,7 @@ The virtual IP address to be used for the cluster distributed lock manager.
 ####`shorewall`
 Boolean to specify whether puppet-shorewall integration should be used or not.
 
-###gluster::host
+### gluster::host
 Main host type for the cluster. Each host participating in the GlusterFS
 cluster must define this type on itself, and on every other host. As a result,
 this is not a singleton like the [gluster::server](#glusterserver) class.
@@ -305,7 +305,7 @@ store it locally to be used again if you no longer specify the UUID. This is
 particularly useful for upgrading an existing un-managed GlusterFS installation
 to a Puppet-Gluster managed one, without changing any UUID's.
 
-###gluster::brick
+### gluster::brick
 Main brick type for the cluster. Each brick is an individual storage segment to
 be used on a host. Each host must have at least one brick to participate in the
 cluster, but usually a host will have multiple bricks. A brick can be as simple
@@ -386,7 +386,7 @@ place to stop this. In general, you probably don't ever want to touch this.
 Do you want to allow Puppet-Gluster to do dangerous things? You have to set
 this to _true_ to allow Puppet-Gluster to _fdisk_ and _mkfs_ your file system.
 
-###gluster::volume
+### gluster::volume
 Main volume type for the cluster. This is where a lot of the magic happens.
 Remember that changing some of these parameters after the volume has been
 created won't work, and you'll experience undefined behaviour. There could be
@@ -432,7 +432,7 @@ Do we want to run settle checks?
 Requested state for the volume. Valid values include: _true_ (start), _false_
 (stop), or _undef_ (un-managed start/stop state).
 
-###gluster::volume::property
+### gluster::volume::property
 Main volume property type for the cluster. This allows you to manage GlusterFS
 volume specific properties. There are a wide range of properties that volumes
 support. For the full list of properties, you should consult the GlusterFS
@@ -448,7 +448,7 @@ you don't use all the others.
 ####`value`
 The value to be used for this volume property.
 
-##Examples
+## Examples
 For example configurations, please consult the [examples/](https://github.com/purpleidea/puppet-gluster/tree/master/examples) directory in the git
 source repository. It is available from:
 
@@ -458,7 +458,7 @@ It is also available from:
 
 [https://forge.gluster.org/puppet-gluster/puppet-gluster/trees/master/examples](https://forge.gluster.org/puppet-gluster/puppet-gluster/trees/master/examples/)
 
-##Limitations
+## Limitations
 
 This module has been tested against open source Puppet 3.2.4 and higher.
 
@@ -477,7 +477,7 @@ most likely not work on Debian/Ubuntu systems without modification. I would
 really love to add support for these operating systems, but I do not have any
 test resources to do so. Please sponsor this if you'd like to see it happen.
 
-##Development
+## Development
 
 This is my personal project that I work on in my free time.
 Donations of funding, hardware, virtual machines, and other resources are
@@ -486,7 +486,7 @@ talk/teach or for consulting.
 
 You can follow along [on my technical blog](https://ttboj.wordpress.com/).
 
-##Author
+## Author
 
 Copyright (C) 2010-2013+ James Shubin
 
