@@ -1,3 +1,4 @@
+# GlusterFS upgrade to 3.7.x
 Now that GlusterFS 3.7.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS. Please read the entire howto
 before proceeding with an upgrade of your deployment
