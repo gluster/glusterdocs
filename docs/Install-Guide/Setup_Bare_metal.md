@@ -27,9 +27,8 @@ practices we mentioned before:
 With the explosion of commodity hardware, you don’t need to be a
 hardware expert these days to deploy a server. Although this is
 generally a good thing, it also means that paying attention to some
-important, performance impacting BIOS settings is commonly ignored. A
-few things I have seen cause issues when people didn't know to look for
-them:
+important, performance impacting BIOS settings is commonly ignored. Several
+points that might cause issues when if you're unaware of them:
 
 -   Most manufacturers enable power saving mode by default. This is a
     great idea for servers that do not have high-performance
