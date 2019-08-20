@@ -58,7 +58,8 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    192.168.1.20/24 eth0
    192.168.1.21/24 eth0
    ```
- 7. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
+ 7. Uncomment	`CTDB_SAMBA_SKIP_SHARE_CHECK=yes` in /etc/ctdb/script.options to disable checking of the shares by ctdb
+ 8. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
    ```
    # setsebool -P use_fusefs_home_dirs 1
    # setsebool -P samba_load_libgfapi 1
