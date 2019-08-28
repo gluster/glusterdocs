@@ -1,6 +1,10 @@
 Release Notes
 -------------
 
+### GlusterFS 7 release notes
+
+- [7.0](./7.0.md)
+
 ### GlusterFS 6 release notes
 
 - [6.5](./6.5.md)
