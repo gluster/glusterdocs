@@ -59,6 +59,7 @@ To install Gluster Native Client on RPM distribution-based systems
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
 ~~~
+
     > **Note**
     >
     > If you already have iptable chains, make sure that the above
@@ -133,11 +134,11 @@ To install Gluster Native Client on Debian-based distributions
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
 ~~~
-    > **Note**
-    >
-    > If you already have iptable chains, make sure that the above
-    > ACCEPT rules precede the DROP rules. This can be achieved by
-    > providing a lower rule number than the DROP rule.
+> **Note**
+>
+> If you already have iptable chains, make sure that the above
+> ACCEPT rules precede the DROP rules. This can be achieved by
+> providing a lower rule number than the DROP rule.
 
 ### Performing a Source Installation
 
