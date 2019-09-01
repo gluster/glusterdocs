@@ -3,23 +3,23 @@
 Below lists the component, services, and functionality based logs in the GlusterFS Server. As per the File System Hierarchy Standards (FHS) all the log files are placed in the `/var/log` directory.
 ⁠
 
-## glusterd:
+## Glusterd:
 
 glusterd logs are located at `/var/log/glusterfs/glusterd.log`. One glusterd log file per server. This log file also contains the snapshot and user logs.
 
-## gluster cli command:
+## Gluster cli command:
 gluster cli logs  are located at `/var/log/glusterfs/cli.log`. Gluster commands executed on a node in a GlusterFS Trusted Storage Pool is logged in `/var/log/glusterfs/cmd_history.log`.
 
-## bricks:
+## Bricks:
 Bricks logs are located at `/var/log/glusterfs/bricks/<path extraction of brick path>.log` .    One log file per brick on the server
 
-## rebalance:
+## Rebalance:
 rebalance logs are located at `/var/log/glusterfs/VOLNAME-rebalance.log` .    One log file per volume on the server.
 
-## self heal deamon:
+## Self heal deamon:
 self heal deamon are logged at `/var/log/glusterfs/glustershd.log`.    One log file per server
 
-## quota:
+## Quota:
 
 `/var/log/glusterfs/quotad.log` are log of the quota daemons running on each node.
 `/var/log/glusterfs/quota-crawl.log` Whenever quota is enabled, a file system crawl is performed and the corresponding log is stored in this file.
@@ -46,10 +46,10 @@ self heal deamon are logged at `/var/log/glusterfs/glustershd.log`.    One log f
 `/var/log/glusterfs/geo-replication/<master>`
 `/var/log/glusterfs/geo-replication-slaves `
 
-## gluster volume heal VOLNAME info command:
+## Gluster volume heal VOLNAME info command:
 `/var/log/glusterfs/glfsheal-VOLNAME.log` . One log file per server on which the command is executed.
 
-## gluster-swift:
+## Gluster-swift:
 `/var/log/messages`
 
 ## SwiftKrbAuth:
