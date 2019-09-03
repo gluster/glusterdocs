@@ -78,8 +78,7 @@ Restart the firewall service:
 
 		$ sudo service iptables restart
 
-## 7. Restarting Cinder Services
-
+## 7. Restarting Cinder Services 
 
 Configuration is complete and now you must restart the Cinder services to make it active.
 
