@@ -80,6 +80,7 @@ Restart the firewall service:
 
 ## 7. Restarting Cinder Services
 
+
 Configuration is complete and now you must restart the Cinder services to make it active.
 
 		$ for i in api scheduler volume; do sudo service openstack-cinder-${i} start; done
@@ -88,7 +89,7 @@ Check the Cinder volume log to make sure that there are no errors:
 
 		$ sudo tail -50 /var/log/cinder/volume.log
 
-## 8. Verify GlusterFS Integration with Cinder
+## 8. Verify GlusterFS Integration with Cinder 
 
 To verify if the installation and configuration is successful, create a Cinder volume then check using GlusterFS.
 
