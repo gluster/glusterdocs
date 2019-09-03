@@ -1,3 +1,4 @@
+# GlusterFS upgrade from 3.5.x to 3.6.x
 Now that GlusterFS 3.6.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS.
 
@@ -16,7 +17,7 @@ perform this by below steps.
         volume set: success
         [root@~]#
 
-### GlusterFS upgrade from 3.5.x to 3.6.X
+### GlusterFS upgrade from 3.5.x to 3.6.x
 
 **a) Scheduling a downtime (Recommended)**
 

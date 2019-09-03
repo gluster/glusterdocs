@@ -1,3 +1,4 @@
+# Easy Fix Bugs
 Fixing easy bugs is an excellent method to start contributing patches to
 Gluster.
 

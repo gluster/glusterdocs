@@ -1,3 +1,4 @@
+# Building GlusterFS
 This page describes how to build and install GlusterFS.
 
 Build Requirements

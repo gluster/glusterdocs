@@ -1,4 +1,4 @@
-#Managing the glusterd Service
+# Managing the glusterd Service
 
 After installing GlusterFS, you must start glusterd service. The
 glusterd service serves as the Gluster elastic volume manager,
@@ -15,7 +15,7 @@ following ways:
 > **Note**: You must start glusterd on all GlusterFS servers.
 
 <a name="manual"></a>
-##Starting and Stopping glusterd Manually
+## Starting and Stopping glusterd Manually
 
 This section describes how to start and stop glusterd manually
 
@@ -28,12 +28,12 @@ This section describes how to start and stop glusterd manually
     `# /etc/init.d/glusterd stop`
 
 <a name="auto"></a>
-##Starting glusterd Automatically
+## Starting glusterd Automatically
 
 This section describes how to configure the system to automatically
 start the glusterd service every time the system boots.
 
-###Red Hat and Fedora distributions
+### Red Hat and Fedora distributions
 
 To configure Red Hat-based systems to automatically start the glusterd
 service every time the system boots, enter the following from the
@@ -41,7 +41,7 @@ command line:
 
 `# chkconfig glusterd on `
 
-###Debian and derivatives like Ubuntu
+### Debian and derivatives like Ubuntu
 
 To configure Debian-based systems to automatically start the glusterd
 service every time the system boots, enter the following from the
@@ -49,7 +49,7 @@ command line:
 
 `# update-rc.d glusterd defaults`
 
-###Systems Other than Red Hat and Debian
+### Systems Other than Red Hat and Debian
 
 To configure systems other than Red Hat or Debian to automatically start
 the glusterd service every time the system boots, enter the following

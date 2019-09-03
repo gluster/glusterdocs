@@ -1,4 +1,4 @@
-#Monitoring your GlusterFS Workload
+# Monitoring your GlusterFS Workload
 
 You can monitor the GlusterFS volumes on different parameters.
 Monitoring volumes helps in capacity planning and performance tuning
@@ -13,7 +13,7 @@ performance needs to be probed.
 You can also perform statedump of the brick processes and nfs server
 process of a volume, and also view volume status and volume information.
 
-##Running GlusterFS Volume Profile Command
+## Running GlusterFS Volume Profile Command
 
 GlusterFS Volume Profile command provides an interface to get the
 per-brick I/O information for each File Operation (FOP) of a volume. The
@@ -28,7 +28,7 @@ performing the following operations:
 -   [Stop Profiling](#stop-profiling)
 
 <a name="start-profiling"></a>
-###Start Profiling
+### Start Profiling
 
 You must start the Profiling to view the File Operation information for
 each brick.
@@ -49,7 +49,7 @@ options are displayed in the Volume Info:
     diagnostics.latency-measurement: on
 
 <a name="displaying-io"></a>
-###Displaying the I/0 Information
+### Displaying the I/0 Information
 
 You can view the I/O information of each brick by using the following command:
 
@@ -107,7 +107,7 @@ For example, to see the I/O information on test-volume:
     BytesWritten : 195571980
 
 <a name="stop-profiling"></a>
-###Stop Profiling
+### Stop Profiling
 
 You can stop profiling the volume, if you do not need profiling
 information anymore.
@@ -122,7 +122,7 @@ For example, to stop profiling on test-volume:
 
     `Profiling stopped on test-volume`
 
-##Running GlusterFS Volume TOP Command
+## Running GlusterFS Volume TOP Command
 
 GlusterFS Volume Top command allows you to view the glusterfs bricks’
 performance metrics like read, write, file open calls, file read calls,
@@ -141,7 +141,7 @@ GlusterFS Top commands:
 -   [Viewing List of Write Performance on each Brick](#write-perf)
 
 <a name="open-fd-count"></a>
-###Viewing Open fd Count and Maximum fd Count
+### Viewing Open fd Count and Maximum fd Count
 
 You can view both current open fd count (list of files that are
 currently the most opened and the count) on the brick and the maximum
@@ -200,7 +200,7 @@ displayed.
                         STUDENTS.DB
 
 <a name="file-read"></a>
-###Viewing Highest File Read Calls
+### Viewing Highest File Read Calls
 
 You can view highest read calls on each brick. If brick name is not
 specified, then by default, list of 100 files will be displayed.
@@ -242,7 +242,7 @@ specified, then by default, list of 100 files will be displayed.
         54               /clients/client8/~dmtmp/SEED/LARGE.FIL
 
 <a name="file-write"></a>
-###Viewing Highest File Write Calls
+### Viewing Highest File Write Calls
 
 You can view list of files which has highest file write calls on each
 brick. If brick name is not specified, then by default, list of 100
@@ -283,7 +283,7 @@ files will be displayed.
         59                /clients/client3/~dmtmp/SEED/LARGE.FIL
 
 <a name="open-dir"></a>
-###Viewing Highest Open Calls on Directories
+### Viewing Highest Open Calls on Directories
 
 You can view list of files which has highest open calls on directories
 of each brick. If brick name is not specified, then the metrics of all
@@ -326,7 +326,7 @@ the bricks belonging to that volume will be displayed.
         402               /clients/client4/~dmtmp
 
 <a name="read-dir"></a>
-###Viewing Highest Read Calls on Directory
+### Viewing Highest Read Calls on Directory
 
 You can view list of files which has highest directory read calls on
 each brick. If brick name is not specified, then the metrics of all the
@@ -369,7 +369,7 @@ bricks belonging to that volume will be displayed.
         800                     /clients/client4/~dmtmp
 
 <a name="read-perf"></a>
-###Viewing List of Read Performance on each Brick
+### Viewing List of Read Performance on each Brick
 
 You can view the read throughput of files on each brick. If brick name
 is not specified, then the metrics of all the bricks belonging to that
@@ -463,7 +463,7 @@ and measures the corresponding throughput.
                  BASEMACH.DOC                    15:39:09.336572
                                                    
 <a name="write-perf"></a>
-###Viewing List of Write Performance on each Brick
+### Viewing List of Write Performance on each Brick
 
 You can view list of write throughput of files on each brick. If brick
 name is not specified, then the metrics of all the bricks belonging to
@@ -519,7 +519,7 @@ performance on each brick:
         516.00   /clients/client6/~dmtmp/ACCESS/    -2011-01-31
                  FASTENER.MDB                    15:39:01.797317
 
-##Displaying Volume Information
+## Displaying Volume Information
 
 You can display information about a specific volume, or all volumes, as
 needed.
@@ -575,7 +575,7 @@ needed.
         Bricks:
         Brick: server:/brick6
 
-##Performing Statedump on a Volume
+## Performing Statedump on a Volume
 
 Statedump is a mechanism through which you can get details of all
 internal variables and state of the glusterfs process at the time of
@@ -631,7 +631,7 @@ dumped:
 
     `# gluster volume info `
 
-##Displaying Volume Status
+## Displaying Volume Status
 
 You can display the status information about a specific volume, brick or
 all volumes, as needed. Status information can be used to understand the
