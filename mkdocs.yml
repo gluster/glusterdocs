@@ -94,6 +94,7 @@ nav:
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op_version.md
+  - Upgrade to 7: Upgrade-Guide/upgrade_to_7.md
   - Upgrade to 6: Upgrade-Guide/upgrade_to_6.md
   - Upgrade to 5: Upgrade-Guide/upgrade_to_5.md
   - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
