@@ -11,7 +11,7 @@ This document assumes you already have GlusterFS with UFO installed, 3.3.1-11 or
 These docs are largely derived from:
 
 [`http://fedoraproject.org/wiki/Getting_started_with_OpenStack_on_Fedora_17#Initial_Keystone_setup`](http://fedoraproject.org/wiki/Getting_started_with_OpenStack_on_Fedora_17#Initial_Keystone_setup)
-[`http://blog.jebpages.com/archives/fedora-17-openstack-and-gluster-3-3/`](http://blog.jebpages.com/archives/fedora-17-openstack-and-gluster-3-3/)
+
 
 Add the RDO Openstack Grizzly and Epel repos:
 
