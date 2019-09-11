@@ -454,10 +454,6 @@ source repository. It is available from:
 
 [https://github.com/purpleidea/puppet-gluster/tree/master/examples](https://github.com/purpleidea/puppet-gluster/tree/master/examples)
 
-It is also available from:
-
-[https://forge.gluster.org/puppet-gluster/puppet-gluster/trees/master/examples](https://forge.gluster.org/puppet-gluster/puppet-gluster/trees/master/examples/)
-
 ## Limitations
 
 This module has been tested against open source Puppet 3.2.4 and higher.
