@@ -27,4 +27,4 @@ focusing on simple integration with the website. The website itself has been
 put within the Gluster.org Github.com account to enable ease of maintenance and
 sustainability.
 
-For more details look at the full [Tools List](/Ops-Guide/Tools.md).
+For more details look at the full [Tools List](./Tools.md).
