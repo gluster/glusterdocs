@@ -62,7 +62,7 @@ You must update the firewall rules on each Cinder node to communicate with the G
 
 The ports to open are explained in Step 3:
 
-<http://gluster.org/community/documentation/index.php/Gluster_3.2:_Installing_GlusterFS_on_Red_Hat_Package_Manager_(RPM)_Distributions>
+<https://docs.gluster.org/en/latest/Install-Guide/Install/>
 
 If you are using iptables as your firewall, these lines can be added under **:OUTPUT ACCEPT** in the "\*filter" section. You should probably adjust them to suit your environment (eg. only accept connections from your GlusterFS servers).
 
