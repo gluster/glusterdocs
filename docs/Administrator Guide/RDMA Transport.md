@@ -12,7 +12,6 @@ CIFS Clients/Windows Clients to Samba Server communication would still happen ov
 
 # Setup
 Please refer to these external documentation to setup RDMA on your machines  
-http://pkg-ofed.alioth.debian.org/howto/infiniband-howto.html  
 http://people.redhat.com/dledford/infiniband_get_started.html  
 
 ## Creating Trusted Storage Pool
