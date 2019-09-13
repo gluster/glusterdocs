@@ -68,7 +68,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 [1] <https://wiki.centos.org/SpecialInterestGroup/Storage>  
 [2] <https://download.gluster.org/pub/gluster/glusterfs>  
 [3] <https://launchpad.net/~gluster>  
-[4] <https://build.opensuse.org/project/subprojects/home:glusterfs>  
+[4] <http://download.opensuse.org/repositories/home:/glusterfs:/>  
 
 ¹ Client-side only.  
 ² Fedora Updates, UpdatesTesting, or Rawhide repository. Use dnf to install.  
