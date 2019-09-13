@@ -86,7 +86,7 @@ GlusterFS quota is currently maintained completely in GlusterFSs
 namespace using xattrs. We could make use of the quota capabilities of
 the underlying fs (XFS) for better performance.
 
-Check [#184](https://github.com/gluster/glusterfs/184)
+Check [#184](https://github.com/gluster/glusterfs/issues/184)
 
 ### Snapshot pluggability
 
