@@ -12,7 +12,7 @@ Initial preparation
 -------------------
 
 The GlusterFS development workflow revolves around
-[Git](http://git.gluster.org/?p=glusterfs.git;a=summary),
+[Git](http://git.gluster.org/cgit/glusterfs.git/),
 [Gerrit](http://review.gluster.org) and
 [Jenkins](http://build.gluster.org).
 
