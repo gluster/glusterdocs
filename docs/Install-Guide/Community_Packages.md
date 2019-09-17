@@ -15,7 +15,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |           |           |           |           |
 |Fedora[2]     |F29             |     X     |     X     |     X²    |     X     |
 |              |F30             |     X     |     X²    |     X     |     X     |
-|              |F31(rawhide)    |     X²    |     X     |     X     |     X     |
+|              |F31             |     X²    |     X     |     X     |     X     |
+|              |F32(rawhide)    |     X²    |     X     |     X     |     —     |
 |              |                |           |           |           |
 |Debian[2]     |Stretch/9       |     X     |     X     |     X     |     X     |
 |              |Buster/10       |     X     |     X     |     X     |     X     |
@@ -41,10 +42,12 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |--------------|----------------|:-------:|:--------:|:----------:|:-----------:|:--------:|:-----:|
 |CentOS Storage SIG[1]|el6             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el7             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |el8             |   tbd   |    tbd   |     X      |      X      |    tbd   |   ?   |
 |              |                |         |          |            |             |          |       |
 |Fedora[2]     |F29             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F31(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F32(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |                |         |          |            |             |          |       |
 |Debian[2]     |Stretch/9       |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10       |    —    |     —    |     X      |      X      |     X    |   ?   |
