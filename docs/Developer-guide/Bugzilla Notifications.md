@@ -29,7 +29,7 @@ using Mozilla Thunderbird mail client,
 
 
 # Mailinglist
-The [bugs@gluster.org](http://gluster.org/mailman/listinfo/bugs) mailing list gets added by default to new bugs. Anyone can subscribe to the list in order to receive all updates on all Gluster bugs.
+The [bugs@gluster.org](https://lists.gluster.org/mailman/listinfo/bugs) mailing list gets added by default to new bugs. Anyone can subscribe to the list in order to receive all updates on all Gluster bugs.
 
 # 'Watch' a user in Bugzilla
 It is possible to use the Bugzilla "watches" function to receive updates on bug reports where the bugs@gluster.org pseudo-user is on CC.
