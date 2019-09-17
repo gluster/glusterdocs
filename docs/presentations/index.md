@@ -59,7 +59,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
     ([.pdf](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.pdf))
     Niels de Vos
 
-[Vault](http://events.linuxfoundation.org/events/vault) 2016 @ Raleigh, NC, US
+[Vault](https://www.linuxfoundation.org/tag/vault/) 2016 @ Raleigh, NC, US
 ------------------------------------------------------------------------------
 
 ### April 20-21, 2016
@@ -177,7 +177,7 @@ Gluster Conference @ NMAMIT, Nitte
 -   [Quality of Service](http://www.slideshare.net/GlusterCommunity/qos-62086668) - Karthik US & Sukumar
     Poojary, 4th SEM, MCA, NMAMIT, Nitte
 
-[Ceph & Gluster FS - Software Defined Storage Meetup](http://www.meetup.com/RedHatFinland/events/218774694/)
+Ceph & Gluster FS - Software Defined Storage Meetup
 ------------------------------------------------------------------------------------------------------------
 
 ### January 22, 2015
@@ -258,8 +258,8 @@ CIALUG Des Moines, IA
 
 ### March 21st, 2013
 
--   [Converged infrastruture with oVirt, KVM, and
-    Gluster](http://www.rwx3.com/downloads/CI_presentation_26Feb2013.pdf) -
+-   Converged infrastruture with oVirt, KVM, and
+    Gluster -
     Theron Conrey, Red Hat
 
 Gluster Community Summit, Bangalore
