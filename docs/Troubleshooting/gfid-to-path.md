@@ -5,7 +5,7 @@ file across the entire cluster. This is analogous to inode number in a
 normal filesystem. The GFID of a file is stored in its xattr named
 `trusted.gfid`.
 
-#### Special mount using [gfid-access translator][1]:
+#### Special mount using gfid-access translator:
 ~~~
 mount -t glusterfs -o aux-gfid-mount vm1:test /mnt/testvol
 ~~~
@@ -21,7 +21,7 @@ getfattr -n glusterfs.gfid.string /mnt/testvol/dir/file
 ### Get file path from GFID (Method 1):
 **(Lists hardlinks delimited by `:`, returns path as seen from mountpoint)**
 
-####Turn on build-pgfid option
+#### Turn on build-pgfid option
 ~~~
 gluster volume set test build-pgfid on
 ~~~
@@ -64,10 +64,6 @@ trusted.glusterfs.pathinfo="(<DISTRIBUTE:test-dht> <POSIX(/mnt/brick-test/b):vm1
 ~~~
 
 ---
-### Get file path from GFID (Method 3):
-https://gist.github.com/semiosis/4392640
-
 ---
 #### References and links:
 [posix: placeholders for GFID to path conversion](http://review.gluster.org/5951)
-[1]: https://github.com/gluster/glusterfs/blob/master/doc/features/gfid-access.md
