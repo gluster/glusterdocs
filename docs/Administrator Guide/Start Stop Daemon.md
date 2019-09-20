@@ -19,13 +19,17 @@ following ways:
 
 This section describes how to start and stop glusterd manually
 
--   To start glusterd manually, enter the following command:
+- To start glusterd manually, enter the following command:
 
-    `# /etc/init.d/glusterd start `
+```console
+# /etc/init.d/glusterd start
+```
 
 -   To stop glusterd manually, enter the following command:
 
-    `# /etc/init.d/glusterd stop`
+```console
+# /etc/init.d/glusterd stop
+```
 
 <a name="auto"></a>
 ## Starting glusterd Automatically
@@ -39,7 +43,9 @@ To configure Red Hat-based systems to automatically start the glusterd
 service every time the system boots, enter the following from the
 command line:
 
-`# chkconfig glusterd on `
+```console
+# chkconfig glusterd on
+```
 
 ### Debian and derivatives like Ubuntu
 
@@ -47,7 +53,9 @@ To configure Debian-based systems to automatically start the glusterd
 service every time the system boots, enter the following from the
 command line:
 
-`# update-rc.d glusterd defaults`
+```console
+# update-rc.d glusterd defaults
+```
 
 ### Systems Other than Red Hat and Debian
 
@@ -55,4 +63,6 @@ To configure systems other than Red Hat or Debian to automatically start
 the glusterd service every time the system boots, enter the following
 entry to the*/etc/rc.local* file:
 
-`# echo "glusterd" >> /etc/rc.local `
+```console
+# echo "glusterd" >> /etc/rc.local
+```

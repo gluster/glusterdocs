@@ -68,10 +68,12 @@ Perform this step on all the nodes, "server{1,2,3}"
 
 The following examples assume that the brick will be residing on /dev/sdb1.
 
-		mkfs.xfs -i size=512 /dev/sdb1
-		mkdir -p /data/brick1
-		echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' >> /etc/fstab
-		mount -a && mount
+```console
+# mkfs.xfs -i size=512 /dev/sdb1
+# mkdir -p /data/brick1
+# echo '/dev/sdb1 /data/brick1 xfs defaults 1 2' >> /etc/fstab
+# mount -a && mount
+```
 
 You should now see sdb1 mounted at /data/brick1
 
@@ -80,21 +82,24 @@ You should now see sdb1 mounted at /data/brick1
 
 Install the software
 
-		yum install glusterfs-server
+```console
+# yum install glusterfs-server
+```
 
 Start the GlusterFS management daemon:
 
-		service glusterd start
-		service glusterd status
-		glusterd.service - LSB: glusterfs server
-		       Loaded: loaded (/etc/rc.d/init.d/glusterd)
-		   Active: active (running) since Mon, 13 Aug 2012 13:02:11 -0700; 2s ago
-		  Process: 19254 ExecStart=/etc/rc.d/init.d/glusterd start (code=exited, status=0/SUCCESS)
-		   CGroup: name=systemd:/system/glusterd.service
-		       ├ 19260 /usr/sbin/glusterd -p /run/glusterd.pid
-		       ├ 19304 /usr/sbin/glusterfsd --xlator-option georep-server.listen-port=24009 -s localhost...
-		       └ 19309 /usr/sbin/glusterfs -f /var/lib/glusterd/nfs/nfs-server.vol -p /var/lib/glusterd/...
-
+```console
+# service glusterd start
+# service glusterd status
+glusterd.service - LSB: glusterfs server
+       Loaded: loaded (/etc/rc.d/init.d/glusterd)
+   Active: active (running) since Mon, 13 Aug 2012 13:02:11 -0700; 2s ago
+   Process: 19254 ExecStart=/etc/rc.d/init.d/glusterd start (code=exited, status=0/SUCCESS)
+   CGroup: name=systemd:/system/glusterd.service
+       ├ 19260 /usr/sbin/glusterd -p /run/glusterd.pid
+	   ├ 19304 /usr/sbin/glusterfsd --xlator-option georep-server.listen-port=24009 -s localhost...
+	   └ 19309 /usr/sbin/glusterfs -f /var/lib/glusterd/nfs/nfs-server.vol -p /var/lib/glusterd/...
+```
 
         
 ### Step 4 - Configure the firewall
@@ -102,7 +107,9 @@ Start the GlusterFS management daemon:
 The gluster processes on the nodes need to be able to communicate with each other.
 To simplify this setup, configure the firewall on each node to accept all traffic from the other node.
 
-                iptables -I INPUT -p all -s <ip-address> -j ACCEPT
+```console
+# iptables -I INPUT -p all -s <ip-address> -j ACCEPT
+```
 
 where ip-address is the address of the other node.
 
@@ -111,15 +118,19 @@ where ip-address is the address of the other node.
 
 From "server1"
 
-		gluster peer probe server2
-		gluster peer probe server3
+```console
+# gluster peer probe server2
+# gluster peer probe server3
+```
 
 Note: When using hostnames, the first server needs to be probed from
 ***one*** other server to set its hostname.
 
 From "server2"
 
-		gluster peer probe server1
+```console
+# gluster peer probe server1
+```
 
 Note: Once this pool has been established, only trusted members may
 probe new servers into the pool. A new server cannot probe the pool, it
@@ -127,53 +138,64 @@ must be probed from the pool.
 
 Check the peer status on server1
 
-                gluster peer status
+```console
+# gluster peer status
+```
 
 You should see something like this (the UUID will differ)
 
-                Number of Peers: 2
+```console
+Number of Peers: 2
 
-                Hostname: server2
-                Uuid: f0e7b138-4874-4bc0-ab91-54f20c7068b4
-                State: Peer in Cluster (Connected)
+Hostname: server2
+Uuid: f0e7b138-4874-4bc0-ab91-54f20c7068b4
+State: Peer in Cluster (Connected)
 
-                Hostname: server3
-                Uuid: f0e7b138-4532-4bc0-ab91-54f20c701241
-                State: Peer in Cluster (Connected)
-
+Hostname: server3
+Uuid: f0e7b138-4532-4bc0-ab91-54f20c701241
+State: Peer in Cluster (Connected)
+```
 
 ### Step 6 - Set up a GlusterFS volume
 
 On all servers:
 
-		mkdir -p /data/brick1/gv0
+```console
+# mkdir -p /data/brick1/gv0
+```
 
 From any single server:
 
-		gluster volume create gv0 replica 3 server1:/data/brick1/gv0 server2:/data/brick1/gv0 server3:/data/brick1/gv0
-		gluster volume start gv0
+```console
+# gluster volume create gv0 replica 3 server1:/data/brick1/gv0 server2:/data/brick1/gv0 server3:/data/brick1/gv0
+volume create: gv0: success: please start the volume to access data
+# gluster volume start gv0
+volume start: gv0: success
+```
 
 Confirm that the volume shows "Started":
 
-		gluster volume info
-
+```console
+# gluster volume info
+```
 
 You should see something like this (the Volume ID will differ):
 
-                Volume Name: gv0
-                Type: Replicate
-                Volume ID: f25cc3d8-631f-41bd-96e1-3e22a4c6f71f
-                Status: Started
-                Snapshot Count: 0
-                Number of Bricks: 1 x 3 = 3
-                Transport-type: tcp
-                Bricks:
-                Brick1: server1:/data/brick1/gv0
-                Brick2: server2:/data/brick1/gv0
-                Brick3: server3:/data/brick1/gv0
-                Options Reconfigured:
-                transport.address-family: inet
-
+```console
+Volume Name: gv0
+Type: Replicate
+Volume ID: f25cc3d8-631f-41bd-96e1-3e22a4c6f71f
+Status: Started
+Snapshot Count: 0
+Number of Bricks: 1 x 3 = 3
+Transport-type: tcp
+Bricks:
+Brick1: server1:/data/brick1/gv0
+Brick2: server2:/data/brick1/gv0
+Brick3: server3:/data/brick1/gv0
+Options Reconfigured:
+transport.address-family: inet
+```
 
 Note: If the volume does not show "Started", the files under
 `/var/log/glusterfs/glusterd.log` should be checked in order to debug and
@@ -189,17 +211,23 @@ Typically, you would do this from an external machine, known as a
 be installed on the client machine, we will use one of the servers as
 a simple place to test first , as if it were that "client".
 
-		mount -t glusterfs server1:/gv0 /mnt
-		  for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
+```console
+# mount -t glusterfs server1:/gv0 /mnt
+# for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
+```
 
 First, check the client mount point:
 
-		ls -lA /mnt/copy* | wc -l
+```console
+# ls -lA /mnt/copy* | wc -l
+```
 
 You should see 100 files returned. Next, check the GlusterFS brick mount
 points on each server:
 
-		ls -lA /data/brick1/gv0/copy*
+```console
+# ls -lA /data/brick1/gv0/copy*
+```
 
 You should see 100 files on each server using the method we listed here.
 Without replication, in a distribute only volume (not detailed here), you

@@ -13,7 +13,7 @@ lock using the following `clear lock` commands.
 1.  **Perform statedump on the volume to view the files that are locked
     using the following command:**
 
-    `# gluster volume statedump  inode`
+        # gluster volume statedump  inode
 
     For example, to display statedump of test-volume:
 
@@ -58,7 +58,7 @@ lock using the following `clear lock` commands.
 
 2.  **Clear the lock using the following command:**
 
-    `# gluster volume clear-locks`
+        # gluster volume clear-locks
 
     For example, to clear the entry lock on `file1` of test-volume:
 
@@ -68,7 +68,7 @@ lock using the following `clear lock` commands.
 
 3.  **Clear the inode lock using the following command:**
 
-    `# gluster volume clear-locks`
+        # gluster volume clear-locks
 
     For example, to clear the inode lock on `file1` of test-volume:
 

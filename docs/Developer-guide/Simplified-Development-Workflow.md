@@ -25,13 +25,17 @@ distribution specific package manger to install git. After installation
 configure git. At the minimum, set a git user email. To set the email
 do,
 
-		$ git config --global user.name "Name"
-		$ git config --global user.email <email address>
+```console
+git config --global user.name <name>
+git config --global user.email <email address>
+```
 
 You should also generate an ssh key pair if you haven't already done it.
 To generate a key pair do,
 
-		$ ssh-keygen
+```console
+# ssh-keygen
+```
 
 and follow the instructions.
 
@@ -53,11 +57,15 @@ email you configured for git.
 
 Git clone the GlusterFS source using
 
-		<ssh://><username>@review.gluster.org/glusterfs.git
+```console
+<ssh://><username>@review.gluster.org/glusterfs.git
+```
 
 (replace <username> with your gerrit username).
 
-		$ git clone (ssh://)<username> @review.gluster.org/glusterfs.git
+```console
+git clone (ssh://)<username> @review.gluster.org/glusterfs.git
+```
 
 This will clone the GlusterFS source into a subdirectory named glusterfs
 with the master branch checked out.
@@ -82,18 +90,24 @@ can be found at
 [Development Work Flow - Branching\_policy](./Development-Workflow.md#branching-policy).
 For example if you want to develop on the master branch,
 
-		$ git checkout master
-		$ git pull
+```console
+# git checkout master
+# git pull
+```
 
 Now, create a new branch from master and switch to the new branch. It is
 recommended to have descriptive branch names. Do,
 
-		$ git branch <descriptive-branch-name>
-		$ git checkout <descriptive-branch-name>
+```console
+git branch <descriptive-branch-name>
+git checkout <descriptive-branch-name>
+```
 
 or,
 
-		$ git checkout -b <descriptive-branch-name>
+```console
+git checkout -b <descriptive-branch-name>
+```
 
 to do both in one command.
 
@@ -120,8 +134,10 @@ you haven't broken anything. The regression test suite requires a
 working GlusterFS installation and needs to be run as root. To run the
 regression test suite, do
 
-		# make install
-		# ./run-tests.sh
+```console
+# make install
+# ./run-tests.sh
+```
 
 ### Commit your changes
 
@@ -129,12 +145,16 @@ If you haven't broken anything, you can now commit your changes. First
 identify the files that you modified/added/deleted using git-status and
 stage these files.
 
-		$ git status
-		$ git add <list of modified files>
+```console
+git status
+git add <list of modified files>
+```
 
 Now, commit these changes using
 
-		$ git commit -s
+```console
+# git commit -s
+```
 
 Provide a meaningful commit message. The commit message policy is
 described at
@@ -149,7 +169,9 @@ to reject patches which are not signed-off.
 
 To submit your change for review, run the rfc.sh script,
 
-		$ ./rfc.sh
+```console
+# ./rfc.sh
+```
 
 The script will ask you to enter a bugzilla bug id. Every change
 submitted to GlusterFS needs a reference ID to be accepted. If you do
@@ -211,7 +233,9 @@ review comments. Build and test to see if the new changes are working.
 
 Stage your changes and commit your new changes using,
 
-		$ git commit --amend
+```console
+# git commit --amend
+```
 
 '--amend' is required to ensure that you update your original commit and
 not create a new commit.
