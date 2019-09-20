@@ -13,44 +13,38 @@
 The procedure involves upgrading one server at a time . On every storage server in your trusted storage pool:
 
 - Stop all gluster services using the below command or through your favorite way to stop them.
-```sh
+
         # killall glusterfs glusterfsd glusterd
-```
+
 - If you are using gfapi based applications (qemu, NFS-Ganesha, Samba etc.) on the servers, please stop those applications too.
 
 - Install Gluster 3.8
 
 - Ensure that version reflects 3.8.x in the output of
-```sh
+
         # gluster --version
-```
 
 - Start glusterd on the upgraded server
-```sh
+
         # glusterd
-```
 
 - Ensure that all gluster processes are online by executing
-```sh
+
         # gluster volume status
-```
 
 - Self-heal all gluster volumes by running
-```sh
+
         # for i in `gluster volume list`; do gluster volume heal $i; done
-```
 
 - Ensure that there is no heal backlog by running the below command for all volumes
-```sh
-       # gluster volume heal <volname> info
-```
+
+        # gluster volume heal <volname> info
+
 - Restart any gfapi based application stopped previously.
 
 - After the upgrade is complete on all servers, run the following command:
-```sh
-      # gluster volume set all cluster.op-version 30800
-```
 
+        # gluster volume set all cluster.op-version 30800
 
 ### Offline Upgrade Procedure 
 
@@ -58,33 +52,30 @@ For this procedure, schedule a downtime and prevent all your clients from access
 
 On every storage server in your trusted storage pool:
 - Stop all gluster services using the below command or through your favorite way to stop them.
-```sh
+
         # killall glusterfs glusterfsd glusterd
-```
+
 - If you are using gfapi based applications (qemu, NFS-Ganesha, Samba etc.) on the servers, please stop those applications too.
 
 - Install Gluster 3.8
 
 - Ensure that version reflects 3.8.x in the output of
-```sh
+
         # gluster --version
-```
 
 - Start glusterd on the upgraded server
-```sh
+
         # glusterd
-```
+
 - Ensure that all gluster processes are online by executing
-```sh
+
         # gluster volume status
-```
 
 - Restart any gfapi based application stopped previously.
 
 - After the upgrade is complete on all servers, run the following command:
-```sh
-      # gluster volume set all cluster.op-version 30800
-```
+
+        # gluster volume set all cluster.op-version 30800
 
 ### Upgrade Procedure for Clients
 

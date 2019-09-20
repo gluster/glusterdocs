@@ -5,17 +5,21 @@ NFS .
 
 ### mount command on NFS client fails with “RPC Error: Program not registered”
 
-    Start portmap or rpcbind service on the NFS server.
+Start portmap or rpcbind service on the NFS server.
 
 This error is encountered when the server has not started correctly.
 On most Linux distributions this is fixed by starting portmap:
 
-`$ /etc/init.d/portmap start`
+```console
+# /etc/init.d/portmap start
+```
 
 On some distributions where portmap has been replaced by rpcbind, the
 following command is required:
 
-`$ /etc/init.d/rpcbind start `
+```console
+# /etc/init.d/rpcbind start
+```
 
 After starting portmap or rpcbind, gluster NFS server needs to be
 restarted.
@@ -28,13 +32,15 @@ This error can arise in case there is already a Gluster NFS server
 running on the same machine. This situation can be confirmed from the
 log file, if the following error lines exist:
 
-    [2010-05-26 23:40:49] E [rpc-socket.c:126:rpcsvc_socket_listen] rpc-socket: binding socket failed:Address already in use
-    [2010-05-26 23:40:49] E [rpc-socket.c:129:rpcsvc_socket_listen] rpc-socket: Port is already in use 
-    [2010-05-26 23:40:49] E [rpcsvc.c:2636:rpcsvc_stage_program_register] rpc-service: could not create listening connection 
-    [2010-05-26 23:40:49] E [rpcsvc.c:2675:rpcsvc_program_register] rpc-service: stage registration of program failed 
-    [2010-05-26 23:40:49] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465 
-    [2010-05-26 23:40:49] E [nfs.c:125:nfs_init_versions] nfs: Program init failed 
-    [2010-05-26 23:40:49] C [nfs.c:531:notify] nfs: Failed to initialize protocols
+```text
+[2010-05-26 23:40:49] E [rpc-socket.c:126:rpcsvc_socket_listen] rpc-socket: binding socket failed:Address already in use
+[2010-05-26 23:40:49] E [rpc-socket.c:129:rpcsvc_socket_listen] rpc-socket: Port is already in use 
+[2010-05-26 23:40:49] E [rpcsvc.c:2636:rpcsvc_stage_program_register] rpc-service: could not create listening connection 
+[2010-05-26 23:40:49] E [rpcsvc.c:2675:rpcsvc_program_register] rpc-service: stage registration of program failed 
+[2010-05-26 23:40:49] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465 
+[2010-05-26 23:40:49] E [nfs.c:125:nfs_init_versions] nfs: Program init failed 
+[2010-05-26 23:40:49] C [nfs.c:531:notify] nfs: Failed to initialize protocols
+```
 
 To resolve this error one of the Gluster NFS servers will have to be
 shutdown. At this time, Gluster NFS server does not support running
@@ -44,13 +50,17 @@ multiple NFS servers on the same machine.
 
 If the mount command fails with the following error message:
 
-    mount.nfs: rpc.statd is not running but is required for remote locking.
-    mount.nfs: Either use '-o nolock' to keep locks local, or start statd.
+```console
+mount.nfs: rpc.statd is not running but is required for remote locking.
+mount.nfs: Either use '-o nolock' to keep locks local, or start statd.
+```
 
 For NFS clients to mount the NFS server, rpc.statd service must be
 running on the clients. Start rpc.statd service by running the following command:
 
-`$ rpc.statd `
+```console
+# rpc.statd
+```
 
 ### mount command takes too long to finish.
 
@@ -60,12 +70,16 @@ The problem is that the rpcbind or portmap service is not running on the
 NFS client. The resolution for this is to start either of these services
 by running the following command:
 
-`$ /etc/init.d/portmap start`
+```console
+# /etc/init.d/portmap start
+```
 
 On some distributions where portmap has been replaced by rpcbind, the
 following command is required:
 
-`$ /etc/init.d/rpcbind start`
+```console
+# /etc/init.d/rpcbind start
+```
 
 ### NFS server glusterfsd starts but initialization fails with “nfsrpc- service: portmap registration of program failed” error message in the log.
 
@@ -74,26 +88,28 @@ still fail preventing clients from accessing the mount points. Such a
 situation can be confirmed from the following error messages in the log
 file:
 
-    [2010-05-26 23:33:47] E [rpcsvc.c:2598:rpcsvc_program_register_portmap] rpc-service: Could notregister with portmap 
-    [2010-05-26 23:33:47] E [rpcsvc.c:2682:rpcsvc_program_register] rpc-service: portmap registration of program failed
-    [2010-05-26 23:33:47] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
-    [2010-05-26 23:33:47] E [nfs.c:125:nfs_init_versions] nfs: Program init failed
-    [2010-05-26 23:33:47] C [nfs.c:531:notify] nfs: Failed to initialize protocols
-    [2010-05-26 23:33:49] E [rpcsvc.c:2614:rpcsvc_program_unregister_portmap] rpc-service: Could not unregister with portmap
-    [2010-05-26 23:33:49] E [rpcsvc.c:2731:rpcsvc_program_unregister] rpc-service: portmap unregistration of program failed
-    [2010-05-26 23:33:49] E [rpcsvc.c:2744:rpcsvc_program_unregister] rpc-service: Program unregistration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
+```text
+[2010-05-26 23:33:47] E [rpcsvc.c:2598:rpcsvc_program_register_portmap] rpc-service: Could notregister with portmap 
+[2010-05-26 23:33:47] E [rpcsvc.c:2682:rpcsvc_program_register] rpc-service: portmap registration of program failed
+[2010-05-26 23:33:47] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
+[2010-05-26 23:33:47] E [nfs.c:125:nfs_init_versions] nfs: Program init failed
+[2010-05-26 23:33:47] C [nfs.c:531:notify] nfs: Failed to initialize protocols
+[2010-05-26 23:33:49] E [rpcsvc.c:2614:rpcsvc_program_unregister_portmap] rpc-service: Could not unregister with portmap
+[2010-05-26 23:33:49] E [rpcsvc.c:2731:rpcsvc_program_unregister] rpc-service: portmap unregistration of program failed
+[2010-05-26 23:33:49] E [rpcsvc.c:2744:rpcsvc_program_unregister] rpc-service: Program unregistration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
+```
 
 1.  **Start portmap or rpcbind service on the NFS server**
 
     On most Linux distributions, portmap can be started using the
     following command:
 
-    `$ /etc/init.d/portmap start `
+        # /etc/init.d/portmap start
 
     On some distributions where portmap has been replaced by rpcbind,
     run the following command:
 
-    `$ /etc/init.d/rpcbind start `
+        # /etc/init.d/rpcbind start
 
     After starting portmap or rpcbind, gluster NFS server needs to be
     restarted.
@@ -110,9 +126,8 @@ file:
     On Linux, kernel NFS servers can be stopped by using either of the
     following commands depending on the distribution in use:
 
-    `$ /etc/init.d/nfs-kernel-server stop`
-
-    `$ /etc/init.d/nfs stop`
+        # /etc/init.d/nfs-kernel-server stop
+        # /etc/init.d/nfs stop
 
 3.  **Restart Gluster NFS server**
 
@@ -120,7 +135,9 @@ file:
 
 mount command fails with following error
 
-    *mount: mount to NFS server '10.1.10.11' failed: timed out (retrying).*
+```console
+mount: mount to NFS server '10.1.10.11' failed: timed out (retrying).
+```
 
 Perform one of the following to resolve this issue:
 
@@ -158,7 +175,7 @@ Perform one of the following to resolve this issue:
     forcing the NFS client to use version 3. The **vers** option to
     mount command is used for this purpose:
 
-    `$ mount  -o vers=3 `
+        # mount  -o vers=3
 
 ### showmount fails with clnt\_create: RPC: Unable to receive
 
@@ -186,4 +203,6 @@ by default.
 Applications which can be rebuilt from source are recommended to rebuild
 using the following flag with gcc:
 
-` -D_FILE_OFFSET_BITS=64`
+```
+-D_FILE_OFFSET_BITS=64
+```

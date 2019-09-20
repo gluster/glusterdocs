@@ -13,43 +13,57 @@ Packages are provided according to this [table](./Community_Packages.md).
 
 Add the GPG key to apt:
 
-    wget -O - https://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
+```console
+# wget -O - https://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub | apt-key add -
+```
 
 If the rsa.pub is not available at the above location, please look here https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub and add the GPG key to apt:
 
-    wget -O - https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub | apt-key add -    
-   
+```console
+# wget -O - https://download.gluster.org/pub/gluster/glusterfs/3.12/rsa.pub | apt-key add -
+```
 
 Add the source:
 
-    DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
-    DEBVER=$(grep 'VERSION=' /etc/os-release | grep -Eo '[a-z]+')
-    DEBARCH=$(dpkg --print-architecture)
-    echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/${DEBARCH}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list
+```console
+# DEBID=$(grep 'VERSION_ID=' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
+# DEBVER=$(grep 'VERSION=' /etc/os-release | grep -Eo '[a-z]+')
+# DEBARCH=$(dpkg --print-architecture)
+# echo deb https://download.gluster.org/pub/gluster/glusterfs/LATEST/Debian/${DEBID}/${DEBARCH}/apt ${DEBVER} main > /etc/apt/sources.list.d/gluster.list
+```
 
 Update package list:
 
-    apt-get update
+```console
+# apt-get update
+```
 
 Install:
 
-    apt-get install glusterfs-server
-
+```console
+# apt-get install glusterfs-server
+```
 
 ###### For Ubuntu
 
 Install software-properties-common:
 
-		sudo apt-get install software-properties-common
+```console
+# sudo apt-get install software-properties-common
+```
 
 Then add the community GlusterFS PPA:
 
-		sudo add-apt-repository ppa:gluster/glusterfs-3.8
-		sudo apt-get update
+```console
+# sudo add-apt-repository ppa:gluster/glusterfs-3.8
+# sudo apt-get update
+```
 
 Finally, install the packages:
 
-		sudo apt-get install glusterfs-server
+```console
+# sudo apt-get install glusterfs-server
+```
 
 *Note: Packages exist for Ubuntu 12.04 LTS, 12.10, 13.10, and 14.04
 LTS*
@@ -65,7 +79,9 @@ For more installation details refer [Gluster Quick start guide](https://wiki.cen
 
 Install the Gluster packages:
 
-		dnf install glusterfs-server
+```console
+# dnf install glusterfs-server
+```
 
 Once you are finished installing, you can move on to [configuration](./Configure.md) section.
 
@@ -73,4 +89,6 @@ Once you are finished installing, you can move on to [configuration](./Configure
 
 Install the Gluster package:
 
-        pacman -S glusterfs
+```console
+# pacman -S glusterfs
+```

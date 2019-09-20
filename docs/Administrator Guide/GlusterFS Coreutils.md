@@ -13,10 +13,15 @@ For now glusterfs-coreutils will be packaged only as rpm. Other package formats 
 ##### For fedora
 Use dnf/yum to install glusterfs-coreutils:
 
-    dnf install glusterfs-coreutils
+```console
+# dnf install glusterfs-coreutils
+```
+
 OR
 
-    yum install glusterfs-coreutils
+```console
+# yum install glusterfs-coreutils
+```
 
 ## Usage
 glusterfs-coreutils provides a set of basic utilities such as cat, cp, flock, ls, mkdir, rm, stat and tail that are implemented specifically using the GlusterFS API commonly known as libgfapi. These utilities can be used either inside a gluster remote
@@ -26,40 +31,60 @@ shell or as standalone commands with 'gf' prepended to their respective base nam
 ##### Invoke a new shell
 In order to enter into a gluster client-shell, type *gfcli* and press enter. You will now be presented with a similar prompt as shown below:
 
-    gfcli>
+```console
+# gfcli
+gfcli>
+```
 
 See the man page for *gfcli* for more options.
 ##### Connect to a gluster volume
 Now we need to connect as a client to some glusterfs volume which has already started. Use connect command to do so as follows:
 
-    gfcli> connect glfs://<SERVER-IP or HOSTNAME>/<VOLNAME>
+```console
+gfcli> connect glfs://<SERVER-IP or HOSTNAME>/<VOLNAME>
+```
 
 For example if you have a volume named vol on a server with hostname localhost the above command will take the following form:
 
-    gfcli> connect glfs://localhost/vol
+```console
+gfcli> connect glfs://localhost/vol
+```
 
 Make sure that you are successfully attached to a remote gluster volume by verifying the new prompt which should look like:
 
-    gfcli (<SERVER IP or HOSTNAME/<VOLNAME>)
+```console
+gfcli (<SERVER IP or HOSTNAME/<VOLNAME>)
+```
+
 ##### Try out your favorite utilities
 Please go through the man pages for different utilities and available options for each command. For example, *man gfcp* will display details on the usage of cp command outside or within a gluster-shell. Run different commands as follows:
 
-    gfcli (localhost/vol) ls .
-    gfcli (localhost/vol) stat .trashcan
+```console
+gfcli (localhost/vol) ls .
+gfcli (localhost/vol) stat .trashcan
+```
+
 ##### Terminate the client connection from the volume
 Use disconnect command to close the connection:
 
-    gfcli (localhost/vol) disconnect
-    gfcli>
+```console
+gfcli (localhost/vol) disconnect
+gfcli>
+```
+
 ##### Exit from shell
 Run quit from shell:
 
-    gfcli> quit
+```console
+gfcli> quit
+```
 
 #### Using standalone glusterfs coreutil commands
 As mentioned above glusterfs coreutils also provides standalone commands to perform the basic GNU coreutil functionalities. All those commands are prepended by 'gf'. Instead of invoking a gluster client-shell you can directly make use of these to establish and perform the operation in one shot. For example see the following sample usage of gfstat command:
 
-    gfstat glfs://localhost/vol/foo
+```console
+gfstat glfs://localhost/vol/foo
+```
 
 There is an exemption regarding flock coreutility which is not available as a standalone command for a reason described under 'Notes' section.
 

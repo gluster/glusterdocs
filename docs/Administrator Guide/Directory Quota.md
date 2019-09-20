@@ -30,15 +30,18 @@ You must enable Quota to set disk limits.
 
 **To enable quota:**
 
--   Use the following command to enable quota:
+Use the following command to enable quota:
 
-        # gluster volume quota VOLNAME enable
-
+```console
+# gluster volume quota VOLNAME enable
+```
 
 For example, to enable quota on the test-volume:
 
-        # gluster volume quota test-volume enable
-        Quota is enabled on /test-volume
+```console
+# gluster volume quota test-volume enable
+Quota is enabled on /test-volume
+```
 
 ## Disabling Quota
 
@@ -46,14 +49,18 @@ You can disable Quota, if needed.
 
 **To disable quota:**
 
--   Use the following command to disable quota:
+Use the following command to disable quota:
 
-        # gluster volume quota VOLNAME disable
+```console
+# gluster volume quota VOLNAME disable
+```
 
 For example, to disable quota translator on the test-volume:
 
-        # gluster volume quota test-volume disable
-        Quota translator is disabled on /test-volume
+```console
+# gluster volume quota test-volume disable
+Quota translator is disabled on /test-volume
+```
 
 ## Setting or Replacing Disk Limit
 
@@ -64,15 +71,19 @@ being treated as "/".
 
 **To set or replace disk limit:**
 
--   Set the disk limit using the following command:
+Set the disk limit using the following command:
 
-                # gluster volume quota VOLNAME limit-usage DIR HARD_LIMIT
+```console
+# gluster volume quota VOLNAME limit-usage DIR HARD_LIMIT
+```
 
 For example, to set limit on data directory on the test-volume where
 data is a directory under the export directory:
 
-        # gluster volume quota test-volume limit-usage /data 10GB
-        Usage limit has been set on /data
+```console
+# gluster volume quota test-volume limit-usage /data 10GB
+Usage limit has been set on /data
+```
 
 > **Note**
 > In a multi-level directory hierarchy, the strictest disk limit
@@ -95,18 +106,18 @@ the limit is set.
 
         # gluster volume quota VOLNAME list
 
-For example, to see the set disks limit on the test-volume:
+    For example, to see the set disks limit on the test-volume:
 
         # gluster volume quota test-volume list
-          /Test/data    10 GB       6 GB
-          /Test/data1   10 GB       4 GB
+        /Test/data    10 GB       6 GB
+        /Test/data1   10 GB       4 GB
 
 -   Display disk limit information on a particular directory on which
     limit is set, using the following command:
 
         # gluster volume quota VOLNAME list DIR
 
-For example, to view the set limit on /data directory of test-volume:
+    For example, to view the set limit on /data directory of test-volume:
 
         # gluster volume quota test-volume list /data
         /Test/data    10 GB       6 GB
@@ -116,7 +127,9 @@ For example, to view the set limit on /data directory of test-volume:
 
 You can create a report of the disk usage using the df utility by taking quota limits into consideration. To generate a report, run the following command:
 
-        # gluster volume set VOLNAME quota-deem-statfs on
+```console
+# gluster volume set VOLNAME quota-deem-statfs on
+```
 
 In this case, the total disk space of the directory is taken as the quota hard limit set on the directory of the volume.
 
@@ -125,35 +138,43 @@ In this case, the total disk space of the directory is taken as the quota hard l
 
 The following example displays the disk usage when quota-deem-statfs is off:
 
-        # gluster volume set test-volume features.quota-deem-statfs off
-        volume set: success
-        # gluster volume quota test-volume list
-        Path        Hard-limit    Soft-limit     Used     Available
-        ----------------------------------------------------------- 
-          /              300.0GB        90%        11.5GB     288.5GB
-         /John/Downloads 77.0GB        75%        11.5GB     65.5GB
+```console
+# gluster volume set test-volume features.quota-deem-statfs off
+volume set: success
+# gluster volume quota test-volume list
+Path            Hard-limit    Soft-limit    Used      Available
+--------------------------------------------------------------- 
+/               300.0GB        90%          11.5GB    288.5GB
+/John/Downloads  77.0GB        75%          11.5GB     65.5GB
+```
 
 Disk usage for volume test-volume as seen on client1:
 
-        # df -hT /home
-          Filesystem           Type            Size  Used Avail Use% Mounted on
-          server1:/test-volume fuse.glusterfs  400G   12G  389G   3% /home
+```console
+# df -hT /home
+Filesystem           Type            Size  Used Avail Use% Mounted on
+server1:/test-volume fuse.glusterfs  400G   12G  389G   3% /home
+```
 
 The following example displays the disk usage when quota-deem-statfs is on:
 
-        # gluster volume set test-volume features.quota-deem-statfs on
-        volume set: success
-        # gluster vol quota test-volume list
-        Path        Hard-limit    Soft-limit     Used     Available
-        -----------------------------------------------------------
-        /              300.0GB        90%        11.5GB     288.5GB
-        /John/Downloads 77.0GB        75%        11.5GB     65.5GB
+```console
+# gluster volume set test-volume features.quota-deem-statfs on
+volume set: success
+# gluster vol quota test-volume list
+Path        Hard-limit    Soft-limit     Used     Available
+-----------------------------------------------------------
+/              300.0GB        90%        11.5GB     288.5GB
+/John/Downloads 77.0GB        75%        11.5GB     65.5GB
+```
 
 Disk usage for volume test-volume as seen on client1:
 
-        # df -hT /home
-        Filesystem            Type            Size  Used Avail Use% Mounted on
-        server1:/test-volume  fuse.glusterfs  300G   12G  289G   4% /home
+```console
+# df -hT /home
+Filesystem            Type            Size  Used Avail Use% Mounted on
+server1:/test-volume  fuse.glusterfs  300G   12G  289G   4% /home
+```
 
 The quota-deem-statfs option when set to on, allows the administrator to make the user view the total disk space available on the directory as the hard limit set on it.
 
@@ -180,25 +201,30 @@ on client side.
 
 **To update the memory cache size:**
 
--   Use the following command to update the memory cache size:
+Use the following command to update the memory cache size:
 
-        # gluster volume set VOLNAME features.quota-timeout time
+```console
+# gluster volume set VOLNAME features.quota-timeout time
+```
 
-For example, to update the memory cache size for every 5 seconds on
-test-volume:
+For example, to update the memory cache size for every 5 seconds on test-volume:
 
-        # gluster volume set test-volume features.quota-timeout 5
-        Set volume successful
- 
+```console
+# gluster volume set test-volume features.quota-timeout 5
+Set volume successful
+```
+
 ## Setting Alert Time
 
 Alert time is the frequency at which you want your usage information to be logged after you reach the soft limit.
 
 **To set the alert time:**
 
--  Use the following command to set the alert time:
+Use the following command to set the alert time:
 
-        # gluster volume quota VOLNAME alert-time time
+```console
+# gluster volume quota VOLNAME alert-time time
+```
 
 >**Note**
 >
@@ -206,8 +232,10 @@ Alert time is the frequency at which you want your usage information to be logge
 
 For example, to set the alert time to one day:
 
-        # gluster volume quota test-volume alert-time 1d
-        volume quota : success
+```console
+# gluster volume quota test-volume alert-time 1d
+volume quota : success
+```
 
 ## Removing Disk Limit
 
@@ -215,14 +243,16 @@ You can remove set disk limit, if you do not want quota anymore.
 
 **To remove disk limit:**
 
--   Use the following command to remove the disk limit set on a particular directory:
+Use the following command to remove the disk limit set on a particular directory:
 
-        # gluster volume quota VOLNAME remove DIR
+```console
+# gluster volume quota VOLNAME remove DIR
+```
 
 For example, to remove the disk limit on /data directory of
 test-volume:
 
-
-        # gluster volume quota test-volume remove /data
-        Usage limit set on /data is removed
-
+```console
+# gluster volume quota test-volume remove /data
+Usage limit set on /data is removed
+```

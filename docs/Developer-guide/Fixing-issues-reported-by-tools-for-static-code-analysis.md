@@ -38,15 +38,15 @@ Cppcheck is available in Fedora and EL's EPEL repo
 
 -   Install Cppcheck
 
-        dnf install cppcheck
+        # dnf install cppcheck
 
 -   Clone GlusterFS code
 
-        git clone https://github.com/gluster/glusterfs
+        # git clone https://github.com/gluster/glusterfs
 
 -   Run Cpp check
 
-        cppcheck glusterfs/ 2>cppcheck.log
+        # cppcheck glusterfs/ 2>cppcheck.log
 
 
 ### Daily Runs

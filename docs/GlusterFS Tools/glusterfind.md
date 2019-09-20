@@ -10,7 +10,9 @@ Create a glusterfind session to remember the time when last sync or processing c
 
 For example, if the session name is "backup" and volume name is "datavol", then the tool creates `$GLUSTERD_WORKDIR/glusterfind/backup/datavol`. Now onwards we refer this directory as `$SESSION_DIR`.
 
-    create => pre => post => [delete]
+```text
+create => pre => post => [delete]
+```
 
 Once the session is created, we can run the tool with two steps Pre and Post. To collect the list of modified files after the create time or last run time, we need to call pre command. Pre command finds the modified files and generates output file. Consumer can check the exit code of pre command and start processing those files. As a post processing step run the post command to update the session time as per latest run.
 
@@ -32,11 +34,15 @@ Incremental find uses Changelogs to get the list of GFIDs modified/created. Any 
 
 If we set build-pgfid option in Volume GlusterFS starts recording each files parent directory GFID as xattr in file on any ENTRY fop.
 
-    trusted.pgfid.<GFID>=NUM_LINKS
+```text
+trusted.pgfid.<GFID>=NUM_LINKS
+```
 
 To convert from GFID to path, we can mount Volume with aux-gfid-mount option, and get Path information by a getfattr query.
 
-    getfattr -n glusterfs.ancestry.path -e text /mnt/datavol/.gfid/<GFID>
+```console
+getfattr -n glusterfs.ancestry.path -e text /mnt/datavol/.gfid/<GFID>
+```
 
 This approach is slow, for a requested file gets parent GFID via xattr and reads that directory to gets the file which is having same inode number as of GFID file. To improve the performance, glusterfind uses build-pgfid option, but instead of using getfattr on mount it gets the details from brick backend. glusterfind collects all parent GFIDs at once and starts crawling each directory. Instead of processing one GFID to Path conversion, it gets inode numbers of all input GFIDs and filter while reading parent directory.
 
@@ -48,22 +54,28 @@ Tool collects the list of GFIDs failed to convert with above method and does a f
 
 ### Create the session
 
-    glusterfind create SESSION_NAME VOLNAME [--force]
-    glusterfind create --help
+```console
+glusterfind create SESSION_NAME VOLNAME [--force]
+glusterfind create --help
+```
 
 Where, SESSION_NAME is any name without space to identify when run second time. When a node is added to Volume then the tool expects ssh keys to be copied to new node(s) also. Run Create command with `--force` to distribute keys again.
 
 Examples,
 
-    glusterfind create --help
-    glusterfind create backup datavol
-    glusterfind create antivirus_scanner datavol
-    glusterfind create backup datavol --force
+```console
+# glusterfind create --help
+# glusterfind create backup datavol
+# glusterfind create antivirus_scanner datavol
+# glusterfind create backup datavol --force
+```
 
 ### Pre Command
 
-    glusterfind pre SESSION_NAME VOLUME_NAME OUTFILE
-    glusterfind pre --help
+```console
+glusterfind pre SESSION_NAME VOLUME_NAME OUTFILE
+glusterfind pre --help
+```
 
 We need not specify Volume name since session already has the details. List of files will be populated in OUTFILE.
 
@@ -71,73 +83,96 @@ To trigger the full find, call the pre command with `--full` argument. Multiple 
 
 Examples,
 
-    glusterfind pre backup datavol /root/backup.txt
-    glusterfind pre backup datavol /root/backup.txt --full
+```console
+# glusterfind pre backup datavol /root/backup.txt
+# glusterfind pre backup datavol /root/backup.txt --full
 
-    # Changelog based crawler, works only for incremental
-    glusterfind pre backup datavol /root/backup.txt --crawler=changelog
+# # Changelog based crawler, works only for incremental
+# glusterfind pre backup datavol /root/backup.txt --crawler=changelog
 
-    # Find based crawler, works for both full and incremental
-    glusterfind pre backup datavol /root/backup.txt --crawler=brickfind
+# # Find based crawler, works for both full and incremental
+# glusterfind pre backup datavol /root/backup.txt --crawler=brickfind
+```
 
 Output file contains list of files/dirs relative to the Volume mount, if we need to prefix with any path to have absolute path then,
 
-    glusterfind pre backup datavol /root/backup.txt --file-prefix=/mnt/datavol/
+```console
+# glusterfind pre backup datavol /root/backup.txt --file-prefix=/mnt/datavol/
+```
 
 ### List Command
 
 To get the list of sessions and respective session time,
 
-    glusterfind list [--session SESSION_NAME] [--volume VOLUME_NAME]
+```console
+glusterfind list [--session SESSION_NAME] [--volume VOLUME_NAME]
+```
 
 Examples,
 
-    glusterfind list
-    glusterfind list --session backup
+```console
+# glusterfind list
+# glusterfind list --session backup
+```
 
 Example output,
 
-    SESSION                   VOLUME                    SESSION TIME
-    ---------------------------------------------------------------------------
-    backup                    datavol                   2015-03-04 17:35:34
+```console
+SESSION                   VOLUME                    SESSION TIME
+---------------------------------------------------------------------------
+backup                    datavol                   2015-03-04 17:35:34
+```
 
 ### Post Command
 
-    glusterfind post SESSION_NAME VOLUME_NAME
+```console
+glusterfind post SESSION_NAME VOLUME_NAME
+```
 
 Examples,
 
-    glusterfind post backup datavol
+```console
+# glusterfind post backup datavol
+```
 
 ### Delete Command
 
-    glusterfind delete SESSION_NAME VOLUME_NAME
+```console
+glusterfind delete SESSION_NAME VOLUME_NAME
+```
 
 Examples,
 
-    glusterfind delete backup datavol
-
+```console
+# glusterfind delete backup datavol
+```
 
 ## Adding more Crawlers
 
 Adding more crawlers is very simple, Add an entry in `$GLUSTERD_WORKDIR/glusterfind.conf`. glusterfind can choose your crawler using `--crawl` argument.
 
-    [crawlers]
-    changelog=/usr/libexec/glusterfs/glusterfind/changelog.py
-    brickfind=/usr/libexec/glusterfs/glusterfind/brickfind.py
+```conf
+[crawlers]
+changelog=/usr/libexec/glusterfs/glusterfind/changelog.py
+brickfind=/usr/libexec/glusterfs/glusterfind/brickfind.py
+```
 
 For example, if you have a multithreaded brick crawler, say `parallelbrickcrawl` add it to the conf file.
 
-    [crawlers]
-    changelog=/usr/libexec/glusterfs/glusterfind/changelog.py
-    brickfind=/usr/libexec/glusterfs/glusterfind/brickfind.py
-    parallelbrickcrawl=/root/parallelbrickcrawl
+```conf
+[crawlers]
+changelog=/usr/libexec/glusterfs/glusterfind/changelog.py
+brickfind=/usr/libexec/glusterfs/glusterfind/brickfind.py
+parallelbrickcrawl=/root/parallelbrickcrawl
+```
 
 Custom crawler can be executable script/binary which accepts volume name, brick path, output_file and start time(and optional debug flag)
 
 For example,
 
-    /root/parallelbrickcrawl SESSION_NAME VOLUME BRICK_PATH OUTFILE START_TIME [--debug]
+```console
+/root/parallelbrickcrawl SESSION_NAME VOLUME BRICK_PATH OUTFILE START_TIME [--debug]
+```
 
 Where `START_TIME` is in unix epoch format, `START_TIME` will be zero for full find.
 

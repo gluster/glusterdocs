@@ -14,14 +14,15 @@ mirroring occurs between the following partners:
 
 - **Session** - Unique identifier of Geo-replication session `<MASTER_VOL> [<SLAVE_USER>@]<PRIMARY_SLAVE_HOST>::<SLAVE_VOL>`
 
-        Where,
+```text
+Where,
 
-        MASTER_VOL - Master Volume Name
-        SLAVE_USER - Slave user used to establish the session, Default is root
-        PRIMARY_SLAVE_HOST - Any one Slave node to which password-less
-            SSH is setup to establish session
-        SLAVE_VOL - Slave Volume Name
-
+MASTER_VOL - Master Volume Name
+SLAVE_USER - Slave user used to establish the session, Default is root
+PRIMARY_SLAVE_HOST - Any one Slave node to which password-less
+    SSH is setup to establish session
+SLAVE_VOL - Slave Volume Name
+```
     
 ## Replicated Volumes vs Geo-replication
 
@@ -116,7 +117,7 @@ Following steps to be performed to setup Non root Slave user
 
     For example,
 
-        gluster-mountbroker setup /var/mountbroker-root geogroup
+        # gluster-mountbroker setup /var/mountbroker-root geogroup
 
 4. In any one of Slave node, Run the following commands to add Volume
    and user to mountbroker service.
@@ -125,7 +126,7 @@ Following steps to be performed to setup Non root Slave user
 
     For example,
 
-        gluster-mountbroker add slavevol geoaccount
+        # gluster-mountbroker add slavevol geoaccount
 
     Remove user or Volume using,
 
@@ -133,13 +134,13 @@ Following steps to be performed to setup Non root Slave user
 
     Example,
 
-        gluster-mountbroker remove --volume slavevol --user geoaccount
-        gluster-mountbroker remove --user geoaccount
-        gluster-mountbroker remove --volume slavevol
+        # gluster-mountbroker remove --volume slavevol --user geoaccount
+        # gluster-mountbroker remove --user geoaccount
+        # gluster-mountbroker remove --volume slavevol
 
     Check the status of setup using,
 
-        gluster-mountbroker status
+        # gluster-mountbroker status
 
 5.  Restart `glusterd` service on all Slave nodes.
 
@@ -158,35 +159,27 @@ Following steps to be performed to setup Non root Slave user
 file(`/etc/glusterfs/glusterd.vol`)
     in rpm installations and `/usr/local/etc/glusterfs/glusterd.vol` in Source installation.
 
-```sh
-    gluster system:: execute mountbroker opt mountbroker-root /var/mountbroker-root
-    gluster system:: execute mountbroker opt geo-replication-log-group geogroup
-    gluster system:: execute mountbroker opt rpc-auth-allow-insecure on
-```
+        # gluster system:: execute mountbroker opt mountbroker-root /var/mountbroker-root
+        # gluster system:: execute mountbroker opt geo-replication-log-group geogroup
+        # gluster system:: execute mountbroker opt rpc-auth-allow-insecure on
 
 5.  In any one of the Slave node, Add Mountbroker user to glusterd vol file using,
 
-```sh
-    gluster system:: execute mountbroker user geoaccount slavevol
-```
+        # gluster system:: execute mountbroker user geoaccount slavevol
 
     where slavevol is the Slave Volume name
 
-    If you host multiple slave volumes on Slave, for each of them and add the following options
-to the volfile using,
+    If you host multiple slave volumes on Slave, for each of them and add the following options to the volfile using,
 
-```sh
-    gluster system:: execute mountbroker user geoaccount2 slavevol2
-    gluster system:: execute mountbroker user geoaccount3 slavevol3
-```
+        # gluster system:: execute mountbroker user geoaccount2 slavevol2
+        # gluster system:: execute mountbroker user geoaccount3 slavevol3
 
     To add multiple volumes per mountbroker user,
 
-```sh
-    gluster system:: execute mountbroker user geoaccount1 slavevol11,slavevol12,slavevol13
-    gluster system:: execute mountbroker user geoaccount2 slavevol21,slavevol22
-    gluster system:: execute mountbroker user geoaccount3 slavevol31
-```
+        # gluster system:: execute mountbroker user geoaccount1 slavevol11,slavevol12,slavevol13
+        # gluster system:: execute mountbroker user geoaccount2 slavevol21,slavevol22
+        # gluster system:: execute mountbroker user geoaccount3 slavevol31
+
 6.  Restart `glusterd` service on all Slave nodes.
 
 ## Setting Up the Environment for Geo-replication
@@ -213,7 +206,7 @@ once session is established.(Required again while running create force)
 1.  On one of the Master node where geo-replication Create command
     will be issued, run the following command to generate the SSH key.
 
-        ssh-keygen
+        # ssh-keygen
 
     Press Enter twice to avoid passphrase.
 
@@ -231,23 +224,31 @@ from all peer nodes to the command initiated node.
 
 ***New in 3.9***
 
-    gluster-georep-sshkey generate
+```console
+# gluster-georep-sshkey generate
+```
 
 This command adds extra prefix inside common_secret.pem.pub file to
 each pub keys to prevent running extra commands using this key, to
 disable that prefix,
 
-    gluster-georep-sshkey generate --no-prefix
+```console
+# gluster-georep-sshkey generate --no-prefix
+```
 
 ***Version 3.8 and below***
 
-    gluster system:: execute gsec_create
+```console
+# gluster system:: execute gsec_create
+```
 
 This command adds extra prefix inside common_secret.pem.pub file to
 each pub keys to prevent running extra commands using this key, to
 disable that prefix,
 
-    gluster system:: execute gsec_create container
+```console
+# gluster system:: execute gsec_create container
+```
 
 ## Creating the session
 Create a geo-rep session between master and slave volume using the
@@ -257,21 +258,29 @@ setup between them. The push-pem option actually uses the secret pem
 pub file created earlier and establishes geo-rep specific password
 less ssh between each node in master to each node of slave.
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> \
-        create [ssh-port <port>] push-pem|no-verify [force]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> \
+    create [ssh-port <port>] push-pem|no-verify [force]
+```
 
 For example(Root user in Slave)
 
-    gluster volume geo-replication gv1 snode1::gv2 create push-pem
+```console
+# gluster volume geo-replication gv1 snode1::gv2 create push-pem
+```
 
 Non Root user,
 
-    gluster volume geo-replication gv1 geoaccount@snode1::gv2 create push-pem
+```console
+# gluster volume geo-replication gv1 geoaccount@snode1::gv2 create push-pem
+```
 
 If custom SSH port is configured in Slave nodes then,
 
-    gluster volume geo-replication gv1 snode1::gv2 create ssh-port 50022 push-pem
+```console
+# gluster volume geo-replication gv1 snode1::gv2 create ssh-port 50022 push-pem
+```
 
 If the total available size in slave volume is less than the total
 size of master, the command will throw error message. In such cases
@@ -289,12 +298,16 @@ slave side verifications are taken care of by the external agent, then
 Then use following command to create Geo-rep session with `no-verify`
 option.
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> create no-verify [force]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> create no-verify [force]
+```
 
 For example,
 
-    gluster volume geo-replication gv1 snode1::gv2 create no-verify
+```console
+# gluster volume geo-replication gv1 snode1::gv2 create no-verify
+```
 
 In this case the master node rsa-key distribution to slave node does
 not happen and above mentioned slave verification is not performed and
@@ -304,8 +317,10 @@ these two things has to be taken care externaly.
 In case of non root user, run the following command as root in any one
 of Slave node.
 
-    /usr/libexec/glusterfs/set_geo_rep_pem_keys.sh <slave_user> \
-        <master_volume> <slave_volume>
+```console
+/usr/libexec/glusterfs/set_geo_rep_pem_keys.sh <slave_user> \
+    <master_volume> <slave_volume>
+```
 
 ## Configuration
 Configuration can be changed anytime after creating the session. After
@@ -314,23 +329,31 @@ restarted.
 
 To view all configured options of a session,
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> config [option]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> config [option]
+```
 
 For Example,
 
-    gluster volume geo-replication gv1 snode1::gv2 config
-    gluster volume geo-replication gv1 snode1::gv2 config sync-jobs
+```console
+# gluster volume geo-replication gv1 snode1::gv2 config
+# gluster volume geo-replication gv1 snode1::gv2 config sync-jobs
+```
 
 To configure Gluster Geo-replication, use the following command at the
 Gluster command line
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> config [option]
+```console
+gluster volume geo-replication <master_volume> \
+   [<slave_user>@]<slave_host>::<slave_volume> config [option]
+```
 
 For example:
 
-    gluster volume geo-replication gv1 snode1::gv2 config sync-jobs 3
+```console
+# gluster volume geo-replication gv1 snode1::gv2 config sync-jobs 3
+```
 
 > **Note**: If Geo-rep is in between sync, restart due to configuration
 >  change may cause resyncing a few entries which are already synced.
@@ -352,9 +375,11 @@ file inside meta volume. Lock file name pattern will be different for
 each sub volume. If a worker acquire lock, then it will become Active
 else remain as Passive.
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> config
-        use-meta-volume true
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> config
+    use-meta-volume true
+```
 
 > **Note**: Meta Volume is shared replica 3 Gluster Volume. The name
 > of the meta-volume should be `gluster_shared_storage` and should be
@@ -378,13 +403,17 @@ The following table provides an overview of the configurable options for a geo-r
 
 Use the following command to start geo-replication session,
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> start [force]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> start [force]
+```
 
 For example,
 
-    gluster volume geo-replication gv1 snode1::gv2 start
-    gluster volume geo-replication gv1 geoaccount@snode1::gv2 start
+```console
+# gluster volume geo-replication gv1 snode1::gv2 start
+# gluster volume geo-replication gv1 geoaccount@snode1::gv2 start
+```
 
 > **Note**
 >
@@ -395,46 +424,58 @@ For example,
 
 Use the following command to stop geo-replication sesion,
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> stop [force]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> stop [force]
+```
 
 For example,
 
-    gluster volume geo-replication gv1 snode1::gv2 stop
-    gluster volume geo-replication gv1 geoaccount@snode1::gv2 stop
-
+```console
+# gluster volume geo-replication gv1 snode1::gv2 stop
+# gluster volume geo-replication gv1 geoaccount@snode1::gv2 stop
+```
 
 ## Status
 To check the status of all Geo-replication sessions in the Cluster
 
-    gluster volume geo-replication status
+```console
+# gluster volume geo-replication status
+```
 
 To check the status of one session,
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> status [detail]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> status [detail]
+```
 
 Example,
 
-    gluster volume geo-replication gv1 snode1::gv2 status
-    gluster volume geo-replication gv1 snode1::gv2 status detail
-    gluster volume geo-replication gv1 geoaccount@snode1::gv2 status
-    gluster volume geo-replication gv1 geoaccount@snode1::gv2 status detail
+```console
+# gluster volume geo-replication gv1 snode1::gv2 status
+# gluster volume geo-replication gv1 snode1::gv2 status detail
+# gluster volume geo-replication gv1 geoaccount@snode1::gv2 status
+# gluster volume geo-replication gv1 geoaccount@snode1::gv2 status detail
+```
 
 Example Status Output
 
-    MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED
-    -------------------------------------------------------------------------------------------------------------------------------------
-    mnode1         gv1           /bricks/b1      root          snode1::gv2  snode1        Active    Changelog Crawl    2016-10-12 23:07:13
-    mnode2         gv1           /bricks/b2      root          snode1::gv2  snode2        Active    Changelog Crawl    2016-10-12 23:07:13
+```console
+MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED
+-------------------------------------------------------------------------------------------------------------------------------------
+mnode1         gv1           /bricks/b1      root          snode1::gv2  snode1        Active    Changelog Crawl    2016-10-12 23:07:13
+mnode2         gv1           /bricks/b2      root          snode1::gv2  snode2        Active    Changelog Crawl    2016-10-12 23:07:13
+```
 
 Example Status detail Output
 
-    MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED            ENTRY    DATA    META    FAILURES    CHECKPOINT TIME    CHECKPOINT COMPLETED    CHECKPOINT COMPLETION TIME
-    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    mnode1         gv1           /bricks/b1      root          snode1::gv2  snode1        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
-    mnode2         gv1           /bricks/b2      root          snode1::gv2  snode2        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
-
+```console
+MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED            ENTRY    DATA    META    FAILURES    CHECKPOINT TIME    CHECKPOINT COMPLETED    CHECKPOINT COMPLETION TIME
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mnode1         gv1           /bricks/b1      root          snode1::gv2  snode1        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
+mnode2         gv1           /bricks/b2      root          snode1::gv2  snode2        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
+```
 
 The `STATUS` of the session could be one of the following,
 
@@ -473,12 +514,16 @@ The `CRAWL STATUS` can be one of the following:
 Established Geo-replication session can be deleted using the following
 command,
 
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> delete [force]
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> delete [force]
+```
 
 For example,
 
-    gluster volume geo-replication gv1 snode1::gv2 delete
+```console
+# gluster volume geo-replication gv1 snode1::gv2 delete
+```
 
 > Note: If the same session is created again then syncing will resume
 > from where it was stopped before deleting the session. If the
@@ -495,18 +540,24 @@ modified before the Checkpoint Time.
 
 Set the Checkpoint using,
 
-        gluster volume geo-replication <master_volume> \
-            [<slave_user>@]<slave_host>::<slave_volume> config checkpoint now
+```console
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> config checkpoint now
+```
 
 Example,
 
-    gluster volume geo-replication gv1 snode1::gv2 config checkpoint now
+```console
+# gluster volume geo-replication gv1 snode1::gv2 config checkpoint now
+```
 
 Touch the Master mount point to make sure Checkpoint completes even
 though no I/O happening in the Volume
 
-    mount -t glusterfs <masterhost>:<mastervol> /mnt
-    touch /mnt
+```console
+# mount -t glusterfs <masterhost>:<mastervol> /mnt
+# touch /mnt
+```
 
 Checkpoint status can be checked using Geo-rep status
 command. Following columns in status output gives more information
@@ -537,11 +588,11 @@ slave Volumes.
   name for snapshots)
 
         gluster snapshot create <snapname> <volname>
-    
+
     Example,
 
-        gluster snapshot create snap1 gv2
-        gluster snapshot create snap1 gv1
+        # gluster snapshot create snap1 gv2
+        # gluster snapshot create snap1 gv1
 
 - Resume Geo-replication session using,
 
@@ -552,12 +603,16 @@ If we want to continue Geo-rep session after snapshot restore, we need
 to restore both Master and Slave Volume and resume the Geo-replication
 session using force option
 
-    gluster snapshot restore <snapname>
-    gluster volume geo-replication <master_volume> \
-        [<slave_user>@]<slave_host>::<slave_volume> resume force
+```console
+gluster snapshot restore <snapname>
+gluster volume geo-replication <master_volume> \
+    [<slave_user>@]<slave_host>::<slave_volume> resume force
+```
 
 Example,
 
-    gluster snapshot restore snap1 # Slave Snap
-    gluster snapshot restore snap1 # Master Snap
-    gluster volume geo-replication gv1 snode1::gv2 resume force
+```console
+# gluster snapshot restore snap1 # Slave Snap
+# gluster snapshot restore snap1 # Master Snap
+# gluster volume geo-replication gv1 snode1::gv2 resume force
+```
