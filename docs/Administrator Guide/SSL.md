@@ -68,8 +68,18 @@ options must be set:
 	gluster volume set MYVOLUME client.ssl on
 	gluster volume set MYVOLUME server.ssl on
 
-Note that the above options affect only the GlusterFS native protocol.  Foreign
-protocols such as NFS, SMB, or Swift will not be affected.
+>**Note** that the above options affect only the GlusterFS native protocol.
+>For foreign protocols such as NFS, SMB, or Swift the encryption will not be
+>affected between:
+>
+>1. NFS client and Glusterfs NFS Ganesha Server
+>2. SMB client and Glusterfs SMB server
+>
+>While it affects the encryption between the following:
+>
+>1. NFS Ganesha server and Glusterfs bricks
+>2. Glusterfs SMB server and Glusterfs bricks
+
 
 ## Using TLS Identities for Authorization
 
