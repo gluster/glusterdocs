@@ -31,7 +31,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |SLES12SP4       |     X     |     X     |     X     |     X     |
 |              |Leap42.3        |     —     |     —     |     —     |     X     |
 |              |Leap15.1        |     X     |     X     |     X     |     X     |
-|              |SLES15          |     X     |     X     |     X     |     X     |
+|              |SLES15          |     —     |     X     |     X     |     X     |
 |              |SLES15SP1       |     X     |     X     |     X     |     X     |
 |              |Tumbleweed      |     X     |     X     |     X     |     X     |
 
