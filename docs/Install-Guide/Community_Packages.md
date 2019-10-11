@@ -28,7 +28,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Eoan/19.10      |     X     |     X     |     X     |     —     |
 |              |                |           |           |           |
 |OpenSUSE Build Service[4]|SLES12SP3    |     —     |     —     |     —     |     X     |
-|              |SLES12SP4       |     X     |     X     |     X     |     X     |
+|              |SLES12SP4       |     —     |     X     |     X     |     X     |
 |              |Leap42.3        |     —     |     —     |     —     |     X     |
 |              |Leap15.1        |     X     |     X     |     X     |     X     |
 |              |SLES15          |     —     |     X     |     X     |     X     |
