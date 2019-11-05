@@ -88,7 +88,7 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    ```#gluster volume set VOLNAME group samba```
    On older version, please execute the following:
    ```
-   #gluster volume set VOLNAME features.cache-invalidation=on
+   #gluster volume set VOLNAME features.cache-invalidation on
    #gluster volume set VOLNAME features.cache-invalidation-timeout 600
    #gluster volume set VOLNAME performance.cache-samba-metadata on
    #gluster volume set VOLNAME performance.stat-prefetch on
