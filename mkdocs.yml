@@ -110,6 +110,7 @@ nav:
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
 - Release Notes:
   - index: release-notes/index.md
+  - 7.1: release-notes/7.1.md
   - 7.0: release-notes/7.0.md
   - 6.6: release-notes/6.6.md
   - 6.5: release-notes/6.5.md
