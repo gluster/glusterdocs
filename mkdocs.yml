@@ -112,6 +112,7 @@ nav:
   - index: release-notes/index.md
   - 7.1: release-notes/7.1.md
   - 7.0: release-notes/7.0.md
+  - 6.7: release-notes/6.7.md
   - 6.6: release-notes/6.6.md
   - 6.5: release-notes/6.5.md
   - 6.4: release-notes/6.4.md
