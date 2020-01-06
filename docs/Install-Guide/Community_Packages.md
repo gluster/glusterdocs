@@ -13,8 +13,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |el7             |     X     |     X     |     X     |
 |              |(el8[2])        |     X     |     X     |     X     |
 |              |                |           |           |           |
-|Fedora[2]     |F29             |     X     |     X     |     X²    |
-|              |F30             |     X     |     X²    |     X     |
+|Fedora[2]     |F30             |     X     |     X²    |     X     |
 |              |F31             |     X²    |     X     |     X     |
 |              |F32(rawhide)    |     X²    |     X     |     X     |
 |              |                |           |           |           |
@@ -43,8 +42,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |el7             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el8             |   tbd   |    tbd   |     X      |      X      |    tbd   |   ?   |
 |              |                |         |          |            |             |          |       |
-|Fedora[2]     |F29             |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|Fedora[2]     |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F32(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |                |         |          |            |             |          |       |
