@@ -106,11 +106,12 @@ Volume Name: gv0
 Type: Replicate
 Volume ID: 8bc3e96b-a1b6-457d-8f7a-a91d1d4dc019
 Status: Created
-Number of Bricks: 1 x 2 = 2
+Number of Bricks: 1 x 3 = 3
 Transport-type: tcp
 Bricks:
 Brick1: node01.yourdomain.net:/export/sdb1/brick
 Brick2: node02.yourdomain.net:/export/sdb1/brick
+Brick3: node03.yourdomain.net:/export/sdb1/brick
 ```
 
 This shows us essentially what we just specified during the volume
