@@ -81,8 +81,8 @@ Breaking this down into pieces:
 (the name is arbitrary, `gv0` was chosen simply because
 it’s less typing than `gluster_volume_0`).
 - make the volume a replica volume
-- keep a copy of the data on at least 2 bricks at any given time.
-Since we only have two bricks total, this
+- keep a copy of the data on at least 3 bricks at any given time.
+Since we only have three bricks total, this
 means each server will house a copy of the data.
 - we specify which nodes to use, and which bricks on those nodes. The order here is
 important when you have more bricks.
