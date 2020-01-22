@@ -29,7 +29,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |           |           |           |
 |OpenSUSE Build Service[4]|SLES12SP5    |     X     |     X     |      —    |
 |              |SLES12SP4       |     X     |     X     |     X     |
-|              |Leap15.1        |     X     |     X     |     X     |
+|              |Leap15.2        |     X     |     X     |     X     |
 |              |SLES15          |     —     |     X     |     X     |
 |              |SLES15SP1       |     X     |     X     |     X     |
 |              |Tumbleweed      |     X     |     X     |     X     |
@@ -59,7 +59,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |         |          |            |             |          |       |
 |OpenSUSE Build Service[4]|SLES12SP5       |    X     |     X    |     X       |      X      |     X    |   ?   |
 |              |SLES12SP4       |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |Leap15.1        |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |Leap15.2        |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |SLES15          |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |SLES15SP1       |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |Tumbleweed      |    X    |     X    |     X      |      X      |     X    |   ?   |
