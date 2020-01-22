@@ -167,7 +167,7 @@ On all servers:
 From any single server:
 
 ```console
-# gluster volume create gv0 replica 3 server1:/data/brick1/gv0 server2:/data/brick1/gv0 server3:/data/brick1/gv0
+# gluster volume create gv0 replica 3 server1:/data/brick1/gv0 server2:/data/brick1/gv0 server3:/data/brick1/gv0 force
 volume create: gv0: success: please start the volume to access data
 # gluster volume start gv0
 volume start: gv0: success
