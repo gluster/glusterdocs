@@ -75,7 +75,10 @@ To install Gluster Native Client on RPM distribution-based systems
 
     You can download the software at [GlusterFS download page][1].
 
-4.  Install Gluster Native Client on the client.
+4.  Install Gluster Native Client on the client. 
+   
+   **Note**
+    The package versions listed in the example below may not be the latest release. Please refer to the download page to ensure that you have the recently released packages.
 ~~~
     `$ sudo rpm -i glusterfs-3.8.5-1.x86_64`
     `$ sudo rpm -i glusterfs-fuse-3.8.5-1.x86_64`
