@@ -81,8 +81,8 @@ Breaking this down into pieces:
 (the name is arbitrary, `gv0` was chosen simply because
 it’s less typing than `gluster_volume_0`).
 - make the volume a replica volume
-- keep a copy of the data on at least 2 bricks at any given time.
-Since we only have two bricks total, this
+- keep a copy of the data on at least 3 bricks at any given time.
+Since we only have three bricks total, this
 means each server will house a copy of the data.
 - we specify which nodes to use, and which bricks on those nodes. The order here is
 important when you have more bricks.
@@ -106,11 +106,12 @@ Volume Name: gv0
 Type: Replicate
 Volume ID: 8bc3e96b-a1b6-457d-8f7a-a91d1d4dc019
 Status: Created
-Number of Bricks: 1 x 2 = 2
+Number of Bricks: 1 x 3 = 3
 Transport-type: tcp
 Bricks:
 Brick1: node01.yourdomain.net:/export/sdb1/brick
 Brick2: node02.yourdomain.net:/export/sdb1/brick
+Brick3: node03.yourdomain.net:/export/sdb1/brick
 ```
 
 This shows us essentially what we just specified during the volume
