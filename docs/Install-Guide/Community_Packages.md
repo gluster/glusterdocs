@@ -11,7 +11,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |--------------|----------------|:---------:|:---------:|:---------:|
 |CentOS Storage SIG[1]|el6            |     X      |     X¹     |     X¹    |
 |              |el7             |     X     |     X     |     X     |
-|              |(el8[2])        |     X     |     X     |     X     |
+|              |el8             |     X     |     X     |     X     |
 |              |                |           |           |           |
 |Fedora[2]     |F30             |     X     |     X²    |     X     |
 |              |F31             |     X²    |     X     |     X     |
