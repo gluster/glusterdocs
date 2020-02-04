@@ -13,7 +13,7 @@ mkdocs, with the following command :
 
     # sudo yum install mkdocs
     
-For Fedora 23+ (run the following in root)
+For Fedora 30+ (run the following in root)
 
     # dnf install python-pip
     # pip install mkdocs
