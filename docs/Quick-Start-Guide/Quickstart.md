@@ -4,15 +4,13 @@ Installing GlusterFS - a Quick Start Guide
 #### Purpose of this document
 
 This document is intended to provide a step-by-step guide to setting up
-GlusterFS for the first time. For the purposes of this guide, it is
-required to use Fedora 26 (or, higher) virtual machine instances.
+GlusterFS for the first time with minimum degree of complexity. For the purposes of this guide, it is
+required to use Fedora 30 (or, higher, see https://fedoraproject.org/wiki/End_of_life) virtual machine instances.
 
 After you deploy GlusterFS by following these steps,
-we recommend that you read the GlusterFS Admin Guide to learn how to
-administer GlusterFS and how to select a volume type that fits your
-needs. Read the GlusterFS Install Guide for a more detailed explanation
-of the steps we took here. We want you to be successful in as short a
-time as possible.
+we recommend that you read the GlusterFS Admin Guide to how to select a volume type that fits your
+needs and administer GlusterFS. The GlusterFS Install Guide provides a more detailed explanation
+of the steps we show in this Quick Start Guide.
 
 If you would like a more detailed walkthrough with instructions for
 installing using different methods (in local virtual machines, EC2 and
@@ -25,31 +23,21 @@ If you are already an Ansible user, and are more comfortable with setting
 up distributed systems with Ansible, we recommend you to skip all these and
 move over to [gluster-ansible](https://github.com/gluster/gluster-ansible) repository, which gives most of the details to get the systems running faster.
 
-#### Deploying GlusterFS with GlusterD2, the next gen management interface of Gluster
-
-While [GlusterD2](https://github.com/gluster/glusterd2) project continues to be
-under active development, contributors can start by setting up the cluster to
-understand the aspect of peer and volume management.Please refer to GD2 quick
-start guide [here](https://github.com/gluster/glusterd2/blob/master/doc/quick-start-user-guide.md).
-Feedback on the new CLI and the ReST APIs are welcome at
-gluster-users@gluster.org & gluster-devel@gluster.org.
-
 #### Automatically deploying GlusterFS with Puppet-Gluster+Vagrant
 
 To deploy GlusterFS using scripted methods, please read [this
 article](https://ttboj.wordpress.com/2014/01/08/automatically-deploying-glusterfs-with-puppet-gluster-vagrant/).
 
-
 ### Step 1 – Have at least three nodes
 
--   Fedora 26 (or later) on 3 nodes named "server1", "server2" and "server3"
+-   Fedora 30 (or later) on 3 nodes named "server1", "server2" and "server3"
 -   A working network connection
 -   At least two virtual disks, one for the OS installation, and one to be
     used to serve GlusterFS storage (sdb), on each of these VMs. This will
     emulate a real-world deployment, where you would want to separate
     GlusterFS storage from the OS install.
 -   Setup NTP on each of these servers to get the proper functioning of
-    many applications on top of filesystem.
+    many applications on top of filesystem. This is an important requirement
 
 
 **Note**: GlusterFS stores its dynamically generated configuration files
