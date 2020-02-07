@@ -15,7 +15,7 @@ Next, choose the method you want to use to set up your first cluster:
 Finally, we will install Gluster, create a few volumes, and test using
 them.
 
-#### Common Setup Criteria
+#### General Setup Principles
 
 No matter where you will be installing Gluster, it helps to understand a
 few key concepts on what the moving parts are.
@@ -27,8 +27,9 @@ Gluster gets distributed across multiple hosts simultaneously. This
 means that you can use space from any host that you have available.
 Typically, XFS is recommended but it can be used with other filesystems
 as well. Most commonly EXT4 is used when XFS isn’t, but you can (and
-many, many people do) use another filesystem that suits you. Now that we
-understand that, we can define a few of the common terms used in
+many, many people do) use another filesystem that suits you. 
+
+Now that we understand that, we can define a few of the common terms used in
 Gluster.
 
 -   A **trusted pool** refers collectively to the hosts in a given
