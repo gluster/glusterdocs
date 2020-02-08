@@ -110,58 +110,6 @@ mirror:
 volume create: test-volume: success: please start the volume to access data
 ```
 
-​4. **Striped Glusterfs Volume** - Consider a large file being stored in
-a brick which is frequently accessed by many clients at the same time.
-This will cause too much load on a single brick and would reduce the
-performance. In striped volume the data is stored in the bricks after
-dividing it into different stripes. So the large file will be divided
-into smaller chunks (equal to the number of bricks in the volume) and
-each chunk is stored in a brick. Now the load is distributed and the
-file can be fetched faster but no data redundancy provided.
-
-![striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412387/f411fa56-ef5f-11e4-8e78-a0896a47625a.png)
-
-*Striped volume*
-
-Create a Striped Volume
-
-```console
-gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...
-```
-
-**For example**, to create a striped volume across two storage servers:
-
-```console
-# gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2
-volume create: test-volume: success: please start the volume to access data
-```
-
-​5. **Distributed Striped Glusterfs Volume** - This is similar to
-Striped Glusterfs volume except that the stripes can now be distributed
-across more number of bricks. However the number of bricks must be a
-multiple of the number of stripes. So if we want to increase volume size
-we must add bricks in the multiple of stripe count.
-
-![distributed_striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412394/0ce267d2-ef60-11e4-9959-43465a2a25f7.png)
-
-*Distributed Striped volume*
-
-Create the distributed striped volume:
-
-```console
-gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
-```
-
-For example, to create a distributed striped volume across eight
-storage servers:
-
-```console
-# gluster volume create test-volume stripe 4 transport tcp \
-      server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 \
-      server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
-volume create: test-volume: success: please start the volume to access data
-```
-
 ### FUSE
 
 GlusterFS is a userspace filesystem. This was a decision made by the
