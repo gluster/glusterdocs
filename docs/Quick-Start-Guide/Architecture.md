@@ -8,12 +8,10 @@ operations happen on the volume. Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
-​1. **Distributed Glusterfs Volume** - This is the default glusterfs
-volume i.e, while creating a volume if you do not specify the type of
-the volume, the default option is to create a distributed volume.
+​1. **Distributed Glusterfs Volume** - This is the type of volume which is created by default if no volume type is specified.
 Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
-no data redundancy. The purpose for such a storage volume is to easily & cheaply
+**no data redundancy**. The purpose for such a storage volume is to easily & cheaply
 scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
@@ -53,7 +51,7 @@ Brick4: server4:/exp4
 ```
 
 ​2. **Replicated Glusterfs Volume** - In this volume we overcome the
-data loss problem faced in the distributed volume. Here exact copies of
+risk of data loss which is present in the distributed volume. Here exact copies of
 the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
 have at least two bricks to create a volume with 2 replicas or a minimum
@@ -83,7 +81,7 @@ volume create: test-volume: success: please start the volume to access data
 ​3. **Distributed Replicated Glusterfs Volume** - In this volume files
 are distributed across replicated sets of bricks. The number of bricks
 must be a multiple of the replica count. Also the order in which we
-specify the bricks matters since adjacent bricks become replicas of each
+specify the bricks is important since adjacent bricks become replicas of each
 other. This type of volume is used when high availability of data due to
 redundancy and scaling storage is required. So if there were eight
 bricks and replica count 2 then the first two bricks become replicas of
@@ -112,11 +110,9 @@ volume create: test-volume: success: please start the volume to access data
 
 ### FUSE
 
-GlusterFS is a userspace filesystem. This was a decision made by the
-GlusterFS developers initially as getting the modules into linux kernel
-is a very long and difficult process.
+GlusterFS is a userspace filesystem. The GluserFS developers opted for this approach in order to avoid the need to have modules in the Linux kernel.
 
-Being a userspace filesystem, to interact with kernel VFS, GlusterFS
+As it is a userspace filesystem, to interact with kernel VFS, GlusterFS
 makes use of FUSE (File System in Userspace). For a long time,
 implementation of a userspace filesystem was considered impossible. FUSE
 was developed as a solution for this. FUSE is a kernel module that
