@@ -1,5 +1,7 @@
-Introduction
-------------
+# GlusterFS iSCSI
+
+
+## Introduction
 
 iSCSI on Gluster can be set up using the Linux Target driver. This is a user space daemon that accepts iSCSI (as well as iSER and FCoE.) It interprets iSCSI CDBs and converts them into some other I/O operation, according to user configuration. In our case, we can convert the CDBs into file operations that run against a gluster file. The file represents the LUN and the offset in the file the LBA.
 
@@ -11,8 +13,7 @@ Below is a cookbook to set it up using the Linux Target Driver on the server. Th
 
 For more information on iSCSI and the Linux target driver, see [1] and [2].
 
-Setup
------
+## Setup
 
 Mount gluster locally on your gluster server. Note you can also run it on the gluster client. There are pros and cons to these configurations, described [below](#Running_the_target_on_the_gluster_client "wikilink").
 
@@ -71,13 +72,11 @@ To tear down your iSCSI connection:
 
 		# iscsiadm  -m node -T iqn.2001-04.com.redhat  -p 172.17.40.21 -u
 
-Running the iSCSI target on the gluster client
-----------------------------------------------
+## Running the iSCSI target on the gluster client
 
 You can run the Linux target daemon on the gluster client. The advantages to this setup is the client could run gluster and enjoy all of gluster's benefits. For example, gluster could "fan out" I/O to different gluster servers. The downside would be that the client would need to load and configure gluster. It is better to run gluster on the client if it is possible.
 
-References
-----------
+## References
 
 [1] <http://www.linuxjournal.com/content/creating-software-backed-iscsi-targets-red-hat-enterprise-linux-6>
 

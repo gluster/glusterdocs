@@ -1,3 +1,4 @@
+# Setup Bare Metal
 *Note: You only need one of the three setup methods!*
 ### Setup, Method 2 – Setting up on physical servers
 

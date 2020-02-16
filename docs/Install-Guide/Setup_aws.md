@@ -1,3 +1,4 @@
+# Setup AWS
 *Note: You only need one of the three setup methods!*
 
 ### Setup, Method 3 – Deploying in AWS

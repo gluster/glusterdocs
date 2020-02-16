@@ -1,3 +1,5 @@
+# GlusterFS Keystone Quickstart
+
 This is a document in progress, and may contain some errors or missing information.
 
 I am currently in the process of building an AWS Image with this installed, however if you can't wait, and want to install this with a script, here are the commands from both articles, with defaults appropriate for an Amazon CentOS/RHEL 6 AMI, such as ami-a6e15bcf
@@ -9,7 +11,7 @@ This document assumes you already have GlusterFS with UFO installed, 3.3.1-11 or
 These docs are largely derived from:
 
 [`http://fedoraproject.org/wiki/Getting_started_with_OpenStack_on_Fedora_17#Initial_Keystone_setup`](http://fedoraproject.org/wiki/Getting_started_with_OpenStack_on_Fedora_17#Initial_Keystone_setup)
-[`http://blog.jebpages.com/archives/fedora-17-openstack-and-gluster-3-3/`](http://blog.jebpages.com/archives/fedora-17-openstack-and-gluster-3-3/)
+
 
 Add the RDO Openstack Grizzly and Epel repos:
 

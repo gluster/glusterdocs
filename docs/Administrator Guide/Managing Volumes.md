@@ -1,4 +1,4 @@
-#Managing GlusterFS Volumes
+# Managing GlusterFS Volumes
 
 This section describes how to perform common GlusterFS management
 operations, including the following:

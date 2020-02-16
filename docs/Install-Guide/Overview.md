@@ -1,30 +1,19 @@
+# Overview 
 ### Purpose
 
-This document will get you up to speed with some hands-on experience
-with Gluster by guiding you through the steps of setting it up for the
-first time. If you are looking to get right into things, you are in the
-right place. If you want just the bare minimum steps, see the [Quick Start Guide](../Quick-Start-Guide/Quickstart.md).
-
-If you want some in-depth information on each of the steps, you are in the right place.
-Both the guides will get you
-to a working Gluster cluster, so it depends on you how much time you
-want to spend. The [Quick Start Guide](../Quick-Start-Guide/Quickstart.md) should have you up and running in ten minutes
-or less. This guide can easily be done in a lunch break, and still, gives
-you time to have a quick bite to eat. The Getting Started guide can be
-done easily in a few hours, depending on how much testing you want to
-do.
+The Install Guide (IG) is aimed at providing the sequence of steps needed for setting up Gluster. It contains a reasonable degree of detail which helps an administrator to understand the terminology, the choices and how to configure the deployment to the storage needs of their application workload. The [Quick Start Guide](../Quick-Start-Guide/Quickstart.md) (QSG) is designed to get a deployment with default choices and is aimed at those who want to spend less time to get to a deployment.
 
 After you deploy Gluster by following these steps, we recommend that
-you read the [Gluster Admin Guide](../Administrator Guide/index.md) to learn how to administer Gluster and
+you read the [Gluster Admin Guide](../Administrator Guide/index.md) (AG) to learn how to administer Gluster and
 how to select a volume type that fits your needs. Also, be sure to
-enlist the help of the Gluster community via the IRC channel or Q&A
-section. We want you to be successful in as short a time as possible.
+enlist the help of the Gluster community via the IRC or, Slack channels (see https://www.gluster.org/community/) or Q&A
+section. 
 
 ### Overview
 
-Before we begin, let’s talk about what Gluster is, dispel a few myths
+Before we begin, let’s talk about what Gluster is, address a few myths
 and misconceptions, and define a few terms. This will help you to avoid
-some of the common issues that others encounter most frequently.
+some of the common issues that others encounter as they start their journey with Gluster.
 
 #### What is Gluster
 
@@ -72,8 +61,8 @@ this is accomplished without a centralized metadata server.
 
 #### Is Gluster going to work for me and what I need it to do?
 
-Most likely, yes. People use Gluster for all sorts of things. You are
-encouraged to ask around in our IRC channel or Q&A forums to see if
+Most likely, yes. People use Gluster for storage needs of a variety of application workloads. You are
+encouraged to ask around in our IRC or, Slack channels or Q&A forums to see if
 anyone has tried something similar. That being said, there are a few
 places where Gluster is going to need more consideration than others.
 

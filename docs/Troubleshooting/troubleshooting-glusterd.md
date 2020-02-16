@@ -59,15 +59,18 @@ would need to access that brick may fail with "Transport endpoint is not connect
 
 `gluster peer status` returns "Peer Rejected" for a node.
 
-	Hostname: <hostname>
-	Uuid: <xxxx-xxx-xxxx>
-	State: Peer Rejected (Connected)
-
+```console
+Hostname: <hostname>
+Uuid: <xxxx-xxx-xxxx>
+State: Peer Rejected (Connected)
+```
 
 This indicates that the volume configuration on the node is not in sync with the rest of the trusted storage pool. 
 You should see the following message in the glusterd log for the node on which the peer status command was run:
 
-_Version of Cksums <vol-name> differ. local cksum = xxxxxx, remote cksum = xxxxyx on peer <hostname>_
+```console
+Version of Cksums <vol-name> differ. local cksum = xxxxxx, remote cksum = xxxxyx on peer <hostname>
+```
 
 *Solution*: Update the cluster.op-version
 
@@ -79,14 +82,14 @@ _Version of Cksums <vol-name> differ. local cksum = xxxxxx, remote cksum = xxxxy
 **"Accepted Peer Request"**
 
 If the glusterd handshake fails while expanding a cluster, the view of the cluster will be inconsistent. The state of the peer in `gluster peer status` will be  “accepted peer request” and subsequent CLI commands will fail with an error.
-Eg. "Volume create command will fail with "volume create: testvol: failed: Host <hostname> is not in 'Peer in Cluster' state 
+Eg. `Volume create command will fail with "volume create: testvol: failed: Host <hostname> is not in 'Peer in Cluster' state` 
     
-In this case the value of the state field in /var/lib/glusterd/peers/<UUID> will be other than 3.
+In this case the value of the state field in `/var/lib/glusterd/peers/<UUID>` will be other than 3.
 
 *Solution*:
 
 * Stop glusterd
-* Open /var/lib/glusterd/peers/<UUID>
+* Open `/var/lib/glusterd/peers/<UUID>`
 * Change state to 3
 * Start glusterd
 

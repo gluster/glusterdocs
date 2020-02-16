@@ -1,3 +1,5 @@
+# Overview
+
 Over the years the infrastructure and services consumed by the Gluster.org
 community have grown organically. There have been instances of design and
 planning but the growth has mostly been ad-hoc and need based.
@@ -25,4 +27,4 @@ focusing on simple integration with the website. The website itself has been
 put within the Gluster.org Github.com account to enable ease of maintenance and
 sustainability.
 
-For more details look at the full [Tools List](/Ops-Guide/Tools.md).
+For more details look at the full [Tools List](./Tools.md).

@@ -1,8 +1,16 @@
 Release Notes
 -------------
 
+### GlusterFS 7 release notes
+
+- [7.0](./7.0.md)
+- [7.1](./7.1.md)
+- [7.2](./7.2.md)
+
 ### GlusterFS 6 release notes
 
+- [6.7](./6.7.md)
+- [6.6](./6.6.md)
 - [6.5](./6.5.md)
 - [6.4](./6.4.md)
 - [6.3](./6.3.md)
@@ -12,6 +20,9 @@ Release Notes
 
 ### GlusterFS 5 release notes
 
+- [5.11](./5.11.md)
+- [5.10](./5.10.md)
+- [5.9](./5.9.md)
 - [5.8](./5.8.md)
 - [5.6](./5.6.md)
 - [5.5](./5.5.md)

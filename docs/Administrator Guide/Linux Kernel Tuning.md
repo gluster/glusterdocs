@@ -185,10 +185,8 @@ More informative and interesting articles/emails/blogs to read
 
 -   <http://dom.as/2008/02/05/linux-io-schedulers/>
 -   <http://www.nextre.it/oracledocs/oraclemyths.html>
--   <http://article.gmane.org/gmane.linux.raid/17546>
 -   <https://lkml.org/lkml/2006/11/15/40>
 -   <http://misterd77.blogspot.com/2007/11/3ware-hardware-raid-vs-linux-software.html>
--   <http://www.jejik.com/articles/2008/04/benchmarking_linux_filesystems_on_software_raid_1/>
 
 `   Last updated by: `[`User:y4m4`](User:y4m4 "wikilink")
 
@@ -259,9 +257,7 @@ y4m4
 
 `   I also ran across a complimentary page, which might be of  interest - it explains more of the vm variables, especially as it relates to writing.`\
 `   "Theory of Operation and Tuning for Write-Heavy Loads" `\
-`      `<http://www.westnet.com/~gsmith/content/linux-pdflush.htm>\
-`   and refs therein.`
-
+`      ``   and refs therein.`
 `       hjmangalam`
 
 ### comment:bengland

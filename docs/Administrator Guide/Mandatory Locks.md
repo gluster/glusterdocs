@@ -7,23 +7,22 @@ By default, mandatory locking will be disabled for a volume and a volume set opt
 
 ## Volume Option
 
-* ***gluster volume set &lt;VOLNAME> locks.mandatory-locking &lt;off / file / forced / optimal>***
+```console
+gluster volume set <VOLNAME> locks.mandatory-locking <off / file / forced / optimal>
+```
 
-     **off**      - Disable mandatory locking for specified volume.
+**off**      - Disable mandatory locking for specified volume.<br/>
+**file**     - Enable Linux kernel style mandatory locking semantics with the help of mode bits (not well tested)<br/>
+**forced**   - Check for conflicting byte range locks for every data modifying operation in a volume<br/>
+**optimal**  - Combinational mode where POSIX clients can live with their advisory lock semantics which will still honour the mandatory locks acquired by other clients like SMB.
 
-     **file**     - Enable Linux kernel style mandatory locking semantics with the help of mode bits (not well tested)
+**Note**:- Please refer the design doc for more information on these key values.
 
-     **forced**   - Check for conflicting byte range locks for every data modifying operation in a volume
-
-     **optimal**  - Combinational mode where POSIX clients can live with their advisory lock semantics which will still honour the mandatory locks acquired by other clients like SMB.
-
-Note:- Please refer the design doc for more information on these key values.
-
-##### Points to be remembered
+#### Points to be remembered
 * Valid key values available with mandatory-locking volume set option are taken into effect only after a subsequent start/restart of the volume.
 * Due to some outstanding issues, it is recommended to turn off the performance translators in order to have the complete functionality of mandatory-locks when volume is configured in any one of the above described mandatory-locking modes. Please see the 'Known issue' section below for more details.
 
-##### Known issues
+#### Known issues
 * Since the whole logic of mandatory-locks are implemented within the locks translator loaded at the server side, early success returned to fops like open, read, write to upper/application layer by performance translators residing at the client side will impact the intended functionality of mandatory-locks. One such issue is being tracked in the following bugzilla report:
 
     <https://bugzilla.redhat.com/show_bug.cgi?id=1194546>

@@ -8,12 +8,10 @@ operations happen on the volume. Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
-​1. **Distributed Glusterfs Volume** - This is the default glusterfs
-volume i.e, while creating a volume if you do not specify the type of
-the volume, the default option is to create a distributed volume.
+​1. **Distributed Glusterfs Volume** - This is the type of volume which is created by default if no volume type is specified.
 Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
-no data redundancy. The purpose for such a storage volume is to easily & cheaply
+**no data redundancy**. The purpose for such a storage volume is to easily & cheaply
 scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
@@ -24,32 +22,36 @@ hardware for data loss protection.
 
 Create a Distributed Volume
 
-**gluster volume create NEW-VOLNAME [transport [tcp | rdma | tcp,rdma]]
-NEW-BRICK...**
+```console
+gluster volume create NEW-VOLNAME [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
+```
 
 **For example** to create a distributed volume with four storage servers
 using TCP.
 
-    gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
-    Creation of test-volume has been successful
-    Please start the volume to access data
+```console
+# gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+volume create: test-volume: success: please start the volume to access data
+```
 
 To display the volume info
 
-    #gluster volume info
-    Volume Name: test-volume
-    Type: Distribute
-    Status: Created
-    Number of Bricks: 4
-    Transport-type: tcp
-    Bricks:
-    Brick1: server1:/exp1
-    Brick2: server2:/exp2
-    Brick3: server3:/exp3
-    Brick4: server4:/exp4
+```console
+# gluster volume info
+Volume Name: test-volume
+Type: Distribute
+Status: Created
+Number of Bricks: 4
+Transport-type: tcp
+Bricks:
+Brick1: server1:/exp1
+Brick2: server2:/exp2
+Brick3: server3:/exp3
+Brick4: server4:/exp4
+```
 
 ​2. **Replicated Glusterfs Volume** - In this volume we overcome the
-data loss problem faced in the distributed volume. Here exact copies of
+risk of data loss which is present in the distributed volume. Here exact copies of
 the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
 have at least two bricks to create a volume with 2 replicas or a minimum
@@ -64,19 +66,22 @@ reliability and data redundancy.
 
 Create a Replicated Volume
 
-**gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |
-rdma | tcp,rdma]] NEW-BRICK...**
+```console
+gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |rdma | tcp,rdma]] NEW-BRICK...
+```
 
 **For example**, to create a replicated volume with two storage servers:
 
-    # gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2
-    Creation of test-volume has been successful
-    Please start the volume to access data
+```console
+# gluster volume create test-volume replica 3 transport tcp \
+      server1:/exp1 server2:/exp2 server3:/exp3
+volume create: test-volume: success: please start the volume to access data
+```
 
 ​3. **Distributed Replicated Glusterfs Volume** - In this volume files
 are distributed across replicated sets of bricks. The number of bricks
 must be a multiple of the replica count. Also the order in which we
-specify the bricks matters since adjacent bricks become replicas of each
+specify the bricks is important since adjacent bricks become replicas of each
 other. This type of volume is used when high availability of data due to
 redundancy and scaling storage is required. So if there were eight
 bricks and replica count 2 then the first two bricks become replicas of
@@ -91,70 +96,23 @@ volume.
 
 Create the distributed replicated volume:
 
-**\# gluster volume create
-NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]]
-NEW-BRICK...**
+```console
+gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
+```
 
 **For example**, four node distributed (replicated) volume with a two-way
 mirror:
 
-    # gluster volume create test-volume replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
-    Creation of test-volume has been successful
-    Please start the volume to access data
-
-​4. **Striped Glusterfs Volume** - Consider a large file being stored in
-a brick which is frequently accessed by many clients at the same time.
-This will cause too much load on a single brick and would reduce the
-performance. In striped volume the data is stored in the bricks after
-dividing it into different stripes. So the large file will be divided
-into smaller chunks (equal to the number of bricks in the volume) and
-each chunk is stored in a brick. Now the load is distributed and the
-file can be fetched faster but no data redundancy provided.
-
-![striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412387/f411fa56-ef5f-11e4-8e78-a0896a47625a.png)
-
-*Striped volume*
-
-Create a Striped Volume
-
-    gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...
-
-**For example**, to create a striped volume across two storage servers:
-
-    # gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2
-    Creation of test-volume has been successful
-    Please start the volume to access data
-
-​5. **Distributed Striped Glusterfs Volume** - This is similar to
-Striped Glusterfs volume except that the stripes can now be distributed
-across more number of bricks. However the number of bricks must be a
-multiple of the number of stripes. So if we want to increase volume size
-we must add bricks in the multiple of stripe count.
-
-![distributed_striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412394/0ce267d2-ef60-11e4-9959-43465a2a25f7.png)
-
-*Distributed Striped volume*
-
-Create the distributed striped volume:
-
-**gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp |
-rdma | tcp,rdma]] NEW-BRICK...**
-
-For example, to create a distributed striped volume across eight
-storage servers:
-
-    # gluster volume create test-volume stripe 4 transport tcp
-     server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
-    Creation of test-volume has been successful
-    Please start the volume to access data.
+```console
+# gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+volume create: test-volume: success: please start the volume to access data
+```
 
 ### FUSE
 
-GlusterFS is a userspace filesystem. This was a decision made by the
-GlusterFS developers initially as getting the modules into linux kernel
-is a very long and difficult process.
+GlusterFS is a userspace filesystem. The GluserFS developers opted for this approach in order to avoid the need to have modules in the Linux kernel.
 
-Being a userspace filesystem, to interact with kernel VFS, GlusterFS
+As it is a userspace filesystem, to interact with kernel VFS, GlusterFS
 makes use of FUSE (File System in Userspace). For a long time,
 implementation of a userspace filesystem was considered impossible. FUSE
 was developed as a solution for this. FUSE is a kernel module that
@@ -194,14 +152,14 @@ descriptor with the mounted filesystem.
 
 -   A translator converts requests from users into requests for storage.
 
-    *One to one, one to many, one to zero (e.g. caching)
+    *One to one, one to many, one to zero (e.g. caching)
 
 ![translator](https://cloud.githubusercontent.com/assets/10970993/7412595/fd46c492-ef61-11e4-8f49-61dbd15b9695.png)
 
 -   A translator can modify requests on the way through :
 
-    *convert one request type to another ( during the request transfer amongst the translators)
-    *modify paths, flags, even data (e.g. encryption)
+    *convert one request type to another ( during the request transfer amongst the translators)
+    *modify paths, flags, even data (e.g. encryption)
 
 -   Translators can intercept or block the requests. (e.g. access
     control)
@@ -214,9 +172,9 @@ descriptor with the mounted filesystem.
 -   Dynamically loaded according to 'volfile'
 
     *dlopen/dlsync
-    *setup pointers to parents / children
-    *call init (constructor)
-    *call IO functions through fops.
+    *setup pointers to parents / children
+    *call init (constructor)
+    *call IO functions through fops.
 
 -   Conventions for validating/ passing options, etc.
 -   The configuration of translators (since GlusterFS 3.1) is managed
@@ -257,43 +215,32 @@ to go through is **fuse translator** which falls under the category of
 
 1.  **Cluster Translators**:
 
-    *DHT(Distributed Hash Table)
-
-    *AFR(Automatic File Replication)
+    * DHT(Distributed Hash Table)
+    * AFR(Automatic File Replication)
 
 1.  **Performance Translators**:
 
-    * io-cache
-
-    * io-threads
-
-    * md-cache
-
-    * O-B (open behind)
-
-    * QR (quick read)
-
-    * r-a (read-ahead)
-
-    * w-b (write-behind)
+    * io-cache
+    * io-threads
+    * md-cache
+    * O-B (open behind)
+    * QR (quick read)
+    * r-a (read-ahead)
+    * w-b (write-behind)
 
 Other **Feature Translators** include:
 
-* changelog
-
-  * locks - GlusterFS has locks  translator which provides the following internal locking operations
-  called `inodelk`, `entrylk`,
-  which are used by afr to achieve synchronization of operations on files or directories that conflict with each other.
-
-* marker
-
-* quota
+* changelog
+* locks - GlusterFS has locks  translator which provides the following internal locking operations
+  called `inodelk`, `entrylk`,
+  which are used by afr to achieve synchronization of operations on files or directories that conflict with each other.
+* marker
+* quota
 
 **Debug Translators**
 
-    * trace - To trace the error logs generated during the communication amongst the translators.
-
-    * io-stats
+* trace - To trace the error logs generated during the communication amongst the translators.
+* io-stats
 
 #### DHT(Distributed Hash Table) Translator
 
@@ -500,7 +447,7 @@ a client process will also be created. Now our filesystem is ready to
 use. We can mount this volume on a client machine very easily as follows
 and use it like we use a local storage:
 
-    mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
+ mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
 
 IP or hostname can be that of any node in the trusted server pool in
 which the required volume is created.

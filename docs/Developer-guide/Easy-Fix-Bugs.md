@@ -1,3 +1,4 @@
+# Easy Fix Bugs
 Fixing easy bugs is an excellent method to start contributing patches to
 Gluster.
 
@@ -10,7 +11,7 @@ Gluster.
     -   When you pick an EasyFix you want to work on, assign it to
         yourself and move it to ASSIGNED
     -   Check
-        [Bug report life cycle](/Contributors-Guide/Bug-report-Life-Cycle.md) and
+        [Bug report life cycle](../Contributors-Guide/Bug-report-Life-Cycle.md) and
         follow it.
     -   Check Developers page for details about development workflow,
         GlusterFS design documents etc.
@@ -29,7 +30,7 @@ used by new contributors that would like to verify their workflow. [Bug
     questions that others can easily answer. Always assume that if you
     have a question, someone else would like to hear the answer too.
 
-[Reach out](http://gluster.org/community/index.html) to the developers
+[Reach out](https://www.gluster.org/community/) to the developers
 in \#gluster or \#gluster-dev on Freenode IRC, or on one of the mailing
 lists, try to keep the discussions public so that anyone can learn from
 it.

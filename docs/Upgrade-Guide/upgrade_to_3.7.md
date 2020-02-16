@@ -1,3 +1,4 @@
+# GlusterFS upgrade to 3.7.x
 Now that GlusterFS 3.7.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS. Please read the entire howto
 before proceeding with an upgrade of your deployment
@@ -12,14 +13,16 @@ version 3.6 along with your servers you would need to disable client
 self healing process before the upgrade. You can perform this by below
 steps.
 
-    [root@~]# gluster v set testvol cluster.entry-self-heal off
-    volume set: success
-    [root@~]#
-    [root@~]# gluster v set testvol cluster.data-self-heal off
-    volume set: success
-    [root@~]# gluster v set testvol cluster.metadata-self-heal off
-    volume set: success
-    [root@~]#
+```console
+# gluster v set testvol cluster.entry-self-heal off
+volume set: success
+#
+# gluster v set testvol cluster.data-self-heal off
+volume set: success
+# gluster v set testvol cluster.metadata-self-heal off
+volume set: success
+#
+```
 
 ### GlusterFS upgrade to 3.7.x
 
@@ -28,10 +31,10 @@ steps.
 For this approach, schedule a downtime and prevent all your clients from
 accessing (umount your volumes, stop gluster Volumes..etc) the servers.
 
-    1. Stop all glusterd, glusterfsd and glusterfs processes on your server.
-    2. Install  GlusterFS 3.7.0
-    3. Start glusterd.
-    4. Ensure that all started volumes have processes online in “gluster volume status”.
+    1. Stop all glusterd, glusterfsd and glusterfs processes on your server.
+    2. Install  GlusterFS 3.7.0
+    3. Start glusterd.
+    4. Ensure that all started volumes have processes online in “gluster volume status”.
 
 You would need to repeat these steps on all servers that form your
 trusted storage pool.
@@ -100,9 +103,11 @@ Invocation:
 Invoke the script by executing \`./pre-upgrade-script-for-quota.sh\`
 from the shell on any one of the nodes in the cluster.
 
--   Example:
+Example:
 
-        [root@server1 extras]#./pre-upgrade-script-for-quota.sh
+```console
+[root@server1 extras]#./pre-upgrade-script-for-quota.sh
+```
 
 *Post-Upgrade Script:*
 
@@ -159,11 +164,11 @@ In the first case, invoke post-upgrade-script-for-quota.sh from the
 shell for each volume with quota enabled, with the name of the volume
 passed as an argument in the command-line:
 
--   Example:
+Example: For a volume "vol1" on which quota is enabled, invoke the script in the following way:
 
-        For a volume "vol1" on which quota is enabled, invoke the script in the following way:
-      
-        [root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
+```console
+[root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
+```
 
 In the second case, the post-upgrade script picks on its own, the
 volumes on which quota is enabled, and executes the post-upgrade
@@ -171,9 +176,11 @@ procedure on each one of them. In this case, invoke
 post-upgrade-script-for-quota.sh from the shell with 'all' passed as an
 argument in the command-line:
 
--   Example:
+Example:
 
-        [root@server1 extras]#./post-upgrade-script-for-quota.sh all
+```console
+[root@server1 extras]#./post-upgrade-script-for-quota.sh all
+```
 
 Note:
 
@@ -197,22 +204,22 @@ ssh+gluster.
 ​1. Stop the geo-replication session in older version ( \< 3.5) using
 the below command
 
-        #gluster volume geo-replication <master_vol> <slave_host>::<slave_vol> stop
+        # gluster volume geo-replication <master_vol> <slave_host>::<slave_vol> stop
 
 ​2. Now since the new geo-replication requires gfids of master and slave
 volume to be same, generate a file containing the gfids of all the files
 in master
 
-        cd /usr/share/glusterfs/scripts/ ;
-        bash generate-gfid-file.sh localhost:<master_vol> $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
-        scp /tmp/master_gfid_file.txt root@<slave_host>:/tmp
+        # cd /usr/share/glusterfs/scripts/ ;
+        # bash generate-gfid-file.sh localhost:<master_vol> $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
+        # scp /tmp/master_gfid_file.txt root@<slave_host>:/tmp
 
 ​3. Upgrade the slave cluster installation to 3.7.0
 
 ​4. Now go to the slave host and apply the gfid to the slave volume.
 
-        cd /usr/share/glusterfs/scripts/
-        bash slave-upgrade.sh localhost:<slave_vol> /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
+        # cd /usr/share/glusterfs/scripts/
+        # bash slave-upgrade.sh localhost:<slave_vol> /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
 
 This will ask you for password of all the nodes in slave cluster. Please
 provide them, if asked. Also note that this will restart your slave
@@ -224,8 +231,8 @@ gluster volume (stop and start)
 For instruction on creating new geo-rep session please refer
 distributed-geo-rep chapter in admin guide.
 
-        gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> create push-pem force
-        gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> start
+        # gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> create push-pem force
+        # gluster volume geo-replication <master_volume> <slave_host>::<slave_volume> start
 
 At this point, your distributed geo-replication should be configured
 appropriately.

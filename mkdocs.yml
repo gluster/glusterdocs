@@ -94,6 +94,7 @@ nav:
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op_version.md
+  - Upgrade to 7: Upgrade-Guide/upgrade_to_7.md
   - Upgrade to 6: Upgrade-Guide/upgrade_to_6.md
   - Upgrade to 5: Upgrade-Guide/upgrade_to_5.md
   - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
@@ -109,12 +110,20 @@ nav:
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
 - Release Notes:
   - index: release-notes/index.md
+  - 7.2: release-notes/7.2.md
+  - 7.1: release-notes/7.1.md
+  - 7.0: release-notes/7.0.md
+  - 6.7: release-notes/6.7.md
+  - 6.6: release-notes/6.6.md
   - 6.5: release-notes/6.5.md
   - 6.4: release-notes/6.4.md
   - 6.3: release-notes/6.3.md
   - 6.2: release-notes/6.2.md
   - 6.1: release-notes/6.1.md
   - 6.0: release-notes/6.0.md
+  - 5.11: release-notes/5.11.md
+  - 5.10: release-notes/5.10.md
+  - 5.9: release-notes/5.9.md
   - 5.8: release-notes/5.8.md
   - 5.6: release-notes/5.6.md
   - 5.5: release-notes/5.5.md

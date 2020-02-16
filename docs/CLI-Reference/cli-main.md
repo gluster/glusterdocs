@@ -12,27 +12,33 @@ The gluster CLI syntax is `gluster <command>`.
 
 To run a command directly:
 
-	# gluster <command>
+```console
+# gluster <command>
+```
 
 For example, to view the status of all peers:
 
-	# gluster peer status
+```console
+# gluster peer status
+```
 
 To run a command in interactive mode, start a gluster shell by typing:
 
-	# gluster
+```console
+# gluster
+```
 
 This will open a gluster command prompt. You now run the command at the prompt.
 
-	gluster> <command>
+```console
+gluster> <command>
+```
 
 For example, to view the status of all peers,
 
-	gluster> peer status
-
-   
-
-
+```console
+gluster> peer status
+```
 
 #### Peer Commands
 
@@ -45,9 +51,6 @@ The peer commands are used to manage the Trusted Server Pool (TSP).
 | peer detach     | peer detach _server_   | Remove _server_ from the TSP |
 | peer status     | peer status            | Display the status of all nodes in the TSP |
 | pool list       | pool list              | List all nodes in the TSP |
-
-
-
 
 #### Volume Commands
 
@@ -69,7 +72,3 @@ The volume commands are used to setup and manage Gluster volumes.
 | volume delete        | volume delete _volname_    | Delete _volname_ |
 
 For additional detail of all the available CLI commands, please refer to `man gluster` output.
-
-
-
-

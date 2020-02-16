@@ -86,7 +86,9 @@ In Gerrit settings, watch the 'glusterfs' project. Tick on all the three
 Set up a filter rule in your mail client to tag or classify mails with
 the header
 
-        List-Id: <gerrit-glusterfs.review.gluster.org>
+```text
+List-Id: <gerrit-glusterfs.review.gluster.org>
+```
 
 as mails originating from the review system.
 
@@ -101,7 +103,9 @@ review/merge.
 Get yourself a working tree by cloning the development repository from
 Gerrit
 
-        sh$ git clone ssh://[username)@]git.gluster.org/glusterfs.git glusterfs
+```console
+git clone ssh://[username)@]git.gluster.org/glusterfs.git glusterfs
+```
 
 Branching policy
 ----------------
@@ -133,9 +137,11 @@ created from the upstream branch to which you intend to submit the
 change. If you are submitting changes to master branch, first create a
 local task branch like this -
 
-        sh$ git checkout master
-        sh$ git branch bug-XYZ && git checkout bug-XYZ
-        ... <hack, commit>
+```console
+# git checkout master
+# git branch bug-XYZ && git checkout bug-XYZ
+... <hack, commit>
+```
 
 Building
 --------
@@ -150,14 +156,18 @@ refer : [Building GlusterFS](./Building-GlusterFS.md)**
 Once the required packages are installed for your appropiate system,
 generate the build configuration:
 
-        sh$ ./autogen.sh
-        sh$ ./configure --enable-fusermount
+```console
+# ./autogen.sh
+# ./configure --enable-fusermount
+```
 
 ### Build and install
 
 #### GlusterFS
 
- sh$ make install
+```console
+# make install
+```
 
 Commit policy
 -------------
@@ -225,7 +235,9 @@ After doing the local commit, it is time to submit the code for review.
 There is a script available inside glusterfs.git called rfc.sh. You can
 submit your changes for review by simply executing
 
-        sh$ ./rfc.sh
+```console
+# ./rfc.sh
+```
 
 This script does the following:
 
@@ -294,8 +306,9 @@ changes in code, you can mark each of the inline comment as 'done'
 (optional). After all the changes to your local files, amend the
 previous commit with these changes with -
 
-        sh$ git commit -a --amend
-
+```console
+# git commit -a --amend
+```
 Push the amended commit by executing rfc.sh. If your previous push was
 an "rfc" push (i.e, without a Bug Id) you will be prompted for a Bug Id
 again. You can re-push an rfc change without any other code change too
@@ -337,8 +350,9 @@ necessary condition for merge along with code review points.
 
 To run all regession tests locally, run below script from glusterfs root directory.
 
-  sh$ ./run-tests.sh
-
+```console
+# ./run-tests.sh
+```
 
 Submission Qualifiers
 ---------------------
@@ -357,11 +371,11 @@ Submission Disqualifiers
 
 There are three types of "negative votes".
 
--1 Verified
+-1 Verified
 
--1 Code-Review ("I would prefer that you didn't submit this")
+-1 Code-Review ("I would prefer that you didn't submit this")
 
--2 Code-Review ("Do not submit")
+-2 Code-Review ("Do not submit")
 
 The implication and scope of each of the three are different. They
 behave differently as changes are resubmitted as new patchsets.

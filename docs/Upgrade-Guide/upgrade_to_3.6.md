@@ -1,3 +1,4 @@
+# GlusterFS upgrade from 3.5.x to 3.6.x
 Now that GlusterFS 3.6.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS.
 
@@ -7,26 +8,28 @@ GlusterFS clients. If you are not updating your clients to GlusterFS
 version 3.6 you need to disable client self healing process. You can
 perform this by below steps.
 
-        [root@~]# gluster v set testvol cluster.entry-self-heal off
-        volume set: success
-        [root@~]#
-        [root@~]# gluster v set testvol cluster.data-self-heal off
-        volume set: success
-        [root@~]# gluster v set testvol cluster.metadata-self-heal off
-        volume set: success
-        [root@~]#
+```console
+# gluster v set testvol cluster.entry-self-heal off
+volume set: success
+#
+# gluster v set testvol cluster.data-self-heal off
+volume set: success
+# gluster v set testvol cluster.metadata-self-heal off
+volume set: success
+#
+```
 
-### GlusterFS upgrade from 3.5.x to 3.6.X
+### GlusterFS upgrade from 3.5.x to 3.6.x
 
 **a) Scheduling a downtime (Recommended)**
 
 For this approach, schedule a downtime and prevent all your clients from
 accessing ( umount your volumes, stop gluster Volumes..etc)the servers.
 
-1.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-2.  Install  GlusterFS 3.6.0
-3.  Start glusterd.
-4.  Ensure that all started volumes have processes online in “gluster volume status”.
+1.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
+2.  Install  GlusterFS 3.6.0
+3.  Start glusterd.
+4.  Ensure that all started volumes have processes online in “gluster volume status”.
 
 You would need to repeat these steps on all servers that form your
 trusted storage pool.
@@ -54,12 +57,12 @@ If you have geo-replication session running, stop the session using the
 geo-rep stop command (please refer to step 1 of geo-rep upgrade steps
 provided below)
 
-1.  Execute "pre-upgrade-script-for-quota.sh" mentioned under "Upgrade Steps For Quota" section.
-2.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-3.  Install  GlusterFS 3.6.0
-4.  Start glusterd.
-5.  Ensure that all started volumes have processes online in “gluster volume status”.
-6.  Execute "Post-Upgrade Script" mentioned under "Upgrade Steps For Quota" section.
+1.  Execute "pre-upgrade-script-for-quota.sh" mentioned under "Upgrade Steps For Quota" section.
+2.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
+3.  Install  GlusterFS 3.6.0
+4.  Start glusterd.
+5.  Ensure that all started volumes have processes online in “gluster volume status”.
+6.  Execute "Post-Upgrade Script" mentioned under "Upgrade Steps For Quota" section.
 
 You would need to repeat these steps on all servers that form your
 trusted storage pool.
@@ -112,9 +115,11 @@ Invocation:
 Invoke the script by executing \`./pre-upgrade-script-for-quota.sh\`
 from the shell on any one of the nodes in the cluster.
 
--   Example:
+Example:
 
-        [root@server1 extras]#./pre-upgrade-script-for-quota.sh
+```console
+[root@server1 extras]#./pre-upgrade-script-for-quota.sh
+```
 
 *Post-Upgrade Script:*
 
@@ -171,11 +176,13 @@ In the first case, invoke post-upgrade-script-for-quota.sh from the
 shell for each volume with quota enabled, with the name of the volume
 passed as an argument in the command-line:
 
--   Example:
+Example:
 
-*For a volume "vol1" on which quota is enabled, invoke the script in the following way:*
+*For a volume "vol1" on which quota is enabled, invoke the script in the following way:*
 
-        [root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
+```console
+[root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
+```
 
 In the second case, the post-upgrade script picks on its own, the
 volumes on which quota is enabled, and executes the post-upgrade
@@ -183,9 +190,11 @@ procedure on each one of them. In this case, invoke
 post-upgrade-script-for-quota.sh from the shell with 'all' passed as an
 argument in the command-line:
 
--   Example:
+Example:
 
-        [root@server1 extras]#./post-upgrade-script-for-quota.sh all
+```console
+[root@server1 extras]#./post-upgrade-script-for-quota.sh all
+```
 
 Note:
 
@@ -221,20 +230,20 @@ covered in detail here.
 ​1.  Stop the geo-replication session in older version ( \< 3.5) using
 the below command
 
-        #gluster volume geo-replication `<master_vol>` `<slave_host>`::`<slave_vol>` stop
+        # gluster volume geo-replication `<master_vol>` `<slave_host>`::`<slave_vol>` stop
 
 ​2. Now since the new geo-replication requires gfids of master and slave
 volume to be same, generate a file containing the gfids of all the files
 in master
 
-        cd /usr/share/glusterfs/scripts/ ;
-        bash generate-gfid-file.sh localhost:`<master_vol>` $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
-        scp /tmp/master_gfid_file.txt root@`<slave_host>`:/tmp
+        # cd /usr/share/glusterfs/scripts/ ;
+        # bash generate-gfid-file.sh localhost:`<master_vol>` $PWD/get-gfid.sh    /tmp/master_gfid_file.txt ;
+        # scp /tmp/master_gfid_file.txt root@`<slave_host>`:/tmp
 
 ​3. Now go to the slave host and aplly the gfid to the slave volume.
 
-        cd /usr/share/glusterfs/scripts/
-        bash slave-upgrade.sh localhost:`<slave_vol>` /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
+        # cd /usr/share/glusterfs/scripts/
+        # bash slave-upgrade.sh localhost:`<slave_vol>` /tmp/master_gfid_file.txt    $PWD/gsync-sync-gfid
 
 This will ask you for password of all the nodes in slave cluster. Please
 provide them, if asked.
@@ -246,7 +255,7 @@ start)
 For instruction on creating new geo-rep seesion please refer
 distributed-geo-rep admin guide.
 
-        gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` create push-pem force
-        gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` start
+        # gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` create push-pem force
+        # gluster volume geo-replication `<master_volume>` `<slave_host>`::`<slave_volume>` start
 
 ​6. Now your session is upgraded to use distributed-geo-rep

@@ -1,10 +1,8 @@
-Accessing GlusterFS using Cinder Hosts
-======================================
+# Accessing GlusterFS using Cinder Hosts
 
 *Note: GlusterFS driver was removed from Openstack since Ocata. This guide applies only to older Openstack releases.*
 
-1. Introduction
-===============
+## 1. Introduction
 
 GlusterFS and Cinder integration provides a system for data storage that enables users to access the same data, both as an object and as a file, thus simplifying management and controlling storage costs.
 
@@ -16,16 +14,13 @@ With Enterprise Linux 6, configuring OpenStack Grizzly to use GlusterFS for its 
 
 These instructions have been tested with both GlusterFS 3.3 and GlusterFS 3.4. Other releases may also work, but have not been tested.
 
-2. Prerequisites
-================
+## 2. Prerequisites
 
-GlusterFS
----------
+### GlusterFS
 
 For information on prerequisites and instructions for installing GlusterFS, see <http://www.gluster.org/community/documentation/index.php>.
 
-Cinder
-------
+### Cinder
 
 For information on prerequisites and instructions for installing Cinder, see <http://docs.openstack.org/>.
 
@@ -33,15 +28,13 @@ Before beginning, you must ensure there are **no existing volumes** in Cinder. U
 
 **NOTE** - Unlike other software, the "openstack-config" and "cinder" commands generally require you to run them as a root user. Without prior configuration, running them through sudo generally does not work. (This can be changed, but is beyond the scope of this HOW-TO.)
 
-3 Installing GlusterFS Client on Cinder hosts
-=============================================
+## 3 Installing GlusterFS Client on Cinder hosts
 
 On each Cinder host, install the GlusterFS client packages:
 
 		$ sudo yum -y install glusterfs-fuse
 
-4. Configuring Cinder to Add GlusterFS
-======================================
+## 4. Configuring Cinder to Add GlusterFS
 
 On each Cinder host, run the following commands to add GlusterFS to the Cinder configuration:
 
@@ -49,8 +42,7 @@ On each Cinder host, run the following commands to add GlusterFS to the Cinder c
 		# openstack-config --set /etc/cinder/cinder.conf DEFAULT glusterfs_shares_config /etc/cinder/shares.conf
 		# openstack-config --set /etc/cinder/cinder.conf DEFAULT glusterfs_mount_point_base /var/lib/cinder/volumes
 
-5. Creating GlusterFS Volume List
-=================================
+## 5. Creating GlusterFS Volume List
 
 On each of the Cinder nodes, create a simple text file **/etc/cinder/shares.conf**.
 
@@ -64,14 +56,13 @@ For example:
 
 		myglusterbox.example.org:myglustervol
 
-6. Updating Firewall for GlusterFS
-==================================
+## 6. Updating Firewall for GlusterFS
 
 You must update the firewall rules on each Cinder node to communicate with the GlusterFS nodes.
 
 The ports to open are explained in Step 3:
 
-<http://gluster.org/community/documentation/index.php/Gluster_3.2:_Installing_GlusterFS_on_Red_Hat_Package_Manager_(RPM)_Distributions>
+<https://docs.gluster.org/en/latest/Install-Guide/Install/>
 
 If you are using iptables as your firewall, these lines can be added under **:OUTPUT ACCEPT** in the "\*filter" section. You should probably adjust them to suit your environment (eg. only accept connections from your GlusterFS servers).
 
@@ -87,8 +78,7 @@ Restart the firewall service:
 
 		$ sudo service iptables restart
 
-7. Restarting Cinder Services
-=============================
+## 7. Restarting Cinder Services 
 
 Configuration is complete and now you must restart the Cinder services to make it active.
 
@@ -98,8 +88,7 @@ Check the Cinder volume log to make sure that there are no errors:
 
 		$ sudo tail -50 /var/log/cinder/volume.log
 
-8. Verify GlusterFS Integration with Cinder
-===========================================
+## 8. Verify GlusterFS Integration with Cinder 
 
 To verify if the installation and configuration is successful, create a Cinder volume then check using GlusterFS.
 

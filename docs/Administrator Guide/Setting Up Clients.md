@@ -1,4 +1,4 @@
-#Accessing Data - Setting Up GlusterFS Client
+# Accessing Data - Setting Up GlusterFS Client
 
 You can access gluster volumes in multiple ways. You can use Gluster
 Native Client method for high concurrency, performance and transparent
@@ -12,7 +12,7 @@ You can use CIFS to access volumes when using Microsoft Windows as well
 as SAMBA clients. For this access method, Samba packages need to be
 present on the client side.
 
-##Gluster Native Client
+## Gluster Native Client
 
 The Gluster Native Client is a FUSE-based client running in user space.
 Gluster Native Client is the recommended method for accessing volumes
@@ -23,7 +23,7 @@ install the software on client machines. This section also describes how
 to mount volumes on clients (both manually and automatically) and how to
 verify that the volume has mounted successfully.
 
-###Installing the Gluster Native Client
+### Installing the Gluster Native Client
 
 Before you begin installing the Gluster Native Client, you need to
 verify that the FUSE module is loaded on the client and has access to
@@ -59,6 +59,7 @@ To install Gluster Native Client on RPM distribution-based systems
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
 ~~~
+
     > **Note**
     >
     > If you already have iptable chains, make sure that the above
@@ -74,18 +75,17 @@ To install Gluster Native Client on RPM distribution-based systems
 
     You can download the software at [GlusterFS download page][1].
 
-4.  Install Gluster Native Client on the client.
+4.  Install Gluster Native Client on the client. 
+   
+   **Note**
+    The package versions listed in the example below may not be the latest release. Please refer to the download page to ensure that you have the recently released packages.
 ~~~
     `$ sudo rpm -i glusterfs-3.8.5-1.x86_64`
     `$ sudo rpm -i glusterfs-fuse-3.8.5-1.x86_64`
     `$ sudo rpm -i glusterfs-rdma-3.8.5-1.x86_64`
 ~~~
-
-```
- **Note**
-
-     The RDMA module is only required when using Infiniband.
-```
+> **Note:**
+> The RDMA module is only required when using Infiniband.
 
 ### Installing on Debian-based Distributions
 
@@ -137,11 +137,11 @@ To install Gluster Native Client on Debian-based distributions
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 49152:49156 -j ACCEPT`
 ~~~
-    > **Note**
-    >
-    > If you already have iptable chains, make sure that the above
-    > ACCEPT rules precede the DROP rules. This can be achieved by
-    > providing a lower rule number than the DROP rule.
+> **Note**
+>
+> If you already have iptable chains, make sure that the above
+> ACCEPT rules precede the DROP rules. This can be achieved by
+> providing a lower rule number than the DROP rule.
 
 ### Performing a Source Installation
 
@@ -156,7 +156,7 @@ To build and install Gluster Native Client from the source code
 
 2.  Download the source code.
 
-    You can download the source at [][1].
+    You can download the source at [link][1].
 
 3.  Extract the source code using the following command:
 
@@ -190,7 +190,7 @@ To build and install Gluster Native Client from the source code
 
     `# glusterfs --version`
 
-##Mounting Volumes
+## Mounting Volumes
 
 After installing the Gluster Native Client, you need to mount Gluster
 volumes to access data. There are two methods you can choose:
@@ -349,7 +349,7 @@ To test mounted volumes
     `# ls`
 ~~~
 
-#NFS
+# NFS
 
 You can use NFS v3 to access to gluster volumes. Extensive testing has
 be done on GNU/Linux clients and NFS implementation in other operating
@@ -368,8 +368,8 @@ This section describes how to use NFS to mount Gluster volumes (both
 manually and automatically) and how to verify that the volume has been
 mounted successfully.
 
-##Using NFS to Mount Volumes
---------------------------
+## Using NFS to Mount Volumes
+
 
 You can use either of the following methods to mount Gluster volumes:
 
@@ -496,7 +496,7 @@ You can confirm that Gluster directories are mounting successfully.
     `# cd MOUNTDIR`
     `# ls`
 
-#CIFS
+# CIFS
 
 You can use CIFS to access to volumes when using Microsoft Windows as
 well as SAMBA clients. For this access method, Samba packages need to be
@@ -628,6 +628,6 @@ and is reconnected each time the system starts.
 You can confirm that Gluster directories are mounting successfully by
 navigating to the directory using Windows Explorer.
 
-  []: http://bits.gluster.com/gluster/glusterfs/3.3.0qa30/x86_64/
-  [1]: http://www.gluster.org/download/
-  [2]: http://download.gluster.com/pub/gluster/glusterfs
+[1]: http://www.gluster.org/download/
+[2]: https://download.gluster.org/pub/gluster/glusterfs/LATEST/
+[3]: http://bits.gluster.com/gluster/glusterfs/3.3.0qa30/x86_64/

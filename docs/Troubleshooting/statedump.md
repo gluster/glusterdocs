@@ -14,22 +14,26 @@ A statedump is, as the name suggests, a dump of the internal state of a glusterf
 ## Generate a Statedump
 Run the command
 
-                gluster --print-statedumpdir
+```console
+# gluster --print-statedumpdir
+```
 
 on a gluster server node to find out which directory the statedumps will be created in. This directory may need to be created if not already present.
 For the rest of this document, we will refer to this directory as `statedump-directory`.
 
 To generate a statedump for a process, run
 
-                kill -USR1 <pid-of-gluster-process>
-
+```console
+kill -USR1 <pid-of-gluster-process>
+```
 
 For client mounts:
 
 Run the following command on the client system
 
-                kill -USR1 <pid-of-gluster-mount-process>
-
+```console
+kill -USR1 <pid-of-gluster-mount-process>
+```
 
 There are specific commands to generate statedumps for all brick processes/nfs server/quotad which can be used instead of the above. Run the following
 commands on one of the server nodes:
@@ -37,16 +41,21 @@ commands on one of the server nodes:
 
 For bricks:
 
-                gluster volume statedump <volname>
+```console
+gluster volume statedump <volname>
+```
 
 For the NFS server:
 
-                gluster volume statedump <volname> nfs
+```console
+gluster volume statedump <volname> nfs
+```
 
 For quotad:
 
-                gluster volume statedump <volname> quotad
-
+```console
+gluster volume statedump <volname> quotad
+```
 
 The statedumps will be created in `statedump-directory` on each node. The statedumps for brick processes will be created with the filename `hyphenated-brick-path.<pid>.dump.timestamp` while for all other processes it will be `glusterdump.<pid>.dump.timestamp`.
 
@@ -77,6 +86,7 @@ mallinfo_keepcost=133712    /* Top-most, releasable space (bytes) */
 Each xlator defines data structures specific to its requirements. The statedump captures information about the memory usage and allocations of these structures for each xlator in the call-stack and prints them in the following format:
 
 For the xlator with the name _glusterfs_
+
 ```
 [global.glusterfs - Memory usage]   #[global.<xlator-name> - Memory usage]
 num_types=119                       #The number of data types it is using
@@ -121,6 +131,7 @@ This information is also useful while debugging high memory usage issues as larg
 
 
 ### Iobufs
+
 ```
 [iobuf.global]
 iobuf_pool=0x1f0d970                #The memory pool for iobufs
@@ -156,6 +167,7 @@ arena.5.page_size=32768
 ```
 
 If the active_cnt of any arena is non zero, then the statedump will also have the iobuf list.
+
 ```
 [arena.6.active_iobuf.1]                  #arena.<S.No>.active_iobuf.<iobuf.S.No.>
 arena.6.active_iobuf.1.ref=1              #refcount of the iobuf
@@ -221,6 +233,7 @@ message=[0] fuse_getattr_resume: 4591, STAT, path: (/iozone.tmp), gfid: (3afb496
 ```
 
 ### Xlator configuration
+
 ```
 [cluster/replicate.r2-replicate-0] #Xlator type, name information
 child_count=2                      #Number of children for the xlator
@@ -241,6 +254,7 @@ wait_count=1
 ```
 
 ### Graph/inode table
+
 ```
 [active graph - 1]
 
@@ -253,6 +267,7 @@ conn.1.bound_xl./data/brick01a/homegfs.purge_size=0    #Number of inodes present
 ```
 
 ### Inode
+
 ```
 [conn.1.bound_xl./data/brick01a/homegfs.active.324] #324th inode in active inode list
 gfid=e6d337cf-97eb-44b3-9492-379ba3f6ad42           #Gfid of the inode
@@ -271,6 +286,7 @@ ia_type=2
 
 ### Inode context
 Each xlator can store information specific to it in the inode context. This context can also be printed in the statedump. Here is the inode context of the locks xlator
+
 ```
 [xlator.features.locks.homegfs-locks.inode]
 path=/homegfs/users/dfrobins/gfstest/r4/SCRATCH/fort.5102 - path of the file
@@ -301,7 +317,9 @@ The following examples walk through using statedumps to debug two different memo
 
 A statedump of the self heal daemon process was taken using 
 
-                kill -USR1 `<pid-of-gluster-self-heal-daemon>`
+```console
+kill -USR1 `<pid-of-gluster-self-heal-daemon>`
+```
 
 On examining the statedump:
 
