@@ -314,8 +314,8 @@ unlike AFR which is intra-cluster replication. This is mainly useful for
 backup of entire data for disaster recovery.
 
 Geo-replication uses a master-slave model, whereby replication occurs
-between **Master** - a GlusterFS volume and **Slave** - which can be a
-local directory or a GlusterFS volume.
+between a **Master** and a **Slave**, both of which should 
+be GlusterFS volumes.
 Geo-replication provides an incremental replication service over Local
 Area Networks (LANs), Wide Area Network (WANs), and across the
 Internet.
