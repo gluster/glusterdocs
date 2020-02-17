@@ -3,7 +3,7 @@
 
 ### Overview
 
-A trusted storage pool(TSP) is a trusted network of storage servers. Before you can configure a
+A trusted storage pool (TSP) is a trusted network of storage servers. Before you can configure a
 GlusterFS volume, you must create a trusted storage pool of the storage servers
 that will provide bricks to the volume by peer probing the servers.
 The servers in a TSP are peers of each other.

@@ -21,7 +21,7 @@ Gluster is a scalable, distributed file system that aggregates disk storage reso
 
 
 Enterprises can scale capacity, performance, and availability on demand, with no vendor lock-in, across on-premise, public cloud, and hybrid environments.
-Gluster is used in production at thousands of enterprises spanning media, healthcare, government, education, web 2.0, and financial services.
+Gluster is used in production at thousands of organisations spanning media, healthcare, government, education, web 2.0, and financial services.
 
 
 

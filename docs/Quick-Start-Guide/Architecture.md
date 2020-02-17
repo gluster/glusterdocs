@@ -314,10 +314,8 @@ unlike AFR which is intra-cluster replication. This is mainly useful for
 backup of entire data for disaster recovery.
 
 Geo-replication uses a master-slave model, whereby replication occurs
-between **Master** - a GlusterFS volume and **Slave** - which can be a
-local directory or a GlusterFS volume. The slave (local directory or
-volume is accessed using SSH tunnel).
-
+between a **Master** and a **Slave**, both of which should 
+be GlusterFS volumes.
 Geo-replication provides an incremental replication service over Local
 Area Networks (LANs), Wide Area Network (WANs), and across the
 Internet.
@@ -449,9 +447,7 @@ a client process will also be created. Now our filesystem is ready to
 use. We can mount this volume on a client machine very easily as follows
 and use it like we use a local storage:
 
-```console
-mount.glusterfs <IP or hostname>:<volume_name> <mount_point>
-```
+ mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
 
 IP or hostname can be that of any node in the trusted server pool in
 which the required volume is created.
