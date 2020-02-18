@@ -17,7 +17,7 @@ Apart from the primary use-case of accessing files deleted or truncated by user 
 
 * ***`gluster volume set <VOLNAME> features.trash-max-filesize <size>`***
 
-    This command can be used to filter files entering trash directory based on their size. Files above trash_max_filesize are deleted/truncated directly.Value for size may be followed by multiplicative suffixes as KB(=1024 bytes), MB(=1024\*1024 bytes) and GB(=1024\*1024\*1024 bytes). Default size is set to 5MB. Considering the fact that trash directory is consuming the glusterfs volume space, trash feature is implemented to function in such a way that it directly deletes/truncates files with size > 1GB even if this option is set to some value greater than 1GB.
+    This command can be used to filter files entering trash directory based on their size. Files above trash_max_filesize are deleted/truncated directly.Value for size may be followed by multiplicative suffixes as KB(=1024 bytes), MB(=1024\*1024 bytes) and GB(=1024\*1024\*1024 bytes). Default size is set to 5MB.
 
 * ***`gluster volume set <VOLNAME> features.trash-eliminate-path <path1> [ , <path2> , . . . ]`***
 
