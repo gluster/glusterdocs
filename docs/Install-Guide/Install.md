@@ -55,7 +55,7 @@ apt install software-properties-common
 Then add the community GlusterFS PPA:
 
 ```console
-add-apt-repository ppa:gluster/glusterfs-3.8
+add-apt-repository ppa:gluster/glusterfs-7
 apt update
 ```
 
