@@ -10,4 +10,4 @@ To find out why a Gluster process terminated abruptly, we need the following:
 * Steps to reproduce the crash if available
 
 
-Contact the [community](https://www.gluster.org/community/) with this information or [open a bug](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS)
+Contact the [community](https://www.gluster.org/community/) with this information or [open an issue](https://github.com/gluster/glusterfs/issues/new)

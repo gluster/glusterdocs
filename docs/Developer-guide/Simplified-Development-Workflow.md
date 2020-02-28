@@ -12,7 +12,7 @@ Initial preparation
 -------------------
 
 The GlusterFS development workflow revolves around
-[Git](http://git.gluster.org/cgit/glusterfs.git/),
+[GitHub](http://github.com/gluster/glusterfs/),
 [Gerrit](http://review.gluster.org) and
 [Jenkins](http://build.gluster.org).
 
@@ -173,16 +173,12 @@ To submit your change for review, run the rfc.sh script,
 # ./rfc.sh
 ```
 
-The script will ask you to enter a bugzilla bug id. Every change
+The script will ask you to enter an issue ID. Every change
 submitted to GlusterFS needs a reference ID to be accepted. If you do
-not already have a reference id, file a new bug at [Red Hat
-Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS).
+not already have a reference id, file a new issue in
+[Github](https://github.com/gluster/glusterfs/issues/new). 
 If the patch is submitted for review, the rfc.sh script will return the
 gerrit url for the review request.
-
-Also note, all the feature development of GlusterFS is tracked using
-[github issues](https://github.com/gluster/glusterfs/issues). Github
-Issue number can also serve as a reference ID while submitting the patch.
 
 More details on the rfc.sh script are available at
 [Development Work Flow - rfc.sh](./Development-Workflow.md#rfc.sh).

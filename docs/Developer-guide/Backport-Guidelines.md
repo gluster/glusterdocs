@@ -28,7 +28,6 @@ fix backported, because your current setup is facing issues, below are the
 steps you need to take care to submit a patch on release branch.
 
 * The patch should have same 'Change-Id'.
-* The bugzilla ID should be for the same release branch.
 
 
 ### How to contact release owners?
