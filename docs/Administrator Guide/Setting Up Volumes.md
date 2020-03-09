@@ -197,76 +197,6 @@ More information about this configuration can be found at *Features : afr-arbite
 
 Note that the arbiter configuration for replica 3 can be used to create distributed-replicate volumes as well.
 
-## Creating Striped Volumes
-
-Striped volumes stripes data across bricks in the volume. For best
-results, you should use striped volumes only in high concurrency
-environments accessing very large files.
-
-> **Note**:
-> The number of bricks should be equal to the stripe count for a
-> striped volume.
-
-![striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412387/f411fa56-ef5f-11e4-8e78-a0896a47625a.png)
-
-**To create a striped volume**
-
-1.  Create a trusted storage pool.
-
-2.  Create the striped volume:
-
-    `# gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma]`
-
-    For example, to create a striped volume across two storage servers:
-
-        # gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2
-        Creation of test-volume has been successful
-        Please start the volume to access data.
-
-    If the transport type is not specified, *tcp* is used as the
-    default. You can also set additional options if required, such as
-    auth.allow or auth.reject.
-
-    > **Note**:
-    > Make sure you start your volumes before you try to mount them or
-    > else client operations after the mount will hang.
-
-## Creating Distributed Striped Volumes
-
-Distributed striped volumes stripes files across two or more nodes in
-the cluster. For best results, you should use distributed striped
-volumes where the requirement is to scale storage and in high
-concurrency environments accessing very large files is critical.
-
-> **Note**:
-> The number of bricks should be a multiple of the stripe count for a
-> distributed striped volume.
-
-![distributed_striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412394/0ce267d2-ef60-11e4-9959-43465a2a25f7.png)
-
-**To create a distributed striped volume**
-
-1.  Create a trusted storage pool.
-
-2.  Create the distributed striped volume:
-
-    `# gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma] `
-
-    For example, to create a distributed striped volume across eight
-    storage servers:
-
-        # gluster volume create test-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
-        Creation of test-volume has been successful
-        Please start the volume to access data.
-
-    If the transport type is not specified, *tcp* is used as the
-    default. You can also set additional options if required, such as
-    auth.allow or auth.reject.
-
-    > **Note**:
-    > Make sure you start your volumes before you try to mount them or
-    > else client operations after the mount will hang.
-
 ## Creating Distributed Replicated Volumes
 
 Distributes files across replicated bricks in the volume. You can use
@@ -322,104 +252,6 @@ environments.
 
     >         # gluster volume create <volname> replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
     >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
-
-    >  Use the `force` option at the end of command if you want to create the volume in this case.
-
-
-## Creating Distributed Striped Replicated Volumes
-
-Distributed striped replicated volumes distributes striped data across
-replicated bricks in the cluster. For best results, you should use
-distributed striped replicated volumes in highly concurrent environments
-where parallel access of very large files and performance is critical.
-In this release, configuration of this volume type is supported only for
-Map Reduce workloads.
-
-> **Note**:
-> The number of bricks should be a multiples of number of stripe count
-> and replica count for a distributed striped replicated volume.
-
-**To create a distributed striped replicated volume**
-
-1.  Create a trusted storage pool.
-
-2.  Create a distributed striped replicated volume using the following
-    command:
-
-    `# gluster volume create  [stripe ] [replica ] [transport tcp | rdma | tcp,rdma] `
-
-    For example, to create a distributed replicated striped volume
-    across eight storage servers:
-
-        # gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
-        Creation of test-volume has been successful
-        Please start the volume to access data.
-
-    If the transport type is not specified, *tcp* is used as the
-    default. You can also set additional options if required, such as
-    auth.allow or auth.reject.
-
-    > **Note**:
-    > - Make sure you start your volumes before you try to mount them or
-    > else client operations after the mount will hang.
-
-    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of a replica set is present on the same peer.
-    > 
-
-    >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
-
-    >  Use the `force` option at the end of command if you want to create the volume in this case.
-
-## Creating Striped Replicated Volumes
-
-Striped replicated volumes stripes data across replicated bricks in the
-cluster. For best results, you should use striped replicated volumes in
-highly concurrent environments where there is parallel access of very
-large files and performance is critical. In this release, configuration
-of this volume type is supported only for Map Reduce workloads.
-
-> **Note**:
-> The number of bricks should be a multiple of the replicate count and
-> stripe count for a striped replicated volume.
-
-![striped_replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412405/3563ac48-ef60-11e4-823f-ee6100c65ad7.png)
-
-**To create a striped replicated volume**
-
-1.  Create a trusted storage pool consisting of the storage servers that
-    will comprise the volume.
-
-2.  Create a striped replicated volume :
-
-    `# gluster volume create  [stripe ] [replica ] [transport tcp | rdma | tcp,rdma] `
-
-    For example, to create a striped replicated volume across four
-    storage servers:
-
-        # gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
-        Creation of test-volume has been successful
-        Please start the volume to access data.
-
-    To create a striped replicated volume across six storage servers:
-
-        # gluster volume create test-volume stripe 3 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
-        Creation of test-volume has been successful
-        Please start the volume to access data.
-
-    If the transport type is not specified, *tcp* is used as the
-    default. You can also set additional options if required, such as
-    auth.allow or auth.reject.
-
-    > **Note**:
-    > - Make sure you start your volumes before you try to mount them or
-    > else client operations after the mount will hang.
-
-    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of replica set is present on the same peer.
-    > 
-
-    >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
-    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
@@ -581,6 +413,172 @@ volumes, but using dispersed subvolumes instead of replicated ones.
 
     > Use the `force` option at the end of command if you want to create the volume in this case.
 
+## Creating Striped Volumes
+
+Striped volumes stripes data across bricks in the volume. For best
+results, you should use striped volumes only in high concurrency
+environments accessing very large files.
+
+> **Note**:
+> The number of bricks should be equal to the stripe count for a
+> striped volume.
+
+![striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412387/f411fa56-ef5f-11e4-8e78-a0896a47625a.png)
+
+**To create a striped volume**
+
+1.  Create a trusted storage pool.
+
+2.  Create the striped volume:
+
+    `# gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma]`
+
+    For example, to create a striped volume across two storage servers:
+
+        # gluster volume create test-volume stripe 2 transport tcp server1:/exp1 server2:/exp2
+        Creation of test-volume has been successful
+        Please start the volume to access data.
+
+    If the transport type is not specified, *tcp* is used as the
+    default. You can also set additional options if required, such as
+    auth.allow or auth.reject.
+
+    > **Note**:
+    > Make sure you start your volumes before you try to mount them or
+    > else client operations after the mount will hang.
+
+## Creating Distributed Striped Volumes
+
+Distributed striped volumes stripes files across two or more nodes in
+the cluster. For best results, you should use distributed striped
+volumes where the requirement is to scale storage and in high
+concurrency environments accessing very large files is critical.
+
+> **Note**:
+> The number of bricks should be a multiple of the stripe count for a
+> distributed striped volume.
+
+![distributed_striped_volume](https://cloud.githubusercontent.com/assets/10970993/7412394/0ce267d2-ef60-11e4-9959-43465a2a25f7.png)
+
+**To create a distributed striped volume**
+
+1.  Create a trusted storage pool.
+
+2.  Create the distributed striped volume:
+
+    `# gluster volume create  [stripe ] [transport tcp | rdma | tcp,rdma] `
+
+    For example, to create a distributed striped volume across eight
+    storage servers:
+
+        # gluster volume create test-volume stripe 4 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
+        Creation of test-volume has been successful
+        Please start the volume to access data.
+
+    If the transport type is not specified, *tcp* is used as the
+    default. You can also set additional options if required, such as
+    auth.allow or auth.reject.
+
+    > **Note**:
+    > Make sure you start your volumes before you try to mount them or
+    > else client operations after the mount will hang.
+
+## Creating Distributed Striped Replicated Volumes
+
+Distributed striped replicated volumes distributes striped data across
+replicated bricks in the cluster. For best results, you should use
+distributed striped replicated volumes in highly concurrent environments
+where parallel access of very large files and performance is critical.
+In this release, configuration of this volume type is supported only for
+Map Reduce workloads.
+
+> **Note**:
+> The number of bricks should be a multiples of number of stripe count
+> and replica count for a distributed striped replicated volume.
+
+**To create a distributed striped replicated volume**
+
+1.  Create a trusted storage pool.
+
+2.  Create a distributed striped replicated volume using the following
+    command:
+
+    `# gluster volume create  [stripe ] [replica ] [transport tcp | rdma | tcp,rdma] `
+
+    For example, to create a distributed replicated striped volume
+    across eight storage servers:
+
+        # gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
+        Creation of test-volume has been successful
+        Please start the volume to access data.
+
+    If the transport type is not specified, *tcp* is used as the
+    default. You can also set additional options if required, such as
+    auth.allow or auth.reject.
+
+    > **Note**:
+    > - Make sure you start your volumes before you try to mount them or
+    > else client operations after the mount will hang.
+
+    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of a replica set is present on the same peer.
+    > 
+
+    >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
+    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use 'force' at the end of the command if you want to override this behavior.
+
+    >  Use the `force` option at the end of command if you want to create the volume in this case.
+
+## Creating Striped Replicated Volumes
+
+Striped replicated volumes stripes data across replicated bricks in the
+cluster. For best results, you should use striped replicated volumes in
+highly concurrent environments where there is parallel access of very
+large files and performance is critical. In this release, configuration
+of this volume type is supported only for Map Reduce workloads.
+
+> **Note**:
+> The number of bricks should be a multiple of the replicate count and
+> stripe count for a striped replicated volume.
+
+![striped_replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412405/3563ac48-ef60-11e4-823f-ee6100c65ad7.png)
+
+**To create a striped replicated volume**
+
+1.  Create a trusted storage pool consisting of the storage servers that
+    will comprise the volume.
+
+2.  Create a striped replicated volume :
+
+    `# gluster volume create  [stripe ] [replica ] [transport tcp | rdma | tcp,rdma] `
+
+    For example, to create a striped replicated volume across four
+    storage servers:
+
+        # gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+        Creation of test-volume has been successful
+        Please start the volume to access data.
+
+    To create a striped replicated volume across six storage servers:
+
+        # gluster volume create test-volume stripe 3 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+        Creation of test-volume has been successful
+        Please start the volume to access data.
+
+    If the transport type is not specified, *tcp* is used as the
+    default. You can also set additional options if required, such as
+    auth.allow or auth.reject.
+
+    > **Note**:
+    > - Make sure you start your volumes before you try to mount them or
+    > else client operations after the mount will hang.
+
+    > - GlusterFS will fail to create a distribute replicate volume if more than one brick of a replica set is present on the same peer. For eg. a four node distribute (replicated) volume where more than one brick of replica set is present on the same peer.
+    > 
+
+    >         # gluster volume create <volname> stripe 2 replica 2 server1:/brick1 server1:/brick2 server2:/brick3 server4:/brick4
+    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal. Use `force` at the end of the command if you want to override this behavior.
+
+    >  Use the `force` option at the end of command if you want to create the volume in this case.
 
 ## Starting Volumes
 
