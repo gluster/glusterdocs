@@ -16,7 +16,7 @@ mkdocs, with the following command :
 For Fedora 30+ (run the following in root)
 
     # dnf install python-pip
-    # pip install mkdocs
+    # pip install -r requirements.txt
 
 Then you need to run mkdocs from the root of that repository:
 
