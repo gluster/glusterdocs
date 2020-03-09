@@ -15,60 +15,56 @@ See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
 -   Volumes of the following types can be created in your storage
     environment:
 
-    -   **Distributed** - Distributed volumes distribute files across
-        the bricks in the volume. You can use distributed volumes where
-        the requirement is to scale storage and the redundancy is either
-        not important or is provided by other hardware/software layers.
+    -   **[Distributed](#creating-distributed-volumes)** - Distributed volumes
+        distribute files across the bricks in the volume. You can use distributed
+        volumes where the requirement is to scale storage and the redundancy is
+        either not important or is provided by other hardware/software layers.
 
-    -   **Replicated** – Replicated volumes replicate files across bricks
-        in the volume. You can use replicated volumes in environments
-        where high-availability and high-reliability are critical.
+    -   **[Replicated](#creating-replicated-volumes)** – Replicated volumes replicate
+        files across bricks in the volume. You can use replicated volumes in
+        environments where high-availability and high-reliability are critical.
 
-    -   **Distributed Replicated** - Distributed replicated volumes
-        distribute files across replicated bricks in the volume. You
-        can use distributed replicated volumes in environments where the
-        requirement is to scale storage and high-reliability is
-        critical. Distributed replicated volumes also offer improved
-        read performance in most environments.
+    -   **[Distributed Replicated](#creating-distributed-replicated-volumes)** -
+        Distributed replicated volumes distribute files across replicated bricks in the
+        volume. You can use distributed replicated volumes in environments where the
+        requirement is to scale storage and high-reliability is critical. Distributed
+        replicated volumes also offer improved read performance in most environments.
 
-    -   **Dispersed** - Dispersed volumes are based on erasure codes,
-        providing space-efficient protection against disk or server failures.
-        It stores an encoded fragment of the original file to each brick in
-        a way that only a subset of the fragments is needed to recover the
-        original file. The number of bricks that can be missing without
-        losing access to data is configured by the administrator on volume
-        creation time.
+    -   **[Dispersed](#creating-dispersed-volumes)** - Dispersed volumes are based on
+        erasure codes, providing space-efficient protection against disk or server
+        failures. It stores an encoded fragment of the original file to each brick in a
+        way that only a subset of the fragments is needed to recover the original file.
+        The number of bricks that can be missing without losing access to data is
+        configured by the administrator on volume creation time.
 
-    -   **Distributed Dispersed** - Distributed dispersed volumes distribute
-        files across dispersed subvolumes. This has the same advantages of
-        distribute replicate volumes, but using disperse to store the data
-        into the bricks.
+    -   **[Distributed Dispersed](#creating-distributed-dispersed-volumes)** -
+        Distributed dispersed volumes distribute files across dispersed subvolumes. This
+        has the same advantages of distribute replicate volumes, but using disperse to
+        store the data into the bricks.
 
-    -   **Striped [Deprecated]** – Striped volumes stripes data across bricks in the
-        volume. For best results, you should use striped volumes only in
-        high concurrency environments accessing very large files.
+    -   **[Striped](#creating-striped-volumes) [Deprecated]** – Striped volumes stripes
+        data across bricks in the volume. For best results, you should use striped
+        volumes only in high concurrency environments accessing very large files.
 
-    -   **Distributed Striped [Deprecated]** - Distributed striped volumes stripe data
-        across two or more nodes in the cluster. You should use
-        distributed striped volumes where the requirement is to scale
-        storage and in high concurrency environments accessing very
-        large files is critical.
+    -   **[Distributed Striped](#creating-distributed-striped-volumes) [Deprecated]** -
+        Distributed striped volumes stripe data across two or more nodes in the cluster.
+        You should use distributed striped volumes where the requirement is to scale
+        storage and in high concurrency environments accessing very large files is
+        critical.
 
-    -   **Distributed Striped Replicated [Deprecated]** – Distributed striped replicated
-        volumes distributes striped data across replicated bricks in the
-        cluster. For best results, you should use distributed striped
-        replicated volumes in highly concurrent environments where
-        parallel access of very large files and performance is critical.
-        In this release, configuration of this volume type is supported
-        only for Map Reduce workloads.
+    -   **[Distributed Striped Replicated](#creating-distributed-striped-replicated-volumes) 
+        [Deprecated]** – Distributed striped replicated volumes distributes striped data
+        across replicated bricks in the cluster. For best results, you should use
+        distributed striped replicated volumes in highly concurrent environments where
+        parallel access of very large files and performance is critical. In this release,
+        configuration of this volume type is supported only for Map Reduce workloads.
 
-    -   **Striped Replicated [Deprecated]** – Striped replicated volumes stripes data
-        across replicated bricks in the cluster. For best results, you
-        should use striped replicated volumes in highly concurrent
-        environments where there is parallel access of very large files
-        and performance is critical. In this release, configuration of
-        this volume type is supported only for Map Reduce workloads.
-
+    -   **[Striped Replicated](#creating-striped-replicated-volumes) [Deprecated]** – 
+        Striped replicated volumes stripes data across replicated bricks in the cluster.
+        For best results, you should use striped replicated volumes in highly concurrent
+        environments where there is parallel access of very large files and performance
+        is critical. In this release, configuration of this volume type is supported only
+        for Map Reduce workloads.
 
 **To create a new volume**
 
