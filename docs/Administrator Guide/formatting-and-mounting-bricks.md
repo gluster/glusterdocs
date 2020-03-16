@@ -7,7 +7,7 @@ To create a thinly provisioned logical volume, proceed with the following steps:
   1. Create a physical volume(PV) by using the pvcreate command.
   For example:
 
-  `# pvcreate --dataalignment 1280K /dev/sdb`
+  `# pvcreate --dataalignment 128K /dev/sdb`
 
   Here, /dev/sdb is a storage device.
   Use the correct dataalignment option based on your device.
