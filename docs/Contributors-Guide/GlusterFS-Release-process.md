@@ -1,44 +1,28 @@
 # Release Process for GlusterFS
 
-
 The GlusterFS release process aims to provide regular, stable releases, with the ability to also ship new features quickly, while also attempting to reduce the complexity for release maintainers.
 
 ## GlusterFS releases
 
-GlusterFS has 2 types of major releases, Long Term Maintenance (LTM) and Short Term Maintenance (STM). Major releases happen once every 3 months. Check [Release Schedule](https://www.gluster.org/community/release-schedule/) for more information on the schedule for major releases.
+GlusterFS Major releases happen once every 4-6 months. Check [Release Schedule](https://www.gluster.org/community/release-schedule/) for more information on the schedule for major releases. Minor releases happen every month for corresponding branch of major release. Each major release is supported till we have N+2 version is made available.
 
 Major releases don't guarantee complete backwards compatability with the previous major release.
 
 Minor releases will have guaranteed backwards compatibilty with earlier minor releases of the same branch.
 
-- LTM and STM state alternates with every release.
-- LTM and STM releases differ in the period of updates provided.
+## GlusterFS major release
 
-### Long Term Maintenance (LTM) releases
-
-An LTM release reaches EOL when a LTM+2 release is done, 1 year later. LTM releases may get monthly minor releases for bug-fixes.
-
-### Short Term Maintenance (STM) releases
-
-STM releases are only supported until the next major release. STM releases may get monthly updates for bug fixes.
-
-The discussions around release schedules and lifecycles happened in the following mail threads on the GlusterFS maintainers mailing list.
-
-- [2016-June/000892](https://www.gluster.org/pipermail/maintainers/2016-June/000892.html)
-- [2016-August/001174](https://www.gluster.org/pipermail/maintainers/2016-August/001174.html)
-
-
-## GlusterFS major release window
-Each GlusterFS major release has a 3 month release window, in which changes get merged. The 3 month release window is split into two phases.
+Each GlusterFS major release has a 4-6 month release window, in which changes get merged. This window is split into two phases.
 
 1. A Open phase, where all changes get merged
 1. A Stability phase, where only changes that stabilize the release get merged.
 
-The first 2 months of a release window will be the Open phase, and the last month will be the stability phase.
+The first 2-4 months of a release window will be the Open phase, and the last month will be the stability phase.
 
 The release engineer (or team doing the release) is responsible for messaging.
 
 #### Open phase
+
 Any changes are accepted during this phase. New features that are introduced in this phase, need to be capable of being selectively built. All changes in the master branch are automatically incuded in the next release.
 
 All changes will be accepted during the Open phase. The changes have a few requirements,
@@ -56,7 +40,7 @@ No new features will be merged in this phase. At the end of this phase, any new 
 
 Patches accepted in the Stability phase have the following requirements:
 
-- a change MUST fix a bug that users have reported or are very likely to hit
+- a change MUST fix an issue that users have reported or are very likely to hit
 - each change SHOULD have a public test-case (.t or DiSTAF)
 - a change MUST NOT add a new FOP
 - a change MUST NOT add a new xlator
@@ -68,26 +52,6 @@ Patches accepted in the Stability phase have the following requirements:
 - existing structures or parameters MAY get extended with additional values (i.e. new flags in a bitmap/mask) if the extensions are optional and do not affect older/newer client/server combinations
 
 Patches that do not satisfy the above requirements can still be submitted for review, but cannot be merged.
-
-### GlusterFS minor release window
-GlusterFS minor releases have a 1 month release window, which is the same as the stability phase of the major releases.
-
-Patches for a minor release have the following requirements:
-
-- a change MUST fix a bug that users have reported or are very likely to hit
-- each change SHOULD have a public test-case (.t or DiSTAF)
-- a change MUST NOT add a new FOP
-- a change MUST NOT add a new xlator
-- a change SHOULD NOT add a new volume option, unless a public discussion was kept and several maintainers agree that this is the only right approach
-- a change MAY add new values for existing volume options, these need to be documented in the release notes and be marked as a 'minor feature enhancement' or similar
-- it is NOT RECOMMENDED to modify the contents of existing log messages, automation and log parsers can depend on the phrasing
-- a change SHOULD NOT have more than approx. 100 lines changed, additional public discussion and agreement among maintainers is required to get big changes approved
-- a change MUST NOT modify existing structures or parameters that get sent over the network
-- existing structures or parameters MAY get extended with additional values (i.e. new flags in a bitmap/mask) if the extensions are optional and do not affect older/newer client/server combinations
-
-NOTE: Changes to experimental features (as announced on the roadmap and in the release notes) are exempted from these criteria, except for the MOST NOT requirements. These features explicitly may change their behaviour, configuration and management interface while experimenting to find the optimal solution.
-
-Component maintainers may merge changes, as long as they stick to the patch acceptance criteria, until 1 week before the release. After this point only the release-maintainer can merge changes.
 
 ## Release procedure
 This procedure is followed by a release maintainer/manager, to perform the actual release.
@@ -114,12 +78,9 @@ Notify the packagers that we need packages created. Provide the link to the sour
 #### Create a new Tracker Bug for the next release
 The tracker bugs are used as guidance for blocker bugs and should get created when a release is made. To create one
 
-- file a [new bug in Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS)
-- base the contents on previous tracker bugs, like the one for [glusterfs-3.5.5](https://bugzilla.redhat.com/show_bug.cgi?id=glusterfs-3.5.5)
-- set the '''Alias''' (it is a text-field) of the bug to 'glusterfs-a.b.c' where a.b.c is the next minor version
-- save the new bug
-- you should now be able to use the 'glusterfs-a.b.c' to access the bug, use the alias to replace the BZ# in URLs, or '''blocks''' fields
-- bugs that were not fixed in this release, but were added to the tracker should be moved to the new tracker
+- Create a [new milestone](https://github.com/gluster/glusterfs/milestones/new)
+- base the contents on open issues, like the one for [glusterfs-8](https://github.com/gluster/glusterfs/milestone/10)
+- issues that were not fixed in previous release, but in milestone should be moved to the new milestone.
 
 #### Create Release Announcement
 (Major releases) 
@@ -129,25 +90,13 @@ The Release Announcement is based off the release notes. This needs to indicate:
  * Links to the direct download folder 
  * Feature set 
  
-Best practice as of 3.10 to create a collaborative version of the release notes that both the release manager and community lead work on together, and the release manager posts to the mailing lists (gluster-users@, gluster-devel@, announce@). 
+Best practice as of version-8 is to create a collaborative version of the release notes that both the release manager and community lead work on together, and the release manager posts to the mailing lists (gluster-users@, gluster-devel@, announce@). 
 
-- [blog](https://blog.gluster.org/2017/02/announcing-gluster-3-10/)
-- [release notes](https://github.com/gluster/glusterfs/blob/release-3.10/doc/release-notes/3.10.0.md)
 
 #### Create Upgrade Guide
 (Major releases) 
 If required, as in the case of a major release, an upgrade guide needs to be available at the same time as the release. 
 This document should go under the [Upgrade Guide](https://github.com/gluster/glusterdocs/tree/master/Upgrade-Guide) section of the [glusterdocs](https://github.com/gluster/glusterdocs) repository.
-
-#### Submit PR for Website updates 
-(Major releases) 
-With major releases, the gluster.org website needs to reflect the latest release. Update the website through GitHub PR. 
-
-- [Gluster.org homepage:](https://github.com/gluster/glusterweb/blob/master/source/index.haml)
-- [Gluster.org download page](https://github.com/gluster/glusterweb/tree/master/source/download)
-- [Gluster.org release schedule page](https://github.com/gluster/glusterweb/blob/master/source/community/release-schedule.md)
-
-Give extra time for this, TravisCI needs a bit of time to check to make sure we're not breaking the website. (Note: 3.10 may be the last release cycle that has this tooling.) 
 
 #### Send Release Announcement
 
@@ -163,12 +112,4 @@ The blog will automatically post to both Facebook and Twitter. Be careful with t
   - [Gluster Twitter account](https://twitter.com/gluster)
   - [Gluster Facebook page](https://www.facebook.com/GlusterInc)
 - [Gluster LinkedIn group](https://www.linkedin.com/company-beta/4822513)
-- [Gluster Google Plus account 1 of 2](https://plus.google.com/communities/110022816028412595292)
-- [Gluster Google Plus account 2 of 2](https://plus.google.com/u/3/+GlusterCommunity)
-
-#### Close Bugs
-
-Close the bugs that have all their patches included in the release. Leave a note in the bug report with a pointer to the release announcement.
-The [close-bugs.sh](https://github.com/gluster/release-tools/blob/master/close-bugs.sh) in the glusterfs [release-tools](https://github.com/gluster/release-tools/) repository can be used to do this.
-
 

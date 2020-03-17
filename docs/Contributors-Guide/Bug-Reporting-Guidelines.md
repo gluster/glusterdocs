@@ -1,5 +1,5 @@
-Before filing a bug
--------------------
+Before filing an issue
+----------------------
 
 If you are finding any issues, these preliminary checks as useful:
 
@@ -7,33 +7,21 @@ If you are finding any issues, these preliminary checks as useful:
 -   Are iptables rules blocking any data traffic? (`iptables -L` can
     help check)
 -   Are all the nodes reachable from each other? [ Network problem ]
--   Please search Bugzilla to see if the bug has already been reported
-    -   Choose GlusterFS as the "product", and then type something
-        relevant in the "words" box. If you are seeing a crash or abort,
-        searching for part of the abort message might be effective. If
-        you are feeling adventurous you can select the "Advanced search"
-        tab; this gives a lot more control but isn't much better for
-        finding existing bugs.
-    -   If a bug has been already filed for a particular release and you
-        found the bug in another release,
-        -   please clone the existing bug for the release, you found the
-            issue.
-        -   If the existing bug is against mainline and you found the
-            issue for a release, then the cloned bug *depends on* should
-            be set to the BZ for mainline bug.
+-   Please search [issues](https://github.com/gluster/glusterfs/issues)
+    to see if the bug has already been reported
+    -   If an issue has been already filed for a particular release and
+        you found the issue in another release, add a comment in issue.
 
-Anyone can search in Bugzilla, you don't need an account. Searching
+Anyone can search in github issues, you don't need an account. Searching
 requires some effort, but helps avoid duplicates, and you may find that
 your problem has already been solved.
 
-Reporting A Bug
----------------
+Reporting An Issue
+------------------
 
--   You should have a Bugzilla account
--   Here is the link to file a bug:
-    [Bugzilla](https://bugzilla.redhat.com/enter_bug.cgi?product=GlusterFS)
--   The template for filing a bug can be found [
-    *here*](./Bug-Reporting-Guidelines.md)
+-   You should have an account with github.com
+-   Here is the link to file an issue:
+    [Github](https://github.com/gluster/glusterfs/issues/new)
 
 *Note: Please go through all below sections to understand what
 information we need to put in a bug. So it will help the developer to
@@ -70,7 +58,7 @@ You should gather the information below before creating the bug report.
 -   Output of `gluster volume status`
 -   Get the statedump of the volume with the problem
 
-`   $ gluster volume statedump <vol-name>`
+`$ gluster volume statedump <vol-name>`
 
 This dumps statedump per brick process in `/var/run/gluster`
 
@@ -84,20 +72,20 @@ collected directories could be archived, compressed and attached to bug
 -   xfs options when a brick partition was done
     -   This could be obtained with this command :
 
-`   $ xfs_info /dev/mapper/vg1-brick`
+`$ xfs_info /dev/mapper/vg1-brick`
 
 -   Extended attributes on the bricks
     -   This could be obtained with this command:
 
-`   $ getfattr -d -m. -ehex /rhs/brick1/b1`
+`$ getfattr -d -m. -ehex /rhs/brick1/b1`
 
 #### Client Information
 
--   OS Type ( Windows, RHEL )
+-   OS Type ( Ubuntu, Fedora, RHEL )
 -   OS Version: In case of Linux distro get the following :
 
-`   $ uname -r`
-`   $ cat /etc/issue`
+`uname -r`
+`cat /etc/issue`
 
 -   Fuse or NFS Mount point on the client with output of mount commands
 -   Output of `df -Th` command

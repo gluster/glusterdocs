@@ -8,10 +8,6 @@ Bug Handling
 -   [Bug triage guidelines](./Bug-Triage.md) - Guideline on how to
     triage bugs for GlusterFS
 -   [Bug report life cycle in
-    Bugzilla](./Bug-report-Life-Cycle.md) - Information about bug
-    life cycle
--   [Bug Reporting Template](./Bug-reporting-template.md) -
-    Information about how a bug should be reported in Bugzilla.
 
 Release Process
 ---------------
