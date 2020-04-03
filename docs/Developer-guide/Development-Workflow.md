@@ -344,15 +344,23 @@ code change is actually verified by the test case.
 Regression tests (i.e, execution of all test cases accumulated with
 every commit) is not automatically triggered as the test cases can be
 extensive and is quite expensive to execute for every change submission
-in the review/resubmit cycle. Instead it is triggered by the
-maintainers, after code review. Passing the regression test is a
+in the review/resubmit cycle. Instead it is triggered when the patch
+contributor issues a Verified: +1 on gerrit. Passing the regression test is a
 necessary condition for merge along with code review points.
 
-To run all regession tests locally, run below script from glusterfs root directory.
+To run all regression tests locally, run below script from glusterfs root directory.
 
 ```console
 # ./run-tests.sh
 ```
+
+To run a single regression test locally, run the below command.
+
+```console
+# prove -vf <path_to_the_file>
+```
+
+**NOTE:** The testing framework needs perl-Test-Harness package to be installed.
 
 Submission Qualifiers
 ---------------------
