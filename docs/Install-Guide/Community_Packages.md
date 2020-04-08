@@ -15,7 +15,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |           |           |           |
 |Fedora[2]     |F30             |     X     |     X²    |     X     |
 |              |F31             |     X²    |     X     |     X     |
-|              |F32(rawhide)    |     X²    |     X     |     X     |
+|              |F32             |     X²    |     X     |     X     |
+|              |F33(rawhide)    |     X²    |     X     |     X     |
 |              |                |           |           |           |
 |Debian[2]     |Stretch/9       |     X     |     X     |     X     |
 |              |Buster/10       |     X     |     X     |     X     |
@@ -45,7 +46,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |         |          |            |             |          |       |
 |Fedora[2]     |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F32(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F32             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|              |F33(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |                |         |          |            |             |          |       |
 |Debian[2]     |Stretch/9       |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Buster/10       |    —    |     —    |     X      |      X      |     X    |   ?   |
