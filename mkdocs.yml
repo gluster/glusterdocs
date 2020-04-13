@@ -18,7 +18,6 @@ nav:
   - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
   - Deploying in AWS: Install-Guide/Setup_aws.md
   - Install: Install-Guide/Install.md
-  - Compiling RPMS: Install-Guide/compiling-rpms.md
   - Community Packages: Install-Guide/Community_Packages.md
   - Configure: Install-Guide/Configure.md
 - Administration Guide:
@@ -73,6 +72,7 @@ nav:
 - Developers Guide:
   - Developers Home: Developer-guide/Developers-Index.md
   - Simplified Development Workflow : Developer-guide/Simplified-Development-Workflow.md
+  - Compiling RPMS: Developer-guide/compiling-rpms.md
   - Development-Workflow : Developer-guide/Development-Workflow.md
   - Build and Install GlusterFS : Developer-guide/Building-GlusterFS.md
   - Project Ideas : Developer-guide/Projects.md
