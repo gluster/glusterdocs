@@ -24,6 +24,7 @@ Release Notes
 
 ### GlusterFS 5 release notes
 
+- [5.13](./5.13.md)
 - [5.12](./5.12.md)
 - [5.11](./5.11.md)
 - [5.10](./5.10.md)
