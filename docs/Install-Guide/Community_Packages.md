@@ -24,7 +24,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |           |           |           |
 |Ubuntu Launchpad[3]|Xenial/16.04    |     X     |     X     |     X     |
 |              |Bionic/18.04    |     X     |     X     |     X     |
-|              |Disco/19.04     |     X     |     X     |     X     |
 |              |Eoan/19.10      |     X     |     X     |     X     |
 |              |Focal/20.04     |     X     |     X     |     X     |
 |              |Groovy/20.10    |     X     |     X     |     —     |
@@ -56,7 +55,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |                |         |          |            |             |          |       |
 |Ubuntu Launchpad[3]|Xenial/16.04    |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Bionic/18.04    |    —    |     —    |     X      |      X      |     X    |   ?   |
-|              |Disco/19.04     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Eoan/19.10      |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Focal/20.04     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Groovy/20.10    |    —    |     —    |     X      |      X      |     X    |   ?   |
