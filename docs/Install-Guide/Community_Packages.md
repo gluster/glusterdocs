@@ -27,6 +27,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Disco/19.04     |     X     |     X     |     X     |
 |              |Eoan/19.10      |     X     |     X     |     X     |
 |              |Focal/20.04     |     X     |     X     |     X     |
+|              |Groovy/20.10    |     X     |     X     |     —     |
 |              |                |           |           |           |
 |OpenSUSE Build Service[4]|SLES12SP5    |     X     |     X     |      —    |
 |              |SLES12SP4       |     X     |     X     |     X     |
@@ -58,6 +59,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Disco/19.04     |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Eoan/19.10      |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |Focal/20.04     |    —    |     —    |     X      |      X      |     X    |   ?   |
+|              |Groovy/20.10    |    —    |     —    |     X      |      X      |     X    |   ?   |
 |              |                |         |          |            |             |          |       |
 |OpenSUSE Build Service[4]|SLES12SP5       |    X     |     X    |     X       |      X      |     X    |   ?   |
 |              |SLES12SP4       |    X    |     X    |     X      |      X      |     X    |   ?   |
