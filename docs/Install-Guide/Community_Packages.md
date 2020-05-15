@@ -19,7 +19,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |F33(rawhide)    |     X     |     X    |     X     |     X     |
 |              |                |           |           |           |           |
 |Debian[2]     |Stretch/9       |     —     |     X     |     X     |     X     |
-|              |Buster/10       |    14:15 UTC X     |     X     |     X     |     X     |
+|              |Buster/10       |     X     |     X     |     X     |     X     |
 |              |Bullseye/11(Sid)|     X     |     X     |     X     |     X     |
 |              |                |           |           |           |
 |Ubuntu Launchpad[3]|Xenial/16.04    |     —     |     X     |     X     |     X     |
