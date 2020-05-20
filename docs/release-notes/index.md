@@ -9,6 +9,7 @@ Release Notes
 - [7.3](./7.3.md)
 - [7.4](./7.4.md)
 - [7.5](./7.5.md)
+- [7.6](./7.6.md)
 
 ### GlusterFS 6 release notes
 
