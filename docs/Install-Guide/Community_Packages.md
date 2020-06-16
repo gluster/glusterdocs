@@ -13,8 +13,7 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |el7             |     X     |     X     |     X     |     X     |
 |              |el8             |     X     |     X     |     X     |     —     |
 |              |                |           |           |           |           |
-|Fedora[2]     |F30             |     —     |     X     |     X²    |     X     |
-|              |F31             |     X     |     X²    |     X     |     X     |
+|Fedora[2]     |F31             |     X     |     X²    |     X     |     X     |
 |              |F32             |     X     |     X²    |     X     |     X     |
 |              |F33(rawhide)    |     X²    |     X     |     X     |     X     |
 |              |                |           |           |           |           |
@@ -28,14 +27,14 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |Focal/20.04     |     X     |     X     |     X     |     X     |
 |              |Groovy/20.10    |     X     |     X     |     X     |     —     |
 |              |                |           |           |           |           |
-|OpenSUSE Build Service[4]|SLES12SP5    |     X     |     X     |     X     |      —    |
+|OpenSUSE Build Service[4]|SLES12SP5    |     —     |     X     |     X     |      —    |
 |              |SLES12SP4       |     —     |     X     |     X     |     X     |
 |              |Leap15.2        |     X     |     X     |     X     |     X     |
 |              |SLES15SP1       |     X     |     X     |     X     |     X     |
 |              |SLES15          |     —     |     —     |     X     |     X     |
 |              |Tumbleweed      |     X     |     X     |     X     |     X     |
 
-
+https://github.com/gluster/glusterdocs/blob/master/docs/Install-Guide/Community_Packages.md
 #### Related Packages
 
 |              |                | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | storhaug | Samba |
@@ -44,8 +43,8 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |el7             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el8             |   tbd   |    tbd   |     X      |      X      |    tbd   |   ?   |
 |              |                |         |          |            |             |          |       |
-|Fedora[2]     |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
-|              |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|Fedohttps://github.com/gluster/glusterdocs/blob/master/docs/Install-Guide/Community_Packages.mdra[2]     |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
+|Fedora[2]     |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F32             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F33(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |                |         |          |            |             |          |       |
