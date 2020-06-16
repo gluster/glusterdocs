@@ -34,7 +34,6 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 |              |SLES15          |     —     |     —     |     X     |     X     |
 |              |Tumbleweed      |     X     |     X     |     X     |     X     |
 
-https://github.com/gluster/glusterdocs/blob/master/docs/Install-Guide/Community_Packages.md
 #### Related Packages
 
 |              |                | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | storhaug | Samba |
@@ -43,7 +42,6 @@ https://github.com/gluster/glusterdocs/blob/master/docs/Install-Guide/Community_
 |              |el7             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |el8             |   tbd   |    tbd   |     X      |      X      |    tbd   |   ?   |
 |              |                |         |          |            |             |          |       |
-|Fedohttps://github.com/gluster/glusterdocs/blob/master/docs/Install-Guide/Community_Packages.mdra[2]     |F30             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |Fedora[2]     |F31             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F32             |    X    |     X    |     X      |      X      |     X    |   ?   |
 |              |F33(rawhide)    |    X    |     X    |     X      |      X      |     X    |   ?   |
