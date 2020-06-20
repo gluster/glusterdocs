@@ -74,7 +74,7 @@ The following yum command enables needed repositories providing the build requir
 # yum-config-manager --enable PowerTools --enable Devel
 ```
 
-### CentOS /Enterprise Linux v8
+### CentOS / Enterprise Linux v8
 
 The following yum command installs the build requirements for CentOS / Enterprise Linux 8,
 
