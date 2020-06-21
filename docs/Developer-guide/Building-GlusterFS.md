@@ -53,9 +53,9 @@ Ubuntu,
     libacl1-dev
 ```
 
-### CentOS / Enterprise Linux
+### CentOS / Enterprise Linux v7
 
-The following yum command installs the build requirements for CentOS / Enterprise Linux,
+The following yum command installs the build requirements for CentOS / Enterprise Linux 7,
 
 ```console
 # yum install autoconf automake bison cmockery2-devel dos2unix flex   \
@@ -66,6 +66,26 @@ The following yum command installs the build requirements for CentOS / Enterpris
     python-paste-deploy python-simplejson python-sphinx python-webob  \
     pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
     tar userspace-rcu-devel
+```
+
+### Enable repositories for CentOS 8
+The following yum command enables needed repositories providing the build requirements for CentOS 8,
+```console
+# yum-config-manager --enable PowerTools --enable Devel
+```
+
+### CentOS / Enterprise Linux v8
+
+The following yum command installs the build requirements for CentOS / Enterprise Linux 8,
+
+```console
+# yum install autoconf automake bison dos2unix flex fuse-devel glib2-devel   \
+    libacl-devel libaio-devel libattr-devel libcurl-devel libibverbs-devel   \
+    librdmacm-devel libtirpc-devel libuuid-devel libtool libxml2-devel       \
+    lvm2-devel make openssl-devel pkgconfig xz-devel  python3-devel          \
+    python3-netifaces python3-paste-deploy python3-simplejson python3-sphinx \
+    python3-webob python3-pyxattr readline-devel rpm-build sqlite-devel      \
+    systemtap-sdt-devel tar userspace-rcu-devel rpcgen
 ```
              
 Building from Source
@@ -94,7 +114,7 @@ the configure script to generate the makefiles.
 # ./configure
 ```
 
-For CentOS, use:
+For CentOS 7, use:
 
 ```console
 # ./configure --without-libtirpc
@@ -228,3 +248,7 @@ steps to build RPMs,
 This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
 mock)*
+For CentOS / Enterprise Linux 8 the dependencies can be installed via:
+```console
+# yum install mock rpm-build  selinux-policy-devel
+```
