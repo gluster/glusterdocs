@@ -11,10 +11,11 @@ version reference.
 
 ### Major issues
 
-1. The following options are removed from the code base and require to be unset
+#### The following options are removed from the code base and require to be unset
 before an upgrade from releases older than release 4.1.0,
-- features.lock-heal
-- features.grace-timeout
+
+    - features.lock-heal
+    - features.grace-timeout
 
 To check if these options are set use,
 
@@ -31,7 +32,7 @@ If these are set, then unset them using the following commands,
 # gluster volume reset <volname> <option>
 ```
 
-2. Make sure you are not using any of the following depricated features : 
+#### Make sure you are not using any of the following depricated features : 
 
     - Block device (bd) xlator
     - Decompounder feature
