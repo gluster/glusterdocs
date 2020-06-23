@@ -58,6 +58,7 @@ Ubuntu,
 The following yum command installs the build requirements for CentOS / Enterprise Linux 7,
 
 ```console
+# yum install epel-release
 # yum install autoconf automake bison cmockery2-devel dos2unix flex   \
     fuse-devel glib2-devel libacl-devel libaio-devel libattr-devel    \
     libcurl-devel libibverbs-devel librdmacm-devel libtirpc-devel     \
