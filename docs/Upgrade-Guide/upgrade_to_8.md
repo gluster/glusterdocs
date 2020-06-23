@@ -3,15 +3,13 @@
 We recommend reading the [release notes for 8.0](../release-notes/8.0.md) to be
 aware of the features and fixes provided with the release.
 
-> **NOTE:** Upgrade procedure remains the same as with 4.1.x release
+> **NOTE:** Before following the generic upgrade procedure checkout the "**Major Issues**" section given below.  
 
-Refer, to the [Upgrading to 4.1](./upgrade_to_4.1.md) guide and follow
-documented instructions, replacing 8 when you encounter 4.1 in the guide as the
-version reference.
+Refer, to the [generic upgrade procedure](./Generic_Upgrade_procedure.md) guide and follow documented instructions.
 
-### Major issues
+## Major issues
 
-#### The following options are removed from the code base and require to be unset
+### The following options are removed from the code base and require to be unset
 before an upgrade from releases older than release 4.1.0,
 
     - features.lock-heal
@@ -32,7 +30,7 @@ If these are set, then unset them using the following commands,
 # gluster volume reset <volname> <option>
 ```
 
-#### Make sure you are not using any of the following depricated features : 
+### Make sure you are not using any of the following depricated features : 
 
     - Block device (bd) xlator
     - Decompounder feature
