@@ -67,7 +67,7 @@ The following yum command installs the build requirements for CentOS / Enterpris
     pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
     tar userspace-rcu-devel
 ```
-Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package
+Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
 
 ### Enable repositories for CentOS 8
@@ -249,8 +249,7 @@ steps to build RPMs,
 
 This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
-mock)
-
+mock)<br>
 For CentOS / Enterprise Linux 8 the dependencies can be installed via:
 ```console
 # yum install mock rpm-build  selinux-policy-devel
