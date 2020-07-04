@@ -67,7 +67,7 @@ The following yum command installs the build requirements for CentOS / Enterpris
     pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
     tar userspace-rcu-devel
 ```
-Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package<br>
+**Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package**<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
 
 ### Enable repositories for CentOS 8
