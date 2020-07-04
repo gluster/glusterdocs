@@ -249,7 +249,7 @@ steps to build RPMs,
 
 This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
-mock)<br>
+mock)*<br>
 For CentOS / Enterprise Linux 8 the dependencies can be installed via:
 ```console
 # yum install mock rpm-build  selinux-policy-devel
