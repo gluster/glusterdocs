@@ -9,30 +9,30 @@ A **—** means no plans to build new updates. Existing packages will remain in 
 
 |              |                |     8     |     7     |     6     |
 |--------------|----------------|:---------:|:---------:|:---------:|
-|CentOS Storage SIG[1]|el6            |     —     |     X      |     X¹     |
-|              |el7             |     X     |     X     |     X     |
-|              |el8             |     X     |     X     |     X     |
+|CentOS Storage SIG[1]|el6      |    no     |    yes    |    yes¹   |
+|              |el7             |    yes    |    yes    |    yes    |
+|              |el8             |    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|Fedora[2]     |F31             |     X     |     X²    |     X     |
-|              |F32             |     X     |     X²    |     X     |
-|              |F33(rawhide)    |     X²    |     X     |     X     |
+|Fedora[2]     |F31             |    yes    |    yes²   |    yes    |
+|              |F32             |    yes    |    yes²   |    yes    |
+|              |F33(rawhide)    |    yes²   |    yes    |    yes    |
 |              |                |           |           |           |
-|Debian[2]     |Stretch/9       |     —     |     X     |     X     |
-|              |Buster/10       |     X     |     X     |     X     |
-|              |Bullseye/11(Sid)|     X     |     X     |     X     |
+|Debian[2]     |Stretch/9       |     no    |    yes    |    yes    |
+|              |Buster/10       |    yes    |    yes    |    yes    |
+|              |Bullseye/11(Sid)|    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|Ubuntu Launchpad[3]|Xenial/16.04    |     —     |     X     |     X     |
-|              |Bionic/18.04    |     X     |     X     |     X     |
-|              |Eoan/19.10      |     X     |     X     |     X     |
-|              |Focal/20.04     |     X     |     X     |     X     |
-|              |Groovy/20.10    |     X     |     X     |     X     |
+|Ubuntu Launchpad[3]|Xenial/16.04    |    no     |    yes    |    yes    |
+|              |Bionic/18.04    |    yes    |    yes    |    yes    |
+|              |Eoan/19.10      |    yes    |    yes    |    yes    |
+|              |Focal/20.04     |    yes    |    yes    |    yes    |
+|              |Groovy/20.10    |    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|OpenSUSE Build Service[4]|SLES12SP5    |     —     |     X     |     X     |
-|              |SLES12SP4       |     —     |     X     |     X     |
-|              |Leap15.2        |     X     |     X     |     X     |
-|              |SLES15SP1       |     X     |     X     |     X     |
-|              |SLES15          |     —     |     —     |     X     |
-|              |Tumbleweed      |     X     |     X     |     X     |
+|OpenSUSE Build Service[4]|SLES12SP5    |    no     |    yes    |    yes    |
+|              |SLES12SP4       |    no     |    yes    |    yes    |
+|              |Leap15.2        |    yes    |    yes    |    yes    |
+|              |SLES15SP1       |    yes    |    yes    |    yes    |
+|              |SLES15          |    no     |    yes    |    yes    |
+|              |Tumbleweed      |    yes    |    yes    |    yes    |
 
 #### Related Packages
 
