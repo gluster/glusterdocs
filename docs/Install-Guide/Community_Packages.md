@@ -4,8 +4,8 @@
 
 Tentative plans for community convenience packages.
 
-An **X** means packages are (or will be) provided in the respective repository.  
-A **—** means no plans to build new updates. Existing packages will remain in the repos.  
+A **yes** means packages are (or will be) provided in the respective repository.  
+A **no** means no plans to build new updates. Existing packages will remain in the repos.  
 The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and earlier.
 
 |              |                |     8     |     7     |
