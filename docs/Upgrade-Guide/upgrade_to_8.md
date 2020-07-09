@@ -38,6 +38,7 @@ If these are set, then unset them using the following commands,
     - Symlink-cache xlator
     - Stripe feature
     - Tiering support (tier xlator and changetimerecorder)
+    - Glupy
 
    
 **NOTE:** Failure to do the above may result in failure during online upgrades,
