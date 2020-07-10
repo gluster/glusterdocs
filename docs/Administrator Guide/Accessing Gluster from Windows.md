@@ -19,7 +19,7 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
 
  2. In the following files, replace "all" in the statement "META=all" to the newly created volume name.  
     ```
-    /var/lib/glusterd/hooks/1/start/post/S29CTDBsetup.sh
+    /var/lib/glusterd/hooks/1/start/post/S29CTDBsetup.sh<br>
     /var/lib/glusterd/hooks/1/stop/pre/S29CTDB-teardown.sh
     ```
 
@@ -29,7 +29,7 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
  4. Verify the following:
     * If the following lines are added in smb.conf file in all the nodes running samba/ctdb:  
     ```
-    clustering = yes
+    clustering = yes<br>
     idmap backend = tdb2
     ```
 
@@ -42,10 +42,10 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
  5. Create /etc/ctdb/nodes files on all the nodes that runs ctdb/samba, and add the IPs of all these nodes in the file.  
    Eg:
    ```
-   #cat /etc/ctdb/nodes
-   10.16.157.0
-   10.16.157.3
-   10.16.157.6
+   #cat /etc/ctdb/nodes<br>
+   10.16.157.0<br>
+   10.16.157.3<br>
+   10.16.157.6<br>
    10.16.157.8
    ```
     The IPs listed here are the private IPs of Samba/ctdb servers, which should be a private non-routable subnet and are only used for internal cluster traffic. For more details refer to the ctdb man page.
@@ -54,14 +54,14 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    ```<virtual IP><routing prefix> <node interface>```  
    ```
    Eg:
-   #cat /etc/ctdb/public_addresses
-   192.168.1.20/24 eth0
+   #cat /etc/ctdb/public_addresses<br>
+   192.168.1.20/24 eth0<br>
    192.168.1.21/24 eth0
    ```
- 7. Either uncomment `CTDB_SAMBA_SKIP_SHARE_CHECK=yes` or add `CTDB_SAMBA_SKIP_SHARE_CHECK=yes in its absence inside /etc/ctdb/script.options to disable checking of the shares by ctdb.
+ 7. Either uncomment `CTDB_SAMBA_SKIP_SHARE_CHECK=yes` or add `CTDB_SAMBA_SKIP_SHARE_CHECK=yes` in its absence inside /etc/ctdb/script.options to disable checking of the shares by ctdb.
  8. If SELinux is enabled and enforcing, try the following command if ctdb fails.  
    ```
-   # setsebool -P use_fusefs_home_dirs 1
+   # setsebool -P use_fusefs_home_dirs 1<br>
    # setsebool -P samba_load_libgfapi 1
    ```
 
@@ -71,12 +71,12 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
 
   2. If using Samba 4.X version add the following line in smb.conf in the global section  
    ```
-   kernel share modes = no
-   kernel oplocks = no
-   map archive = no
-   map hidden = no
-   map read only = no
-   map system = no
+   kernel share modes = no<br>
+   kernel oplocks = no<br>
+   map archive = no<br>
+   map hidden = no<br>
+   map read only = no<br>
+   map system = no<br>
    store dos attributes = yes
    ```
 
@@ -88,36 +88,36 @@ The servers may/may not be part of the trusted storage pool. Preferable number o
    ```#gluster volume set VOLNAME group samba```
    On older version, please execute the following:
    ```
-   #gluster volume set VOLNAME features.cache-invalidation on
-   #gluster volume set VOLNAME features.cache-invalidation-timeout 600
-   #gluster volume set VOLNAME performance.cache-samba-metadata on
-   #gluster volume set VOLNAME performance.stat-prefetch on
-   #gluster volume set VOLNAME performance.cache-invalidation on
-   #gluster volume set VOLNAME performance.md-cache-timeout 600
-   #gluster volume set VOLNAME network.inode-lru-limit 200000
-   #gluster volume set VOLNAME performance.nl-cache on
-   #gluster volume set VOLNAME performance.nl-cache-timeout 600
-   #gluster volume set VOLNAME performance.readdir-ahead on
-   #gluster volume set VOLNAME performance.parallel-readdir on
+   #gluster volume set VOLNAME features.cache-invalidation on<br>
+   #gluster volume set VOLNAME features.cache-invalidation-timeout 600<br>
+   #gluster volume set VOLNAME performance.cache-samba-metadata on<br>
+   #gluster volume set VOLNAME performance.stat-prefetch on<br>
+   #gluster volume set VOLNAME performance.cache-invalidation on<br>
+   #gluster volume set VOLNAME performance.md-cache-timeout 600<br>
+   #gluster volume set VOLNAME network.inode-lru-limit 200000<br>
+   #gluster volume set VOLNAME performance.nl-cache on<br>
+   #gluster volume set VOLNAME performance.nl-cache-timeout 600<br>
+   #gluster volume set VOLNAME performance.readdir-ahead on<br>
+   #gluster volume set VOLNAME performance.parallel-readdir on<br>
    ```
    4. Tune the number of threads in gluster for better performance:
    ```
-   #gluster volume set VOLNAME client.event-threads 4
+   #gluster volume set VOLNAME client.event-threads 4<br>
    #gluster volume set VOLNAME server.event-threads 4 #Increasing to a very high value will reduce the performance
    ```
 
 ##### Step 5: Mount the volume using SMB
   1. If no Active directory setup add the user on all the samba server and set the password  
    ```
-   # adduser USERNAME
+   # adduser USERNAME<br>
    # smbpasswd -a USERNAME
    ```
 
   2. Start the ctdb, smb and other related services:  
    ```
-   # systemctl re/start ctdb
-   # ctdb status
-   # ctdb ip
+   # systemctl re/start ctdb<br>
+   # ctdb status<br>
+   # ctdb ip<br>
    # ctdb ping -n all
    ```
 
