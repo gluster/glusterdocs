@@ -70,7 +70,7 @@ Create a Replicated Volume
 gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |rdma | tcp,rdma]] NEW-BRICK...
 ```
 
-**For example**, to create a replicated volume with two storage servers:
+**For example**, to create a replicated volume with three storage servers:
 
 ```console
 # gluster volume create test-volume replica 3 transport tcp \
@@ -100,7 +100,7 @@ Create the distributed replicated volume:
 gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
 ```
 
-**For example**, four node distributed (replicated) volume with a two-way
+**For example**, six node distributed replicated volume with a three-way
 mirror:
 
 ```console
