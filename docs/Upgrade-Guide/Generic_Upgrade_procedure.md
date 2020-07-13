@@ -24,7 +24,24 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
         
 2. Stop all applications that run on this server and access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.)
 
-3. Install Gluster new-version
+3. Install Gluster new-version, below example shows how to create a repository on fedora and use it to upgrade : 
+
+    3.1  Create a private repository (assuming /new-gluster-rpms/  folder has the new rpms ): 
+
+        # createrepo /new-gluster-rpms/
+
+    3.2  Create the .repo file in /etc/yum.d/ : 
+
+        # cat /etc/yum.d/newglusterrepo.repo 
+         [newglusterrepo]
+         name=NewGlusterRepo
+         baseurl="file:///new-gluster-rpms/"
+         gpgcheck=0
+         enabled=1
+
+    3.3  Upgrade glusterfs, for example to upgrade glusterfs-server to x.y version : 
+    
+        # yum update glusterfs-server-x.y.fc30.x86_64.rpm 
 
 4. Ensure that version reflects new-version in the output of,
 
