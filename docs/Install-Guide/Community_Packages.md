@@ -66,7 +66,7 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 
 
 
-[1] <https://www.gluster.org/release-schedule/>
+[1] <https://www.gluster.org/release-schedule/>  
 [2] <https://wiki.centos.org/SpecialInterestGroup/Storage>  
 [3] <https://download.gluster.org/pub/gluster/glusterfs>  
 [4] <https://launchpad.net/~gluster>  
