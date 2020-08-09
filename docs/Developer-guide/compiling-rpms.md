@@ -6,7 +6,7 @@ Creating rpm's of GlusterFS from git source is fairly easy, once you know the st
 RPMS can be compiled on at least the following OS's:
 
 - Red Hat Enterprise Linux 5, 6 (& 7 when available)
-- CentOS 5, 6 (& 7 when available)
+- CentOS 5, 6, and 8
 - Fedora 16-20
 
 Specific instructions for compiling are below. If you're using:
@@ -14,9 +14,10 @@ Specific instructions for compiling are below. If you're using:
 - Fedora 16-20 - Follow the Fedora steps, then do all of the Common steps.
 - CentOS 5.x - Follow the CentOS 5.x steps, then do all of the Common steps
 - CentOS 6.x - Follow the CentOS 6.x steps, then do all of the Common steps.
+- CentOS 8.x - Follow the CentOS 8.x steps, then follow from step 2 in the Common steps.
 - RHEL 6.x - Follow the RHEL 6.x steps, then do all of the Common steps.
 
-**Note** - these instructions have been explicitly tested on all of CentOS 5.10, RHEL 6.4, CentOS 6.4+, and Fedora 16-20. Other releases of RHEL/CentOS and Fedora may work too, but haven't been tested. Please update this page appropriately if you do so. :)
+**Note** - these instructions have been explicitly tested on all of CentOS 5.10, RHEL 6.4, CentOS 6.4+, CentOS 8.4 and Fedora 16-20. Other releases of RHEL/CentOS and Fedora may work too, but haven't been tested. Please update this page appropriately if you do so. :)
 
 ### Preparation steps for Fedora 16-20 (only)
 
@@ -60,6 +61,25 @@ You'll need EPEL installed first and some CentOS specific packages. The commands
 
 Now follow through the **Common Steps** part below.
 
+
+### Preparation steps for CentOS 8.x (only)
+
+You'll need EPEL installed and then the powertools package enabled. 
+
+1. Install EPEL first:
+	
+		# sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+2. Enable the PowerTools repo and install CentOS 8.x specific packages for building the rpms.
+
+		# sudo yum --enablerepo=PowerTools install automake autoconf libtool flex bison openssl-devel \
+		    libxml2-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel \
+		    glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel \
+		    redhat-rpm-config rpcgen libtirpc-devel make python3-devel rsync libuuid-devel \
+		    rpm-build dbench perl-Test-Harness attr libcurl-devel selinux-policy-devel -y
+
+Now follow through from Point 2 in the **Common Steps** part below.
+
 ### Preparation steps for RHEL 6.x (only)
 
 You'll need EPEL installed first and some RHEL specific packages. The 2 commands below will get that done for you. After that, follow through the "Common steps" section.
@@ -73,7 +93,7 @@ You'll need EPEL installed first and some RHEL specific packages. The 2 commands
 		# sudo yum -y --enablerepo=rhel-6-server-optional-rpms install python-webob1.0 \
 	        python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
 
-Now follow through the **Common Steps** part below.
+Now follow through the **Common Steps** part below. 
 
 ### Common Steps
 
@@ -83,6 +103,8 @@ These steps are for both Fedora and RHEL/CentOS. At the end you'll have the comp
 
 - If you're on RHEL/CentOS 5.x and get a message about lvm2-devel not being available, it's ok. You can ignore it. :)
 - If you're on RHEL/CentOS 6.x and get any messages about python-eventlet, python-netifaces, python-sphinx and/or pyxattr not being available, it's ok. You can ignore them. :)
+- If you're on CentOS 8.x, you can skip the step 1 and start from step 2. Also, for CentOS 8.x, the steps have been
+tested for master branch. It is unknown if it would work for older branches.
 
 <br/>
 
@@ -119,7 +141,7 @@ These steps are for both Fedora and RHEL/CentOS. At the end you'll have the comp
 
 		# git checkout release-3.4
 
-    **NOTE -** The CentOS 5.x instructions have only been tested for the master branch in GlusterFS git. It is unknown (yet) if they work for branches older then release-3.5.
+    **NOTE -** The CentOS 5.x and instructions have only been tested for the master branch in GlusterFS git. It is unknown (yet) if they work for branches older then release-3.5.
 
 4. Configure and compile GlusterFS
 
