@@ -141,7 +141,7 @@ tested for master branch. It is unknown if it would work for older branches.
 
 		# git checkout release-3.4
 
-    **NOTE -** The CentOS 5.x and instructions have only been tested for the master branch in GlusterFS git. It is unknown (yet) if they work for branches older then release-3.5.
+    **NOTE -** The CentOS 5.x instructions have only been tested for the master branch in GlusterFS git. It is unknown (yet) if they work for branches older then release-3.5.
 
 4. Configure and compile GlusterFS
 
