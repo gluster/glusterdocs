@@ -6,7 +6,7 @@ Creating rpm's of GlusterFS from git source is fairly easy, once you know the st
 RPMS can be compiled on at least the following OS's:
 
 - Red Hat Enterprise Linux 5, 6 (& 7 when available)
-- CentOS 5, 6, and 8
+- CentOS 5, 6, 7 and 8
 - Fedora 16-20
 
 Specific instructions for compiling are below. If you're using:
@@ -93,7 +93,7 @@ You'll need EPEL installed first and some RHEL specific packages. The 2 commands
 		# sudo yum -y --enablerepo=rhel-6-server-optional-rpms install python-webob1.0 \
 	        python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
 
-Now follow through the **Common Steps** part below. 
+Now follow through the **Common Steps** part below.
 
 ### Common Steps
 
