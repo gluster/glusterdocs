@@ -25,9 +25,9 @@ In short, use client-side profiling for understanding "why is my application unr
 To run client-side profiling,
 
 - gluster volume profile your-volume start
-- setfattr -n trusted.io-stats-dump -v /tmp/io-stats-pre.txt /your/mountpoint
+- setfattr -n trusted.io-stats-dump -v io-stats-pre.txt /your/mountpoint
 
-This will generate the specified file on the client.  A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis)  can automate collection of this data.  
+This will generate the specified file (`/var/run/gluster/io-stats-pre.txt`) on the client.  A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis)  can automate collection of this data.
 
 TBS: what the different FOPs are and what they mean.
 
