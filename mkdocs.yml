@@ -26,15 +26,15 @@ nav:
   - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
   - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
   - Setting Up Storage:
-     - Setting Up Storage : Administrator Guide/setting-up-storage.md
-     - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
-     - Formatting and Mounting Bricks: Administrator Guide/formatting-and-mounting-bricks.md
-     - Access Control Lists: Administrator Guide/Access Control Lists.md
-  - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
-  - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
-  - Setting Up Clients: Administrator Guide/Setting Up Clients.md
-  - Managing Volumes: Administrator Guide/Managing Volumes.md
-  - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
+    - Setting Up Storage : Administrator Guide/setting-up-storage.md
+    - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
+    - Formatting and Mounting Bricks: Administrator Guide/formatting-and-mounting-bricks.md
+    - Access Control Lists: Administrator Guide/Access Control Lists.md
+    - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
+    - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
+    - Setting Up Clients: Administrator Guide/Setting Up Clients.md
+    - Managing Volumes: Administrator Guide/Managing Volumes.md
+    - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
   - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
   - Logging: Administrator Guide/Logging.md
   - Features:
@@ -108,99 +108,105 @@ nav:
   - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
 - Release Notes:
   - index: release-notes/index.md
-  - 8.1: release-notes/8.1.md
-  - 8.0: release-notes/8.0.md
-  - 7.7: release-notes/7.7.md
-  - 7.6: release-notes/7.6.md
-  - 7.5: release-notes/7.5.md
-  - 7.4: release-notes/7.4.md
-  - 7.3: release-notes/7.3.md
-  - 7.2: release-notes/7.2.md
-  - 7.1: release-notes/7.1.md
-  - 7.0: release-notes/7.0.md
-  - 6.10.: release-notes/6.10.md
-  - 6.9: release-notes/6.9.md
-  - 6.8: release-notes/6.8.md
-  - 6.7: release-notes/6.7.md
-  - 6.6: release-notes/6.6.md
-  - 6.5: release-notes/6.5.md
-  - 6.4: release-notes/6.4.md
-  - 6.3: release-notes/6.3.md
-  - 6.2: release-notes/6.2.md
-  - 6.1: release-notes/6.1.md
-  - 6.0: release-notes/6.0.md
-  - 5.13: release-notes/5.13.md
-  - 5.12: release-notes/5.12.md
-  - 5.11: release-notes/5.11.md
-  - 5.10.: release-notes/5.10.md
-  - 5.9: release-notes/5.9.md
-  - 5.8: release-notes/5.8.md
-  - 5.6: release-notes/5.6.md
-  - 5.5: release-notes/5.5.md
-  - 5.3: release-notes/5.3.md
-  - 5.2: release-notes/5.2.md
-  - 5.1: release-notes/5.1.md
-  - 5.0: release-notes/5.0.md
-  - 4.1.10: release-notes/4.1.10.md
-  - 4.1.9: release-notes/4.1.9.md
-  - 4.1.8: release-notes/4.1.8.md
-  - 4.1.7: release-notes/4.1.7.md
-  - 4.1.6: release-notes/4.1.6.md
-  - 4.1.5: release-notes/4.1.5.md
-  - 4.1.4: release-notes/4.1.4.md
-  - 4.1.3: release-notes/4.1.3.md
-  - 4.1.2: release-notes/4.1.2.md
-  - 4.1.1: release-notes/4.1.1.md
-  - 4.1.0: release-notes/4.1.0.md
-  - 4.0.2: release-notes/4.0.2.md
-  - 4.0.1: release-notes/4.0.1.md
-  - 4.0.0: release-notes/4.0.0.md
-  - 3.13.2: release-notes/3.13.2.md
-  - 3.13.1: release-notes/3.13.1.md
-  - 3.13.0: release-notes/3.13.0.md
-  - 3.12.15: release-notes/3.12.15.md
-  - 3.12.14: release-notes/3.12.14.md
-  - 3.12.13: release-notes/3.12.13.md
-  - 3.12.12: release-notes/3.12.12.md
-  - 3.12.11: release-notes/3.12.11.md
-  - 3.12.10: release-notes/3.12.10.md
-  - 3.12.9: release-notes/3.12.9.md
-  - 3.12.8: release-notes/3.12.8.md
-  - 3.12.7: release-notes/3.12.7.md
-  - 3.12.6: release-notes/3.12.6.md
-  - 3.12.5: release-notes/3.12.5.md
-  - 3.12.4: release-notes/3.12.4.md
-  - 3.12.3: release-notes/3.12.3.md
-  - 3.12.2: release-notes/3.12.2.md
-  - 3.12.1: release-notes/3.12.1.md
-  - 3.12.0: release-notes/3.12.0.md
-  - 3.11.3: release-notes/3.11.3.md
-  - 3.11.2: release-notes/3.11.2.md
-  - 3.11.1: release-notes/3.11.1.md
-  - 3.11.0: release-notes/3.11.0.md
-  - 3.10.12: release-notes/3.10.12.md
-  - 3.10.11: release-notes/3.10.11.md
-  - 3.10.10: release-notes/3.10.10.md
-  - 3.10.9: release-notes/3.10.9.md
-  - 3.10.8: release-notes/3.10.8.md
-  - 3.10.7: release-notes/3.10.7.md
-  - 3.10.6: release-notes/3.10.6.md
-  - 3.10.5: release-notes/3.10.5.md
-  - 3.10.4: release-notes/3.10.4.md
-  - 3.10.3: release-notes/3.10.3.md
-  - 3.10.2: release-notes/3.10.2.md
-  - 3.10.1: release-notes/3.10.1.md
-  - 3.10.0: release-notes/3.10.0.md
-  - 3.9.0: release-notes/3.9.0.md
-  - 3.7.1: release-notes/3.7.1.md
-  - 3.7.0: release-notes/3.7.0.md
-  - 3.6.3: release-notes/3.6.3.md
-  - 3.6.0: release-notes/3.6.0.md
-  - 3.5.4: release-notes/3.5.4.md
-  - 3.5.3: release-notes/3.5.3.md
-  - 3.5.2: release-notes/3.5.2.md
-  - 3.5.1: release-notes/3.5.1.md
-  - 3.5.0: release-notes/3.5.0.md
+  - RELEASE 8.x:
+    - 8.1: release-notes/8.1.md
+    - 8.0: release-notes/8.0.md
+  - RELEASE 7.x:
+    - 7.7: release-notes/7.7.md
+    - 7.6: release-notes/7.6.md
+    - 7.5: release-notes/7.5.md
+    - 7.4: release-notes/7.4.md
+    - 7.3: release-notes/7.3.md
+    - 7.2: release-notes/7.2.md
+    - 7.1: release-notes/7.1.md
+    - 7.0: release-notes/7.0.md
+  - RELEASE 6.x:
+    - 6.10.: release-notes/6.10.md
+    - 6.9: release-notes/6.9.md
+    - 6.8: release-notes/6.8.md
+    - 6.7: release-notes/6.7.md
+    - 6.6: release-notes/6.6.md
+    - 6.5: release-notes/6.5.md
+    - 6.4: release-notes/6.4.md
+    - 6.3: release-notes/6.3.md
+    - 6.2: release-notes/6.2.md
+    - 6.1: release-notes/6.1.md
+    - 6.0: release-notes/6.0.md
+  - RELEASE 5.x:
+    - 5.13: release-notes/5.13.md
+    - 5.12: release-notes/5.12.md
+    - 5.11: release-notes/5.11.md
+    - 5.10.: release-notes/5.10.md
+    - 5.9: release-notes/5.9.md
+    - 5.8: release-notes/5.8.md
+    - 5.6: release-notes/5.6.md
+    - 5.5: release-notes/5.5.md
+    - 5.3: release-notes/5.3.md
+    - 5.2: release-notes/5.2.md
+    - 5.1: release-notes/5.1.md
+    - 5.0: release-notes/5.0.md
+  - RELEASE 4.x:
+    - 4.1.10: release-notes/4.1.10.md
+    - 4.1.9: release-notes/4.1.9.md
+    - 4.1.8: release-notes/4.1.8.md
+    - 4.1.7: release-notes/4.1.7.md
+    - 4.1.6: release-notes/4.1.6.md
+    - 4.1.5: release-notes/4.1.5.md
+    - 4.1.4: release-notes/4.1.4.md
+    - 4.1.3: release-notes/4.1.3.md
+    - 4.1.2: release-notes/4.1.2.md
+    - 4.1.1: release-notes/4.1.1.md
+    - 4.1.0: release-notes/4.1.0.md
+    - 4.0.2: release-notes/4.0.2.md
+    - 4.0.1: release-notes/4.0.1.md
+    - 4.0.0: release-notes/4.0.0.md
+  - RELEASE 3.x:
+    - 3.13.2: release-notes/3.13.2.md
+    - 3.13.1: release-notes/3.13.1.md
+    - 3.13.0: release-notes/3.13.0.md
+    - 3.12.15: release-notes/3.12.15.md
+    - 3.12.14: release-notes/3.12.14.md
+    - 3.12.13: release-notes/3.12.13.md
+    - 3.12.12: release-notes/3.12.12.md
+    - 3.12.11: release-notes/3.12.11.md
+    - 3.12.10: release-notes/3.12.10.md
+    - 3.12.9: release-notes/3.12.9.md
+    - 3.12.8: release-notes/3.12.8.md
+    - 3.12.7: release-notes/3.12.7.md
+    - 3.12.6: release-notes/3.12.6.md
+    - 3.12.5: release-notes/3.12.5.md
+    - 3.12.4: release-notes/3.12.4.md
+    - 3.12.3: release-notes/3.12.3.md
+    - 3.12.2: release-notes/3.12.2.md
+    - 3.12.1: release-notes/3.12.1.md
+    - 3.12.0: release-notes/3.12.0.md
+    - 3.11.3: release-notes/3.11.3.md
+    - 3.11.2: release-notes/3.11.2.md
+    - 3.11.1: release-notes/3.11.1.md
+    - 3.11.0: release-notes/3.11.0.md
+    - 3.10.12: release-notes/3.10.12.md
+    - 3.10.11: release-notes/3.10.11.md
+    - 3.10.10: release-notes/3.10.10.md
+    - 3.10.9: release-notes/3.10.9.md
+    - 3.10.8: release-notes/3.10.8.md
+    - 3.10.7: release-notes/3.10.7.md
+    - 3.10.6: release-notes/3.10.6.md
+    - 3.10.5: release-notes/3.10.5.md
+    - 3.10.4: release-notes/3.10.4.md
+    - 3.10.3: release-notes/3.10.3.md
+    - 3.10.2: release-notes/3.10.2.md
+    - 3.10.1: release-notes/3.10.1.md
+    - 3.10.0: release-notes/3.10.0.md
+    - 3.9.0: release-notes/3.9.0.md
+    - 3.7.1: release-notes/3.7.1.md
+    - 3.7.0: release-notes/3.7.0.md
+    - 3.6.3: release-notes/3.6.3.md
+    - 3.6.0: release-notes/3.6.0.md
+    - 3.5.4: release-notes/3.5.4.md
+    - 3.5.3: release-notes/3.5.3.md
+    - 3.5.2: release-notes/3.5.2.md
+    - 3.5.1: release-notes/3.5.1.md
+    - 3.5.0: release-notes/3.5.0.md
 - GlusterFS Tools:
   - GlusterFS Tools List: GlusterFS Tools/README.md
   - glusterfind: GlusterFS Tools/glusterfind.md
@@ -223,6 +229,6 @@ nav:
 - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 theme:
-  name: 'material'
+   name: 'material'
 extra_javascript:
 - js/fix-docs.js
