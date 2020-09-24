@@ -30,7 +30,6 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |Groovy/20.10    |    yes    |    yes    |
 |              |                |           |           |
 |OpenSUSE Build Service[5]|SLES12SP5    |    no     |    yes    |
-|              |SLES12SP5       |    no     |    yes    |
 |              |Leap15.2        |    yes    |    yes    |
 |              |SLES15SP2       |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |
@@ -58,7 +57,6 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |Groovy/20.10    |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
 |              |                |         |          |            |             |          |         |
 |OpenSUSE Build Service[5]|SLES12SP5       |   yes    |    yes     |     yes     |   yes    |   yes   |    ?   |
-|              |SLES12SP5       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |Leap15.2        |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |SLES15SP2       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |Tumbleweed      |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
