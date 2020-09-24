@@ -16,7 +16,8 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |                |           |           |
 |Fedora[3]     |F31             |    yes    |    yes¹   |
 |              |F32             |    yes    |    yes¹   |
-|              |F33(rawhide)    |    yes¹   |    yes    |
+|              |F33             |    yes¹   |    yes    |
+|              |F34(rawhide)    |    yes¹   |    yes    |
 |              |                |           |           |
 |Debian[3]     |Stretch/9       |     no    |    yes    |
 |              |Buster/10       |    yes    |    yes    |
@@ -29,10 +30,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |Groovy/20.10    |    yes    |    yes    |
 |              |                |           |           |
 |OpenSUSE Build Service[5]|SLES12SP5    |    no     |    yes    |
-|              |SLES12SP4       |    no     |    yes    |
+|              |SLES12SP5       |    no     |    yes    |
 |              |Leap15.2        |    yes    |    yes    |
-|              |SLES15SP1       |    yes    |    yes    |
-|              |SLES15          |    no     |    yes    |
+|              |SLES15SP2       |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |
 
 #### Related Packages
@@ -58,10 +58,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |Groovy/20.10    |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
 |              |                |         |          |            |             |          |         |
 |OpenSUSE Build Service[5]|SLES12SP5       |   yes    |    yes     |     yes     |   yes    |   yes   |    ?   |
-|              |SLES12SP4       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
+|              |SLES12SP5       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |Leap15.2        |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
-|              |SLES15          |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
-|              |SLES15SP1       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
+|              |SLES15SP2       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |Tumbleweed      |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 
 
@@ -72,4 +71,4 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 [4] <https://launchpad.net/~gluster>  
 [5] <http://download.opensuse.org/repositories/home:/glusterfs:/>  
 
-1 Fedora Updates, UpdatesTesting, or Rawhide repository. Use dnf to install.  
+¹ Fedora Updates, UpdatesTesting, or Rawhide repository. Use dnf to install.  
