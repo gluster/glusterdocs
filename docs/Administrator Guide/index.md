@@ -27,6 +27,7 @@
        * [Quotas](./Directory Quota.md)
        * [Snapshots](./Managing Snapshots.md)
        * [Trash](./Trash.md)
+       * [Hook Scripts](./Hook-scripts.md)
 
 7. Data Access With Other Interfaces
 
