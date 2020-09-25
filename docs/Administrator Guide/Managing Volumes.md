@@ -83,7 +83,7 @@ nfs.register-with-portmap | For systems that need to run multiple NFS servers, y
 nfs.port \<PORT- NUMBER\> | Use this option on systems that need Gluster NFS to be associated with a non-default port number. | NA | 38465- 38467
 nfs.disable | Turn-off volume being exported by NFS | Off | On/Off
 performance.write-behind-window-size | Size of the per-file write-behind buffer. | 1MB | Write-behind cache size
-performance.io-thread-count | The number of threads in IO threads translator. | 16 | 0-65
+performance.io-thread-count | The number of threads in IO threads translator. | 16 | 1-64
 performance.flush-behind | If this option is set ON, instructs write-behind translator to perform flush in background, by returning success (or any errors, if any of previous writes were failed) to application even before flush is sent to backend filesystem. | On | On/Off
 performance.cache-max-file-size | Sets the maximum file size cached by the io-cache translator. Can use the normal size descriptors of KB, MB, GB,TB or PB (for example, 6GB). Maximum size uint64. | 2 ^ 64 -1 bytes | size in bytes
 performance.cache-min-file-size | Sets the minimum file size cached by the io-cache translator. Values same as "max" above | 0B | size in bytes
