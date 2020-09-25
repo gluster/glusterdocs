@@ -838,7 +838,7 @@ sub-commands.
 
     `# gluster volume bitrot <VOLNAME> disable`
 
-> NOTE: Enabling bitrot spanws the Signer & Scrubber daemon per node. Signer is responsible
+> NOTE: Enabling bitrot spawns the Signer & Scrubber daemon per node. Signer is responsible
       for signing (calculating checksum for each file) an object and scrubber verifies the
       calculated checksum against the objects data.
 
