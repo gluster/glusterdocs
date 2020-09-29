@@ -8,6 +8,7 @@ Release Notes
 - [8.0](./8.0.md)
 
 ### GlusterFS 7 release notes
+- [7.8](./7.8.md)
 - [7.7](./7.7.md)
 - [7.6](./7.6.md)
 - [7.5](./7.5.md)
