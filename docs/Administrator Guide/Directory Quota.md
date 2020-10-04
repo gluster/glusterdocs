@@ -203,14 +203,22 @@ on client side.
 
 Use the following command to update the memory cache size:
 
+1. Soft Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is below the soft limit. The soft timeout is in effect when the disk usage is less than the soft limit.
+
 ```console
-# gluster volume set VOLNAME features.quota-timeout time
+# gluster volume set VOLNAME features.soft-timeout time
 ```
 
-For example, to update the memory cache size for every 5 seconds on test-volume:
+2. Hard Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit. 
 
 ```console
-# gluster volume set test-volume features.quota-timeout 5
+# gluster volume set VOLNAME features.hard-timeout time
+```
+
+For example, to update the memory cache size for every 5 seconds on test-volume in case of hard-timeout:
+
+```console
+# gluster volume set test-volume features.hard-timeout 5
 Set volume successful
 ```
 
