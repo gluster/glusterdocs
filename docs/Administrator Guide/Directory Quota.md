@@ -33,7 +33,7 @@ You must enable Quota to set disk limits.
 Use the following command to enable quota:
 
 ```console
-# gluster volume quota VOLNAME enable
+# gluster volume quota <VOLNAME> enable
 ```
 
 For example, to enable quota on the test-volume:
@@ -52,7 +52,7 @@ You can disable Quota, if needed.
 Use the following command to disable quota:
 
 ```console
-# gluster volume quota VOLNAME disable
+# gluster volume quota <VOLNAME> disable
 ```
 
 For example, to disable quota translator on the test-volume:
@@ -74,7 +74,7 @@ being treated as "/".
 Set the disk limit using the following command:
 
 ```console
-# gluster volume quota VOLNAME limit-usage DIR HARD_LIMIT
+# gluster volume quota <VOLNAME> limit-usage <DIR> <HARD_LIMIT>
 ```
 
 For example, to set limit on data directory on the test-volume where
@@ -104,7 +104,7 @@ the limit is set.
 -   Display disk limit information of all the directories on which limit
     is set, using the following command:
 
-        # gluster volume quota VOLNAME list
+        # gluster volume quota <VOLNAME> list
 
     For example, to see the set disks limit on the test-volume:
 
@@ -115,7 +115,7 @@ the limit is set.
 -   Display disk limit information on a particular directory on which
     limit is set, using the following command:
 
-        # gluster volume quota VOLNAME list DIR
+        # gluster volume quota <VOLNAME> list <DIR>
 
     For example, to view the set limit on /data directory of test-volume:
 
@@ -128,7 +128,7 @@ the limit is set.
 You can create a report of the disk usage using the df utility by taking quota limits into consideration. To generate a report, run the following command:
 
 ```console
-# gluster volume set VOLNAME quota-deem-statfs on
+# gluster volume set <VOLNAME> quota-deem-statfs on
 ```
 
 In this case, the total disk space of the directory is taken as the quota hard limit set on the directory of the volume.
@@ -206,13 +206,13 @@ Use the following command to update the memory cache size:
 1. Soft Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is below the soft limit. The soft timeout is in effect when the disk usage is less than the soft limit.
 
 ```console
-# gluster volume set VOLNAME features.soft-timeout time
+# gluster volume set <VOLNAME> features.soft-timeout <time>
 ```
 
 2. Hard Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit. 
 
 ```console
-# gluster volume set VOLNAME features.hard-timeout time
+# gluster volume set <VOLNAME> features.hard-timeout <time>
 ```
 
 For example, to update the memory cache size for every 5 seconds on test-volume in case of hard-timeout:
@@ -231,7 +231,7 @@ Alert time is the frequency at which you want your usage information to be logge
 Use the following command to set the alert time:
 
 ```console
-# gluster volume quota VOLNAME alert-time time
+# gluster volume quota <VOLNAME> alert-time <time>
 ```
 
 >**Note**
@@ -254,7 +254,7 @@ You can remove set disk limit, if you do not want quota anymore.
 Use the following command to remove the disk limit set on a particular directory:
 
 ```console
-# gluster volume quota VOLNAME remove DIR
+# gluster volume quota <VOLNAME> remove <DIR>
 ```
 
 For example, to remove the disk limit on /data directory of
