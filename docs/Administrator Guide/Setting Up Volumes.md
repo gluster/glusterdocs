@@ -46,7 +46,7 @@ See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
 
 -   Create a new volume :
 
-    `# gluster volume create [stripe | replica | disperse] [transport tcp | rdma | tcp,rdma] `
+    `# gluster volume create <NEW-VOLNAME> [stripe <COUNT>] [[replica <COUNT> [arbiter <COUNT>]]|[replica 2 thin-arbiter 1]] [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport <tcp|rdma|tcp,rdma>] <NEW-BRICK> <TA-BRICK>... [force] `
 
     For example, to create a volume called test-volume consisting of
     server3:/exp3 and server4:/exp4:
@@ -55,7 +55,7 @@ See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
         Creation of test-volume has been successful
         Please start the volume to access data.
 
-## Creating Distributed Volumes
+## **Creating Distributed Volumes**
 
 In a distributed volume files are spread randomly across the bricks in
 the volume. Use distributed volumes where you need to scale storage and
@@ -113,7 +113,7 @@ hardware/software layers.
     > Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-## Creating Replicated Volumes
+## **Creating Replicated Volumes**
 
 Replicated volumes create copies of files across multiple bricks in the
 volume. You can use replicated volumes in environments where
@@ -169,7 +169,7 @@ More information about this configuration can be found at *Features : afr-arbite
 
 Note that the arbiter configuration for replica 3 can be used to create distributed-replicate volumes as well.
 
-## Creating Distributed Replicated Volumes
+## **Creating Distributed Replicated Volumes**
 
 Distributes files across replicated bricks in the volume. You can use
 distributed replicated volumes in environments where the requirement is
@@ -227,7 +227,7 @@ environments.
 
     >  Use the `force` option at the end of command if you want to create the volume in this case.
 
-## Creating Dispersed Volumes
+## **Creating Dispersed Volumes**
 
 Dispersed volumes are based on erasure codes. It stripes the encoded data of
 files, with some redundancy added, across multiple bricks in the volume. You
@@ -336,17 +336,12 @@ a RMW cycle for many writes (of course this always depends on the use case).
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a dispersed volume if more than one brick of a disperse set is present on the same peer.
-
-    > 
+    > - GlusterFS will fail with a warning to create a dispersed volume if more than one brick of a disperse set is present on the same peer.
 
     >         # gluster volume create <volname> disperse 3 server1:/brick{1..3}
-    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    >         Do you still want to continue creating the volume? (y/n)
+    >         volume create: <volname>: failed: Multiple bricks of a disperse volume are present on the same server. This setup is not optimal. Bricks should be on different nodes to have best fault tolerant configuration. Use 'force' at the end of the command if you want to override this behavior.
 
-    >  Use the `force` option at the end of command if you want to create the volume in this case.
-
-## Creating Distributed Dispersed Volumes
+## **Creating Distributed Dispersed Volumes**
 
 Distributed dispersed volumes are the equivalent to distributed replicated
 volumes, but using dispersed subvolumes instead of replicated ones.
@@ -374,15 +369,10 @@ volumes, but using dispersed subvolumes instead of replicated ones.
     > - Make sure you start your volumes before you try to mount them or
     > else client operations after the mount will hang.
 
-    > - GlusterFS will fail to create a distributed dispersed volume if more than one brick of a disperse set is present on the same peer.
+    > - For distributed disperse volumes bricks can be hosted on same node if they belong to different subvol.
 
-    > 
-
-    >         # gluster volume create <volname> disperse 3 server1:/brick{1..6}
-    >         volume create: <volname>: failed: Multiple bricks of a replicate volume are present on the same server. This setup is not optimal.
-    >         Do you still want to continue creating the volume? (y/n)
-
-    > Use the `force` option at the end of command if you want to create the volume in this case.
+    >         # gluster volume create <volname> disperse 3 server1:/br1 server2:/br1 server3:/br1 server1:/br2 server2:/br2 server3:/br2
+    >        volume create: <volname>: success: please start the volume to access data
 
 ## Starting Volumes
 
@@ -392,7 +382,7 @@ You must start your volumes before you try to mount them.
 
 -   Start a volume:
 
-    `# gluster volume start `
+    `# gluster volume start <VOLNAME> [force]`
 
     For example, to start test-volume:
 
