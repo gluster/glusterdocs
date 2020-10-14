@@ -60,10 +60,11 @@ the same resource, because either would be insecure.  Instead, any such "mixed
 mode" connections will be rejected by the TLS-using side, sacrificing
 availability to maintain security.
 
-One point to note is that the TLS certificate verification will fail if the
-machines are synced with respect to the machine time. Certificate verification
-depends on the time of the machine and if that is not found to be in sync then
-it is deemed to be an invalid certificate.
+**NOTE**The TLS certificate verification will fail if the machines' date and 
+time are not in sync with each other. Certificate verification depends on the 
+time of the client as well as the server and if that is not found to be in 
+sync then it is deemed to be an invalid certificate. To get the date and times
+in sync, tools such as ntpdate can be used.
 
 ## Enabling TLS on the I/O Path
 
