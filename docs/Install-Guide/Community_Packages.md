@@ -25,9 +25,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |                |           |           |
 |Ubuntu Launchpad[4]|Xenial/16.04    |    no     |    yes    |
 |              |Bionic/18.04    |    yes    |    yes    |
-|              |Eoan/19.10      |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |
 |              |Groovy/20.10    |    yes    |    yes    |
+|              |Hirsute/21.04.  |    yes    |    yes    |
 |              |                |           |           |
 |OpenSUSE Build Service[5]|SLES12SP5    |    no     |    yes    |
 |              |Leap15.2        |    yes    |    yes    |
@@ -52,9 +52,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |                |         |          |            |             |          |         |
 |Ubuntu Launchpad[4]|Xenial/16.04    |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
 |              |Bionic/18.04    |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
-|              |Eoan/19.10      |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
 |              |Focal/20.04     |   no    |    no    |    yes     |     yes     |    yes   |   ?     |
 |              |Groovy/20.10    |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
+|              |Hirsute/21.04   |   no    |    no    |    yes     |     yes     |    yes   |    ?    |
 |              |                |         |          |            |             |          |         |
 |OpenSUSE Build Service[5]|SLES12SP5       |   yes    |    yes     |     yes     |   yes    |   yes   |    ?   |
 |              |Leap15.2        |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
