@@ -8,7 +8,7 @@ operations happen on the volume. Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
-​1. **Distributed Glusterfs Volume** - This is the type of volume which is created by default if no volume type is specified.
+1.__ **Distributed Glusterfs Volume** __- This is the type of volume which is created by default if no volume type is specified.
 Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
 **no data redundancy**. The purpose for such a storage volume is to easily & cheaply
@@ -16,7 +16,7 @@ scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
 
-![distributed_volume](https://cloud.githubusercontent.com/assets/10970993/7412364/ac0a300c-ef5f-11e4-8599-e7d06de1165c.png)
+![distributed volume](https://cloud.githubusercontent.com/assets/10970993/7412364/ac0a300c-ef5f-11e4-8599-e7d06de1165c.png)
 
 *Distributed volume*
 
@@ -50,7 +50,7 @@ Brick3: server3:/exp3
 Brick4: server4:/exp4
 ```
 
-​2. **Replicated Glusterfs Volume** - In this volume we overcome the
+2.__ **Replicated Glusterfs Volume** __- In this volume we overcome the
 risk of data loss which is present in the distributed volume. Here exact copies of
 the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
@@ -78,7 +78,7 @@ gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |rdma | tcp,rd
 volume create: test-volume: success: please start the volume to access data
 ```
 
-​3. **Distributed Replicated Glusterfs Volume** - In this volume files
+3.__ **Distributed Replicated Glusterfs Volume**__ - In this volume files
 are distributed across replicated sets of bricks. The number of bricks
 must be a multiple of the replica count. Also the order in which we
 specify the bricks is important since adjacent bricks become replicas of each
@@ -107,8 +107,74 @@ mirror:
 # gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
 volume create: test-volume: success: please start the volume to access data
 ```
+4.__ **Dispersed Glusterfs Volume**__ - Dispersed volumes are based on
+erasure codes. It stripes the encoded data of files, with some redundancy added,
+across multiple bricks in the volume. You can use dispersed volumes to
+have a configurable level of reliability with minimum space waste.
+The number of redundant bricks in the volume can be decided by clients while
+creating the volume. Redundant bricks determines how many bricks can be lost
+without interrupting the operation of the volume.
 
-### FUSE
+Create a dispersed volume:
+
+```
+# gluster volume create test-volume [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
+```
+
+**For example**, three node dispersed volume with level of redundancy 1, (2 + 1):
+
+```console
+# gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3
+volume create: test-volume: success: please start the volume to access data
+```
+
+5.__ **Distributed Dispersed Glusterfs Volume** - __
+Distributed dispersed volumes are the equivalent to distributed replicated volumes, but using dispersed subvolumes
+instead of replicated ones. The number of bricks must be a multiple of the 1st subvol.
+The purpose for such a volume is to easily scale the volume size and distribute the load
+across various bricks.
+
+Create a distributed dispersed volume:
+
+```
+# gluster volume create [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
+```
+
+**For example**, six node distributed dispersed volume with level of redundancy 1, 2 x (2 + 1) = 6:
+
+```console
+# gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+volume create: test-volume: success: please start the volume to access data
+```
+
+> **Note**:
+
+> -  A dispersed volume can be created by specifying the number of bricks in a
+   disperse set, by specifying the number of redundancy bricks, or both.
+
+> -  If *disperse* is not specified, or the <count> is missing, the
+   entire volume will be treated as a single disperse set composed by all
+   bricks enumerated in the command line.
+
+> -  If *redundancy* is not specified, it is computed automatically to be the
+   optimal value. If this value does not exist, it's assumed to be '1' and a
+   warning message is shown:
+
+>        # gluster volume create test-volume disperse 4 server{1..4}:/bricks/test-volume
+         There isn't an optimal redundancy value for this configuration. Do you want to create the volume with redundancy 1 ? (y/n)
+
+> -  In all cases where *redundancy* is automatically computed and it's not
+   equal to '1', a warning message is displayed:
+
+>        # gluster volume create test-volume disperse 6 server{1..6}:/bricks/test-volume
+         The optimal redundancy for this configuration is 2. Do you want to create the volume with this value ? (y/n)
+
+> -  *redundancy* must be greater than 0, and the total number of bricks must
+   be greater than 2 * _redundancy_. This means that a dispersed volume must
+   have a minimum of 3 bricks.
+
+
+### **FUSE**
 
 GlusterFS is a userspace filesystem. The GluserFS developers opted for this approach in order to avoid the need to have modules in the Linux kernel.
 
