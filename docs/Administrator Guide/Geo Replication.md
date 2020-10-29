@@ -468,6 +468,19 @@ The `CRAWL STATUS` can be one of the following:
 - **Changelog Crawl**: The changelog translator has produced the changelog and that is being consumed
     by gsyncd daemon to sync data.
 
+The `ENTRY` denotes:
+  **The number of pending entry operations** (create, mkdir, mknod, symlink, link, rename, unlink, rmdir)  per session.
+
+The `DATA` denotes:
+  **The number of pending Data operations** (write, writev, truncate, ftruncate) per session.
+
+The `META` denotes:
+  **The number of pending Meta operations** (setattr, fsetattr, setxattr, fsetxattr, removexattr, fremovexattr) per session.
+
+The `FAILURE` denotes:
+  **The number of failures per session**. On encountering failures, one can proceed to look at the log files.
+
+
 ## Deleting the session
 Established Geo-replication session can be deleted using the following
 command,
