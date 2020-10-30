@@ -115,6 +115,14 @@ Perform the following steps post upgrading the entire trusted storage pool,
 - Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to new-version version as well
 - Post upgrading the clients, for replicate volumes, it is recommended to enable the option `gluster volume set <volname> fips-mode-rchecksum on` to turn off usage of MD5 checksums during healing. This enables running Gluster on FIPS compliant systems.
 
+#### If upgrading from a version lesser than Gluster 7.0
+
+> **NOTE:** If you have ever enabled quota on your volumes then after the upgrade
+is done, you will have to restart all the nodes in the cluster one by one so as to
+fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.` 
+The peers may go into  `Peer rejected` state while doing so but once all the nodes are rebooted
+everything will be back to normal.
+
 ### Upgrade procedure for clients
 Following are the steps to upgrade clients to the new-version version,
 
