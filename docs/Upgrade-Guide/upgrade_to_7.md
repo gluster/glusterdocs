@@ -9,6 +9,12 @@ Refer, to the [Upgrading to 4.1](./upgrade_to_4.1.md) guide and follow
 documented instructions, replacing 7 when you encounter 4.1 in the guide as the
 version reference.
 
+> **NOTE:** If you have ever enabled quota on your volumes then after the upgrade
+is done, you will have to restart all the nodes in the cluster one by one so as to
+fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.` 
+The peers may go into  `Peer rejected` state while doing so but once all the nodes are rebooted
+everything will be back to normal.
+
 ### Major issues
 
 1. The following options are removed from the code base and require to be unset
