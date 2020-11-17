@@ -23,7 +23,7 @@ with most of the workload accessing a file sumultaneously from multiple clients.
     # gluster volume set <volname> cache-samba-metadata on
     ```
 
- 4. By default, some xattrs are cached by gluster like: camability xattrs, ima xattrs
+ 4. By default, some xattrs are cached by gluster like: capability xattrs, ima xattrs
     ACLs, etc. If there are any other xattrs that are used by the application using
     the Gluster storage, execute the following command to add these xattrs to the metadata
     cache list:
@@ -36,21 +36,27 @@ with most of the workload accessing a file sumultaneously from multiple clients.
     ```
 
 ## Directory operations
-Along with enabling the metadata caching, the following options can be set to increase directory operations:
+Along with enabling the metadata caching, the following options can be set to
+increase performance of directory operations:
+
    ### Directory listing Performance:
-   1. Enable Parallel-readdir
+
+   - Enable `parallel-readdir`
     ```
     # gluster volume set <VOLNAME> performance.readdir-ahead on
     # gluster volume set <VOLNAME> performance.parallel-readdir on
     ```
 
    ### File/Directory Create Performance
-   1. Enable nl-cache
+
+   - Enable `nl-cache`
     ```
     # gluster volume set <volname> group nl-cache
     # gluster volume set <volname> nl-cache-positive-entry on
     ```
-The above command also enables cache-invalidation and increases the timeout to 10 minutes
+
+The above command also enables cache invalidation and increases the timeout to
+10 minutes
 
 ## Small file Read operations
 For use cases with dominant small file reads, enable the following options
@@ -60,11 +66,15 @@ For use cases with dominant small file reads, enable the following options
     # gluster volume set <volname> performance.qr-cache-timeout 600 --> 10 min recommended setting
     # gluster volume set <volname> cache-invalidation-timeout 600 --> 10 min recommended setting
 
-This command enables caching of the content of small file, in the client cache. Enabling cache
-invalidation ensures cache consistency. The total cache size, can be set using
+This command enables caching of the content of small file, in the client cache.
+Enabling cache invalidation ensures cache consistency.
+
+The total cache size can be set using
 
     # gluster volume set <volname> cache-size <size>
 
-By default, the files with size <=64KB is cached. To change this value
+By default, the files with size `<=64KB` are cached. To change this value:
 
     # gluster volume set <volname> performance.cache-max-file-size <size>
+
+Note that the `size` arguments use SI unit suffixes, e.g. `64KB` or `2MB`.
