@@ -335,12 +335,12 @@ bricks belonging to that volume will be displayed.
 -   View list of highest directory read calls on each brick using the
     following command:
 
-    `# gluster volume top  readdir [brick ] [list-cnt ] `
+    `# gluster volume top test-volume readdir [brick BRICK] [list-cnt {0..100}] `
 
     For example, to view highest directory read calls on brick
     server:/export of test-volume:
 
-    `# gluster volume top  readdir brick  list-cnt `
+    `# gluster volume top test-volume readdir brick server:/export list-cnt 10`
 
     `Brick: `
 
@@ -719,7 +719,7 @@ details:
 -   Display the list of clients accessing the volumes using the
     following command:
 
-    `# gluster volume status  clients`
+    `# gluster volume status test-volume clients`
 
     For example, to display the list of clients connected to
     test-volume:
@@ -735,7 +735,7 @@ details:
 -   Display the memory usage and memory pool details of the bricks using
     the following command:
 
-    `# gluster volume status  mem`
+    `# gluster volume status test-volume mem`
 
     For example, to display the memory usage and memory pool details of
     the bricks of test-volume:
