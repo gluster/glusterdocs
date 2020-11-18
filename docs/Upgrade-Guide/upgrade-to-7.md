@@ -5,13 +5,13 @@ aware of the features and fixes provided with the release.
 
 > **NOTE:** Upgrade procedure remains the same as with 4.1.x release
 
-Refer, to the [Upgrading to 4.1](./upgrade_to_4.1.md) guide and follow
+Refer, to the [Upgrading to 4.1](./upgrade-to-4.1.md) guide and follow
 documented instructions, replacing 7 when you encounter 4.1 in the guide as the
 version reference.
 
 > **NOTE:** If you have ever enabled quota on your volumes then after the upgrade
 is done, you will have to restart all the nodes in the cluster one by one so as to
-fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.` 
+fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.`
 The peers may go into  `Peer rejected` state while doing so but once all the nodes are rebooted
 everything will be back to normal.
 
@@ -43,6 +43,4 @@ upgrading the cluster.
 
 ### Deprecated translators and upgrade procedure for volumes using these features
 
-[If you are upgrading from a release prior to release-6 be aware of deprecated xlators and functionality](https://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_6/#deprecated-translators-and-upgrade-procedure-for-volumes-using-these-features). 
-
-
+[If you are upgrading from a release prior to release-6 be aware of deprecated xlators and functionality](https://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_6/#deprecated-translators-and-upgrade-procedure-for-volumes-using-these-features).

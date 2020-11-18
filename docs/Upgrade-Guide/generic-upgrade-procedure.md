@@ -1,6 +1,5 @@
 # Generic Upgrade procedure
 
-
 ### Pre-upgrade notes
 - Online upgrade is only possible with replicated and distributed replicate volumes
 - Online upgrade is not supported for dispersed or distributed dispersed volumes
@@ -21,27 +20,27 @@ This procedure involves upgrading **one server at a time**, while keeping the vo
         # systemctl stop glusterd
         # systemctl stop glustereventsd
         # killall glusterfs glusterfsd glusterd
-        
+
 2. Stop all applications that run on this server and access the volumes via gfapi (qemu, NFS-Ganesha, Samba, etc.)
 
-3. Install Gluster new-version, below example shows how to create a repository on fedora and use it to upgrade : 
+3. Install Gluster new-version, below example shows how to create a repository on fedora and use it to upgrade :
 
-    3.1  Create a private repository (assuming /new-gluster-rpms/  folder has the new rpms ): 
+    3.1  Create a private repository (assuming /new-gluster-rpms/  folder has the new rpms ):
 
         # createrepo /new-gluster-rpms/
 
-    3.2  Create the .repo file in /etc/yum.d/ : 
+    3.2  Create the .repo file in /etc/yum.d/ :
 
-        # cat /etc/yum.d/newglusterrepo.repo 
+        # cat /etc/yum.d/newglusterrepo.repo
          [newglusterrepo]
          name=NewGlusterRepo
          baseurl="file:///new-gluster-rpms/"
          gpgcheck=0
          enabled=1
 
-    3.3  Upgrade glusterfs, for example to upgrade glusterfs-server to x.y version : 
-    
-        # yum update glusterfs-server-x.y.fc30.x86_64.rpm 
+    3.3  Upgrade glusterfs, for example to upgrade glusterfs-server to x.y version :
+
+        # yum update glusterfs-server-x.y.fc30.x86_64.rpm
 
 4. Ensure that version reflects new-version in the output of,
 
@@ -78,7 +77,7 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 1. On every server in the trusted storage pool, stop all gluster services, either using the command below, or through other means,
 
 ```sh
-    
+
     # systemctl stop glusterd
     # systemctl stop glustereventsd
     # killall glusterfs glusterfsd glusterd
@@ -111,7 +110,7 @@ This procedure involves cluster downtime and during the upgrade window, clients 
 ### Post upgrade steps
 Perform the following steps post upgrading the entire trusted storage pool,
 
-- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op_version.md) section for further details
+- It is recommended to update the op-version of the cluster. Refer, to the [op-version](./op-version.md) section for further details
 - Proceed to [upgrade the clients](#upgrade-procedure-for-clients) to new-version version as well
 - Post upgrading the clients, for replicate volumes, it is recommended to enable the option `gluster volume set <volname> fips-mode-rchecksum on` to turn off usage of MD5 checksums during healing. This enables running Gluster on FIPS compliant systems.
 
@@ -119,7 +118,7 @@ Perform the following steps post upgrading the entire trusted storage pool,
 
 > **NOTE:** If you have ever enabled quota on your volumes then after the upgrade
 is done, you will have to restart all the nodes in the cluster one by one so as to
-fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.` 
+fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.`
 The peers may go into  `Peer rejected` state while doing so but once all the nodes are rebooted
 everything will be back to normal.
 

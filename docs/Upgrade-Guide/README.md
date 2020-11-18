@@ -4,14 +4,14 @@ Upgrading GlusterFS
 
 If you are using GlusterFS version 5.x or above, you can upgrade it to the following:
 
--   [Upgrading to 8](./upgrade_to_8.md)
--   [Upgrading to 7](./upgrade_to_7.md)
--   [Upgrading to 6](./upgrade_to_6.md)
+-   [Upgrading to 8](./upgrade-to-8.md)
+-   [Upgrading to 7](./upgrade-to-7.md)
+-   [Upgrading to 6](./upgrade-to-6.md)
 
 If you are using GlusterFS version 4.x or above, you can upgrade it to the following:
 
--   [Upgrading to 6](./upgrade_to_6.md)
--   [Upgrading to 5](./upgrade_to_5.md)
+-   [Upgrading to 6](./upgrade-to-6.md)
+-   [Upgrading to 5](./upgrade-to-5.md)
 
 If you are using GlusterFS version 3.4.x or above, you can upgrade it to following:
 
