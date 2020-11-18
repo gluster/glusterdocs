@@ -88,7 +88,7 @@ For example, to see the I/O information on test-volume:
 
 
     %-latency  Avg-      Min-       Max-       calls     Fop
-              latency   Latency    Latency  
+              latency   Latency    Latency
     ___________________________________________________________
     4.82      1132.28   21.00      800970.00   4575    WRITE
     5.70       156.47    9.00      665085.00   39163   READDIRP
@@ -167,7 +167,7 @@ displayed.
                      ==========Open file stats========
 
         open            file name
-        call count     
+        call count
 
         2               /clients/client0/~dmtmp/PARADOX/
                         COURSES.DB
@@ -310,7 +310,7 @@ the bricks belonging to that volume will be displayed.
         454               /clients/client8/~dmtmp
 
         454               /clients/client2/~dmtmp
-         
+
         454               /clients/client6/~dmtmp
 
         454               /clients/client5/~dmtmp
@@ -335,12 +335,12 @@ bricks belonging to that volume will be displayed.
 -   View list of highest directory read calls on each brick using the
     following command:
 
-    `# gluster volume top  readdir [brick ] [list-cnt ] `
+    `# gluster volume top test-volume readdir [brick BRICK] [list-cnt {0..100}] `
 
     For example, to view highest directory read calls on brick
     server:/export of test-volume:
 
-    `# gluster volume top  readdir brick  list-cnt `
+    `# gluster volume top test-volume readdir brick server:/export list-cnt 10`
 
     `Brick: `
 
@@ -381,34 +381,34 @@ volume will be displayed. The output will be the read throughput.
     through
     put(MBp
     s)
-     
+
     2570.00    /clients/client0/~dmtmp/PWRPNT/      -2011-01-31
-               TRIDOTS.POT                      15:38:36.894610  
+               TRIDOTS.POT                      15:38:36.894610
     2570.00    /clients/client0/~dmtmp/PWRPNT/      -2011-01-31
-               PCBENCHM.PPT                     15:38:39.815310                                                             
+               PCBENCHM.PPT                     15:38:39.815310
     2383.00    /clients/client2/~dmtmp/SEED/        -2011-01-31
                MEDIUM.FIL                       15:52:53.631499
-                                                  
+
     2340.00    /clients/client0/~dmtmp/SEED/        -2011-01-31
                MEDIUM.FIL                       15:38:36.926198
-                                                  
+
     2299.00   /clients/client0/~dmtmp/SEED/         -2011-01-31
               LARGE.FIL                         15:38:36.930445
-                                                 
+
     2259.00   /clients/client0/~dmtmp/PARADOX/      -2011-01-31
               COURSES.X04                       15:38:40.549919
 
     2221.00   /clients/client0/~dmtmp/PARADOX/      -2011-01-31
               STUDENTS.VAL                      15:52:53.298766
-                                                  
+
     2221.00   /clients/client3/~dmtmp/SEED/         -2011-01-31
               COURSES.DB                        15:39:11.776780
 
     2184.00   /clients/client3/~dmtmp/SEED/         -2011-01-31
               MEDIUM.FIL                        15:39:10.251764
-                                                  
+
     2184.00   /clients/client5/~dmtmp/WORD/         -2011-01-31
-              BASEMACH.DOC                      15:39:09.336572                                          
+              BASEMACH.DOC                      15:39:09.336572
 
 This command will initiate a dd for the specified count and block size
 and measures the corresponding throughput.
@@ -434,34 +434,34 @@ and measures the corresponding throughput.
 
         2912.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
                    TRIDOTS.POT                   15:38:36.896486
-                                                   
+
         2570.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
                    PCBENCHM.PPT                  15:38:39.815310
-                                                   
+
         2383.00   /clients/client2/~dmtmp/SEED/      -2011-01-31
                    MEDIUM.FIL                    15:52:53.631499
-                                                   
+
         2340.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
                    MEDIUM.FIL                    15:38:36.926198
 
         2299.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
                    LARGE.FIL                     15:38:36.930445
-                                                              
+
         2259.00  /clients/client0/~dmtmp/PARADOX/    -2011-01-31
                   COURSES.X04                    15:38:40.549919
-                                                   
+
         2221.00  /clients/client9/~dmtmp/PARADOX/    -2011-01-31
                   STUDENTS.VAL                   15:52:53.298766
-                                                   
+
         2221.00  /clients/client8/~dmtmp/PARADOX/    -2011-01-31
                  COURSES.DB                      15:39:11.776780
-                                                   
+
         2184.00  /clients/client3/~dmtmp/SEED/       -2011-01-31
                   MEDIUM.FIL                     15:39:10.251764
-                                                   
+
         2184.00  /clients/client5/~dmtmp/WORD/       -2011-01-31
                  BASEMACH.DOC                    15:39:09.336572
-                                                   
+
 <a name="write-perf"></a>
 ### Viewing List of Write Performance on each Brick
 
@@ -492,7 +492,7 @@ performance on each brick:
         write                filename                 Time
         throughput
         (MBps)
-         
+
         1170.00    /clients/client0/~dmtmp/SEED/     -2011-01-31
                    SMALL.FIL                     15:39:09.171494
 
@@ -503,7 +503,7 @@ performance on each brick:
                   MEDIUM.FIL                     15:38:36.927426
 
         936.00   /clients/client0/~dmtmp/SEED/       -2011-01-31
-                 LARGE.FIL                        15:38:36.933177    
+                 LARGE.FIL                        15:38:36.933177
         897.00   /clients/client5/~dmtmp/SEED/       -2011-01-31
                  MEDIUM.FIL                       15:39:09.33628
 
@@ -699,17 +699,17 @@ details:
         # gluster volume status test-volume details
         STATUS OF VOLUME: test-volume
         -------------------------------------------
-        Brick                : arch:/export/1      
-        Port                 : 24009              
-        Online               : Y                  
-        Pid                  : 16977              
-        File System          : rootfs              
-        Device               : rootfs              
-        Mount Options        : rw                  
-        Disk Space Free      : 13.8GB              
-        Total Disk Space     : 46.5GB              
-        Inode Size           : N/A                
-        Inode Count          : N/A                
+        Brick                : arch:/export/1
+        Port                 : 24009
+        Online               : Y
+        Pid                  : 16977
+        File System          : rootfs
+        Device               : rootfs
+        Mount Options        : rw
+        Disk Space Free      : 13.8GB
+        Total Disk Space     : 46.5GB
+        Inode Size           : N/A
+        Inode Count          : N/A
         Free Inodes          : N/A
 
         Number of Bricks: 1
@@ -719,7 +719,7 @@ details:
 -   Display the list of clients accessing the volumes using the
     following command:
 
-    `# gluster volume status  clients`
+    `# gluster volume status test-volume clients`
 
     For example, to display the list of clients connected to
     test-volume:
@@ -735,7 +735,7 @@ details:
 -   Display the memory usage and memory pool details of the bricks using
     the following command:
 
-    `# gluster volume status  mem`
+    `# gluster volume status test-volume mem`
 
     For example, to display the memory usage and memory pool details of
     the bricks of test-volume:
@@ -787,7 +787,7 @@ details:
         6f3fe173-e07a-4209-abb6-484091d75499                  1              9         2
         370d35d7-657e-44dc-bac4-d6dd800ec3d3                  1              1         2
 
-        LRU inodes: 
+        LRU inodes:
         GFID                                            Lookups            Ref   IA type
         ----                                            -------            ---   -------
         80f98abe-cdcf-4c1d-b917-ae564cf55763                  1              0         1
@@ -808,17 +808,17 @@ details:
         Brick : arch:/export/1
         Connection 1:
         RefCount = 0  MaxFDs = 128  FirstFree = 4
-        FD Entry            PID                 RefCount            Flags              
-        --------            ---                 --------            -----              
-        0                   26311               1                   2                  
-        1                   26310               3                   2                  
-        2                   26310               1                   2                  
-        3                   26311               3                   2                  
-         
+        FD Entry            PID                 RefCount            Flags
+        --------            ---                 --------            -----
+        0                   26311               1                   2
+        1                   26310               3                   2
+        2                   26310               1                   2
+        3                   26311               3                   2
+
         Connection 2:
         RefCount = 0  MaxFDs = 128  FirstFree = 0
         No open fds
-         
+
         Connection 3:
         RefCount = 0  MaxFDs = 128  FirstFree = 0
         No open fds
@@ -889,5 +889,3 @@ details:
           Parent      = test-volume-server
           Wind From   = server_fsync_resume
           Wind To     = bound_xl->fops->fsync
-
-
