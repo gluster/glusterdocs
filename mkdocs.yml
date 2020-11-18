@@ -67,6 +67,7 @@ nav:
   - Mandatory Locks: Administrator-Guide/Mandatory-Locks.md
   - GlusterFS coreutilities: Administrator-Guide/GlusterFS-Coreutils.md
   - Events APIs: Administrator-Guide/Events-APIs.md
+  - Managing GlusterFS Volume Life-Cycle Extensions with Hook Scripts: Administrator-Guide/Hook-scripts.md
 - CLI Reference:
   - Overview: CLI-Reference/cli-main.md
 - Presentations: presentations/index.md
@@ -82,6 +83,7 @@ nav:
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
+  - Bug reporting guidelines: Contributors-Guide/Bug-Reporting-Guidelines.md
   - Bug Triage : Contributors-Guide/Bug-Triage.md
   - GlusterFS Release process : Contributors-Guide/GlusterFS-Release-process.md
   - Guidelines For Maintainers : Contributors-Guide/Guidelines-For-Maintainers.md
@@ -92,6 +94,7 @@ nav:
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op-version.md
+  - Generic upgrade procedure: Upgrade-Guide/generic-upgrade-procedure.md
   - Upgrade to 8: Upgrade-Guide/upgrade-to-8.md
   - Upgrade to 7: Upgrade-Guide/upgrade-to-7.md
   - Upgrade to 6: Upgrade-Guide/upgrade-to-6.md
