@@ -1,3 +1,4 @@
 site/
 env/
 .env
+/.buildlog
