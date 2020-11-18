@@ -57,6 +57,7 @@ nav:
   - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
   - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
   - Network Configuration Techniques: Administrator Guide/Network Configurations Techniques.md
+  - Performance Tuning: Administrator Guide/Performance Tuning.md
   - Performance Testing: Administrator Guide/Performance Testing.md
   - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
   - Consul integration: Administrator Guide/Consul.md
