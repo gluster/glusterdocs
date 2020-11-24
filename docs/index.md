@@ -21,7 +21,7 @@ Install Guide.
 
 **More Documentation**
 
--  [Administration Guide](./Administrator Guide/index.md) - describes the configuration and management of GlusterFS.
+-  [Administration Guide](./Administrator-Guide/index.md) - describes the configuration and management of GlusterFS.
 
 -  [GlusterFS Developer Guide](./Developer-guide/Developers-Index.md) - describes how you can contribute to this open source project; built through the efforts of its dedicated, passionate community.
 
@@ -29,7 +29,7 @@ Install Guide.
 
 -  [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and  additions that have been implemented in various Glusterfs releases.
 
--  [GlusterFS Tools](./GlusterFS Tools/README.md) - Guides for GlusterFS tools.
+-  [GlusterFS Tools](./GlusterFS-Tools/README.md) - Guides for GlusterFS tools.
 
 -  [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
 

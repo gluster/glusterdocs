@@ -70,7 +70,7 @@ Other notes:
     being able to operate in a trusted environment without firewalls can
     mean huge gains in performance, and is recommended. In case you absolutely
     need to set up a firewall, have a look at
-    [Setting up clients](../Administrator Guide/Setting Up Clients.md) for
+    [Setting up clients](../Administrator-Guide/Setting-Up-Clients.md) for
     information on the ports used.
 
 Click here to [get started](../Quick-Start-Guide/Quickstart.md)

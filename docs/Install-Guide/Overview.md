@@ -1,13 +1,19 @@
-# Overview 
+# Overview
 ### Purpose
 
-The Install Guide (IG) is aimed at providing the sequence of steps needed for setting up Gluster. It contains a reasonable degree of detail which helps an administrator to understand the terminology, the choices and how to configure the deployment to the storage needs of their application workload. The [Quick Start Guide](../Quick-Start-Guide/Quickstart.md) (QSG) is designed to get a deployment with default choices and is aimed at those who want to spend less time to get to a deployment.
+The Install Guide (IG) is aimed at providing the sequence of steps needed for
+setting up Gluster. It contains a reasonable degree of detail which helps an
+administrator to understand the terminology, the choices and how to configure
+the deployment to the storage needs of their application workload. The [Quick
+Start Guide](../Quick-Start-Guide/Quickstart.md) (QSG) is designed to get a
+deployment with default choices and is aimed at those who want to spend less
+time to get to a deployment.
 
-After you deploy Gluster by following these steps, we recommend that
-you read the [Gluster Admin Guide](../Administrator Guide/index.md) (AG) to learn how to administer Gluster and
-how to select a volume type that fits your needs. Also, be sure to
-enlist the help of the Gluster community via the IRC or, Slack channels (see https://www.gluster.org/community/) or Q&A
-section. 
+After you deploy Gluster by following these steps, we recommend that you read
+the [Gluster Admin Guide](../Administrator-Guide/index.md) to learn how to
+administer Gluster and how to select a volume type that fits your needs. Also,
+be sure to enlist the help of the Gluster community via the IRC or, Slack
+channels (see https://www.gluster.org/community/) or Q&A section.
 
 ### Overview
 
@@ -109,4 +115,4 @@ In a perfect world, sure. Having the hardware be the same means less
 troubleshooting when the fires start popping up. But plenty of people
 deploy Gluster on mix and match hardware, and successfully.
 
-Get started by checking some [Common Criteria](./Common_criteria.md)
+Get started by checking some [Common Criteria](./Common-criteria.md)

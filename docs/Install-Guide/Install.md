@@ -7,7 +7,7 @@ such as compat-readline5
 
 ###### Community Packages
 
-Packages are provided according to this [table](./Community_Packages.md).
+Packages are provided according to this [table](./Community-Packages.md).
 
 ###### For Debian
 

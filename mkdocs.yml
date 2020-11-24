@@ -8,66 +8,66 @@ docs_dir: docs
 nav:
 - Home: index.md
 - Getting started with GlusterFS:
-  - Introduction: Administrator Guide/GlusterFS Introduction.md
+  - Introduction: Administrator-Guide/GlusterFS-Introduction.md
   - Quick Start Guide: Quick-Start-Guide/Quickstart.md
   - Architecture: Quick-Start-Guide/Architecture.md
 - Install Guide:
   - Overview: Install-Guide/Overview.md
-  - Common Criteria: Install-Guide/Common_criteria.md
-  - Setting up in virtual machines: Install-Guide/Setup_virt.md
-  - Setting up on physical servers: Install-Guide/Setup_Bare_metal.md
-  - Deploying in AWS: Install-Guide/Setup_aws.md
+  - Common Criteria: Install-Guide/Common-criteria.md
+  - Setting up in virtual machines: Install-Guide/Setup-virt.md
+  - Setting up on physical servers: Install-Guide/Setup-Bare-metal.md
+  - Deploying in AWS: Install-Guide/Setup-aws.md
   - Install: Install-Guide/Install.md
-  - Community Packages: Install-Guide/Community_Packages.md
+  - Community Packages: Install-Guide/Community-Packages.md
   - Configure: Install-Guide/Configure.md
 - Administration Guide:
-  - Overview: Administrator Guide/overview.md
-  - Index: Administrator Guide/index.md
-  - Managing the Gluster Service: Administrator Guide/Start Stop Daemon.md
-  - Managing Trusted Storage Pools: Administrator Guide/Storage Pools.md
+  - Overview: Administrator-Guide/overview.md
+  - Index: Administrator-Guide/index.md
+  - Managing the Gluster Service: Administrator-Guide/Start-Stop-Daemon.md
+  - Managing Trusted Storage Pools: Administrator-Guide/Storage-Pools.md
   - Setting Up Storage:
-    - Setting Up Storage : Administrator Guide/setting-up-storage.md
-    - Brick Naming Conventions: Administrator Guide/Brick Naming Conventions.md
-    - Formatting and Mounting Bricks: Administrator Guide/formatting-and-mounting-bricks.md
-    - Access Control Lists: Administrator Guide/Access Control Lists.md
-    - Handling of users that belong to many groups: Administrator Guide/Handling-of-users-with-many-groups.md
-    - Setting Up Volumes: Administrator Guide/Setting Up Volumes.md
-    - Setting Up Clients: Administrator Guide/Setting Up Clients.md
-    - Managing Volumes: Administrator Guide/Managing Volumes.md
-    - Building QEMU with gfapi For Debian Based Systems: Administrator Guide/Building QEMU With gfapi For Debian Based Systems.md
-  - GlusterFS Filter: Administrator Guide/GlusterFS Filter.md
-  - Logging: Administrator Guide/Logging.md
+     - Setting Up Storage : Administrator-Guide/setting-up-storage.md
+     - Brick Naming Conventions: Administrator-Guide/Brick-Naming-Conventions.md
+     - Formatting and Mounting Bricks: Administrator-Guide/formatting-and-mounting-bricks.md
+     - Access Control Lists: Administrator-Guide/Access-Control-Lists.md
+  - Handling of users that belong to many groups: Administrator-Guide/Handling-of-users-with-many-groups.md
+  - Setting Up Volumes: Administrator-Guide/Setting-Up-Volumes.md
+  - Setting Up Clients: Administrator-Guide/Setting-Up-Clients.md
+  - Managing Volumes: Administrator-Guide/Managing-Volumes.md
+  - Building QEMU with gfapi For Debian Based Systems: Administrator-Guide/Building-QEMU-With-gfapi-For-Debian-Based-Systems.md
+  - GlusterFS Filter: Administrator-Guide/GlusterFS-Filter.md
+  - Logging: Administrator-Guide/Logging.md
   - Features:
-     - Setting Up Storage : Administrator Guide/setting-up-storage.md
-     - Geo Replication: Administrator Guide/Geo Replication.md
-     - Quotas: Administrator Guide/Directory Quota.md
-     - Snapshots: Administrator Guide/Managing Snapshots.md
-     - Trash: Administrator Guide/Trash.md
-     - Hook Scripts: Administrator Guide/Hook-scripts.md
-  - Monitoring Workload: Administrator Guide/Monitoring Workload.md
-  - Object Storage: Administrator Guide/Object Storage.md
-  - GlusterFS Cinder: Administrator Guide/GlusterFS Cinder.md
-  - GlusterFS Keystone Quickstart: Administrator Guide/GlusterFS Keystone Quickstart.md
-  - Gluster On ZFS: Administrator Guide/Gluster On ZFS.md
-  - Configuring Bareos to store backups on Gluster: Administrator Guide/Bareos.md
-  - SSL: Administrator Guide/SSL.md
-  - Puppet Gluster: Administrator Guide/Puppet.md
-  - RDMA Transport: Administrator Guide/RDMA Transport.md
-  - GlusterFS iSCSI: Administrator Guide/GlusterFS iSCSI.md
-  - Configuring NFS-Ganesha server: Administrator Guide/NFS-Ganesha GlusterFS Integration.md
-  - Linux Kernel Tuning: Administrator Guide/Linux Kernel Tuning.md
-  - Network Configuration Techniques: Administrator Guide/Network Configurations Techniques.md
-  - Performance Tuning: Administrator Guide/Performance Tuning.md
-  - Performance Testing: Administrator Guide/Performance Testing.md
-  - Export and Netgroup Authentication: Administrator Guide/Export And Netgroup Authentication.md
-  - Consul integration: Administrator Guide/Consul.md
-  - Split brain and ways to deal with it: Administrator Guide/Split brain and ways to deal with it.md
-  - Arbiter volumes and quorum options: Administrator Guide/arbiter-volumes-and-quorum.md
-  - Thin Arbiter volumes: Administrator Guide/Thin-Arbiter-Volumes.md
-  - Trash for GlusterFS: Administrator Guide/Trash.md
-  - Mandatory Locks: Administrator Guide/Mandatory Locks.md
-  - GlusterFS coreutilities: Administrator Guide/GlusterFS Coreutils.md
-  - Events APIs: Administrator Guide/Events APIs.md
+     - Setting Up Storage : Administrator-Guide/setting-up-storage.md
+     - Geo Replication: Administrator-Guide/Geo-Replication.md
+     - Quotas: Administrator-Guide/Directory-Quota.md
+     - Snapshots: Administrator-Guide/Managing-Snapshots.md
+     - Trash: Administrator-Guide/Trash.md
+  - Monitoring Workload: Administrator-Guide/Monitoring-Workload.md
+  - Object Storage: Administrator-Guide/Object-Storage.md
+  - GlusterFS Cinder: Administrator-Guide/GlusterFS-Cinder.md
+  - GlusterFS Keystone Quickstart: Administrator-Guide/GlusterFS-Keystone-Quickstart.md
+  - Gluster On ZFS: Administrator-Guide/Gluster-On-ZFS.md
+  - Configuring Bareos to store backups on Gluster: Administrator-Guide/Bareos.md
+  - SSL: Administrator-Guide/SSL.md
+  - Puppet Gluster: Administrator-Guide/Puppet.md
+  - RDMA Transport: Administrator-Guide/RDMA-Transport.md
+  - GlusterFS iSCSI: Administrator-Guide/GlusterFS-iSCSI.md
+  - Configuring NFS-Ganesha server: Administrator-Guide/NFS-Ganesha-GlusterFS-Integration.md
+  - Linux Kernel Tuning: Administrator-Guide/Linux-Kernel-Tuning.md
+  - Network Configuration Techniques: Administrator-Guide/Network-Configurations-Techniques.md
+  - Performance Testing: Administrator-Guide/Performance-Testing.md
+  - Performance Tuning: Administrator-Guide/Performance-Tuning.md
+  - Export and Netgroup Authentication: Administrator-Guide/Export-And-Netgroup-Authentication.md
+  - Consul integration: Administrator-Guide/Consul.md
+  - Split brain and ways to deal with it: Administrator-Guide/Split-brain-and-ways-to-deal-with-it.md
+  - Arbiter volumes and quorum options: Administrator-Guide/arbiter-volumes-and-quorum.md
+  - Thin Arbiter volumes: Administrator-Guide/Thin-Arbiter-Volumes.md
+  - Trash for GlusterFS: Administrator-Guide/Trash.md
+  - Mandatory Locks: Administrator-Guide/Mandatory-Locks.md
+  - GlusterFS coreutilities: Administrator-Guide/GlusterFS-Coreutils.md
+  - Events APIs: Administrator-Guide/Events-APIs.md
+  - Managing GlusterFS Volume Life-Cycle Extensions with Hook Scripts: Administrator-Guide/Hook-scripts.md
 - CLI Reference:
   - Overview: CLI-Reference/cli-main.md
 - Presentations: presentations/index.md
@@ -83,6 +83,7 @@ nav:
   - Backport Guidelines : Developer-guide/Backport-Guidelines.md
 - Contributors Guide:
   - Index: Contributors-Guide/Index.md
+  - Bug reporting guidelines: Contributors-Guide/Bug-Reporting-Guidelines.md
   - Bug Triage : Contributors-Guide/Bug-Triage.md
   - GlusterFS Release process : Contributors-Guide/GlusterFS-Release-process.md
   - Guidelines For Maintainers : Contributors-Guide/Guidelines-For-Maintainers.md
@@ -92,22 +93,23 @@ nav:
   - Tools: Ops-Guide/Tools.md
 - Upgrade-Guide:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
-  - Op-version: Upgrade-Guide/op_version.md
-  - Upgrade to 8: Upgrade-Guide/upgrade_to_8.md
-  - Upgrade to 7: Upgrade-Guide/upgrade_to_7.md
-  - Upgrade to 6: Upgrade-Guide/upgrade_to_6.md
-  - Upgrade to 5: Upgrade-Guide/upgrade_to_5.md
-  - Upgrade to 4.1: Upgrade-Guide/upgrade_to_4.1.md
-  - Upgrade to 4.0: Upgrade-Guide/upgrade_to_4.0.md
-  - Upgrade to 3.13: Upgrade-Guide/upgrade_to_3.13.md
-  - Upgrade to 3.12: Upgrade-Guide/upgrade_to_3.12.md
-  - Upgrade to 3.11: Upgrade-Guide/upgrade_to_3.11.md
-  - Upgrade to 3.10: Upgrade-Guide/upgrade_to_3.10.md
-  - Upgrade to 3.9: Upgrade-Guide/upgrade_to_3.9.md
-  - Upgrade to 3.8: Upgrade-Guide/upgrade_to_3.8.md
-  - Upgrade to 3.7: Upgrade-Guide/upgrade_to_3.7.md
-  - Upgrade to 3.6: Upgrade-Guide/upgrade_to_3.6.md
-  - Upgrade to 3.5: Upgrade-Guide/upgrade_to_3.5.md
+  - Op-version: Upgrade-Guide/op-version.md
+  - Generic upgrade procedure: Upgrade-Guide/generic-upgrade-procedure.md
+  - Upgrade to 8: Upgrade-Guide/upgrade-to-8.md
+  - Upgrade to 7: Upgrade-Guide/upgrade-to-7.md
+  - Upgrade to 6: Upgrade-Guide/upgrade-to-6.md
+  - Upgrade to 5: Upgrade-Guide/upgrade-to-5.md
+  - Upgrade to 4.1: Upgrade-Guide/upgrade-to-4.1.md
+  - Upgrade to 4.0: Upgrade-Guide/upgrade-to-4.0.md
+  - Upgrade to 3.13: Upgrade-Guide/upgrade-to-3.13.md
+  - Upgrade to 3.12: Upgrade-Guide/upgrade-to-3.12.md
+  - Upgrade to 3.11: Upgrade-Guide/upgrade-to-3.11.md
+  - Upgrade to 3.10: Upgrade-Guide/upgrade-to-3.10.md
+  - Upgrade to 3.9: Upgrade-Guide/upgrade-to-3.9.md
+  - Upgrade to 3.8: Upgrade-Guide/upgrade-to-3.8.md
+  - Upgrade to 3.7: Upgrade-Guide/upgrade-to-3.7.md
+  - Upgrade to 3.6: Upgrade-Guide/upgrade-to-3.6.md
+  - Upgrade to 3.5: Upgrade-Guide/upgrade-to-3.5.md
 - Release Notes:
   - index: release-notes/index.md
   - RELEASE 8.x:
@@ -212,9 +214,9 @@ nav:
     - 3.5.1: release-notes/3.5.1.md
     - 3.5.0: release-notes/3.5.0.md
 - GlusterFS Tools:
-  - GlusterFS Tools List: GlusterFS Tools/README.md
-  - glusterfind: GlusterFS Tools/glusterfind.md
-  - gfind missing files: GlusterFS Tools/gfind_missing_files.md
+  - GlusterFS Tools List: GlusterFS-Tools/README.md
+  - glusterfind: GlusterFS-Tools/glusterfind.md
+  - gfind missing files: GlusterFS-Tools/gfind-missing-files.md
 - Troubleshooting Guide:
   - Index: Troubleshooting/README.md
   - Components:
