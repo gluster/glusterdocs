@@ -3,11 +3,13 @@ Release Notes
 
 ### GlusterFS 8 release notes
 
+- [8.3](./8.3.md)
 - [8.2](./8.2.md)
 - [8.1](./8.1.md)
 - [8.0](./8.0.md)
 
 ### GlusterFS 7 release notes
+- [7.9](./7.9.md)
 - [7.8](./7.8.md)
 - [7.7](./7.7.md)
 - [7.6](./7.6.md)
