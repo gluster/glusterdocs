@@ -68,7 +68,7 @@ git clone (ssh://)<username> @review.gluster.org/glusterfs.git
 ```
 
 This will clone the GlusterFS source into a subdirectory named glusterfs
-with the master branch checked out.
+with the devel branch checked out.
 
 It is essential that you use this link to clone, or else you will not be
 able to submit patches to gerrit for review.
@@ -88,14 +88,14 @@ update it. More details on the upstream branching model for GlusterFS
 can be found at
 
 [Development Work Flow - Branching\_policy](./Development-Workflow.md#branching-policy).
-For example if you want to develop on the master branch,
+For example if you want to develop on the devel branch,
 
 ```console
-# git checkout master
+# git checkout devel
 # git pull
 ```
 
-Now, create a new branch from master and switch to the new branch. It is
+Now, create a new branch from devel and switch to the new branch. It is
 recommended to have descriptive branch names. Do,
 
 ```console

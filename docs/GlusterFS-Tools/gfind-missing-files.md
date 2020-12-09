@@ -18,11 +18,11 @@ missing files with their full pathnames.
 ## Usage
 
 ```console
-bash gfind_missing_files.sh <BRICK_PATH> <SLAVE_HOST> <SLAVE_VOL> <OUTFILE>
-            BRICK_PATH -   Full path of the brick
-            SLAVE_HOST -   Hostname of gluster volume
-            SLAVE_VOL  -   Gluster volume name
-            OUTFILE   -    Output file which contains gfids of the missing files
+bash gfind_missing_files.sh <BRICK_PATH> <SECONDARY_HOST> <SECONDARY_VOL> <OUTFILE>
+            BRICK_PATH     -   Full path of the brick
+            SECONDARY_HOST -   Hostname of gluster volume
+            SECONDARY_VOL  -   Gluster volume name
+            OUTFILE        -    Output file which contains gfids of the missing files
 ```
 
 The gfid-to-path conversion uses a quicker algorithm for converting gfids to
