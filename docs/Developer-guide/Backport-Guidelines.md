@@ -1,7 +1,7 @@
 # Backport Guidelines
 In GlusterFS project, as a policy, any new change, bug fix, etc., are to be
-fixed in 'master' branch before release branches. When a bug is fixed in
-the master branch, it might be desirable or necessary in release branch.
+fixed in 'devel' branch before release branches. When a bug is fixed in
+the devel branch, it might be desirable or necessary in release branch.
 
 This page describes the policy GlusterFS has regarding the backports. As
 a user, or contributor, being aware of this policy would help you to
@@ -9,10 +9,10 @@ understand how to request for backport from community.
 
 ## Policy
 
-* No feature from master would be backported to the release branch
+* No feature from devel would be backported to the release branch
 * CVE ie., security vulnerability [(listed on the CVE database)](https://cve.mitre.org/cve/search_cve_list.html)
 reported in the existing releases would be backported, after getting fixed
-in master branch.
+in devel branch.
 * Only topics which bring about data loss or, unavailability would be
 backported to the release.
 * For any other issues, the project recommends that the installation be
