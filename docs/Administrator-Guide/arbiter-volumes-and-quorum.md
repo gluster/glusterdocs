@@ -110,7 +110,7 @@ the gluster brick processes going down or returning an error.
 
 ## Server-quorum and some pitfalls
 
-This [document](https://docs.gluster.org/en/latest/Administrator%20Guide/arbiter-volumes-and-quorum/#server-quorum-and-some-pitfalls)
+This [document](https://docs.gluster.org/en/latest/Administrator-Guide/arbiter-volumes-and-quorum/#server-quorum-and-some-pitfalls)
 provides a detailed description of this feature.
 The volume options for server-quorum are:
 
