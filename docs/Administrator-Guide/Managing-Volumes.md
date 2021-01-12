@@ -50,8 +50,7 @@ Option | Description | Default Value | Available Options
 --- | --- | --- | ---
 auth.allow | IP addresses of the clients which should be allowed to access the volume. | \* (allow all) | Valid IP address which includes wild card patterns including \*, such as 192.168.1.\*
 auth.reject | IP addresses of the clients which should be denied to access the volume. | NONE (reject none)  | Valid IP address which includes wild card patterns including \*, such as 192.168.2.\*
-client.grace-timeout | Specifies the duration for the lock state to be maintained on the client after a network disconnection. | 10 | 10 - 1800 secs
-cluster.self-heal-window-size | Specifies the maximum number of blocks per file on which self-heal would happen simultaneously. | 16 | 0 - 1025 blocks
+cluster.self-heal-window-size | Specifies the maximum number of blocks per file on which self-heal would happen simultaneously. | 1 | 0 - 1024 blocks
 cluster.data-self-heal-algorithm | Specifies the type of self-heal. If you set the option as "full", the entire file is copied from source to destinations. If the option is set to "diff" the file blocks that are not in sync are copied to destinations. Reset uses a heuristic model. If the file does not exist on one of the subvolumes, or a zero-byte file exists (created by entry self-heal) the entire content has to be copied anyway, so there is no benefit from using the "diff" algorithm. If the file size is about the same as page size, the entire file can be read and written with a few operations, which will be faster than "diff" which has to read checksums and then read and write. | reset | full/diff/reset
 cluster.min-free-disk | Specifies the percentage of disk space that must be kept free. Might be useful for non-uniform bricks | 10% | Percentage of required minimum free disk space
 cluster.stripe-block-size | Specifies the size of the stripe unit that will be read from or written to. | 128 KB (for all files) | size in bytes
@@ -62,8 +61,6 @@ diagnostics.client-log-level  |  Changes the log-level of the clients. | INFO | 
 diagnostics.latency-measurement | Statistics related to the latency of each operation would be tracked. | Off | On/Off
 diagnostics.dump-fd-stats | Statistics related to file-operations would be tracked. | Off | On
 features.read-only | Enables you to mount the entire volume as read-only for all the clients (including NFS clients) accessing it. | Off | On/Off
-features.lock-heal | Enables self-healing of locks when the network disconnects. | On | On/Off
-features.quota-timeout | For performance reasons, quota caches the directory sizes on client. You can set timeout indicating the maximum duration of directory sizes in cache, from the time they are populated, during which they are considered valid | 0 |  0 - 3600 secs
 geo-replication.indexing | Use this option to automatically sync the changes in the filesystem from Primary to Secondary. | Off | On/Off
 network.frame-timeout | The time frame after which the operation has to be declared as dead, if the server does not respond for a particular operation. | 1800 (30 mins) | 1800 secs
 network.ping-timeout | The time duration for which the client waits to check if the server is responsive. When a ping timeout happens, there is a network disconnect between the client and server. All resources held by server on behalf of the client get cleaned up. When a reconnection happens, all resources will need to be re-acquired before the client can resume its operations on the server. Additionally, the locks will be acquired and the lock tables updated. This reconnect is a very expensive operation and should be avoided. | 42 Secs | 42 Secs
@@ -90,7 +87,6 @@ performance.cache-min-file-size | Sets the minimum file size cached by the io-ca
 performance.cache-refresh-timeout | The cached data for a file will be retained till 'cache-refresh-timeout' seconds, after which data re-validation is performed. | 1s | 0-61
 performance.cache-size | Size of the read cache. | 32 MB |  size in bytes
 server.allow-insecure | Allow client connections from unprivileged ports. By default only privileged ports are allowed. This is a global setting in case insecure ports are to be enabled for all exports using a single option. | On | On/Off
-server.grace-timeout | Specifies the duration for the lock state to be maintained on the server after a network disconnection. | 10 | 10 - 1800 secs
 server.statedump-path | Location of the state dump file. | tmp directory of the brick |  New directory path
 storage.health-check-interval | Number of seconds between health-checks done on the filesystem that is used for the brick(s). Defaults to 30 seconds, set to 0 to disable. | tmp directory of the brick |  New directory path
 

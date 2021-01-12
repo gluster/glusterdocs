@@ -1,10 +1,19 @@
 Architecture
 ============
++![architecture](../images/GlusterFS_Translator_Stack.png)
+
+A gluster volume is a collection of servers belonging to a Trusted Storage Pool.
+A management daemon (glusterd) runs on each server and manages a brick process
+(glusterfsd) which in turn exports the underlying on disk storage (XFS
+filesystem). The client process mounts the volume and exposes the storage from
+all the bricks as a single unified storage namespace to the applications
+accessing it. The client and brick processes' stacks have various translators
+loaded in them. I/O from the application is routed to different bricks via
+these translators.
 
 ### Types of Volumes
 
-Volume is the collection of bricks and most of the gluster file system
-operations happen on the volume. Gluster file system supports different
+Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
