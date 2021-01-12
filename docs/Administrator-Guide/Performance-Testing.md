@@ -179,13 +179,13 @@ Gluster mountpoint on each test machine and test-client-ip is the IP address of 
 
 Restriction: Since iozone uses non-privileged ports it may be necessary
 to temporarily shut down or alter iptables on some/all of the hosts.
-slave machines must support password-less access from master machine via
+Secondary machines must support password-less access from Primary machine via
 ssh.
 
-Note that the -+h option is undocumented but it tells the slave host
-what IP address to use so that the slave does not have to be able to
+Note that the -+h option is undocumented but it tells the secondary host
+what IP address to use so that the secondary does not have to be able to
 resolve the hostname of the test driver. my-ip-address is the IP address
-that the slaves should connect to in order to report results back to the
+that the secondary should connect to in order to report results back to the
 host. This need not be the same as the host's hostname.
 
 Typically you run the sequential write test first to lay down the file,

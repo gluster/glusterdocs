@@ -6,19 +6,19 @@ to GlusterFS Geo-replication.
 ### Locating Log Files
 
 For every Geo-replication session, the following three log files are
-associated to it (four, if the slave is a gluster volume):
+associated to it (four, if the secondary is a gluster volume):
 
--   **Master-log-file** - log file for the process which monitors the Master
+-   **Primary-log-file** - log file for the process which monitors the Primary
     volume
--   **Slave-log-file** - log file for process which initiates the changes in
-    slave
--   **Master-gluster-log-file** - log file for the maintenance mount point
-    that Geo-replication module uses to monitor the master volume
--   **Slave-gluster-log-file** - is the slave's counterpart of it
+-   **Secondary-log-file** - log file for process which initiates the changes in
+    secondary
+-   **Primary-gluster-log-file** - log file for the maintenance mount point
+    that Geo-replication module uses to monitor the Primary volume
+-   **Secondary-gluster-log-file** - is the secondary's counterpart of it
 
-**Master Log File**
+**Primary Log File**
 
-To get the Master-log-file for geo-replication, use the following
+To get the Primary-log-file for geo-replication, use the following
 command:
 
 ```console
@@ -31,18 +31,18 @@ For example:
 # gluster volume geo-replication Volume1 example.com:/data/remote_dir config log-file
 ```
 
-**Slave Log File**
+**Secondary Log File**
 
-To get the log file for geo-replication on slave (glusterd must be
-running on slave machine), use the following commands:
+To get the log file for geo-replication on secondary (glusterd must be
+running on secondary machine), use the following commands:
 
-1.  On master, run the following command:
+1.  On primary, run the following command:
 
         # gluster volume geo-replication Volume1 example.com:/data/remote_dir config session-owner 5f6e5200-756f-11e0-a1f0-0800200c9a66
 
     Displays the session owner details.
 
-2.  On slave, run the following command:
+2.  On secondary, run the following command:
 
         # gluster volume geo-replication /data/remote_dir config log-file /var/log/gluster/${session-owner}:remote-mirror.log
 
@@ -53,7 +53,7 @@ running on slave machine), use the following commands:
 
 ### Rotating Geo-replication Logs
  
-Administrators can rotate the log file of a particular master-slave
+Administrators can rotate the log file of a particular primary-secondary
 session, as needed. When you run geo-replication's ` log-rotate`
 command, the log file is backed up with the current timestamp suffixed
 to the file name and signal is sent to gsyncd to start logging to a new
@@ -61,23 +61,23 @@ log file.
 
 **To rotate a geo-replication log file**
 
--   Rotate log file for a particular master-slave session using the
+-   Rotate log file for a particular primary-secondary session using the
     following command:
 
         # gluster volume geo-replication  log-rotate
 
-    For example, to rotate the log file of master `Volume1` and slave
+    For example, to rotate the log file of primary `Volume1` and secondary
     `example.com:/data/remote_dir` :
 
         # gluster volume geo-replication Volume1 example.com:/data/remote_dir log rotate
         log rotate successful
 
--   Rotate log file for all sessions for a master volume using the
+-   Rotate log file for all sessions for a primary volume using the
     following command:
 
         # gluster volume geo-replication  log-rotate
 
-    For example, to rotate the log file of master `Volume1`:
+    For example, to rotate the log file of primary `Volume1`:
 
         # gluster volume geo-replication Volume1 log rotate
         log rotate successful
@@ -110,7 +110,7 @@ not get synced, only directories and symlink gets synced with the
 following error message in the log:
 
 ```console
-[2011-05-02 13:42:13.467644] E [master:288:regjob] GMaster: failed to
+[2011-05-02 13:42:13.467644] E [primary:288:regjob] GMaster: failed to
 sync ./some\_file\`
 ```
 
@@ -135,7 +135,7 @@ recv return pickle.load(inf) EOFError
 ```
 
 **Solution**: This error indicates that the RPC communication between
-the master gsyncd module and slave gsyncd module is broken and this can
+the primary gsyncd module and secondary gsyncd module is broken and this can
 happen for various reasons. Check if it satisfies all the following
 pre-requisites:
 
@@ -143,21 +143,21 @@ pre-requisites:
     machine.
 -   If FUSE is installed in the machine, because geo-replication module
     mounts the GlusterFS volume using FUSE to sync data.
--   If the **Slave** is a volume, check if that volume is started.
--   If the Slave is a plain directory, verify if the directory has been
+-   If the **Secondary** is a volume, check if that volume is started.
+-   If the Secondary is a plain directory, verify if the directory has been
     created already with the required permissions.
 -   If GlusterFS 3.2 or higher is not installed in the default location
-    (in Master) and has been prefixed to be installed in a custom
+    (in Primary) and has been prefixed to be installed in a custom
     location, configure the `gluster-command` for it to point to the
     exact location.
 -   If GlusterFS 3.2 or higher is not installed in the default location
-    (in slave) and has been prefixed to be installed in a custom
+    (in secondary) and has been prefixed to be installed in a custom
     location, configure the `remote-gsyncd-command` for it to point to
     the exact place where gsyncd is located.
 
-### Intermediate Master goes to Faulty State
+### Intermediate Primary goes to Faulty State
 
-**Description**: In a cascading set-up, the intermediate master goes to
+**Description**: In a cascading set-up, the intermediate primary goes to
 faulty state with the following log:
 
 ```console
@@ -166,8 +166,8 @@ RuntimeError: aborting on uuid change from af07e07c-427f-4586-ab9f-
 4bf7d299be81 to de6b5040-8f4e-4575-8831-c4f55bd41154
 ```
 
-**Solution**: In a cascading set-up the Intermediate master is loyal to
-the original primary master. The above log means that the
-geo-replication module has detected change in primary master. If this is
+**Solution**: In a cascading set-up the Intermediate primary is loyal to
+the original primary. The above log means that the
+geo-replication module has detected change in original primary. If this is
 the desired behavior, delete the config option volume-id in the session
-initiated from the intermediate master.
+initiated from the intermediate primary.

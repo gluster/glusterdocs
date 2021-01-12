@@ -388,8 +388,8 @@ It mainly works across WAN and is used to replicate the entire volume
 unlike AFR which is intra-cluster replication. This is mainly useful for
 backup of entire data for disaster recovery.
 
-Geo-replication uses a master-slave model, whereby replication occurs
-between a **Master** and a **Slave**, both of which should 
+Geo-replication uses a primary-secondary model, whereby replication occurs
+between a **Primary** and a **Secondary**, both of which should 
 be GlusterFS volumes.
 Geo-replication provides an incremental replication service over Local
 Area Networks (LANs), Wide Area Network (WANs), and across the
@@ -480,8 +480,8 @@ the root.
 
 ![geo-replication-sync](https://cloud.githubusercontent.com/assets/10970993/7412646/824add4a-ef62-11e4-9a0b-5cc270be6a10.png)
 
-Consider the above directory tree structure. At time T1 the master and
-slave were in sync each other.
+Consider the above directory tree structure. At time T1 the primary and
+secondary were in sync each other.
 
 ![geo-replication-async](https://cloud.githubusercontent.com/assets/10970993/7412653/93b04e30-ef62-11e4-9ab1-e5cc57eb0db5.jpg)
 
@@ -491,7 +491,7 @@ root, i.e, the xtime of File2, Dir3, Dir1 and finally Dir0 all will be
 updated.
 
 Geo-replication daemon crawls the file system based on the condition
-that xtime(master) \> xtime(slave). Hence in our example it would crawl
+that xtime(primary) \> xtime(secondary). Hence in our example it would crawl
 only the left part of the directory structure since the right part of
 the directory structure still has equal timestamp. Although the crawling
 algorithm is fast we still need to crawl a good part of the directory
