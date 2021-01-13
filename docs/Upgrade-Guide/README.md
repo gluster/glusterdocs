@@ -2,6 +2,12 @@ Upgrading GlusterFS
 -------------------
 -   [About op-version](./op-version.md)
 
+If you are using GlusterFS version 6.x or above, you can upgrade it to the following:
+
+-   [Upgrading to 9](./upgrade-to-9.md)
+-   [Upgrading to 8](./upgrade-to-8.md)
+-   [Upgrading to 7](./upgrade-to-7.md)
+
 If you are using GlusterFS version 5.x or above, you can upgrade it to the following:
 
 -   [Upgrading to 8](./upgrade-to-8.md)
