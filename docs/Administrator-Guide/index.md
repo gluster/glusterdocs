@@ -28,6 +28,7 @@
 	*  [Quotas](./Directory-Quota.md)
 	*  [Snapshots](./Managing-Snapshots.md)
 	*  [Trash](./Trash.md)
+	*  [io_uring](./io_uring.md)
 
 
 7. Data Access With Other Interfaces
