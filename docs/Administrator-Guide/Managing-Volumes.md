@@ -89,6 +89,7 @@ performance.cache-size | Size of the read cache. | 32 MB |  size in bytes
 server.allow-insecure | Allow client connections from unprivileged ports. By default only privileged ports are allowed. This is a global setting in case insecure ports are to be enabled for all exports using a single option. | On | On/Off
 server.statedump-path | Location of the state dump file. | tmp directory of the brick |  New directory path
 storage.health-check-interval | Number of seconds between health-checks done on the filesystem that is used for the brick(s). Defaults to 30 seconds, set to 0 to disable. | tmp directory of the brick |  New directory path
+storage.linux-io_uring | Enable/Disable io_uring based I/O at the posix xlator on the bricks. | Off | On/Off
 
 You can view the changed volume options using command:
 

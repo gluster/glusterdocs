@@ -43,6 +43,7 @@ nav:
      - Quotas: Administrator-Guide/Directory-Quota.md
      - Snapshots: Administrator-Guide/Managing-Snapshots.md
      - Trash: Administrator-Guide/Trash.md
+     - io_uring: Administrator-Guide/io_uring.md
   - Monitoring Workload: Administrator-Guide/Monitoring-Workload.md
   - Object Storage: Administrator-Guide/Object-Storage.md
   - GlusterFS Cinder: Administrator-Guide/GlusterFS-Cinder.md
