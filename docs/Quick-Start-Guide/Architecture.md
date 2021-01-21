@@ -152,7 +152,7 @@ volume create: test-volume: success: please start the volume to access data
 > -  A dispersed volume can be created by specifying the number of bricks in a
    disperse set, by specifying the number of redundancy bricks, or both.
 
-> -  If *disperse* is not specified, or the <count> is missing, the
+> -  If *disperse* is not specified, or the `<COUNT>` is missing, the
    entire volume will be treated as a single disperse set composed by all
    bricks enumerated in the command line.
 
