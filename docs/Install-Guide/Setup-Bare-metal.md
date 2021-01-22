@@ -3,7 +3,7 @@
 ### Setup, Method 2 – Setting up on physical servers
 
 To set up Gluster on physical servers, we recommend two servers of very
-modest specifications (2 CPU’s, 2GB of RAM, 1GBE). Since we are dealing
+modest specifications (2 CPUs, 2GB of RAM, 1GBE). Since we are dealing
 with physical hardware here, keep in mind, what we are showing here is
 for testing purposes. In the end, remember that forces beyond your
 control (aka, your bosses’ boss...) can force you to take that the “just
@@ -28,7 +28,7 @@ practices we mentioned before:
 With the explosion of commodity hardware, you don’t need to be a
 hardware expert these days to deploy a server. Although this is
 generally a good thing, it also means that paying attention to some
-important, performance impacting BIOS settings is commonly ignored. Several
+important, performance-impacting BIOS settings is commonly ignored. Several
 points that might cause issues when if you're unaware of them:
 
 -   Most manufacturers enable power saving mode by default. This is a
@@ -37,11 +37,11 @@ points that might cause issues when if you're unaware of them:
     of the power savings is not a reasonable tradeoff
 -   Newer motherboards and processors have lots of nifty features!
     Enhancements in virtualization, newer ways of doing predictive
-    algorithms and NUMA are just a few to mention. To be safe, many
+    algorithms, and NUMA are just a few to mention. To be safe, many
     manufactures ship hardware with settings meant to work with as
     massive a variety of workloads and configurations as they have
-    customers. One issue you could face is when you set up that blazing
-    fast 10GBE card you were so thrilled about installing? In many
+    customers. One issue you could face is when you set up that blazing-fast
+    10GBE card you were so thrilled about installing? In many
     cases, it would end up being crippled by a default 1x speed put in
     place on the PCI-E bus by the motherboard.
 
@@ -68,5 +68,5 @@ resolved with a simple driver or firmware update. As often as not, these
 updates affect the two most critical pieces of hardware on a machine you
 want to use for networked storage - the RAID controller and the NIC's.
 
-Once you have setup the servers and installed the OS, you are ready to
+Once you have set up the servers and installed the OS, you are ready to
 move on to the [install](./Install.md) section.
