@@ -29,7 +29,7 @@ that the first node has already been added.
 
 ### Partition the disk
 
-Assuming you have a empty disk at `/dev/sdb`:
+Assuming you have a empty disk at `/dev/sdb`: *(You can check the partitions on your system using* `fdisk -l`*)*
 
 ```console
 # fdisk /dev/sdb 
