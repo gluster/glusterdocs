@@ -166,7 +166,7 @@ disable that prefix,
 
 Create a geo-rep session between Primary and Secondary volume using the
 following command. The node in which this command is executed and the
-<Secondary_host> specified in the command should have password less ssh
+`<Secondary_host>` specified in the command should have password less ssh
 setup between them. The push-pem option actually uses the secret pem
 pub file created earlier and establishes geo-rep specific password
 less ssh between each node in Primary to each node of Secondary.
