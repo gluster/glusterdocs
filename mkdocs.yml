@@ -64,6 +64,7 @@ nav:
   - Arbiter volumes and quorum options: Administrator-Guide/arbiter-volumes-and-quorum.md
   - Thin Arbiter volumes: Administrator-Guide/Thin-Arbiter-Volumes.md
   - Trash for GlusterFS: Administrator-Guide/Trash.md
+  - Tuning Volume Options: Administrator-Guide/Tuning-Volume-Options.md
   - Mandatory Locks: Administrator-Guide/Mandatory-Locks.md
   - GlusterFS coreutilities: Administrator-Guide/GlusterFS-Coreutils.md
   - Events APIs: Administrator-Guide/Events-APIs.md
