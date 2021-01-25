@@ -43,8 +43,8 @@ self heal deamon are logged at `/var/log/glusterfs/glustershd.log`.    One log f
 
 ## Geo-replication:
 
-`/var/log/glusterfs/geo-replication/<master>`
-`/var/log/glusterfs/geo-replication-slaves `
+`/var/log/glusterfs/geo-replication/<primary>`
+`/var/log/glusterfs/geo-replication-secondary `
 
 ## Gluster volume heal VOLNAME info command:
 `/var/log/glusterfs/glfsheal-VOLNAME.log` . One log file per server on which the command is executed.

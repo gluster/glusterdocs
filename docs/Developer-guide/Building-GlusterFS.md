@@ -37,7 +37,8 @@ Fedora,
     libxml2-devel python-devel libaio-devel libibverbs-devel      \
     librdmacm-devel readline-devel lvm2-devel glib2-devel         \
     userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
-    fuse-devel redhat-rpm-config rpcgen libtirpc-devel make
+    fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
+    libuuid-devel
 ```
 
 ### Ubuntu
@@ -226,7 +227,8 @@ will need to start glusterd manually. To manually start glusterd just
 run,
 
 ```console
-# glusterd
+# systemctl daemon-reload
+# systemctl start glusterd
 ```
 
 This will start glusterd and fork it into the background as a daemon

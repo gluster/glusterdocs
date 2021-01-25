@@ -8,8 +8,8 @@ replication service from one site to another over Local Area Networks
 
 ## Prerequisites
 
-* Master and Slave Volumes should be Gluster Volumes.
-* Master and Slave clusters should have the same GlusterFS version.
+* Primary and Secondary Volumes should be Gluster Volumes.
+* Primary and Secondary clusters should have the same GlusterFS version.
 
 ## Replicated Volumes vs Geo-replication
 
@@ -46,29 +46,29 @@ Geo-replication, including the following:
 ### Mirror data in a cascading fashion across multiple sites(Multi-site cascading Geo-replication)
 ![geo-rep04_cascading](https://cloud.githubusercontent.com/assets/10970993/7412320/05e131bc-ef5f-11e4-8580-a4dc592148ff.png)
 
-## Slave User setup
+## Secondary User setup
 
-Setup an unprivileged user in Slave nodes to secure the SSH
-connectivity to those nodes. The unprivileged slave user uses the
+Setup an unprivileged user in Secondary nodes to secure the SSH
+connectivity to those nodes. The unprivileged Secondary user uses the
 mountbroker service of glusterd to set up an auxiliary gluster mount
 for the user in a special environment, which ensures that the user is
 only allowed to access with special parameters that provide
 administrative level access to the particular Volume.
 
-In all the slave nodes, create a new group as "geogroup".
+In all the Secondary nodes, create a new group as "geogroup".
 
 ```
 # sudo groupadd geogroup
 ```
 
-In all the slave nodes, create an unprivileged account. For example,
+In all the Secondary nodes, create an unprivileged account. For example,
 "geoaccount". Add geoaccount as a member of "geogroup" group.
 
 ```
 # useradd -G geogroup geoaccount
 ```
 
-In any one Slave node, run the following command to setup the
+In any one Secondary node, run the following command to setup the
 mountbroker root directory and group.
 
 ```
@@ -81,7 +81,7 @@ For example,
 # gluster-mountbroker setup /var/mountbroker-root geogroup
 ```
 
-In any one of Slave node, Run the following commands to add Volume and
+In any one of Secondary node, Run the following commands to add Volume and
 user to mountbroker service.
 
 ```
@@ -91,7 +91,7 @@ gluster-mountbroker add <VOLUME> <USER>
 For example,
 
 ```
-# gluster-mountbroker add gvol-slave geoaccount
+# gluster-mountbroker add gvol-secondary geoaccount
 ```
 
 (**Note**: To remove a user, use `gluster-mountbroker remove` command)
@@ -102,33 +102,33 @@ Check the status of setup using,
 # gluster-mountbroker status
 ```
 
-Restart `glusterd` service on all Slave nodes.
+Restart `glusterd` service on all Secondary nodes.
 
 ## Setting Up the Environment for Geo-replication
 
 ### Time Synchronization
 
-On bricks of a geo-replication master volume, all the servers' time
+On bricks of a geo-replication Primary volume, all the servers' time
 must be uniform. You are recommended to set up NTP (Network Time
 Protocol) or similar service to keep the bricks sync in time and avoid
 the out-of-time sync effect.
 
-For example: In a Replicated volume where brick1 of the master is at
-12.20 hrs, and brick 2 of the Master is at 12.10 hrs with 10 minutes
+For example: In a Replicated volume where brick1 of the Primary is at
+12.20 hrs, and brick 2 of the Primary is at 12.10 hrs with 10 minutes
 time lag, all the changes in brick2 between this period may go
-unnoticed during synchronization of files with Slave.
+unnoticed during synchronization of files with Secondary.
 
 ### Password-less SSH
 
 Password-less login has to be set up between the host machine (where
-geo-replication Create command will be issued) and one of the Slave
+geo-replication Create command will be issued) and one of the Secondary
 node for the unprivileged account created above.
 
 **Note**: This is required to run Create command. This can be disabled
 once the session is established.(Required again while running create
 force)
 
-On one of the Master node where geo-replication Create command will be
+On one of the Primary node where geo-replication Create command will be
 issued, run the following command to generate the SSH key(Press Enter
 twice to avoid passphrase).
 
@@ -136,8 +136,8 @@ twice to avoid passphrase).
 # ssh-keygen
 ```
 
-Run the following command on the same node to one Slave node which is
-identified as primary Slave
+Run the following command on the same node to one Secondary node which is
+identified as the main Secondary node.
 
 ```
 # ssh-copy-id geoaccount@snode1.example.com
@@ -146,8 +146,8 @@ identified as primary Slave
 ### Creating secret pem pub file
 
 Execute the below command from the node where you setup the
-password-less ssh to slave. This will generate Geo-rep session
-specific ssh-keys in all Master peer nodes and collect public keys
+password-less ssh to Secondary. This will generate Geo-rep session
+specific ssh-keys in all Primary peer nodes and collect public keys
 from all peer nodes to the command initiated node.
 
 ```console
@@ -164,82 +164,82 @@ disable that prefix,
 
 ## Creating the session
 
-Create a geo-rep session between master and slave volume using the
+Create a geo-rep session between Primary and Secondary volume using the
 following command. The node in which this command is executed and the
-<slave_host> specified in the command should have password less ssh
+<Secondary_host> specified in the command should have password less ssh
 setup between them. The push-pem option actually uses the secret pem
 pub file created earlier and establishes geo-rep specific password
-less ssh between each node in master to each node of slave.
+less ssh between each node in Primary to each node of Secondary.
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> \
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> \
     create [ssh-port <port>] push-pem|no-verify [force]
 ```
 
 For example,
 
 ```console
-# gluster volume geo-replication gvol-master \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary \
+    geoaccount@snode1.example.com::gvol-secondary \
     create push-pem
 ```
 
-If custom SSH port is configured in Slave nodes then,
+If custom SSH port is configured in Secondary nodes then,
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     create ssh-port 50022 push-pem
 ```
 
-If the total available size in slave volume is less than the total
-size of master, the command will throw error message. In such cases
+If the total available size in Secondary volume is less than the total
+size of Primary, the command will throw error message. In such cases
 'force' option can be used.
 
-In use cases where the rsa-keys of nodes in master volume is
-distributed to slave nodes through an external agent and following
-slave side verifications are taken care of by the external agent, then
+In use cases where the rsa-keys of nodes in Primary volume is
+distributed to Secondary nodes through an external agent and following
+Secondary side verifications are taken care of by the external agent, then
 
-- if ssh port 22 or custom port is open in slave
+- if ssh port 22 or custom port is open in Secondary
 - has proper passwordless ssh login setup
-- slave volume is created and is empty
-- if slave has enough memory
+- Secondary volume is created and is empty
+- if Secondary has enough memory
 
 Then use following command to create Geo-rep session with `no-verify`
 option.
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> create no-verify [force]
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> create no-verify [force]
 ```
 
 For example,
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     create no-verify
 ```
 
-In this case the master node rsa-key distribution to slave node does
-not happen and above mentioned slave verification is not performed and
+In this case the Primary node rsa-key distribution to Secondary node does
+not happen and above mentioned Secondary verification is not performed and
 these two things has to be taken care externaly.
 
 ## Post Creation steps
 
-Run the following command as root in any one of Slave node.
+Run the following command as root in any one of Secondary node.
 
 ```console
-/usr/libexec/glusterfs/set_geo_rep_pem_keys.sh <slave_user> \
-    <master_volume> <slave_volume>
+/usr/libexec/glusterfs/set_geo_rep_pem_keys.sh <secondary_user> \
+    <primary_volume> <secondary_volume>
 ```
 
 For example,
 
 ```
 # /usr/libexec/glusterfs/set_geo_rep_pem_keys.sh geoaccount \
-    gvol-master gvol-slave
+    gvol-primary gvol-secondary
 ```
 
 
@@ -252,19 +252,19 @@ restarted.
 To view all configured options of a session,
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> config [option]
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> config [option]
 ```
 
 For Example,
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     config
 
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     config sync-jobs
 ```
 
@@ -272,15 +272,15 @@ To configure Gluster Geo-replication, use the following command at the
 Gluster command line
 
 ```console
-gluster volume geo-replication <master_volume> \
-   <slave_user>@<slave_host>::<slave_volume> config [option]
+gluster volume geo-replication <primary_volume> \
+   <secondary_user>@<secondary_host>::<secondary_volume> config [option]
 ```
 
 For example:
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     config sync-jobs 3
 ```
 
@@ -305,8 +305,8 @@ each sub volume. If a worker acquire lock, then it will become Active
 else remain as Passive.
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> config
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> config
     use-meta-volume true
 ```
 
@@ -327,23 +327,23 @@ for a geo-replication setting:
   use-tarssh true                 | The use-tarssh command allows tar over Secure Shell protocol. Use this option to handle workloads of files that have not undergone edits.
   timeout SECONDS                 | The timeout period in seconds.
   sync-jobs N                     | The number of simultaneous files/directories that can be synchronized.
-  ignore-deletes                  | If this option is set to 1, a file deleted on the master will not trigger a delete operation on the slave. As a result, the slave will remain as a superset of the master and can be used to recover the master in the event of a crash and/or accidental delete.
+  ignore-deletes                  | If this option is set to 1, a file deleted on the primary will not trigger a delete operation on the secondary. As a result, the secondary will remain as a superset of the primary and can be used to recover the primary in the event of a crash and/or accidental delete.
 
 ## Starting Geo-replication
 
 Use the following command to start geo-replication session,
 
 ```console
-gluster volume geo-replication <master_volume>  \
-    <slave_user>@<slave_host>::<slave_volume> \
+gluster volume geo-replication <primary_volume>  \
+    <secondary_user>@<secondary_host>::<secondary_volume> \
     start [force]
 ```
 
 For example,
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     start
 ```
 
@@ -357,16 +357,16 @@ For example,
 Use the following command to stop geo-replication sesion,
 
 ```console
-gluster volume geo-replication <master_volume>  \
-    <slave_user>@<slave_host>::<slave_volume> \
+gluster volume geo-replication <primary_volume>  \
+    <secondary_user>@<secondary_host>::<secondary_volume> \
     stop [force]
 ```
 
 For example,
 
 ```console
-# gluster volume geo-replication gvol-master  \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
     stop
 ```
 
@@ -380,36 +380,36 @@ To check the status of all Geo-replication sessions in the Cluster
 To check the status of one session,
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> status [detail]
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> status [detail]
 ```
 
 Example,
 
 ```console
-# gluster volume geo-replication gvol-master \
-    geoaccount@snode1::gvol-slave status
+# gluster volume geo-replication gvol-primary \
+    geoaccount@snode1::gvol-secondary status
 
-# gluster volume geo-replication gvol-master \
-    geoaccount@snode1::gvol-slave status detail
+# gluster volume geo-replication gvol-primary \
+    geoaccount@snode1::gvol-secondary status detail
 ```
 
 Example Status Output
 
 ```console
-MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED
--------------------------------------------------------------------------------------------------------------------------------------
-mnode1         gvol-master           /bricks/b1      root          snode1::gvol-slave  snode1        Active    Changelog Crawl    2016-10-12 23:07:13
-mnode2         gvol-master           /bricks/b2      root          snode1::gvol-slave  snode2        Active    Changelog Crawl    2016-10-12 23:07:13
+PRIMARY NODE    PRIMARY VOL          PRIMARY BRICK    SECONDARY USER    SECONDARY         SECONDARY NODE    STATUS    CRAWL STATUS       LAST_SYNCED
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+mnode1         gvol-primary           /bricks/b1      root          snode1::gvol-secondary  snode1        Active    Changelog Crawl    2016-10-12 23:07:13
+mnode2         gvol-primary           /bricks/b2      root          snode1::gvol-secondary  snode2        Active    Changelog Crawl    2016-10-12 23:07:13
 ```
 
 Example Status detail Output
 
 ```console
-MASTER NODE    MASTER VOL    MASTER BRICK    SLAVE USER    SLAVE        SLAVE NODE    STATUS    CRAWL STATUS       LAST_SYNCED            ENTRY    DATA    META    FAILURES    CHECKPOINT TIME    CHECKPOINT COMPLETED    CHECKPOINT COMPLETION TIME
+PRIMARY NODE    PRIMARY VOL    PRIMARY BRICK    SECONDARY USER    SECONDARY        SECONDARY NODE    STATUS    CRAWL STATUS       LAST_SYNCED            ENTRY    DATA    META    FAILURES    CHECKPOINT TIME    CHECKPOINT COMPLETED    CHECKPOINT COMPLETION TIME
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mnode1         gvol-master           /bricks/b1      root          snode1::gvol-slave  snode1        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
-mnode2         gvol-master           /bricks/b2      root          snode1::gvol-slave  snode2        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
+mnode1         gvol-primary           /bricks/b1      root          snode1::gvol-secondary  snode1        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
+mnode2         gvol-primary           /bricks/b2      root          snode1::gvol-secondary  snode2        Active    Changelog Crawl    2016-10-12 23:07:13    0        0       0       0           N/A                N/A                     N/A
 ```
 
 The `STATUS` of the session could be one of the following,
@@ -434,8 +434,8 @@ The `STATUS` of the session could be one of the following,
     for more details about the Faulty status. Log file path can be
     found using
 
-        gluster volume geo-replication <master_volume> \
-            <slave_user>@<slave_host>::<slave_volume> config log-file
+        gluster volume geo-replication <primary_volume> \
+            <secondary_user>@<secondary_host>::<secondary_volume> config log-file
 
 - **Stopped**: The geo-replication session has stopped, but has not
   been deleted.
@@ -473,22 +473,22 @@ Established Geo-replication session can be deleted using the following
 command,
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> delete [force]
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> delete [force]
 ```
 
 For example,
 
 ```console
-# gluster volume geo-replication gvol-master \
-    geoaccount@snode1.example.com::gvol-slave delete
+# gluster volume geo-replication gvol-primary \
+    geoaccount@snode1.example.com::gvol-secondary delete
 ```
 
 > Note: If the same session is created again then syncing will resume
 > from where it was stopped before deleting the session. If the
 > session to be deleted permanently then use reset-sync-time option
 > with delete command. For example, `gluster volume geo-replication
-> gvol-master geoaccount@snode1::gvol-slave delete reset-sync-time`
+> gvol-primary geoaccount@snode1::gvol-secondary delete reset-sync-time`
 
 
 ## Checkpoint
@@ -501,23 +501,23 @@ modified before the Checkpoint Time.
 Set the Checkpoint using,
 
 ```console
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> config checkpoint now
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> config checkpoint now
 ```
 
 Example,
 
 ```console
-# gluster volume geo-replication gvol-master \
-    geoaccount@snode1.example.com::gvol-slave \
+# gluster volume geo-replication gvol-primary \
+    geoaccount@snode1.example.com::gvol-secondary \
     config checkpoint now
 ```
 
-Touch the Master mount point to make sure Checkpoint completes even
+Touch the Primary mount point to make sure Checkpoint completes even
 though no I/O happening in the Volume
 
 ```console
-# mount -t glusterfs <masterhost>:<mastervol> /mnt
+# mount -t glusterfs <primaryhost>:<primaryvol> /mnt
 # touch /mnt
 ```
 
@@ -531,51 +531,51 @@ about Checkpoint
   completed, else N/A
 
 ## Log Files
-Master Log files are located in `/var/log/glusterfs/geo-replication`
-directory in each master nodes. Slave log files are located in
-`/var/log/glusterfs/geo-replication-slaves` directory in Slave nodes.
+Primary Log files are located in `/var/log/glusterfs/geo-replication`
+directory in each Primary nodes. Secondary log files are located in
+`/var/log/glusterfs/geo-replication-secondary` directory in Secondary nodes.
 
 ## Gluster Snapshots and Geo-replicated Volumes
 
-Gluster snapshot of Master and Slave should not go out of order on
-restore. So while taking snapshot take snapshot of both Master and
-slave Volumes.
+Gluster snapshot of Primary and Secondary should not go out of order on
+restore. So while taking snapshot take snapshot of both Primary and
+Secondary Volumes.
 
 - Pause the Geo-replication session using,
 
-        gluster volume geo-replication <master_volume> \
-            <slave_user>@<slave_host>::<slave_volume> pause
+        gluster volume geo-replication <primary_volume> \
+            <secondary_user>@<secondary_host>::<secondary_volume> pause
 
-- Take Gluster Snapshot of Slave Volume and Master Volume(Use same
+- Take Gluster Snapshot of Secondary Volume and Primary Volume(Use same
   name for snapshots)
 
         gluster snapshot create <snapname> <volname>
 
     Example,
 
-        # gluster snapshot create snap1 gvol-slave
-        # gluster snapshot create snap1 gvol-master
+        # gluster snapshot create snap1 gvol-secondary
+        # gluster snapshot create snap1 gvol-primary
 
 - Resume Geo-replication session using,
 
-        gluster volume geo-replication <master_volume> \
-            <slave_user>@<slave_host>::<slave_volume> resume
+        gluster volume geo-replication <primary_volume> \
+            <secondary_user>@<secondary_host>::<secondary_volume> resume
 
 If we want to continue Geo-rep session after snapshot restore, we need
-to restore both Master and Slave Volume and resume the Geo-replication
+to restore both Primary and Secondary Volume and resume the Geo-replication
 session using force option
 
 ```console
 gluster snapshot restore <snapname>
-gluster volume geo-replication <master_volume> \
-    <slave_user>@<slave_host>::<slave_volume> resume force
+gluster volume geo-replication <primary_volume> \
+    <secondary_user>@<secondary_host>::<secondary_volume> resume force
 ```
 
 Example,
 
 ```console
-# gluster snapshot restore snap1 # Slave Snap
-# gluster snapshot restore snap1 # Master Snap
-# gluster volume geo-replication gvol-master geoaccount@snode1::gvol-slave \
+# gluster snapshot restore snap1 # Secondary Snap
+# gluster snapshot restore snap1 # Primary Snap
+# gluster volume geo-replication gvol-primary geoaccount@snode1::gvol-secondary \
     resume force
 ```

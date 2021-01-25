@@ -320,32 +320,32 @@ BRICK_REPLACE                  | volume               | Volume Name
 Event Type                     | Attribute            | Description
 ------------------------------ | -------------------- | -----------
 GEOREP_CREATE                  | force                | Force option used during session Create
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
                                | no_verify            | No verify option is used or not
                                | push_pem             | Push pem option is used or Not
                                | ssh_port             | If SSH port is configured during Session Create
-                               | master               | Master Volume Name
+                               | primary              | Primary Volume Name
 GEOREP_START                   | force                | Force option used during session Start
-                               | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | Primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
 GEOREP_STOP                    | force                | Force option used during session Stop
-                               | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
 GEOREP_PAUSE                   | force                | Force option used during session Pause
-                               | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
 GEOREP_RESUME                  | force                | Force option used during session Resume
-                               | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
 GEOREP_DELETE                  | force                | Force option used during session Delete
-                               | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
-GEOREP_CONFIG_SET              | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+                               | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
+GEOREP_CONFIG_SET              | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
                                | option               | Name of Geo-rep config
                                | value                | Changed Value
-GEOREP_CONFIG_RESET            | master               | Master Volume Name
-                               | slave                | Slave Details(Slavehost::SlaveVolume)
+GEOREP_CONFIG_RESET            | primary              | Primary Volume Name
+                               | secondary            | Secondary Details(Secondaryhost::SecondaryVolume)
                                | option               | Name of Geo-rep config
 
 ### Bitrot Events
@@ -532,14 +532,14 @@ EC_MIN_BRICKS_NOT_UP           | subvol               | Subvolume
 EC_MIN_BRICKS_UP               | subvol               | Subvolume
 
 ### Georep Events
-Event Type                     | Attribute            | Description
------------------------------- | -------------------- | -----------
-GEOREP_FAULTY                  | master_node          | Hostname or IP of Master Volume
-                               | brick_path           | Brick Path
-                               | slave_host           | Slave Hostname or IP
-                               | master_volume        | Master Volume Name
-                               | current_slave_host   | Current Slave Host to which Geo-rep worker was trying to connect to
-                               | slave_volume         | Slave Volume Name
+Event Type                     | Attribute              | Description
+------------------------------ | --------------------   | -----------
+GEOREP_FAULTY                  | primary_node           | Hostname or IP of Primary Volume
+                               | brick_path             | Brick Path
+                               | secondary_host         | Secondary Hostname or IP
+                               | primary_volume         | Primary Volume Name
+                               | current_secondary_host | Current Secondary Host to which Geo-rep worker was trying to connect to
+                               | secondary_volume       | Secondary Volume Name
 
 ### Quota Events
 Event Type                     | Attribute            | Description

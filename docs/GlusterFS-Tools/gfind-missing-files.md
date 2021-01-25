@@ -1,14 +1,14 @@
 ## Introduction
 
 The tool gfind_missing_files.sh can be used to find the missing files in a
-GlusterFS geo-replicated slave volume. The tool uses a multi-threaded crawler
+GlusterFS geo-replicated secondary volume. The tool uses a multi-threaded crawler
 operating on the backend .glusterfs of a brickpath which is passed as one of
-the parameters to the tool. It does a stat on each entry in the slave volume
+the parameters to the tool. It does a stat on each entry in the secondary volume
 mount to check for the presence of a file. The tool uses the aux-gfid-mount
 thereby avoiding path conversions and potentially saving time.
 
 This tool should be run on every node and each brickpath in a geo-replicated
-master volume to find the missing files on the slave volume.
+primary volume to find the missing files on the secondary volume.
 
 The script gfind_missing_files.sh is a wrapper script that in turn uses the
 gcrawler binary to do the backend crawling. The script detects the gfids of
@@ -18,11 +18,11 @@ missing files with their full pathnames.
 ## Usage
 
 ```console
-bash gfind_missing_files.sh <BRICK_PATH> <SLAVE_HOST> <SLAVE_VOL> <OUTFILE>
-            BRICK_PATH -   Full path of the brick
-            SLAVE_HOST -   Hostname of gluster volume
-            SLAVE_VOL  -   Gluster volume name
-            OUTFILE   -    Output file which contains gfids of the missing files
+bash gfind_missing_files.sh <BRICK_PATH> <SECONDARY_HOST> <SECONDARY_VOL> <OUTFILE>
+            BRICK_PATH     -   Full path of the brick
+            SECONDARY_HOST -   Hostname of gluster volume
+            SECONDARY_VOL  -   Gluster volume name
+            OUTFILE        -    Output file which contains gfids of the missing files
 ```
 
 The gfid-to-path conversion uses a quicker algorithm for converting gfids to
@@ -32,7 +32,7 @@ converted to their respective paths.
 ## Example output(126733 missing files)
 
 ```console
-# ionice -c 2 -n 7 ./gfind_missing_files.sh /bricks/m3 acdc slave-vol ~/test_results/m3-4.txt
+# ionice -c 2 -n 7 ./gfind_missing_files.sh /bricks/m3 acdc secondary-vol ~/test_results/m3-4.txt
 Calling crawler...
 Crawl Complete.
 gfids of skipped files are available in the file /root/test_results/m3-4.txt

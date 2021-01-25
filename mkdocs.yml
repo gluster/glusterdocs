@@ -43,6 +43,7 @@ nav:
      - Quotas: Administrator-Guide/Directory-Quota.md
      - Snapshots: Administrator-Guide/Managing-Snapshots.md
      - Trash: Administrator-Guide/Trash.md
+     - io_uring: Administrator-Guide/io_uring.md
   - Monitoring Workload: Administrator-Guide/Monitoring-Workload.md
   - Object Storage: Administrator-Guide/Object-Storage.md
   - GlusterFS Cinder: Administrator-Guide/GlusterFS-Cinder.md
@@ -96,6 +97,7 @@ nav:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op-version.md
   - Generic upgrade procedure: Upgrade-Guide/generic-upgrade-procedure.md
+  - Upgrade to 9: Upgrade-Guide/upgrade-to-9.md
   - Upgrade to 8: Upgrade-Guide/upgrade-to-8.md
   - Upgrade to 7: Upgrade-Guide/upgrade-to-7.md
   - Upgrade to 6: Upgrade-Guide/upgrade-to-6.md
@@ -113,6 +115,8 @@ nav:
   - Upgrade to 3.5: Upgrade-Guide/upgrade-to-3.5.md
 - Release Notes:
   - index: release-notes/index.md
+  - RELEASE 9.x:
+    - 9.0: release-notes/9.0.md
   - RELEASE 8.x:
     - 8.3: release-notes/8.3.md
     - 8.2: release-notes/8.2.md

@@ -113,17 +113,17 @@ Branching policy
 This section describes both, the branching policies on the public repo
 as well as the suggested best-practice for local branching
 
-### Master/release branches
+### Devel/release branches
 
-In glusterfs.git, the master branch is the forward development branch.
+In glusterfs.git, the devel branch is the forward development branch.
 This is where new features come in first. In fact this is where almost
-every change (commit) comes in first. The master branch is always kept
+every change (commit) comes in first. The devel branch is always kept
 in a buildable state and smoke tests pass.
 
 Release trains (3.1.z, 3.2.z, 4.y, 5.y) each have a branch originating from
-master. Code freeze of each new release train is marked by the creation
+devel. Code freeze of each new release train is marked by the creation
 of the `release-x.y` branch. At this point no new features are added to
-the release-x.y branch. All fixes and commits first get into master.
+the release-x.y branch. All fixes and commits first get into devel.
 From there, only bug fixes get backported to the relevant release
 branches. From the release-x.y branch, actual release code snapshots
 (e.g. glusterfs-3.2.2 etc.) are tagged (git annotated tag with 'git tag
@@ -134,11 +134,11 @@ branches. From the release-x.y branch, actual release code snapshots
 As a best practice, it is recommended you perform all code changes for a
 task in a local branch in your working tree. The local branch should be
 created from the upstream branch to which you intend to submit the
-change. If you are submitting changes to master branch, first create a
+change. If you are submitting changes to devel branch, first create a
 local task branch like this -
 
 ```console
-# git checkout master
+# git checkout devel
 # git branch bug-XYZ && git checkout bug-XYZ
 ... <hack, commit>
 ```
