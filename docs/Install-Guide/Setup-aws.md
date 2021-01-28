@@ -37,7 +37,7 @@ Other notes:
     anyone is interested in this please let us know since we are always
     looking to write articles on the most requested features and
     questions.
--   Using EBS volumes and Elastic IP’s is also recommended in
+-   Using EBS volumes and Elastic IPs are also recommended in
     production. For testing, you can safely ignore these as long as you
     are aware that the data could be lost at any moment, so make sure
     your test deployment is just that, testing only.
@@ -52,7 +52,7 @@ Other notes:
     get Gluster running again using the default EC2 configuration. If a
     node is shut down, it can mean absolute loss of the node (depending
     on how you set things up). This is well beyond the scope of this
-    document, but is discussed in any number of AWS related forums and
+    document but is discussed in any number of AWS-related forums and
     posts. Since I found out the hard way myself (oh, so you read the
     manual every time?!), I thought it worth at least mentioning.
 
