@@ -57,10 +57,20 @@ Cluster | cluster.self-heal-window-size | Specifies the maximum number of blocks
  | cluster.heal-wait-queue-length | Specifies the number of heals that can be queued for the parallel background self heal jobs. | 128 | 0-10000
  | cluster.favorite-child-policy | Specifies which policy can be used to automatically resolve split-brains without user intervention. “size” picks the file with the biggest size as the source. “ctime” and “mtime” pick the file with the latest ctime and mtime respectively as the source. “majority” picks a file with identical mtime and size in more than half the number of bricks in the replica. | none | none/size/ctime/mtime/majority
  | cluster.use-anonymous-inode | Setting this option heals directory renames efficiently | no | no/yes
+Disperse | disperse.eager-lock | If eager-lock is on, the lock remains in place either until lock contention is detected, or for 1 second in order to check if there is another request for that file from the same client. If eager-lock is off, locks release immediately after file operations complete, improving performance for some operations, but reducing access efficiency. | on | on/off
+ | disperse.other-eager-lock | This option is equivalent to the disperse.eager-lock option but applicable only for non regular files. When multiple clients access a particular directory, disabling disperse.other-eager-lockoption for the volume can improve performance for directory access without compromising performance of I/O's for regular files. | off | on/off
+ | disperse.shd-max-threads | Specifies the number of entries that can be self healed in parallel on each disperse subvolume by self-heal daemon. | 1 | 1 - 64
+ | disperse.shd-wait-qlength | Specifies the number of entries that must be kept in the dispersed subvolume's queue for self-heal daemon threads to take up as soon as any of the threads are free to heal. This value should be changed based on how much memory self-heal daemon process can use for keeping the next set of entries that need to be healed. | 1024 | 1 - 655536
 Logging | diagnostics.brick-log-level | Changes the log-level of the bricks | INFO | DEBUG/WARNING/ERROR/CRITICAL/NONE/TRACE
  | diagnostics.client-log-level | Changes the log-level of the clients. | INFO | DEBUG/WARNING/ERROR/CRITICAL/NONE/TRACE
- | diagnostics.latency-measurement | Statistics related to the latency of each operation would be tracked. | Off | On/Off
- | diagnostics.dump-fd-stats | Statistics related to file-operations would be tracked. | Off | On/Off
+ | diagnostics.brick-sys-log-level | Depending on the value defined for this option, log messages at and above the defined level are generated in the syslog and the brick log files. | CRITICAL | INFO/WARNING/ERROR/CRITICAL
+ | diagnostics.client-sys-log-level | Depending on the value defined for this option, log messages at and above the defined level are generated in the syslog and the client log files. | CRITICAL | INFO/WARNING/ERROR/CRITICAL
+| diagnostics.brick-log-format | Allows you to configure the log format to log either with a message id or without one on the brick. | with-msg-id | no-msg-id/with-msg-id
+| diagnostics.client-log-format | Allows you to configure the log format to log either with a message ID or without one on the client. | with-msg-id | no-msg-id/with-msg-id
+ | diagnostics.brick-log-buf-size | The maximum number of unique log messages that can be suppressed until the timeout or buffer overflow, whichever occurs first on the bricks.| 5 | 0 and 20 (0 and 20 included)
+ | diagnostics.client-log-buf-size | The maximum number of unique log messages that can be suppressed until the timeout or buffer overflow, whichever occurs first on the clients.| 5 | 0 and 20 (0 and 20 included)
+ | diagnostics.brick-log-flush-timeout | The length of time for which the log messages are buffered, before being flushed to the logging infrastructure (gluster or syslog files) on the bricks. | 120 | 30 - 300 seconds (30 and 300 included)
+ | diagnostics.client-log-flush-timeout | The length of time for which the log messages are buffered, before being flushed to the logging infrastructure (gluster or syslog files) on the clients. | 120 | 30 - 300 seconds (30 and 300 included)
 Performance | *features.trash | Enable/disable trash translator | off | on/off
  | *performance.readdir-ahead | Enable/disable readdir-ahead translator in the volume |	off | on/off
  | *performance.read-ahead | Enable/disable read-ahead translator in the volume | off | on/off
@@ -93,7 +103,23 @@ nfs | nfs.enable-ino32 | For 32-bit nfs clients or applications that do not supp
  | nfs.disable | Turn-off volume being exported by NFS | Off | On/Off
 Server | server.allow-insecure | Allow client connections from unprivileged ports. By default only privileged ports are allowed. This is a global setting in case insecure ports are to be enabled for all exports using a single option.| On |	On/Off
  | server.statedump-path | Location of the state dump file. | tmp directory of the brick | New directory path
+ | server.allow-insecure | Allows FUSE-based client connections from unprivileged ports.By default, this is enabled, meaning that ports can accept and reject messages from insecure ports. When disabled, only privileged ports are allowed. | on | on/off
+ | server.anongid | Value of the GID used for the anonymous user when root-squash is enabled. When root-squash is enabled, all the requests received from the root GID (that is 0) are changed to have the GID of the anonymous user. | 65534 (this UID is also known as nfsnobody) | 0 - 4294967295
+ | server.anonuid | Value of the UID used for the anonymous user when root-squash is enabled. When root-squash is enabled, all the requests received from the root UID (that is 0) are changed to have the UID of the anonymous user. | 65534 (this UID is also known as nfsnobody) | 0 - 4294967295
+ | server.event-threads | Specifies the number of event threads to execute in parallel. Larger values would help process responses faster, depending on available processing power. | 2 | 1-1024
+ | server.gid-timeout | The time period in seconds which controls when cached groups has to expire. This is the cache that contains the groups (GIDs) where a specified user (UID) belongs to. This option is used only when server.manage-gids is enabled.| 2 | 0-4294967295 seconds
+ | server.manage-gids | Resolve groups on the server-side. By enabling this option, the groups (GIDs) a user (UID) belongs to gets resolved on the server, instead of using the groups that were send in the RPC Call by the client. This option makes it possible to apply permission checks for users that belong to bigger group lists than the protocol supports (approximately 93). | off | on/off
+ | server.root-squash | Prevents root users from having root privileges, and instead assigns them the privileges of nfsnobody. This squashes the power of the root users, preventing unauthorized modification of files on the Red Hat Gluster Storage servers. This option is used only for glusterFS NFS protocol. | off | on/off
+ | server.statedump-path | Specifies the directory in which the statedumpfiles must be stored. | path to directory | /var/run/gluster (for a default installation)
 Storage | storage.health-check-interval | Number of seconds between health-checks done on the filesystem that is used for the brick(s). Defaults to 30 seconds, set to 0 to disable. | tmp directory of the brick | New directory path
+ | storage.linux-io_uring | Enable/Disable io_uring based I/O at the posix xlator on the bricks. | Off | On/Off
+ | storage.fips-mode-rchecksum | If enabled, posix_rchecksum uses the FIPS compliant SHA256 checksum, else it uses MD5. | on | on/ off
+ | storage.create-mask | Maximum set (upper limit) of permission for the files that will be created. | 0777 | 0000 - 0777
+ | storage.create-directory-mask | Maximum set (upper limit) of permission for the directories that will be created. | 0777 | 0000 - 0777
+ | storage.force-create-mode | Minimum set (lower limit) of permission for the files that will be created. | 0000 | 0000 - 0777
+ | storage.force-create-directory | Minimum set (lower limit) of permission for the directories that will be created. | 0000 | 0000 - 0777
+ | storage.health-check-interval | Sets the time interval in seconds for a filesystem health check. You can set it to 0 to disable. | 30 seconds | 0-4294967295 seconds
+ | storage.reserve | To reserve storage space at the brick. This option accepts size in form of MB and also in form of percentage. If user has configured the storage.reserve option using size in MB earlier, and then wants to give the size in percentage, it can be done using the same option. Also, the newest set value is considered, if it was in MB before and then if it sent in percentage, the percentage value becomes new value and the older one is over-written | 1 (1% of the brick size) | 0-100
 
 > **Note** 
 >
