@@ -25,9 +25,7 @@ scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
 
-![distributed volume](https://cloud.githubusercontent.com/assets/10970993/7412364/ac0a300c-ef5f-11e4-8599-e7d06de1165c.png)
-
-*Distributed volume*
+![distributed volume](../images/New-DistributedVol.png)
 
 Create a Distributed Volume
 
@@ -69,9 +67,7 @@ such a volume is that even if one brick fails the data can still be
 accessed from its replicated bricks. Such a volume is used for better
 reliability and data redundancy.
 
-![replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412379/d75272a6-ef5f-11e4-869a-c355e8505747.png)
-
-*Replicated volume*
+![replicated volume](../images/New-ReplicatedVol.png)
 
 Create a Replicated Volume
 
@@ -99,9 +95,7 @@ Similarly if there were eight bricks and replica count 4 then four
 bricks become replica of each other and we denote this volume as 2x4
 volume.
 
-![distributed_replicated_volume](https://cloud.githubusercontent.com/assets/10970993/7412402/23a17eae-ef60-11e4-8813-a40a2384c5c2.png)
-
-*Distributed Replicated volume*
+![distributed_replicated_volume](../images/New-Distributed-ReplicatedVol.png)
 
 Create the distributed replicated volume:
 
@@ -124,6 +118,7 @@ The number of redundant bricks in the volume can be decided by clients while
 creating the volume. Redundant bricks determines how many bricks can be lost
 without interrupting the operation of the volume.
 
+![Dispersed volume](../images/New-DispersedVol.png)
 Create a dispersed volume:
 
 ```
@@ -137,12 +132,13 @@ Create a dispersed volume:
 volume create: test-volume: success: please start the volume to access data
 ```
 
-5.__ **Distributed Dispersed Glusterfs Volume** - __
+5.__ **Distributed Dispersed Glusterfs Volume**__ -
 Distributed dispersed volumes are the equivalent to distributed replicated volumes, but using dispersed subvolumes
 instead of replicated ones. The number of bricks must be a multiple of the 1st subvol.
 The purpose for such a volume is to easily scale the volume size and distribute the load
 across various bricks.
 
+![distributed_dispersed_volume](../images/New-Distributed-DisperseVol.png)
 Create a distributed dispersed volume:
 
 ```
