@@ -61,6 +61,17 @@ Disperse | disperse.eager-lock | If eager-lock is on, the lock remains in place 
  | disperse.other-eager-lock | This option is equivalent to the disperse.eager-lock option but applicable only for non regular files. When multiple clients access a particular directory, disabling disperse.other-eager-lockoption for the volume can improve performance for directory access without compromising performance of I/O's for regular files. | off | on/off
  | disperse.shd-max-threads | Specifies the number of entries that can be self healed in parallel on each disperse subvolume by self-heal daemon. | 1 | 1 - 64
  | disperse.shd-wait-qlength | Specifies the number of entries that must be kept in the dispersed subvolume's queue for self-heal daemon threads to take up as soon as any of the threads are free to heal. This value should be changed based on how much memory self-heal daemon process can use for keeping the next set of entries that need to be healed. | 1024 | 1 - 655536
+ | disprse.eager-lock-timeout | Maximum time (in seconds) that a lock on an inode is kept held if no new operations on the inode are received. | 1 | 1-60
+ | disperse.other-eager-lock-timeout | It’s equivalent to eager-lock-timeout option but for non regular files. | 1 | 1-60
+ | disperse.background-heals | This option can be used to control number of parallel heals running in background. | 8 | 0-256
+ | disperse.heal-wait-qlength | This option can be used to control number of heals that can wait | 128 | 0-65536
+ | disperse.read-policy | inode-read fops happen only on ‘k’ number of bricks in n=k+m disperse subvolume. ‘round-robin’ selects the read subvolume using round-robin algo. ‘gfid-hash’ selects read subvolume based on hash of the gfid of that file/directory. | gfid-hash | round-robin/gfid-hash
+ | disperse.self-heal-window-size | Maximum number blocks(128KB) per file for which self-heal process would be applied simultaneously. | 1 | 1-1024
+ | disperse.optimistic-change-log | This option Set/Unset dirty flag for every update fop at the start of the fop. If OFF, this option impacts performance of entry or metadata operations as it will set dirty flag at the start and unset it at the end of ALL update fop. If ON and all the bricks are good, dirty flag will be set at the start only for file fops, For metadata and entry fops dirty flag will not be set at the start This does not impact performance for metadata operations and entry operation but has a very small window to miss marking entry as dirty in case it is required to be healed. |on | on/off
+ | disperse.parallel-writes | This controls if writes can be wound in parallel as long as it doesn’t modify same stripes | on | on/off
+ | disperse.stripe-cache | This option will keep the last stripe of write fop in memory. If next write falls in this stripe, we need not to read it again from backend and we can save READ fop going over the network. This will improve performance, specially for sequential writes. However, this will also lead to extra memory consumption, maximum (cache size * stripe size) Bytes per open file |4 | 0-10
+ | disperse.quorum-count | This option can be used to define how many successes on the bricks constitute a success to the application. This count should be in the range [disperse-data-count, disperse-count] (inclusive) | 0 | 0-(signedint)
+ | disperse.use-anonymous-inode | Setting this option heals renames efficiently | off | on/off
 Logging | diagnostics.brick-log-level | Changes the log-level of the bricks | INFO | DEBUG/WARNING/ERROR/CRITICAL/NONE/TRACE
  | diagnostics.client-log-level | Changes the log-level of the clients. | INFO | DEBUG/WARNING/ERROR/CRITICAL/NONE/TRACE
  | diagnostics.brick-sys-log-level | Depending on the value defined for this option, log messages at and above the defined level are generated in the syslog and the brick log files. | CRITICAL | INFO/WARNING/ERROR/CRITICAL
@@ -75,7 +86,13 @@ Performance | *features.trash | Enable/disable trash translator | off | on/off
  | *performance.readdir-ahead | Enable/disable readdir-ahead translator in the volume |	off | on/off
  | *performance.read-ahead | Enable/disable read-ahead translator in the volume | off | on/off
  | *performance.io-cache | Enable/disable io-cache translator in the volume | off | on/off
- | features.read-only | Enables you to mount the entire volume as read-only for all the clients (including NFS clients) accessing it. | Off | On/Off
+ | performance.quick-read | To enable/disable quick-read translator in the volume. | on | off/on
+ | performance.md-cache	| Enables and disables md-cache translator. | off | off/on
+ | performance.open-behind | Enables and disables open-behind translator. | on | off/on
+ | performance.nl-cache	| Enables and disables nl-cache translator. | off | off/on
+ | performance.stat-prefetch | Enables and disables stat-prefetch translator. | on | off/on
+ | performance.client-io-threads | Enables and disables client-io-thread translator. | on | off/on
+ | performance.write-behind	| Enables and disables write-behind translator. | on | off/on
  | performance.write-behind-window-size | Size of the per-file write-behind buffer. | 1MB | Write-behind cache size
  | performance.io-thread-count | The number of threads in IO threads translator. | 16 | 1-64
  | performance.flush-behind | If this option is set ON, instructs write-behind translator to perform flush in background, by returning success (or any errors, if any of previous writes were failed) to application even before flush is sent to backend filesystem. | On | On/Off
@@ -83,6 +100,26 @@ Performance | *features.trash | Enable/disable trash translator | off | on/off
  | performance.cache-min-file-size | Sets the minimum file size cached by the io-cache translator. Values same as "max" above | 0B | size in bytes
  | performance.cache-refresh-timeout | The cached data for a file will be retained till 'cache-refresh-timeout' seconds, after which data re-validation is performed. |	1s | 0-61
  | performance.cache-size | Size of the read cache. | 32 MB | size in bytes
+ | performance.lazy-open | This option requires open-behind to be on. Perform an open in the backend only when a necessary FOP arrives (for example, write on the file descriptor, unlink of the file). When this option is disabled, perform backend open immediately after an unwinding open.	| Yes | Yes/No
+ | performance.md-cache-timeout	| The time period in seconds which controls when metadata cache has to be refreshed. If the age of cache is greater than this time-period, it is refreshed. Every time cache is refreshed, its age is reset to 0. | 1 |	0-600 seconds
+ | performance.nfs-strict-write-ordering | Specifies whether to prevent later writes from overtaking earlier writes for NFS, even if the writes do not relate to the same files or locations. | off | on/off
+ | performance.nfs.flush-behind	| Specifies whether the write-behind translator performs flush operations in the background for NFS by returning (false) success to the application before flush file operations are sent to the backend file system. | on | on/off
+ | performance.nfs.strict-o-direct | Specifies whether to attempt to minimize the cache effects of I/O for a file on NFS. When this option is enabled and a file descriptor is opened using the O_DIRECT flag, write-back caching is disabled for writes that affect that file descriptor. When this option is disabled, O_DIRECT has no effect on caching. This option is ignored if performance.write-behind is disabled. | off | on/off
+ | performance.nfs.write-behind-trickling-writes | Enables and disables trickling-write strategy for the write-behind translator for NFS clients. | on | off/on
+ | performance.nfs.write-behind-window-size | Specifies the size of the write-behind buffer for a single file or inode for NFS.	| 1 MB | 512 KB - 1 GB
+ | performance.rda-cache-limit | The value specified for this option is the maximum size of cache consumed by the readdir-ahead translator. This value is global and the total memory consumption by readdir-ahead is capped by this value, irrespective of the number/size of directories cached. | 10MB |	0-1GB
+ | performance.rda-request-size | The value specified for this option will be the size of buffer holding directory entries in readdirp response. | 128KB | 4KB-128KB
+ | performance.resync-failed-syncs-after-fsync | If syncing cached writes that were issued before an fsync operation fails, this option configures whether to reattempt the failed sync operations. |off | on/off
+ | performance.strict-o-direct | Specifies whether to attempt to minimize the cache effects of I/O for a file. When this option is enabled and a file descriptor is opened using the O_DIRECT flag, write-back caching is disabled for writes that affect that file descriptor. When this option is disabled, O_DIRECT has no effect on caching. This option is ignored if performance.write-behind is disabled. | on | on/off
+ | performance.strict-write-ordering | Specifies whether to prevent later writes from overtaking earlier writes, even if the writes do not relate to the same files or locations. | on | on/off
+ | performance.use-anonymous-fd	| This option requires open-behind to be on. For read operations, use anonymous file descriptor when the original file descriptor is open-behind and not yet opened in the backend.| Yes | No/Yes
+ | performance.write-behind-trickling-writes | Enables and disables trickling-write strategy for the write-behind translator for FUSE clients. | on | off/on
+ | performance.write-behind-window-size | Specifies the size of the write-behind buffer for a single file or inode. | 1MB | 512 KB - 1 GB
+ | features.read-only | Enables you to mount the entire volume as read-only for all the clients (including NFS clients) accessing it. | Off | On/Off
+ | features.quota-deem-statfs | When this option is set to on, it takes the quota limits into consideration while estimating the filesystem size. The limit will be treated as the total size instead of the actual size of filesystem. | on | on/off
+ | features.shard | Enables or disables sharding on the volume. Affects files created after volume configuration. | disable | enable/disable
+ | features.shard-block-size | Specifies the maximum size of file pieces when sharding is enabled. Affects files created after volume configuration. | 64MB | 4MB-4TB
+ | features.uss | This option enable/disable User Serviceable Snapshots on the volume. | off | on/off
  | geo-replication.indexing | Use this option to automatically sync the changes in the filesystem from Primary to Secondary. | Off | On/Off
  | network.frame-timeout | The time frame after which the operation has to be declared as dead, if the server does not respond for a particular operation. | 1800 (30 mins) | 1800 secs
  | network.ping-timeout | The time duration for which the client waits to check if the server is responsive. When a ping timeout happens, there is a network disconnect between the client and server. All resources held by server on behalf of the client get cleaned up. When a reconnection happens, all resources will need to be re-acquired before the client can resume its operations on the server. Additionally, the locks will be acquired and the lock tables updated. This reconnect is a very expensive operation and should be avoided. | 42 Secs | 42 Secs
