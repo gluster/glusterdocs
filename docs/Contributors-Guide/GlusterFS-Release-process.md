@@ -103,13 +103,13 @@ This document should go under the [Upgrade Guide](https://github.com/gluster/glu
 Once the Fedora/EL RPMs are ready (and any others that are ready by then), send the release announcement:
 
 - Gluster Mailing lists
-  - [gluster-announce](https://www.gluster.org/mailman/listinfo/announce/)
-  - [gluster-devel](https://www.gluster.org/mailman/listinfo/gluster-devel/)
-  - [gluster-users](https://www.gluster.org/mailman/listinfo/gluster-users/)
+  - [gluster-announce](https://lists.gluster.org/mailman/listinfo/announce/)
+  - [gluster-devel](https://lists.gluster.org/mailman/listinfo/gluster-devel)
+  - [gluster-users](https://lists.gluster.org/mailman/listinfo/gluster-users/)
   
-- [Gluster Blog](https://blog.gluster.org) 
+- [Gluster Blog](https://planet.gluster.org/) 
 The blog will automatically post to both Facebook and Twitter. Be careful with this! 
   - [Gluster Twitter account](https://twitter.com/gluster)
   - [Gluster Facebook page](https://www.facebook.com/GlusterInc)
-- [Gluster LinkedIn group](https://www.linkedin.com/company-beta/4822513)
+- [Gluster LinkedIn group](https://www.linkedin.com/company/gluster/about/)
 
