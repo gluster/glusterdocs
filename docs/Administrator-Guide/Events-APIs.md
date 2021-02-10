@@ -1,11 +1,11 @@
 # Events APIs
 
+*New in version 3.9*
+
 NOTE : Due to Selinux changes, glusterfs-selinux would have to be installed
 for events feature to function properly. Also, the range of ports which can
 be used in a system wherein Selinux rules are enforced should lie within
 the ephemeral port range.
-
-*New in version 3.9*
 
 ## Set PYTHONPATH(Only in case of Source installation)
 If Gluster is installed using source install, `cliutils` will get
