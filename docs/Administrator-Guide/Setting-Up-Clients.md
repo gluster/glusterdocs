@@ -53,7 +53,10 @@ To install Gluster Native Client on RPM distribution-based systems
     with previous releases). The brick ports are now randomized, a port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
-    five bricks, you need to have at least 5 ports open within the given range.
+    five bricks, you need to have at least 5 ports open within the given range of
+    base_port and max_port.
+    To reduce the number of open ports, one can lower the max_port value in the
+    glusterd.vol file and restart glusterd to get it into effect.
 
     You can use the following chains with iptables:
 ~~~
@@ -131,7 +134,10 @@ To install Gluster Native Client on Debian-based distributions
     with previous releases). The brick ports are now randomized, a port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
-    five bricks, you need to have at least 5 ports open within the given range.
+    five bricks, you need to have at least 5 ports open within the given range of
+    base_port and max_port.
+    To reduce the number of open ports, one can lower the max_port value in the
+    glusterd.vol file and restart glusterd to get it into effect.
 
     You can use the following chains with iptables:
 
