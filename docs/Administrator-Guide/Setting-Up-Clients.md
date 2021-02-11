@@ -55,8 +55,9 @@ To install Gluster Native Client on RPM distribution-based systems
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range of
     base_port and max_port.
-    To reduce the number of open ports, one can lower the max_port value in the
-    glusterd.vol file and restart glusterd to get it into effect.
+    To reduce the number of open ports (for best security practices), one can lower
+    the max_port value in the glusterd.vol file and restart glusterd to get it
+    into effect.
 
     You can use the following chains with iptables:
 ~~~
@@ -136,8 +137,9 @@ To install Gluster Native Client on Debian-based distributions
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range of
     base_port and max_port.
-    To reduce the number of open ports, one can lower the max_port value in the
-    glusterd.vol file and restart glusterd to get it into effect.
+    To reduce the number of open ports (for best security practices), one can lower
+    the max_port value in the glusterd.vol file and restart glusterd to get it
+    into effect.
 
     You can use the following chains with iptables:
 
