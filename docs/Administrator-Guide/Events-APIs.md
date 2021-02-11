@@ -2,6 +2,11 @@
 
 *New in version 3.9*
 
+NOTE : glusterfs-selinux package would have to be installed for events
+feature to function properly when the selinux is in enforced mode. In 
+addition to that, the default port to be used for eventsd has now been
+changed to 55555 and it has to lie between the ephemeral port ranges.
+
 ## Set PYTHONPATH(Only in case of Source installation)
 If Gluster is installed using source install, `cliutils` will get
 installed under `/usr/local/lib/python.2.7/site-packages` Set
@@ -192,12 +197,13 @@ optional arguments:
 Example output:
 
 ```console
-+-----------+-------+
-| NAME      | VALUE |
-+-----------+-------+
-| log_level | INFO  |
-| port      | 24009 |
-+-----------+-------+
++--------------------+-------+
+| NAME               | VALUE |
++--------------------+-------+
+| log-level          | INFO  |
+| port               | 55555 |
+| disable-events-log | False |
++--------------------+-------+
 ```
 
 To change any configuration,
