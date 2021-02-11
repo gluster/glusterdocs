@@ -50,7 +50,7 @@ To install Gluster Native Client on RPM distribution-based systems
 2.  Ensure that TCP and UDP ports 24007 and 24008 are open on all
     Gluster servers. Apart from these ports, you need to open one port
     for each brick starting from port 49152 (instead of 24009 onwards as
-    with previous releases). The brick ports are now randomized, the port is
+    with previous releases). The brick ports are now randomized, a port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range.
@@ -128,7 +128,7 @@ To install Gluster Native Client on Debian-based distributions
 6.  Ensure that TCP and UDP ports 24007 and 24008 are open on all
     Gluster servers. Apart from these ports, you need to open one port
     for each brick starting from port 49152 (instead of 24009 onwards as
-    with previous releases). The brick ports andomized, the port is
+    with previous releases). The brick ports are now randomized, a port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range.
