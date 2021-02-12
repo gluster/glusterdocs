@@ -92,19 +92,18 @@ good title may contain:
 -   A brief explanation of the root cause (if it was found)
 -   Some of the symptoms people are experiencing
 
-### Adding people to 'watch list' or changing the "Assigned to" field
+### Assigning issue or Adding people's github handle in the comment
 
 Normally, developers and potential assignees of an area are already
 watching all the issues by default, but sometimes reports describe general
 issues. Only if you know developers who work in the area covered by the
 issue, and if you know that these developers accept getting CCed or assigned
-to certain reports, you can add that person to the CC field or even assign
-the bug report to her/him.
+to certain reports, you can mention in comment or even assign the bug report
+to her/him.
 
-To get an idea who works in which area, check To know component owners ,
+To get an idea who works in which area, check to know component owners,
 you can check the "MAINTAINERS" file in root of glusterfs code directory
-or querying changes in [Gerrit](http://review.gluster.org) (see
-[Simplified dev workflow](/Developer-guide/Simplified-Development-Workflow.md))
+(see [Simplified dev workflow](../Developer-guide/Simplified-Development-Workflow.md))
 
 ### Bugs present in multiple Versions
 
