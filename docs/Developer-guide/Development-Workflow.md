@@ -190,7 +190,7 @@ the following format
 -   Description of the code changes
 -   Reason for doing it this way (compared to others)
 -   Description of test cases
--   A reference ID
+-   A reference ID (optional if you run `./rfc.sh` after the commit to **Submit for review**)
 
 ### Test cases
 
