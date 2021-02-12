@@ -1,4 +1,4 @@
-Development work flow of Gluster
+Development workflow of Gluster
 ================================
 
 This document provides a detailed overview of the development model
@@ -12,13 +12,13 @@ Basics
 
 The GlusterFS development model largely revolves around the features and
 functionality provided by Git version control system, Gerrit code review
-system and Jenkins continuous integration system. It is a primer for a
+system, and Jenkins continuous integration system. It is a primer for a
 contributor to the project.
 
 ### Git
 
-Git is a extremely flexible, distributed version control system.
-GlusterFS' main git repository is at <http://git.gluster.org> and public
+Git is an extremely flexible, distributed version control system.
+GlusterFS's main git repository is at <http://git.gluster.org> and public
 mirrors are at GlusterForge
 (https://forge.gluster.org/glusterfs-core/glusterfs) and at GitHub
 (https://github.com/gluster/glusterfs). The development repo is hosted
@@ -31,24 +31,23 @@ A good introduction to Git can be found at
 
 ### Gerrit
 
-Gerrit is an excellent code review system which is developed with a git
-based workflow in mind. The GlusterFS project code review system is
+Gerrit is an excellent code review system that is developed with a git-based workflow in mind. The GlusterFS project code review system is
 hosted at [review.gluster.org](http://review.gluster.org). Gerrit works
 on "Change"s. A change is a set of modifications to various files in
 your repository to accomplish a task. It is essentially one large git
 commit with all the necessary changes which can be both built and
 tested.
 
-Gerrit usage is described later in 'Review Process' section.
+Gerrit usage is described later in the 'Review Process' section.
 
 ### Jenkins
 
 Jenkins is a Continuous Integration build system. Jenkins is hosted at
 <http://build.gluster.org>. Jenkins is configured to work with Gerrit by
 setting up hooks. Every "Change" which is pushed to Gerrit is
-automatically picked up by Jenkins, built and smoke tested. Output of
+automatically picked up by Jenkins, built and smoke tested. The output of
 all builds and tests can be viewed at
-<http://build.gluster.org/job/smoke/>. Jenkins is also setup with a
+<http://build.gluster.org/job/smoke/>. Jenkins is also set up with a
 'regression' job which is designed to execute test scripts provided as
 part of the code change.
 
@@ -61,12 +60,12 @@ code.
 ### Register
 
 You need to have a github.com account to register for 'review.gluster.org'.
-Once you open https://review.gluster.org, click on 'Register' button, and
-use your github account to register.
+Once you open https://review.gluster.org, click on the 'Register' button, and
+use your Github account to register.
 
 ### Preferred email
 
-On first login, add your git/work email to your identity. You will have
+On the first login, add your git/work email to your identity. You will have
 to click on the URL which is sent to your email and set up a proper Full
 Name. Make sure you set your git/work email as your preferred email.
 This should be the email address from which all your code commits are
@@ -83,7 +82,7 @@ In Gerrit settings, watch the 'glusterfs' project. Tick on all the three
 
 ### Email filters
 
-Set up a filter rule in your mail client to tag or classify mails with
+Set up a filter rule in your mail client to tag or classify emails with
 the header
 
 ```text
@@ -122,7 +121,7 @@ in a buildable state and smoke tests pass.
 
 Release trains (3.1.z, 3.2.z, 4.y, 5.y) each have a branch originating from
 devel. Code freeze of each new release train is marked by the creation
-of the `release-x.y` branch. At this point no new features are added to
+of the `release-x.y` branch. At this point, no new features are added to
 the release-x.y branch. All fixes and commits first get into devel.
 From there, only bug fixes get backported to the relevant release
 branches. From the release-x.y branch, actual release code snapshots
@@ -134,7 +133,7 @@ branches. From the release-x.y branch, actual release code snapshots
 As a best practice, it is recommended you perform all code changes for a
 task in a local branch in your working tree. The local branch should be
 created from the upstream branch to which you intend to submit the
-change. If you are submitting changes to devel branch, first create a
+change. If you are submitting changes to the devel branch, first create a
 local task branch like this -
 
 ```console
@@ -178,13 +177,13 @@ per task, and most of the times that branch will have one commit.
 
 You will need to sign-off your commit (git commit -s) before sending the
 patch for review. By signing off your patch, you agree to the terms
-listed under "Developer's Certificate of Origin" section in the
+listed under the "Developer's Certificate of Origin" section in the
 CONTRIBUTING file available in the repository root.
 
 Provide a meaningful commit message. Your commit message should be in
 the following format
 
--   A short one line subject describing what the patch accomplishes
+-   A short one-line subject describing what the patch accomplishes
 -   An empty line following the subject
 -   Situation necessitating the patch
 -   Description of the code changes
@@ -195,8 +194,8 @@ the following format
 ### Test cases
 
 Part of the workflow is to aggregate and execute pre-commit test cases
-which accompany patches, cumulatively for every new patch. This
-guarantees that tests which are working till the present are not broken
+that accompany patches, cumulatively for every new patch. This
+guarantees that tests that are working till the present are not broken
 with the new patch. This is so that code changes and accompanying test
 cases are reviewed together.
 
@@ -214,7 +213,7 @@ changed
 
 #### No test cases
 
-This is typically when code change is trivial (e.g. fixing typos in
+This is typically when a code change is trivial (e.g. fixing typos in
 output strings, code comments)
 
 #### Only test case and no code change
@@ -248,7 +247,7 @@ This script does the following:
 -   Rebase your commit against the latest upstream HEAD. This rebase
     also causes your commits to undergo massaging from the just
     downloaded commit-msg hook.
--   Prompt for a Reference Id for each commit (if it was not already provded)
+-   Prompt for a Reference Id for each commit (if it was not already provided)
     and include it as a "fixes: #n" tag in the commit log. You can just hit
     <enter> at this prompt if your submission is purely for review
     purposes.
@@ -271,11 +270,11 @@ change as '+0 Smoke'. If they fail, '-1 Smoke' is marked on the
 change. This means passing the automated smoke test is a necessary
 condition but not sufficient.
 
-Currently marking 'Verified' flag is manual, and should be done once
+Currently marking the 'Verified' flag is manual, and should be done once
 the 'smoke' tests pass. Once this flag is set, the elaborate regression tests will start running.
 
 It is important to note that Jenkins verification is only a generic
-verification of high level tests. More concentrated testing effort for
+verification of high-level tests. More concentrated testing effort for
 the patch is necessary with manual verification.
 
 If regression fails, it is a good reason to skip code review till
@@ -302,7 +301,7 @@ Incorporate, Amend, rfc.sh, Reverify
 ------------------------------------
 
 Code review comments are notified via email. After incorporating the
-changes in code, you can mark each of the inline comment as 'done'
+changes in code, you can mark each of the inline comments as 'done'
 (optional). After all the changes to your local files, amend the
 previous commit with these changes with -
 
@@ -338,17 +337,17 @@ Regression tests and test cases
 All code changes which are not trivial (typo fixes, code comment
 changes) must be accompanied with either a new test case script or
 extend/modify an existing test case script. It is important to review
-the test case in conjunction with the code change to analyse whether the
+the test case in conjunction with the code change to analyze whether the
 code change is actually verified by the test case.
 
 Regression tests (i.e, execution of all test cases accumulated with
 every commit) is not automatically triggered as the test cases can be
 extensive and is quite expensive to execute for every change submission
-in the review/resubmit cycle. Instead it is triggered when the patch
+in the review/resubmit cycle. Instead, it is triggered when the patch
 contributor issues a Verified: +1 on gerrit. Passing the regression test is a
 necessary condition for merge along with code review points.
 
-To run all regression tests locally, run below script from glusterfs root directory.
+To run all regression tests locally, run the below script from glusterfs root directory.
 
 ```console
 # ./run-tests.sh
@@ -365,7 +364,7 @@ To run a single regression test locally, run the below command.
 Submission Qualifiers
 ---------------------
 
-For a change to get merged, there are two qualifiers which are enforced
+For a change to get merged, there are two qualifiers that are enforced
 by the Gerrit system. They are - A change should have at least one '+2
 Reviewed', and a change should have at least one '+1 Verified'
 (regression test). The project maintainer will merge the changes once a
@@ -415,7 +414,7 @@ addressed in the new patchset. Generally this is the recommended
 
 This is a stronger vote which actually prevents Gerrit from merging the
 patch. The -2 vote persists even after resubmission and continues to
-prevent the patch from getting merged, until the voter revokes the -2
+prevent the patch from getting merged until the voter revokes the -2
 vote (and then is further subjected to Submission Qualifiers). Typically
 one would vote -2 if they are \*against the goal\* of what the patch is
 trying to achieve (and not an issue with the patch, which can change on
@@ -423,6 +422,6 @@ resubmission). A reviewer would also vote -2 on a patch even if there is
 agreement with the goal, but the issue in the code is of such a critical
 nature that the reviewer personally wants to inspect the next patchset
 and only then revoke the vote after finding the new patch satisfactory.
-This prevents the merge of the patch in the mean time. Every registered
+This prevents the merge of the patch in the meantime. Every registered
 user has the right to exercise the -2 Code review vote, and cannot be
 overridden by the maintainers.
