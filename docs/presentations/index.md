@@ -2,6 +2,11 @@
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
+### [FOSDEM 2020](https://archive.fosdem.org/2020/) @ Brussels, Belgium -  1st & 2nd February 2020
+
+- [Evolution of path based Geo-replication in Gluster](https://archive.fosdem.org/2020/schedule/event/evolution_of_path_based_georeplication_in_gluster/) - Hari Gowtham
+- [A 'Thin Arbiter' for glusterfs replication](https://archive.fosdem.org/2020/schedule/event/sds_gluster_thin_arbiter/) - Ravishankar N
+
 ### [FOSDEM 2017](https://fosdem.org/2017/) @ Brussels, Belgium - February 5, 2017
 
 - [GlusterD-2.0: The next generation of GlusterFS management](https://fosdem.org/2017/schedule/event/glusterd2/) - Kaushal M
