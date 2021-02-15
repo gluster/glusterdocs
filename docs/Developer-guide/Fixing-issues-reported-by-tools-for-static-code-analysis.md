@@ -11,14 +11,13 @@ program.
 
 -   To see Coverity issues you have to be a member of the GlusterFS
     project in Coverity scan website.
--   Here is the link to [Coverity scan
-    website](https://scan.coverity.com/projects/987)
+-   Here is the link to [Coverity scan website](https://scan.coverity.com/projects/987)
 -   Go to above link and subscribe to GlusterFS project (as
     contributor). It will send a request to Admin for including you in
     the Project.
 -   Once admins for the GlusterFS Coverity scan approve your request,
     you will be able to see the defects raised by Coverity.
--   [BZ 789278](https://bugzilla.redhat.com/show_bug.cgi?id=789278)
+-   [Issue #1060](https://github.com/gluster/glusterfs/issues/1060)
     can be used as a umbrella bug for Coverity issues in master
     branch unless you are trying to fix a specific issue.
 -   When you decide to work on some issue, please assign it to your name
@@ -49,11 +48,15 @@ Cppcheck is available in Fedora and EL's EPEL repo
         # cppcheck glusterfs/ 2>cppcheck.log
 
 
-### Daily Runs
+### Clang-Scan Daily Runs
 
-We now have daily runs of various static source code analysis tools on
+We have daily runs of static source code analysis tool clang-scan on
 the glusterfs sources. There are daily analyses of the master and 
 on currently supported branches.
 
 Results are posted at
-<http://download.gluster.org/pub/gluster/glusterfs/static-analysis/>
+<https://build.gluster.org/job/clang-scan/lastBuild/clangScanBuildBugs/>
+
+[Issue #1000](https://github.com/gluster/glusterfs/issues/1000)
+can be used as a umbrella bug for Clang issues in master
+branch unless you are trying to fix a specific issue.
