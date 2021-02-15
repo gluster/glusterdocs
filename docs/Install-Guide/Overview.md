@@ -78,9 +78,6 @@ places where Gluster is going to need more consideration than others.
   Gluster servers into the mix, some people have seen better performance
   with us than other solutions due to the scale out nature of the
   technology
-- Gluster does not support so called “structured data”, meaning
-  live, SQL databases. Of course, using Gluster to backup and
-  restore the database would be fine
 - Gluster is traditionally better when using file sizes of at least 16KB
   (with a sweet spot around 128KB or so).
 
