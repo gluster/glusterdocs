@@ -54,6 +54,15 @@ To install Gluster Native Client on RPM distribution-based systems
     compliant with IANA guidelines. For example: if you have
     five bricks, you need to have ports 49152 to 49156 open.
 
+    From Gluster-9.1 onwards, the brick ports will be randomized. A port is
+    randomly selected within the range of base_port to max_port as defined
+    in glusterd.vol file and then assigned to the brick. For example: if you have
+    five bricks, you need to have at least 5 ports open within the given range of
+    base_port and max_port.
+    To reduce the number of open ports (for best security practices), one can lower
+    the max_port value in the glusterd.vol file and restart glusterd to get it
+    into effect.
+
     You can use the following chains with iptables:
 ~~~
     `$ sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 24007:24008 -j ACCEPT `
@@ -130,6 +139,15 @@ To install Gluster Native Client on Debian-based distributions
     with previous releases). The brick ports assignment scheme is now
     compliant with IANA guidelines. For example: if you have
     five bricks, you need to have ports 49152 to 49156 open.
+
+    From Gluster-9.1 onwards, the brick ports will be randomized. A port is
+    randomly selected within the range of base_port to max_port as defined
+    in glusterd.vol file and then assigned to the brick. For example: if you have
+    five bricks, you need to have at least 5 ports open within the given range of
+    base_port and max_port.
+    To reduce the number of open ports (for best security practices), one can lower
+    the max_port value in the glusterd.vol file and restart glusterd to get it
+    into effect.
 
     You can use the following chains with iptables:
 
