@@ -33,15 +33,6 @@ When the snapshot is being taken the file system and its associated data
 continue to be available for the clients.
 
 
-**Quorum Based**
-
-The quorum feature ensures that the volume is in good condition while the bricks
-are down. Quorum is not met if any bricks are down in a n-way replication where
-n <= 2. Quorum is met when m bricks are up, where m >= (n/2 + 1) where n is odd,
-and m >= n/2 and first brick is up where n is even. snapshot creation fails
-if quorum is not met.
-
-
 **Barrier**
 
 During snapshot creation some of the fops are blocked to guarantee crash
@@ -55,7 +46,7 @@ fails. This to ensure that the snapshot is in a consistent state.
 ### Snapshot creation
 
 ```console
-gluster snapshot create <snapname> <volname> [no-timestamp] [description <description>] [force]
+gluster snapshot create <snapname> <volname> [no-timestamp] [description <description>]
 ```
 
 Creates a snapshot of a GlusterFS volume. User can provide a snap-name and a
@@ -66,7 +57,9 @@ Snapshot will be created by appending timestamp with user provided snap name.
 User can override this behaviour by giving no-timestamp flag.
 
 **NOTE**: To be able to take a snapshot, volume should be present and it
-should be in started state.
+should be in started state. All the bricks used in creating the snapshot
+have to be online in order to successfully create a snapshot as the force option
+is now deprecated.
 
 ### Snapshot clone
 
