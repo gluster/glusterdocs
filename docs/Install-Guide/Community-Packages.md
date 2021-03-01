@@ -6,7 +6,7 @@ Tentative plans for community convenience packages.
 
 A **yes** means packages are (or will be) provided in the respective repository.  
 A **no** means no plans to build new updates. Existing packages will remain in the repos.  
-The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and earlier.
+The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 
 |              |                |     9     |     8     |     7     |
 |--------------|----------------|:---------:|:---------:|:---------:|
@@ -30,7 +30,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |                |           |           |           |
 |OpenSUSE Build Service[5]|SLES12SP5    |    no     |    no     |    yes    |
 |              |Leap15.2        |    yes    |    yes    |    yes    |
+|              |Leap15.3        |    yes    |    yes    |    no     |
 |              |SLES15SP2       |    yes    |    yes    |    yes    |
+|              |SLES15SP3       |    yes    |    yes    |    no     |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
 
 #### Related Packages
@@ -58,7 +60,9 @@ The following GlusterFS versions have reached EOL[1]: 6, 5, 4.1, 4.0, 3.x and ea
 |              |                |         |          |            |             |          |         |
 |OpenSUSE Build Service[5]|SLES12SP5       |   yes    |    yes     |     yes     |   yes    |   yes   |    ?   |
 |              |Leap15.2        |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
+|              |Leap15.3        |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |SLES15SP2       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
+|              |SLES15SP3       |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |Tumbleweed      |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 
 
