@@ -118,6 +118,7 @@ nav:
   - RELEASE 9.x:
     - 9.0: release-notes/9.0.md
   - RELEASE 8.x:
+    - 8.4: release-notes/8.4.md
     - 8.3: release-notes/8.3.md
     - 8.2: release-notes/8.2.md
     - 8.1: release-notes/8.1.md
