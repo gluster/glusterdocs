@@ -69,7 +69,7 @@ To create a thinly provisioned logical volume, proceed with the following steps:
 
      Format bricks using the supported XFS configuration, mount the bricks, and verify the bricks are mounted correctly.
      
-     Run `mkfs.xfs -f -i size=512 -n size=8192 -d su=128k,sw=10 DEVICE` to format the bricks to the supported XFS file system format. Here, DEVICE is the thin LV. The inode size is set to 512 bytes to accommodate for the extended attributes used by GlusterFS.
+     Run `mkfs.xfs -f -i size=512 -n size=8192 -d su=128k,sw=10 DEVICE` to format the bricks to the supported XFS file system format. Here, DEVICE is the thin LV(here */dev/gfs_vg/gfs_lv*). The inode size is set to 512 bytes to accommodate for the extended attributes used by GlusterFS.
 
      Run `mkdir /mountpoint` to create a directory to link the brick to.
 
