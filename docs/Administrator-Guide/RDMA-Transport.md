@@ -1,3 +1,15 @@
+# NOTE: FEATURE DEPRECATED
+
+THE RDMA is no longer supported in Gluster builds. This has been removed from release 8 onwards.
+
+Currently we dont have
+1. The expertise to support RDMA
+2. Infrastructure to test/verify the performances each release
+The options are getting discussed here - https://github.com/gluster/glusterfs/issues/2000
+
+Ready to enable as a compile time option, if there is proper support and testing infrastructure.
+
+
 # Introduction
 
 GlusterFS supports using RDMA protocol for communication between glusterfs clients and glusterfs bricks.
