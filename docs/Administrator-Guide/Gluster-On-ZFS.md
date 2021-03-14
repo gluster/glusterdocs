@@ -75,7 +75,7 @@ rpm -Uvh spl*.x86_64.rpm spl*.noarch.rpm
 
 **Notice:**
 If you plan to use the `xattr=sa` filesystem option, make sure you have the ZFS fix for <https://github.com/zfsonlinux/zfs/issues/1648> so your symlinks don't get corrupted.
-(applies to ZFSoL before 0.6.3, `xattr=s` is safe to use on 0.6.3 and later)
+(applies to ZFSoL before 0.6.3, `xattr=sa` is safe to use on 0.6.3 and later)
 
 -   Enter ZFS source directory
 -   The following commands create two source & five binary RPMs. Remove the static module RPM and install the rest. Note we have a few preliminary packages to install before we can compile.
