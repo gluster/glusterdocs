@@ -54,7 +54,7 @@ To install Gluster Native Client on RPM distribution-based systems
     compliant with IANA guidelines. For example: if you have
     five bricks, you need to have ports 49152 to 49156 open.
 
-    From Gluster-9.1 onwards, the brick ports will be randomized. A port is
+    From Gluster-10 onwards, the brick ports will be randomized. A port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range of
@@ -140,7 +140,7 @@ To install Gluster Native Client on Debian-based distributions
     compliant with IANA guidelines. For example: if you have
     five bricks, you need to have ports 49152 to 49156 open.
 
-    From Gluster-9.1 onwards, the brick ports will be randomized. A port is
+    From Gluster-10 onwards, the brick ports will be randomized. A port is
     randomly selected within the range of base_port to max_port as defined
     in glusterd.vol file and then assigned to the brick. For example: if you have
     five bricks, you need to have at least 5 ports open within the given range of
