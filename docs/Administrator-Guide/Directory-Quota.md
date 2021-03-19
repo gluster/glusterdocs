@@ -1,16 +1,16 @@
 # Managing Directory Quota
 
-Directory quotas in GlusterFS allows you to set limits on usage of the disk
+Directory quotas in GlusterFS allow you to set limits on the usage of the disk
 space by directories or volumes. The storage administrators can control
 the disk space utilization at the directory and/or volume levels in
 GlusterFS by setting limits to allocatable disk space at any level in
 the volume and directory hierarchy. This is particularly useful in cloud
-deployments to facilitate utility billing model.
+deployments to facilitate the utility billing model.
 
 > **Note**
 > For now, only Hard limits are supported. Here, the limit cannot be
-> exceeded and attempts to use more disk space or inodes beyond the set
-> limit is denied.
+> exceeded, and attempts to use more disk space or inodes beyond the set
+> limit are denied.
 
 System administrators can also monitor the resource utilization to limit
 the storage for the users depending on their role in the organization.
@@ -45,7 +45,7 @@ Quota is enabled on /test-volume
 
 ## Disabling Quota
 
-You can disable Quota, if needed.
+You can disable Quota if needed.
 
 **To disable quota:**
 
@@ -77,7 +77,7 @@ Set the disk limit using the following command:
 # gluster volume quota <VOLNAME> limit-usage <DIR> <HARD_LIMIT>
 ```
 
-For example, to set limit on data directory on the test-volume where
+For example, to set a limit on data directory on the test-volume where
 data is a directory under the export directory:
 
 ```console
@@ -87,11 +87,11 @@ Usage limit has been set on /data
 
 > **Note**
 > In a multi-level directory hierarchy, the strictest disk limit
-> will be considered for enforcement. Also, whenever quota limit
+> will be considered for enforcement. Also, whenever the quota limit
 > is set for the first time, an auxiliary mount point will be
 > created under /var/run/gluster/<VOLNAME>. This is just like any
 > other mount point with some special permissions and remains until
-> quota is disabled. This mount point is being used by quota to set
+> the quota is disabled. This mount point is being used by quota to set
 > and display limits and lists respectively.
 
 ## Displaying Disk Limit Information
@@ -125,7 +125,7 @@ the limit is set.
 
 ### Displaying Quota Limit Information Using the df Utility
 
-You can create a report of the disk usage using the df utility by taking quota limits into consideration. To generate a report, run the following command:
+You can create a report of the disk usage using the df utility by considering quota limits. To generate a report, run the following command:
 
 ```console
 # gluster volume set <VOLNAME> quota-deem-statfs on
@@ -134,7 +134,7 @@ You can create a report of the disk usage using the df utility by taking quota l
 In this case, the total disk space of the directory is taken as the quota hard limit set on the directory of the volume.
 
 >**Note**
->The default value for quota-deem-statfs is on when quota is enabled and it is recommended to keep quota-deem-statfs on.
+>The default value for quota-deem-statfs is on when the quota is enabled and it is recommended to keep quota-deem-statfs on.
 
 The following example displays the disk usage when quota-deem-statfs is off:
 
@@ -182,34 +182,34 @@ The quota-deem-statfs option when set to on, allows the administrator to make th
 
 ### Setting Timeout
 
-For performance reasons, quota caches the directory sizes on client. You
-can set timeout indicating the maximum valid duration of directory sizes
-in cache, from the time they are populated.
+For performance reasons, quota caches the directory sizes on the client. You
+can set a timeout indicating the maximum valid duration of directory sizes
+in the cache, from the time they are populated.
 
-For example: If there are multiple clients writing to a single
+For example: If multiple clients are writing to a single
 directory, there are chances that some other client might write till the
 quota limit is exceeded. However, this new file-size may not get
-reflected in the client till size entry in cache has become stale
+reflected in the client till the size entry in the cache has become stale
 because of timeout. If writes happen on this client during this
 duration, they are allowed even though they would lead to exceeding of
-quota-limits, since size in cache is not in sync with the actual size.
-When timeout happens, the size in cache is updated from servers and will
+quota-limits, since the size in the cache is not in sync with the actual size.
+When a timeout happens, the size in the cache is updated from servers and will
 be in sync and no further writes will be allowed. A timeout of zero will
-force fetching of directory sizes from server for every operation that
-modifies file data and will effectively disables directory size caching
-on client side.
+force fetching of directory sizes from the server for every operation that
+modifies file data and will effectively disable directory size caching
+on the client-side.
 
 **To update the memory cache size:**
 
 Use the following command to update the memory cache size:
 
-1. Soft Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is below the soft limit. The soft timeout is in effect when the disk usage is less than the soft limit.
+1. Soft Timeout: The frequency at which the quota server-side translator checks the volume usage when the usage is below the soft limit. The soft timeout is in effect when the disk usage is less than the soft limit.
 
 ```console
 # gluster volume set <VOLNAME> features.soft-timeout <time>
 ```
 
-2. Hard Timeout : The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit. 
+2. Hard Timeout: The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit. 
 
 ```console
 # gluster volume set <VOLNAME> features.hard-timeout <time>
@@ -247,7 +247,7 @@ volume quota : success
 
 ## Removing Disk Limit
 
-You can remove set disk limit, if you do not want quota anymore.
+You can remove the set disk limit if you do not want a quota anymore.
 
 **To remove disk limit:**
 
