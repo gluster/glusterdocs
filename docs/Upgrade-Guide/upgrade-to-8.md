@@ -5,6 +5,14 @@ aware of the features and fixes provided with the release.
 
 > **NOTE:** Before following the generic upgrade procedure checkout the "**Major Issues**" section given below.
 
+> With version 8, there are certain changes introduced to the directory structure of changelog files in gluster geo-replication.
+> Thus, before the upgrade of geo-rep packages, we need to execute the [upgrade script](https://github.com/gluster/glusterfs/commit/2857fe3fad4d2b30894847088a54b847b88a23b9) with the brick path as argument, as described below:
+>1. Stop the geo-rep session
+>2. Run the upgrade script with the brick path as the argument. Script can be used in loop for multiple bricks.
+>3. Start the upgradation process.
+>This script will update the existing changelog directory structure and the paths inside the htime files to a new format introduced in version 8.
+>If the above mentioned script is not executed, the search algorithm, used during the history crawl will fail with the wrong result for upgradation from version 7 and below to version 8 and above.
+
 Refer, to the [generic upgrade procedure](./generic-upgrade-procedure.md) guide and follow documented instructions.
 
 ## Major issues
