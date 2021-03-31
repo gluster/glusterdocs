@@ -26,6 +26,7 @@ The following packages are required for building GlusterFS,
 -   libacl
 -   sqlite
 -   fuse-devel
+-   liburing-devel
 
 ### Fedora
 
@@ -38,7 +39,7 @@ Fedora,
     librdmacm-devel readline-devel lvm2-devel glib2-devel         \
     userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
     fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
-    libuuid-devel
+    libuuid-devel liburing-devel
 ```
 
 ### Ubuntu
@@ -51,7 +52,7 @@ Ubuntu,
     pkg-config libssl-dev libxml2-dev python-dev libaio-dev       \
     libibverbs-dev librdmacm-dev libreadline-dev liblvm2-dev      \
     libglib2.0-dev liburcu-dev libcmocka-dev libsqlite3-dev       \
-    libacl1-dev
+    libacl1-dev liburing-dev
 ```
 
 ### CentOS / Enterprise Linux v7
@@ -66,7 +67,7 @@ The following yum command installs the build requirements for CentOS / Enterpris
     pyliblzma python-devel python-eventlet python-netifaces           \
     python-paste-deploy python-simplejson python-sphinx python-webob  \
     pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
-    tar userspace-rcu-devel
+    tar userspace-rcu-devel liburing-devel
 ```
 **Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package**<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
@@ -88,7 +89,7 @@ The following yum command installs the build requirements for CentOS / Enterpris
     lvm2-devel make openssl-devel pkgconfig xz-devel  python3-devel          \
     python3-netifaces python3-paste-deploy python3-simplejson python3-sphinx \
     python3-webob python3-pyxattr readline-devel rpm-build sqlite-devel      \
-    systemtap-sdt-devel tar userspace-rcu-devel rpcgen
+    systemtap-sdt-devel tar userspace-rcu-devel rpcgen liburing-devel
 ```
              
 Building from Source
@@ -186,6 +187,14 @@ use `--enable-asan` option
 
 The above option will build with `-fsanitize=address -fno-omit-frame-pointer`
 options and uses the libasan.so shared library, so that needs to be available.
+
+
+In order to build GlusterFS without io-uring,
+use `--disable-linux-io_uring` option
+
+```console
+# ./configure --disable-linux-io_uring
+```
 
 ### Building
 
