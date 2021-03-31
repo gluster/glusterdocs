@@ -67,7 +67,7 @@ The following yum command installs the build requirements for CentOS / Enterpris
     pyliblzma python-devel python-eventlet python-netifaces           \
     python-paste-deploy python-simplejson python-sphinx python-webob  \
     pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
-    tar userspace-rcu-devel liburing-devel
+    tar userspace-rcu-devel
 ```
 **Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package**<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
@@ -189,7 +189,8 @@ The above option will build with `-fsanitize=address -fno-omit-frame-pointer`
 options and uses the libasan.so shared library, so that needs to be available.
 
 
-In order to build GlusterFS without io-uring,
+`io_uring` is introduced on Linux kernel version 5.1. GlusterFS also needs the user space liburing helper library.
+If these are not available for your machine or if you wish to build GlusterFS without io_uring support,
 use `--disable-linux-io_uring` option
 
 ```console
