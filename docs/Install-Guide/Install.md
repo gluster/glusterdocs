@@ -65,8 +65,8 @@ Finally, install the packages:
 apt install glusterfs-server
 ```
 
-*Note: Packages exist for Ubuntu 12.04 LTS, 12.10, 13.10, and 14.04
-LTS*
+*Note: Packages exist for Ubuntu 16.04 LTS, 18.04
+LTS, 20.04 LTS, 20.10, 21.04*
 
 ###### For Red Hat/CentOS
 
