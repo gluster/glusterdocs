@@ -12,6 +12,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |--------------|----------------|:---------:|:---------:|
 |CentOS Storage SIG[2]|el7             |    yes    |    yes    |
 |              |el8             |    yes    |    yes    |
+|              |el8 stream      |    yes    |    yes    |
 |              |                |           |           |
 |Fedora[3]     |F33             |    yes    |    yes¹   |
 |              |F34             |    yes¹   |    yes    |
@@ -38,6 +39,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |--------------|----------------|:-------:|:--------:|:----------:|:-----------:|:--------:|:-----:|
 |CentOS Storage SIG[2]|el7             |   yes   |    yes   |    yes     |     yes     |    yes   |   yes   |
 |              |el8             |   tbd   |    tbd   |    yes     |     yes     |    tbd   |   yes   |
+|              |el8 stream      |   dbd   |    tbd   |    yes     |     yes     |    no    |   tbd   |
 |              |                |         |          |            |             |          |         |
 |Fedora[3]     |F32             |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
 |              |F33             |   yes   |    yes   |    yes     |     yes     |    yes   |    ?    |
