@@ -18,7 +18,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |F34             |    yes¹   |    yes    |
 |              |F35(rawhide)    |    yes¹   |    yes    |
 |              |                |           |           |
-|Debian[3]     |Stretch/9       |    no     |    yes    |
+|Debian[3]     |Stretch/9       |    yes    |    yes    |
 |              |Buster/10       |    yes    |    yes    |
 |              |Bullseye/11(Sid)|    yes    |    yes    |
 |              |                |           |           |
@@ -35,30 +35,31 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 
 #### Related Packages
 
-|              |                | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
-|--------------|----------------|:-------:|:-------------:|:-------------------:|:-----------:|:-----:|
-|CentOS Storage SIG[2]|el7      |   yes   |      yes      |        yes          |     yes     |  yes  |
-|              |el8             |   tbd   |      yes      |        yes          |     yes     |  yes  |
-|              |el8 stream      |   tbd   |      yes      |        yes          |     yes     |  tbd  |
-|              |                |         |               |                     |             |       |
-|Fedora[3]     |F32             |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F33             |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F34             |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F35(rawhide)    |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |                |         |               |                     |             |       |
-|Debian[3]     |Buster/10       |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Bullseye/11(Sid)|   no    |      no       |        yes          |     yes     |   ?   |
-|              |                |         |               |                     |             |       |
-|Ubuntu Launchpad[4]|Bionic/18.04|   no    |      no       |        yes         |     yes     |   ?   |
-|              |Focal/20.04     |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Groovy/20.10    |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Hirsute/21.04   |   no    |      no       |        yes          |     yes     |   ?   |
-|              |                |         |               |                     |             |       |
-|OpenSUSE Build Service[5]|Leap15.2|   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |Leap15.3        |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |SLES15SP2       |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |SLES15SP3       |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |Tumbleweed      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |                | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
+|--------------|----------------|:-----------------:|:-------:|:-------------:|:-------------------:|:-----------:|:-----:|
+|CentOS Storage SIG[2]|el7      |         yes       |   yes   |      yes      |        yes          |     yes     |  yes  |
+|              |el8             |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
+|              |el8 stream      |         yes       |   tbd   |      yes      |        yes          |     yes     |  tbd  |
+|              |                |                   |         |               |                     |             |       |
+|Fedora[3]     |F32             |         tbd       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |F34             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |F35(rawhide)    |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |                |                   |         |               |                     |             |       |
+|Debian[3]     |Stretch/9       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Buster/10       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Bullseye/11(Sid)|         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |                |                   |         |               |                     |             |       |
+|Ubuntu Launchpad[4]|Bionic/18.04|         n/a       |   no    |      no       |        yes         |     yes     |   ?   |
+|              |Focal/20.04     |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Groovy/20.10    |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Hirsute/21.04   |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
+|              |                |                   |         |               |                     |             |       |
+|OpenSUSE Build Service[5]|Leap15.2|          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |Leap15.3        |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |SLES15SP2       |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |SLES15SP3       |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |Tumbleweed      |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
 
 
 
