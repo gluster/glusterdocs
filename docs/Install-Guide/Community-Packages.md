@@ -27,7 +27,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |Groovy/20.10    |    tbd    |    yes    |    yes    |
 |              |Hirsute/21.04   |    tbd    |    yes    |    yes    |
 |              |                |           |           |           |
-|OpenSUSE Build Service[5]|Leap15.2        |     no         yes    |    yes    |
+|OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |    yes    |
 |              |Leap15.3        |    yes    |    yes    |    yes    |
 |              |SLES15SP2       |     no    |    yes    |    yes    |
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
