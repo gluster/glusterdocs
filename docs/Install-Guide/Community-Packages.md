@@ -21,7 +21,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |Debian[3]     |Stretch/9       |     no    |    yes    |    yes    |
 |              |Buster/10       |    yes    |    yes    |    yes    |
 |              |Bullseye/11(Sid)|    yes    |    yes    |    yes    |
-|              |                |    yes    |           |           |
+|              |                |           |           |           |
 |Ubuntu Launchpad[4]|Bionic/18.04    |    yes    |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |    yes    |
 |              |Groovy/20.10    |    tbd    |    yes    |    yes    |
