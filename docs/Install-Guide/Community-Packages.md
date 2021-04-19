@@ -8,30 +8,30 @@ A **yes** means packages are (or will be) provided in the respective repository.
 A **no** means no plans to build new updates. Existing packages will remain in the repos.  
 The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 
-|              |                |     9     |     8     |
-|--------------|----------------|:---------:|:---------:|
-|CentOS Storage SIG[2]|el7             |    yes    |    yes    |
-|              |el8             |    yes    |    yes    |
-|              |el8 stream      |    yes    |    yes    |
-|              |                |           |           |
-|Fedora[3]     |F33             |    yes    |    yes¹   |
-|              |F34             |    yes¹   |    yes    |
-|              |F35(rawhide)    |    yes¹   |    yes    |
-|              |                |           |           |
-|Debian[3]     |Stretch/9       |    yes    |    yes    |
-|              |Buster/10       |    yes    |    yes    |
-|              |Bullseye/11(Sid)|    yes    |    yes    |
-|              |                |           |           |
-|Ubuntu Launchpad[4]|Bionic/18.04    |    yes    |    yes    |
-|              |Focal/20.04     |    yes    |    yes    |
-|              |Groovy/20.10    |    yes    |    yes    |
-|              |Hirsute/21.04   |    yes    |    yes    |
-|              |                |           |           |
-|OpenSUSE Build Service[5]|Leap15.2        |    yes    |    yes    |
-|              |Leap15.3        |    yes    |    yes    |
-|              |SLES15SP2       |    yes    |    yes    |
-|              |SLES15SP3       |    yes    |    yes    |
-|              |Tumbleweed      |    yes    |    yes    |
+|              |                |    (10)   |     9     |     8     |
+|--------------|----------------|:---------:|:---------:|:---------:|
+|CentOS Storage SIG[2]|el7      |     no    |    yes    |    yes    |
+|              |el8             |    yes    |    yes    |    yes    |
+|              |el8 stream      |    yes    |    yes    |    yes    |
+|              |                |           |           |           |
+|Fedora[3]     |F33             |     no    |    yes    |    yes¹   |
+|              |F34             |    yes    |    yes¹   |    yes    |
+|              |F35(rawhide)    |    yes    |    yes¹   |    yes    |
+|              |                |           |           |           |
+|Debian[3]     |Stretch/9       |     no    |    yes    |    yes    |
+|              |Buster/10       |    yes    |    yes    |    yes    |
+|              |Bullseye/11(Sid)|    yes    |    yes    |    yes    |
+|              |                |    yes    |           |           |
+|Ubuntu Launchpad[4]|Bionic/18.04    |    yes    |    yes    |    yes    |
+|              |Focal/20.04     |    yes    |    yes    |    yes    |
+|              |Groovy/20.10    |    tbd    |    yes    |    yes    |
+|              |Hirsute/21.04   |    tbd    |    yes    |    yes    |
+|              |                |           |           |           |
+|OpenSUSE Build Service[5]|Leap15.2        |     no         yes    |    yes    |
+|              |Leap15.3        |    yes    |    yes    |    yes    |
+|              |SLES15SP2       |     no    |    yes    |    yes    |
+|              |SLES15SP3       |    yes    |    yes    |    yes    |
+|              |Tumbleweed      |    yes    |    yes    |    yes    |
 
 #### Related Packages
 
