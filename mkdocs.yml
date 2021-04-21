@@ -39,6 +39,7 @@ nav:
   - Logging: Administrator-Guide/Logging.md
   - Features:
      - Setting Up Storage : Administrator-Guide/setting-up-storage.md
+     - Replication: Administrator-Guide/Automatic-File-Replication.md
      - Geo Replication: Administrator-Guide/Geo-Replication.md
      - Quotas: Administrator-Guide/Directory-Quota.md
      - Snapshots: Administrator-Guide/Managing-Snapshots.md
@@ -232,6 +233,7 @@ nav:
     - Troubleshooting CLI and glusterd: Troubleshooting/troubleshooting-glusterd.md
     - Troubleshooting Geo-replication: Troubleshooting/troubleshooting-georep.md
     - Troubleshooting gNFS: Troubleshooting/troubleshooting-gnfs.md
+    - Troubleshooting Self-heal: Troubleshooting/troubleshooting-afr.md
     - Troubleshooting Split-Brains: Troubleshooting/resolving-splitbrain.md
     - Troubleshooting File Locks: Troubleshooting/troubleshooting-filelocks.md
   - Issues:

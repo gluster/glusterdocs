@@ -24,6 +24,7 @@
 
 6.   Features
 
+	*  [Replication](./Automatic-File-Replication.md)
 	*  [Geo Replication](./Geo-Replication.md)
 	*  [Quotas](./Directory-Quota.md)
 	*  [Snapshots](./Managing-Snapshots.md)

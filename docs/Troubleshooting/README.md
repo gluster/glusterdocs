@@ -9,6 +9,7 @@ If that doesn’t help, reach out to the [Gluster community](https://www.gluster
 Is the issue already listed in the component specific troubleshooting sections?
 
 - [CLI and Glusterd Issues](./troubleshooting-glusterd.md)
+- [Heal related issues](./troubleshooting-afr.md)
 - [Resolving Split brains](./resolving-splitbrain.md)
 - [Geo-replication Issues](./troubleshooting-georep.md)
 - [Gluster NFS Issues](./troubleshooting-gnfs.md)
