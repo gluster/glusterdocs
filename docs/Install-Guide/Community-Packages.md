@@ -14,7 +14,8 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |el8             |    yes    |    yes    |    yes    |
 |              |el8 stream      |    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|Fedora[3]     |F33             |     no    |    yes    |    yes¹   |
+|Fedora[3]     |F32             |     no    |    no     |    yes    |
+|              |F33             |     no    |    yes    |    yes¹   |
 |              |F34             |    yes    |    yes¹   |    yes    |
 |              |F35(rawhide)    |    yes    |    yes¹   |    yes    |
 |              |                |           |           |           |
@@ -22,13 +23,15 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |Buster/10       |    yes    |    yes    |    yes    |
 |              |Bullseye/11(Sid)|    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|Ubuntu Launchpad[4]|Bionic/18.04    |    yes    |    yes    |    yes    |
+|Ubuntu Launchpad[4]|Xenial/16.04    |     no    |    yes    |    yes    |
+|              |Bionic/18.04    |    yes    |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |    yes    |
 |              |Groovy/20.10    |    tbd    |    yes    |    yes    |
 |              |Hirsute/21.04   |    tbd    |    yes    |    yes    |
 |              |                |           |           |           |
 |OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |    yes    |
 |              |Leap15.3        |    yes    |    yes    |    yes    |
+|              |SLES15SP5       |     no    |    yes    |    yes    |
 |              |SLES15SP2       |     no    |    yes    |    yes    |
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
@@ -50,16 +53,18 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |Buster/10       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Bullseye/11(Sid)|         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
-|Ubuntu Launchpad[4]|Bionic/18.04|         n/a       |   no    |      no       |        yes         |     yes     |   ?   |
-|              |Focal/20.04     |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Groovy/20.10    |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Hirsute/21.04   |          n/a      |   no    |      no       |        yes          |     yes     |   ?   |
+|Ubuntu Launchpad[4]|Xenial/16.04    |         n/a/      |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Bionic/18.04    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Focal/20.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Groovy/20.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Hirsute/21.04   |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
 |OpenSUSE Build Service[5]|Leap15.2|          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |Leap15.3        |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |SLES15SP2       |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |SLES15SP3       |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |Tumbleweed      |          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |Leap15.3        |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |SLES12SP5       |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |SLES15SP2       |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |SLES15SP3       |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |Tumbleweed      |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
 
 
 
