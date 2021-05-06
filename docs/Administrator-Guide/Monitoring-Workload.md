@@ -114,13 +114,13 @@ information anymore.
 
 Stop profiling using the following command:
 
-    `# gluster volume profile  stop`
+    # gluster volume profile  stop
 
 For example, to stop profiling on test-volume:
 
-    `# gluster volume profile  stop`
+    # gluster volume profile  stop
 
-    `Profiling stopped on test-volume`
+    Profiling stopped on test-volume
 
 ## Running GlusterFS Volume TOP Command
 
@@ -527,7 +527,7 @@ needed.
 -   Display information about a specific volume using the following
     command:
 
-    `# gluster volume info ``VOLNAME`
+    `# gluster volume info VOLNAME`
 
     For example, to display information about test-volume:
 
