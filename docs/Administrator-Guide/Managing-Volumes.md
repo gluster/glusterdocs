@@ -703,7 +703,7 @@ NUFA should be enabled before creating any data in the volume.
 
 Use the following command to enable NUFA:
 
-`# gluster volume set <VOLNAME> cluster.nufa enable on`
+`# gluster volume set <VOLNAME> cluster.nufa enable`
 
 **Important**
 
