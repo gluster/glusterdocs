@@ -3,6 +3,7 @@ Release Notes
 
 ### GlusterFS 9 release notes
 
+- [9.3](./9.3.md)
 - [9.2](./9.2.md)
 - [9.1](./9.1.md)
 - [9.0](./9.0.md)
