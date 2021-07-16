@@ -117,6 +117,7 @@ nav:
 - Release Notes:
   - index: release-notes/index.md
   - RELEASE 9.x:
+    - 9.3: release-notes/9.3.md
     - 9.2: release-notes/9.2.md
     - 9.1: release-notes/9.1.md
     - 9.0: release-notes/9.0.md
