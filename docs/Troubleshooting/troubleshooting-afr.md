@@ -1,4 +1,4 @@
-The fist level of analysis always starts with looking at the log files. Which ones, you ask?
+The first level of analysis always starts with looking at the log files. Which ones, you ask?
 
 - /var/log/glusterfs/$fuse-mount-point.log –> Fuse client log
 - /var/log/glusterfs/glfsheal-$volname.log –> This is the log file to look at when you run the heal info/split-brain resolution commands.
