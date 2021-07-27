@@ -11,7 +11,7 @@ There are three types of split-brains:
 
 -  Data split-brain: The data in the file differs on the bricks in the replica set
 -  Metadata split-brain: The metadata differs on the bricks
--  Entry/GFID split-brain: The GFID of the file is different on the bricks in the replica. This cannot be healed automatically.
+-  Entry split-brain: The GFID of the file is different on the bricks in the replica or the type of the file is different on the bricks in the replica. Type-mismatch cannot be healed using any of the split-brain resolution methods while gfid split-brains can be.
 
 
 ## 1) Volume heal info:
@@ -100,7 +100,10 @@ their parent directories are listed to be in split-brain.
 
 # 3. Resolution of split-brain using gluster CLI
 Once the files in split-brain are identified, their resolution can be done
-from the gluster command line using various policies. Entry/GFID split-brain resolution is not supported via this method. Split-brain resolution commands let the user resolve data and metadata split-brain using the following policies:
+from the gluster command line using various policies. Type-mismatch cannot be healed using this methods. Split-brain resolution commands let the user resolve data, metadata, and GFID split-brains.
+
+## 3.1 Resolution of data/metadata split-brain using gluster CLI
+Data and metadata split-brains can be resolved using the following policies:
 
 ## i) Select the bigger-file as source
 This command is useful for per file healing where it is known/decided that the
@@ -308,15 +311,312 @@ Healed gfid:b23dd8de-af03-4006-a803-96d8bc0df004.
 Number of healed entries: 3
 ```
 
-## Note:
-As mentioned earlier, entry split-brain and gfid split-brain healing
- are not supported using CLI. Trying to heal /dir would fail as it is in entry split-brain.
+# 3.2 Resolution of GFID split-brain using gluster CLI
+GFID split-brains can also be resolved by the gluster command line using the same policies that are used to resolve data and metadata split-brains.
 
-### Example
+## i) Selecting the bigger-file as source
+This method is useful for per file healing and where you can decided that the file with bigger size is to be considered as source.
+
+Run the following command to obtain the path of the file that is in split-brain:
+```console
+# gluster volume heal VOLNAME info split-brain
+```
+
+From the output, identify the files for which file operations performed from the client failed with input/output error.
+### Example :
+```console
+# gluster volume heal testvol info
+Brick 10.70.47.45:/bricks/brick2/b0
+/f5
+/ - Is in split-brain
+
+Status: Connected
+Number of entries: 2
+
+Brick 10.70.47.144:/bricks/brick2/b1
+/f5
+/ - Is in split-brain
+
+Status: Connected
+Number of entries: 2
+```
+> **Note**
+> Entries which are in GFID split-brain may not be shown as in split-brain by the heal info or heal info split-brain commands always. For entry split-brains, it is the parent directory which is shown as being in split-brain. So one might need to run info split-brain to get the dir names and then heal info to get the list of files under that dir which might be in split-brain (it could just be needing heal without split-brain).
+
+In the above command, testvol is the volume name, b0 and b1 are the bricks.
+Execute the below getfattr command on the brick to fetch information if a file is in GFID split-brain or not.
 
 ```console
-# gluster volume heal test split-brain source-brick test-host:/test/b1 /dir
-Healing /dir failed:Operation not permitted.
+# getfattr -d -e hex -m. <path-to-file>
+```
+
+### Example :
+On brick /b0
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b0/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-0=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x9563544118653550e888ab38c232e0c
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+```
+
+You can notice the difference in GFID for the file f5 in both the bricks.
+You can find the differences in the file size by executing stat command on the file from the bricks.
+
+On brick /b0
+```console
+# stat /bricks/brick2/b0/f5
+File: ‘/bricks/brick2/b0/f5’
+Size: 15            Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67113350    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:46:26.353751073 +0530
+Modify: 2018-08-29 20:46:26.361751203 +0530
+Change: 2018-08-29 20:47:16.363751236 +0530
+Birth: -
+```
+
+On brick /b1
+```console
+# stat /bricks/brick2/b1/f5
+File: ‘/bricks/brick2/b1/f5’
+Size: 2             Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67111750    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:44:56.153301616 +0530
+Modify: 2018-08-29 20:44:56.161301745 +0530
+Change: 2018-08-29 20:44:56.162301761 +0530
+Birth: -
+```
+
+Execute the following command along with the full filename as seen from the root of the volume which is displayed in the heal info command's output:
+
+```console
+# gluster volume heal VOLNAME split-brain bigger-file FILE
+```
+
+### Example :
+```console
+# gluster volume heal testvol split-brain bigger-file /f5
+GFID split-brain resolved for file /f5
+```
+
+After the healing is complete, the GFID of the file on both the bricks must be the same as that of the file which had the bigger size. The following is a sample output of the getfattr command after completion of healing the file.
+
+On brick /b0
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b0/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+```
+
+## ii) Selecting the file with latest mtime as source
+This method is useful for per file healing and if you want the file with latest mtime has to be considered as source.
+
+### Example :
+Lets take another file which is in GFID split-brain and try to heal that using the latest-mtime option.
+
+On brick /b0
+
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b0/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-0=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x87242f808c6e56a007ef7d49d197acff
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+You can notice the difference in GFID for the file f4 in both the bricks.
+You can find the difference in the modification time by executing stat command on the file from the bricks.
+
+On brick /b0
+```console
+# stat /bricks/brick2/b0/f4
+File: ‘/bricks/brick2/b0/f4’
+Size: 14            Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67113349    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:57:38.913629991 +0530
+Modify: 2018-08-29 20:57:38.921630122 +0530
+Change: 2018-08-29 20:57:38.923630154 +0530
+Birth: -
+```
+
+On brick /b1
+```console
+# stat /bricks/brick2/b1/f4
+File: ‘/bricks/brick2/b1/f4’
+Size: 2             Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67111749    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-24 20:54:50.953217256 +0530
+Modify: 2018-08-24 20:54:50.961217385 +0530
+Change: 2018-08-24 20:54:50.962217402 +0530
+Birth: -
+```
+
+Execute the following command:
+```console
+# gluster volume heal VOLNAME split-brain latest-mtime FILE
+```
+
+### Example :
+```console
+# gluster volume heal testvol split-brain latest-mtime /f4
+GFID split-brain resolved for file /f4
+```
+
+After the healing is complete, the GFID of the files on both bricks must be same. The following is a sample output of the getfattr command after completion of healing the file. You can notice that the file has been healed using the brick having the latest mtime as the source.
+
+On brick /b0
+```console# getfattr -d -m . -e hex /bricks/brick2/b0/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+## iii) Select one of the bricks in the replica as source for a particular file
+This method is useful for per file healing and if you know which copy of the file is good.
+
+### Example :
+Lets take another file which is in GFID split-brain and try to heal that using the source-brick option.
+
+On brick /b0
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b0/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x9d542fb1b3b15837a2f7f9dcdf5d6ee8
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xc90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+You can notice the difference in GFID for the file f3 in both the bricks.
+
+Execute the following command:
+```console
+# gluster volume heal VOLNAME split-brain source-brick HOSTNAME:export-directory-absolute-path FILE
+```
+
+In this command, FILE present in HOSTNAME : export-directory-absolute-path is taken as source for healing.
+
+### Example :
+```console
+# gluster volume heal testvol split-brain source-brick 10.70.47.144:/bricks/brick2/b1 /f3
+GFID split-brain resolved for file /f3
+```
+
+After the healing is complete, the GFID of the file on both the bricks should be same as that of the brick which was chosen as source for healing. The following is a sample output of the getfattr command after the file is healed.
+
+On brick /b0
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b0/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0x90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+On brick /b1
+```console
+# getfattr -d -m . -e hex /bricks/brick2/b1/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0x90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+```
+
+> **Note**
+>- One cannot use the GFID of the file as an argument with any of the CLI options to resolve GFID split-brain. It should be the absolute path as seen from the mount point to the file considered as source.
+>
+>- With source-brick option there is no way to resolve all the GFID split-brain in one shot by not specifying any file path in the CLI as done while resolving data or metadata split-brain. For each file in GFID split-brain, run the CLI with the policy you want to use.
+>
+>- Resolving directory GFID split-brain using CLI with the "source-brick" option in a "distributed-replicated" volume needs to be done on all the sub-volumes explicitly, which are in this state. Since directories get created on all the sub-volumes, using one particular brick as source for directory GFID split-brain heals the directory for that particular sub-volume. Source brick should be chosen in such a way that after heal all the bricks of all the sub-volumes have the same GFID.
+
+## Note:
+As mentioned earlier, type-mismatch can not be resolved using CLI. Type-mismatch means different st_mode values (for example, the entry is a file in one brick while it is a directory on the other). Trying to heal such entry would fail.
+
+### Example
+The entry named "entry1" is of different types on the bricks of the replica. Lets try to heal that using the split-brain CLI.
+
+```console
+# gluster volume heal test split-brain source-brick test-host:/test/b1 /entry1
+Healing /entry1 failed:Operation not permitted.
 Volume heal failed.
 ```
 
