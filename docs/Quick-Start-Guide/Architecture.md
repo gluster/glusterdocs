@@ -1,6 +1,6 @@
 Architecture
 ============
-+![architecture](../images/GlusterFS_Translator_Stack.png)
+![architecture](../images/GlusterFS_Translator_Stack.png)
 
 A gluster volume is a collection of servers belonging to a Trusted Storage Pool.
 A management daemon (glusterd) runs on each server and manages a brick process
@@ -187,7 +187,7 @@ As it is a userspace filesystem, to interact with kernel VFS, GlusterFS
 makes use of FUSE (File System in Userspace). For a long time,
 implementation of a userspace filesystem was considered impossible. FUSE
 was developed as a solution for this. FUSE is a kernel module that
-support interaction between kernel VFS and non-privileged user
+supports interaction between kernel VFS and non-privileged user
 applications and it has an API that can be accessed from userspace.
 Using this API, any type of filesystem can be written using almost any
 language you prefer as there are many bindings between FUSE and other
