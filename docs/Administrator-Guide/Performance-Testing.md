@@ -18,7 +18,7 @@ Ideally it's best to use the actual application that you want to run on Gluster,
 
 * server-side profiling - this is done using the "gluster volume profile" command (and "gluster volume top" can be used to identify particular hot files in use as well).  Server-side profiling can measure the throughput of an entire Gluster volume over time, and can measure server-side latencies.  However, it does not incorporate network or client-side latencies.  It is also hard to infer application behavior because of client-side translators that alter the I/O workload (examples: erasure coding, cache tiering).
 
-In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understand how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read?  is it small-file?), and how well the I/O load is spread across the volume.
+In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understanding how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read?  is it small-file?), and how well the I/O load is spread across the volume.
 
 ## client-side profiling
 
@@ -142,7 +142,7 @@ throughput calculation:
 
         iozone -w -c -e -i 0 -+n -C -r 64k -s 1g -t 8 -F /mnt/glusterfs/f{0,1,2,3,4,5,6,7,8}.ioz
 
-WARNING: random I/O testing in iozone is very restricted by iozone
+WARNING: random I/O testing in iozone is heavily restricted by the iozone
 constraint that it must randomly read then randomly write the entire
 file! This is not what we want - instead it should randomly read/write
 for some fraction of file size or time duration, allowing us to spread
