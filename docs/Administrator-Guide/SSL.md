@@ -66,6 +66,68 @@ time of the client as well as the server and if that is not found to be in
 sync then it is deemed to be an invalid certificate. To get the date and times
 in sync, tools such as ntpdate can be used.
 
+## Using Certmonger and FreeIPA to generate and manage certs
+
+Certmonger can be used to generate keys, request certs from a CA and then
+automatically keep the Gluster certificate and the CA bundle updated as
+required, simplifying deployment.  Either a commercial CA or a local CA can
+be used.  E.g., FreeIPA (with dogtag CA) is an open-source CA with
+user-friendly tooling.
+
+If using FreeIPA, first add the host. This is required for FreeIPA to issue
+certificates. This can be done via the web UI, or the CLI with:
+
+	ipa host-add <hostname>
+
+If the host has been added the following should show the host:
+
+	ipa host-show <hostname>
+
+And it should show a kerberos principal for the host in the form of:
+
+	host/<hostname>
+
+Now use certmonger on the gluster server or client to generate the key (if
+required), and submit a CSR to the CA.  Certmonger will monitor the request,
+and create and update the files as required.  For FreeIPA we need to specify
+the Kerberos principal from above to -K.  E.g.:
+
+	 getcert request -r  \
+		-K host/$(hostname)  \
+		-f /etc/ssl/gluster.pem \
+		-k /etc/ssl/gluster.key \ 
+		-D $(hostname)  \
+		-F /etc/ssl/gluster.ca
+
+Certmonger should print out an ID for the request, e.g.:
+
+	New signing request "20210801190305" added.
+
+You can check the status of the request with this ID:
+
+	getcert list -i 20210801190147
+
+If the CA approves the CSR and issues the cert, then the previous command
+should print a status field with:
+
+	status: MONITORING
+
+As this point, the key, the cert and the CA bundle should all be in /etc/ssl
+ready for Gluster to use.  Certmonger will renew the certificates as
+required for you.
+
+You do not need to manually concatenate certs to a trusted cert bundle and
+distribute them to all servers.
+
+You may need to set the certificate depth to allow the CA signed certs to be
+used, if there are intermediate CAs in the signing path. E.g., on every server
+and client:
+
+	echo "option transport.socket.ssl-cert-depth 3" >  /var/lib/glusterd/secure-access
+
+This should not be necessary where a local CA (e.g., FreeIPA) has directly
+signed the cart.
+
 ## Enabling TLS on the I/O Path
 
 To enable authentication and encryption between clients and brick servers, two
