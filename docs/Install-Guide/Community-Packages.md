@@ -14,10 +14,10 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |el8             |    yes    |    yes    |    yes    |
 |              |el8 stream      |    yes    |    yes    |    yes    |
 |              |                |           |           |           |
-|Fedora[3]     |F32             |     no    |    no     |    yes    |
-|              |F33             |     no    |    yes    |    yes¹   |
+|Fedora[3]     |F33             |     no    |    yes    |    yes¹   |
 |              |F34             |    yes    |    yes¹   |    yes    |
-|              |F35(rawhide)    |    yes    |    yes¹   |    yes    |
+|              |F35             |    yes    |    yes¹   |    yes    |
+|              |F36(rawhide)    |    yes    |    yes¹   |    yes    |
 |              |                |           |           |           |
 |Debian[3]     |Stretch/9       |     no    |    yes    |    yes    |
 |              |Buster/10       |    yes    |    yes    |    yes    |
@@ -26,13 +26,12 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |Ubuntu Launchpad[4]|Xenial/16.04    |     no    |    yes    |    yes    |
 |              |Bionic/18.04    |    yes    |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |    yes    |
-|              |Groovy/20.10    |    tbd    |    yes    |    yes    |
 |              |Hirsute/21.04   |    tbd    |    yes    |    yes    |
 |              |Impish/21.10    |    tbd    |    yes    |    yes    |
 |              |                |           |           |           |
 |OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |    yes    |
 |              |Leap15.3        |    yes    |    yes    |    yes    |
-|              |SLES15SP5       |     no    |    yes    |    yes    |
+|              |SLES12SP5       |     no    |    yes    |    yes    |
 |              |SLES15SP2       |     no    |    yes    |    yes    |
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
@@ -45,10 +44,10 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |el8             |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
 |              |el8 stream      |         yes       |   tbd   |      yes      |        yes          |     yes     |  tbd  |
 |              |                |                   |         |               |                     |             |       |
-|Fedora[3]     |F32             |         tbd       |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|Fedora[3      |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F34             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F35(rawhide)    |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |F35             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|              |F36(rawhide)    |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
 |Debian[3]     |Stretch/9       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Buster/10       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
@@ -57,7 +56,6 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |Ubuntu Launchpad[4]|Xenial/16.04    |         n/a/      |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Bionic/18.04    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Focal/20.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Groovy/20.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Hirsute/21.04   |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Impish/21.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
