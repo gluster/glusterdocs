@@ -21,7 +21,8 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |                |           |           |           |
 |Debian[3]     |Stretch/9       |     no    |    yes    |    yes    |
 |              |Buster/10       |    yes    |    yes    |    yes    |
-|              |Bullseye/11(Sid)|    yes    |    yes    |    yes    |
+|              |Bullseye/11     |    yes    |    yes    |    yes    |
+|              |Bookworm/12(sid)|    yes    |    yes    |     no    |
 |              |                |           |           |           |
 |Ubuntu Launchpad[4]|Xenial/16.04    |     no    |    yes    |    yes    |
 |              |Bionic/18.04    |    yes    |    yes    |    yes    |
@@ -51,7 +52,8 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |                |                   |         |               |                     |             |       |
 |Debian[3]     |Stretch/9       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Buster/10       |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Bullseye/11(Sid)|         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Bullseye/11     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Bookworm/12(sid)|         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
 |Ubuntu Launchpad[4]|Xenial/16.04    |         n/a/      |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Bionic/18.04    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
