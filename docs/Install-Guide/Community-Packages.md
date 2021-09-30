@@ -10,9 +10,10 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 
 |              |                |    (10)   |     9     |     8     |
 |--------------|----------------|:---------:|:---------:|:---------:|
-|CentOS Storage SIG[2]|el7      |     no    |    yes    |    yes    |
-|              |el8             |    yes    |    yes    |    yes    |
-|              |el8 stream      |    yes    |    yes    |    yes    |
+|CentOS Storage SIG[2]|7        |     no    |    yes    |    yes    |
+|              |8               |    yes    |    yes    |    yes    |
+|              |Stream 8       |    yes    |    yes    |    yes    |
+|              |Stream 9        |    yes    |    yes    |     no    |
 |              |                |           |           |           |
 |Fedora[3]     |F33             |     no    |    yes    |    yes¹   |
 |              |F34             |    yes    |    yes¹   |    yes    |
@@ -41,11 +42,12 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 
 |              |                | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
 |--------------|----------------|:-----------------:|:-------:|:-------------:|:-------------------:|:-----------:|:-----:|
-|CentOS Storage SIG[2]|el7      |         yes       |   yes   |      yes      |        yes          |     yes     |  yes  |
-|              |el8             |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
-|              |el8 stream      |         yes       |   tbd   |      yes      |        yes          |     yes     |  tbd  |
+|CentOS Storage SIG[2]|7        |         yes       |   yes   |      yes      |        yes          |     yes     |  yes  |
+|              |8               |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
+|              |Stream 8        |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
+|              |Stream 9        |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
 |              |                |                   |         |               |                     |             |       |
-|Fedora[3      |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|Fedora[3]     |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F34             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F35             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F36(rawhide)    |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
