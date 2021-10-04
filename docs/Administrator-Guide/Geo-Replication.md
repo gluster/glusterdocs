@@ -185,9 +185,13 @@ For example,
     create push-pem
 ```
 
-If custom SSH port is configured in Secondary nodes then,
+If custom SSH port (example: 50022) is configured in Secondary nodes then
 
 ```console
+# gluster volume geo-replication gvol-primary  \
+    geoaccount@snode1.example.com::gvol-secondary \
+    config ssh_port 50022
+
 # gluster volume geo-replication gvol-primary  \
     geoaccount@snode1.example.com::gvol-secondary \
     create ssh-port 50022 push-pem
