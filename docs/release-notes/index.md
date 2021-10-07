@@ -1,3 +1,15 @@
+Gluster releases are separated into major and minor releases. Major releases typically contain newer functionality (in addition to bug fixes) and minor releases improve the stability of a major releases by providing bug fixes that are found or reported against them.
+
+Major releases are made once every 1 year and receive minor updates for the next 12 months, after which they are no longer maintained (or termed EOL (End-Of-Life)).
+
+**NOTE:**
+
+From Gluster 10 major release, the release cycle for major releases is changed from 6 months to 1 year. Minor releases will follow every alternate month for a period of 12 months.
+
+Like wise minor releases of the previous major version will happen every three months.
+
+Detailed release schedule [here](https://www.gluster.org/release-schedule/)
+
 Release Notes
 -------------
 ### GlusterFS seLinux release notes
