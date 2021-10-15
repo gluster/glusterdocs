@@ -30,7 +30,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |Focal/20.04     |    yes    |    yes    |    yes    |
 |              |Hirsute/21.04   |    yes    |    yes    |    yes    |
 |              |Impish/21.10    |    yes    |    yes    |    yes    |
-|              |Jammy/22.04     |    yes    |    yes    |    tbd    |
+|              |Jammy/22.04     |    yes    |    yes    |    yes    |
 |              |                |           |           |           |
 |OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |    yes    |
 |              |Leap15.3        |    yes    |    yes    |    yes    |
