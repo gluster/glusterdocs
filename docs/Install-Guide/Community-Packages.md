@@ -38,7 +38,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |SLES15SP2       |     no    |    yes    |    yes    |
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
-impish-glusterfs-8
+
 #### Related Packages
 
 |              |                | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
