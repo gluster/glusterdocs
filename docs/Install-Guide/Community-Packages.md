@@ -12,7 +12,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |--------------|----------------|:---------:|:---------:|:---------:|
 |CentOS Storage SIG[2]|7        |     no    |    yes    |    yes    |
 |              |8               |    yes    |    yes    |    yes    |
-|              |Stream 8       |    yes    |    yes    |    yes    |
+|              |Stream 8        |    yes    |    yes    |    yes    |
 |              |Stream 9        |    yes    |    yes    |     no    |
 |              |                |           |           |           |
 |Fedora[3]     |F33             |     no    |    yes    |    yes¹   |
@@ -28,8 +28,9 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |Ubuntu Launchpad[4]|Xenial/16.04    |     no    |    yes    |    yes    |
 |              |Bionic/18.04    |    yes    |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |    yes    |
-|              |Hirsute/21.04   |    tbd    |    yes    |    yes    |
-|              |Impish/21.10    |    tbd    |    yes    |    yes    |
+|              |Hirsute/21.04   |    yes    |    yes    |    yes    |
+|              |Impish/21.10    |    yes    |    yes    |    yes    |
+|              |Jammy/22.04     |    yes    |    yes    |    tbd    |
 |              |                |           |           |           |
 |OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |    yes    |
 |              |Leap15.3        |    yes    |    yes    |    yes    |
@@ -37,7 +38,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |SLES15SP2       |     no    |    yes    |    yes    |
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
-
+impish-glusterfs-8
 #### Related Packages
 
 |              |                | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
@@ -62,6 +63,7 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |Focal/20.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Hirsute/21.04   |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Impish/21.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Jammy/22.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
 |OpenSUSE Build Service[5]|Leap15.2|          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |Leap15.3        |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
