@@ -188,8 +188,8 @@ From the above descriptions, it is clear that client-quorum cannot really be app
 to a replica 2 volume:(without costing HA).
 If the quorum-type is set to auto, then by the description
 given earlier, the first brick must always be up, irrespective of the status of the
-second brick. IOW, if only the second brick is up, the  subvol becomes EROFS, i.e. no HA.
-If quorum-type is set to fixed, the the quorum-count *has* to be two
+second brick. IOW, if only the second brick is up, the subvol returns ENOTCONN, i.e. no HA.
+If quorum-type is set to fixed, then the quorum-count *has* to be two
 to prevent split-brains (otherwise a write can succeed in brick1, another in brick2 =>split-brain).
 So for all practical purposes, if you want high availability in a replica 2 volume,
 it is recommended not to enable client-quorum.
@@ -199,11 +199,12 @@ This means 2 bricks need to be up for the write to succeed. Here is how this
 configuration prevents files from ending up in split-brain:
 
 Say B1, B2 and B3 are the bricks:
-1. B3 is down, quorum is met, write happens on file B1 and B2
+
+1. B3 is down, quorum is met, write happens on file B1 and B2.
 2. B3 comes up, B2 is down, quorum is again met, write happens on B1 and B3.
 3. B2 comes up, B1 goes down, quorum is met. Now when a write is issued, AFR sees
 that B2 and B3's pending xattrs blame each other and therefore the write is not
-allowed and is failed with an EIO.
+allowed and is failed with ENOTCONN.
 
 # How Arbiter works
 
@@ -235,7 +236,7 @@ with ENOTCONN. This is because, in this scenario, the only true copy is on the
  When the arbiter comes up, the entry/metadata heals to it happen. Of course data
  heals are not needed.
 
-- If only one brick is up, then client-quorum is not met and the volume becomes EROFS.
+- If only one brick is up, then client-quorum is not met and the volume returns ENOTCONN.
 
 - In all cases, if there is only one source before the FOP is initiated
  (even if all bricks are up) and if the FOP fails on that source, the
