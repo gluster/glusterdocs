@@ -39,6 +39,9 @@ The following GlusterFS versions have reached EOL[1]: 7, 6, 5 and earlier.
 |              |SLES15SP3       |    yes    |    yes    |    yes    |
 |              |Tumbleweed      |    yes    |    yes    |    yes    |
 
+
+**NOTE** - We are not building Debian arm packages due to resource constraints for a while now. There will be only amd64 packages present on [download.gluster.org](https://download.gluster.org/pub/gluster/glusterfs/LATEST/)
+
 #### Related Packages
 
 |              |                | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
