@@ -116,6 +116,8 @@ nav:
   - Upgrade to 3.5: Upgrade-Guide/upgrade-to-3.5.md
 - Release Notes:
   - index: release-notes/index.md
+  - RELEASE 10.x:
+    - 10.0: release-notes/10.0.md
   - RELEASE 9.x:
     - 9.4: release-notes/9.4.md
     - 9.3: release-notes/9.3.md

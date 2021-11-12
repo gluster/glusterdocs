@@ -14,8 +14,11 @@ Release Notes
 -------------
 ### GlusterFS seLinux release notes
 - [2.0.1](./glusterfs-selinux2.0.1.md)
-### GlusterFS 9 release notes
 
+### GlusterFS 10 release notes
+- [10.0](./10.0.md)
+
+### GlusterFS 9 release notes
 - [9.4](./9.4.md)
 - [9.3](./9.3.md)
 - [9.2](./9.2.md)
@@ -42,7 +45,6 @@ Release Notes
 - [7.2](./7.2.md)
 - [7.1](./7.1.md)
 - [7.0](./7.0.md)
-
 
 ### GlusterFS 6 release notes
 
