@@ -98,6 +98,7 @@ nav:
   - Upgrade-Guide Index: Upgrade-Guide/README.md
   - Op-version: Upgrade-Guide/op-version.md
   - Generic upgrade procedure: Upgrade-Guide/generic-upgrade-procedure.md
+  - Upgrade to 10: Upgrade-Guide/upgrade-to-10.md
   - Upgrade to 9: Upgrade-Guide/upgrade-to-9.md
   - Upgrade to 8: Upgrade-Guide/upgrade-to-8.md
   - Upgrade to 7: Upgrade-Guide/upgrade-to-7.md
