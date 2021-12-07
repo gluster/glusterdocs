@@ -117,7 +117,7 @@ You can download it from [here](https://github.com/gluster/glusterfs/blob/releas
 
 #### step 5 :
    - To check if the volume is exported, run
-       - #showmount -e localhost*
+       - *#showmount -e localhost*
    - Or else use the following dbus command
        - *#dbus-send --type=method_call --print-reply --system --dest=org.ganesha.nfsd /org/ganesha/nfsd/ExportMgr  org.ganesha.nfsd.exportmgr.ShowExports*
    - To see clients
