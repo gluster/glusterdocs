@@ -82,7 +82,7 @@ EXPORT{
 
 #### step 2 :
 
-Now include the export configuration file in the ganesha configuration file(by default ). This can be done by adding the line below at the end of file
+Now include the export configuration file in the ganesha configuration file (by default). This can be done by adding the line below at the end of file
    - %include “\<path of export configuration\>”
 
 ```sh
@@ -111,7 +111,8 @@ Note :
 Step 4 can be performed via following script
 #/usr/libexec/ganesha/dbus-send.sh <ganesha directory> [on|off] <volume name>
 ```
-Above scripts(mentioned in step 3 and step 4) are available in glusterfs 3.10 rpms.
+Above scripts (mentioned in step 3 and step 4) are available in glusterfs 3.10 rpms.
+
 You can download it from [here](https://github.com/gluster/glusterfs/blob/release-3.10/extras/ganesha/scripts/)
 
 #### step 5 :
@@ -173,7 +174,7 @@ Ensure that the following pre-requisites are taken into consideration before you
 * Disable and stop NetworkManager service.
 * Enable and start network service on all machines.
 * Create and mount a gluster shared volume.
-	* gluster volume set all cluster.enable-shared-storage enable
+	* `gluster volume set all cluster.enable-shared-storage enable`
 * Install Pacemaker and Corosync on all machines.
 * Set the cluster auth password on all the machines.
 * Passwordless ssh needs to be enabled on all the HA nodes. Follow these steps,
@@ -184,7 +185,7 @@ Ensure that the following pre-requisites are taken into consideration before you
         - ssh-copy-id -i /var/lib/glusterd/nfs/secret.pem.pub root@$node
     - Copy the keys to _all_ nodes in the cluster, run:
         - scp /var/lib/glusterd/nfs/secret.*  $node:/var/lib/glusterd/nfs/
-* Create a directory named "nfs-ganesha" in shared storage path and create ganesha.conf & ganesha-ha.conf in it(from glusterfs 3.9 onwards)
+* Create a directory named "nfs-ganesha" in shared storage path and create ganesha.conf & ganesha-ha.conf in it (from glusterfs 3.9 onwards)
 
 #### Configuring the HA Cluster
 To set up the HA cluster, enable NFS-Ganesha by executing the following command:
@@ -221,9 +222,9 @@ This command unexports the Red Hat Gluster Storage volume without affecting othe
 To verify the status of the volume set options, follow the guidelines mentioned below:
 
 * Check if NFS-Ganesha is started by executing the following command:
-    - ps aux | grep ganesha.nfsd
+    - `ps aux | grep ganesha.nfsd`
 * Check if the volume is exported.
-    - showmount -e localhost
+    - `showmount -e localhost`
 
 The logs of ganesha.nfsd daemon is written to /var/log/ganesha.log. Check the log file on noticing any unexpected behavior.
 
@@ -258,20 +259,21 @@ To modify the default export configurations perform the following steps on any o
         HA_CONF_DIR: The directory path containing the ganesha-ha.conf file.
         volname: The name of the volume whose export configuration has to be changed.
 
-    Note
+    Note:
         The export ID must not be changed.
 ⁠
+
 ### Configure ganesha ha cluster outside of gluster nodes
 
 Currently, ganesha HA cluster creating tightly integrated with glusterd. So here user needs to create another TSP using ganesha nodes. Then create ganesha HA cluster using above mentioned steps till executing "gluster nfs-ganesha enable"
 Exporting/Unexporting should be performed without using glusterd cli (follow the manual steps, before performing step 4 replace localhost with required hostname/ip "hostname=localhost;" in the export configuration file)
 
 ## Configuring Gluster volume for pNFS
-The Parallel Network File System (pNFS) is part of the NFS v4.1 protocol that allows computing clients to access storage devices directly and in parallel. The pNFS cluster consists of MDS(Meta-Data-Server) and DS (Data-Server). The client sends all the read/write requests directly to DS and all other operations are handle by the MDS.
+The Parallel Network File System (pNFS) is part of the NFS v4.1 protocol that allows computing clients to access storage devices directly and in parallel. The pNFS cluster consists of MDS (Meta-Data-Server) and DS (Data-Server). The client sends all the read/write requests directly to DS and all other operations are handle by the MDS.
 
 ### Step by step guide
 
-  - Turn on feature.cache-invalidation for the volume.
+  - Turn on `feature.cache-invalidation` for the volume.
        - gluster v set \<volname\> features.cache-invalidation on
 
 -  Select one of the nodes in the cluster as MDS and configure it adding the following block to ganesha configuration file
@@ -293,13 +295,13 @@ GLUSTER
 
    - The current architecture supports only a single MDS and multiple DS. The server with which client mounts will act as MDS and all servers including MDS can act as DS.
 
-   - Currently, HA is not supported for pNFS(more specifically MDS). Although it is configurable,  consistency is guaranteed across the cluster.
+   - Currently, HA is not supported for pNFS (more specifically MDS). Although it is configurable, consistency is guaranteed across the cluster.
 
    - If any of the DS goes down, then MDS will handle those I/O's.
 
    - Hereafter, all the subsequent NFS clients need to use the same server for mounting that volume via pNFS. i.e more than one MDS for a volume is not preferred
 
-   - pNFS support is only tested with distributed, replicated ,or distribute-replicate volumes
+   - pNFS support is only tested with distributed, replicated, or distribute-replicate volumes
 
    - It is tested and verified with RHEL 6.5 , fedora 20, fedora 21 nfs clients. It is always better to use latest nfs-clients
 
