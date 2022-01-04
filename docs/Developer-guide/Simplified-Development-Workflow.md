@@ -80,7 +80,7 @@ to do both in one command. Here, NNNN is the Issue ID in glusterfs repository.
 ### Hack
 
 Once you've switched to the development branch, you can perform the
-actual code changes. [Build](./Building GlusterFS) and test to
+actual code changes. [Build](./Building-GlusterFS.md) and test to
 see if your changes work.
 
 ### Tests
