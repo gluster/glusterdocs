@@ -15,8 +15,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |              |Stream 8        |    yes    |    yes    |
 |              |Stream 9        |    yes    |    yes    |
 |              |                |           |           |
-|Fedora[3]     |F33             |     no    |    yes    |
-|              |F34             |    yes    |    yes¹   |
+|Fedora[3]     |F34             |    yes    |    yes¹   |
 |              |F35             |    yes    |    yes¹   |
 |              |F36(rawhide)    |    yes    |    yes¹   |
 |              |                |           |           |
@@ -28,7 +27,6 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |Ubuntu Launchpad[4]|Xenial/16.04    |     no    |    yes    |
 |              |Bionic/18.04    |    yes    |    yes    |
 |              |Focal/20.04     |    yes    |    yes    |
-|              |Hirsute/21.04   |    yes    |    yes    |
 |              |Impish/21.10    |    yes    |    yes    |
 |              |Jammy/22.04     |    yes    |    yes    |
 |              |                |           |           |
@@ -53,8 +51,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |              |Stream 8        |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
 |              |Stream 9        |         yes       |   tbd   |      yes      |        yes          |     yes     |  yes  |
 |              |                |                   |         |               |                     |             |       |
-|Fedora[3]     |F33             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
-|              |F34             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
+|Fedora[3]     |F34             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F35             |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |F36(rawhide)    |         yes       |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
@@ -66,7 +63,6 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |Ubuntu Launchpad[4]|Xenial/16.04    |         n/a/      |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Bionic/18.04    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Focal/20.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
-|              |Hirsute/21.04   |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Impish/21.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Jammy/22.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
