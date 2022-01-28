@@ -19,6 +19,7 @@ Release Notes
 - [10.0](./10.0.md)
 
 ### GlusterFS 9 release notes
+- [9.5](./9.5.md)
 - [9.4](./9.4.md)
 - [9.3](./9.3.md)
 - [9.2](./9.2.md)
