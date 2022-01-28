@@ -16,6 +16,7 @@ Release Notes
 - [2.0.1](./glusterfs-selinux2.0.1.md)
 
 ### GlusterFS 10 release notes
+- [10.1](./10.1.md)
 - [10.0](./10.0.md)
 
 ### GlusterFS 9 release notes
