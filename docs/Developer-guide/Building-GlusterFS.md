@@ -39,7 +39,7 @@ Fedora,
     librdmacm-devel readline-devel lvm2-devel glib2-devel         \
     userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
     fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
-    libuuid-devel liburing-devel
+    libuuid-devel liburing-devel gperftools
 ```
 
 ### Ubuntu
@@ -52,7 +52,7 @@ Ubuntu,
     pkg-config libssl-dev libxml2-dev python-dev libaio-dev       \
     libibverbs-dev librdmacm-dev libreadline-dev liblvm2-dev      \
     libglib2.0-dev liburcu-dev libcmocka-dev libsqlite3-dev       \
-    libacl1-dev liburing-dev
+    libacl1-dev liburing-dev google-perftools
 ```
 
 ### CentOS / Enterprise Linux v7
