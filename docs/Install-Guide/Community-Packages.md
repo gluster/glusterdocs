@@ -29,6 +29,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |              |Focal/20.04     |    yes    |    yes    |
 |              |Impish/21.10    |    yes    |    yes    |
 |              |Jammy/22.04     |    yes    |    yes    |
+|              |Kinetic/22.10   |    yes    |    yes    |
 |              |                |           |           |
 |OpenSUSE Build Service[5]|Leap15.2        |      no    |     yes    |
 |              |Leap15.3        |    yes    |    yes    |
@@ -65,6 +66,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |              |Focal/20.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Impish/21.10    |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |Jammy/22.04     |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
+|              |Kinetic/22.10   |         n/a       |   no    |      no       |        yes          |     yes     |   ?   |
 |              |                |                   |         |               |                     |             |       |
 |OpenSUSE Build Service[5]|Leap15.2|          n/a      |   yes   |      yes      |        yes          |     yes     |   ?   |
 |              |Leap15.3        |         n/a       |   yes   |      yes      |        yes          |     yes     |   ?   |
