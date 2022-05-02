@@ -1,32 +1,32 @@
 # Building GlusterFS
+
 This page describes how to build and install GlusterFS.
 
-Build Requirements
-------------------
+## Build Requirements
 
 The following packages are required for building GlusterFS,
 
--   GNU Autotools
-    -   Automake
-    -   Autoconf
-    -   Libtool
--   lex (generally flex)
--   GNU Bison
--   OpenSSL
--   libxml2
--   Python 2.x
--   libaio
--   libibverbs
--   librdmacm
--   readline
--   lvm2
--   glib2
--   liburcu
--   cmocka
--   libacl
--   sqlite
--   fuse-devel
--   liburing-devel
+- GNU Autotools
+  - Automake
+  - Autoconf
+  - Libtool
+- lex (generally flex)
+- GNU Bison
+- OpenSSL
+- libxml2
+- Python 2.x
+- libaio
+- libibverbs
+- librdmacm
+- readline
+- lvm2
+- glib2
+- liburcu
+- cmocka
+- libacl
+- sqlite
+- fuse-devel
+- liburing-devel
 
 ### Fedora
 
@@ -34,12 +34,12 @@ The following dnf command installs all the build requirements for
 Fedora,
 
 ```console
-# dnf install automake autoconf libtool flex bison openssl-devel  \
-    libxml2-devel python-devel libaio-devel libibverbs-devel      \
-    librdmacm-devel readline-devel lvm2-devel glib2-devel         \
-    userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
-    fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
-    libuuid-devel liburing-devel gperftools
+dnf install automake autoconf libtool flex bison openssl-devel  \
+  libxml2-devel python-devel libaio-devel libibverbs-devel      \
+  librdmacm-devel readline-devel lvm2-devel glib2-devel         \
+  userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
+  fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
+  libuuid-devel liburing-devel gperftools
 ```
 
 ### Ubuntu
@@ -48,11 +48,11 @@ The following apt-get command will install all the build requirements on
 Ubuntu,
 
 ```console
-# sudo apt-get install make automake autoconf libtool flex bison  \
-    pkg-config libssl-dev libxml2-dev python-dev libaio-dev       \
-    libibverbs-dev librdmacm-dev libreadline-dev liblvm2-dev      \
-    libglib2.0-dev liburcu-dev libcmocka-dev libsqlite3-dev       \
-    libacl1-dev liburing-dev google-perftools
+sudo apt-get install make automake autoconf libtool flex bison  \
+  pkg-config libssl-dev libxml2-dev python-dev libaio-dev       \
+  libibverbs-dev librdmacm-dev libreadline-dev liblvm2-dev      \
+  libglib2.0-dev liburcu-dev libcmocka-dev libsqlite3-dev       \
+  libacl1-dev liburing-dev google-perftools
 ```
 
 ### CentOS / Enterprise Linux v7
@@ -60,22 +60,25 @@ Ubuntu,
 The following yum command installs the build requirements for CentOS / Enterprise Linux 7,
 
 ```console
-# yum install autoconf automake bison cmockery2-devel dos2unix flex   \
-    fuse-devel glib2-devel libacl-devel libaio-devel libattr-devel    \
-    libcurl-devel libibverbs-devel librdmacm-devel libtirpc-devel     \
-    libtool libxml2-devel lvm2-devel make openssl-devel pkgconfig     \
-    pyliblzma python-devel python-eventlet python-netifaces           \
-    python-paste-deploy python-simplejson python-sphinx python-webob  \
-    pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
-    tar userspace-rcu-devel
+yum install autoconf automake bison cmockery2-devel dos2unix flex   \
+  fuse-devel glib2-devel libacl-devel libaio-devel libattr-devel    \
+  libcurl-devel libibverbs-devel librdmacm-devel libtirpc-devel     \
+  libtool libxml2-devel lvm2-devel make openssl-devel pkgconfig     \
+  pyliblzma python-devel python-eventlet python-netifaces           \
+  python-paste-deploy python-simplejson python-sphinx python-webob  \
+  pyxattr readline-devel rpm-build sqlite-devel systemtap-sdt-devel \
+  tar userspace-rcu-devel
 ```
+
 **Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package**<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
 
 ### Enable repositories for CentOS 8
+
 The following yum command enables needed repositories providing the build requirements for CentOS 8,
+
 ```console
-# yum-config-manager --enable powertools --enable devel
+yum-config-manager --enable powertools --enable devel
 ```
 
 ### CentOS / Enterprise Linux v8
@@ -83,17 +86,16 @@ The following yum command enables needed repositories providing the build requir
 The following yum command installs the build requirements for CentOS / Enterprise Linux 8,
 
 ```console
-# yum install autoconf automake bison dos2unix flex fuse-devel glib2-devel   \
-    libacl-devel libaio-devel libattr-devel libcurl-devel libibverbs-devel   \
-    librdmacm-devel libtirpc-devel libuuid-devel libtool libxml2-devel       \
-    lvm2-devel make openssl-devel pkgconfig xz-devel  python3-devel          \
-    python3-netifaces python3-paste-deploy python3-simplejson python3-sphinx \
-    python3-webob python3-pyxattr readline-devel rpm-build sqlite-devel      \
-    systemtap-sdt-devel tar userspace-rcu-devel rpcgen liburing-devel
+yum install autoconf automake bison dos2unix flex fuse-devel glib2-devel   \
+  libacl-devel libaio-devel libattr-devel libcurl-devel libibverbs-devel   \
+  librdmacm-devel libtirpc-devel libuuid-devel libtool libxml2-devel       \
+  lvm2-devel make openssl-devel pkgconfig xz-devel  python3-devel          \
+  python3-netifaces python3-paste-deploy python3-simplejson python3-sphinx \
+  python3-webob python3-pyxattr readline-devel rpm-build sqlite-devel      \
+  systemtap-sdt-devel tar userspace-rcu-devel rpcgen liburing-devel
 ```
-             
-Building from Source
---------------------
+
+## Building from Source
 
 This section describes how to build GlusterFS from source. It is assumed
 you have a copy of the GlusterFS source (either from a released tarball
@@ -108,20 +110,20 @@ process.
 Run autogen to generate the configure script.
 
 ```console
-# ./autogen.sh
+./autogen.sh
 ```
 
 Once autogen completes successfully a configure script is generated. Run
 the configure script to generate the makefiles.
 
 ```console
-# ./configure
+./configure
 ```
 
 For CentOS 7, use:
 
 ```console
-# ./configure --without-libtirpc
+./configure --without-libtirpc
 ```
 
 If the above build requirements have been installed, running the
@@ -162,39 +164,38 @@ During development it is good to enable a debug build. To do this run
 configure with a '--enable-debug' flag.
 
 ```console
-# ./configure --enable-debug
+./configure --enable-debug
 ```
 
 Further configuration flags can be found by running configure with a
 '--help' flag,
 
 ```console
-# ./configure --help
+./configure --help
 ```
 
 Please note to enable gNFS use the following flag
 
 ```console
-# ./configure --enable-gnfs
+./configure --enable-gnfs
 ```
 
 If you are looking at contributing by fixing some of the memory issues,
 use `--enable-asan` option
 
 ```console
-# ./configure --enable-asan
+./configure --enable-asan
 ```
 
 The above option will build with `-fsanitize=address -fno-omit-frame-pointer`
 options and uses the libasan.so shared library, so that needs to be available.
-
 
 `io_uring` is introduced on Linux kernel version 5.1. GlusterFS also needs the user space liburing helper library.
 If these are not available for your machine or if you wish to build GlusterFS without io_uring support,
 use `--disable-linux-io_uring` option
 
 ```console
-# ./configure --disable-linux-io_uring
+./configure --disable-linux-io_uring
 ```
 
 ### Building
@@ -202,7 +203,7 @@ use `--disable-linux-io_uring` option
 Once configured, GlusterFS can be built with a simple make command.
 
 ```console
-# make
+make
 ```
 
 To speed up the build process on a multicore machine, add a '-jN' flag,
@@ -216,14 +217,13 @@ the appropriate option to configure. If installing into the default
 prefix, you might need to use 'sudo' or 'su -c' to install.
 
 ```console
-# sudo make install
+sudo make install
 ```
 
 NOTE: glusterfs can be installed on any target path. However, the
 `mount.glusterfs` script has to be in `/sbin/mount.glusterfs` for
 mounting via command `mount -t glusterfs` to work. See -t section
 in man 8 mount for more details.
-
 
 ### Running GlusterFS
 
@@ -237,15 +237,14 @@ will need to start glusterd manually. To manually start glusterd just
 run,
 
 ```console
-# systemctl daemon-reload
-# systemctl start glusterd
+systemctl daemon-reload
+systemctl start glusterd
 ```
 
 This will start glusterd and fork it into the background as a daemon
 process. You now run 'gluster' commands and make use of GlusterFS.
 
-Building packages
------------------
+## Building packages
 
 ### Building RPMs
 
@@ -255,14 +254,15 @@ from Source' section. After the configuration step, run the following
 steps to build RPMs,
 
 ```console
-# cd extras/LinuxRPM
-# make glusterrpms
+cd extras/LinuxRPM
+make glusterrpms
 ```
 
 This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
 mock)*<br>
 For CentOS / Enterprise Linux 8 the dependencies can be installed via:
+
 ```console
-# yum install mock rpm-build  selinux-policy-devel
+yum install mock rpm-build  selinux-policy-devel
 ```
