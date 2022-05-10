@@ -9,16 +9,16 @@ theme:
   name: material
   favicon: images/favicon.ico
   palette:
-    - scheme: default
-      media: "(prefers-color-scheme: light)"
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Turn off the lights
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
       toggle:
         icon: material/toggle-switch
         name: Bring back the sunshine
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Turn off the lights
 
 nav:
   - Home: index.md
