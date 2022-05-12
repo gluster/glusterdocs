@@ -1,13 +1,18 @@
 # Split brain and the ways to deal with it
 
 ### Split brain:
-Split brain is a situation where two or more replicated copies of a file become divergent. When a file is in split brain, there is an inconsistency in either data or metadata of the file amongst the bricks of a replica and do not have enough information to authoritatively pick a copy as being pristine and heal the bad copies, despite all bricks being up and online. For a directory, there is also an entry split brain where a file inside it can have different gfid/file-type across the bricks of a replica. Split brain can happen mainly because of 2 reasons:
-1. Due to network disconnect:
-Where a client temporarily loses connection to the bricks.
+Split brain is a situation where two or more replicated copies of a file become divergent. When a file is in split brain, there is an inconsistency in either data or metadata of the file amongst the bricks of a replica and do not have enough information to authoritatively pick a copy as being pristine and heal the bad copies, despite all bricks being up and online. For a directory, there is also an entry split brain where a file inside it can have different gfid/file-type across the bricks of a replica.
+
+Split brain can happen mainly because of 2 reasons:
+
+1. Due to network disconnect, where a client temporarily loses connection to the bricks.
+
     - There is a replica pair of 2 bricks, brick1 on server1 and brick2 on server2.
     - Client1 loses connection to brick2 and client2 loses connection to brick1 due to network split.
     - Writes from client1 goes to brick1 and from client2 goes to brick2, which is nothing but split-brain.
+
 2. Gluster brick processes going down or returning error:
+
     - Server1 is down and server2 is up: Writes happen on server 2.
     - Server1 comes up, server2 goes down (Heal not happened / data on server 2 is not replicated on server1): Writes happen on server1.
     - Server2 comes up: Both server1 and server2 has data independent of each other.
@@ -16,6 +21,7 @@ If we use the replica 2 volume, it is not possible to prevent split-brain withou
 
 ### Ways to deal with split brain:
 In glusterfs there are ways to resolve split brain. You can see the detailed description of how to resolve a split-brain [here](../Troubleshooting/resolving-splitbrain.md). Moreover, there are ways to reduce the chances of ending up in split-brain situations. They are:
+
 1. Replica 3 volume
 2. Arbiter volume
 
