@@ -25,7 +25,7 @@ In glusterfs there are ways to resolve split brain. You can see the detailed des
 1. Replica 3 volume
 2. Arbiter volume
 
-Both of these uses the client-quorum option of glusterfs to avoid the split-brain situations.
+Both of these use the client-quorum option of glusterfs to avoid the split-brain situations.
 
 ### Client quorum:
 This is a feature implemented in Automatic File Replication (AFR here on) module, to prevent split-brains in the I/O path for replicate/distributed-replicate volumes. By default, if the client-quorum is not met for a particular replica subvol, it becomes read-only. The other subvols (in a dist-rep volume) will still have R/W access. [Here](arbiter-volumes-and-quorum.md#client-quorum) you can see more details about client-quorum.
