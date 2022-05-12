@@ -33,15 +33,18 @@ This is a feature implemented in Automatic File Replication (AFR here on) module
 #### Client quorum in replica 2 volumes:
 In a `replica 2` volume it is not possible to achieve high availability and consistency at the same time, without sacrificing tolerance to partition. If we set the client-quorum option to auto, then the first brick must always be up, irrespective of the status of the second brick. If only the second brick is up, the subvolume becomes read-only.
 If the quorum-type is set to fixed, and the quorum-count is set to 1, then we may end up in split brain.
+
     - Brick1 is up and brick2 is down. Quorum is met and write happens on brick1.
     - Brick1 goes down and brick2 comes up (No heal happened). Quorum is met, write happens on brick2.
     - Brick1 comes up. Quorum is met, but both the bricks have independent writes - split-brain.
+
 To avoid this we have to set the quorum-count to 2, which will cost the availability. Even if we have one replica brick up and running, the quorum is not met and we end up seeing EROFS.
 
 ### 1. Replica 3 volume:
 When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a `replica 3` volume and this should not be changed. Here is how it prevents files from ending up in split brain:
 
 B1, B2, and B3 are the 3 bricks of a replica 3 volume.
+
 1. B1 & B2 are up and B3 is down. Quorum is met and write happens on B1 & B2.
 2. B3 comes up and B2 is down. Quorum is met and write happens on B1 & B3.
 3. B2 comes up and B1 goes down. Quorum is met. But when a write request comes, AFR sees that B2 & B3 are blaming each other (B2 says that some writes are pending on B3 and B3 says that some writes are pending on B2), therefore the write is not allowed and is failed with EIO.
@@ -71,6 +74,7 @@ Since the arbiter brick has only name and metadata of the files, there are some 
 You can find more details on arbiter [here](arbiter-volumes-and-quorum.md).
 
 ### Differences between replica 3 and arbiter volumes:
+
 1. In case of a replica 3 volume, we store the entire file in all the bricks and it is recommended to have bricks of same size. But in case of arbiter, since we do not store data, the size of the arbiter brick is comparatively lesser than the other bricks.
 2. Arbiter is a state between replica 2 and replica 3 volume. If we have only arbiter and one of the other brick is up and the arbiter brick blames the other brick, then we can not proceed with the FOPs.
 4. Replica 3 gives high availability compared to arbiter, because unlike in arbiter, replica 3 has a full copy of the data in all 3 bricks.
