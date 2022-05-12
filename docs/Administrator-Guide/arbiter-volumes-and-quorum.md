@@ -22,7 +22,7 @@ replica 3 volume without consuming 3x space.
 
 The syntax for creating the volume is:
 ```
-# gluster volume create <VOLNAME>  replica 2 arbiter 1 <NEW-BRICK> ...
+# gluster volume create <VOLNAME> replica 2 arbiter 1 <NEW-BRICK> ...
 ```
 **Note**: The earlier syntax used to be ```replica 3 arbiter 1``` but that was 
 leading to confusions among users about the total no. of data bricks. For the 
@@ -33,7 +33,7 @@ arbiter volume.
 
 For example:
 ```
-# gluster volume create testvol replica 2 arbiter 1  server{1..6}:/bricks/brick
+# gluster volume create testvol replica 2 arbiter 1 server{1..6}:/bricks/brick
 volume create: testvol: success: please start the volume to access data
 ```
 
@@ -66,9 +66,9 @@ performance.readdir-ahead: on  `
 ```
 
 The arbiter brick will store only the file/directory names  (i.e. the tree structure)
-and extended attributes (metadata) but not any data. i.e. the file size
+and extended attributes (metadata) but not any data, i.e. the file size
 (as shown by `ls -l`) will be zero bytes. It will also store other gluster
-metadata like the .glusterfs folder and its contents.
+metadata like the `.glusterfs` folder and its contents.
 
 _**Note:** Enabling the arbiter feature **automatically** configures_
 _client-quorum to 'auto'. This setting is **not** to be changed._
@@ -76,11 +76,10 @@ _client-quorum to 'auto'. This setting is **not** to be changed._
 ## Arbiter brick(s) sizing
 
 Since the arbiter brick does not store file data, its disk usage will be considerably
-less than the other bricks of the replica. The sizing of the brick will depend on
+less than for the other bricks of the replica. The sizing of the brick will depend on
 how many files you plan to store in the volume. A good estimate will be
 4KB times the number of files in the replica. Note that the estimate also 
-depends on the inode space alloted by the underlying filesystem for a given 
-disk size. 
+depends on the inode space allocated by the underlying filesystem for a given disk size.
 
 The `maxpct` value in XFS for volumes of size 1TB to 50TB is only 5%. 
 If you want to store say 300 million files, 4KB x 300M gives us 1.2TB.
