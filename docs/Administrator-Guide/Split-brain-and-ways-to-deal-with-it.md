@@ -17,12 +17,12 @@ Split brain can happen mainly because of 2 reasons:
     - Server1 comes up, server2 goes down (Heal not happened / data on server 2 is not replicated on server1): Writes happen on server1.
     - Server2 comes up: Both server1 and server2 has data independent of each other.
 
-If we use the replica 2 volume, it is not possible to prevent split-brain without losing availability.
+If we use the `replica 2` volume, it is not possible to prevent split-brain without losing availability.
 
 ### Ways to deal with split brain:
 In glusterfs there are ways to resolve split brain. You can see the detailed description of how to resolve a split-brain [here](../Troubleshooting/resolving-splitbrain.md). Moreover, there are ways to reduce the chances of ending up in split-brain situations. They are:
 
-1. Replica 3 volume
+1. volume with `replica 3`
 2. Arbiter volume
 
 Both of these use the client-quorum option of glusterfs to avoid the split-brain situations.
@@ -31,7 +31,7 @@ Both of these use the client-quorum option of glusterfs to avoid the split-brain
 This is a feature implemented in Automatic File Replication (AFR here on) module, to prevent split-brains in the I/O path for replicate/distributed-replicate volumes. By default, if the client-quorum is not met for a particular replica subvol, it becomes read-only. The other subvols (in a dist-rep volume) will still have R/W access. [Here](arbiter-volumes-and-quorum.md#client-quorum) you can see more details about client-quorum.
 
 #### Client quorum in replica 2 volumes:
-In a replica 2 volume it is not possible to achieve high availability and consistency at the same time, without sacrificing tolerance to partition. If we set the client-quorum option to auto, then the first brick must always be up, irrespective of the status of the second brick. If only the second brick is up, the subvolume becomes read-only.
+In a `replica 2` volume it is not possible to achieve high availability and consistency at the same time, without sacrificing tolerance to partition. If we set the client-quorum option to auto, then the first brick must always be up, irrespective of the status of the second brick. If only the second brick is up, the subvolume becomes read-only.
 If the quorum-type is set to fixed, and the quorum-count is set to 1, then we may end up in split brain.
     - Brick1 is up and brick2 is down. Quorum is met and write happens on brick1.
     - Brick1 goes down and brick2 comes up (No heal happened). Quorum is met, write happens on brick2.
@@ -39,14 +39,14 @@ If the quorum-type is set to fixed, and the quorum-count is set to 1, then we ma
 To avoid this we have to set the quorum-count to 2, which will cost the availability. Even if we have one replica brick up and running, the quorum is not met and we end up seeing EROFS.
 
 ### 1. Replica 3 volume:
-When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a replica 3 volume and this should not be changed. Here is how it prevents files from ending up in split brain:
+When we create a replicated or distributed replicated volume with replica count 3, the cluster.quorum-type option is set to auto by default. That means at least 2 bricks should be up and running to satisfy the quorum and allow the writes. This is the recommended setting for a `replica 3` volume and this should not be changed. Here is how it prevents files from ending up in split brain:
 
 B1, B2, and B3 are the 3 bricks of a replica 3 volume.
 1. B1 & B2 are up and B3 is down. Quorum is met and write happens on B1 & B2.
 2. B3 comes up and B2 is down. Quorum is met and write happens on B1 & B3.
 3. B2 comes up and B1 goes down. Quorum is met. But when a write request comes, AFR sees that B2 & B3 are blaming each other (B2 says that some writes are pending on B3 and B3 says that some writes are pending on B2), therefore the write is not allowed and is failed with EIO.
 
-Command to create a replica 3 volume:
+Command to create a `replica 3` volume:
 ```sh
 $gluster volume create <volname> replica 3 host1:brick1 host2:brick2 host3:brick3
 ```
