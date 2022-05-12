@@ -176,7 +176,7 @@ The following volume set options are used to configure it:
     to specify the number of bricks to be active to participate in quorum.
     If the quorum-type is auto then this option has no significance.
 
-Earlier, when quorm was not met, the replica subvolume turned read-only. But 
+Earlier, when quorum was not met, the replica subvolume turned read-only. But 
 since [glusterfs-3.13](https://docs.gluster.org/en/latest/release-notes/3.13.0/#addition-of-checks-for-allowing-lookups-in-afr-and-removal-of-clusterquorum-reads-volume-option) and upwards, the subvolume becomes unavailable, i.e. all 
 the file operations fail with ENOTCONN error instead of becoming EROFS.
 This means the ```cluster.quorum-reads``` volume option is also not supported.
