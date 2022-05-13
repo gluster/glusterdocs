@@ -271,4 +271,4 @@ nav:
   - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 extra_javascript:
-  - js/fix-docs.js
+  - js/custom-features.js
