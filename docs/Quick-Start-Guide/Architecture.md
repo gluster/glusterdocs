@@ -134,7 +134,7 @@ without interrupting the operation of the volume.
 ![Dispersed volume](../images/New-DispersedVol.png)
 Create a dispersed volume:
 
-```
+```console
 gluster volume create test-volume [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
 ```
 
@@ -157,7 +157,7 @@ across various bricks.
 ![distributed_dispersed_volume](../images/New-Distributed-DisperseVol.png)
 Create a distributed dispersed volume:
 
-```
+```console
 gluster volume create [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
 ```
 
