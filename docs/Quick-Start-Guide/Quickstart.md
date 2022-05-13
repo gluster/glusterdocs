@@ -111,8 +111,12 @@ From "server1"
 # gluster peer probe server3
 ```
 
-Note: When using hostnames, the first server needs to be probed from
-***one*** other server to set its hostname.
+Note: When using hostnames, the first server i.e, `server1` needs to be probed from
+***one*** other server to set its hostname. Reason being when the other server 
+i.e, `server2` is probed from `server1` it may happen that the hosts are 
+configured in a way that the IP Address of the server is transmitted on probing.
+So in order to use the hostnames in the cluster, it is advised to probe back the 
+`server1` from `server2`, `server3` or upto nth server based on the cluster size.
 
 From "server2"
 
