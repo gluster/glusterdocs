@@ -17,10 +17,10 @@ Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
-1.\*\* **Distributed Glusterfs Volume** **- This is the type of volume which is created by default if no volume type is specified.
+1.**Distributed Glusterfs Volume** - This is the type of volume which is created by default if no volume type is specified.
 Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
-**no data redundancy\*\*. The purpose for such a storage volume is to easily & cheaply
+**no data redundancy**. The purpose for such a storage volume is to easily & cheaply
 scale the volume size. However this also means that a brick failure will
 lead to complete loss of data and one must rely on the underlying
 hardware for data loss protection.
@@ -63,7 +63,7 @@ Brick3: server3:/exp3
 Brick4: server4:/exp4
 ```
 
-2.\*\* **Replicated Glusterfs Volume** \*\*- In this volume we overcome the
+2.**Replicated Glusterfs Volume** - In this volume we overcome the
 risk of data loss which is present in the distributed volume. Here exact copies of
 the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
@@ -92,7 +92,7 @@ gluster volume create test-volume replica 3 transport tcp \
 volume create: test-volume: success: please start the volume to access data
 ```
 
-3.\*\* **Distributed Replicated Glusterfs Volume\*\*** - In this volume files
+3.**Distributed Replicated Glusterfs Volume** - In this volume files
 are distributed across replicated sets of bricks. The number of bricks
 must be a multiple of the replica count. Also the order in which we
 specify the bricks is important since adjacent bricks become replicas of each
@@ -123,7 +123,7 @@ gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:
 volume create: test-volume: success: please start the volume to access data
 ```
 
-4.\*\* **Dispersed Glusterfs Volume\*\*** - Dispersed volumes are based on
+4.**Dispersed Glusterfs Volume** - Dispersed volumes are based on
 erasure codes. It stripes the encoded data of files, with some redundancy added,
 across multiple bricks in the volume. You can use dispersed volumes to
 have a configurable level of reliability with minimum space waste.
@@ -148,7 +148,7 @@ gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:
 volume create: test-volume: success: please start the volume to access data
 ```
 
-5.\*\* **Distributed Dispersed Glusterfs Volume\*\*** -
+5.**Distributed Dispersed Glusterfs Volume** -
 Distributed dispersed volumes are the equivalent to distributed replicated volumes, but using dispersed subvolumes
 instead of replicated ones. The number of bricks must be a multiple of the 1st subvol.
 The purpose for such a volume is to easily scale the volume size and distribute the load
