@@ -1,5 +1,7 @@
 # Setup Bare Metal
-*Note: You only need one of the three setup methods!*
+
+_Note: You only need one of the three setup methods!_
+
 ### Setup, Method 2 – Setting up on physical servers
 
 To set up Gluster on physical servers, we recommend two servers of very
@@ -14,16 +16,16 @@ would to a production environment (in case it becomes one, as mentioned
 above). That being said, here is a reminder of some of the best
 practices we mentioned before:
 
--   Make sure DNS and NTP are setup, correct, and working
--   If you have access to a backend storage network, use it! 10GBE or
-    InfiniBand are great if you have access to them, but even a 1GBE
-    backbone can help you get the most out of your deployment. Make sure
-    that the interfaces you are going to use are also in DNS since we
-    will be using the hostnames when we deploy Gluster
--   When it comes to disks, the more the merrier. Although you could
-    technically fake things out with a single disk, there would be
-    performance issues as soon as you tried to do any real work on the
-    servers
+- Make sure DNS and NTP are setup, correct, and working
+- If you have access to a backend storage network, use it! 10GBE or
+  InfiniBand are great if you have access to them, but even a 1GBE
+  backbone can help you get the most out of your deployment. Make sure
+  that the interfaces you are going to use are also in DNS since we
+  will be using the hostnames when we deploy Gluster
+- When it comes to disks, the more the merrier. Although you could
+  technically fake things out with a single disk, there would be
+  performance issues as soon as you tried to do any real work on the
+  servers
 
 With the explosion of commodity hardware, you don’t need to be a
 hardware expert these days to deploy a server. Although this is
@@ -31,19 +33,19 @@ generally a good thing, it also means that paying attention to some
 important, performance-impacting BIOS settings is commonly ignored. Several
 points that might cause issues when if you're unaware of them:
 
--   Most manufacturers enable power saving mode by default. This is a
-    great idea for servers that do not have high-performance
-    requirements. For the average storage server, the performance-impact
-    of the power savings is not a reasonable tradeoff
--   Newer motherboards and processors have lots of nifty features!
-    Enhancements in virtualization, newer ways of doing predictive
-    algorithms and NUMA are just a few to mention. To be safe, many
-    manufactures ship hardware with settings meant to work with as
-    massive a variety of workloads and configurations as they have
-    customers. One issue you could face is when you set up that blazing-fast 
-    10GBE card you were so thrilled about installing? In many
-    cases, it would end up being crippled by a default 1x speed put in
-    place on the PCI-E bus by the motherboard.
+- Most manufacturers enable power saving mode by default. This is a
+  great idea for servers that do not have high-performance
+  requirements. For the average storage server, the performance-impact
+  of the power savings is not a reasonable tradeoff
+- Newer motherboards and processors have lots of nifty features!
+  Enhancements in virtualization, newer ways of doing predictive
+  algorithms and NUMA are just a few to mention. To be safe, many
+  manufactures ship hardware with settings meant to work with as
+  massive a variety of workloads and configurations as they have
+  customers. One issue you could face is when you set up that blazing-fast
+  10GBE card you were so thrilled about installing? In many
+  cases, it would end up being crippled by a default 1x speed put in
+  place on the PCI-E bus by the motherboard.
 
 Thankfully, most manufacturers show all the BIOS settings, including the
 defaults, right in the manual. It only takes a few minutes to download,
