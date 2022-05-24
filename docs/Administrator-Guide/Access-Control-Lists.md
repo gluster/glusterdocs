@@ -23,13 +23,13 @@ To mount the backend export directories for POSIX ACLs support, use the
 following command:
 
 ```console
-# mount -o acl
+mount -o acl
 ```
 
 For example:
 
 ```console
-# mount -o acl /dev/sda1 /export1
+mount -o acl /dev/sda1 /export1
 ```
 
 Alternatively, if the partition is listed in the /etc/fstab file, add
@@ -45,13 +45,13 @@ To mount the glusterfs volumes for POSIX ACLs support, use the following
 command:
 
 ```console
-# mount –t glusterfs -o acl
+mount –t glusterfs -o acl
 ```
 
 For example:
 
 ```console
-# mount -t glusterfs -o acl 198.192.198.234:glustervolume /mnt/gluster
+mount -t glusterfs -o acl 198.192.198.234:glustervolume /mnt/gluster
 ```
 
 ## Setting POSIX ACLs
@@ -75,7 +75,7 @@ directories.
 You can set or modify access ACLs use the following command:
 
 ```console
-# setfacl –m  file
+setfacl –m  file
 ```
 
 The ACL entry types are the POSIX ACLs representations of owner, group,
@@ -86,12 +86,12 @@ Permissions must be a combination of the characters `r` (read), `w`
 following format and can specify multiple entry types separated by
 commas.
 
-  ACL Entry | Description
-  --- | ---
-  u:uid:\<permission\> | Sets the access ACLs for a user. You can specify user name or UID
-  g:gid:\<permission\> | Sets the access ACLs for a group. You can specify group name or GID.
-  m:\<permission\> | Sets the effective rights mask. The mask is the combination of all access permissions of the owning group and all of the user and group entries.
-  o:\<permission\> | Sets the access ACLs for users other than the ones in the group for the file.
+| ACL Entry            | Description                                                                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| u:uid:\<permission\> | Sets the access ACLs for a user. You can specify user name or UID                                                                                |
+| g:gid:\<permission\> | Sets the access ACLs for a group. You can specify group name or GID.                                                                             |
+| m:\<permission\>     | Sets the effective rights mask. The mask is the combination of all access permissions of the owning group and all of the user and group entries. |
+| o:\<permission\>     | Sets the access ACLs for users other than the ones in the group for the file.                                                                    |
 
 If a file or directory already has a POSIX ACLs, and the setfacl
 command is used, the additional permissions are added to the existing
@@ -100,7 +100,7 @@ POSIX ACLs or the existing rule is modified.
 For example, to give read and write permissions to user antony:
 
 ```console
-# setfacl -m u:antony:rw /mnt/gluster/data/testfile
+setfacl -m u:antony:rw /mnt/gluster/data/testfile
 ```
 
 ## Setting Default ACLs
@@ -115,29 +115,30 @@ You can set default ACLs for files and directories using the following
 command:
 
 ```console
-# setfacl –m –-set
+setfacl –m –-set
 ```
 
 Permissions must be a combination of the characters r (read), w (write), and x (execute). Specify the ACL entry_type as described below, separating multiple entry types with commas.
 
-u:*user_name:permissions*
-    Sets the access ACLs for a user. Specify the user name, or the UID.
+u:_user_name:permissions_
+Sets the access ACLs for a user. Specify the user name, or the UID.
 
-g:*group_name:permissions*
-    Sets the access ACLs for a group. Specify the group name, or the GID.
+g:_group_name:permissions_
+Sets the access ACLs for a group. Specify the group name, or the GID.
 
-m:*permission*
-    Sets the effective rights mask. The mask is the combination of all access permissions of the owning group, and all user and group entries.
+m:_permission_
+Sets the effective rights mask. The mask is the combination of all access permissions of the owning group, and all user and group entries.
 
-o:*permissions*
-    Sets the access ACLs for users other than the ones in the group for the file.
+o:_permissions_
+Sets the access ACLs for users other than the ones in the group for the file.
 
 For example, to set the default ACLs for the /data directory to read for
 users not in the user group:
 
 ```console
-# setfacl –m --set o::r /mnt/gluster/data
+setfacl –m --set o::r /mnt/gluster/data
 ```
+
 > **Note**
 >
 > An access ACLs set for an individual file can override the default
@@ -148,9 +149,9 @@ users not in the user group:
 The following are the ways in which the permissions of a directory's
 default ACLs are passed to the files and subdirectories in it:
 
--   A subdirectory inherits the default ACLs of the parent directory
-    both as its default ACLs and as an access ACLs.
--   A file inherits the default ACLs as its access ACLs.
+- A subdirectory inherits the default ACLs of the parent directory
+  both as its default ACLs and as an access ACLs.
+- A file inherits the default ACLs as its access ACLs.
 
 ## Retrieving POSIX ACLs
 
@@ -158,38 +159,52 @@ You can view the existing POSIX ACLs for a file or directory.
 
 **To view existing POSIX ACLs**
 
--   View the existing access ACLs of a file using the following command:
+- View the existing access ACLs of a file using the following command:
 
-        # getfacl
+```console
+getfacl
+```
 
-    For example, to view the existing POSIX ACLs for sample.jpg
+For example, to view the existing POSIX ACLs for sample.jpg
 
-        # getfacl /mnt/gluster/data/test/sample.jpg
-        # owner: antony
-        # group: antony
-        user::rw-
-        group::rw-
-        other::r--
+```console
+getfacl /mnt/gluster/data/test/sample.jpg
+```
 
--   View the default ACLs of a directory using the following command:
+```{ .text .no-copy }
+owner: antony
+group: antony
+user::rw-
+group::rw-
+other::r--
+```
 
-        # getfacl
+- View the default ACLs of a directory using the following command:
 
-    For example, to view the existing ACLs for /data/doc
+```console
+getfacl
+```
 
-        # getfacl /mnt/gluster/data/doc
-        # owner: antony
-        # group: antony
-        user::rw-
-        user:john:r--
-        group::r--
-        mask::r--
-        other::r--
-        default:user::rwx
-        default:user:antony:rwx
-        default:group::r-x
-        default:mask::rwx
-        default:other::r-x
+For example, to view the existing ACLs for /data/doc
+
+```console
+getfacl /mnt/gluster/data/doc
+```
+
+```{ .console .no-copy }
+owner: antony
+group: antony
+user::rw-
+user:john:r--
+group::r--
+mask::r--
+other::r--
+default:user::rwx
+default:user:antony:rwx
+default:group::r-x
+default:mask::rwx
+default:other::r-x
+```
 
 ## Removing POSIX ACLs
 
@@ -197,7 +212,7 @@ To remove all the permissions for a user, groups, or others, use the
 following command:
 
 ```console
-# setfacl -x
+setfacl -x
 ```
 
 #### setfaclentry_type Options
@@ -206,22 +221,22 @@ The ACL entry_type translates to the POSIX ACL representations of owner, group, 
 
 Permissions must be a combination of the characters r (read), w (write), and x (execute). Specify the ACL entry_type as described below, separating multiple entry types with commas.
 
-u:*user_name*
-    Sets the access ACLs for a user. Specify the user name, or the UID.
+u:_user_name_
+Sets the access ACLs for a user. Specify the user name, or the UID.
 
-g:*group_name*
-    Sets the access ACLs for a group. Specify the group name, or the GID.
+g:_group_name_
+Sets the access ACLs for a group. Specify the group name, or the GID.
 
-m:*permission*
-    Sets the effective rights mask. The mask is the combination of all access permissions of the owning group, and all user and group entries.
+m:_permission_
+Sets the effective rights mask. The mask is the combination of all access permissions of the owning group, and all user and group entries.
 
-o:*permissions*
-    Sets the access ACLs for users other than the ones in the group for the file.
+o:_permissions_
+Sets the access ACLs for users other than the ones in the group for the file.
 
 For example, to remove all permissions from the user antony:
 
 ```console
-# setfacl -x u:antony /mnt/gluster/data/test-file
+setfacl -x u:antony /mnt/gluster/data/test-file
 ```
 
 ## Samba and ACLs
