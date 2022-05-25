@@ -19,53 +19,47 @@ following ways:
 ## Distributions with systemd
 
 <a name="manual"></a>
+
 ### Starting and stopping glusterd manually
+
 - To start `glusterd` manually:
 
-```console
-systemctl start glusterd
-```
+        systemctl start glusterd
 
 - To stop `glusterd` manually:
 
-```console
-systemctl stop glusterd
-```
+        systemctl stop glusterd
 
 <a name="auto"></a>
+
 ### Starting glusterd automatically
+
 - To enable the glusterd service and start it if stopped:
 
-```console
-systemctl enable --now glusterd
-```
+        systemctl enable --now glusterd
 
 - To disable the glusterd service and stop it if started:
 
-```console
-systemctl disable --now glusterd
-```
+        systemctl disable --now glusterd
 
 ## Distributions without systemd
 
 <a name="manual-legacy"></a>
+
 ### Starting and stopping glusterd manually
 
 This section describes how to start and stop glusterd manually
 
 - To start glusterd manually, enter the following command:
 
-```console
-# /etc/init.d/glusterd start
-```
+        /etc/init.d/glusterd start
 
--   To stop glusterd manually, enter the following command:
+- To stop glusterd manually, enter the following command:
 
-```console
-# /etc/init.d/glusterd stop
-```
+        /etc/init.d/glusterd stop
 
 <a name="auto-legacy"></a>
+
 ### Starting glusterd Automatically
 
 This section describes how to configure the system to automatically
@@ -78,7 +72,7 @@ service every time the system boots, enter the following from the
 command line:
 
 ```console
-# chkconfig glusterd on
+chkconfig glusterd on
 ```
 
 #### Debian and derivatives like Ubuntu
@@ -88,7 +82,7 @@ service every time the system boots, enter the following from the
 command line:
 
 ```console
-# update-rc.d glusterd defaults
+update-rc.d glusterd defaults
 ```
 
 #### Systems Other than Red Hat and Debian
@@ -98,5 +92,5 @@ the glusterd service every time the system boots, enter the following
 entry to the*/etc/rc.local* file:
 
 ```console
-# echo "glusterd" >> /etc/rc.local
+echo "glusterd" >> /etc/rc.local
 ```

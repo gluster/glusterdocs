@@ -9,14 +9,13 @@ GlusterFS volume snapshot feature is based on thinly provisioned LVM snapshot.
 To make use of snapshot feature GlusterFS volume should fulfill following
 pre-requisites:
 
-* Each brick should be on an independent thinly provisioned LVM.
-* Brick LVM should not contain any other data other than brick.
-* None of the brick should be on a thick LVM.
-* gluster version should be 3.6 and above.
+- Each brick should be on an independent thinly provisioned LVM.
+- Brick LVM should not contain any other data other than brick.
+- None of the brick should be on a thick LVM.
+- gluster version should be 3.6 and above.
 
 Details of how to create thin volume can be found at the following link.
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Logical_Volume_Manager_Administration/LV.html#thinly_provisioned_volume_creation
-
 
 ## Few features of snapshot are:
 
@@ -26,12 +25,10 @@ when a snapshot is taken at a particular point-in-time, it is made sure that
 the taken snapshot is crash consistent. when the taken snapshot is restored,
 then the data is identical as it was at the time of taking a snapshot.
 
-
 **Online Snapshot**
 
 When the snapshot is being taken the file system and its associated data
 continue to be available for the clients.
-
 
 **Barrier**
 
@@ -95,7 +92,7 @@ gluster snapshot delete (all | <snapname> | volume <volname>)
 
 If snapname is specified then mentioned snapshot is deleted.
 If volname is specified then all snapshots belonging to that particular
-volume is deleted. If keyword *all* is used then all snapshots belonging
+volume is deleted. If keyword _all_ is used then all snapshots belonging
 to the system is deleted.
 
 ### Listing of available snaps
@@ -104,7 +101,7 @@ to the system is deleted.
 gluster snapshot list [volname]
 ```
 
-Lists  all  snapshots  taken.
+Lists all snapshots taken.
 If volname is provided, then only the snapshots belonging to
 that particular volume is listed.
 
@@ -125,14 +122,14 @@ for that particular volume, and the state of the snapshot.
 gluster snapshot status [(snapname | volume <volname>)]
 ```
 
-This  command  gives  status of the snapshot.
+This command gives status of the snapshot.
 The details included are snapshot brick path, volume group(LVM details),
-status of the snapshot bricks, PID of the bricks, data percentage  filled for
+status of the snapshot bricks, PID of the bricks, data percentage filled for
 that particular volume group to which the snapshots belong to, and total size
 of the logical volume.
 
 If snapname is specified then status of the mentioned snapshot is displayed.
-If volname  is specified then status of all snapshots belonging to that volume
+If volname is specified then status of all snapshots belonging to that volume
 is displayed. If both snapname and volname is not specified then status of all
 the snapshots present in the system are displayed.
 
@@ -146,15 +143,15 @@ snapshot config [volname] ([snap-max-hard-limit <count>] [snap-max-soft-limit <p
 
 Displays and sets the snapshot config values.
 
-snapshot  config without any keywords displays the snapshot config values of
+snapshot config without any keywords displays the snapshot config values of
 all volumes in the system. If volname is provided, then the snapshot config
-values of that volume is  displayed.
+values of that volume is displayed.
 
-Snapshot  config command along with keywords can be used to change the existing
+Snapshot config command along with keywords can be used to change the existing
 config values. If volname is provided then config value of that volume is
-changed, else it  will set/change the system limit.
+changed, else it will set/change the system limit.
 
-snap-max-soft-limit  and auto-delete are global options, that will be
+snap-max-soft-limit and auto-delete are global options, that will be
 inherited by all volumes in the system and cannot be set to individual volumes.
 
 The system limit takes precedence over the volume specific limit.
@@ -162,7 +159,7 @@ The system limit takes precedence over the volume specific limit.
 When auto-delete feature is enabled, then upon reaching the soft-limit,
 with every successful snapshot creation, the oldest snapshot will be deleted.
 
-When  auto-delete  feature  is disabled, then upon reaching the soft-limit,
+When auto-delete feature is disabled, then upon reaching the soft-limit,
 the user gets a warning with every successful snapshot creation.
 
 Upon reaching the hard-limit, further snapshot creations will not be allowed.
@@ -192,7 +189,7 @@ Deactivates the mentioned snapshot.
 
 Snapshots can be accessed in 2 ways.
 
-1. Mounting the snapshot:
+1.  Mounting the snapshot:
 
     The snapshot can be accessed via FUSE mount (only fuse). To do that it has to be
     mounted first. A snapshot can be mounted via fuse by below command
@@ -202,10 +199,9 @@ Snapshots can be accessed in 2 ways.
     i.e. say "host1" is one of the peers. Let "vol" be the volume name and "my-snap"
     be the snapshot name. In this case a snapshot can be mounted via this command
 
-        # mount -t glusterfs host1:/snaps/my-snap/vol /mnt/snapshot
+        mount -t glusterfs host1:/snaps/my-snap/vol /mnt/snapshot
 
-
-2. User serviceability:
+2.  User serviceability:
 
     Apart from the above method of mounting the snapshot, a list of available
     snapshots and the contents of each snapshot can be viewed from any of the mount
@@ -226,7 +222,7 @@ Snapshots can be accessed in 2 ways.
     directory entries. They represent the state of the directory from which .snaps
     was entered, at different points in time.
 
-    **NOTE**: The access to the snapshots are read-only. The snapshot needs to be 
+    **NOTE**: The access to the snapshots are read-only. The snapshot needs to be
     activated for it to be accessible inside .snaps directory.
 
     Also, the name of the hidden directory (or the access point to the snapshot
@@ -234,7 +230,7 @@ Snapshots can be accessed in 2 ways.
 
         gluster volume set <volname> snapshot-directory <new-name>
 
-3. Accessing from windows:
+3.  Accessing from windows:
 
     The glusterfs volumes can be made accessible by windows via samba. (the
     glusterfs plugin for samba helps achieve this, without having to re-export
@@ -242,11 +238,12 @@ Snapshots can be accessed in 2 ways.
     also be viewed in the windows explorer.
 
     There are 2 ways:
-    * Give the path of the entry point directory
+
+    - Give the path of the entry point directory
       (`<hostname><samba-share><directory><entry-point path>`) in the run command
       window
 
-    * Go to the samba share via windows explorer. Make hidden files and folders
+    - Go to the samba share via windows explorer. Make hidden files and folders
       visible so that in the root of the samba share a folder icon for the entry point
       can be seen.
 
@@ -256,28 +253,28 @@ the path should be provided in the run command window.
 
 For snapshots to be accessible from windows, below 2 options can be used.
 
-1. The glusterfs plugin for samba should give the option "snapdir-entry-path"
-   while starting. The option is an indication to glusterfs, that samba is loading
-   it and the value of the option should be the path that is being used as the
-   share for windows.
+1.  The glusterfs plugin for samba should give the option "snapdir-entry-path"
+    while starting. The option is an indication to glusterfs, that samba is loading
+    it and the value of the option should be the path that is being used as the
+    share for windows.
 
     Ex: Say, there is a glusterfs volume and a directory called "export" from the
     root of the volume is being used as the samba share, then samba has to load
     glusterfs with this option as well.
 
-        ret = glfs_set_xlator_option(
-                fs,
-                "*-snapview-client",
-                "snapdir-entry-path", "/export"
-        );
+         ret = glfs_set_xlator_option(
+                 fs,
+                 "*-snapview-client",
+                 "snapdir-entry-path", "/export"
+         );
 
     The xlator option "snapdir-entry-path" is not exposed via volume set options,
     cannot be changed from CLI. Its an option that has to be provided at the time of
     mounting glusterfs or when samba loads glusterfs.
 
-2. The accessibility of snapshots via root of the samba share from windows
-   is configurable. By default it is turned off. It is a volume set option which can
-   be changed via CLI.
+2.  The accessibility of snapshots via root of the samba share from windows
+    is configurable. By default it is turned off. It is a volume set option which can
+    be changed via CLI.
 
     `gluster volume set <volname> features.show-snapshot-directory <on/off>`. By
     default it is off.
