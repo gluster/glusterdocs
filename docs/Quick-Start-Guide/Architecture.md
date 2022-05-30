@@ -1,5 +1,5 @@
-Architecture
-============
+# Architecture
+
 ![architecture](../images/GlusterFS_Translator_Stack.png)
 
 A gluster volume is a collection of servers belonging to a Trusted Storage Pool.
@@ -17,7 +17,7 @@ Gluster file system supports different
 types of volumes based on the requirements. Some volumes are good for
 scaling storage size, some for improving performance and some for both.
 
-1.__ **Distributed Glusterfs Volume** __- This is the type of volume which is created by default if no volume type is specified.
+1.**Distributed Glusterfs Volume** - This is the type of volume which is created by default if no volume type is specified.
 Here, files are distributed across various bricks in the volume. So file1
 may be stored only in brick1 or brick2 but not on both. Hence there is
 **no data redundancy**. The purpose for such a storage volume is to easily & cheaply
@@ -37,14 +37,20 @@ gluster volume create NEW-VOLNAME [transport [tcp | rdma | tcp,rdma]] NEW-BRICK.
 using TCP.
 
 ```console
-# gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+```
+
+```{ .console .no-copy }
 volume create: test-volume: success: please start the volume to access data
 ```
 
-To display the volume info
+To display the volume info:
 
 ```console
-# gluster volume info
+gluster volume info
+```
+
+```{ .console .no-copy }
 Volume Name: test-volume
 Type: Distribute
 Status: Created
@@ -57,7 +63,7 @@ Brick3: server3:/exp3
 Brick4: server4:/exp4
 ```
 
-2.__ **Replicated Glusterfs Volume** __- In this volume we overcome the
+2.**Replicated Glusterfs Volume** - In this volume we overcome the
 risk of data loss which is present in the distributed volume. Here exact copies of
 the data are maintained on all bricks. The number of replicas in the
 volume can be decided by client while creating the volume. So we need to
@@ -78,12 +84,15 @@ gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |rdma | tcp,rd
 **For example**, to create a replicated volume with three storage servers:
 
 ```console
-# gluster volume create test-volume replica 3 transport tcp \
+gluster volume create test-volume replica 3 transport tcp \
       server1:/exp1 server2:/exp2 server3:/exp3
+```
+
+```{ .console .no-copy }
 volume create: test-volume: success: please start the volume to access data
 ```
 
-3.__ **Distributed Replicated Glusterfs Volume**__ - In this volume files
+3.**Distributed Replicated Glusterfs Volume** - In this volume files
 are distributed across replicated sets of bricks. The number of bricks
 must be a multiple of the replica count. Also the order in which we
 specify the bricks is important since adjacent bricks become replicas of each
@@ -107,10 +116,14 @@ gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,r
 mirror:
 
 ```console
-# gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+```
+
+```{ .console .no-copy }
 volume create: test-volume: success: please start the volume to access data
 ```
-4.__ **Dispersed Glusterfs Volume**__ - Dispersed volumes are based on
+
+4.**Dispersed Glusterfs Volume** - Dispersed volumes are based on
 erasure codes. It stripes the encoded data of files, with some redundancy added,
 across multiple bricks in the volume. You can use dispersed volumes to
 have a configurable level of reliability with minimum space waste.
@@ -121,18 +134,21 @@ without interrupting the operation of the volume.
 ![Dispersed volume](../images/New-DispersedVol.png)
 Create a dispersed volume:
 
-```
-# gluster volume create test-volume [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
+```console
+gluster volume create test-volume [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
 ```
 
 **For example**, three node dispersed volume with level of redundancy 1, (2 + 1):
 
 ```console
-# gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3
+gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3
+```
+
+```{ .console .no-copy }
 volume create: test-volume: success: please start the volume to access data
 ```
 
-5.__ **Distributed Dispersed Glusterfs Volume**__ -
+5.**Distributed Dispersed Glusterfs Volume** -
 Distributed dispersed volumes are the equivalent to distributed replicated volumes, but using dispersed subvolumes
 instead of replicated ones. The number of bricks must be a multiple of the 1st subvol.
 The purpose for such a volume is to easily scale the volume size and distribute the load
@@ -141,43 +157,46 @@ across various bricks.
 ![distributed_dispersed_volume](../images/New-Distributed-DisperseVol.png)
 Create a distributed dispersed volume:
 
-```
-# gluster volume create [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
+```console
+gluster volume create [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport tcp | rdma | tcp,rdma] <NEW-BRICK>
 ```
 
 **For example**, six node distributed dispersed volume with level of redundancy 1, 2 x (2 + 1) = 6:
 
 ```console
-# gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+```
+
+```{ .console .no-copy }
 volume create: test-volume: success: please start the volume to access data
 ```
 
 > **Note**:
 
-> -  A dispersed volume can be created by specifying the number of bricks in a
-   disperse set, by specifying the number of redundancy bricks, or both.
+> - A dispersed volume can be created by specifying the number of bricks in a
+>   disperse set, by specifying the number of redundancy bricks, or both.
 
-> -  If *disperse* is not specified, or the `<COUNT>` is missing, the
-   entire volume will be treated as a single disperse set composed by all
-   bricks enumerated in the command line.
+> - If _disperse_ is not specified, or the `<COUNT>` is missing, the
+>   entire volume will be treated as a single disperse set composed by all
+>   bricks enumerated in the command line.
 
-> -  If *redundancy* is not specified, it is computed automatically to be the
-   optimal value. If this value does not exist, it's assumed to be '1' and a
-   warning message is shown:
+> - If _redundancy_ is not specified, it is computed automatically to be the
+>   optimal value. If this value does not exist, it's assumed to be '1' and a
+>   warning message is shown:
 
 >        # gluster volume create test-volume disperse 4 server{1..4}:/bricks/test-volume
-         There isn't an optimal redundancy value for this configuration. Do you want to create the volume with redundancy 1 ? (y/n)
 
-> -  In all cases where *redundancy* is automatically computed and it's not
-   equal to '1', a warning message is displayed:
+>        There isn't an optimal redundancy value for this configuration. Do you want to create the volume with redundancy 1 ? (y/n)
+
+> - In all cases where _redundancy_ is automatically computed and it's not equal to '1', a warning message is displayed:
 
 >        # gluster volume create test-volume disperse 6 server{1..6}:/bricks/test-volume
-         The optimal redundancy for this configuration is 2. Do you want to create the volume with this value ? (y/n)
 
-> -  *redundancy* must be greater than 0, and the total number of bricks must
-   be greater than 2 * _redundancy_. This means that a dispersed volume must
-   have a minimum of 3 bricks.
+>       The optimal redundancy for this configuration is 2. Do you want to create the volume with this value ? (y/n)
 
+> - _redundancy_ must be greater than 0, and the total number of bricks must
+>   be greater than 2 \* _redundancy_. This means that a dispersed volume must
+>   have a minimum of 3 bricks.
 
 ### **FUSE**
 
@@ -195,7 +214,7 @@ languages.
 
 ![fuse_structure](https://cloud.githubusercontent.com/assets/10970993/7412530/67a544ae-ef61-11e4-8979-97dad4031a81.png)
 
-*Structural diagram of FUSE.*
+_Structural diagram of FUSE._
 
 This shows a filesystem "hello world" that is compiled to create a
 binary "hello". It is executed with a filesystem mount point /tmp/fuse.
@@ -213,61 +232,61 @@ opening /dev/fuse. This file can be opened multiple times, and the
 obtained file descriptor is passed to the mount syscall, to match up the
 descriptor with the mounted filesystem.
 
--   [More about userspace
-    filesystems](http://www.linux-mag.com/id/7814/)
--   [FUSE reference](http://fuse.sourceforge.net/)
+- [More about userspace
+  filesystems](http://www.linux-mag.com/id/7814/)
+- [FUSE reference](http://fuse.sourceforge.net/)
 
 ### Translators
 
 **Translating “translators”**:
 
--   A translator converts requests from users into requests for storage.
+- A translator converts requests from users into requests for storage.
 
-    *One to one, one to many, one to zero (e.g. caching)
+  \*One to one, one to many, one to zero (e.g. caching)
 
 ![translator](https://cloud.githubusercontent.com/assets/10970993/7412595/fd46c492-ef61-11e4-8f49-61dbd15b9695.png)
 
--   A translator can modify requests on the way through :
+- A translator can modify requests on the way through :
 
-    *convert one request type to another ( during the request transfer amongst the translators)
-    *modify paths, flags, even data (e.g. encryption)
+  *convert one request type to another ( during the request transfer amongst the translators)
+  *modify paths, flags, even data (e.g. encryption)
 
--   Translators can intercept or block the requests. (e.g. access
-    control)
+- Translators can intercept or block the requests. (e.g. access
+  control)
 
--   Or spawn new requests (e.g. pre-fetch)
+- Or spawn new requests (e.g. pre-fetch)
 
 **How Do Translators Work?**
 
--   Shared Objects
--   Dynamically loaded according to 'volfile'
+- Shared Objects
+- Dynamically loaded according to 'volfile'
 
-    *dlopen/dlsync
-    *setup pointers to parents / children
-    *call init (constructor)
-    *call IO functions through fops.
+  *dlopen/dlsync
+  *setup pointers to parents / children
+  *call init (constructor)
+  *call IO functions through fops.
 
--   Conventions for validating/ passing options, etc.
--   The configuration of translators (since GlusterFS 3.1) is managed
-    through the gluster command line interface (cli), so you don't need
-    to know in what order to graph the translators together.
+- Conventions for validating/ passing options, etc.
+- The configuration of translators (since GlusterFS 3.1) is managed
+  through the gluster command line interface (cli), so you don't need
+  to know in what order to graph the translators together.
 
 #### Types of Translators
 
 List of known translators with their current status.
 
-  Translator Type  | Functional Purpose
-  :---------------:| --------------------------------------------------------------------------------------------------------------
-  Storage          |Lowest level translator, stores and accesses data from local file system.
-  Debug            |Provide interface and statistics for errors and debugging.
-  Cluster          |Handle distribution and replication of data as it relates to writing to and reading from bricks & nodes.
-  Encryption       |Extension translators for on-the-fly encryption/decryption of stored data.
-  Protocol         |Extension translators for client/server communication protocols.
-  Performance      |Tuning translators to adjust for workload and I/O profiles.
-  Bindings         |Add extensibility, e.g. The Python interface written by Jeff Darcy to extend API interaction with GlusterFS.
-  System           |System access translators, e.g. Interfacing with file system access control.
-  Scheduler        |I/O schedulers that determine how to distribute new write operations across clustered systems.
-  Features         |Add additional features such as Quotas, Filters, Locks, etc.
+| Translator Type | Functional Purpose                                                                                           |
+| :-------------: | ------------------------------------------------------------------------------------------------------------ |
+|     Storage     | Lowest level translator, stores and accesses data from local file system.                                    |
+|      Debug      | Provide interface and statistics for errors and debugging.                                                   |
+|     Cluster     | Handle distribution and replication of data as it relates to writing to and reading from bricks & nodes.     |
+|   Encryption    | Extension translators for on-the-fly encryption/decryption of stored data.                                   |
+|    Protocol     | Extension translators for client/server communication protocols.                                             |
+|   Performance   | Tuning translators to adjust for workload and I/O profiles.                                                  |
+|    Bindings     | Add extensibility, e.g. The Python interface written by Jeff Darcy to extend API interaction with GlusterFS. |
+|     System      | System access translators, e.g. Interfacing with file system access control.                                 |
+|    Scheduler    | I/O schedulers that determine how to distribute new write operations across clustered systems.               |
+|    Features     | Add additional features such as Quotas, Filters, Locks, etc.                                                 |
 
 The default / general hierarchy of translators in vol files :
 
@@ -286,32 +305,32 @@ to go through is **fuse translator** which falls under the category of
 
 1.  **Cluster Translators**:
 
-    * DHT(Distributed Hash Table)
-    * AFR(Automatic File Replication)
+    - DHT(Distributed Hash Table)
+    - AFR(Automatic File Replication)
 
 1.  **Performance Translators**:
 
-    * io-cache
-    * io-threads
-    * md-cache
-    * O-B (open behind)
-    * QR (quick read)
-    * r-a (read-ahead)
-    * w-b (write-behind)
+    - io-cache
+    - io-threads
+    - md-cache
+    - O-B (open behind)
+    - QR (quick read)
+    - r-a (read-ahead)
+    - w-b (write-behind)
 
 Other **Feature Translators** include:
 
-* changelog
-* locks - GlusterFS has locks  translator which provides the following internal locking operations
+- changelog
+- locks - GlusterFS has locks translator which provides the following internal locking operations
   called `inodelk`, `entrylk`,
   which are used by afr to achieve synchronization of operations on files or directories that conflict with each other.
-* marker
-* quota
+- marker
+- quota
 
 **Debug Translators**
 
-* trace - To trace the error logs generated during the communication amongst the translators.
-* io-stats
+- trace - To trace the error logs generated during the communication amongst the translators.
+- io-stats
 
 #### DHT(Distributed Hash Table) Translator
 
@@ -385,7 +404,7 @@ unlike AFR which is intra-cluster replication. This is mainly useful for
 backup of entire data for disaster recovery.
 
 Geo-replication uses a primary-secondary model, whereby replication occurs
-between a **Primary** and a **Secondary**, both of which should 
+between a **Primary** and a **Secondary**, both of which should
 be GlusterFS volumes.
 Geo-replication provides an incremental replication service over Local
 Area Networks (LANs), Wide Area Network (WANs), and across the
@@ -518,7 +537,7 @@ a client process will also be created. Now our filesystem is ready to
 use. We can mount this volume on a client machine very easily as follows
 and use it like we use a local storage:
 
- mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
+mount.glusterfs `<IP or hostname>`:`<volume_name>` `<mount_point>`
 
 IP or hostname can be that of any node in the trusted server pool in
 which the required volume is created.
@@ -547,23 +566,23 @@ to each file operation or fop supported by glusterfs. The request will
 hit the corresponding function in each of the translators. Main client
 translators include:
 
--   FUSE translator
--   DHT translator- DHT translator maps the request to the correct brick
-    that contains the file or directory required.
--   AFR translator- It receives the request from the previous translator
-    and if the volume type is replicate, it duplicates the request and
-    passes it on to the Protocol client translators of the replicas.
--   Protocol Client translator- Protocol Client translator is the last
-    in the client translator stack. This translator is divided into
-    multiple threads, one for each brick in the volume. This will
-    directly communicate with the glusterfsd of each brick.
+- FUSE translator
+- DHT translator- DHT translator maps the request to the correct brick
+  that contains the file or directory required.
+- AFR translator- It receives the request from the previous translator
+  and if the volume type is replicate, it duplicates the request and
+  passes it on to the Protocol client translators of the replicas.
+- Protocol Client translator- Protocol Client translator is the last
+  in the client translator stack. This translator is divided into
+  multiple threads, one for each brick in the volume. This will
+  directly communicate with the glusterfsd of each brick.
 
 In the storage server node that contains the brick in need, the request
 again goes through a series of translators known as server translators,
 main ones being:
 
--   Protocol server translator
--   POSIX translator
+- Protocol server translator
+- POSIX translator
 
 The request will finally reach VFS and then will communicate with the
 underlying native filesystem. The response will retrace the same path.

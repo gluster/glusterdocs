@@ -5,6 +5,9 @@ site_description: Project documentation for Gluster Filesystem
 repo_url: https://github.com/gluster/glusterdocs/
 docs_dir: docs
 
+markdown_extensions:
+  - attr_list
+
 theme:
   name: material
   favicon: images/favicon.ico
@@ -272,3 +275,6 @@ nav:
 
 extra_javascript:
   - js/custom-features.js
+
+extra_css:
+  - css/custom.css
