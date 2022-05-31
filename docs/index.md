@@ -13,25 +13,25 @@ utilizing a number of virtual machines, you will create a functional test setup 
 basic concepts. You will then be much better equipped to read the more detailed
 Install Guide.
 
--  [Quick Start Guide](./Quick-Start-Guide/Quickstart.md) - Start here if you are new to Gluster!
+- [Quick Start Guide](./Quick-Start-Guide/Quickstart.md) - Start here if you are new to Gluster!
 
--  [Installation Guides](./Install-Guide/Overview.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
+- [Installation Guides](./Install-Guide/Overview.md) describes the prerequisites and provides step-by-instructions to install GlusterFS on various operating systems.
 
--  [Presentations](./presentations/index.md) related to Gluster from Conferences and summits.
+- [Presentations](./presentations/index.md) related to Gluster from Conferences and summits.
 
 **More Documentation**
 
--  [Administration Guide](./Administrator-Guide/index.md) - describes the configuration and management of GlusterFS.
+- [Administration Guide](./Administrator-Guide/index.md) - describes the configuration and management of GlusterFS.
 
--  [GlusterFS Developer Guide](./Developer-guide/Developers-Index.md) - describes how you can contribute to this open source project; built through the efforts of its dedicated, passionate community.
+- [GlusterFS Developer Guide](./Developer-guide/Developers-Index.md) - describes how you can contribute to this open source project; built through the efforts of its dedicated, passionate community.
 
--  [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
+- [Upgrade Guide](./Upgrade-Guide/README.md) - if you need to upgrade from an older version of GlusterFS.
 
--  [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and  additions that have been implemented in various Glusterfs releases.
+- [Release Notes](./release-notes/index.md) - Glusterfs Release Notes provides high-level insight into the improvements and additions that have been implemented in various Glusterfs releases.
 
--  [GlusterFS Tools](./GlusterFS-Tools/README.md) - Guides for GlusterFS tools.
+- [GlusterFS Tools](./GlusterFS-Tools/README.md) - Guides for GlusterFS tools.
 
--  [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
+- [Troubleshooting Guide](./Troubleshooting/README.md) - Guide for troubleshooting.
 
 **How to Contribute?**
 
