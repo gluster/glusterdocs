@@ -1,8 +1,9 @@
 # Presentations
+
 This is a collection of Gluster presentations from all over the world.
 We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where most of these presentations are stored.
 
-### [FOSDEM 2020](https://archive.fosdem.org/2020/) @ Brussels, Belgium -  1st & 2nd February 2020
+### [FOSDEM 2020](https://archive.fosdem.org/2020/) @ Brussels, Belgium - 1st & 2nd February 2020
 
 - [Evolution of path based Geo-replication in Gluster](https://archive.fosdem.org/2020/schedule/event/evolution_of_path_based_georeplication_in_gluster/) - Hari Gowtham
 - [A 'Thin Arbiter' for glusterfs replication](https://archive.fosdem.org/2020/schedule/event/sds_gluster_thin_arbiter/) - Ravishankar N
@@ -19,9 +20,9 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 - [Python bindings to GlusterFS - a distributed filesystem](https://speakerdeck.com/prashanthpai/python-bindings-to-glusterfs-a-distributed-filesystem) - Prashanth Pai
 
-### [Openshift Meetup  India](http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, India - June 11, 2016
+### [Openshift Meetup India](http://www.meetup.com/Opensource-PaaS-India-Meetup/) 2016 @Bangalore, India - June 11, 2016
 
-- [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs) -  Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
+- [“GlusterFS and Openshift (slideshare)”](http://www.slideshare.net/HumbleChirammal/persistent-storage-in-openshift-using-glusterfs) - Humble Devassy Chirammal, Mohamed Ashiq Liyazudeen
 
 ### [GlusterFS Meetup Bangalore](http://www.meetup.com/glusterfs-India/events/229929410/) 2016 @ Bangalore, India - June 4, 2016
 
@@ -34,61 +35,60 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 ### [NLUUG Voorjaarsconferentie](https://www.nluug.nl/activiteiten/events/vj16/programma.html) 2016 @ Bunnik, The Netherlands - May 26, 2016
 
--   [Replication Techniques in Gluster](https://www.nluug.nl/activiteiten/events/vj16/abstracts/ab07.html)
-    ([.odp](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.odp))
-    ([.pdf](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.pdf)) - Niels de Vos
+- [Replication Techniques in Gluster](https://www.nluug.nl/activiteiten/events/vj16/abstracts/ab07.html)
+  ([.odp](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.odp))
+  ([.pdf](http://people.redhat.com/ndevos/talks/2016-05-NLUUG/20160526-replication-in-gluster.pdf)) - Niels de Vos
 
 ### [Vault](https://www.linuxfoundation.org/tag/vault/) 2016 @ Raleigh, NC, US - Apr 20-21, 2016
 
--   [GlusterD 2.0](https://vault2016.sched.org/event/68kl/glusterd-20-managing-distributed-file-system-using-a-centralized-store-atin-mukherjee-red-hat)
-    ([slideshare](http://www.slideshare.net/GlusterCommunity/gluster-d2-62086643)) - Atin Mukherjee
+- [GlusterD 2.0](https://vault2016.sched.org/event/68kl/glusterd-20-managing-distributed-file-system-using-a-centralized-store-atin-mukherjee-red-hat)
+  ([slideshare](http://www.slideshare.net/GlusterCommunity/gluster-d2-62086643)) - Atin Mukherjee
 
 ### [Incontro DevOps Italia](http://www.incontrodevops.it/events/idi2016/) 2016 @ Bologna, Italy - Apr 1, 2016
 
--   [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
-    [slideshare](http://www.slideshare.net/GlusterCommunity/20160401-glusterroadmap)
-    [Vimeo recording](https://vimeo.com/album/3949155/video/167706951) - Niels de Vos
+- [Gluster roadmap, recent improvements and upcoming features](http://www.incontrodevops.it/sessions/gluster-roadmap-recent-improvements-and-upcoming-features/)
+  [slideshare](http://www.slideshare.net/GlusterCommunity/20160401-glusterroadmap)
+  [Vimeo recording](https://vimeo.com/album/3949155/video/167706951) - Niels de Vos
 
 ### [LinuxConfAU](https://linux.conf.au/) 2016 @ Geelong, Australia - Feb 03, 2016
 
--   GlusterD thread synchronization using Userspace Read Copy Update (URCU)
-    [slideshare](http://www.slideshare.net/GlusterCommunity/gluster-d-threadsynchronizationusingurculca2016) - Atin Mukherjee
+- GlusterD thread synchronization using Userspace Read Copy Update (URCU)
+  [slideshare](http://www.slideshare.net/GlusterCommunity/gluster-d-threadsynchronizationusingurculca2016) - Atin Mukherjee
 
 ### [DevConf.CZ](http://devconf.cz/) 2016 @ Brno, Czech Republic - February 5, 2016
 
--    [Ceph, Gluster, Swift : Similarities and differences]
-     (https://speakerdeck.com/prashanthpai/ceph-gluster-swift-similarities-and-differences) - Prashanth Pai, Thiago da Silva
+- [Ceph, Gluster, Swift : Similarities and differences]
+  (https://speakerdeck.com/prashanthpai/ceph-gluster-swift-similarities-and-differences) - Prashanth Pai, Thiago da Silva
 
 ### [FOSDEM](http://www.fosdem.org/2016) 2016 @ Brussels, Belgium - January 30, 2016
 
--   Gluster roadmap: Recent improvements and upcoming features
-    [slideshare](http://www.slideshare.net/GlusterCommunity/20160130-glusterroadmap) - Niels de Vos
+- Gluster roadmap: Recent improvements and upcoming features
+  [slideshare](http://www.slideshare.net/GlusterCommunity/20160130-glusterroadmap) - Niels de Vos
 
 ### [T-DOSE](http://www.t-dose.org/) 2015 @ Eindhoven, The Netherlands - Nov 28, 2015
 
--   Introduction into Scale-out Storage with Gluster
-    [slideshare](http://www.slideshare.net/GlusterCommunity/gluster-introtdose-62086654) - Niels de Vos
+- Introduction into Scale-out Storage with Gluster
+  [slideshare](http://www.slideshare.net/GlusterCommunity/gluster-introtdose-62086654) - Niels de Vos
 
 ### Usenix LISA 2015 @ Washington DC, USA - Nov 8, 2015
 
--   [GlusterFS Tutorial - Architecture](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fsintroduction) -
-    Rajesh Joseph & Poornima Gurusiddaiah
--   [GlusterFS Tutorial - Hands-on](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fshandson) -
-    Rajesh Joseph & Poornima Gurusiddaiah
+- [GlusterFS Tutorial - Architecture](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fsintroduction) -
+  Rajesh Joseph & Poornima Gurusiddaiah
+- [GlusterFS Tutorial - Hands-on](http://www.slideshare.net/GlusterCommunity/lisa-2015gluster-fshandson) -
+  Rajesh Joseph & Poornima Gurusiddaiah
 
 ### Open Source Backup Conference @ Cologne, Germany - September 30, 2015
 
--   Scale-Out backups with Bareos and Gluster
-    ([slideshare](http://www.slideshare.net/GlusterCommunity/scale-out-backupswithbareosandgluster-62086631)) - Niels de Vos
+- Scale-Out backups with Bareos and Gluster
+  ([slideshare](http://www.slideshare.net/GlusterCommunity/scale-out-backupswithbareosandgluster-62086631)) - Niels de Vos
 
 ### 2015 Storage Developer Conference
 
--  Achieving Coherent and Aggressive Client Caching in Gluster, a Distributed System
-[pdf](http://www.snia.org/sites/default/files/SDC15_presentations/file_sys/Poornima_Sourmya_Achiving_Coherent_Aggressive_Client-2.pdf) - Poornima Gurusiddaiah, Soumya Koduri
+- Achieving Coherent and Aggressive Client Caching in Gluster, a Distributed System
+  [pdf](http://www.snia.org/sites/default/files/SDC15_presentations/file_sys/Poornima_Sourmya_Achiving_Coherent_Aggressive_Client-2.pdf) - Poornima Gurusiddaiah, Soumya Koduri
 
 - Introduction to Highly Available NFS Server on Scale-Out Storage Systems Based on GlusterFS
-[slideshare](http://www.slideshare.net/GlusterCommunity/introduction-to-highlyavailablenfsserveronscaleoutstoragesystemsbasedonglusterfssdc2015) - Soumya Koduri, Meghana Madhusudhan
-
+  [slideshare](http://www.slideshare.net/GlusterCommunity/introduction-to-highlyavailablenfsserveronscaleoutstoragesystemsbasedonglusterfssdc2015) - Soumya Koduri, Meghana Madhusudhan
 
 ### Gluster Summit 2015 @ Barcelona, Spain
 
@@ -105,7 +105,7 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 - [Introduction to Open Source](http://www.slideshare.net/GlusterCommunity/introduction-to-open-source-62086626) - Niels de Vos, Red Hat
 - [Software Defined Storage](http://www.slideshare.net/GlusterCommunity/software-defined-storage-62086656) - Dan Lambright, Red Hat
-- [Introduction to GlusterFS](http://www.slideshare.net/GlusterCommunity/gluster-technical-overview) -  Kaleb S. KEITHLEY, Red Hat
+- [Introduction to GlusterFS](http://www.slideshare.net/GlusterCommunity/gluster-technical-overview) - Kaleb S. KEITHLEY, Red Hat
 - [Data Deduplication](http://www.slideshare.net/GlusterCommunity/dedupe-nmamit) - Joseph Fernandes, Red Hat
 - [Quality of Service](http://www.slideshare.net/GlusterCommunity/qos-62086668) - Karthik US & Sukumar Poojary, 4th SEM, MCA, NMAMIT, Nitte
 
@@ -142,65 +142,65 @@ We have a [slideshare account](http://www.slideshare.net/GlusterCommunity) where
 
 ### Gluster Community Day, Stockholm, Sweden - Sep 4th, 2013
 
--   [Gluster related development](http://people.redhat.com/ndevos/talks/Gluster-Stockholm-20130902.pdf) -
-    Niels de Vos, Red Hat
+- [Gluster related development](http://people.redhat.com/ndevos/talks/Gluster-Stockholm-20130902.pdf) -
+  Niels de Vos, Red Hat
 
 ### LOADays, Belgium - April 6th, 2013
 
--   [Glusterfs_for_sysadmins-justin_clift](http://www.slideshare.net/GlusterCommunity/glusterfs-for-sysadminsjustinclift) - GlusterFS for
-    SysAdmins, Justin Clift. For LOADays 2013 conference.
+- [Glusterfs_for_sysadmins-justin_clift](http://www.slideshare.net/GlusterCommunity/glusterfs-for-sysadminsjustinclift) - GlusterFS for
+  SysAdmins, Justin Clift. For LOADays 2013 conference.
 
 ### CIALUG Des Moines, IA - March 21st, 2013
 
--   Converged infrastruture with oVirt, KVM, and
-    Gluster -
-    Theron Conrey, Red Hat
+- Converged infrastruture with oVirt, KVM, and
+  Gluster -
+  Theron Conrey, Red Hat
 
 ### Gluster Community Summit, Bangalore - March 7 & 8, 2013
 
--   [SMB-GlusterDevMar2013](http://www.slideshare.net/GlusterCommunity/smb-gluster-devmar2013) - Chris Hertel, Red Hat
-    -   [Video recording](https://www.youtube.com/watch?v=2RHemtFzIUM)
--   [kkeithley-UFONFS-GlusterSummit](http://www.slideshare.net/GlusterCommunity/kkeithley-ufonfsgluster-summit) - Kaleb Keithley, Red Hat
--   [HDFS + GlusterFS integration](https://www.youtube.com/watch?v=Wl3EMX7Sm6o) -
-    Jay Vyas Video
--   [Join_the_SuperColony_-_Feb2013.odp](http://www.slideshare.net/GlusterCommunity/join-the-supercolonyfeb2013)  - JMW, Red Hat
--   GlusterFS API Introduction
-    [slideshare](http://www.slideshare.net/GlusterCommunity/gsummit-apis2013)
-    (Jeff Darcy, Red Hat)
+- [SMB-GlusterDevMar2013](http://www.slideshare.net/GlusterCommunity/smb-gluster-devmar2013) - Chris Hertel, Red Hat
+  - [Video recording](https://www.youtube.com/watch?v=2RHemtFzIUM)
+- [kkeithley-UFONFS-GlusterSummit](http://www.slideshare.net/GlusterCommunity/kkeithley-ufonfsgluster-summit) - Kaleb Keithley, Red Hat
+- [HDFS + GlusterFS integration](https://www.youtube.com/watch?v=Wl3EMX7Sm6o) -
+  Jay Vyas Video
+- [Join*the_SuperColony*-\_Feb2013.odp](http://www.slideshare.net/GlusterCommunity/join-the-supercolonyfeb2013) - JMW, Red Hat
+- GlusterFS API Introduction
+  [slideshare](http://www.slideshare.net/GlusterCommunity/gsummit-apis2013)
+  (Jeff Darcy, Red Hat)
 
 ### Gluster Community Workshop at CERN in Geneva - February 26, 2013
 
--   [Debugging GlusterFS with Wireshark](http://www.slideshare.net/GlusterCommunity/debugging-withwiresharknielsdevos)
-    ([additional files](http://people.redhat.com/ndevos/talks/debugging-glusterfs-with-wireshark.d/)),
-    Niels de Vos
+- [Debugging GlusterFS with Wireshark](http://www.slideshare.net/GlusterCommunity/debugging-withwiresharknielsdevos)
+  ([additional files](http://people.redhat.com/ndevos/talks/debugging-glusterfs-with-wireshark.d/)),
+  Niels de Vos
 
 ### Gluster Community Workshop at LinuxCon Europe - November 8, 2012
 
--   [Gluster for Sysadmins](http://www.slideshare.net/GlusterCommunity/gluster-for-sysadmins) - Dustin Black, Red Hat
--   [On-demand\_File\_Caching\_-\_Gustavo\_Brand](http://www.slideshare.net/GlusterCommunity/on-demand-filecachinggustavobrand) -
-    On-demand File Caching, Gustavo Brand, Scalus Project
--   [Gluster\_Wireshark\_Niels\_de\_Vos](http://www.slideshare.net/GlusterCommunity/gluster-wireshark-nielsdevos) -
-    Gluster and Wireshark Integration, Niels de Vos, Red Hat
--   [Accessing\_Gluster\_UFO\_-\_Eco\_Willson](http://www.slideshare.net/GlusterCommunity/accessing-gluster-ufoecowillson)
-    Unified File and Object with GlusterFS, Eco Willson, Red Hat
--   [Disperse\_Xlator\_Ramon\_Datalab.pdf](http://www.slideshare.net/GlusterCommunity/disperse-xlator-ramondatalab) -
-    Disperse Translator, Ramon , Datalab
--   [State\_of\_the\_Gluster\_-\_LCEU.pdf](http://www.slideshare.net/GlusterCommunity/state-of-theglusterlceu)
-    State of the Gluster Community, John Mark Walker, Red Hat
--   [QEMU_GlusterFS](http://www.slideshare.net/GlusterCommunity/qemu-gluster-fs) - QEMU integration
-    with GlusterFS, Bharata Rao, IBM Linux Technology Center
+- [Gluster for Sysadmins](http://www.slideshare.net/GlusterCommunity/gluster-for-sysadmins) - Dustin Black, Red Hat
+- [On-demand_File_Caching\_-_Gustavo_Brand](http://www.slideshare.net/GlusterCommunity/on-demand-filecachinggustavobrand) -
+  On-demand File Caching, Gustavo Brand, Scalus Project
+- [Gluster_Wireshark_Niels_de_Vos](http://www.slideshare.net/GlusterCommunity/gluster-wireshark-nielsdevos) -
+  Gluster and Wireshark Integration, Niels de Vos, Red Hat
+- [Accessing_Gluster_UFO\_-_Eco_Willson](http://www.slideshare.net/GlusterCommunity/accessing-gluster-ufoecowillson)
+  Unified File and Object with GlusterFS, Eco Willson, Red Hat
+- [Disperse_Xlator_Ramon_Datalab.pdf](http://www.slideshare.net/GlusterCommunity/disperse-xlator-ramondatalab) -
+  Disperse Translator, Ramon , Datalab
+- [State_of_the_Gluster\_-_LCEU.pdf](http://www.slideshare.net/GlusterCommunity/state-of-theglusterlceu)
+  State of the Gluster Community, John Mark Walker, Red Hat
+- [QEMU_GlusterFS](http://www.slideshare.net/GlusterCommunity/qemu-gluster-fs) - QEMU integration
+  with GlusterFS, Bharata Rao, IBM Linux Technology Center
 
 ### Software Developers' Conference (SNIA) - Sep 17, 2012
 
--   Challenges and Futures
-    [slideshare](http://www.slideshare.net/GlusterCommunity/sdc-challenges2012)
-    (Jeff Darcy, Red Hat)
+- Challenges and Futures
+  [slideshare](http://www.slideshare.net/GlusterCommunity/sdc-challenges2012)
+  (Jeff Darcy, Red Hat)
 
 ### Gluster Workshop at LinuxCon North America - Aug 28, 2012
 
--   Translator tutorial
-    [slideshare](http://www.slideshare.net/GlusterCommunity/lcna-tutorial2012)
-    (Jeff Darcy, Red Hat)
--   Translator example
-    [slideshare](http://www.slideshare.net/GlusterCommunity/lcna-example2012)
-    (Jeff Darcy, Red Hat)
+- Translator tutorial
+  [slideshare](http://www.slideshare.net/GlusterCommunity/lcna-tutorial2012)
+  (Jeff Darcy, Red Hat)
+- Translator example
+  [slideshare](http://www.slideshare.net/GlusterCommunity/lcna-example2012)
+  (Jeff Darcy, Red Hat)
