@@ -2,30 +2,29 @@
 
 ### Overview
 
-Use the Gluster CLI to setup and manage your Gluster cluster from a terminal. 
-You can run the Gluster CLI on any Gluster server either by invoking the commands 
-or by running the Gluster CLI in interactive mode. 
+Use the Gluster CLI to setup and manage your Gluster cluster from a terminal.
+You can run the Gluster CLI on any Gluster server either by invoking the commands
+or by running the Gluster CLI in interactive mode.
 You can also use the gluster command remotely using SSH.
 
 The gluster CLI syntax is `gluster <command>`.
 
-
 To run a command directly:
 
 ```console
-# gluster <command>
+gluster <command>
 ```
 
 For example, to view the status of all peers:
 
 ```console
-# gluster peer status
+gluster peer status
 ```
 
 To run a command in interactive mode, start a gluster shell by typing:
 
 ```console
-# gluster
+gluster
 ```
 
 This will open a gluster command prompt. You now run the command at the prompt.
@@ -44,13 +43,12 @@ gluster> peer status
 
 The peer commands are used to manage the Trusted Server Pool (TSP).
 
-
-| Command         | Syntax                 | Description             |
-| --------------- |:-----------------------|:------------------------|
-| peer probe      | peer probe _server_    | Add _server_ to the TSP |
-| peer detach     | peer detach _server_   | Remove _server_ from the TSP |
-| peer status     | peer status            | Display the status of all nodes in the TSP |
-| pool list       | pool list              | List all nodes in the TSP |
+| Command     | Syntax               | Description                                |
+| ----------- | :------------------- | :----------------------------------------- |
+| peer probe  | peer probe _server_  | Add _server_ to the TSP                    |
+| peer detach | peer detach _server_ | Remove _server_ from the TSP               |
+| peer status | peer status          | Display the status of all nodes in the TSP |
+| pool list   | pool list            | List all nodes in the TSP                  |
 
 #### Volume Commands
 
