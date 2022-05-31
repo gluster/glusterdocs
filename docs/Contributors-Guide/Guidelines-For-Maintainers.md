@@ -13,8 +13,10 @@ explicitly called out.
 
 ### Guidelines that Maintainers are expected to adhere to
 
-1. Ensure qualitative and timely management of patches sent for review.
-2. For merging patches into the repository, it is expected of maintainers to:
+1.  Ensure qualitative and timely management of patches sent for review.
+
+2.  For merging patches into the repository, it is expected of maintainers to:
+
     - Merge patches of owned components only.
     - Seek approvals from all maintainers before merging a patchset spanning
       multiple components.
@@ -28,14 +30,15 @@ explicitly called out.
       quality of the codebase.
     - Not merge patches written by themselves until there is a +2 Code Review
       vote by other reviewers.
-3. The responsibility of merging a patch into a release branch in normal
-   circumstances will be that of the release maintainer's. Only in exceptional
-   situations, maintainers & sub-maintainers will merge patches into a release
-   branch.
-4. Release maintainers will ensure approval from appropriate maintainers before
-   merging a patch into a release branch.
-5. Maintainers have a responsibility to the community, it is expected of
-   maintainers to:
+
+3.  The responsibility of merging a patch into a release branch in normal
+    circumstances will be that of the release maintainer's. Only in exceptional
+    situations, maintainers & sub-maintainers will merge patches into a release
+    branch.
+4.  Release maintainers will ensure approval from appropriate maintainers before
+    merging a patch into a release branch.
+
+5.  Maintainers have a responsibility to the community, it is expected of maintainers to:
     - Facilitate the community in all aspects.
     - Be very active and visible in the community.
     - Be objective and consider the larger interests of the community ahead of
@@ -53,4 +56,3 @@ Any questions or comments regarding these guidelines can be routed to
 
 Github can be used to list patches that need reviews and/or can get
 merged from [Pull Requests](https://github.com/gluster/glusterfs/pulls)
-

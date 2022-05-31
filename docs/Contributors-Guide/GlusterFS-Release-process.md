@@ -15,7 +15,7 @@ Minor releases will have guaranteed backwards compatibilty with earlier minor re
 Each GlusterFS major release has a 4-6 month release window, in which changes get merged. This window is split into two phases.
 
 1. A Open phase, where all changes get merged
-1. A Stability phase, where only changes that stabilize the release get merged.
+2. A Stability phase, where only changes that stabilize the release get merged.
 
 The first 2-4 months of a release window will be the Open phase, and the last month will be the stability phase.
 
@@ -30,8 +30,8 @@ All changes will be accepted during the Open phase. The changes have a few requi
 - a change fixing a bug SHOULD have public test case
 - a change introducing a new feature MUST have a disable switch that can disable the feature during a build
 
-
 #### Stability phase
+
 This phase is used to stabilize any new features introduced in the open phase, or general bug fixes for already existing features.
 
 A new `release-<version>` branch is created at the beginning of this phase. All changes need to be sent to the master branch before getting backported to the new release branch.
@@ -54,6 +54,7 @@ Patches accepted in the Stability phase have the following requirements:
 Patches that do not satisfy the above requirements can still be submitted for review, but cannot be merged.
 
 ## Release procedure
+
 This procedure is followed by a release maintainer/manager, to perform the actual release.
 
 The release procedure for both major releases and minor releases is nearly the same.
@@ -63,6 +64,7 @@ The procedure for the major releases starts at the beginning of the Stability ph
 _TODO: Add the release verification procedure_
 
 ### Release steps
+
 The release-manager needs to follow the following steps, to actually perform the release once ready.
 
 #### Create tarball
@@ -73,9 +75,11 @@ The release-manager needs to follow the following steps, to actually perform the
 4.  create the tarball with the [release job in Jenkins](http://build.gluster.org/job/release/)
 
 #### Notify packagers
+
 Notify the packagers that we need packages created. Provide the link to the source tarball from the Jenkins release job to the [packagers mailinglist](mailto:packaging@gluster.org). A list of the people involved in the package maintenance for the different distributions is in the `MAINTAINERS` file in the sources, all of them should be subscribed to the packagers mailinglist.
 
 #### Create a new Tracker Bug for the next release
+
 The tracker bugs are used as guidance for blocker bugs and should get created when a release is made. To create one
 
 - Create a [new milestone](https://github.com/gluster/glusterfs/milestones/new)
@@ -83,19 +87,21 @@ The tracker bugs are used as guidance for blocker bugs and should get created wh
 - issues that were not fixed in previous release, but in milestone should be moved to the new milestone.
 
 #### Create Release Announcement
-(Major releases) 
-The Release Announcement is based off the release notes. This needs to indicate:
- * What this release's overall focus is
- * Which versions will stop receiving updates as of this release
- * Links to the direct download folder 
- * Feature set 
- 
-Best practice as of version-8 is to create a collaborative version of the release notes that both the release manager and community lead work on together, and the release manager posts to the mailing lists (gluster-users@, gluster-devel@, announce@). 
 
+(Major releases)
+The Release Announcement is based off the release notes. This needs to indicate:
+
+- What this release's overall focus is
+- Which versions will stop receiving updates as of this release
+- Links to the direct download folder
+- Feature set
+
+Best practice as of version-8 is to create a collaborative version of the release notes that both the release manager and community lead work on together, and the release manager posts to the mailing lists (gluster-users@, gluster-devel@, announce@).
 
 #### Create Upgrade Guide
-(Major releases) 
-If required, as in the case of a major release, an upgrade guide needs to be available at the same time as the release. 
+
+(Major releases)
+If required, as in the case of a major release, an upgrade guide needs to be available at the same time as the release.
 This document should go under the [Upgrade Guide](https://github.com/gluster/glusterdocs/tree/master/Upgrade-Guide) section of the [glusterdocs](https://github.com/gluster/glusterdocs) repository.
 
 #### Send Release Announcement
@@ -103,13 +109,15 @@ This document should go under the [Upgrade Guide](https://github.com/gluster/glu
 Once the Fedora/EL RPMs are ready (and any others that are ready by then), send the release announcement:
 
 - Gluster Mailing lists
-  - [gluster-announce](https://lists.gluster.org/mailman/listinfo/announce/)
-  - [gluster-devel](https://lists.gluster.org/mailman/listinfo/gluster-devel)
-  - [gluster-users](https://lists.gluster.org/mailman/listinfo/gluster-users/)
-  
-- [Gluster Blog](https://planet.gluster.org/) 
-The blog will automatically post to both Facebook and Twitter. Be careful with this! 
-  - [Gluster Twitter account](https://twitter.com/gluster)
-  - [Gluster Facebook page](https://www.facebook.com/GlusterInc)
-- [Gluster LinkedIn group](https://www.linkedin.com/company/gluster/about/)
 
+      - [gluster-announce](https://lists.gluster.org/mailman/listinfo/announce/)
+      - [gluster-devel](https://lists.gluster.org/mailman/listinfo/gluster-devel)
+      - [gluster-users](https://lists.gluster.org/mailman/listinfo/gluster-users/)
+
+- [Gluster Blog](https://planet.gluster.org/)
+  The blog will automatically post to both Facebook and Twitter. Be careful with this!
+
+      - [Gluster Twitter account](https://twitter.com/gluster)
+      - [Gluster Facebook page](https://www.facebook.com/GlusterInc)
+
+- [Gluster LinkedIn group](https://www.linkedin.com/company/gluster/about/)

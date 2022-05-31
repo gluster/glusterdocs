@@ -1,28 +1,23 @@
 # Workflow Guide
 
-Bug Handling
-------------
+## Bug Handling
 
--   [Bug reporting guidelines](./Bug-Reporting-Guidelines.md) -
-    Guideline for reporting a bug in GlusterFS
--   [Bug triage guidelines](./Bug-Triage.md) - Guideline on how to
-    triage bugs for GlusterFS
+- [Bug reporting guidelines](./Bug-Reporting-Guidelines.md) -
+  Guideline for reporting a bug in GlusterFS
+- [Bug triage guidelines](./Bug-Triage.md) - Guideline on how to
+  triage bugs for GlusterFS
 
-Release Process
----------------
+## Release Process
 
--   [GlusterFS Release process](./GlusterFS-Release-process.md) -
-    Our release process / checklist
+- [GlusterFS Release process](./GlusterFS-Release-process.md) -
+  Our release process / checklist
 
-Patch Acceptance
-----------------
+## Patch Acceptance
 
--   The [Guidelines For Maintainers](./Guidelines-For-Maintainers.md) explains when
-    maintainers can merge patches.
+- The [Guidelines For Maintainers](./Guidelines-For-Maintainers.md) explains when
+  maintainers can merge patches.
 
-Blogging about gluster
-----------------
+## Blogging about gluster
 
--   The [Adding your gluster blog](./Adding-your-blog.md) explains how to add your
-gluster blog to Community blogger.
-
+- The [Adding your gluster blog](./Adding-your-blog.md) explains how to add your
+  gluster blog to Community blogger.
