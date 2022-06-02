@@ -1,5 +1,4 @@
-How to compile GlusterFS RPMs from git source, for RHEL/CentOS, and Fedora
---------------------------------------------------------------------------
+## How to compile GlusterFS RPMs from git source, for RHEL/CentOS, and Fedora
 
 Creating rpm's of GlusterFS from git source is fairly easy, once you know the steps.
 
@@ -21,13 +20,13 @@ Specific instructions for compiling are below. If you're using:
 
 ### Preparation steps for Fedora 16-20 (only)
 
-1. Install gcc, the python development headers, and python setuptools:
+1.  Install gcc, the python development headers, and python setuptools:
 
-        # sudo yum -y install gcc python-devel python-setuptools
+        sudo yum -y install gcc python-devel python-setuptools
 
-2. If you're compiling GlusterFS version 3.4, then install python-swiftclient. Other GlusterFS versions don't need it:
+2.  If you're compiling GlusterFS version 3.4, then install python-swiftclient. Other GlusterFS versions don't need it:
 
-        # sudo easy_install simplejson python-swiftclient
+        sudo easy_install simplejson python-swiftclient
 
 Now follow through with the **Common Steps** part below.
 
@@ -35,15 +34,15 @@ Now follow through with the **Common Steps** part below.
 
 You'll need EPEL installed first and some CentOS-specific packages. The commands below will get that done for you. After that, follow through the "Common steps" section.
 
-1. Install EPEL first:
+1.  Install EPEL first:
 
-		# curl -OL `[`http://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm`](http://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm)
-		# sudo yum -y install epel-release-5-4.noarch.rpm --nogpgcheck
+        curl -OL http://download.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+        sudo yum -y install epel-release-5-4.noarch.rpm --nogpgcheck
 
-2. Install the packages required only on CentOS 5.x:
+2.  Install the packages required only on CentOS 5.x:
 
-		# sudo yum -y install buildsys-macros gcc ncurses-devel \
-            python-ctypes python-sphinx10 redhat-rpm-config
+        sudo yum -y install buildsys-macros gcc ncurses-devel \
+          python-ctypes python-sphinx10 redhat-rpm-config
 
 Now follow through with the **Common Steps** part below.
 
@@ -51,32 +50,31 @@ Now follow through with the **Common Steps** part below.
 
 You'll need EPEL installed first and some CentOS-specific packages. The commands below will get that done for you. After that, follow through the "Common steps" section.
 
-1. Install EPEL first:
+1.  Install EPEL first:
 
-		# sudo yum -y install `[`http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`](http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm)
+        sudo yum -y install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
-2. Install the packages required only on CentOS:
+2.  Install the packages required only on CentOS:
 
-		# sudo yum -y install python-webob1.0 python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
+        sudo yum -y install python-webob1.0 python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
 
 Now follow through with the **Common Steps** part below.
 
-
 ### Preparation steps for CentOS 8.x (only)
 
-You'll need EPEL installed and then the powertools package enabled. 
+You'll need EPEL installed and then the powertools package enabled.
 
-1. Install EPEL first:
-	
-		# sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+1.  Install EPEL first:
 
-2. Enable the PowerTools repo and install CentOS 8.x specific packages for building the rpms.
+        sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
-		# sudo yum --enablerepo=PowerTools install automake autoconf libtool flex bison openssl-devel \
-		    libxml2-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel \
-		    glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel \
-		    redhat-rpm-config rpcgen libtirpc-devel make python3-devel rsync libuuid-devel \
-		    rpm-build dbench perl-Test-Harness attr libcurl-devel selinux-policy-devel -y
+2.  Enable the PowerTools repo and install CentOS 8.x specific packages for building the rpms.
+
+        sudo yum --enablerepo=PowerTools install automake autoconf libtool flex bison openssl-devel \
+          libxml2-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel \
+          glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel fuse-devel \
+          redhat-rpm-config rpcgen libtirpc-devel make python3-devel rsync libuuid-devel \
+          rpm-build dbench perl-Test-Harness attr libcurl-devel selinux-policy-devel -y
 
 Now follow through from Point 2 in the **Common Steps** part below.
 
@@ -84,14 +82,14 @@ Now follow through from Point 2 in the **Common Steps** part below.
 
 You'll need EPEL installed first and some RHEL specific packages. The 2 commands below will get that done for you. After that, follow through the "Common steps" section.
 
-1. Install EPEL first:
+1.  Install EPEL first:
 
-		# sudo yum -y install `[`http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`](http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm)
+        sudo yum -y install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
-2. Install the packages required only on RHEL:
+2.  Install the packages required only on RHEL:
 
-		# sudo yum -y --enablerepo=rhel-6-server-optional-rpms install python-webob1.0 \
-	        python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
+        sudo yum -y --enablerepo=rhel-6-server-optional-rpms install python-webob1.0 \
+          python-paste-deploy1.5 python-sphinx10 redhat-rpm-config
 
 Now follow through with the **Common Steps** part below.
 
@@ -104,64 +102,65 @@ These steps are for both Fedora and RHEL/CentOS. At the end you'll have the comp
 - If you're on RHEL/CentOS 5.x and get a message about lvm2-devel not being available, it's ok. You can ignore it. :)
 - If you're on RHEL/CentOS 6.x and get any messages about python-eventlet, python-netifaces, python-sphinx and/or pyxattr not being available, it's ok. You can ignore them. :)
 - If you're on CentOS 8.x, you can skip step 1 and start from step 2. Also, for CentOS 8.x, the steps have been
-tested for the master branch. It is unknown if it would work for older branches.
+  tested for the master branch. It is unknown if it would work for older branches.
 
 <br/>
 
-1. Install the needed packages
+1.  Install the needed packages
 
-		# sudo yum -y --disablerepo=rhs* --enablerepo=*optional-rpms install git autoconf \
-		    automake bison dos2unix flex fuse-devel glib2-devel libaio-devel \
-		    libattr-devel libibverbs-devel librdmacm-devel libtool libxml2-devel lvm2-devel make \
-		    openssl-devel pkgconfig pyliblzma python-devel python-eventlet python-netifaces \
-		    python-paste-deploy python-simplejson python-sphinx python-webob pyxattr readline-devel \
-		    rpm-build systemtap-sdt-devel tar libcmocka-devel
+        sudo yum -y --disablerepo=rhs* --enablerepo=*optional-rpms install git autoconf \
+          automake bison dos2unix flex fuse-devel glib2-devel libaio-devel \
+          libattr-devel libibverbs-devel librdmacm-devel libtool libxml2-devel lvm2-devel make \
+          openssl-devel pkgconfig pyliblzma python-devel python-eventlet python-netifaces \
+          python-paste-deploy python-simplejson python-sphinx python-webob pyxattr readline-devel \
+          rpm-build systemtap-sdt-devel tar libcmocka-devel
 
-2. Clone the GlusterFS git repository
+2.  Clone the GlusterFS git repository
 
-    	# git clone `[`git://git.gluster.org/glusterfs`](git://git.gluster.org/glusterfs)
-		# cd glusterfs
+        git clone git://git.gluster.org/glusterfs
+        cd glusterfs
 
-3. Choose which branch to compile
+3.  Choose which branch to compile
 
     If you want to compile the latest development code, you can skip this step and go on to the next one. :)
 
     If instead, you want to compile the code for a specific release of GlusterFS (such as v3.4), get the list of release names here:
 
-		# git branch -a | grep release
-		remotes/origin/release-2.0
-		remotes/origin/release-3.0
-		remotes/origin/release-3.1
-		remotes/origin/release-3.2
-		remotes/origin/release-3.3
-		remotes/origin/release-3.4
-		remotes/origin/release-3.5
+        # git branch -a | grep release
+        remotes/origin/release-2.0
+        remotes/origin/release-3.0
+        remotes/origin/release-3.1
+        remotes/origin/release-3.2
+        remotes/origin/release-3.3
+        remotes/origin/release-3.4
+        remotes/origin/release-3.5
 
     Then switch to the correct release using the git "checkout" command, and the name of the release after the "remotes/origin/" bit from the list above:
 
-		# git checkout release-3.4
+        git checkout release-3.4
 
     **NOTE -** The CentOS 5.x instructions have only been tested for the master branch in GlusterFS git. It is unknown (yet) if they work for branches older than release-3.5.
 
-	---
-      If you are compiling the latest development code you can skip steps **4** and **5**. Instead, you can run the below command and you will get the RPMs.
+    ***
 
-  
-   		# extras/LinuxRPM/make_glusterrpms
-	---
+    If you are compiling the latest development code you can skip steps **4** and **5**. Instead, you can run the below command and you will get the RPMs.
 
-4. Configure and compile GlusterFS
+        extras/LinuxRPM/make_glusterrpms
+
+    ***
+
+4.  Configure and compile GlusterFS
 
     Now you're ready to compile Gluster:
 
-		# ./autogen.sh
-		# ./configure --enable-fusermount
-		# make dist
+        ./autogen.sh
+        ./configure --enable-fusermount
+        make dist
 
-5. Create the GlusterFS RPMs
+5.  Create the GlusterFS RPMs
 
-		# cd extras/LinuxRPM
-		# make glusterrpms
+        cd extras/LinuxRPM
+        make glusterrpms
 
     That should complete with no errors, leaving you with a directory containing the RPMs.
 
