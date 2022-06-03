@@ -1,6 +1,4 @@
-Troubleshooting File Locks
-==========================
-
+# Troubleshooting File Locks
 
 Use [statedumps](./statedump.md) to find and list the locks held
 on files. The statedump output also provides information on each lock
@@ -13,11 +11,11 @@ lock using the following `clear lock` commands.
 1.  **Perform statedump on the volume to view the files that are locked
     using the following command:**
 
-        # gluster volume statedump  inode
+        gluster volume statedump  inode
 
     For example, to display statedump of test-volume:
 
-        # gluster volume statedump test-volume
+        gluster volume statedump test-volume
         Volume statedump successful
 
     The statedump files are created on the brick servers in the` /tmp`
@@ -58,25 +56,23 @@ lock using the following `clear lock` commands.
 
 2.  **Clear the lock using the following command:**
 
-        # gluster volume clear-locks
+        gluster volume clear-locks
 
     For example, to clear the entry lock on `file1` of test-volume:
 
-        # gluster volume clear-locks test-volume / kind granted entry file1
+        gluster volume clear-locks test-volume / kind granted entry file1
         Volume clear-locks successful
         vol-locks: entry blocked locks=0 granted locks=1
 
 3.  **Clear the inode lock using the following command:**
 
-        # gluster volume clear-locks
+        gluster volume clear-locks
 
     For example, to clear the inode lock on `file1` of test-volume:
 
-        # gluster  volume clear-locks test-volume /file1 kind granted inode 0,0-0
+        gluster  volume clear-locks test-volume /file1 kind granted inode 0,0-0
         Volume clear-locks successful
         vol-locks: inode blocked locks=0 granted locks=1
 
     Perform statedump on test-volume again to verify that the
     above inode and entry locks are cleared.
-
-
