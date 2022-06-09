@@ -6,11 +6,23 @@ This tool should be run in one of the node, which will get Volume info and gets 
 
 ## Session Management
 
-Create a glusterfind session to remember the time when last sync or processing complete. For example, your backup application runs every day and gets incremental results on each run. The tool maintains session in `$GLUSTERD_WORKDIR/glusterfind/`, for each session it creates and directory and creates a sub directory with Volume name. (Default working directory is /var/lib/glusterd, in some systems this location may change. To find Working dir location run `grep working-directory /etc/glusterfs/glusterd.vol` or `grep working-directory /usr/local/etc/glusterfs/glusterd.vol` if source install)
+Create a glusterfind session to remember the time when last sync or processing complete. For example, your backup application runs every day and gets incremental results on each run. The tool maintains session in `$GLUSTERD_WORKDIR/glusterfind/`, for each session it creates and directory and creates a sub directory with Volume name. (Default working directory is /var/lib/glusterd, in some systems this location may change. To find Working dir location run
+
+```{ .text .no-copy }
+grep working-directory /etc/glusterfs/glusterd.vol
+```
+
+or
+
+```{ .text .no-copy }
+grep working-directory /usr/local/etc/glusterfs/glusterd.vol
+```
+
+if you installed from the source.
 
 For example, if the session name is "backup" and volume name is "datavol", then the tool creates `$GLUSTERD_WORKDIR/glusterfind/backup/datavol`. Now onwards we refer this directory as `$SESSION_DIR`.
 
-```text
+```{ .text .no-copy }
 create => pre => post => [delete]
 ```
 
@@ -34,13 +46,13 @@ Incremental find uses Changelogs to get the list of GFIDs modified/created. Any 
 
 If we set build-pgfid option in Volume GlusterFS starts recording each files parent directory GFID as xattr in file on any ENTRY fop.
 
-```text
+```{ .text .no-copy }
 trusted.pgfid.<GFID>=NUM_LINKS
 ```
 
 To convert from GFID to path, we can mount Volume with aux-gfid-mount option, and get Path information by a getfattr query.
 
-```console
+```{ .console .no-copy }
 getfattr -n glusterfs.ancestry.path -e text /mnt/datavol/.gfid/<GFID>
 ```
 
@@ -54,7 +66,7 @@ Tool collects the list of GFIDs failed to convert with above method and does a f
 
 ### Create the session
 
-```console
+```{ .console .no-copy }
 glusterfind create SESSION_NAME VOLNAME [--force]
 glusterfind create --help
 ```
@@ -63,7 +75,7 @@ Where, SESSION_NAME is any name without space to identify when run second time. 
 
 Examples,
 
-```console
+```{ .console .no-copy }
 # glusterfind create --help
 # glusterfind create backup datavol
 # glusterfind create antivirus_scanner datavol
@@ -72,7 +84,7 @@ Examples,
 
 ### Pre Command
 
-```console
+```{ .console .no-copy }
 glusterfind pre SESSION_NAME VOLUME_NAME OUTFILE
 glusterfind pre --help
 ```
@@ -83,7 +95,7 @@ To trigger the full find, call the pre command with `--full` argument. Multiple 
 
 Examples,
 
-```console
+```{ .console .no-copy }
 # glusterfind pre backup datavol /root/backup.txt
 # glusterfind pre backup datavol /root/backup.txt --full
 
@@ -96,7 +108,7 @@ Examples,
 
 Output file contains list of files/dirs relative to the Volume mount, if we need to prefix with any path to have absolute path then,
 
-```console
+```{ .console .no-copy }
 # glusterfind pre backup datavol /root/backup.txt --file-prefix=/mnt/datavol/
 ```
 
@@ -104,20 +116,20 @@ Output file contains list of files/dirs relative to the Volume mount, if we need
 
 To get the list of sessions and respective session time,
 
-```console
+```{ .console .no-copy }
 glusterfind list [--session SESSION_NAME] [--volume VOLUME_NAME]
 ```
 
 Examples,
 
-```console
+```{ .console .no-copy }
 # glusterfind list
 # glusterfind list --session backup
 ```
 
 Example output,
 
-```console
+```{ .text .no-copy }
 SESSION                   VOLUME                    SESSION TIME
 ---------------------------------------------------------------------------
 backup                    datavol                   2015-03-04 17:35:34
@@ -125,25 +137,25 @@ backup                    datavol                   2015-03-04 17:35:34
 
 ### Post Command
 
-```console
+```{ .console .no-copy }
 glusterfind post SESSION_NAME VOLUME_NAME
 ```
 
 Examples,
 
-```console
+```{ .console .no-copy }
 # glusterfind post backup datavol
 ```
 
 ### Delete Command
 
-```console
+```{ .console .no-copy }
 glusterfind delete SESSION_NAME VOLUME_NAME
 ```
 
 Examples,
 
-```console
+```{ .console .no-copy }
 # glusterfind delete backup datavol
 ```
 
@@ -170,7 +182,7 @@ Custom crawler can be executable script/binary which accepts volume name, brick 
 
 For example,
 
-```console
+```{ .console .no-copy }
 /root/parallelbrickcrawl SESSION_NAME VOLUME BRICK_PATH OUTFILE START_TIME [--debug]
 ```
 
