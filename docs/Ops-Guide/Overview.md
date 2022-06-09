@@ -6,7 +6,7 @@ planning but the growth has mostly been ad-hoc and need-based.
 
 Central to the plan of revitalizing the Gluster.org community is the ability to
 provide well-maintained infrastructure services with predictable uptimes and
-resilience.  We're migrating the existing services into the Community Cage. The
+resilience. We're migrating the existing services into the Community Cage. The
 implied objective is that the transition would open up ways and means of the
 formation of a loose coalition among Infrastructure Administrators who provide
 expertise and guidance to the community projects within the OSAS team.
