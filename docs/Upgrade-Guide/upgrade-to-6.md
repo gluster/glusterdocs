@@ -11,15 +11,16 @@ version reference.
 
 ### Major issues
 
-1. The following options are removed from the code base and require to be unset
-before an upgrade from releases older than release 4.1.0,
-- features.lock-heal
-- features.grace-timeout
+1.  The following options are removed from the code base and require to be unset
+    before an upgrade from releases older than release 4.1.0,
+
+    - features.lock-heal
+    - features.grace-timeout
 
 To check if these options are set use,
 
 ```console
-# gluster volume info
+gluster volume info
 ```
 
 and ensure that the above options are not part of the `Options Reconfigured:`
@@ -27,7 +28,7 @@ section in the output of all volumes in the cluster.
 
 If these are set, then unset them using the following commands,
 
-```console
+```{ .console .no-copy }
 # gluster volume reset <volname> <option>
 ```
 

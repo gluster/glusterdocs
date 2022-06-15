@@ -1,4 +1,5 @@
 # GlusterFS upgrade from 3.5.x to 3.6.x
+
 Now that GlusterFS 3.6.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS.
 
@@ -8,15 +9,15 @@ GlusterFS clients. If you are not updating your clients to GlusterFS
 version 3.6 you need to disable client self healing process. You can
 perform this by below steps.
 
-```console
+```{ .console .no-copy }
 # gluster v set testvol cluster.entry-self-heal off
 volume set: success
-#
+
 # gluster v set testvol cluster.data-self-heal off
 volume set: success
+
 # gluster v set testvol cluster.metadata-self-heal off
 volume set: success
-#
 ```
 
 ### GlusterFS upgrade from 3.5.x to 3.6.x
@@ -27,7 +28,7 @@ For this approach, schedule a downtime and prevent all your clients from
 accessing ( umount your volumes, stop gluster Volumes..etc)the servers.
 
 1.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-2.  Install  GlusterFS 3.6.0
+2.  Install GlusterFS 3.6.0
 3.  Start glusterd.
 4.  Ensure that all started volumes have processes online in “gluster volume status”.
 
@@ -59,7 +60,7 @@ provided below)
 
 1.  Execute "pre-upgrade-script-for-quota.sh" mentioned under "Upgrade Steps For Quota" section.
 2.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-3.  Install  GlusterFS 3.6.0
+3.  Install GlusterFS 3.6.0
 4.  Start glusterd.
 5.  Ensure that all started volumes have processes online in “gluster volume status”.
 6.  Execute "Post-Upgrade Script" mentioned under "Upgrade Steps For Quota" section.
@@ -87,7 +88,7 @@ The upgrade process for quota involves executing two upgrade scripts:
 1.  pre-upgrade-script-for-quota.sh, and\
 2.  post-upgrade-script-for-quota.sh
 
-*Pre-Upgrade Script:*
+_Pre-Upgrade Script:_
 
 What it does:
 
@@ -121,7 +122,7 @@ Example:
 [root@server1 extras]#./pre-upgrade-script-for-quota.sh
 ```
 
-*Post-Upgrade Script:*
+_Post-Upgrade Script:_
 
 What it does:
 
@@ -178,7 +179,7 @@ passed as an argument in the command-line:
 
 Example:
 
-*For a volume "vol1" on which quota is enabled, invoke the script in the following way:*
+_For a volume "vol1" on which quota is enabled, invoke the script in the following way:_
 
 ```console
 [root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
@@ -227,7 +228,7 @@ covered in detail here.
 
 **Below are the steps to upgrade:**
 
-​1.  Stop the geo-replication session in older version ( \< 3.5) using
+​1. Stop the geo-replication session in older version ( \< 3.5) using
 the below command
 
         # gluster volume geo-replication `<master_vol>` `<slave_host>`::`<slave_vol>` stop

@@ -10,6 +10,7 @@ Refer, to the [generic upgrade procedure](./generic-upgrade-procedure.md) guide 
 ## Major issues
 
 ### The following options are removed from the code base and require to be unset
+
 before an upgrade from releases older than release 4.1.0,
 
     - features.lock-heal
@@ -18,7 +19,7 @@ before an upgrade from releases older than release 4.1.0,
 To check if these options are set use,
 
 ```console
-# gluster volume info
+gluster volume info
 ```
 
 and ensure that the above options are not part of the `Options Reconfigured:`
@@ -26,11 +27,11 @@ section in the output of all volumes in the cluster.
 
 If these are set, then unset them using the following commands,
 
-```console
+```{ .console .no-copy }
 # gluster volume reset <volname> <option>
 ```
 
-### Make sure you are not using any of the following depricated features :
+### Make sure you are not using any of the following deprecated features :
 
     - Block device (bd) xlator
     - Decompounder feature
@@ -39,7 +40,6 @@ If these are set, then unset them using the following commands,
     - Stripe feature
     - Tiering support (tier xlator and changetimerecorder)
     - Glupy
-
 
 **NOTE:** Failure to do the above may result in failure during online upgrades,
 and the reset of these options to their defaults needs to be done **prior** to
