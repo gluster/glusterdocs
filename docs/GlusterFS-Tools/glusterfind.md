@@ -8,13 +8,13 @@ This tool should be run in one of the node, which will get Volume info and gets 
 
 Create a glusterfind session to remember the time when last sync or processing complete. For example, your backup application runs every day and gets incremental results on each run. The tool maintains session in `$GLUSTERD_WORKDIR/glusterfind/`, for each session it creates and directory and creates a sub directory with Volume name. (Default working directory is /var/lib/glusterd, in some systems this location may change. To find Working dir location run
 
-```{ .text .no-copy }
+```console
 grep working-directory /etc/glusterfs/glusterd.vol
 ```
 
 or
 
-```{ .text .no-copy }
+```console
 grep working-directory /usr/local/etc/glusterfs/glusterd.vol
 ```
 
@@ -108,8 +108,8 @@ Examples,
 
 Output file contains list of files/dirs relative to the Volume mount, if we need to prefix with any path to have absolute path then,
 
-```{ .console .no-copy }
-# glusterfind pre backup datavol /root/backup.txt --file-prefix=/mnt/datavol/
+```console
+glusterfind pre backup datavol /root/backup.txt --file-prefix=/mnt/datavol/
 ```
 
 ### List Command
@@ -143,8 +143,8 @@ glusterfind post SESSION_NAME VOLUME_NAME
 
 Examples,
 
-```{ .console .no-copy }
-# glusterfind post backup datavol
+```console
+glusterfind post backup datavol
 ```
 
 ### Delete Command
@@ -155,8 +155,8 @@ glusterfind delete SESSION_NAME VOLUME_NAME
 
 Examples,
 
-```{ .console .no-copy }
-# glusterfind delete backup datavol
+```console
+glusterfind delete backup datavol
 ```
 
 ## Adding more Crawlers
