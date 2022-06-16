@@ -11,6 +11,8 @@ markdown_extensions:
 theme:
   name: material
   favicon: images/favicon.ico
+  features:
+    - navigation.tracking
   palette:
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
