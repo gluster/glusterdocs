@@ -76,7 +76,7 @@ _client-quorum to 'auto'. This setting is **not** to be changed._
 ## Arbiter brick(s) sizing
 
 Since the arbiter brick does not store file data, its disk usage will be considerably
-less than for the other bricks of the replica. The sizing of the brick will depend on
+smaller than for the other bricks of the replica. The sizing of the brick will depend on
 how many files you plan to store in the volume. A good estimate will be
 4KB times the number of files in the replica. Note that the estimate also 
 depends on the inode space allocated by the underlying filesystem for a given disk size.
