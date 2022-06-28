@@ -13,6 +13,7 @@ theme:
   favicon: images/favicon.ico
   features:
     - navigation.instant
+    - navigation.tracking
   palette:
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
@@ -277,7 +278,7 @@ nav:
   - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 extra_javascript:
-  - js/fix-docs.js
+  - js/custom-features.js
 
 extra_css:
   - css/custom.css
