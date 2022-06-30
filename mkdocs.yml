@@ -12,6 +12,7 @@ theme:
   name: material
   favicon: images/favicon.ico
   features:
+    - navigation.top
     - navigation.instant
     - navigation.tracking
   palette:
