@@ -1,6 +1,6 @@
-Heal info and split-brain resolution 
-=======================================
-This document explains the  heal info command available in gluster for monitoring pending heals in replicate volumes and the methods available to resolve split-brains.  
+# Heal info and split-brain resolution
+
+This document explains the heal info command available in gluster for monitoring pending heals in replicate volumes and the methods available to resolve split-brains.
 
 ## Types of Split-Brains:
 
@@ -9,26 +9,27 @@ is the correct one.
 
 There are three types of split-brains:
 
--  Data split-brain: The data in the file differs on the bricks in the replica set
--  Metadata split-brain: The metadata differs on the bricks
--  Entry split-brain: The GFID of the file is different on the bricks in the replica or the type of the file is different on the bricks in the replica. Type-mismatch cannot be healed using any of the split-brain resolution methods while gfid split-brains can be.
-
+- Data split-brain: The data in the file differs on the bricks in the replica set
+- Metadata split-brain: The metadata differs on the bricks
+- Entry split-brain: The GFID of the file is different on the bricks in the replica or the type of the file is different on the bricks in the replica. Type-mismatch cannot be healed using any of the split-brain resolution methods while gfid split-brains can be.
 
 ## 1) Volume heal info:
+
 Usage: `gluster volume heal <VOLNAME> info`
 
 This lists all the files that require healing (and will be processed by the self-heal daemon). It prints either their path or their GFID.
 
 ### Interpreting the output
+
 All the files listed in the output of this command need to be healed.
 The files listed may also be accompanied by the following tags:
 
 a) 'Is in split-brain'  
-A file in data or metadata split-brain will 
-be listed with " - Is in split-brain" appended after its path/GFID. E.g. 
+A file in data or metadata split-brain will
+be listed with " - Is in split-brain" appended after its path/GFID. E.g.
 "/file4" in the output provided below. However, for a file in GFID split-brain,
- the parent directory of the file is shown to be in split-brain and the file 
-itself is shown to be needing healing, e.g. "/dir" in the output provided below 
+the parent directory of the file is shown to be in split-brain and the file
+itself is shown to be needing healing, e.g. "/dir" in the output provided below
 is in split-brain because of GFID split-brain of file "/dir/a".
 Files in split-brain cannot be healed without resolving the split-brain.
 
@@ -36,11 +37,13 @@ b) 'Is possibly undergoing heal'
 When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs healing. However, if the self-heal daemon had already started healing the file, it would have taken locks which glfsheal wouldn't be able to acquire. In such a case, it could print this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g. multiple users ran a heal info command at the same time) and competing for same lock.
 
 The following is an example of heal info command's output.
+
 ### Example
+
 Consider a replica volume "test" with two bricks b1 and b2;
 self-heal daemon off, mounted at /mnt.
 
-```console
+```{ .console .no-copy }
 # gluster volume heal test info
 Brick \<hostname:brickpath-b1>
 <gfid:aaca219f-0e25-4576-8689-3bfd93ca70c2> - Is in split-brain
@@ -63,24 +66,27 @@ Number of entries: 6
 ```
 
 ### Analysis of the output
-It can be seen that
-A) from brick b1, four entries need healing:   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) file with gfid:6dc78b20-7eb6-49a3-8edb-087b90142246 needs healing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) "aaca219f-0e25-4576-8689-3bfd93ca70c2",
-"39f301ae-4038-48c2-a889-7dac143e82dd" and "c3c94de2-232d-4083-b534-5da17fc476ac"
- are in split-brain
 
-B) from brick b2 six entries need healing-  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) "a", "file2" and "file3" need healing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) "file1", "file4" & "/dir" are in split-brain  
+It can be seen that
+
+A) from brick b1, four entries need healing:
+
+- file with gfid:6dc78b20-7eb6-49a3-8edb-087b90142246 needs healing
+- "aaca219f-0e25-4576-8689-3bfd93ca70c2", "39f301ae-4038-48c2-a889-7dac143e82dd" and "c3c94de2-232d-4083-b534-5da17fc476ac" are in split-brain
+
+B) from brick b2 six entries need healing-
+
+- "a", "file2" and "file3" need healing
+- "file1", "file4" & "/dir" are in split-brain
 
 # 2. Volume heal info split-brain
+
 Usage: `gluster volume heal <VOLNAME> info split-brain`  
 This command only shows the list of files that are in split-brain. The output is therefore a subset of `gluster volume heal <VOLNAME> info`
 
 ### Example
 
-```console
+```{ .console .no-copy }
 # gluster volume heal test info split-brain
 Brick <hostname:brickpath-b1>
 <gfid:aaca219f-0e25-4576-8689-3bfd93ca70c2>
@@ -95,19 +101,22 @@ Brick <hostname:brickpath-b2>
 Number of entries in split-brain: 3
 ```
 
-Note that similar to the heal info command, for GFID split-brains (same filename but different GFID) 
+Note that similar to the heal info command, for GFID split-brains (same filename but different GFID)
 their parent directories are listed to be in split-brain.
 
 # 3. Resolution of split-brain using gluster CLI
+
 Once the files in split-brain are identified, their resolution can be done
 from the gluster command line using various policies. Type-mismatch cannot be healed using this methods. Split-brain resolution commands let the user resolve data, metadata, and GFID split-brains.
 
 ## 3.1 Resolution of data/metadata split-brain using gluster CLI
+
 Data and metadata split-brains can be resolved using the following policies:
 
 ## i) Select the bigger-file as source
+
 This command is useful for per file healing where it is known/decided that the
-file with bigger size is to be considered as source.   
+file with bigger size is to be considered as source.  
 `gluster volume heal <VOLNAME> split-brain bigger-file <FILE>`  
 Here, `<FILE>` can be either the full file name as seen from the root of the volume
 (or) the GFID-string representation of the file, which sometimes gets displayed
@@ -115,13 +124,14 @@ in the heal info command's output. Once this command is executed, the replica co
 size is found and healing is completed with that brick as a source.
 
 ### Example :
+
 Consider the earlier output of the heal info split-brain command.
 
-Before healing the file, notice file size and md5 checksums :  
+Before healing the file, notice file size and md5 checksums :
 
 On brick b1:
 
-```console
+```{ .console .no-copy }
 [brick1]# stat b1/dir/file1
   File: ‘b1/dir/file1’
   Size: 17              Blocks: 16         IO Block: 4096   regular file
@@ -138,7 +148,7 @@ Change: 2015-03-06 13:55:37.206880347 +0530
 
 On brick b2:
 
-```console
+```{ .console .no-copy }
 [brick2]# stat b2/dir/file1
   File: ‘b2/dir/file1’
   Size: 13              Blocks: 16         IO Block: 4096   regular file
@@ -153,7 +163,7 @@ Change: 2015-03-06 13:52:22.910758923 +0530
 cb11635a45d45668a403145059c2a0d5  b2/dir/file1
 ```
 
-**Healing file1 using the above command** :-    
+**Healing file1 using the above command** :-  
 `gluster volume heal test split-brain bigger-file /dir/file1`  
 Healed /dir/file1.
 
@@ -161,7 +171,7 @@ After healing is complete, the md5sum and file size on both bricks should be the
 
 On brick b1:
 
-```console
+```{ .console .no-copy }
 [brick1]# stat b1/dir/file1
   File: ‘b1/dir/file1’
   Size: 17              Blocks: 16         IO Block: 4096   regular file
@@ -178,7 +188,7 @@ Change: 2015-03-06 14:17:12.880343950 +0530
 
 On brick b2:
 
-```console
+```{ .console .no-copy }
 [brick2]# stat b2/dir/file1
   File: ‘b2/dir/file1’
   Size: 17              Blocks: 16         IO Block: 4096   regular file
@@ -195,7 +205,7 @@ Change: 2015-03-06 14:17:12.881343955 +0530
 
 ## ii) Select the file with the latest mtime as source
 
-```console
+```{ .console .no-copy }
 gluster volume heal <VOLNAME> split-brain latest-mtime <FILE>
 ```
 
@@ -203,20 +213,21 @@ As is perhaps self-explanatory, this command uses the brick having the latest mo
 
 ## iii) Select one of the bricks in the replica as the source for a particular file
 
-```console
+```{ .console .no-copy }
 gluster volume heal <VOLNAME> split-brain source-brick <HOSTNAME:BRICKNAME> <FILE>
 ```
 
 Here, `<HOSTNAME:BRICKNAME>` is selected as source brick and `<FILE>` present in the source brick is taken as the source for healing.
 
 ### Example :
+
 Notice the md5 checksums and file size before and after healing.
 
 Before heal :
 
 On brick b1:
 
-```console
+```{ .console .no-copy }
 [brick1]# stat b1/file4
   File: ‘b1/file4’
   Size: 4               Blocks: 16         IO Block: 4096   regular file
@@ -233,7 +244,7 @@ b6273b589df2dfdbd8fe35b1011e3183  b1/file4
 
 On brick b2:
 
-```console
+```{ .console .no-copy }
 [brick2]# stat b2/file4
   File: ‘b2/file4’
   Size: 4               Blocks: 16         IO Block: 4096   regular file
@@ -251,7 +262,7 @@ Change: 2015-03-06 13:52:35.769833142 +0530
 **Healing the file with gfid c3c94de2-232d-4083-b534-5da17fc476ac using the above command** :
 
 ```console
-# gluster volume heal test split-brain source-brick test-host:/test/b1 gfid:c3c94de2-232d-4083-b534-5da17fc476ac
+gluster volume heal test split-brain source-brick test-host:/test/b1 gfid:c3c94de2-232d-4083-b534-5da17fc476ac
 ```
 
 Healed gfid:c3c94de2-232d-4083-b534-5da17fc476ac.
@@ -260,7 +271,7 @@ After healing :
 
 On brick b1:
 
-```console
+```{ .console .no-copy }
 # stat b1/file4
   File: ‘b1/file4’
   Size: 4               Blocks: 16         IO Block: 4096   regular file
@@ -276,7 +287,7 @@ b6273b589df2dfdbd8fe35b1011e3183  b1/file4
 
 On brick b2:
 
-```console
+```{ .console .no-copy }
 # stat b2/file4
  File: ‘b2/file4’
   Size: 4               Blocks: 16         IO Block: 4096   regular file
@@ -292,7 +303,7 @@ b6273b589df2dfdbd8fe35b1011e3183  b2/file4
 
 ## iv) Select one brick of the replica as the source for all files
 
-```console
+```{ .console .no-copy }
 gluster volume heal <VOLNAME> split-brain source-brick <HOSTNAME:BRICKNAME>
 ```
 
@@ -301,9 +312,10 @@ replica pair is source. As the result of the above command all split-brained
 files in `<HOSTNAME:BRICKNAME>` are selected as source and healed to the sink.
 
 ### Example:
+
 Consider a volume having three entries "a, b and c" in split-brain.
 
-```console
+```{ .console .no-copy }
 # gluster volume heal test split-brain source-brick test-host:/test/b1
 Healed gfid:944b4764-c253-4f02-b35f-0d0ae2f86c0f.
 Healed gfid:3256d814-961c-4e6e-8df2-3a3143269ced.
@@ -312,19 +324,24 @@ Number of healed entries: 3
 ```
 
 # 3.2 Resolution of GFID split-brain using gluster CLI
+
 GFID split-brains can also be resolved by the gluster command line using the same policies that are used to resolve data and metadata split-brains.
 
 ## i) Selecting the bigger-file as source
+
 This method is useful for per file healing and where you can decided that the file with bigger size is to be considered as source.
 
 Run the following command to obtain the path of the file that is in split-brain:
-```console
+
+```{ .console .no-copy }
 # gluster volume heal VOLNAME info split-brain
 ```
 
 From the output, identify the files for which file operations performed from the client failed with input/output error.
+
 ### Example :
-```console
+
+```{ .console .no-copy }
 # gluster volume heal testvol info
 Brick 10.70.47.45:/bricks/brick2/b0
 /f5
@@ -340,19 +357,22 @@ Brick 10.70.47.144:/bricks/brick2/b1
 Status: Connected
 Number of entries: 2
 ```
+
 > **Note**
 > Entries which are in GFID split-brain may not be shown as in split-brain by the heal info or heal info split-brain commands always. For entry split-brains, it is the parent directory which is shown as being in split-brain. So one might need to run info split-brain to get the dir names and then heal info to get the list of files under that dir which might be in split-brain (it could just be needing heal without split-brain).
 
 In the above command, testvol is the volume name, b0 and b1 are the bricks.
 Execute the below getfattr command on the brick to fetch information if a file is in GFID split-brain or not.
 
-```console
+```{ .console .no-copy }
 # getfattr -d -e hex -m. <path-to-file>
 ```
 
 ### Example :
+
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b0/f5
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f5
@@ -364,7 +384,8 @@ trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f5
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b1/f5
@@ -379,7 +400,8 @@ You can notice the difference in GFID for the file f5 in both the bricks.
 You can find the differences in the file size by executing stat command on the file from the bricks.
 
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # stat /bricks/brick2/b0/f5
 File: ‘/bricks/brick2/b0/f5’
 Size: 15            Blocks: 8          IO Block: 4096   regular file
@@ -393,7 +415,8 @@ Birth: -
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # stat /bricks/brick2/b1/f5
 File: ‘/bricks/brick2/b1/f5’
 Size: 2             Blocks: 8          IO Block: 4096   regular file
@@ -408,12 +431,13 @@ Birth: -
 
 Execute the following command along with the full filename as seen from the root of the volume which is displayed in the heal info command's output:
 
-```console
+```{ .console .no-copy }
 # gluster volume heal VOLNAME split-brain bigger-file FILE
 ```
 
 ### Example :
-```console
+
+```{ .console .no-copy }
 # gluster volume heal testvol split-brain bigger-file /f5
 GFID split-brain resolved for file /f5
 ```
@@ -421,7 +445,8 @@ GFID split-brain resolved for file /f5
 After the healing is complete, the GFID of the file on both the bricks must be the same as that of the file which had the bigger size. The following is a sample output of the getfattr command after completion of healing the file.
 
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b0/f5
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f5
@@ -431,7 +456,8 @@ trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f5
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b1/f5
@@ -441,14 +467,16 @@ trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d30303
 ```
 
 ## ii) Selecting the file with latest mtime as source
+
 This method is useful for per file healing and if you want the file with latest mtime has to be considered as source.
 
 ### Example :
+
 Lets take another file which is in GFID split-brain and try to heal that using the latest-mtime option.
 
 On brick /b0
 
-```console
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b0/f4
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f4
@@ -460,7 +488,8 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f4
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b1/f4
@@ -475,7 +504,8 @@ You can notice the difference in GFID for the file f4 in both the bricks.
 You can find the difference in the modification time by executing stat command on the file from the bricks.
 
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # stat /bricks/brick2/b0/f4
 File: ‘/bricks/brick2/b0/f4’
 Size: 14            Blocks: 8          IO Block: 4096   regular file
@@ -489,7 +519,8 @@ Birth: -
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # stat /bricks/brick2/b1/f4
 File: ‘/bricks/brick2/b1/f4’
 Size: 2             Blocks: 8          IO Block: 4096   regular file
@@ -503,12 +534,14 @@ Birth: -
 ```
 
 Execute the following command:
-```console
+
+```{ .console .no-copy }
 # gluster volume heal VOLNAME split-brain latest-mtime FILE
 ```
 
 ### Example :
-```console
+
+```{ .console .no-copy }
 # gluster volume heal testvol split-brain latest-mtime /f4
 GFID split-brain resolved for file /f4
 ```
@@ -516,7 +549,9 @@ GFID split-brain resolved for file /f4
 After the healing is complete, the GFID of the files on both bricks must be same. The following is a sample output of the getfattr command after completion of healing the file. You can notice that the file has been healed using the brick having the latest mtime as the source.
 
 On brick /b0
-```console# getfattr -d -m . -e hex /bricks/brick2/b0/f4
+
+```{ .console .no-copy }
+# getfattr -d -m . -e hex /bricks/brick2/b0/f4
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f4
 security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
@@ -525,7 +560,8 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f4
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b1/f4
@@ -535,13 +571,16 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 ## iii) Select one of the bricks in the replica as source for a particular file
+
 This method is useful for per file healing and if you know which copy of the file is good.
 
 ### Example :
+
 Lets take another file which is in GFID split-brain and try to heal that using the source-brick option.
 
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b0/f3
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f3
@@ -553,7 +592,8 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f3
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f3
@@ -567,14 +607,16 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 You can notice the difference in GFID for the file f3 in both the bricks.
 
 Execute the following command:
-```console
+
+```{ .console .no-copy }
 # gluster volume heal VOLNAME split-brain source-brick HOSTNAME:export-directory-absolute-path FILE
 ```
 
 In this command, FILE present in HOSTNAME : export-directory-absolute-path is taken as source for healing.
 
 ### Example :
-```console
+
+```{ .console .no-copy }
 # gluster volume heal testvol split-brain source-brick 10.70.47.144:/bricks/brick2/b1 /f3
 GFID split-brain resolved for file /f3
 ```
@@ -582,7 +624,8 @@ GFID split-brain resolved for file /f3
 After the healing is complete, the GFID of the file on both the bricks should be same as that of the brick which was chosen as source for healing. The following is a sample output of the getfattr command after the file is healed.
 
 On brick /b0
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b0/f3
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b0/f3
@@ -592,7 +635,8 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 On brick /b1
-```console
+
+```{ .console .no-copy }
 # getfattr -d -m . -e hex /bricks/brick2/b1/f3
 getfattr: Removing leading '/' from absolute path names
 file: bricks/brick2/b1/f3
@@ -602,19 +646,22 @@ trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d30303
 ```
 
 > **Note**
->- One cannot use the GFID of the file as an argument with any of the CLI options to resolve GFID split-brain. It should be the absolute path as seen from the mount point to the file considered as source.
 >
->- With source-brick option there is no way to resolve all the GFID split-brain in one shot by not specifying any file path in the CLI as done while resolving data or metadata split-brain. For each file in GFID split-brain, run the CLI with the policy you want to use.
+> - One cannot use the GFID of the file as an argument with any of the CLI options to resolve GFID split-brain. It should be the absolute path as seen from the mount point to the file considered as source.
 >
->- Resolving directory GFID split-brain using CLI with the "source-brick" option in a "distributed-replicated" volume needs to be done on all the sub-volumes explicitly, which are in this state. Since directories get created on all the sub-volumes, using one particular brick as source for directory GFID split-brain heals the directory for that particular sub-volume. Source brick should be chosen in such a way that after heal all the bricks of all the sub-volumes have the same GFID.
+> - With source-brick option there is no way to resolve all the GFID split-brain in one shot by not specifying any file path in the CLI as done while resolving data or metadata split-brain. For each file in GFID split-brain, run the CLI with the policy you want to use.
+>
+> - Resolving directory GFID split-brain using CLI with the "source-brick" option in a "distributed-replicated" volume needs to be done on all the sub-volumes explicitly, which are in this state. Since directories get created on all the sub-volumes, using one particular brick as source for directory GFID split-brain heals the directory for that particular sub-volume. Source brick should be chosen in such a way that after heal all the bricks of all the sub-volumes have the same GFID.
 
 ## Note:
+
 As mentioned earlier, type-mismatch can not be resolved using CLI. Type-mismatch means different st_mode values (for example, the entry is a file in one brick while it is a directory on the other). Trying to heal such entry would fail.
 
 ### Example
+
 The entry named "entry1" is of different types on the bricks of the replica. Lets try to heal that using the split-brain CLI.
 
-```console
+```{ .console .no-copy }
 # gluster volume heal test split-brain source-brick test-host:/test/b1 /entry1
 Healing /entry1 failed:Operation not permitted.
 Volume heal failed.
@@ -623,22 +670,23 @@ Volume heal failed.
 However, they can be fixed by deleting the file from all but one bricks. See [Fixing Directory entry split-brain](#dir-split-brain)
 
 # An overview of working of heal info commands
-When these commands are invoked, a "glfsheal" process is spawned which reads 
-the entries from the various sub-directories under `/<brick-path>/.glusterfs/indices/` of all 
-the bricks that are up (that it can connect to) one after another. These 
-entries are GFIDs of files that might need healing. Once GFID entries from a 
-brick are obtained, based on the lookup response of this file on each 
-participating brick of replica-pair & trusted.afr.* extended attributes it is 
-found out if the file needs healing, is in split-brain etc based on the 
+
+When these commands are invoked, a "glfsheal" process is spawned which reads
+the entries from the various sub-directories under `/<brick-path>/.glusterfs/indices/` of all
+the bricks that are up (that it can connect to) one after another. These
+entries are GFIDs of files that might need healing. Once GFID entries from a
+brick are obtained, based on the lookup response of this file on each
+participating brick of replica-pair & trusted.afr.\* extended attributes it is
+found out if the file needs healing, is in split-brain etc based on the
 requirement of each command and displayed to the user.
 
-
 # 4. Resolution of split-brain from the mount point
+
 A set of getfattr and setfattr commands have been provided to detect the data and metadata split-brain status of a file and resolve split-brain, if any, from mount point.
 
 Consider a volume "test", having bricks b0, b1, b2 and b3.
 
-```console
+```{ .console .no-copy }
 # gluster volume info test
 
 Volume Name: test
@@ -656,7 +704,7 @@ Brick4: test-host:/test/b3
 
 Directory structure of the bricks is as follows:
 
-```console
+```{ .console .no-copy }
 # tree -R /test/b?
 /test/b0
 ├── dir
@@ -683,7 +731,7 @@ Directory structure of the bricks is as follows:
 
 Some files in the volume are in split-brain.
 
-```console
+```{ .console .no-copy }
 # gluster v heal test info split-brain
 Brick test-host:/test/b0/
 /file100
@@ -708,7 +756,7 @@ Number of entries in split-brain: 2
 
 ### To know data/metadata split-brain status of a file:
 
-```console
+```{ .console .no-copy }
 getfattr -n replica.split-brain-status <path-to-file>
 ```
 
@@ -716,50 +764,52 @@ The above command executed from mount provides information if a file is in data/
 This command is not applicable to gfid/directory split-brain.
 
 ### Example:
-1) "file100" is in metadata split-brain. Executing the above mentioned command for file100 gives :
 
-```console
+1. "file100" is in metadata split-brain. Executing the above mentioned command for file100 gives :
+
+```{ .console .no-copy }
 # getfattr -n replica.split-brain-status file100
 file: file100
 replica.split-brain-status="data-split-brain:no    metadata-split-brain:yes    Choices:test-client-0,test-client-1"
 ```
 
-2) "file1" is in data split-brain.
+2. "file1" is in data split-brain.
 
-```console
+```{ .console .no-copy }
 # getfattr -n replica.split-brain-status file1
 file: file1
 replica.split-brain-status="data-split-brain:yes    metadata-split-brain:no    Choices:test-client-2,test-client-3"
 ```
 
-3) "file99" is in both data and metadata split-brain.
+3. "file99" is in both data and metadata split-brain.
 
-```console
+```{ .console .no-copy }
 # getfattr -n replica.split-brain-status file99
 file: file99
 replica.split-brain-status="data-split-brain:yes    metadata-split-brain:yes    Choices:test-client-2,test-client-3"
 ```
 
-4) "dir" is in directory split-brain but as mentioned earlier, the above command is not applicable to such split-brain. So it says that the file is not under data or metadata split-brain.
+4. "dir" is in directory split-brain but as mentioned earlier, the above command is not applicable to such split-brain. So it says that the file is not under data or metadata split-brain.
 
-```console
+```{ .console .no-copy }
 # getfattr -n replica.split-brain-status dir
 file: dir
 replica.split-brain-status="The file is not under data or metadata split-brain"
 ```
 
-5) "file2" is not in any kind of split-brain.
+5. "file2" is not in any kind of split-brain.
 
-```console
+```{ .console .no-copy }
 # getfattr -n replica.split-brain-status file2
 file: file2
 replica.split-brain-status="The file is not under data or metadata split-brain"
 ```
 
 ### To analyze the files in data and metadata split-brain
+
 Trying to do operations (say cat, getfattr etc) from the mount on files in split-brain, gives an input/output error. To enable the users analyze such files, a setfattr command is provided.
 
-```console
+```{ .console .no-copy }
 # setfattr -n replica.split-brain-choice -v "choiceX" <path-to-file>
 ```
 
@@ -767,9 +817,9 @@ Using this command, a particular brick can be chosen to access the file in split
 
 ### Example:
 
-1) "file1" is in data-split-brain. Trying to read from the file gives input/output error.
+1. "file1" is in data-split-brain. Trying to read from the file gives input/output error.
 
-```console
+```{ .console .no-copy }
 # cat file1
 cat: file1: Input/output error
 ```
@@ -778,13 +828,13 @@ Split-brain choices provided for file1 were test-client-2 and test-client-3.
 
 Setting test-client-2 as split-brain choice for file1 serves reads from b2 for the file.
 
-```console
+```{ .console .no-copy }
 # setfattr -n replica.split-brain-choice -v test-client-2 file1
 ```
 
 Now, read operations on the file can be done.
 
-```console
+```{ .console .no-copy }
 # cat file1
 xyz
 ```
@@ -793,18 +843,18 @@ Similarly, to inspect the file from other choice, replica.split-brain-choice is 
 
 Trying to inspect the file from a wrong choice errors out.
 
-To undo the split-brain-choice that has been set, the above mentioned setfattr command can be used 
+To undo the split-brain-choice that has been set, the above mentioned setfattr command can be used
 with "none" as the value for extended attribute.
 
 ### Example:
 
-```console
+```{ .console .no-copy }
 # setfattr -n replica.split-brain-choice -v none file1
 ```
 
 Now performing cat operation on the file will again result in input/output error, as before.
 
-```console
+```{ .console .no-copy }
 # cat file
 cat: file1: Input/output error
 ```
@@ -812,13 +862,13 @@ cat: file1: Input/output error
 Once the choice for resolving split-brain is made, source brick is supposed to be set for the healing to be done.
 This is done using the following command:
 
-```console
+```{ .console .no-copy }
 # setfattr -n replica.split-brain-heal-finalize -v <heal-choice> <path-to-file>
 ```
 
 ## Example
 
-```console
+```{ .console .no-copy }
 # setfattr -n replica.split-brain-heal-finalize -v test-client-2 file1
 ```
 
@@ -826,18 +876,19 @@ The above process can be used to resolve data and/or metadata split-brain on all
 
 **NOTE**:
 
-1) If "fopen-keep-cache" fuse mount option is disabled then inode needs to be invalidated each time before selecting a new replica.split-brain-choice to inspect a file. This can be done by using:
+1. If "fopen-keep-cache" fuse mount option is disabled then inode needs to be invalidated each time before selecting a new replica.split-brain-choice to inspect a file. This can be done by using:
 
-```console
+```{ .console .no-copy }
 # sefattr -n inode-invalidate -v 0 <path-to-file>
 ```
 
-2) The above mentioned process for split-brain resolution from mount will not work on nfs mounts as it doesn't provide xattrs support.
+2. The above mentioned process for split-brain resolution from mount will not work on nfs mounts as it doesn't provide xattrs support.
 
 # 5. Automagic unsplit-brain by [ctime|mtime|size|majority]
-The CLI and fuse mount based resolution methods require intervention in the sense that the admin/ user needs to run the commands manually. There is a   `cluster.favorite-child-policy` volume option which when set to one of the various policies available, automatically resolve split-brains without user intervention. The default value is 'none', i.e. it is disabled.
 
-```console
+The CLI and fuse mount based resolution methods require intervention in the sense that the admin/ user needs to run the commands manually. There is a `cluster.favorite-child-policy` volume option which when set to one of the various policies available, automatically resolve split-brains without user intervention. The default value is 'none', i.e. it is disabled.
+
+```{ .console .no-copy }
 # gluster volume set help | grep -A3 cluster.favorite-child-policy
 Option: cluster.favorite-child-policy
 Default Value: none
@@ -846,40 +897,41 @@ Description: This option can be used to automatically resolve split-brains using
 
 `cluster.favorite-child-policy` applies to all files of the volume. It is assumed that if this option is enabled with a particular policy, you don't care to examine the split-brain files on a per file basis but just want the split-brain to be resolved as and when it occurs based on the set policy.
 
-
-<a name="manual-split-brain"></a>
 # Manual Split-Brain Resolution:
 
-Quick Start:
-============
-1. Get the path of the file that is in split-brain:  
->  It can be obtained either by  
->       a) The command `gluster volume heal info split-brain`.  
->       b) Identify the files for which file operations performed
-           from the client keep failing with Input/Output error.
+# Quick Start:
 
-2. Close the applications that opened this file from the mount point.
-In case of VMs, they need to be powered-off.
+1.  Get the path of the file that is in split-brain:
 
-3. Decide on the correct copy:  
-> This is done by observing the afr changelog extended attributes of the file on
-the bricks using the getfattr command; then identifying the type of split-brain 
-(data split-brain, metadata split-brain, entry split-brain or split-brain due to
-gfid-mismatch); and finally determining which of the bricks contains the 'good copy'
-of the file.  
->   `getfattr -d -m . -e hex <file-path-on-brick>`.  
-It is also possible that one brick might contain the correct data while the
-other might contain the correct metadata.
+    > It can be obtained either by  
+    >  a) The command `gluster volume heal info split-brain`.  
+    >  b) Identify the files for which file operations performed from the client keep failing with Input/Output error.
 
-4. Reset the relevant extended attribute on the brick(s) that contains the
-'bad copy' of the file data/metadata using the setfattr command.  
->   `setfattr -n <attribute-name> -v <attribute-value> <file-path-on-brick>`
+1.  Close the applications that opened this file from the mount point.
+    In case of VMs, they need to be powered-off.
 
-5. Trigger self-heal on the file by performing lookup from the client:  
->   `ls -l <file-path-on-gluster-mount>`
+1.  Decide on the correct copy:
 
-Detailed Instructions for steps 3 through 5:  
-===========================================
+    > This is done by observing the afr changelog extended attributes of the file on
+    > the bricks using the getfattr command; then identifying the type of split-brain
+    > (data split-brain, metadata split-brain, entry split-brain or split-brain due to
+    > gfid-mismatch); and finally determining which of the bricks contains the 'good copy'
+    > of the file.  
+    >  `getfattr -d -m . -e hex <file-path-on-brick>`.  
+    > It is also possible that one brick might contain the correct data while the
+    > other might contain the correct metadata.
+
+1.  Reset the relevant extended attribute on the brick(s) that contains the
+    'bad copy' of the file data/metadata using the setfattr command.
+
+    > `setfattr -n <attribute-name> -v <attribute-value> <file-path-on-brick>`
+
+1.  Trigger self-heal on the file by performing lookup from the client:
+
+    > `ls -l <file-path-on-gluster-mount>`
+
+# Detailed Instructions for steps 3 through 5:
+
 To understand how to resolve split-brain we need to know how to interpret the
 afr changelog extended attributes.
 
@@ -887,7 +939,7 @@ Execute `getfattr -d -m . -e hex <file-path-on-brick>`
 
 Example:
 
-```console
+```{ .console .no-copy }
 [root@store3 ~]# getfattr -d -e hex -m. brick-a/file.txt
 \#file: brick-a/file.txt
 security.selinux=0x726f6f743a6f626a6563745f723a66696c655f743a733000
@@ -900,7 +952,7 @@ The extended attributes with `trusted.afr.<volname>-client-<subvolume-index>`
 are used by afr to maintain changelog of the file.The values of the
 `trusted.afr.<volname>-client-<subvolume-index>` are calculated by the glusterfs
 client (fuse or nfs-server) processes. When the glusterfs client modifies a file
-or directory, the client contacts each brick and updates the changelog extended 
+or directory, the client contacts each brick and updates the changelog extended
 attribute according to the response of the brick.
 
 'subvolume-index' is nothing but (brick number - 1) in
@@ -908,7 +960,7 @@ attribute according to the response of the brick.
 
 Example:
 
-```console
+```{ .console .no-copy }
 [root@pranithk-laptop ~]# gluster volume info vol
  Volume Name: vol
  Type: Distributed-Replicate
@@ -929,7 +981,7 @@ Example:
 
 In the example above:
 
-```console
+```{ .console .no-copy }
 Brick             |    Replica set        |    Brick subvolume index
 ----------------------------------------------------------------------------
 -/gfs/brick-a     |       0               |       0
@@ -945,25 +997,25 @@ Brick             |    Replica set        |    Brick subvolume index
 Each file in a brick maintains the changelog of itself and that of the files
 present in all the other bricks in its replica set as seen by that brick.
 
-In the example volume given above, all files in brick-a will have 2 entries, 
+In the example volume given above, all files in brick-a will have 2 entries,
 one for itself and the other for the file present in its replica pair, i.e.brick-b:  
 trusted.afr.vol-client-0=0x000000000000000000000000 -->changelog for itself (brick-a)  
-trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for brick-b as seen by brick-a  
+trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for brick-b as seen by brick-a
 
 Likewise, all files in brick-b will have:  
 trusted.afr.vol-client-0=0x000000000000000000000000 -->changelog for brick-a as seen by brick-b  
-trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for itself (brick-b)  
+trusted.afr.vol-client-1=0x000000000000000000000000 -->changelog for itself (brick-b)
 
-The same can be extended for other replica pairs.  
+The same can be extended for other replica pairs.
 
 Interpreting Changelog (roughly pending operation count) Value:  
 Each extended attribute has a value which is 24 hexa decimal digits.  
 First 8 digits represent changelog of data. Second 8 digits represent changelog
-of metadata. Last 8 digits represent Changelog of directory entries.  
+of metadata. Last 8 digits represent Changelog of directory entries.
 
 Pictorially representing the same, we have:
 
-```text
+```{ .text .no-copy }
 0x 000003d7 00000001 00000000
         |      |       |
         |      |        \_ changelog of directory entries
@@ -971,17 +1023,16 @@ Pictorially representing the same, we have:
          \ _ changelog of data
 ```
 
-
 For Directories metadata and entry changelogs are valid.
 For regular files data and metadata changelogs are valid.
 For special files like device files etc metadata changelog is valid.
 When a file split-brain happens it could be either data split-brain or
 meta-data split-brain or both. When a split-brain happens the changelog of the
-file would be something like this:  
+file would be something like this:
 
 Example:(Lets consider both data, metadata split-brain on same file).
 
-```console
+```{ .console .no-copy }
 [root@pranithk-laptop vol]# getfattr -d -m . -e hex /gfs/brick-?/a
 getfattr: Removing leading '/' from absolute path names
 \#file: gfs/brick-a/a
@@ -1007,7 +1058,7 @@ on itself but failed on /gfs/brick-b/a.
 The second 8 digits of trusted.afr.vol-client-0 are
 all zeros (0x........00000000........), and the second 8 digits of
 trusted.afr.vol-client-1 are not all zeros (0x........00000001........).
-So the changelog on /gfs/brick-a/a implies that some metadata operations succeeded 
+So the changelog on /gfs/brick-a/a implies that some metadata operations succeeded
 on itself but failed on /gfs/brick-b/a.
 
 #### According to Changelog extended attributes on file /gfs/brick-b/a:
@@ -1029,12 +1080,12 @@ file, it is in both data and metadata split-brain.
 
 #### Deciding on the correct copy:
 
-The user may have to inspect stat,getfattr output of the files to decide which 
+The user may have to inspect stat,getfattr output of the files to decide which
 metadata to retain and contents of the file to decide which data to retain.
 Continuing with the example above, lets say we want to retain the data
 of /gfs/brick-a/a and metadata of /gfs/brick-b/a.
 
-#### Resetting the relevant changelogs to resolve the split-brain:  
+#### Resetting the relevant changelogs to resolve the split-brain:
 
 For resolving data-split-brain:
 
@@ -1068,27 +1119,31 @@ For trusted.afr.vol-client-1
 Hence execute  
 `setfattr -n trusted.afr.vol-client-1 -v 0x000003d70000000000000000 /gfs/brick-a/a`
 
-Thus after the above operations are done, the changelogs look like this:  
-[root@pranithk-laptop vol]# getfattr -d -m . -e hex /gfs/brick-?/a  
-getfattr: Removing leading '/' from absolute path names  
-\#file: gfs/brick-a/a  
-trusted.afr.vol-client-0=0x000000000000000000000000  
-trusted.afr.vol-client-1=0x000003d70000000000000000  
-trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57  
+Thus after the above operations are done, the changelogs look like this:
 
-\#file: gfs/brick-b/a  
-trusted.afr.vol-client-0=0x000000000000000100000000  
-trusted.afr.vol-client-1=0x000000000000000000000000  
-trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57  
+```{ .console .no-copy }
+[root@pranithk-laptop vol]# getfattr -d -m . -e hex /gfs/brick-?/a
+getfattr: Removing leading '/' from absolute path names
+\#file: gfs/brick-a/a
+trusted.afr.vol-client-0=0x000000000000000000000000
+trusted.afr.vol-client-1=0x000003d70000000000000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
 
+\#file: gfs/brick-b/a
+trusted.afr.vol-client-0=0x000000000000000100000000
+trusted.afr.vol-client-1=0x000000000000000000000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
+```
 
-Triggering Self-heal:
----------------------
+## Triggering Self-heal:
+
 Perform `ls -l <file-path-on-gluster-mount>` to trigger healing.
 
 <a name="dir-split-brain"></a>
 Fixing Directory entry split-brain:
-----------------------------------
+
+---
+
 Afr has the ability to conservatively merge different entries in the directories
 when there is a split-brain on directory.
 If on one brick directory 'd' has entries '1', '2' and has entries '3', '4' on
@@ -1108,9 +1163,11 @@ needs to be removed.The gfid-link files are present in the .glusterfs folder
 in the top-level directory of the brick. If the gfid of the file is
 0x307a5c9efddd4e7c96e94fd4bcdcbd1b (the trusted.gfid extended attribute got
 from the getfattr command earlier),the gfid-link file can be found at
+
 > /gfs/brick-a/.glusterfs/30/7a/307a5c9efddd4e7c96e94fd4bcdcbd1b
 
 #### Word of caution:
+
 Before deleting the gfid-link, we have to ensure that there are no hard links
 to the file present on that brick. If hard-links exist,they must be deleted as
 well.
