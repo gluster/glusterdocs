@@ -7,5 +7,3 @@ OK, you can do that by editing planet-gluster [feeds](https://github.com/gluster
 Please find instructions mentioned in the file and send a pull request.
 
 Once approved, all your gluster related posts will appear in [planet.gluster.org](http://planet.gluster.org) website.
-
-
