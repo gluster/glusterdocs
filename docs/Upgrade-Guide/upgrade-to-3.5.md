@@ -23,7 +23,7 @@ provided below)
 
 1.  Execute "pre-upgrade-script-for-quota.sh" mentioned under "Upgrade Steps For Quota" section.
 2.  Stop all glusterd, glusterfsd and glusterfs processes on your server.
-3.  Install  GlusterFS 3.5.0
+3.  Install GlusterFS 3.5.0
 4.  Start glusterd.
 5.  Ensure that all started volumes have processes online in “gluster volume status”.
 6.  Execute "Post-Upgrade Script" mentioned under "Upgrade Steps For Quota" section.
@@ -77,7 +77,7 @@ The upgrade process for quota involves executing two upgrade scripts:
 1. pre-upgrade-script-for-quota.sh, and\
 2. post-upgrade-script-for-quota.sh
 
-*Pre-Upgrade Script:*
+_Pre-Upgrade Script:_
 
 What it does:
 
@@ -105,11 +105,11 @@ Invocation:
 Invoke the script by executing \`./pre-upgrade-script-for-quota.sh\`
 from the shell on any one of the nodes in the cluster.
 
--   Example:
+- Example:
 
-        [root@server1 extras]#./pre-upgrade-script-for-quota.sh
+      [root@server1 extras]#./pre-upgrade-script-for-quota.sh
 
-*Post-Upgrade Script:*
+_Post-Upgrade Script:_
 
 What it does:
 
@@ -164,9 +164,9 @@ In the first case, invoke post-upgrade-script-for-quota.sh from the
 shell for each volume with quota enabled, with the name of the volume
 passed as an argument in the command-line:
 
--   Example:
+- Example:
 
-*For a volume "vol1" on which quota is enabled, invoke the script in the following way:*
+_For a volume "vol1" on which quota is enabled, invoke the script in the following way:_
 
         [root@server1 extras]#./post-upgrade-script-for-quota.sh vol1
 
@@ -176,9 +176,9 @@ procedure on each one of them. In this case, invoke
 post-upgrade-script-for-quota.sh from the shell with 'all' passed as an
 argument in the command-line:
 
--   Example:
+- Example:
 
-        [root@server1 extras]#./post-upgrade-script-for-quota.sh all
+      [root@server1 extras]#./post-upgrade-script-for-quota.sh all
 
 Note:
 

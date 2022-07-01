@@ -10,22 +10,23 @@ documented instructions, replacing 7 when you encounter 4.1 in the guide as the
 version reference.
 
 > **NOTE:** If you have ever enabled quota on your volumes then after the upgrade
-is done, you will have to restart all the nodes in the cluster one by one so as to
-fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.`
-The peers may go into  `Peer rejected` state while doing so but once all the nodes are rebooted
-everything will be back to normal.
+> is done, you will have to restart all the nodes in the cluster one by one so as to
+> fix the checksum values in the quota.cksum file under the `/var/lib/glusterd/vols/<volname>/ directory.`
+> The peers may go into `Peer rejected` state while doing so but once all the nodes are rebooted
+> everything will be back to normal.
 
 ### Major issues
 
-1. The following options are removed from the code base and require to be unset
-before an upgrade from releases older than release 4.1.0,
-- features.lock-heal
-- features.grace-timeout
+1.  The following options are removed from the code base and require to be unset
+    before an upgrade from releases older than release 4.1.0,
+
+    - features.lock-heal
+    - features.grace-timeout
 
 To check if these options are set use,
 
 ```console
-# gluster volume info
+gluster volume info
 ```
 
 and ensure that the above options are not part of the `Options Reconfigured:`
@@ -33,7 +34,7 @@ section in the output of all volumes in the cluster.
 
 If these are set, then unset them using the following commands,
 
-```console
+```{ .console .no-copy }
 # gluster volume reset <volname> <option>
 ```
 
