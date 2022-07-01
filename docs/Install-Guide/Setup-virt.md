@@ -1,5 +1,6 @@
 # Setup on Virtual Machine
-*Note: You only need one of the three setup methods!*
+
+_Note: You only need one of the three setup methods!_
 
 ### Setup, Method 1 – Setting up in virtual machines
 
@@ -16,18 +17,18 @@ distribution already.
 
 Create or clone two VM’s, with the following setup on each:
 
--   2 disks using the VirtIO driver, one for the base OS and one that we
-    will use as a Gluster “brick”. You can add more later to try testing
-    some more advanced configurations, but for now let’s keep it simple.
+- 2 disks using the VirtIO driver, one for the base OS and one that we
+  will use as a Gluster “brick”. You can add more later to try testing
+  some more advanced configurations, but for now let’s keep it simple.
 
-*Note: If you have ample space available, consider allocating all the
-disk space at once.*
+_Note: If you have ample space available, consider allocating all the
+disk space at once._
 
--   2 NIC’s using VirtIO driver. The second NIC is not strictly
-    required, but can be used to demonstrate setting up a separate
-    network for storage and management traffic.
+- 2 NIC’s using VirtIO driver. The second NIC is not strictly
+  required, but can be used to demonstrate setting up a separate
+  network for storage and management traffic.
 
-*Note: Attach each NIC to a separate network.*
+_Note: Attach each NIC to a separate network._
 
 Other notes: Make sure that if you clone the VM, that Gluster has not
 already been installed. Gluster generates a UUID to “fingerprint” each

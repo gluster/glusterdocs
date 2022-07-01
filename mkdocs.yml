@@ -40,8 +40,8 @@ nav:
       - Setting up on physical servers: Install-Guide/Setup-Bare-metal.md
       - Deploying in AWS: Install-Guide/Setup-aws.md
       - Install: Install-Guide/Install.md
-      - Community Packages: Install-Guide/Community-Packages.md
       - Configure: Install-Guide/Configure.md
+      - Community Packages: Install-Guide/Community-Packages.md
   - Administration Guide:
       - Overview: Administrator-Guide/overview.md
       - Index: Administrator-Guide/index.md
