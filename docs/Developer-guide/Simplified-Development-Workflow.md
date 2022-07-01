@@ -1,5 +1,4 @@
-Simplified development workflow for GlusterFS
-=============================================
+# Simplified development workflow for GlusterFS
 
 This page gives a simplified model of the development workflow used by
 the GlusterFS project. This will give the steps required to get a patch
@@ -8,8 +7,7 @@ accepted into the GlusterFS source.
 Visit [Development Work Flow](./Development-Workflow.md) a more
 detailed description of the workflow.
 
-##Initial preparation
----------------------
+## Initial preparation
 
 The GlusterFS development workflow revolves around
 [GitHub](http://github.com/gluster/glusterfs/) and
@@ -17,13 +15,15 @@ The GlusterFS development workflow revolves around
 Using these both tools requires some initial preparation.
 
 ### Get the source
+
 Git clone the GlusterFS source using
 
-```console
-   git clone git@github.com:${username}/glusterfs.git
-   cd glusterfs/
-   git remote add upstream git@github.com:gluster/glusterfs.git
+```{ .console .no-copy }
+git clone git@github.com:${username}/glusterfs.git
+cd glusterfs/
+git remote add upstream git@github.com:gluster/glusterfs.git
 ```
+
 This will clone the GlusterFS source into a subdirectory named glusterfs
 with the devel branch checked out.
 
@@ -34,7 +34,7 @@ distribution specific package manger to install git. After installation
 configure git. At the minimum, set a git user email. To set the email
 do,
 
-```console
+```{ .console .no-copy }
 git config --global user.name <name>
 git config --global user.email <email address>
 ```
@@ -43,8 +43,7 @@ Next, install the build requirements for GlusterFS. Refer
 [Building GlusterFS - Build Requirements](./Building-GlusterFS.md#Build Requirements)
 for the actual requirements.
 
-##Actual development
---------------------
+## Actual development
 
 The commands in this section are to be run inside the glusterfs source
 directory.
@@ -55,23 +54,25 @@ It is recommended to use separate local development branches for each
 change you want to contribute to GlusterFS. To create a development
 branch, first checkout the upstream branch you want to work on and
 update it. More details on the upstream branching model for GlusterFS
-can be found at [Development Work Flow - Branching\_policy](./Development-Workflow.md#branching-policy).
+can be found at [Development Work Flow - Branching_policy](./Development-Workflow.md#branching-policy).
 For example if you want to develop on the devel branch,
 
 ```console
-# git checkout devel
-# git pull
+git checkout devel
+git pull
 ```
 
 Now, create a new branch from devel and switch to the new branch. It is
 recommended to have descriptive branch names. Do,
 
-```console
+```{ .console .no-copy }
 git branch issueNNNN
 git checkout issueNNNN
 ```
+
 or,
-```console
+
+```{ .console .no-copy }
 git checkout -b issueNNNN upstream/main
 ```
 
@@ -100,8 +101,8 @@ working GlusterFS installation and needs to be run as root. To run the
 regression test suite, do
 
 ```console
-# make install
-# ./run-tests.sh
+make install
+./run-tests.sh
 ```
 
 or, After uploading the patch The regression tests would be triggered
@@ -113,7 +114,7 @@ If you haven't broken anything, you can now commit your changes. First
 identify the files that you modified/added/deleted using git-status and
 stage these files.
 
-```console
+```{ .console .no-copy }
 git status
 git add <list of modified files>
 ```
@@ -121,7 +122,7 @@ git add <list of modified files>
 Now, commit these changes using
 
 ```console
-# git commit -s
+git commit -s
 ```
 
 Provide a meaningful commit message. The commit message policy is
@@ -134,18 +135,19 @@ sign-off the commit with your configured email.
 To submit your change for review, run the rfc.sh script,
 
 ```console
-# ./rfc.sh
+./rfc.sh
 ```
+
 or
-```console
+
+```{ .console .no-copy }
 git push origin HEAD:issueNNN
 ```
 
 More details on the rfc.sh script are available at
 [Development Work Flow - rfc.sh](./Development-Workflow.md#rfc.sh).
 
-##Review process
-----------------
+## Review process
 
 Your change will now be reviewed by the GlusterFS maintainers and
 component owners. You can follow and take part in the review process
@@ -186,8 +188,9 @@ review comments. Build and test to see if the new changes are working.
 Stage your changes and commit your new changes in new commits using,
 
 ```console
-# git commit -a -s
+git commit -a -s
 ```
+
 Now you can resubmit the commit for review using the rfc.sh script or git push.
 
 The formal review process could take a long time. To increase chances
