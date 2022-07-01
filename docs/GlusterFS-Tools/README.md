@@ -1,5 +1,4 @@
-GlusterFS Tools
----------------
+## GlusterFS Tools
 
--  [glusterfind](./glusterfind.md)
--  [gfind missing files](./gfind-missing-files.md)
+- [glusterfind](./glusterfind.md)
+- [gfind missing files](./gfind-missing-files.md)

@@ -54,15 +54,15 @@ bash gfid_to_path.sh <BRICK_PATH> <GFID_FILE>
 
 ## Things to keep in mind when running the tool
 
-1. Running this tool can result in a crawl of the backend filesystem at each
-   brick which can be intensive. To ensure there is no impact on ongoing I/O on
-   RHS volumes, we recommend that this tool be run at a low I/O scheduling class
-   (best-effort) and priority.
+1.  Running this tool can result in a crawl of the backend filesystem at each
+    brick which can be intensive. To ensure there is no impact on ongoing I/O on
+    RHS volumes, we recommend that this tool be run at a low I/O scheduling class
+    (best-effort) and priority.
 
-        ionice -c 2 -p <pid of gfind_missing_files.sh>
+         ionice -c 2 -p <pid of gfind_missing_files.sh>
 
-2. We do not recommend interrupting the tool when it is running
-   (e.g. by doing CTRL^C). It is better to wait for the tool to finish
+2.  We do not recommend interrupting the tool when it is running
+    (e.g. by doing CTRL^C). It is better to wait for the tool to finish
     execution. In case it is interrupted, manually unmount the Slave Volume.
 
-        umount <MOUNT_POINT>
+         umount <MOUNT_POINT>
