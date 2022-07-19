@@ -19,8 +19,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |                           | F36              | yes | yes¹ |
 |                           | F37(rawhide)     | yes¹| yes  |
 |                           |                  |     |      |
-| Debian[3]                 | Stretch/9        | no  | yes  |
-|                           | Buster/10        | yes | yes  |
+| Debian[3]                 | Buster/10        | yes | yes  |
 |                           | Bullseye/11      | yes | yes  |
 |                           | Bookworm/12(sid) | yes | yes  |
 |                           |                  |     |      |
@@ -52,8 +51,7 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |                           | F36              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           | F37(rawhide)     |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
-| Debian[3]                 | Stretch/9        |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
-|                           | Buster/10        |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
+| Debian[3]                 | Buster/10        |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Bullseye/11      |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Bookworm/12(sid) |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
