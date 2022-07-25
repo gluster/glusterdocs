@@ -3,7 +3,8 @@
 For the Gluster to communicate within a cluster either the firewalls
 have to be turned off or enable communication for each server.
 
-```console
+
+```{ .console .no-copy }
 iptables -I INPUT -p all -s `<ip-address>` -j ACCEPT
 ```
 
@@ -101,7 +102,7 @@ gluster volume info
 
 And you should see results similar to the following:
 
-```{ .console .no-copy }
+```{ .text .no-copy }
 Volume Name: gv0
 Type: Replicate
 Volume ID: 8bc3e96b-a1b6-457d-8f7a-a91d1d4dc019
@@ -121,6 +122,6 @@ but hasn’t yet been started, which would cause any attempt to mount the volume
 
 Now, we should start the volume before we try to mount it.
 
-```
+```console
 gluster volume start gv0
 ```
