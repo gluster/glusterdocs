@@ -1,4 +1,5 @@
 # Overview
+
 ### Purpose
 
 The Install Guide (IG) is aimed at providing the sequence of steps needed for
@@ -30,40 +31,40 @@ this is accomplished without a centralized metadata server.
 
 #### What is Gluster without making me learn an extra glossary of terminology?
 
--   Gluster is an easy way to provision your own storage backend NAS
-    using almost any hardware you choose.
--   You can add as much as you want to start with, and if you need more
-    later, adding more takes just a few steps.
--   You can configure failover automatically, so that if a server goes
-    down, you don’t lose access to the data. No manual steps are
-    required for failover. When you fix the server that failed and bring
-    it back online, you don’t have to do anything to get the data back
-    except wait. In the meantime, the most current copy of your data
-    keeps getting served from the node that was still running.
--   You can build a clustered filesystem in a matter of minutes… it is
-    trivially easy for basic setups
--   It takes advantage of what we refer to as “commodity hardware”,
-    which means, we run on just about any hardware you can think of,
-    from that stack of decomm’s and gigabit switches in the corner no
-    one can figure out what to do with (how many license servers do you
-    really need, after all?), to that dream array you were speccing out
-    online. Don’t worry, I won’t tell your boss.
--   It takes advantage of commodity software too. No need to mess with
-    kernels or fine tune the OS to a tee. We run on top of most unix
-    filesystems, with XFS and ext4 being the most popular choices. We do
-    have some recommendations for more heavily utilized arrays, but
-    these are simple to implement and you probably have some of these
-    configured already anyway.
--   Gluster data can be accessed from just about anywhere – You can use
-    traditional NFS, SMB/CIFS for Windows clients, or our own native
-    GlusterFS (a few additional packages are needed on the client
-    machines for this, but as you will see, they are quite small).
--   There are even more advanced features than this, but for now we will
-    focus on the basics.
--   It’s not just a toy. Gluster is enterprise-ready, and commercial
-    support is available if you need it. It is used in some of the most
-    taxing environments like media serving, natural resource
-    exploration, medical imaging, and even as a filesystem for Big Data.
+- Gluster is an easy way to provision your own storage backend NAS
+  using almost any hardware you choose.
+- You can add as much as you want to start with, and if you need more
+  later, adding more takes just a few steps.
+- You can configure failover automatically, so that if a server goes
+  down, you don’t lose access to the data. No manual steps are
+  required for failover. When you fix the server that failed and bring
+  it back online, you don’t have to do anything to get the data back
+  except wait. In the meantime, the most current copy of your data
+  keeps getting served from the node that was still running.
+- You can build a clustered filesystem in a matter of minutes… it is
+  trivially easy for basic setups
+- It takes advantage of what we refer to as “commodity hardware”,
+  which means, we run on just about any hardware you can think of,
+  from that stack of decomm’s and gigabit switches in the corner no
+  one can figure out what to do with (how many license servers do you
+  really need, after all?), to that dream array you were speccing out
+  online. Don’t worry, I won’t tell your boss.
+- It takes advantage of commodity software too. No need to mess with
+  kernels or fine tune the OS to a tee. We run on top of most unix
+  filesystems, with XFS and ext4 being the most popular choices. We do
+  have some recommendations for more heavily utilized arrays, but
+  these are simple to implement and you probably have some of these
+  configured already anyway.
+- Gluster data can be accessed from just about anywhere – You can use
+  traditional NFS, SMB/CIFS for Windows clients, or our own native
+  GlusterFS (a few additional packages are needed on the client
+  machines for this, but as you will see, they are quite small).
+- There are even more advanced features than this, but for now we will
+  focus on the basics.
+- It’s not just a toy. Gluster is enterprise-ready, and commercial
+  support is available if you need it. It is used in some of the most
+  taxing environments like media serving, natural resource
+  exploration, medical imaging, and even as a filesystem for Big Data.
 
 #### Is Gluster going to work for me and what I need it to do?
 

@@ -20,7 +20,7 @@ Split brain is a situation where two or more replicated copies of a file become 
 
   > 3. Server2 comes up: Both server1 and server2 has data independent of each other.
 
-If we use the replica 2 volume, it is not possible to prevent split-brain without losing availability.
+If we use the `replica 2` volume, it is not possible to prevent split-brain without losing availability.
 
 ### Ways to deal with split brain:
 
@@ -29,7 +29,7 @@ In glusterfs there are ways to resolve split brain. You can see the detailed des
 1. Replica 3 volume
 2. Arbiter volume
 
-Both of these uses the client-quorum option of glusterfs to avoid the split-brain situations.
+Both of these use the client-quorum option of glusterfs to avoid the split-brain situations.
 
 ### Client quorum:
 
@@ -52,7 +52,6 @@ B1, B2, and B3 are the 3 bricks of a replica 3 volume.
 3. B2 comes up and B1 goes down. Quorum is met. But when a write request comes, AFR sees that B2 & B3 are blaming each other (B2 says that some writes are pending on B3 and B3 says that some writes are pending on B2), therefore the write is not allowed and is failed with EIO.
 
 Command to create a replica 3 volume:
-
 ```sh
 gluster volume create <volname> replica 3 host1:brick1 host2:brick2 host3:brick3
 ```

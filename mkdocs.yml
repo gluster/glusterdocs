@@ -5,9 +5,16 @@ site_description: Project documentation for Gluster Filesystem
 repo_url: https://github.com/gluster/glusterdocs/
 docs_dir: docs
 
+markdown_extensions:
+  - attr_list
+
 theme:
   name: material
   favicon: images/favicon.ico
+  features:
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
   palette:
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
@@ -33,8 +40,8 @@ nav:
       - Setting up on physical servers: Install-Guide/Setup-Bare-metal.md
       - Deploying in AWS: Install-Guide/Setup-aws.md
       - Install: Install-Guide/Install.md
-      - Community Packages: Install-Guide/Community-Packages.md
       - Configure: Install-Guide/Configure.md
+      - Community Packages: Install-Guide/Community-Packages.md
   - Administration Guide:
       - Overview: Administrator-Guide/overview.md
       - Index: Administrator-Guide/index.md
@@ -133,6 +140,7 @@ nav:
   - Release Notes:
       - index: release-notes/index.md
       - RELEASE 10.x:
+          - 10.2: release-notes/10.2.md
           - 10.1: release-notes/10.1.md
           - 10.0: release-notes/10.0.md
       - RELEASE 9.x:
@@ -271,4 +279,7 @@ nav:
   - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 extra_javascript:
-  - js/fix-docs.js
+  - js/custom-features.js
+
+extra_css:
+  - css/custom.css

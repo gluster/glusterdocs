@@ -16,23 +16,22 @@ releases.
 Issues if meta_volume is turned off:
 
 1. Multiple workers becoming active and participate in
-syncing. Duplicate efforts and all the issues related to concurrent
-execution exists.
+   syncing. Duplicate efforts and all the issues related to concurrent
+   execution exists.
 
 2. Failover only works at node level, if a brick process goes down but
-node is alive then fail-back will not happen and delay in syncing.
+   node is alive then fail-back will not happen and delay in syncing.
 
 3. Very difficult documented steps about placements of bricks in case
-of replica 3. For example, first brick in each replica should not be
-placed in same node. etc.
+   of replica 3. For example, first brick in each replica should not be
+   placed in same node. etc.
 
 4. Consuming Changelogs from previously failed node when it comes
-back, which may lead to issues like delayed syncing and data
-inconsistencies in case of Renames.
+   back, which may lead to issues like delayed syncing and data
+   inconsistencies in case of Renames.
 
 **Fixes**: [1196632](https://bugzilla.redhat.com/show_bug.cgi?id=1196632),
 [1217939](https://bugzilla.redhat.com/show_bug.cgi?id=1217939)
-
 
 ### Improved Historical Changelogs consumption
 
@@ -48,7 +47,6 @@ considered as safe.
 This feature is also required by glusterfind.
 
 **Fixes**: [1217944](https://bugzilla.redhat.com/show_bug.cgi?id=1217944)
-
 
 ### Improved Status and Checkpoint
 
@@ -70,7 +68,6 @@ the amount of reprocess is minimized.
 
 **Fixes**: [1210965](https://bugzilla.redhat.com/show_bug.cgi?id=1210965)
 
-
 ### Improved RENAME handling
 
 When renamed filename hash falls to other brick, respective brick's
@@ -82,7 +79,6 @@ RENAMEs are recorded where CREATE and DATA are recorded.
 
 **Fixes**: [1141379](https://bugzilla.redhat.com/show_bug.cgi?id=1141379)
 
-
 ### Syncing xattrs and acls
 
 Syncing both xattrs and acls to Slave cluster are now supported. These
@@ -92,17 +88,15 @@ false.
 **Fixes**: [1187021](https://bugzilla.redhat.com/show_bug.cgi?id=1187021),
 [1196690](https://bugzilla.redhat.com/show_bug.cgi?id=1196690)
 
-
 ### Identifying Entry failures
 
 Logging improvements to identify exact reason for Entry failures, GFID
-conflicts, I/O errors etc.  Safe errors are not logged in Mount logs
+conflicts, I/O errors etc. Safe errors are not logged in Mount logs
 in Slave, Safe errors are post processed and only genuine errors are
 logged in Master logs.
 
 **Fixes**: [1207115](https://bugzilla.redhat.com/show_bug.cgi?id=1207115),
 [1210562](https://bugzilla.redhat.com/show_bug.cgi?id=1210562)
-
 
 ### Improved rm -rf issues handling
 
@@ -111,7 +105,6 @@ minimized. (Not completely fixed since it depends on Open issues of
 DHT)
 
 **Fixes**: [1211037](https://bugzilla.redhat.com/show_bug.cgi?id=1211037)
-
 
 ### Non root Geo-replication simplified
 
@@ -143,7 +136,6 @@ try syncing.
 
 **Fixes**: [1200733](https://bugzilla.redhat.com/show_bug.cgi?id=1200733)
 
-
 ### Changelog failures and Brick failures handling
 
 When Brick process goes down, or any Changelog exception Geo-rep
@@ -151,9 +143,7 @@ worker was failing back to XSync crawl. Which was bad since Xsync
 fails to identify Deletes and Renames. Now this is prevented, worker
 goes to Faulty and wait for that Brick process to comeback.
 
-
 **Fixes**: [1202649](https://bugzilla.redhat.com/show_bug.cgi?id=1202649)
-
 
 ### Archive Changelogs in working directory after processing
 
@@ -162,7 +152,6 @@ no data is available. This is great improvement in terms of reducing
 the inode consumption in Brick.
 
 **Fixes**: [1169331](https://bugzilla.redhat.com/show_bug.cgi?id=1169331)
-
 
 ### Virtual xattr to trigger sync
 
@@ -175,7 +164,6 @@ required.
 
 **Fixes**: [1176934](https://bugzilla.redhat.com/show_bug.cgi?id=1176934)
 
-
 ### SSH Keys overwrite issues during Geo-rep create
 
 Parallel creates or multiple Geo-rep session creation was overwriting
@@ -184,14 +172,12 @@ when Geo-rep is started.
 
 **Fixes**: [1183229](https://bugzilla.redhat.com/show_bug.cgi?id=1183229)
 
-
 ### Ownership sync improvements
 
 Geo-rep was failing to sync ownership information from master cluster
 to Slave cluster.
 
 **Fixes**: [1104954](https://bugzilla.redhat.com/show_bug.cgi?id=1104954)
-
 
 ### Slave node failover handling improvements
 
@@ -200,7 +186,6 @@ brick will go to faulty. Now it tries to connect to another slave node
 instead of waiting for that Slave node to come back.
 
 **Fixes**: [1151412](https://bugzilla.redhat.com/show_bug.cgi?id=1151412)
-
 
 ### Support of ssh keys custom location
 

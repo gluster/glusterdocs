@@ -9,5 +9,5 @@ Note that there is only a single difference, related to the `op-version`:
 After the upgrade is complete on all servers, run the following command:
 
 ```console
-# gluster volume set all cluster.op-version 30900
+gluster volume set all cluster.op-version 30900
 ```

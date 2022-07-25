@@ -72,7 +72,7 @@ performance.readdir-ahead: on
 The arbiter brick will store only the file/directory names (i.e. the tree structure)
 and extended attributes (metadata) but not any data. i.e. the file size
 (as shown by `ls -l`) will be zero bytes. It will also store other gluster
-metadata like the .glusterfs folder and its contents.
+metadata like the `.glusterfs` folder and its contents.
 
 _**Note:** Enabling the arbiter feature **automatically** configures_
 _client-quorum to 'auto'. This setting is **not** to be changed._
@@ -80,7 +80,7 @@ _client-quorum to 'auto'. This setting is **not** to be changed._
 ## Arbiter brick(s) sizing
 
 Since the arbiter brick does not store file data, its disk usage will be considerably
-less than the other bricks of the replica. The sizing of the brick will depend on
+smaller than for the other bricks of the replica. The sizing of the brick will depend on
 how many files you plan to store in the volume. A good estimate will be
 4KB times the number of files in the replica. Note that the estimate also
 depends on the inode space alloted by the underlying filesystem for a given
@@ -135,7 +135,7 @@ greater than 50%, so that two nodes separated from each other do not believe
 they have quorum simultaneously. For a two-node plain replica volume, this would
 mean both nodes need to be up and running. So there is no notion of HA/failover.
 
-There are users who create a replica 2 volume from 2 nodes and peer-probe
+There are users who create a `replica 2` volume from 2 nodes and peer-probe
 a 'dummy' node without bricks and enable server quorum with a ratio of 51%.
 This does not prevent files from getting into split-brain. For example, if B1
 and B2 are the bricks/nodes of the replica and B3 is the dummy node, we can
@@ -190,16 +190,16 @@ This means the `cluster.quorum-reads` volume option is also not supported.
 ## Replica 2 and Replica 3 volumes
 
 From the above descriptions, it is clear that client-quorum cannot really be applied
-to a replica 2 volume:(without costing HA).
+to a `replica 2` volume (without costing HA).
 If the quorum-type is set to auto, then by the description
 given earlier, the first brick must always be up, irrespective of the status of the
 second brick. IOW, if only the second brick is up, the subvol returns ENOTCONN, i.e. no HA.
 If quorum-type is set to fixed, then the quorum-count _has_ to be two
 to prevent split-brains (otherwise a write can succeed in brick1, another in brick2 =>split-brain).
-So for all practical purposes, if you want high availability in a replica 2 volume,
+So for all practical purposes, if you want high availability in a `replica 2` volume,
 it is recommended not to enable client-quorum.
 
-In a replica 3 volume, client-quorum is enabled by default and set to 'auto'.
+In a `replica 3` volume, client-quorum is enabled by default and set to 'auto'.
 This means 2 bricks need to be up for the write to succeed. Here is how this
 configuration prevents files from ending up in split-brain:
 
