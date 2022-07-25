@@ -11,14 +11,14 @@ This error is encountered when the server has not started correctly.
 On most Linux distributions this is fixed by starting portmap:
 
 ```console
-# /etc/init.d/portmap start
+/etc/init.d/portmap start
 ```
 
 On some distributions where portmap has been replaced by rpcbind, the
 following command is required:
 
 ```console
-# /etc/init.d/rpcbind start
+/etc/init.d/rpcbind start
 ```
 
 After starting portmap or rpcbind, gluster NFS server needs to be
@@ -32,13 +32,13 @@ This error can arise in case there is already a Gluster NFS server
 running on the same machine. This situation can be confirmed from the
 log file, if the following error lines exist:
 
-```text
+```{ .text .no-copy }
 [2010-05-26 23:40:49] E [rpc-socket.c:126:rpcsvc_socket_listen] rpc-socket: binding socket failed:Address already in use
-[2010-05-26 23:40:49] E [rpc-socket.c:129:rpcsvc_socket_listen] rpc-socket: Port is already in use 
-[2010-05-26 23:40:49] E [rpcsvc.c:2636:rpcsvc_stage_program_register] rpc-service: could not create listening connection 
-[2010-05-26 23:40:49] E [rpcsvc.c:2675:rpcsvc_program_register] rpc-service: stage registration of program failed 
-[2010-05-26 23:40:49] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465 
-[2010-05-26 23:40:49] E [nfs.c:125:nfs_init_versions] nfs: Program init failed 
+[2010-05-26 23:40:49] E [rpc-socket.c:129:rpcsvc_socket_listen] rpc-socket: Port is already in use
+[2010-05-26 23:40:49] E [rpcsvc.c:2636:rpcsvc_stage_program_register] rpc-service: could not create listening connection
+[2010-05-26 23:40:49] E [rpcsvc.c:2675:rpcsvc_program_register] rpc-service: stage registration of program failed
+[2010-05-26 23:40:49] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
+[2010-05-26 23:40:49] E [nfs.c:125:nfs_init_versions] nfs: Program init failed
 [2010-05-26 23:40:49] C [nfs.c:531:notify] nfs: Failed to initialize protocols
 ```
 
@@ -50,7 +50,7 @@ multiple NFS servers on the same machine.
 
 If the mount command fails with the following error message:
 
-```console
+```{ .text .no-copy }
 mount.nfs: rpc.statd is not running but is required for remote locking.
 mount.nfs: Either use '-o nolock' to keep locks local, or start statd.
 ```
@@ -59,7 +59,7 @@ For NFS clients to mount the NFS server, rpc.statd service must be
 running on the clients. Start rpc.statd service by running the following command:
 
 ```console
-# rpc.statd
+rpc.statd
 ```
 
 ### mount command takes too long to finish.
@@ -71,14 +71,14 @@ NFS client. The resolution for this is to start either of these services
 by running the following command:
 
 ```console
-# /etc/init.d/portmap start
+/etc/init.d/portmap start
 ```
 
 On some distributions where portmap has been replaced by rpcbind, the
 following command is required:
 
 ```console
-# /etc/init.d/rpcbind start
+/etc/init.d/rpcbind start
 ```
 
 ### NFS server glusterfsd starts but initialization fails with “nfsrpc- service: portmap registration of program failed” error message in the log.
@@ -88,8 +88,8 @@ still fail preventing clients from accessing the mount points. Such a
 situation can be confirmed from the following error messages in the log
 file:
 
-```text
-[2010-05-26 23:33:47] E [rpcsvc.c:2598:rpcsvc_program_register_portmap] rpc-service: Could notregister with portmap 
+```{ .text .no-copy }
+[2010-05-26 23:33:47] E [rpcsvc.c:2598:rpcsvc_program_register_portmap] rpc-service: Could notregister with portmap
 [2010-05-26 23:33:47] E [rpcsvc.c:2682:rpcsvc_program_register] rpc-service: portmap registration of program failed
 [2010-05-26 23:33:47] E [rpcsvc.c:2695:rpcsvc_program_register] rpc-service: Program registration failed: MOUNT3, Num: 100005, Ver: 3, Port: 38465
 [2010-05-26 23:33:47] E [nfs.c:125:nfs_init_versions] nfs: Program init failed
@@ -104,12 +104,12 @@ file:
     On most Linux distributions, portmap can be started using the
     following command:
 
-        # /etc/init.d/portmap start
+        /etc/init.d/portmap start
 
     On some distributions where portmap has been replaced by rpcbind,
     run the following command:
 
-        # /etc/init.d/rpcbind start
+        /etc/init.d/rpcbind start
 
     After starting portmap or rpcbind, gluster NFS server needs to be
     restarted.
@@ -126,8 +126,8 @@ file:
     On Linux, kernel NFS servers can be stopped by using either of the
     following commands depending on the distribution in use:
 
-        # /etc/init.d/nfs-kernel-server stop
-        # /etc/init.d/nfs stop
+        /etc/init.d/nfs-kernel-server stop
+        /etc/init.d/nfs stop
 
 3.  **Restart Gluster NFS server**
 
@@ -135,7 +135,7 @@ file:
 
 mount command fails with following error
 
-```console
+```{ .text .no-copy }
 mount: mount to NFS server '10.1.10.11' failed: timed out (retrying).
 ```
 
@@ -175,14 +175,13 @@ Perform one of the following to resolve this issue:
     forcing the NFS client to use version 3. The **vers** option to
     mount command is used for this purpose:
 
-        # mount  -o vers=3
+        mount -o vers=3
 
-### showmount fails with clnt\_create: RPC: Unable to receive
+### showmount fails with clnt_create: RPC: Unable to receive
 
 Check your firewall setting to open ports 111 for portmap
 requests/replies and Gluster NFS server requests/replies. Gluster NFS
-server operates over the following port numbers: 38465, 38466, and
-38467.
+server operates over the following port numbers: 38465, 38466, and 38467.
 
 ### Application fails with "Invalid argument" or "Value too large for defined data type" error.
 
@@ -193,9 +192,9 @@ numbers instead: nfs.enable-ino32 \<on|off\>
 
 Applications that will benefit are those that were either:
 
--   built 32-bit and run on 32-bit machines such that they do not
-    support large files by default
--   built 32-bit on 64-bit systems
+- built 32-bit and run on 32-bit machines such that they do not
+  support large files by default
+- built 32-bit on 64-bit systems
 
 This option is disabled by default so NFS returns 64-bit inode numbers
 by default.
@@ -203,6 +202,6 @@ by default.
 Applications which can be rebuilt from source are recommended to rebuild
 using the following flag with gcc:
 
-```
+```console
 -D_FILE_OFFSET_BITS=64
 ```

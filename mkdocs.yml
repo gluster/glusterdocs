@@ -11,6 +11,10 @@ markdown_extensions:
 theme:
   name: material
   favicon: images/favicon.ico
+  features:
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
   palette:
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
@@ -36,8 +40,8 @@ nav:
       - Setting up on physical servers: Install-Guide/Setup-Bare-metal.md
       - Deploying in AWS: Install-Guide/Setup-aws.md
       - Install: Install-Guide/Install.md
-      - Community Packages: Install-Guide/Community-Packages.md
       - Configure: Install-Guide/Configure.md
+      - Community Packages: Install-Guide/Community-Packages.md
   - Administration Guide:
       - Overview: Administrator-Guide/overview.md
       - Index: Administrator-Guide/index.md
@@ -275,7 +279,7 @@ nav:
   - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 extra_javascript:
-  - js/fix-docs.js
+  - js/custom-features.js
 
 extra_css:
   - css/custom.css

@@ -3,6 +3,7 @@
 For the Gluster to communicate within a cluster either the firewalls
 have to be turned off or enable communication for each server.
 
+
 ```{ .console .no-copy }
 iptables -I INPUT -p all -s `<ip-address>` -j ACCEPT
 ```
@@ -115,14 +116,12 @@ Brick3: node03.yourdomain.net:/export/sdb1/brick
 ```
 
 This shows us essentially what we just specified during the volume
-creation. The one this to mention is the `Status`. A status of `Created`
-means that the volume has been created, but hasn’t yet been started,
-which would cause any attempt to mount the volume fail.
+creation. The one key output worth noticing is `Status`.
+A status of `Created` means that the volume has been created,
+but hasn’t yet been started, which would cause any attempt to mount the volume fail.
 
-Now, we should start the volume.
+Now, we should start the volume before we try to mount it.
 
 ```console
 gluster volume start gv0
 ```
-
-Find all documentation [here](../index.md)

@@ -7,9 +7,11 @@ This page describes how to build and install GlusterFS.
 The following packages are required for building GlusterFS,
 
 - GNU Autotools
-  - Automake
-  - Autoconf
-  - Libtool
+
+      - Automake
+      - Autoconf
+      - Libtool
+
 - lex (generally flex)
 - GNU Bison
 - OpenSSL
@@ -258,9 +260,9 @@ cd extras/LinuxRPM
 make glusterrpms
 ```
 
-This will create rpms from the source in 'extras/LinuxRPM'. *(Note: You
+This will create rpms from the source in 'extras/LinuxRPM'. _(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
-mock)*<br>
+mock)_<br>
 For CentOS / Enterprise Linux 8 the dependencies can be installed via:
 
 ```console

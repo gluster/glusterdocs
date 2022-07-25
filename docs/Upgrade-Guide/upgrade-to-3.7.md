@@ -1,4 +1,5 @@
 # GlusterFS upgrade to 3.7.x
+
 Now that GlusterFS 3.7.0 is out, here is the process to upgrade from
 earlier installed versions of GlusterFS. Please read the entire howto
 before proceeding with an upgrade of your deployment
@@ -13,15 +14,15 @@ version 3.6 along with your servers you would need to disable client
 self healing process before the upgrade. You can perform this by below
 steps.
 
-```console
+```{ .console .no-copy }
 # gluster v set testvol cluster.entry-self-heal off
 volume set: success
-#
+
 # gluster v set testvol cluster.data-self-heal off
 volume set: success
+
 # gluster v set testvol cluster.metadata-self-heal off
 volume set: success
-#
 ```
 
 ### GlusterFS upgrade to 3.7.x
@@ -71,11 +72,11 @@ The upgrade process for quota involves the following:
 
 1. Run pre-upgrade-script-for-quota.sh
 2. Upgrade to 3.7.0
-2. Run post-upgrade-script-for-quota.sh
+3. Run post-upgrade-script-for-quota.sh
 
 More details on the scripts are as under.
 
-*Pre-Upgrade Script:*
+_Pre-Upgrade Script:_
 
 What it does:
 
@@ -109,7 +110,7 @@ Example:
 [root@server1 extras]#./pre-upgrade-script-for-quota.sh
 ```
 
-*Post-Upgrade Script:*
+_Post-Upgrade Script:_
 
 What it does:
 

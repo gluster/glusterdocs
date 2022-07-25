@@ -8,24 +8,26 @@ normal filesystem. The GFID of a file is stored in its xattr named
 #### Special mount using gfid-access translator:
 
 ```console
-# mount -t glusterfs -o aux-gfid-mount vm1:test /mnt/testvol
+mount -t glusterfs -o aux-gfid-mount vm1:test /mnt/testvol
 ```
 
 Assuming, you have `GFID` of a file from changelog (or somewhere else).
 For trying this out, you can get `GFID` of a file from mountpoint:
 
 ```console
-# getfattr -n glusterfs.gfid.string /mnt/testvol/dir/file
+getfattr -n glusterfs.gfid.string /mnt/testvol/dir/file
 ```
 
 ---
+
 ### Get file path from GFID (Method 1):
+
 **(Lists hardlinks delimited by `:`, returns path as seen from mountpoint)**
 
 #### Turn on build-pgfid option
 
 ```console
-# gluster volume set test build-pgfid on
+gluster volume set test build-pgfid on
 ```
 
 Read virtual xattr `glusterfs.ancestry.path` which contains the file path
@@ -36,7 +38,7 @@ getfattr -n glusterfs.ancestry.path -e text /mnt/testvol/.gfid/<GFID>
 
 **Example:**
 
-```console
+```{ .console .no-copy }
 [root@vm1 glusterfs]# ls -il /mnt/testvol/dir/
 total 1
 10610563327990022372 -rw-r--r--. 2 root root 3 Jul 17 18:05 file
@@ -54,6 +56,7 @@ glusterfs.ancestry.path="/dir/file:/dir/file3"
 ```
 
 ### Get file path from GFID (Method 2):
+
 **(Does not list all hardlinks, returns backend brick path)**
 
 ```console
@@ -70,4 +73,5 @@ trusted.glusterfs.pathinfo="(<DISTRIBUTE:test-dht> <POSIX(/mnt/brick-test/b):vm1
 ```
 
 #### References and links:
+
 [posix: placeholders for GFID to path conversion](http://review.gluster.org/5951)

@@ -10,17 +10,20 @@ Like wise minor releases of the previous major version will happen every three m
 
 Detailed release schedule [here](https://www.gluster.org/release-schedule/)
 
-Release Notes
--------------
+## Release Notes
+
 ### GlusterFS seLinux release notes
+
 - [2.0.1](./glusterfs-selinux2.0.1.md)
 
 ### GlusterFS 10 release notes
+
 - [10.1](./10.1.md)
 - [10.0](./10.0.md)
 - [10.2](./10.2.md)
 
 ### GlusterFS 9 release notes
+
 - [9.5](./9.5.md)
 - [9.4](./9.4.md)
 - [9.3](./9.3.md)
@@ -29,6 +32,7 @@ Release Notes
 - [9.0](./9.0.md)
 
 ### GlusterFS 8 release notes
+
 - [8.6](./8.6.md)
 - [8.5](./8.5.md)
 - [8.4](./8.4.md)
@@ -38,6 +42,7 @@ Release Notes
 - [8.0](./8.0.md)
 
 ### GlusterFS 7 release notes
+
 - [7.9](./7.9.md)
 - [7.8](./7.8.md)
 - [7.7](./7.7.md)
@@ -148,22 +153,22 @@ Release Notes
 
 ### GlusterFS 3.9 release notes
 
--  [3.9.0](./3.9.0.md)
+- [3.9.0](./3.9.0.md)
 
 ### GlusterFS 3.7 release notes
 
--  [3.7.1](./3.7.1.md)
--  [3.7.0](./3.7.0.md)
+- [3.7.1](./3.7.1.md)
+- [3.7.0](./3.7.0.md)
 
 ### GlusterFS 3.6 release notes
 
--  [3.6.3](./3.6.3.md)
--  [3.6.0](./3.6.0.md)
+- [3.6.3](./3.6.3.md)
+- [3.6.0](./3.6.0.md)
 
 ### GlusterFS 3.5 release notes
 
--  [3.5.4](./3.5.4.md)
--  [3.5.3](./3.5.3.md)
--  [3.5.2](./3.5.2.md)
--  [3.5.1](./3.5.1.md)
--  [3.5.0](./3.5.0.md)
+- [3.5.4](./3.5.4.md)
+- [3.5.3](./3.5.3.md)
+- [3.5.2](./3.5.2.md)
+- [3.5.1](./3.5.1.md)
+- [3.5.0](./3.5.0.md)
