@@ -23,11 +23,12 @@ system.
 This section describes how to run GlusterFS Volume Profile command by
 performing the following operations:
 
--   [Start Profiling](#start-profiling)
--   [Displaying the I/0 Information](#displaying-io)
--   [Stop Profiling](#stop-profiling)
+- [Start Profiling](#start-profiling)
+- [Displaying the I/0 Information](#displaying-io)
+- [Stop Profiling](#stop-profiling)
 
 <a name="start-profiling"></a>
+
 ### Start Profiling
 
 You must start the Profiling to view the File Operation information for
@@ -35,7 +36,7 @@ each brick.
 
 To start profiling, use following command:
 
-`# gluster volume profile  start `
+`# gluster volume profile start `
 
 For example, to start profiling on test-volume:
 
@@ -49,11 +50,12 @@ options are displayed in the Volume Info:
     diagnostics.latency-measurement: on
 
 <a name="displaying-io"></a>
+
 ### Displaying the I/0 Information
 
 You can view the I/O information of each brick by using the following command:
 
-`# gluster volume profile  info`
+`# gluster volume profile info`
 
 For example, to see the I/O information on test-volume:
 
@@ -107,6 +109,7 @@ For example, to see the I/O information on test-volume:
     BytesWritten : 195571980
 
 <a name="stop-profiling"></a>
+
 ### Stop Profiling
 
 You can stop profiling the volume, if you do not need profiling
@@ -132,15 +135,16 @@ top command displays up to 100 results.
 This section describes how to run and view the results for the following
 GlusterFS Top commands:
 
--   [Viewing Open fd Count and Maximum fd Count](#open-fd-count)
--   [Viewing Highest File Read Calls](#file-read)
--   [Viewing Highest File Write Calls](#file-write)
--   [Viewing Highest Open Calls on Directories](#open-dir)
--   [Viewing Highest Read Calls on Directory](#read-dir)
--   [Viewing List of Read Performance on each Brick](#read-perf)
--   [Viewing List of Write Performance on each Brick](#write-perf)
+- [Viewing Open fd Count and Maximum fd Count](#open-fd-count)
+- [Viewing Highest File Read Calls](#file-read)
+- [Viewing Highest File Write Calls](#file-write)
+- [Viewing Highest Open Calls on Directories](#open-dir)
+- [Viewing Highest Read Calls on Directory](#read-dir)
+- [Viewing List of Read Performance on each Brick](#read-perf)
+- [Viewing List of Write Performance on each Brick](#write-perf)
 
 <a name="open-fd-count"></a>
+
 ### Viewing Open fd Count and Maximum fd Count
 
 You can view both current open fd count (list of files that are
@@ -151,224 +155,229 @@ servers are up and running). If the brick name is not specified, then
 open fd metrics of all the bricks belonging to the volume will be
 displayed.
 
--   View open fd count and maximum fd count using the following command:
+- View open fd count and maximum fd count using the following command:
 
-    `# gluster volume top  open [brick ] [list-cnt ]`
+  `# gluster volume top open [brick ] [list-cnt ]`
 
-    For example, to view open fd count and maximum fd count on brick
-    server:/export of test-volume and list top 10 open calls:
+  For example, to view open fd count and maximum fd count on brick
+  server:/export of test-volume and list top 10 open calls:
 
-    `# gluster volume top  open brick  list-cnt `
+  `# gluster volume top open brick list-cnt `
 
-    `Brick: server:/export/dir1 `
+  `Brick: server:/export/dir1 `
 
-    `Current open fd's: 34 Max open fd's: 209 `
+  `Current open fd's: 34 Max open fd's: 209 `
 
-                     ==========Open file stats========
+                   ==========Open file stats========
 
-        open            file name
-        call count
+      open            file name
+      call count
 
-        2               /clients/client0/~dmtmp/PARADOX/
-                        COURSES.DB
+      2               /clients/client0/~dmtmp/PARADOX/
+                      COURSES.DB
 
-        11              /clients/client0/~dmtmp/PARADOX/
-                        ENROLL.DB
+      11              /clients/client0/~dmtmp/PARADOX/
+                      ENROLL.DB
 
-        11              /clients/client0/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      11              /clients/client0/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
-        10              /clients/client0/~dmtmp/PWRPNT/
-                        TIPS.PPT
+      10              /clients/client0/~dmtmp/PWRPNT/
+                      TIPS.PPT
 
-        10              /clients/client0/~dmtmp/PWRPNT/
-                        PCBENCHM.PPT
+      10              /clients/client0/~dmtmp/PWRPNT/
+                      PCBENCHM.PPT
 
-        9               /clients/client7/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      9               /clients/client7/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
-        9               /clients/client1/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      9               /clients/client1/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
-        9               /clients/client2/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      9               /clients/client2/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
-        9               /clients/client0/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      9               /clients/client0/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
-        9               /clients/client8/~dmtmp/PARADOX/
-                        STUDENTS.DB
+      9               /clients/client8/~dmtmp/PARADOX/
+                      STUDENTS.DB
 
 <a name="file-read"></a>
+
 ### Viewing Highest File Read Calls
 
 You can view highest read calls on each brick. If brick name is not
 specified, then by default, list of 100 files will be displayed.
 
--   View highest file Read calls using the following command:
+- View highest file Read calls using the following command:
 
-    `# gluster volume top  read [brick ] [list-cnt ] `
+  `# gluster volume top read [brick ] [list-cnt ] `
 
-    For example, to view highest Read calls on brick server:/export of
-    test-volume:
+  For example, to view highest Read calls on brick server:/export of
+  test-volume:
 
-    `# gluster volume top  read brick  list-cnt `
+  `# gluster volume top read brick list-cnt `
 
-    `Brick:` server:/export/dir1
+  `Brick:` server:/export/dir1
 
-                  ==========Read file stats========
+                ==========Read file stats========
 
-        read              filename
-        call count
+      read              filename
+      call count
 
-        116              /clients/client0/~dmtmp/SEED/LARGE.FIL
+      116              /clients/client0/~dmtmp/SEED/LARGE.FIL
 
-        64               /clients/client0/~dmtmp/SEED/MEDIUM.FIL
+      64               /clients/client0/~dmtmp/SEED/MEDIUM.FIL
 
-        54               /clients/client2/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client2/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client6/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client6/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client5/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client5/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client0/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client0/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client3/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client3/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client4/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client4/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client9/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client9/~dmtmp/SEED/LARGE.FIL
 
-        54               /clients/client8/~dmtmp/SEED/LARGE.FIL
+      54               /clients/client8/~dmtmp/SEED/LARGE.FIL
 
 <a name="file-write"></a>
+
 ### Viewing Highest File Write Calls
 
 You can view list of files which has highest file write calls on each
 brick. If brick name is not specified, then by default, list of 100
 files will be displayed.
 
--   View highest file Write calls using the following command:
+- View highest file Write calls using the following command:
 
-    `# gluster volume top  write [brick ] [list-cnt ] `
+  `# gluster volume top write [brick ] [list-cnt ] `
 
-    For example, to view highest Write calls on brick server:/export of
-    test-volume:
+  For example, to view highest Write calls on brick server:/export of
+  test-volume:
 
-    `# gluster volume top  write brick  list-cnt `
+  `# gluster volume top write brick list-cnt `
 
-    `Brick: server:/export/dir1 `
+  `Brick: server:/export/dir1 `
 
-                       ==========Write file stats========
-        write call count   filename
+                     ==========Write file stats========
+      write call count   filename
 
-        83                /clients/client0/~dmtmp/SEED/LARGE.FIL
+      83                /clients/client0/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client7/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client7/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client1/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client1/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client2/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client2/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client0/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client0/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client8/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client8/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client5/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client5/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client4/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client4/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client6/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client6/~dmtmp/SEED/LARGE.FIL
 
-        59                /clients/client3/~dmtmp/SEED/LARGE.FIL
+      59                /clients/client3/~dmtmp/SEED/LARGE.FIL
 
 <a name="open-dir"></a>
+
 ### Viewing Highest Open Calls on Directories
 
 You can view list of files which has highest open calls on directories
 of each brick. If brick name is not specified, then the metrics of all
 the bricks belonging to that volume will be displayed.
 
--   View list of open calls on each directory using the following
-    command:
+- View list of open calls on each directory using the following
+  command:
 
-    `# gluster volume top  opendir [brick ] [list-cnt ] `
+  `# gluster volume top opendir [brick ] [list-cnt ] `
 
-    For example, to view open calls on brick server:/export/ of
-    test-volume:
+  For example, to view open calls on brick server:/export/ of
+  test-volume:
 
-    `# gluster volume top  opendir brick  list-cnt `
+  `# gluster volume top opendir brick list-cnt `
 
-    `Brick: server:/export/dir1 `
+  `Brick: server:/export/dir1 `
 
-                 ==========Directory open stats========
+               ==========Directory open stats========
 
-        Opendir count     directory name
+      Opendir count     directory name
 
-        1001              /clients/client0/~dmtmp
+      1001              /clients/client0/~dmtmp
 
-        454               /clients/client8/~dmtmp
+      454               /clients/client8/~dmtmp
 
-        454               /clients/client2/~dmtmp
+      454               /clients/client2/~dmtmp
 
-        454               /clients/client6/~dmtmp
+      454               /clients/client6/~dmtmp
 
-        454               /clients/client5/~dmtmp
+      454               /clients/client5/~dmtmp
 
-        454               /clients/client9/~dmtmp
+      454               /clients/client9/~dmtmp
 
-        443               /clients/client0/~dmtmp/PARADOX
+      443               /clients/client0/~dmtmp/PARADOX
 
-        408               /clients/client1/~dmtmp
+      408               /clients/client1/~dmtmp
 
-        408               /clients/client7/~dmtmp
+      408               /clients/client7/~dmtmp
 
-        402               /clients/client4/~dmtmp
+      402               /clients/client4/~dmtmp
 
 <a name="read-dir"></a>
+
 ### Viewing Highest Read Calls on Directory
 
 You can view list of files which has highest directory read calls on
 each brick. If brick name is not specified, then the metrics of all the
 bricks belonging to that volume will be displayed.
 
--   View list of highest directory read calls on each brick using the
-    following command:
+- View list of highest directory read calls on each brick using the
+  following command:
 
-    `# gluster volume top test-volume readdir [brick BRICK] [list-cnt {0..100}] `
+  `# gluster volume top test-volume readdir [brick BRICK] [list-cnt {0..100}] `
 
-    For example, to view highest directory read calls on brick
-    server:/export of test-volume:
+  For example, to view highest directory read calls on brick
+  server:/export of test-volume:
 
-    `# gluster volume top test-volume readdir brick server:/export list-cnt 10`
+  `# gluster volume top test-volume readdir brick server:/export list-cnt 10`
 
-    `Brick: `
+  `Brick: `
 
-        ==========Directory readdirp stats========
+      ==========Directory readdirp stats========
 
-        readdirp count           directory name
+      readdirp count           directory name
 
-        1996                    /clients/client0/~dmtmp
+      1996                    /clients/client0/~dmtmp
 
-        1083                    /clients/client0/~dmtmp/PARADOX
+      1083                    /clients/client0/~dmtmp/PARADOX
 
-        904                     /clients/client8/~dmtmp
+      904                     /clients/client8/~dmtmp
 
-        904                     /clients/client2/~dmtmp
+      904                     /clients/client2/~dmtmp
 
-        904                     /clients/client6/~dmtmp
+      904                     /clients/client6/~dmtmp
 
-        904                     /clients/client5/~dmtmp
+      904                     /clients/client5/~dmtmp
 
-        904                     /clients/client9/~dmtmp
+      904                     /clients/client9/~dmtmp
 
-        812                     /clients/client1/~dmtmp
+      812                     /clients/client1/~dmtmp
 
-        812                     /clients/client7/~dmtmp
+      812                     /clients/client7/~dmtmp
 
-        800                     /clients/client4/~dmtmp
+      800                     /clients/client4/~dmtmp
 
 <a name="read-perf"></a>
+
 ### Viewing List of Read Performance on each Brick
 
 You can view the read throughput of files on each brick. If brick name
@@ -413,56 +422,57 @@ volume will be displayed. The output will be the read throughput.
 This command will initiate a dd for the specified count and block size
 and measures the corresponding throughput.
 
--   View list of read performance on each brick using the following
-    command:
+- View list of read performance on each brick using the following
+  command:
 
-    `# gluster volume top  read-perf [bs  count ] [brick ] [list-cnt ]`
+  `# gluster volume top read-perf [bs count ] [brick ] [list-cnt ]`
 
-    For example, to view read performance on brick server:/export/ of
-    test-volume, 256 block size of count 1, and list count 10:
+  For example, to view read performance on brick server:/export/ of
+  test-volume, 256 block size of count 1, and list count 10:
 
-    `# gluster volume top  read-perf bs 256 count 1 brick list-cnt `
+  `# gluster volume top read-perf bs 256 count 1 brick list-cnt `
 
-    `Brick: server:/export/dir1 256 bytes (256 B) copied, Throughput: 4.1 MB/s `
+  `Brick: server:/export/dir1 256 bytes (256 B) copied, Throughput: 4.1 MB/s `
 
-               ==========Read throughput file stats========
+             ==========Read throughput file stats========
 
-        read         filename                         Time
-        through
-        put(MBp
-        s)
+      read         filename                         Time
+      through
+      put(MBp
+      s)
 
-        2912.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
-                   TRIDOTS.POT                   15:38:36.896486
+      2912.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
+                 TRIDOTS.POT                   15:38:36.896486
 
-        2570.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
-                   PCBENCHM.PPT                  15:38:39.815310
+      2570.00   /clients/client0/~dmtmp/PWRPNT/    -2011-01-31
+                 PCBENCHM.PPT                  15:38:39.815310
 
-        2383.00   /clients/client2/~dmtmp/SEED/      -2011-01-31
-                   MEDIUM.FIL                    15:52:53.631499
+      2383.00   /clients/client2/~dmtmp/SEED/      -2011-01-31
+                 MEDIUM.FIL                    15:52:53.631499
 
-        2340.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
-                   MEDIUM.FIL                    15:38:36.926198
+      2340.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
+                 MEDIUM.FIL                    15:38:36.926198
 
-        2299.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
-                   LARGE.FIL                     15:38:36.930445
+      2299.00   /clients/client0/~dmtmp/SEED/      -2011-01-31
+                 LARGE.FIL                     15:38:36.930445
 
-        2259.00  /clients/client0/~dmtmp/PARADOX/    -2011-01-31
-                  COURSES.X04                    15:38:40.549919
+      2259.00  /clients/client0/~dmtmp/PARADOX/    -2011-01-31
+                COURSES.X04                    15:38:40.549919
 
-        2221.00  /clients/client9/~dmtmp/PARADOX/    -2011-01-31
-                  STUDENTS.VAL                   15:52:53.298766
+      2221.00  /clients/client9/~dmtmp/PARADOX/    -2011-01-31
+                STUDENTS.VAL                   15:52:53.298766
 
-        2221.00  /clients/client8/~dmtmp/PARADOX/    -2011-01-31
-                 COURSES.DB                      15:39:11.776780
+      2221.00  /clients/client8/~dmtmp/PARADOX/    -2011-01-31
+               COURSES.DB                      15:39:11.776780
 
-        2184.00  /clients/client3/~dmtmp/SEED/       -2011-01-31
-                  MEDIUM.FIL                     15:39:10.251764
+      2184.00  /clients/client3/~dmtmp/SEED/       -2011-01-31
+                MEDIUM.FIL                     15:39:10.251764
 
-        2184.00  /clients/client5/~dmtmp/WORD/       -2011-01-31
-                 BASEMACH.DOC                    15:39:09.336572
+      2184.00  /clients/client5/~dmtmp/WORD/       -2011-01-31
+               BASEMACH.DOC                    15:39:09.336572
 
 <a name="write-perf"></a>
+
 ### Viewing List of Write Performance on each Brick
 
 You can view list of write throughput of files on each brick. If brick
@@ -473,107 +483,107 @@ This command will initiate a dd for the specified count and block size
 and measures the corresponding throughput. To view list of write
 performance on each brick:
 
--   View list of write performance on each brick using the following
-    command:
+- View list of write performance on each brick using the following
+  command:
 
-    `# gluster volume top  write-perf [bs  count ] [brick ] [list-cnt ] `
+  `# gluster volume top write-perf [bs count ] [brick ] [list-cnt ] `
 
-    For example, to view write performance on brick server:/export/ of
-    test-volume, 256 block size of count 1, and list count 10:
+  For example, to view write performance on brick server:/export/ of
+  test-volume, 256 block size of count 1, and list count 10:
 
-    `# gluster volume top  write-perf bs 256 count 1 brick list-cnt `
+  `# gluster volume top write-perf bs 256 count 1 brick list-cnt `
 
-    `Brick`: server:/export/dir1
+  `Brick`: server:/export/dir1
 
-    `256 bytes (256 B) copied, Throughput: 2.8 MB/s `
+  `256 bytes (256 B) copied, Throughput: 2.8 MB/s `
 
-               ==========Write throughput file stats========
+             ==========Write throughput file stats========
 
-        write                filename                 Time
-        throughput
-        (MBps)
+      write                filename                 Time
+      throughput
+      (MBps)
 
-        1170.00    /clients/client0/~dmtmp/SEED/     -2011-01-31
-                   SMALL.FIL                     15:39:09.171494
+      1170.00    /clients/client0/~dmtmp/SEED/     -2011-01-31
+                 SMALL.FIL                     15:39:09.171494
 
-        1008.00    /clients/client6/~dmtmp/SEED/     -2011-01-31
-                   LARGE.FIL                      15:39:09.73189
+      1008.00    /clients/client6/~dmtmp/SEED/     -2011-01-31
+                 LARGE.FIL                      15:39:09.73189
 
-        949.00    /clients/client0/~dmtmp/SEED/      -2011-01-31
-                  MEDIUM.FIL                     15:38:36.927426
+      949.00    /clients/client0/~dmtmp/SEED/      -2011-01-31
+                MEDIUM.FIL                     15:38:36.927426
 
-        936.00   /clients/client0/~dmtmp/SEED/       -2011-01-31
-                 LARGE.FIL                        15:38:36.933177
-        897.00   /clients/client5/~dmtmp/SEED/       -2011-01-31
-                 MEDIUM.FIL                       15:39:09.33628
+      936.00   /clients/client0/~dmtmp/SEED/       -2011-01-31
+               LARGE.FIL                        15:38:36.933177
+      897.00   /clients/client5/~dmtmp/SEED/       -2011-01-31
+               MEDIUM.FIL                       15:39:09.33628
 
-        897.00   /clients/client6/~dmtmp/SEED/       -2011-01-31
-                 MEDIUM.FIL                       15:39:09.27713
+      897.00   /clients/client6/~dmtmp/SEED/       -2011-01-31
+               MEDIUM.FIL                       15:39:09.27713
 
-        885.00   /clients/client0/~dmtmp/SEED/       -2011-01-31
-                  SMALL.FIL                      15:38:36.924271
+      885.00   /clients/client0/~dmtmp/SEED/       -2011-01-31
+                SMALL.FIL                      15:38:36.924271
 
-        528.00   /clients/client5/~dmtmp/SEED/       -2011-01-31
-                 LARGE.FIL                        15:39:09.81893
+      528.00   /clients/client5/~dmtmp/SEED/       -2011-01-31
+               LARGE.FIL                        15:39:09.81893
 
-        516.00   /clients/client6/~dmtmp/ACCESS/    -2011-01-31
-                 FASTENER.MDB                    15:39:01.797317
+      516.00   /clients/client6/~dmtmp/ACCESS/    -2011-01-31
+               FASTENER.MDB                    15:39:01.797317
 
 ## Displaying Volume Information
 
 You can display information about a specific volume, or all volumes, as
 needed.
 
--   Display information about a specific volume using the following
-    command:
+- Display information about a specific volume using the following
+  command:
 
-    `# gluster volume info VOLNAME`
+  `# gluster volume info VOLNAME`
 
-    For example, to display information about test-volume:
+  For example, to display information about test-volume:
 
-        # gluster volume info test-volume
-        Volume Name: test-volume
-        Type: Distribute
-        Status: Created
-        Number of Bricks: 4
-        Bricks:
-        Brick1: server1:/exp1
-        Brick2: server2:/exp2
-        Brick3: server3:/exp3
-        Brick4: server4:/exp4
+      # gluster volume info test-volume
+      Volume Name: test-volume
+      Type: Distribute
+      Status: Created
+      Number of Bricks: 4
+      Bricks:
+      Brick1: server1:/exp1
+      Brick2: server2:/exp2
+      Brick3: server3:/exp3
+      Brick4: server4:/exp4
 
--   Display information about all volumes using the following command:
+- Display information about all volumes using the following command:
 
-    `# gluster volume info all`
+  `# gluster volume info all`
 
-        # gluster volume info all
+      # gluster volume info all
 
-        Volume Name: test-volume
-        Type: Distribute
-        Status: Created
-        Number of Bricks: 4
-        Bricks:
-        Brick1: server1:/exp1
-        Brick2: server2:/exp2
-        Brick3: server3:/exp3
-        Brick4: server4:/exp4
+      Volume Name: test-volume
+      Type: Distribute
+      Status: Created
+      Number of Bricks: 4
+      Bricks:
+      Brick1: server1:/exp1
+      Brick2: server2:/exp2
+      Brick3: server3:/exp3
+      Brick4: server4:/exp4
 
-        Volume Name: mirror
-        Type: Distributed-Replicate
-        Status: Started
-        Number of Bricks: 2 X 2 = 4
-        Bricks:
-        Brick1: server1:/brick1
-        Brick2: server2:/brick2
-        Brick3: server3:/brick3
-        Brick4: server4:/brick4
+      Volume Name: mirror
+      Type: Distributed-Replicate
+      Status: Started
+      Number of Bricks: 2 X 2 = 4
+      Bricks:
+      Brick1: server1:/brick1
+      Brick2: server2:/brick2
+      Brick3: server3:/brick3
+      Brick4: server4:/brick4
 
-        Volume Name: Vol
-        Type: Distribute
-        Status: Started
-        Number of Bricks: 1
-        Bricks:
-        Brick: server:/brick6
+      Volume Name: Vol
+      Type: Distribute
+      Status: Started
+      Number of Bricks: 1
+      Bricks:
+      Brick: server:/brick6
 
 ## Performing Statedump on a Volume
 
@@ -584,52 +594,52 @@ and nfs server process of a volume using the statedump command. The
 following options can be used to determine what information is to be
 dumped:
 
--   **mem** - Dumps the memory usage and memory pool details of the
-    bricks.
+- **mem** - Dumps the memory usage and memory pool details of the
+  bricks.
 
--   **iobuf** - Dumps iobuf details of the bricks.
+- **iobuf** - Dumps iobuf details of the bricks.
 
--   **priv** - Dumps private information of loaded translators.
+- **priv** - Dumps private information of loaded translators.
 
--   **callpool** - Dumps the pending calls of the volume.
+- **callpool** - Dumps the pending calls of the volume.
 
--   **fd** - Dumps the open fd tables of the volume.
+- **fd** - Dumps the open fd tables of the volume.
 
--   **inode** - Dumps the inode tables of the volume.
+- **inode** - Dumps the inode tables of the volume.
 
 **To display volume statedump**
 
--   Display statedump of a volume or NFS server using the following
-    command:
+- Display statedump of a volume or NFS server using the following
+  command:
 
-    `# gluster volume statedump  [nfs] [all|mem|iobuf|callpool|priv|fd|inode]`
+  `# gluster volume statedump [nfs] [all|mem|iobuf|callpool|priv|fd|inode]`
 
-    For example, to display statedump of test-volume:
+  For example, to display statedump of test-volume:
 
-        # gluster volume statedump test-volume
-        Volume statedump successful
+      # gluster volume statedump test-volume
+      Volume statedump successful
 
-    The statedump files are created on the brick servers in the` /tmp`
-    directory or in the directory set using `server.statedump-path`
-    volume option. The naming convention of the dump file is
-    `<brick-path>.<brick-pid>.dump`.
+  The statedump files are created on the brick servers in the` /tmp`
+  directory or in the directory set using `server.statedump-path`
+  volume option. The naming convention of the dump file is
+  `<brick-path>.<brick-pid>.dump`.
 
--   By defult, the output of the statedump is stored at
-    ` /tmp/<brickname.PID.dump>` file on that particular server. Change
-    the directory of the statedump file using the following command:
+- By defult, the output of the statedump is stored at
+  ` /tmp/<brickname.PID.dump>` file on that particular server. Change
+  the directory of the statedump file using the following command:
 
-    `# gluster volume set  server.statedump-path `
+  `# gluster volume set server.statedump-path `
 
-    For example, to change the location of the statedump file of
-    test-volume:
+  For example, to change the location of the statedump file of
+  test-volume:
 
-        # gluster volume set test-volume server.statedump-path /usr/local/var/log/glusterfs/dumps/
-        Set volume successful
+      # gluster volume set test-volume server.statedump-path /usr/local/var/log/glusterfs/dumps/
+      Set volume successful
 
-    You can view the changed path of the statedump file using the
-    following command:
+  You can view the changed path of the statedump file using the
+  following command:
 
-    `# gluster volume info `
+  `# gluster volume info `
 
 ## Displaying Volume Status
 
@@ -640,252 +650,252 @@ Status information can also be used to monitor and debug the volume
 information. You can view status of the volume along with the following
 details:
 
--   **detail** - Displays additional information about the bricks.
+- **detail** - Displays additional information about the bricks.
 
--   **clients** - Displays the list of clients connected to the volume.
+- **clients** - Displays the list of clients connected to the volume.
 
--   **mem** - Displays the memory usage and memory pool details of the
-    bricks.
+- **mem** - Displays the memory usage and memory pool details of the
+  bricks.
 
--   **inode** - Displays the inode tables of the volume.
+- **inode** - Displays the inode tables of the volume.
 
--   **fd** - Displays the open fd (file descriptors) tables of the
-    volume.
+- **fd** - Displays the open fd (file descriptors) tables of the
+  volume.
 
--   **callpool** - Displays the pending calls of the volume.
+- **callpool** - Displays the pending calls of the volume.
 
 **To display volume status**
 
--   Display information about a specific volume using the following
-    command:
+- Display information about a specific volume using the following
+  command:
 
-    `# gluster volume status [all| []] [detail|clients|mem|inode|fd|callpool]`
+  `# gluster volume status [all| []] [detail|clients|mem|inode|fd|callpool]`
 
-    For example, to display information about test-volume:
+  For example, to display information about test-volume:
 
-        # gluster volume status test-volume
-        STATUS OF VOLUME: test-volume
-        BRICK                           PORT   ONLINE   PID
-        --------------------------------------------------------
-        arch:/export/1                  24009   Y       22445
-        --------------------------------------------------------
-        arch:/export/2                  24010   Y       22450
+      # gluster volume status test-volume
+      STATUS OF VOLUME: test-volume
+      BRICK                           PORT   ONLINE   PID
+      --------------------------------------------------------
+      arch:/export/1                  24009   Y       22445
+      --------------------------------------------------------
+      arch:/export/2                  24010   Y       22450
 
--   Display information about all volumes using the following command:
+- Display information about all volumes using the following command:
 
-    `# gluster volume status all`
+  `# gluster volume status all`
 
-        # gluster volume status all
-        STATUS OF VOLUME: volume-test
-        BRICK                           PORT   ONLINE   PID
-        --------------------------------------------------------
-        arch:/export/4                  24010   Y       22455
+      # gluster volume status all
+      STATUS OF VOLUME: volume-test
+      BRICK                           PORT   ONLINE   PID
+      --------------------------------------------------------
+      arch:/export/4                  24010   Y       22455
 
-        STATUS OF VOLUME: test-volume
-        BRICK                           PORT   ONLINE   PID
-        --------------------------------------------------------
-        arch:/export/1                  24009   Y       22445
-        --------------------------------------------------------
-        arch:/export/2                  24010   Y       22450
+      STATUS OF VOLUME: test-volume
+      BRICK                           PORT   ONLINE   PID
+      --------------------------------------------------------
+      arch:/export/1                  24009   Y       22445
+      --------------------------------------------------------
+      arch:/export/2                  24010   Y       22450
 
--   Display additional information about the bricks using the following
-    command:
+- Display additional information about the bricks using the following
+  command:
 
-    `# gluster volume status  detail`
+  `# gluster volume status detail`
 
-    For example, to display additional information about the bricks of
-    test-volume:
+  For example, to display additional information about the bricks of
+  test-volume:
 
-        # gluster volume status test-volume details
-        STATUS OF VOLUME: test-volume
-        -------------------------------------------
-        Brick                : arch:/export/1
-        Port                 : 24009
-        Online               : Y
-        Pid                  : 16977
-        File System          : rootfs
-        Device               : rootfs
-        Mount Options        : rw
-        Disk Space Free      : 13.8GB
-        Total Disk Space     : 46.5GB
-        Inode Size           : N/A
-        Inode Count          : N/A
-        Free Inodes          : N/A
+      # gluster volume status test-volume details
+      STATUS OF VOLUME: test-volume
+      -------------------------------------------
+      Brick                : arch:/export/1
+      Port                 : 24009
+      Online               : Y
+      Pid                  : 16977
+      File System          : rootfs
+      Device               : rootfs
+      Mount Options        : rw
+      Disk Space Free      : 13.8GB
+      Total Disk Space     : 46.5GB
+      Inode Size           : N/A
+      Inode Count          : N/A
+      Free Inodes          : N/A
 
-        Number of Bricks: 1
-        Bricks:
-        Brick: server:/brick6
+      Number of Bricks: 1
+      Bricks:
+      Brick: server:/brick6
 
--   Display the list of clients accessing the volumes using the
-    following command:
+- Display the list of clients accessing the volumes using the
+  following command:
 
-    `# gluster volume status test-volume clients`
+  `# gluster volume status test-volume clients`
 
-    For example, to display the list of clients connected to
-    test-volume:
+  For example, to display the list of clients connected to
+  test-volume:
 
-        # gluster volume status test-volume clients
-        Brick : arch:/export/1
-        Clients connected : 2
-        Hostname          Bytes Read   BytesWritten
-        --------          ---------    ------------
-        127.0.0.1:1013    776          676
-        127.0.0.1:1012    50440        51200
+      # gluster volume status test-volume clients
+      Brick : arch:/export/1
+      Clients connected : 2
+      Hostname          Bytes Read   BytesWritten
+      --------          ---------    ------------
+      127.0.0.1:1013    776          676
+      127.0.0.1:1012    50440        51200
 
--   Display the memory usage and memory pool details of the bricks using
-    the following command:
+- Display the memory usage and memory pool details of the bricks using
+  the following command:
 
-    `# gluster volume status test-volume mem`
+  `# gluster volume status test-volume mem`
 
-    For example, to display the memory usage and memory pool details of
-    the bricks of test-volume:
+  For example, to display the memory usage and memory pool details of
+  the bricks of test-volume:
 
-        Memory status for volume : test-volume
-        ----------------------------------------------
-        Brick : arch:/export/1
-        Mallinfo
-        --------
-        Arena    : 434176
-        Ordblks  : 2
-        Smblks   : 0
-        Hblks    : 12
-        Hblkhd   : 40861696
-        Usmblks  : 0
-        Fsmblks  : 0
-        Uordblks : 332416
-        Fordblks : 101760
-        Keepcost : 100400
+      Memory status for volume : test-volume
+      ----------------------------------------------
+      Brick : arch:/export/1
+      Mallinfo
+      --------
+      Arena    : 434176
+      Ordblks  : 2
+      Smblks   : 0
+      Hblks    : 12
+      Hblkhd   : 40861696
+      Usmblks  : 0
+      Fsmblks  : 0
+      Uordblks : 332416
+      Fordblks : 101760
+      Keepcost : 100400
 
-        Mempool Stats
-        -------------
-        Name                               HotCount ColdCount PaddedSizeof AllocCount MaxAlloc
-        ----                               -------- --------- ------------ ---------- --------
-        test-volume-server:fd_t                0     16384           92         57        5
-        test-volume-server:dentry_t           59       965           84         59       59
-        test-volume-server:inode_t            60       964          148         60       60
-        test-volume-server:rpcsvc_request_t    0       525         6372        351        2
-        glusterfs:struct saved_frame           0      4096          124          2        2
-        glusterfs:struct rpc_req               0      4096         2236          2        2
-        glusterfs:rpcsvc_request_t             1       524         6372          2        1
-        glusterfs:call_stub_t                  0      1024         1220        288        1
-        glusterfs:call_stack_t                 0      8192         2084        290        2
-        glusterfs:call_frame_t                 0     16384          172       1728        6
+      Mempool Stats
+      -------------
+      Name                               HotCount ColdCount PaddedSizeof AllocCount MaxAlloc
+      ----                               -------- --------- ------------ ---------- --------
+      test-volume-server:fd_t                0     16384           92         57        5
+      test-volume-server:dentry_t           59       965           84         59       59
+      test-volume-server:inode_t            60       964          148         60       60
+      test-volume-server:rpcsvc_request_t    0       525         6372        351        2
+      glusterfs:struct saved_frame           0      4096          124          2        2
+      glusterfs:struct rpc_req               0      4096         2236          2        2
+      glusterfs:rpcsvc_request_t             1       524         6372          2        1
+      glusterfs:call_stub_t                  0      1024         1220        288        1
+      glusterfs:call_stack_t                 0      8192         2084        290        2
+      glusterfs:call_frame_t                 0     16384          172       1728        6
 
--   Display the inode tables of the volume using the following command:
+- Display the inode tables of the volume using the following command:
 
-    `# gluster volume status  inode`
+  `# gluster volume status inode`
 
-    For example, to display the inode tables of the test-volume:
+  For example, to display the inode tables of the test-volume:
 
-        # gluster volume status test-volume inode
-        inode tables for volume test-volume
-        ----------------------------------------------
-        Brick : arch:/export/1
-        Active inodes:
-        GFID                                            Lookups            Ref   IA type
-        ----                                            -------            ---   -------
-        6f3fe173-e07a-4209-abb6-484091d75499                  1              9         2
-        370d35d7-657e-44dc-bac4-d6dd800ec3d3                  1              1         2
+      # gluster volume status test-volume inode
+      inode tables for volume test-volume
+      ----------------------------------------------
+      Brick : arch:/export/1
+      Active inodes:
+      GFID                                            Lookups            Ref   IA type
+      ----                                            -------            ---   -------
+      6f3fe173-e07a-4209-abb6-484091d75499                  1              9         2
+      370d35d7-657e-44dc-bac4-d6dd800ec3d3                  1              1         2
 
-        LRU inodes:
-        GFID                                            Lookups            Ref   IA type
-        ----                                            -------            ---   -------
-        80f98abe-cdcf-4c1d-b917-ae564cf55763                  1              0         1
-        3a58973d-d549-4ea6-9977-9aa218f233de                  1              0         1
-        2ce0197d-87a9-451b-9094-9baa38121155                  1              0         2
+      LRU inodes:
+      GFID                                            Lookups            Ref   IA type
+      ----                                            -------            ---   -------
+      80f98abe-cdcf-4c1d-b917-ae564cf55763                  1              0         1
+      3a58973d-d549-4ea6-9977-9aa218f233de                  1              0         1
+      2ce0197d-87a9-451b-9094-9baa38121155                  1              0         2
 
--   Display the open fd tables of the volume using the following
-    command:
+- Display the open fd tables of the volume using the following
+  command:
 
-    `# gluster volume status  fd`
+  `# gluster volume status fd`
 
-    For example, to display the open fd tables of the test-volume:
+  For example, to display the open fd tables of the test-volume:
 
-        # gluster volume status test-volume fd
+      # gluster volume status test-volume fd
 
-        FD tables for volume test-volume
-        ----------------------------------------------
-        Brick : arch:/export/1
-        Connection 1:
-        RefCount = 0  MaxFDs = 128  FirstFree = 4
-        FD Entry            PID                 RefCount            Flags
-        --------            ---                 --------            -----
-        0                   26311               1                   2
-        1                   26310               3                   2
-        2                   26310               1                   2
-        3                   26311               3                   2
+      FD tables for volume test-volume
+      ----------------------------------------------
+      Brick : arch:/export/1
+      Connection 1:
+      RefCount = 0  MaxFDs = 128  FirstFree = 4
+      FD Entry            PID                 RefCount            Flags
+      --------            ---                 --------            -----
+      0                   26311               1                   2
+      1                   26310               3                   2
+      2                   26310               1                   2
+      3                   26311               3                   2
 
-        Connection 2:
-        RefCount = 0  MaxFDs = 128  FirstFree = 0
-        No open fds
+      Connection 2:
+      RefCount = 0  MaxFDs = 128  FirstFree = 0
+      No open fds
 
-        Connection 3:
-        RefCount = 0  MaxFDs = 128  FirstFree = 0
-        No open fds
+      Connection 3:
+      RefCount = 0  MaxFDs = 128  FirstFree = 0
+      No open fds
 
--   Display the pending calls of the volume using the following command:
+- Display the pending calls of the volume using the following command:
 
-    `# gluster volume status  callpool`
+  `# gluster volume status callpool`
 
-    Each call has a call stack containing call frames.
+  Each call has a call stack containing call frames.
 
-    For example, to display the pending calls of test-volume:
+  For example, to display the pending calls of test-volume:
 
-        # gluster volume status test-volume
+      # gluster volume status test-volume
 
-        Pending calls for volume test-volume
-        ----------------------------------------------
-        Brick : arch:/export/1
-        Pending calls: 2
-        Call Stack1
-         UID    : 0
-         GID    : 0
-         PID    : 26338
-         Unique : 192138
-         Frames : 7
-         Frame 1
-          Ref Count   = 1
-          Translator  = test-volume-server
-          Completed   = No
-         Frame 2
-          Ref Count   = 0
-          Translator  = test-volume-posix
-          Completed   = No
-          Parent      = test-volume-access-control
-          Wind From   = default_fsync
-          Wind To     = FIRST_CHILD(this)->fops->fsync
-         Frame 3
-          Ref Count   = 1
-          Translator  = test-volume-access-control
-          Completed   = No
-          Parent      = repl-locks
-          Wind From   = default_fsync
-          Wind To     = FIRST_CHILD(this)->fops->fsync
-         Frame 4
-          Ref Count   = 1
-          Translator  = test-volume-locks
-          Completed   = No
-          Parent      = test-volume-io-threads
-          Wind From   = iot_fsync_wrapper
-          Wind To     = FIRST_CHILD (this)->fops->fsync
-         Frame 5
-          Ref Count   = 1
-          Translator  = test-volume-io-threads
-          Completed   = No
-          Parent      = test-volume-marker
-          Wind From   = default_fsync
-          Wind To     = FIRST_CHILD(this)->fops->fsync
-         Frame 6
-          Ref Count   = 1
-          Translator  = test-volume-marker
-          Completed   = No
-          Parent      = /export/1
-          Wind From   = io_stats_fsync
-          Wind To     = FIRST_CHILD(this)->fops->fsync
-         Frame 7
-          Ref Count   = 1
-          Translator  = /export/1
-          Completed   = No
-          Parent      = test-volume-server
-          Wind From   = server_fsync_resume
-          Wind To     = bound_xl->fops->fsync
+      Pending calls for volume test-volume
+      ----------------------------------------------
+      Brick : arch:/export/1
+      Pending calls: 2
+      Call Stack1
+       UID    : 0
+       GID    : 0
+       PID    : 26338
+       Unique : 192138
+       Frames : 7
+       Frame 1
+        Ref Count   = 1
+        Translator  = test-volume-server
+        Completed   = No
+       Frame 2
+        Ref Count   = 0
+        Translator  = test-volume-posix
+        Completed   = No
+        Parent      = test-volume-access-control
+        Wind From   = default_fsync
+        Wind To     = FIRST_CHILD(this)->fops->fsync
+       Frame 3
+        Ref Count   = 1
+        Translator  = test-volume-access-control
+        Completed   = No
+        Parent      = repl-locks
+        Wind From   = default_fsync
+        Wind To     = FIRST_CHILD(this)->fops->fsync
+       Frame 4
+        Ref Count   = 1
+        Translator  = test-volume-locks
+        Completed   = No
+        Parent      = test-volume-io-threads
+        Wind From   = iot_fsync_wrapper
+        Wind To     = FIRST_CHILD (this)->fops->fsync
+       Frame 5
+        Ref Count   = 1
+        Translator  = test-volume-io-threads
+        Completed   = No
+        Parent      = test-volume-marker
+        Wind From   = default_fsync
+        Wind To     = FIRST_CHILD(this)->fops->fsync
+       Frame 6
+        Ref Count   = 1
+        Translator  = test-volume-marker
+        Completed   = No
+        Parent      = /export/1
+        Wind From   = io_stats_fsync
+        Wind To     = FIRST_CHILD(this)->fops->fsync
+       Frame 7
+        Ref Count   = 1
+        Translator  = /export/1
+        Completed   = No
+        Parent      = test-volume-server
+        Wind From   = server_fsync_resume
+        Wind To     = bound_xl->fops->fsync

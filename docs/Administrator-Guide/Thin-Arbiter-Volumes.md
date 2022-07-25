@@ -9,13 +9,13 @@ all files as a whole. So, even different file, if the write fails
 on the other data brick but succeeds on this 'bad' brick we will return
 failure for the write.
 
-
+- [Thin Arbiter volumes in gluster](#thin-arbiter-volumes-in-gluster)
 - [Why Thin Arbiter?](#why-thin-arbiter)
 - [Setting UP Thin Arbiter Volume](#setting-up-thin-arbiter-volume)
 - [How Thin Arbiter works](#how-thin-arbiter-works)
 
-
 # Why Thin Arbiter?
+
 This is a solution for handling stretch cluster kind of workload,
 but it can be used for regular workloads as well in case users are
 satisfied with this kind of quorum in comparison to arbiter/3-way-replication.
@@ -31,28 +31,34 @@ thin-arbiter only in the case of first failure until heal completes.
 # Setting UP Thin Arbiter Volume
 
 The command to run thin-arbiter process on node:
+
+```console
+/usr/local/sbin/glusterfsd -N --volfile-id ta-vol -f /var/lib/glusterd/vols/thin-arbiter.vol --brick-port 24007 --xlator-option ta-vol-server.transport.socket.listen-port=24007
 ```
-#/usr/local/sbin/glusterfsd -N --volfile-id ta-vol -f /var/lib/glusterd/vols/thin-arbiter.vol --brick-port 24007 --xlator-option ta-vol-server.transport.socket.listen-port=24007
-```
+
 Creating a thin arbiter replica 2 volume:
+
+```console
+glustercli volume create <volname> --replica 2 <host1>:<brick1> <host2>:<brick2> --thin-arbiter <quorum-host>:<path-to-store-replica-id-file>
 ```
-#glustercli volume create <volname> --replica 2 <host1>:<brick1> <host2>:<brick2> --thin-arbiter <quorum-host>:<path-to-store-replica-id-file>
-```
+
 For example:
-```
+
+```console
 glustercli volume create testvol --replica 2 server{1..2}:/bricks/brick-{1..2} --thin-arbiter server-3:/bricks/brick_ta --force
 volume create: testvol: success: please start the volume to access data
 ```
 
 # How Thin Arbiter works
+
 There will be only one process running on thin arbiter node which will be
 used to update replica id file for all replica pairs across all volumes.
 Replica id file contains the information of good and bad data bricks in the
 form of xattrs. Replica pairs will use its respective replica-id file that
 is going to be created during mount.
 
-1) Read Transactions:
-Reads are allowed when quorum is met. i.e.
+1. Read Transactions:
+   Reads are allowed when quorum is met. i.e.
 
 - When all data bricks and thin arbiter are up: Perform lookup on data bricks to figure out good/bad bricks and
   serve content from the good brick.
@@ -65,7 +71,7 @@ Reads are allowed when quorum is met. i.e.
   done on the data brick to check if the file is really healthy or not. If the file is good, data will be served from
   this brick else an EIO error would be returned to user.
 
-2) Write transactions:
-  Thin arbiter doesn’t participate in I/O, transaction will choose to wind operations on thin-arbiter brick to
-  make sure the necessary metadata is kept up-to-date in case of failures. Operation failure will lead to
-  updating the replica-id file on thin-arbiter with source/sink information in the xattrs just how it happens in AFR.
+2. Write transactions:
+   Thin arbiter doesn’t participate in I/O, transaction will choose to wind operations on thin-arbiter brick to
+   make sure the necessary metadata is kept up-to-date in case of failures. Operation failure will lead to
+   updating the replica-id file on thin-arbiter with source/sink information in the xattrs just how it happens in AFR.

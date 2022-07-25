@@ -1,5 +1,4 @@
-Gluster performance testing
-===========================
+# Gluster performance testing
 
 Once you have created a Gluster volume, you need to verify that it has
 adequate performance for your application, and if it does not, you need
@@ -7,18 +6,18 @@ a way to isolate the root cause of the problem.
 
 There are two kinds of workloads:
 
-* synthetic - run a test program such as ones below
-* application - run existing application
+- synthetic - run a test program such as ones below
+- application - run existing application
 
 # Profiling tools
 
-Ideally it's best to use the actual application that you want to run on Gluster, but applications often don't tell the sysadmin much about where the performance problems are, particularly latency (response-time) problems.  So there are non-invasive profiling tools built into Gluster that can measure performance as seen by the application, without changing the application.  Gluster profiling methods at present are based on the io-stats translator, and include:
+Ideally it's best to use the actual application that you want to run on Gluster, but applications often don't tell the sysadmin much about where the performance problems are, particularly latency (response-time) problems. So there are non-invasive profiling tools built into Gluster that can measure performance as seen by the application, without changing the application. Gluster profiling methods at present are based on the io-stats translator, and include:
 
-* client-side profiling - instrument a Gluster mountpoint or libgfapi process to sample profiling data.  In this case, the io-stats translator is at the "top" of the translator stack, so the profile data truly represents what the application (or FUSE mountpoint) is asking Gluster to do.  For example, a single application write is counted once as a WRITE FOP (file operation) call, and the latency for that WRITE FOP includes latency of the data replication done by the AFR translator lower in the stack.
+- client-side profiling - instrument a Gluster mountpoint or libgfapi process to sample profiling data. In this case, the io-stats translator is at the "top" of the translator stack, so the profile data truly represents what the application (or FUSE mountpoint) is asking Gluster to do. For example, a single application write is counted once as a WRITE FOP (file operation) call, and the latency for that WRITE FOP includes latency of the data replication done by the AFR translator lower in the stack.
 
-* server-side profiling - this is done using the "gluster volume profile" command (and "gluster volume top" can be used to identify particular hot files in use as well).  Server-side profiling can measure the throughput of an entire Gluster volume over time, and can measure server-side latencies.  However, it does not incorporate network or client-side latencies.  It is also hard to infer application behavior because of client-side translators that alter the I/O workload (examples: erasure coding, cache tiering).
+- server-side profiling - this is done using the "gluster volume profile" command (and "gluster volume top" can be used to identify particular hot files in use as well). Server-side profiling can measure the throughput of an entire Gluster volume over time, and can measure server-side latencies. However, it does not incorporate network or client-side latencies. It is also hard to infer application behavior because of client-side translators that alter the I/O workload (examples: erasure coding, cache tiering).
 
-In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understanding how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read?  is it small-file?), and how well the I/O load is spread across the volume.
+In short, use client-side profiling for understanding "why is my application unresponsive"? and use server-side profiling for understanding how busy your Gluster volume is, what kind of workload is being applied to it (i.e. is it mostly-read? is it small-file?), and how well the I/O load is spread across the volume.
 
 ## client-side profiling
 
@@ -27,7 +26,7 @@ To run client-side profiling,
 - gluster volume profile your-volume start
 - setfattr -n trusted.io-stats-dump -v io-stats-pre.txt /your/mountpoint
 
-This will generate the specified file (`/var/run/gluster/io-stats-pre.txt`) on the client.  A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis)  can automate collection of this data.
+This will generate the specified file (`/var/run/gluster/io-stats-pre.txt`) on the client. A script like [gvp-client.sh](https://github.com/bengland2/gluster-profile-analysis) can automate collection of this data.
 
 TBS: what the different FOPs are and what they mean.
 
@@ -58,11 +57,11 @@ that can be run from a single system. While single-system results are
 important, they are far from a definitive measure of the performance
 capabilities of a distributed filesystem.
 
--   [fio](http://freecode.com/projects/fio) - for large file I/O tests.
--   [smallfile](https://github.com/bengland2/smallfile) - for
-    pure-workload small-file tests
--   [iozone](http://www.iozone.org) - for pure-workload large-file tests
--   [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi) - for pure-workload libgfapi tests
+- [fio](http://freecode.com/projects/fio) - for large file I/O tests.
+- [smallfile](https://github.com/bengland2/smallfile) - for
+  pure-workload small-file tests
+- [iozone](http://www.iozone.org) - for pure-workload large-file tests
+- [parallel-libgfapi](https://github.com/bengland2/parallel-libgfapi) - for pure-workload libgfapi tests
 
 The "netmist" mixed-workload generator of SPECsfs2014 may be suitable in some cases, but is not technically an open-source tool. This tool was written by Don Capps, who was an author of iozone.
 
@@ -78,13 +77,13 @@ And make sure your firewall allows port 8765 through for it. You can now run tes
 
 You can also use it for distributed testing, however, by launching fio instances on separate hosts, taking care to start all fio instances as close to the same time as possible, limiting per-thread throughput, and specifying the run duration rather than the amount of data, so that all fio instances end at around the same time. You can then aggregate the fio results from different hosts to get a meaningful aggregate result.
 
-fio also has different I/O engines, in particular Huamin Chen authored the ***libgfapi*** engine for fio so that you can use fio to test Gluster performance without using FUSE.
+fio also has different I/O engines, in particular Huamin Chen authored the **_libgfapi_** engine for fio so that you can use fio to test Gluster performance without using FUSE.
 
 Limitations of fio in distributed mode:
 
--   stonewalling - fio calculates throughput based on when the last thread finishes a test run. In contrast, iozone calculates throughput by default based on when the FIRST thread finishes the workload. This can lead to (deceptively?) higher throughput results for iozone, since there are inevitably some "straggler" threads limping to the finish line later than others. It is possible in some cases to overcome this limitation by specifying a time limit for the test. This works well for random I/O tests, where typically you do not want to read/write the entire file/device anyway.
--   inaccuracy when response times > 1 sec - at least in some cases fio has reported excessively high IOPS when fio threads encounter response times much greater than 1 second, this can happen for distributed storage when there is unfairness in the implementation.
--   io engines are not integrated.
+- stonewalling - fio calculates throughput based on when the last thread finishes a test run. In contrast, iozone calculates throughput by default based on when the FIRST thread finishes the workload. This can lead to (deceptively?) higher throughput results for iozone, since there are inevitably some "straggler" threads limping to the finish line later than others. It is possible in some cases to overcome this limitation by specifying a time limit for the test. This works well for random I/O tests, where typically you do not want to read/write the entire file/device anyway.
+- inaccuracy when response times > 1 sec - at least in some cases fio has reported excessively high IOPS when fio threads encounter response times much greater than 1 second, this can happen for distributed storage when there is unfairness in the implementation.
+- io engines are not integrated.
 
 ### smallfile Distributed I/O Benchmark
 
@@ -108,10 +107,10 @@ option (below).
 The "-a" option for automated testing of all use cases is discouraged,
 because:
 
--   this does not allow you to drop the read cache in server before a
-    test.
--   most of the data points being measured will be irrelevant to the
-    problem you are solving.
+- this does not allow you to drop the read cache in server before a
+  test.
+- most of the data points being measured will be irrelevant to the
+  problem you are solving.
 
 Single-thread testing is an important use case, but to fully utilize the
 available hardware you typically need to do multi-thread and even
@@ -124,16 +123,16 @@ re-read and re-write tests. "-w" option tells iozone not to delete any
 files that it accessed, so that subsequent tests can use them. Specify
 these options with each test:
 
--   -i -- test type, 0=write, 1=read, 2=random read/write
--   -r -- data transfer size -- allows you to simulate I/O size used by
-    application
--   -s -- per-thread file size -- choose this to be large enough for the
-    system to reach steady state (typically multiple GB needed)
--   -t -- number of threads -- how many subprocesses will be
-    concurrently issuing I/O requests
--   -F -- list of files -- what files to write/read. If you do not
-    specify then the filenames iozone.DUMMY.\* will be used in the
-    default directory.
+- -i -- test type, 0=write, 1=read, 2=random read/write
+- -r -- data transfer size -- allows you to simulate I/O size used by
+  application
+- -s -- per-thread file size -- choose this to be large enough for the
+  system to reach steady state (typically multiple GB needed)
+- -t -- number of threads -- how many subprocesses will be
+  concurrently issuing I/O requests
+- -F -- list of files -- what files to write/read. If you do not
+  specify then the filenames iozone.DUMMY.\* will be used in the
+  default directory.
 
 Example of an 8-thread sequential write test with 64-KB transfer size
 and file size of 1 GB to shared Gluster mountpoint directory
@@ -213,11 +212,11 @@ This test exercises Gluster performance using the libgfapi API,
 bypassing FUSE - no mountpoints are used. Available
 [here](https://github.com/bengland2/parallel-libgfapi).
 
-To use it, you edit the script parameters in parallel\_gfapi\_test.sh
+To use it, you edit the script parameters in parallel_gfapi_test.sh
 script - all of them are above the comment "NO EDITABLE PARAMETERS BELOW
 THIS LINE". These include such things as the Gluster volume name, a host
 serving that volume, number of files, etc. You then make sure that the
-gfapi\_perf\_test executable is distributed to the client machines at
+gfapi_perf_test executable is distributed to the client machines at
 the specified directory, and then run the script. The script starts all
 libgfapi workload generator processes in parallel in such a way that
 they all start the test at the same time. It waits until they all
@@ -240,8 +239,7 @@ S3 workload generation.
 part of OpenStack Swift toolset and is command-line tool with a workload
 definition file format.
 
-Workload
---------
+## Workload
 
 An application can be as simple as writing some files, or it can be as
 complex as running a cloud on top of Gluster. But all applications have
@@ -253,10 +251,10 @@ application spends most of its time doing with Gluster are called the
 the filesystem requests being delivered to Gluster by the application.
 There are two ways to look at workload:
 
--   top-down - what is the application trying to get the filesystem to
-    do?
--   bottom-up - what requests is the application actually generating to
-    the filesystem?
+- top-down - what is the application trying to get the filesystem to
+  do?
+- bottom-up - what requests is the application actually generating to
+  the filesystem?
 
 ### data vs metadata
 
@@ -277,21 +275,21 @@ Often this is what users will be able to help you with -- for example, a
 workload might consist of ingesting a billion .mp3 files. Typical
 questions that need to be answered (approximately) are:
 
--   what is file size distribution? Averages are often not enough - file
-    size distributions can be bi-modal (i.e. consist mostly of the very
-    large and very small file sizes). TBS: provide pointers to scripts
-    that can collect this.
--   what fraction of file accesses are reads vs writes?
--   how cache-friendly is the workload? Do the same files get read
-    repeatedly by different Gluster clients, or by different
-    processes/threads on these clients?
--   for large-file workloads, what fraction of accesses are
-    sequential/random? Sequential file access means that the application
-    thread reads/writes the file from start to finish in byte offset
-    order, and random file access is the exact opposite -- the thread
-    may read/write from any offset at any time. Virtual machine disk
-    images are typically accessed randomly, since the VM's filesystem is
-    embedded in a Gluster file.
+- what is file size distribution? Averages are often not enough - file
+  size distributions can be bi-modal (i.e. consist mostly of the very
+  large and very small file sizes). TBS: provide pointers to scripts
+  that can collect this.
+- what fraction of file accesses are reads vs writes?
+- how cache-friendly is the workload? Do the same files get read
+  repeatedly by different Gluster clients, or by different
+  processes/threads on these clients?
+- for large-file workloads, what fraction of accesses are
+  sequential/random? Sequential file access means that the application
+  thread reads/writes the file from start to finish in byte offset
+  order, and random file access is the exact opposite -- the thread
+  may read/write from any offset at any time. Virtual machine disk
+  images are typically accessed randomly, since the VM's filesystem is
+  embedded in a Gluster file.
 
 Why do these questions matter? For example, if you have a large-file
 sequential read workload, network configuration + Gluster and Linux
@@ -311,20 +309,19 @@ and the bottlenecks which are limiting performance of that workload.
 
 TBS: links to documentation for these tools and scripts that reduce the data to usable form.
 
-Configuration
--------------
+## Configuration
 
 There are 4 basic hardware dimensions to a Gluster server, listed here
 in order of importance:
 
--   network - possibly the most important hardware component of a
-    Gluster site
-    -   access protocol - what kind of client is used to get to the
-        files/objects?
--   storage - this is absolutely critical to get right up front
--   cpu - on client, look for hot threads (see below)
--   memory - can impact performance of read-intensive, cacheable
-    workloads
+- network - possibly the most important hardware component of a
+  Gluster site
+  - access protocol - what kind of client is used to get to the
+    files/objects?
+- storage - this is absolutely critical to get right up front
+- cpu - on client, look for hot threads (see below)
+- memory - can impact performance of read-intensive, cacheable
+  workloads
 
 ### network testing
 
@@ -338,7 +335,7 @@ To measure network performance, consider use of a
 [netperf-based](http://www.cs.kent.edu/~farrell/dist/ref/Netperf.html)
 script.
 
-The purpose of these two tools is to characterize the capacity of your entire network infrastructure to support the desired level of traffic induced by distributed storage, using multiple network connections in parallel.   The latter script is probably the most realistic network workload for distributed storage.
+The purpose of these two tools is to characterize the capacity of your entire network infrastructure to support the desired level of traffic induced by distributed storage, using multiple network connections in parallel. The latter script is probably the most realistic network workload for distributed storage.
 
 The two most common hardware problems impacting distributed storage are,
 not surprisingly, disk drive failures and network failures. Some of
@@ -379,7 +376,7 @@ To simulate a mixed read-write workload, use both sets of pairs:
 
         (c1,s1), (c2, s2), (c3, s1), (c4, s2), (s1, c1), (s2, c2), (s1, c3), (s2, c4)
 
-More complicated flows can model behavior of non-native protocols, where a cluster node acts as a proxy server- it is a server (for non-native protocol) and a client (for native protocol).   For example, such protocols often induce full-duplex traffic which can stress the network differently than unidirectional in/out traffic.  For example, try adding this set of flows to preceding flow:
+More complicated flows can model behavior of non-native protocols, where a cluster node acts as a proxy server- it is a server (for non-native protocol) and a client (for native protocol). For example, such protocols often induce full-duplex traffic which can stress the network differently than unidirectional in/out traffic. For example, try adding this set of flows to preceding flow:
 
         (s1, s2),.(s2, s3),.(s3, s4),.(s4, s1)
 
@@ -391,8 +388,8 @@ do not need ssh access to each other -- they only have to allow
 password-less ssh access from the head node. The script does not rely on
 root privileges, so you can run it from a non-root account. Just create
 a public key on the head node in the right account (usually in
-\$HOME/.ssh/id\_rsa.pub ) and then append this public key to
-\$HOME/.ssh/authorized\_keys on each host participating in the test.
+\$HOME/.ssh/id_rsa.pub ) and then append this public key to
+\$HOME/.ssh/authorized_keys on each host participating in the test.
 
 We input senders and receivers using separate text files, 1 host per
 line. For pair (sender[j], receiver[j]), you get sender[j] from line j
@@ -401,23 +398,22 @@ You have to use the IP address/name that corresponds to the interface
 you want to test, and you have to be able to ssh to each host from the
 head node using this interface.
 
-Results
--------
+## Results
 
 There are 3 basic forms of performance results, not in order of
 importance:
 
--   throughput -- how much work is done in a unit of time? Best metrics
-    typically are workload-dependent:
-    -   for large-file random: IOPS
-    -   for large-file sequential: MB/s
-    -   for small-file: files/sec
--   response time -- IMPORTANT, how long does it take for filesystem
-    request to complete?
--   utilization -- how busy is the hardware while the workload is
-    running?
--   scalability -- can we linearly scale throughput without sacrificing
-    response time as we add servers to a Gluster volume?
+- throughput -- how much work is done in a unit of time? Best metrics
+  typically are workload-dependent:
+  - for large-file random: IOPS
+  - for large-file sequential: MB/s
+  - for small-file: files/sec
+- response time -- IMPORTANT, how long does it take for filesystem
+  request to complete?
+- utilization -- how busy is the hardware while the workload is
+  running?
+- scalability -- can we linearly scale throughput without sacrificing
+  response time as we add servers to a Gluster volume?
 
 Typically throughput results get the most attention, but in a
 distributed-storage environment, the hardest goal to achieve may well be

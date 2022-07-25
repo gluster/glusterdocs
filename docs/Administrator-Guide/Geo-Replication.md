@@ -8,19 +8,19 @@ replication service from one site to another over Local Area Networks
 
 ## Prerequisites
 
-* Primary and Secondary Volumes should be Gluster Volumes.
-* Primary and Secondary clusters should have the same GlusterFS version.
+- Primary and Secondary Volumes should be Gluster Volumes.
+- Primary and Secondary clusters should have the same GlusterFS version.
 
 ## Replicated Volumes vs Geo-replication
 
 The following table lists the difference between replicated volumes
 and Geo-replication:
 
-  Replicated Volumes | Geo-replication
-  --- | ---
-  Mirrors data across clusters | Mirrors data across geographically distributed clusters
-  Provides high-availability | Ensures backing up of data for disaster recovery
-  Synchronous replication (each and every file operation is sent across all the bricks) | Asynchronous replication (checks for the changes in files periodically and syncs them on detecting differences)
+| Replicated Volumes                                                                    | Geo-replication                                                                                                 |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Mirrors data across clusters                                                          | Mirrors data across geographically distributed clusters                                                         |
+| Provides high-availability                                                            | Ensures backing up of data for disaster recovery                                                                |
+| Synchronous replication (each and every file operation is sent across all the bricks) | Asynchronous replication (checks for the changes in files periodically and syncs them on detecting differences) |
 
 ## Exploring Geo-replication Deployment Scenarios
 
@@ -44,6 +44,7 @@ Geo-replication, including the following:
 ![geo-rep03_internet](https://cloud.githubusercontent.com/assets/10970993/7412305/d8660050-ef5e-11e4-9d1b-54369fb1e43f.png)
 
 ### Mirror data in a cascading fashion across multiple sites(Multi-site cascading Geo-replication)
+
 ![geo-rep04_cascading](https://cloud.githubusercontent.com/assets/10970993/7412320/05e131bc-ef5f-11e4-8580-a4dc592148ff.png)
 
 ## Secondary User setup
@@ -57,49 +58,49 @@ administrative level access to the particular Volume.
 
 In all the Secondary nodes, create a new group as "geogroup".
 
-```
-# sudo groupadd geogroup
+```console
+sudo groupadd geogroup
 ```
 
 In all the Secondary nodes, create an unprivileged account. For example,
 "geoaccount". Add geoaccount as a member of "geogroup" group.
 
-```
-# useradd -G geogroup geoaccount
+```console
+useradd -G geogroup geoaccount
 ```
 
 In any one Secondary node, run the following command to setup the
 mountbroker root directory and group.
 
-```
+```console
 gluster-mountbroker setup <MOUNT ROOT> <GROUP>
 ```
 
 For example,
 
-```
-# gluster-mountbroker setup /var/mountbroker-root geogroup
+```console
+gluster-mountbroker setup /var/mountbroker-root geogroup
 ```
 
 In any one of Secondary node, Run the following commands to add Volume and
 user to mountbroker service.
 
-```
+```console
 gluster-mountbroker add <VOLUME> <USER>
 ```
 
 For example,
 
-```
-# gluster-mountbroker add gvol-secondary geoaccount
+```console
+gluster-mountbroker add gvol-secondary geoaccount
 ```
 
 (**Note**: To remove a user, use `gluster-mountbroker remove` command)
 
 Check the status of setup using,
 
-```
-# gluster-mountbroker status
+```console
+gluster-mountbroker status
 ```
 
 Restart `glusterd` service on all Secondary nodes.
@@ -132,15 +133,15 @@ On one of the Primary node where geo-replication Create command will be
 issued, run the following command to generate the SSH key(Press Enter
 twice to avoid passphrase).
 
-```
-# ssh-keygen
+```console
+ssh-keygen
 ```
 
 Run the following command on the same node to one Secondary node which is
 identified as the main Secondary node.
 
-```
-# ssh-copy-id geoaccount@snode1.example.com
+```console
+ssh-copy-id geoaccount@snode1.example.com
 ```
 
 ### Creating secret pem pub file
@@ -151,7 +152,7 @@ specific ssh-keys in all Primary peer nodes and collect public keys
 from all peer nodes to the command initiated node.
 
 ```console
-# gluster-georep-sshkey generate
+gluster-georep-sshkey generate
 ```
 
 This command adds extra prefix inside common_secret.pem.pub file to
@@ -159,7 +160,7 @@ each pub keys to prevent running extra commands using this key, to
 disable that prefix,
 
 ```console
-# gluster-georep-sshkey generate --no-prefix
+gluster-georep-sshkey generate --no-prefix
 ```
 
 ## Creating the session
@@ -180,21 +181,21 @@ gluster volume geo-replication <primary_volume> \
 For example,
 
 ```console
-# gluster volume geo-replication gvol-primary \
-    geoaccount@snode1.example.com::gvol-secondary \
-    create push-pem
+gluster volume geo-replication gvol-primary \
+  geoaccount@snode1.example.com::gvol-secondary \
+  create push-pem
 ```
 
 If custom SSH port (example: 50022) is configured in Secondary nodes then
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    config ssh_port 50022
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  config ssh_port 50022
 
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    create ssh-port 50022 push-pem
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  create ssh-port 50022 push-pem
 ```
 
 If the total available size in Secondary volume is less than the total
@@ -221,9 +222,9 @@ gluster volume geo-replication <primary_volume> \
 For example,
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    create no-verify
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  create no-verify
 ```
 
 In this case the Primary node rsa-key distribution to Secondary node does
@@ -242,10 +243,9 @@ Run the following command as root in any one of Secondary node.
 For example,
 
 ```
-# /usr/libexec/glusterfs/set_geo_rep_pem_keys.sh geoaccount \
-    gvol-primary gvol-secondary
+/usr/libexec/glusterfs/set_geo_rep_pem_keys.sh geoaccount \
+  gvol-primary gvol-secondary
 ```
-
 
 ## Configuration
 
@@ -263,13 +263,13 @@ gluster volume geo-replication <primary_volume> \
 For Example,
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    config
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  config
 
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    config sync-jobs
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  config sync-jobs
 ```
 
 To configure Gluster Geo-replication, use the following command at the
@@ -283,13 +283,13 @@ gluster volume geo-replication <primary_volume> \
 For example:
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    config sync-jobs 3
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  config sync-jobs 3
 ```
 
 > **Note**: If Geo-rep is in between sync, restart due to configuration
->  change may cause resyncing a few entries which are already synced.
+> change may cause resyncing a few entries which are already synced.
 
 ## Configurable Options
 
@@ -321,17 +321,17 @@ gluster volume geo-replication <primary_volume> \
 The following table provides an overview of the configurable options
 for a geo-replication setting:
 
-  Option                          | Description
-  ---                             | ---
-  log-level LOGFILELEVEL          | The log level for geo-replication.
-  gluster-log-level LOGFILELEVEL  | The log level for glusterfs processes.
-  changelog-log-level LOGFILELEVEL| The log level for Changelog processes.
-  ssh-command COMMAND             | The SSH command to connect to the remote machine (the default is ssh). If ssh is installed in custom location, that path can be configured. For ex `/usr/local/sbin/ssh`
-  rsync-command COMMAND           | The rsync command to use for synchronizing the files (the default is rsync).
-  use-tarssh true                 | The use-tarssh command allows tar over Secure Shell protocol. Use this option to handle workloads of files that have not undergone edits.
-  timeout SECONDS                 | The timeout period in seconds.
-  sync-jobs N                     | The number of simultaneous files/directories that can be synchronized.
-  ignore-deletes                  | If this option is set to 1, a file deleted on the primary will not trigger a delete operation on the secondary. As a result, the secondary will remain as a superset of the primary and can be used to recover the primary in the event of a crash and/or accidental delete.
+| Option                           | Description                                                                                                                                                                                                                                                                  |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| log-level LOGFILELEVEL           | The log level for geo-replication.                                                                                                                                                                                                                                           |
+| gluster-log-level LOGFILELEVEL   | The log level for glusterfs processes.                                                                                                                                                                                                                                       |
+| changelog-log-level LOGFILELEVEL | The log level for Changelog processes.                                                                                                                                                                                                                                       |
+| ssh-command COMMAND              | The SSH command to connect to the remote machine (the default is ssh). If ssh is installed in custom location, that path can be configured. For ex `/usr/local/sbin/ssh`                                                                                                     |
+| rsync-command COMMAND            | The rsync command to use for synchronizing the files (the default is rsync).                                                                                                                                                                                                 |
+| use-tarssh true                  | The use-tarssh command allows tar over Secure Shell protocol. Use this option to handle workloads of files that have not undergone edits.                                                                                                                                    |
+| timeout SECONDS                  | The timeout period in seconds.                                                                                                                                                                                                                                               |
+| sync-jobs N                      | The number of simultaneous files/directories that can be synchronized.                                                                                                                                                                                                       |
+| ignore-deletes                   | If this option is set to 1, a file deleted on the primary will not trigger a delete operation on the secondary. As a result, the secondary will remain as a superset of the primary and can be used to recover the primary in the event of a crash and/or accidental delete. |
 
 ## Starting Geo-replication
 
@@ -346,9 +346,9 @@ gluster volume geo-replication <primary_volume>  \
 For example,
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    start
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  start
 ```
 
 > **Note**
@@ -369,16 +369,17 @@ gluster volume geo-replication <primary_volume>  \
 For example,
 
 ```console
-# gluster volume geo-replication gvol-primary  \
-    geoaccount@snode1.example.com::gvol-secondary \
-    stop
+gluster volume geo-replication gvol-primary  \
+  geoaccount@snode1.example.com::gvol-secondary \
+  stop
 ```
 
 ## Status
+
 To check the status of all Geo-replication sessions in the Cluster
 
 ```console
-# gluster volume geo-replication status
+gluster volume geo-replication status
 ```
 
 To check the status of one session,
@@ -391,11 +392,11 @@ gluster volume geo-replication <primary_volume> \
 Example,
 
 ```console
-# gluster volume geo-replication gvol-primary \
-    geoaccount@snode1::gvol-secondary status
+gluster volume geo-replication gvol-primary \
+  geoaccount@snode1::gvol-secondary status
 
-# gluster volume geo-replication gvol-primary \
-    geoaccount@snode1::gvol-secondary status detail
+gluster volume geo-replication gvol-primary \
+  geoaccount@snode1::gvol-secondary status detail
 ```
 
 Example Status Output
@@ -429,14 +430,14 @@ The `STATUS` of the session could be one of the following,
   data. (One worker among the replica pairs will be in Active state)
 
 - **Passive**: A replica pair of the active node. The data
-    synchronization is handled by active node. Hence, this node does
-    not sync any data. If Active node goes down, Passive worker will
-    become Active
+  synchronization is handled by active node. Hence, this node does
+  not sync any data. If Active node goes down, Passive worker will
+  become Active
 
 - **Faulty**: The geo-replication session has experienced a problem,
-    and the issue needs to be investigated further. Check log files
-    for more details about the Faulty status. Log file path can be
-    found using
+  and the issue needs to be investigated further. Check log files
+  for more details about the Faulty status. Log file path can be
+  found using
 
         gluster volume geo-replication <primary_volume> \
             <secondary_user>@<secondary_host>::<secondary_volume> config log-file
@@ -447,29 +448,28 @@ The `STATUS` of the session could be one of the following,
 The `CRAWL STATUS` can be one of the following:
 
 - **Hybrid Crawl**: The gsyncd daemon is crawling the glusterFS file
-    system and generating pseudo changelog to sync data. This crawl is
-    used during initial sync and if Changelogs are not available.
+  system and generating pseudo changelog to sync data. This crawl is
+  used during initial sync and if Changelogs are not available.
 
 - **History Crawl**: gsyncd daemon syncs data by consuming Historical
   Changelogs. On every worker restart, Geo-rep uses this Crawl to
   process backlog Changelogs.
 
 - **Changelog Crawl**: The changelog translator has produced the
-    changelog and that is being consumed by gsyncd daemon to sync
-    data.
+  changelog and that is being consumed by gsyncd daemon to sync
+  data.
 
 The `ENTRY` denotes:
-  **The number of pending entry operations** (create, mkdir, mknod, symlink, link, rename, unlink, rmdir)  per session.
+**The number of pending entry operations** (create, mkdir, mknod, symlink, link, rename, unlink, rmdir) per session.
 
 The `DATA` denotes:
-  **The number of pending Data operations** (write, writev, truncate, ftruncate) per session.
+**The number of pending Data operations** (write, writev, truncate, ftruncate) per session.
 
 The `META` denotes:
-  **The number of pending Meta operations** (setattr, fsetattr, setxattr, fsetxattr, removexattr, fremovexattr) per session.
+**The number of pending Meta operations** (setattr, fsetattr, setxattr, fsetxattr, removexattr, fremovexattr) per session.
 
 The `FAILURE` denotes:
-  **The number of failures per session**. On encountering failures, one can proceed to look at the log files.
-
+**The number of failures per session**. On encountering failures, one can proceed to look at the log files.
 
 ## Deleting the session
 
@@ -484,16 +484,14 @@ gluster volume geo-replication <primary_volume> \
 For example,
 
 ```console
-# gluster volume geo-replication gvol-primary \
-    geoaccount@snode1.example.com::gvol-secondary delete
+gluster volume geo-replication gvol-primary \
+  geoaccount@snode1.example.com::gvol-secondary delete
 ```
 
 > Note: If the same session is created again then syncing will resume
 > from where it was stopped before deleting the session. If the
 > session to be deleted permanently then use reset-sync-time option
-> with delete command. For example, `gluster volume geo-replication
-> gvol-primary geoaccount@snode1::gvol-secondary delete reset-sync-time`
-
+> with delete command. For example, `gluster volume geo-replication gvol-primary geoaccount@snode1::gvol-secondary delete reset-sync-time`
 
 ## Checkpoint
 
@@ -512,17 +510,17 @@ gluster volume geo-replication <primary_volume> \
 Example,
 
 ```console
-# gluster volume geo-replication gvol-primary \
-    geoaccount@snode1.example.com::gvol-secondary \
-    config checkpoint now
+gluster volume geo-replication gvol-primary \
+  geoaccount@snode1.example.com::gvol-secondary \
+  config checkpoint now
 ```
 
 Touch the Primary mount point to make sure Checkpoint completes even
 though no I/O happening in the Volume
 
 ```console
-# mount -t glusterfs <primaryhost>:<primaryvol> /mnt
-# touch /mnt
+mount -t glusterfs <primaryhost>:<primaryvol> /mnt
+touch /mnt
 ```
 
 Checkpoint status can be checked using Geo-rep status
@@ -535,6 +533,7 @@ about Checkpoint
   completed, else N/A
 
 ## Log Files
+
 Primary Log files are located in `/var/log/glusterfs/geo-replication`
 directory in each Primary nodes. Secondary log files are located in
 `/var/log/glusterfs/geo-replication-secondary` directory in Secondary nodes.
@@ -555,10 +554,10 @@ Secondary Volumes.
 
         gluster snapshot create <snapname> <volname>
 
-    Example,
+  Example,
 
-        # gluster snapshot create snap1 gvol-secondary
-        # gluster snapshot create snap1 gvol-primary
+        gluster snapshot create snap1 gvol-secondary
+        gluster snapshot create snap1 gvol-primary
 
 - Resume Geo-replication session using,
 
@@ -578,8 +577,8 @@ gluster volume geo-replication <primary_volume> \
 Example,
 
 ```console
-# gluster snapshot restore snap1 # Secondary Snap
-# gluster snapshot restore snap1 # Primary Snap
-# gluster volume geo-replication gvol-primary geoaccount@snode1::gvol-secondary \
-    resume force
+gluster snapshot restore snap1 # Secondary Snap
+gluster snapshot restore snap1 # Primary Snap
+gluster volume geo-replication gvol-primary geoaccount@snode1::gvol-secondary \
+  resume force
 ```

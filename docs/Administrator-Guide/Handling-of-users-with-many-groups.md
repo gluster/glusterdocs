@@ -10,7 +10,6 @@ different restrictions on different levels in the stack. The explanations in
 this document should clarify which restrictions exist, and how these can be
 handled.
 
-
 ## tl;dr
 
 - if users belong to more than 90 groups, the brick processes need to resolve
@@ -24,7 +23,6 @@ handled.
 For all of the above options counts that the system doing the group resolving
 must be configured (`nsswitch`, `sssd`, ..) to be able to get all groups when
 only a UID is known.
-
 
 ## Limit in the GlusterFS protocol
 
@@ -52,7 +50,6 @@ use the POSIX `getgrouplist()` function to fetch them.
 Because this is a protocol limitation, all clients, including FUSE mounts,
 Gluster/NFS server and libgfapi applications are affected by this.
 
-
 ## Group limit with FUSE
 
 The FUSE client gets the groups of the process that does the I/O by reading the
@@ -63,7 +60,6 @@ these 32 groups could limit functionality.
 For that reason a mount option has been added. With the `resolve-gids` mount
 option, the FUSE client calls the POSIX `getgrouplist()` function instead of
 reading `/proc/$pid/status`.
-
 
 ## Group limit for NFS
 
@@ -77,7 +73,6 @@ that to resolve the groups. the volume option for that is
 Other NFS-servers offer options like this too. The Linux kernel nfsd server
 uses `rpc.mountd --manage-gids`. NFS-Ganesha has the configuration option
 `Manage_Gids`.
-
 
 ## Implications of these solutions
 

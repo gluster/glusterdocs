@@ -1,6 +1,5 @@
 # Managing Trusted Storage Pools
 
-
 ### Overview
 
 A trusted storage pool(TSP) is a trusted network of storage servers. Before you can configure a
@@ -11,19 +10,19 @@ The servers in a TSP are peers of each other.
 After installing Gluster on your servers and before creating a trusted storage pool,
 each server belongs to a storage pool consisting of only that server.
 
--  [Adding Servers](#adding-servers)
--  [Listing Servers](#listing-servers)
--  [Viewing Peer Status](#peer-status)
--  [Removing Servers](#removing-servers)
-
-
+- [Managing Trusted Storage Pools](#managing-trusted-storage-pools)
+    - [Overview](#overview)
+    - [Adding Servers](#adding-servers)
+    - [Listing Servers](#listing-servers)
+    - [Viewing Peer Status](#viewing-peer-status)
+    - [Removing Servers](#removing-servers)
 
 **Before you start**:
 
 - The servers used to create the storage pool must be resolvable by hostname.
 
 - The glusterd daemon must be running on all storage servers that you
-want to add to the storage pool. See [Managing the glusterd Service](./Start-Stop-Daemon.md) for details.
+  want to add to the storage pool. See [Managing the glusterd Service](./Start-Stop-Daemon.md) for details.
 
 - The firewall on the servers must be configured to allow access to port 24007.
 
@@ -31,6 +30,7 @@ The following commands were run on a TSP consisting of 3 servers - server1, serv
 and server3.
 
 <a name="adding-servers"></a>
+
 ### Adding Servers
 
 To add a server to a TSP, peer probe it from a server already in the pool.
@@ -59,9 +59,8 @@ Verify the peer status from the first server (server1):
         Uuid: 3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7
         State: Peer in Cluster (Connected)
 
-
-
 <a name="listing-servers"></a>
+
 ### Listing Servers
 
 To list all nodes in the TSP:
@@ -73,9 +72,8 @@ To list all nodes in the TSP:
         1e0ca3aa-9ef7-4f66-8f15-cbc348f29ff7    server3         Connected
         3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7    server4         Connected
 
-
-
 <a name="peer-status"></a>
+
 ### Viewing Peer Status
 
 To view the status of the peers in the TSP:
@@ -95,9 +93,8 @@ To view the status of the peers in the TSP:
         Uuid: 3e0cabaa-9df7-4f66-8e5d-cbc348f29ff7
         State: Peer in Cluster (Connected)
 
-
-
 <a name="removing-servers"></a>
+
 ### Removing Servers
 
 To remove a server from the TSP, run the following command from another server in the pool:
@@ -108,7 +105,6 @@ For example, to remove server4 from the trusted storage pool:
 
         server1# gluster peer detach server4
         Detach successful
-
 
 Verify the peer status:
 

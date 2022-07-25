@@ -1,5 +1,4 @@
-Linux kernel tuning for GlusterFS
----------------------------------
+## Linux kernel tuning for GlusterFS
 
 Every now and then, questions come up here internally and with many
 enthusiasts on what Gluster has to say about kernel tuning, if anything.
@@ -52,18 +51,18 @@ from the user for their own applications. Heavily loaded, streaming apps
 should set this value to '0'. By changing this value to '0', the
 system's responsiveness improves.
 
-### vm.vfs\_cache\_pressure
+### vm.vfs_cache_pressure
 
 This option controls the tendency of the kernel to reclaim the memory
 which is used for caching of directory and inode objects.
 
-At the default value of vfs\_cache\_pressure=100 the kernel will attempt
+At the default value of vfs_cache_pressure=100 the kernel will attempt
 to reclaim dentries and inodes at a "fair" rate with respect to
-pagecache and swapcache reclaim. Decreasing vfs\_cache\_pressure causes
+pagecache and swapcache reclaim. Decreasing vfs_cache_pressure causes
 the kernel to prefer to retain dentry and inode caches. When
-vfs\_cache\_pressure=0, the kernel will never reclaim dentries and
+vfs_cache_pressure=0, the kernel will never reclaim dentries and
 inodes due to memory pressure and this can easily lead to out-of-memory
-conditions. Increasing vfs\_cache\_pressure beyond 100 causes the kernel
+conditions. Increasing vfs_cache_pressure beyond 100 causes the kernel
 to prefer to reclaim dentries and inodes.
 
 With GlusterFS, many users with a lot of storage and many small files
@@ -73,18 +72,18 @@ keeps crawling through data-structures on a 40GB RAM system. Changing
 this value higher than 100 has helped many users to achieve fair caching
 and more responsiveness from the kernel.
 
-### vm.dirty\_background\_ratio
+### vm.dirty_background_ratio
 
-### vm.dirty\_ratio
+### vm.dirty_ratio
 
-The first of the two (vm.dirty\_background\_ratio) defines the
+The first of the two (vm.dirty_background_ratio) defines the
 percentage of memory that can become dirty before a background flushing
 of the pages to disk starts. Until this percentage is reached no pages
 are flushed to disk. However when the flushing starts, then it's done in
 the background without disrupting any of the running processes in the
 foreground.
 
-Now the second of the two parameters (vm.dirty\_ratio) defines the
+Now the second of the two parameters (vm.dirty_ratio) defines the
 percentage of memory which can be occupied by dirty pages before a
 forced flush starts. If the percentage of dirty pages reaches this
 threshold, then all processes become synchronous, and they are not
@@ -124,14 +123,14 @@ performance. You can read more about them in the Linux kernel source
 documentation: linux/Documentation/block/\*iosched.txt . I have also
 seen 'read' throughput increase during mixed-operations (many writes).
 
-### "256" \> /sys/block/sdc/queue/nr\_requests
+### "256" \> /sys/block/sdc/queue/nr_requests
 
 This is the size of I/O requests which are buffered before they are
 communicated to the disk by the Scheduler. The internal queue size of
-some controllers (queue\_depth) is larger than the I/O scheduler's
-nr\_requests so that the I/O scheduler doesn't get much of a chance to
+some controllers (queue_depth) is larger than the I/O scheduler's
+nr_requests so that the I/O scheduler doesn't get much of a chance to
 properly order and merge the requests. Deadline or CFQ scheduler likes
-to have nr\_requests to be set 2 times the value of queue\_depth, which
+to have nr_requests to be set 2 times the value of queue_depth, which
 is the default for a given controller. Merging the order and requests
 helps the scheduler to be more responsive during huge load.
 
@@ -144,7 +143,7 @@ after you have used swappiness=0, but if you defined swappiness=10 or
 20, then using this value helps when your have a RAID stripe size of
 64k.
 
-### blockdev --setra 4096 /dev/<devname> (eg:- sdb, hdc or dev\_mapper)
+### blockdev --setra 4096 /dev/<devname> (eg:- sdb, hdc or dev_mapper)
 
 Default block device settings often result in terrible performance for
 many RAID controllers. Adding the above option, which sets read-ahead to
@@ -183,94 +182,94 @@ issues.
 
 More informative and interesting articles/emails/blogs to read
 
--   <http://dom.as/2008/02/05/linux-io-schedulers/>
--   <http://www.nextre.it/oracledocs/oraclemyths.html>
--   <https://lkml.org/lkml/2006/11/15/40>
--   <http://misterd77.blogspot.com/2007/11/3ware-hardware-raid-vs-linux-software.html>
+- <http://dom.as/2008/02/05/linux-io-schedulers/>
+- <http://www.nextre.it/oracledocs/oraclemyths.html>
+- <https://lkml.org/lkml/2006/11/15/40>
+- <http://misterd77.blogspot.com/2007/11/3ware-hardware-raid-vs-linux-software.html>
 
-`   Last updated by: `[`User:y4m4`](User:y4m4 "wikilink")
+`Last updated by:`[`User:y4m4`](User:y4m4 "wikilink")
 
 ### comment:jdarcy
 
 Some additional tuning ideas:
 
-`   * The choice of scheduler is *really* hardware- and workload-dependent, and some schedulers have unique features other than performance.  For example, last time I looked cgroups support was limited to the cfq scheduler.  Different tests regularly do best on any of cfq, deadline, or noop.  The best advice here is not to use a particular scheduler but to try them all for a specific need.`
+` * The choice of scheduler is *really* hardware- and workload-dependent, and some schedulers have unique features other than performance. For example, last time I looked cgroups support was limited to the cfq scheduler. Different tests regularly do best on any of cfq, deadline, or noop. The best advice here is not to use a particular scheduler but to try them all for a specific need.`
 
-`   * It's worth checking to make sure that /sys/.../max_sectors_kb matches max_hw_sectors_kb.  I haven't seen this problem for a while, but back when I used to work on Lustre I often saw that these didn't match and performance suffered.`
+` * It's worth checking to make sure that /sys/.../max_sectors_kb matches max_hw_sectors_kb. I haven't seen this problem for a while, but back when I used to work on Lustre I often saw that these didn't match and performance suffered.`
 
-`   * For read-heavy workloads, experimenting with /sys/.../readahead_kb is definitely worthwhile.`
+` * For read-heavy workloads, experimenting with /sys/.../readahead_kb is definitely worthwhile.`
 
-`   * Filesystems should be built with -I 512 or similar so that more xattrs can be stored in the inode instead of requiring an extra seek.`
+` * Filesystems should be built with -I 512 or similar so that more xattrs can be stored in the inode instead of requiring an extra seek.`
 
-`   * Mounting with noatime or relatime is usually good for performance.`
+` * Mounting with noatime or relatime is usually good for performance.`
 
 #### reply:y4m4
 
-`   Agreed i was about write those parameters you mentioned. I should write another elaborate article on FS changes. `
+`Agreed i was about write those parameters you mentioned. I should write another elaborate article on FS changes.`
 
 y4m4
 
 ### comment:eco
 
-`       1 year ago`\
-`   This article is the model on which all articles should be written.  Detailed information, solid examples and a great selection of references to let readers go more in depth on topics they choose.  Great benchmark for others to strive to attain.`\
-`       Eco`\
+` 1 year ago`\
+` This article is the model on which all articles should be written. Detailed information, solid examples and a great selection of references to let readers go more in depth on topics they choose. Great benchmark for others to strive to attain.`\
+` Eco`\
 
 ### comment:y4m4
 
-`   sysctl -w net.core.{r,w}mem_max = 4096000 - this helped us to Reach 800MB/sec with replicated GlusterFS on 10gige  - Thanks to Ben England for these test results. `\
-`       y4m4`
+`sysctl -w net.core.{r,w}mem_max = 4096000 - this helped us to Reach 800MB/sec with replicated GlusterFS on 10gige - Thanks to Ben England for these test results.`\
+` y4m4`
 
 ### comment:bengland
 
-`   After testing Gluster 3.2.4 performance with RHEL6.1, I'd suggest some changes to this article's recommendations:`
+` After testing Gluster 3.2.4 performance with RHEL6.1, I'd suggest some changes to this article's recommendations:`
 
-`   vm.swappiness=10 not 0 -- I think 0 is a bit extreme and might lead to out-of-memory conditions, but 10 will avoid just about all paging/swapping.  If you still see swapping, you need to probably focus on restricting dirty pages with vm.dirty_ratio.`
+` vm.swappiness=10 not 0 -- I think 0 is a bit extreme and might lead to out-of-memory conditions, but 10 will avoid just about all paging/swapping. If you still see swapping, you need to probably focus on restricting dirty pages with vm.dirty_ratio.`
 
-`   vfs_cache_pressure > 100 -- why?   I thought this was a percentage.`
+` vfs_cache_pressure > 100 -- why? I thought this was a percentage.`
 
-`   vm.pagecache=1 -- some distros (e.g. RHEL6) don't have vm.pagecache parameter. `
+`vm.pagecache=1 -- some distros (e.g. RHEL6) don't have vm.pagecache parameter.`
 
-`   vm.dirty_background_ratio=1 not 10 (kernel default?) -- the kernel default is a bit dependent on choice of Linux distro, but for most workloads it's better to set this parameter very low to cause Linux to push dirty pages out to storage sooner.    It means that if dirty pages exceed 1% of RAM then it will start to asynchronously write dirty pages to storage. The only workload where this is really bad: apps that write temp files and then quickly delete them (compiles) -- and you should probably be using local storage for such files anyway. `
+`vm.dirty_background_ratio=1 not 10 (kernel default?) -- the kernel default is a bit dependent on choice of Linux distro, but for most workloads it's better to set this parameter very low to cause Linux to push dirty pages out to storage sooner. It means that if dirty pages exceed 1% of RAM then it will start to asynchronously write dirty pages to storage. The only workload where this is really bad: apps that write temp files and then quickly delete them (compiles) -- and you should probably be using local storage for such files anyway.`
 
-`   Choice of vm.dirty_ratio is more dependent upon the workload, but in other contexts I have observed that response time fairness and stability is much better if you lower dirty ratio so that it doesn't take more than 2-5 seconds to flush all dirty pages to storage. `
+`Choice of vm.dirty_ratio is more dependent upon the workload, but in other contexts I have observed that response time fairness and stability is much better if you lower dirty ratio so that it doesn't take more than 2-5 seconds to flush all dirty pages to storage.`
 
-`   block device parameters:`
+` block device parameters:`
 
-`   I'm not aware of any case where cfq scheduler actually helps Gluster server.   Unless server I/O threads correspond directly to end-users, I don't see how cfq can help you.  Deadline scheduler is a good choice.  I/O request queue has to be deep enough to allow scheduler to reorder requests to optimize away disk seeks.  The parameters max_sectors_kb and nr_requests are relevant for this.  For read-ahead, consider increasing it to the point where you prefetch for longer period of time than a disk seek (on order of 10 msec), so that you can avoid unnecessary disk seeks for multi-stream workloads.  This comes at the expense of I/O latency so don't overdo it.`
+` I'm not aware of any case where cfq scheduler actually helps Gluster server. Unless server I/O threads correspond directly to end-users, I don't see how cfq can help you. Deadline scheduler is a good choice. I/O request queue has to be deep enough to allow scheduler to reorder requests to optimize away disk seeks. The parameters max_sectors_kb and nr_requests are relevant for this. For read-ahead, consider increasing it to the point where you prefetch for longer period of time than a disk seek (on order of 10 msec), so that you can avoid unnecessary disk seeks for multi-stream workloads. This comes at the expense of I/O latency so don't overdo it.`
 
-`   network:`
+` network:`
 
-`   jumbo frames can increase throughput significantly for 10-GbE networks.`
+` jumbo frames can increase throughput significantly for 10-GbE networks.`
 
-`   Raise net.core.{r,w}mem_max to 540000 from default of 131071  (not 4 MB above, my previous recommendation).  Gluster 3.2 does setsockopt() call to use 1/2 MB mem for TCP socket buffer space.`\
-`       bengland`\
+` Raise net.core.{r,w}mem_max to 540000 from default of 131071 (not 4 MB above, my previous recommendation). Gluster 3.2 does setsockopt() call to use 1/2 MB mem for TCP socket buffer space.`\
+` bengland`\
 
 ### comment:hjmangalam
 
-`   Thanks very much for noting this info - the descriptions are VERY good.. I'm in the midst of debugging a misbehaving gluster that can't seem to handle small writes over IPoIB and this contains some useful pointers.`
+` Thanks very much for noting this info - the descriptions are VERY good.. I'm in the midst of debugging a misbehaving gluster that can't seem to handle small writes over IPoIB and this contains some useful pointers.`
 
-`   Some suggestions that might make this more immediately useful:`
+` Some suggestions that might make this more immediately useful:`
 
-`   - I'm assuming that this discussion refers to the gluster server nodes, not to the gluster native client nodes, yes?  If that's the case, are there are also kernel parameters or recommended settings for the client nodes?`\
-`   -  While there are some cases where you mention that a value should be changed to a particular # or %, in a number of cases you advise just increasing/decreasing the values, which for something like  a kernel parameter is probably not a useful suggestion.  Do I raise it by 10?  10%  2x? 10x?  `
+` - I'm assuming that this discussion refers to the gluster server nodes, not to the gluster native client nodes, yes? If that's the case, are there are also kernel parameters or recommended settings for the client nodes?`\
+`- While there are some cases where you mention that a value should be changed to a particular # or %, in a number of cases you advise just increasing/decreasing the values, which for something like a kernel parameter is probably not a useful suggestion. Do I raise it by 10? 10% 2x? 10x?`
 
-`   I also ran across a complimentary page, which might be of  interest - it explains more of the vm variables, especially as it relates to writing.`\
-`   "Theory of Operation and Tuning for Write-Heavy Loads" `\
-`      ``   and refs therein.`
-`       hjmangalam`
+` I also ran across a complimentary page, which might be of interest - it explains more of the vm variables, especially as it relates to writing.`\
+`"Theory of Operation and Tuning for Write-Heavy Loads"`\
+` `` and refs therein.`
+` hjmangalam`
 
 ### comment:bengland
 
-`   Here are some additional suggestions based on recent testing:`\
-`   - scaling out number of clients -- you need to increase the size of the ARP tables on Gluster server if you want to support more than 1K clients mounting a gluster volume.  The defaults for RHEL6.3 were too low to support this, we used this:`
+` Here are some additional suggestions based on recent testing:`\
+` - scaling out number of clients -- you need to increase the size of the ARP tables on Gluster server if you want to support more than 1K clients mounting a gluster volume. The defaults for RHEL6.3 were too low to support this, we used this:`
 
-`   net.ipv4.neigh.default.gc_thresh2 = 2048`\
-`   net.ipv4.neigh.default.gc_thresh3 = 4096`
+` net.ipv4.neigh.default.gc_thresh2 = 2048`\
+` net.ipv4.neigh.default.gc_thresh3 = 4096`
 
-`   In addition, tunings common to webservers become relevant at this number of clients as well, such as netdev_max_backlog, tcp_fin_timeout, and somaxconn.`
+` In addition, tunings common to webservers become relevant at this number of clients as well, such as netdev_max_backlog, tcp_fin_timeout, and somaxconn.`
 
-`   Bonding mode 6 has been observed to increase replication write performance, I have no experience with bonding mode 4 but it should work if switch is properly configured, other bonding modes are a waste of time.`
+` Bonding mode 6 has been observed to increase replication write performance, I have no experience with bonding mode 4 but it should work if switch is properly configured, other bonding modes are a waste of time.`
 
-`       bengland`\
-`       3 months ago`
+` bengland`\
+` 3 months ago`

@@ -7,8 +7,7 @@ GlusterFS by setting limits to allocatable disk space at any level in
 the volume and directory hierarchy. This is particularly useful in cloud
 deployments to facilitate the utility billing model.
 
-> **Note**
-> For now, only Hard limits are supported. Here, the limit cannot be
+> **Note:** For now, only Hard limits are supported. Here, the limit cannot be
 > exceeded, and attempts to use more disk space or inodes beyond the set
 > limit are denied.
 
@@ -17,12 +16,10 @@ the storage for the users depending on their role in the organization.
 
 You can set the quota at the following levels:
 
--   **Directory level** – limits the usage at the directory level
--   **Volume level** – limits the usage at the volume level
+- **Directory level** – limits the usage at the directory level
+- **Volume level** – limits the usage at the volume level
 
-> **Note**
-> You can set the quota limit on an empty directory. The quota limit will be
-> automatically enforced when files are added to the directory.
+> **Note:** You can set the quota limit on an empty directory. The quota limit will be automatically enforced when files are added to the directory.
 
 ## Enabling Quota
 
@@ -33,7 +30,7 @@ You must enable Quota to set disk limits.
 Use the following command to enable quota:
 
 ```console
-# gluster volume quota <VOLNAME> enable
+gluster volume quota <VOLNAME> enable
 ```
 
 For example, to enable quota on the test-volume:
@@ -52,7 +49,7 @@ You can disable Quota if needed.
 Use the following command to disable quota:
 
 ```console
-# gluster volume quota <VOLNAME> disable
+gluster volume quota <VOLNAME> disable
 ```
 
 For example, to disable quota translator on the test-volume:
@@ -74,7 +71,7 @@ being treated as "/".
 Set the disk limit using the following command:
 
 ```console
-# gluster volume quota <VOLNAME> limit-usage <DIR> <HARD_LIMIT>
+gluster volume quota <VOLNAME> limit-usage <DIR> <HARD_LIMIT>
 ```
 
 For example, to set a limit on data directory on the test-volume where
@@ -101,49 +98,49 @@ the limit is set.
 
 **To display disk limit information:**
 
--   Display disk limit information of all the directories on which limit
-    is set, using the following command:
+- Display disk limit information of all the directories on which limit
+  is set, using the following command:
 
-        # gluster volume quota <VOLNAME> list
+      gluster volume quota <VOLNAME> list
 
-    For example, to see the set disks limit on the test-volume:
+  For example, to see the set disks limit on the test-volume:
 
-        # gluster volume quota test-volume list
-        /Test/data    10 GB       6 GB
-        /Test/data1   10 GB       4 GB
+      # gluster volume quota test-volume list
+      /Test/data    10 GB       6 GB
+      /Test/data1   10 GB       4 GB
 
--   Display disk limit information on a particular directory on which
-    limit is set, using the following command:
+- Display disk limit information on a particular directory on which
+  limit is set, using the following command:
 
-        # gluster volume quota <VOLNAME> list <DIR>
+      gluster volume quota <VOLNAME> list <DIR>
 
-    For example, to view the set limit on /data directory of test-volume:
+  For example, to view the set limit on /data directory of test-volume:
 
-        # gluster volume quota test-volume list /data
-        /Test/data    10 GB       6 GB
-
+      # gluster volume quota test-volume list /data
+      /Test/data    10 GB       6 GB
 
 ### Displaying Quota Limit Information Using the df Utility
 
 You can create a report of the disk usage using the df utility by considering quota limits. To generate a report, run the following command:
 
 ```console
-# gluster volume set <VOLNAME> quota-deem-statfs on
+gluster volume set <VOLNAME> quota-deem-statfs on
 ```
 
 In this case, the total disk space of the directory is taken as the quota hard limit set on the directory of the volume.
 
->**Note**
->The default value for quota-deem-statfs is on when the quota is enabled and it is recommended to keep quota-deem-statfs on.
+> **Note**
+> The default value for quota-deem-statfs is on when the quota is enabled and it is recommended to keep quota-deem-statfs on.
 
 The following example displays the disk usage when quota-deem-statfs is off:
 
 ```console
 # gluster volume set test-volume features.quota-deem-statfs off
 volume set: success
+
 # gluster volume quota test-volume list
 Path            Hard-limit    Soft-limit    Used      Available
---------------------------------------------------------------- 
+---------------------------------------------------------------
 /               300.0GB        90%          11.5GB    288.5GB
 /John/Downloads  77.0GB        75%          11.5GB     65.5GB
 ```
@@ -161,6 +158,7 @@ The following example displays the disk usage when quota-deem-statfs is on:
 ```console
 # gluster volume set test-volume features.quota-deem-statfs on
 volume set: success
+
 # gluster vol quota test-volume list
 Path        Hard-limit    Soft-limit     Used     Available
 -----------------------------------------------------------
@@ -206,13 +204,13 @@ Use the following command to update the memory cache size:
 1. Soft Timeout: The frequency at which the quota server-side translator checks the volume usage when the usage is below the soft limit. The soft timeout is in effect when the disk usage is less than the soft limit.
 
 ```console
-# gluster volume set <VOLNAME> features.soft-timeout <time>
+gluster volume set <VOLNAME> features.soft-timeout <time>
 ```
 
-2. Hard Timeout: The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit. 
+2. Hard Timeout: The frequency at which the quota server-side translator checks the volume usage when the usage is above the soft limit. The hard timeout is in effect when the disk usage is between the soft limit and the hard limit.
 
 ```console
-# gluster volume set <VOLNAME> features.hard-timeout <time>
+gluster volume set <VOLNAME> features.hard-timeout <time>
 ```
 
 For example, to update the memory cache size for every 5 seconds on test-volume in case of hard-timeout:
@@ -231,12 +229,11 @@ Alert time is the frequency at which you want your usage information to be logge
 Use the following command to set the alert time:
 
 ```console
-# gluster volume quota <VOLNAME> alert-time <time>
+gluster volume quota <VOLNAME> alert-time <time>
 ```
 
->**Note**
->
->The default alert-time is one week.
+> **Note:**
+> The default alert-time is one week.
 
 For example, to set the alert time to one day:
 
@@ -254,7 +251,7 @@ You can remove the set disk limit if you do not want a quota anymore.
 Use the following command to remove the disk limit set on a particular directory:
 
 ```console
-# gluster volume quota <VOLNAME> remove <DIR>
+gluster volume quota <VOLNAME> remove <DIR>
 ```
 
 For example, to remove the disk limit on /data directory of
