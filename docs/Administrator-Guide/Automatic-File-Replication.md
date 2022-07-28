@@ -138,7 +138,7 @@ This is a rather simplified description and I have omitted details about various
 
 **Data heal**: Happens only for files. The contents of the file are copied from the source to the sink bricks.
 
-**Entry heal**: Happens only for directories. Entries (i.e. files and subdirs) under a given directory are deleted from the sinks if they are not present in the source. Likewise, entries are created on the sinks if they are not present in the source.
+**Entry heal**: Happens only for directories. Entries (i.e. files and subdirs) under a given directory are deleted from the sinks if they are not present in the source. Likewise, entries are created on the sinks if they are present in the source.
 
 **Metadata heal:** Happens for both files and directories. File ownership, file permissions and extended attributes are copied from the source to the sink bricks.
 
