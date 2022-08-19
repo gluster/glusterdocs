@@ -24,6 +24,7 @@ Detailed release schedule [here](https://www.gluster.org/release-schedule/)
 
 ### GlusterFS 9 release notes
 
+- [9.6](./9.6.md)
 - [9.5](./9.5.md)
 - [9.4](./9.4.md)
 - [9.3](./9.3.md)
