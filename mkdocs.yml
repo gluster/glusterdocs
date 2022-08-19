@@ -144,6 +144,7 @@ nav:
           - 10.1: release-notes/10.1.md
           - 10.0: release-notes/10.0.md
       - RELEASE 9.x:
+          - 9.6: release-notes/9.6.md
           - 9.5: release-notes/9.5.md
           - 9.4: release-notes/9.4.md
           - 9.3: release-notes/9.3.md
