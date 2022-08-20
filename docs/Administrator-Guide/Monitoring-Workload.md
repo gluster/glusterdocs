@@ -706,7 +706,7 @@ details:
   For example, to display additional information about the bricks of
   test-volume:
 
-      # gluster volume status test-volume details
+      # gluster volume status test-volume detail
       STATUS OF VOLUME: test-volume
       -------------------------------------------
       Brick                : arch:/export/1
