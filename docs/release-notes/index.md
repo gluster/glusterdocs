@@ -21,6 +21,7 @@ Detailed release schedule [here](https://www.gluster.org/release-schedule/)
 - [10.1](./10.1.md)
 - [10.0](./10.0.md)
 - [10.2](./10.2.md)
+- [10.3](./10.3.md)
 
 ### GlusterFS 9 release notes
 

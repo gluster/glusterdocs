@@ -140,6 +140,7 @@ nav:
   - Release Notes:
       - index: release-notes/index.md
       - RELEASE 10.x:
+          - 10.3: release-notes/10.3.md
           - 10.2: release-notes/10.2.md
           - 10.1: release-notes/10.1.md
           - 10.0: release-notes/10.0.md
