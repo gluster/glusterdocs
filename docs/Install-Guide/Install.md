@@ -55,18 +55,18 @@ apt install software-properties-common
 Then add the community GlusterFS PPA:
 
 ```console
-add-apt-repository ppa:gluster/glusterfs-7
+add-apt-repository ppa:gluster/glusterfs-10
 apt update
 ```
 
 Finally, install the packages:
 
 ```console
-apt install glusterfs-server
+apt install glusterfs
 ```
 
 *Note: Packages exist for Ubuntu 16.04 LTS, 18.04
-LTS, 20.04 LTS, 20.10, 21.04*
+LTS, 20.04 LTS, 20.10, 21.04, 22.04*
 
 ###### For Red Hat/CentOS
 
