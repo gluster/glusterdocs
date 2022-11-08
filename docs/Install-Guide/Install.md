@@ -62,7 +62,7 @@ apt update
 Finally, install the packages:
 
 ```console
-apt install glusterfs
+apt install glusterfs-server
 ```
 
 *Note: Packages exist for Ubuntu 16.04 LTS, 18.04
