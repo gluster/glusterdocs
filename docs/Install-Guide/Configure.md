@@ -53,7 +53,7 @@ echo "/dev/sdb1 /export/sdb1 xfs defaults 0 0"  >> /etc/fstab
 ### Mount the partition as a Gluster "brick"
 
 ```console
-mkdir -p /export/sdb1 && mount -a && mkdir -p /export/sdb1/brick
+mkdir -p /export/sdb1 && mount -a
 ```
 
 #### Set up a Gluster volume
@@ -87,6 +87,8 @@ Breaking this down into pieces:
   means each server will house a copy of the data.
 - we specify which nodes to use, and which bricks on those nodes. The order here is
   important when you have more bricks.
+- the brick directory will be created by this command. If the directory already
+  exists, you may get `<brick> is already part of a volume` errors.
 
 It is possible (as of the most current release as of this writing, Gluster 3.3)
 to specify the bricks in such a way that you would make both copies of the data reside on a
