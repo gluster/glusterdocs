@@ -8,33 +8,34 @@ A **yes** means packages are (or will be) provided in the respective repository.
 A **no** means no plans to build new updates. Existing packages will remain in the repos.  
 The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 
-|                           |                  |  10  |  9   |
-| ------------------------- | ---------------- | :--: | :--: |
-| CentOS Storage SIG[2]     | 7                |  no  | yes  |
-|                           | 8                | yes  | yes  |
-|                           | Stream 8         | yes  | yes  |
-|                           | Stream 9         | yes  | yes  |
+|                           |                  |  11  |  10  |  9   |
+| ------------------------- | ---------------- | :--: | :--: | :--: |
+| CentOS Storage SIG[2]     | 7                |  no  |  no  | yes  |
+|                           | 8                |  no  | yes  | yes  |
+|                           | Stream 8         | yes  | yes  | yes  |
+|                           | Stream 9         | yes  | yes  | yes  |
+|                           |                  |      |      |      |
+| Fedora[3]                 | F35              |  no  | yes  | yes¹ |
+|                           | F36              | yes  | yes  | yes¹ |
+|                           | F37              | yes  | yes¹ | yes  |
+|                           | F38(rawhide)     | yes¹ | yes  |  no  |
+|                           |                  |      |      |      |
+| Debian[3]                 | Buster/10        | yes  | yes  | yes  |
+|                           | Bullseye/11      | yes  | yes  | yes  |
+|                           | Bookworm/12(sid) | yes  | yes  | yes  |
 |                           |                  |      |      |
-| Fedora[3]                 | F35              | yes  | yes¹ |
-|                           | F36              | yes  | yes¹ |
-|                           | F37(rawhide)     | yes¹ | yes  |
-|                           |                  |      |      |
-| Debian[3]                 | Buster/10        | yes  | yes  |
-|                           | Bullseye/11      | yes  | yes  |
-|                           | Bookworm/12(sid) | yes  | yes  |
-|                           |                  |      |      |
-| Ubuntu Launchpad[4]       | Xenial/16.04     |  no  | yes  |
-|                           | Bionic/18.04     | yes  | yes  |
-|                           | Focal/20.04      | yes  | yes  |
-|                           | Jammy/22.04      | yes  | yes  |
-|                           | Kinetic/22.10    | yes  | yes  |
-|                           |                  |      |      |
-| OpenSUSE Build Service[5] | Leap15.3         | yes  | yes  |
-|                           | Leap15.4         | yes  | yes  |
-|                           | SLES12SP5        |  no  | yes  |
-|                           | SLES15SP3        | yes  | yes  |
-|                           | SLES15SP4        | yes  | yes  |
-|                           | Tumbleweed       | yes  | yes  |
+| Ubuntu Launchpad[4]       | Xenial/16.04     |  no  |  no  | yes  |
+|                           | Bionic/18.04     | yes  | yes  | yes  |
+|                           | Focal/20.04      | yes  | yes  | yes  |
+|                           | Jammy/22.04      | yes  | yes  | yes  |
+|                           | Kinetic/22.10    | yes  | yes  | yes  |
+|                           |                  |      |      |      |
+| OpenSUSE Build Service[5] | Leap15.3         |  no  | yes  | yes  |
+|                           | Leap15.4         | yes  | yes  | yes  |
+|                           | SLES12SP5        |  no  | no  | yes  |
+|                           | SLES15SP3        |  no  | yes  | yes  |
+|                           | SLES15SP4        | yes  | yes  | yes  |
+|                           | Tumbleweed       | yes  | yes  | yes  |
 
 **NOTE** - We are not building Debian arm packages due to resource constraints for a while now. There will be only amd64 packages present on [download.gluster.org](https://download.gluster.org/pub/gluster/glusterfs/LATEST/)
 
