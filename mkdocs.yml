@@ -120,6 +120,7 @@ nav:
       - Upgrade-Guide Index: Upgrade-Guide/README.md
       - Op-version: Upgrade-Guide/op-version.md
       - Generic upgrade procedure: Upgrade-Guide/generic-upgrade-procedure.md
+      - Upgrade to 11: Upgrade-Guide/upgrade-to-11.md
       - Upgrade to 10: Upgrade-Guide/upgrade-to-10.md
       - Upgrade to 9: Upgrade-Guide/upgrade-to-9.md
       - Upgrade to 8: Upgrade-Guide/upgrade-to-8.md
@@ -139,6 +140,8 @@ nav:
       - Upgrade to 3.5: Upgrade-Guide/upgrade-to-3.5.md
   - Release Notes:
       - index: release-notes/index.md
+      - RELEASE 11.x:
+          - 11.0: release-notes/11.0.md
       - RELEASE 10.x:
           - 10.3: release-notes/10.3.md
           - 10.2: release-notes/10.2.md

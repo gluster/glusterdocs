@@ -16,6 +16,10 @@ Detailed release schedule [here](https://www.gluster.org/release-schedule/)
 
 - [2.0.1](./glusterfs-selinux2.0.1.md)
 
+### GlusterFS 11 release notes
+
+- [11.0](./11.0.md)
+
 ### GlusterFS 10 release notes
 
 - [10.1](./10.1.md)
