@@ -75,12 +75,21 @@ yum install autoconf automake bison cmockery2-devel dos2unix flex   \
 **Note: You will need to enable the CentOS SIG repos in order to install userspace-rcu-devel package**<br>
 For details check https://wiki.centos.org/SpecialInterestGroup/Storage
 
-### Enable repositories for CentOS 8
+### Enable repositories for CentOS
 
-The following yum command enables needed repositories providing the build requirements for CentOS 8,
+The following yum command enables needed repositories providing the build requirements:
+
+CentOS Stream 8:
 
 ```console
 yum-config-manager --enable powertools --enable devel
+
+```
+CentOS Stream 9:
+
+```console
+yum-config-manager --enable crb --enable devel
+
 ```
 
 ### CentOS / Enterprise Linux v8
