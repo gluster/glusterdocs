@@ -222,14 +222,15 @@ be installed on the client machine, we will use one of the servers as
 a simple place to test first , as if it were that "client".
 
 ```console
-mount -t glusterfs server1:/gv0 /mnt
-for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/copy-test-$i; done
+mkdir /mnt/gluster-test
+mount -t glusterfs server1:/gv0 /mnt/gluster-test
+for i in `seq -w 1 100`; do cp -rp /var/log/messages /mnt/gluster-test/copy-test-$i; done
 ```
 
 First, check the client mount point:
 
 ```console
-ls -lA /mnt/copy* | wc -l
+ls -lA /mnt/gluster-test/copy* | wc -l
 ```
 
 You should see 100 files returned. Next, check the GlusterFS brick mount
