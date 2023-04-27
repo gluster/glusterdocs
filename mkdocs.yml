@@ -143,6 +143,7 @@ nav:
       - RELEASE 11.x:
           - 11.0: release-notes/11.0.md
       - RELEASE 10.x:
+          - 10.4: release-notes/10.4.md
           - 10.3: release-notes/10.3.md
           - 10.2: release-notes/10.2.md
           - 10.1: release-notes/10.1.md
