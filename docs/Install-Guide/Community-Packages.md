@@ -15,10 +15,10 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |                           | Stream 8         | yes  | yes  | yes  |
 |                           | Stream 9         | yes  | yes  | yes  |
 |                           |                  |      |      |      |
-| Fedora[3]                 | F35              |  no  | yes  | yes¹ |
-|                           | F36              | yes  | yes  | yes¹ |
+| Fedora[3]                 | F36              | yes  | yes  | yes¹ |
 |                           | F37              | yes  | yes¹ | yes  |
-|                           | F38(rawhide)     | yes¹ | yes  |  no  |
+|                           | F38              | yes¹ | yes  |  no  |
+|                           | F39(rawhide)     | yes¹ | yes  |  no  |
 |                           |                  |      |      |      |
 | Debian[3]                 | Buster/10        | yes  | yes  | yes  |
 |                           | Bullseye/11      | yes  | yes  | yes  |
@@ -29,6 +29,8 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |                           | Focal/20.04      | yes  | yes  | yes  |
 |                           | Jammy/22.04      | yes  | yes  | yes  |
 |                           | Kinetic/22.10    | yes  | yes  | yes  |
+|                           | Lunar/23.04      | yes  | yes  | no   |
+|                           | Mantic/23.10     | yes  | no   | no   |
 |                           |                  |      |      |      |
 | OpenSUSE Build Service[5] | Leap15.3         |  no  | yes  | yes  |
 |                           | Leap15.4         | yes  | yes  | yes  |
@@ -48,19 +50,21 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 |                           | Stream 8         |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
 |                           | Stream 9         |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
 |                           |                  |                   |         |               |                     |             |       |
-| Fedora[3]                 | F35              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
-|                           | F36              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
-|                           | F37(rawhide)     |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
+| Fedora[3]                 | F36              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
+|                           | F37              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
+|                           | F38              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
+|                           | F39(rawhide)     |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
 | Debian[3]                 | Buster/10        |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Bullseye/11      |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Bookworm/12(sid) |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
-| Ubuntu Launchpad[4]       | Xenial/16.04     |       n/a/        |   no    |      no       |         yes         |     yes     |   ?   |
-|                           | Bionic/18.04     |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
+| Ubuntu Launchpad[4]       | Bionic/18.04     |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Focal/20.04      |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Jammy/22.04      |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           | Kinetic/22.10    |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
+|                           | Lunar/23.04      |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
+|                           | Mantic/23.10     |        n/a        |   no    |      no       |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
 | OpenSUSE Build Service[5] | Leap15.3         |        n/a        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           | Leap15.4         |        n/a        |   yes   |      yes      |         yes         |     yes     |   ?   |
