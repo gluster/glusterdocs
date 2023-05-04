@@ -46,7 +46,7 @@ See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
 
 -   Create a new volume :
 
-    `# gluster volume create <NEW-VOLNAME> [[replica <COUNT> [arbiter <COUNT>]]|[replica 2 thin-arbiter 1]] [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport <tcp|rdma|tcp,rdma>] <NEW-BRICK> <TA-BRICK>... [force]`
+    `# gluster volume create <NEW-VOLNAME> [[replica <COUNT> [arbiter <COUNT>]]|[replica 2 thin-arbiter 1]] [disperse [<COUNT>]] [disperse-data <COUNT>] [redundancy <COUNT>] [transport <tcp>] <NEW-BRICK> <TA-BRICK>... [force]`
 
     For example, to create a volume called test-volume consisting of
     server3:/exp3 and server4:/exp4:
@@ -54,6 +54,8 @@ See [Setting up Storage](./setting-up-storage.md) for how to set up bricks.
         # gluster volume create test-volume server3:/exp3 server4:/exp4
         Creation of test-volume has been successful
         Please start the volume to access data.
+
+    tcp is the default and currently only available transport.
 
 ## **Creating Distributed Volumes**
 
@@ -75,7 +77,7 @@ hardware/software layers.
 
 2.  Create the distributed volume:
 
-    `# gluster volume create  [transport tcp | rdma | tcp,rdma] `
+    `# gluster volume create  [transport tcp] `
 
     For example, to create a distributed volume with four storage
     servers using tcp:
@@ -101,7 +103,7 @@ hardware/software layers.
     For example, to create a distributed volume with four storage
     servers over InfiniBand:
 
-        # gluster volume create test-volume transport rdma server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+        # gluster volume create test-volume transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
         Creation of test-volume has been successful
         Please start the volume to access data.
 
@@ -132,7 +134,7 @@ high-availability and high-reliability are critical.
 
 2.  Create the replicated volume:
 
-    `# gluster volume create  [replica ] [transport tcp | rdma | tcp,rdma] `
+    `# gluster volume create  [replica ] [transport tcp] `
 
     For example, to create a replicated volume with two storage servers:
 
@@ -195,7 +197,7 @@ environments.
 
 2.  Create the distributed replicated volume:
 
-    `# gluster volume create  [replica ] [transport tcp | rdma | tcp,rdma] `
+    `# gluster volume create  [replica ] [transport tcp] `
 
     For example, a four node distributed (replicated) volume with a
     two-way mirror:
@@ -301,7 +303,7 @@ a RMW cycle for many writes (of course this always depends on the use case).
 
 2.  Create the dispersed volume:
 
-    `# gluster volume create [disperse [<count>]] [redundancy <count>] [transport tcp | rdma | tcp,rdma]`
+    `# gluster volume create [disperse [<count>]] [redundancy <count>] [transport tcp]`
 
     A dispersed volume can be created by specifying the number of bricks in a
     disperse set, by specifying the number of redundancy bricks, or both.
@@ -352,7 +354,7 @@ volumes, but using dispersed subvolumes instead of replicated ones.
 
 2.  Create the distributed dispersed volume:
 
-    `# gluster volume create disperse <count> [redundancy <count>] [transport tcp | rdma | tcp,rdma]`
+    `# gluster volume create disperse <count> [redundancy <count>] [transport tcp]`
 
     To create a distributed dispersed volume, the *disperse* keyword and
     &lt;count&gt; is mandatory, and the number of bricks specified in the
