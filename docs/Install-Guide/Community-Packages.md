@@ -10,13 +10,10 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 
 |                           |                  |  11  |  10  |
 | ------------------------- | ---------------- | :--: | :--: |
-| CentOS Storage SIG[2]     | 7                |  no  |  no  |
-|                           | 8                |  no  | yes  |
-|                           | Stream 8         | yes  | yes  |
+| CentOS Storage SIG[2]     | Stream 8         | yes  | yes  |
 |                           | Stream 9         | yes  | yes  |
 |                           |                  |      |      |
-| Fedora[3]                 | F36              | yes  | yes  |
-|                           | F37              | yes  | yes¹ |
+| Fedora[3]                 | F37              | yes  | yes¹ |
 |                           | F38              | yes¹ | yes  |
 |                           | F39(rawhide)     | yes¹ | yes  |
 |                           |                  |      |      |
@@ -42,13 +39,10 @@ The following GlusterFS versions have reached EOL[1]: 8, 7, 6 and earlier.
 
 |                           |                  | glusterfs-selinux | gdeploy | gluster-block | glusterfs-coreutils | nfs-ganesha | Samba |
 | ------------------------- | ---------------- | :---------------: | :-----: | :-----------: | :-----------------: | :---------: | :---: |
-| CentOS Storage SIG[2]     | 7                |        yes        |   yes   |      yes      |         yes         |     yes     |  yes  |
-|                           | 8                |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
-|                           | Stream 8         |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
+| CentOS Storage SIG[2]     | Stream 8         |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
 |                           | Stream 9         |        yes        |   tbd   |      yes      |         yes         |     yes     |  yes  |
 |                           |                  |                   |         |               |                     |             |       |
-| Fedora[3]                 | F36              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
-|                           | F37              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
+| Fedora[3]                 | F37              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           | F38              |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           | F39(rawhide)     |        yes        |   yes   |      yes      |         yes         |     yes     |   ?   |
 |                           |                  |                   |         |               |                     |             |       |
