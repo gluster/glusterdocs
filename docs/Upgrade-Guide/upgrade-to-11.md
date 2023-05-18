@@ -50,5 +50,5 @@ were made optional in this release causing checksum misamtch. Stopping and start
 
 ### Deprecated translators and upgrade procedure for volumes using these features
 
-[If you are upgrading from a release prior to release-6 be aware of deprecated xlators and functionality](https://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_6/#deprecated-translators-and-upgrade-procedure-for-volumes-using-these-features).
+[If you are upgrading from a release prior to release-6 be aware of deprecated xlators and functionality](https://docs.gluster.org/en/latest/Upgrade-Guide/upgrade-to-6/#deprecated-translators-and-upgrade-procedure-for-volumes-using-these-features).
 
