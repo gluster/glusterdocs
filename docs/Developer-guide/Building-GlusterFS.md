@@ -41,7 +41,7 @@ dnf install automake autoconf libtool flex bison openssl-devel  \
   librdmacm-devel readline-devel lvm2-devel glib2-devel         \
   userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
   fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
-  libuuid-devel liburing-devel gperftools
+  libuuid-devel liburing-devel gperftools libcurl-devel
 ```
 
 ### Ubuntu
