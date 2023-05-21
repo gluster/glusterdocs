@@ -272,7 +272,7 @@ make glusterrpms
 This will create rpms from the source in 'extras/LinuxRPM'. _(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
 mock)_<br>
-For CentOS / Enterprise Linux 8 the dependencies can be installed via:
+For Fedora / CentOS / Enterprise Linux 8 the dependencies can be installed via:
 
 ```console
 yum install mock rpm-build  selinux-policy-devel
