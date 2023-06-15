@@ -41,7 +41,7 @@ dnf install automake autoconf libtool flex bison openssl-devel  \
   librdmacm-devel readline-devel lvm2-devel glib2-devel         \
   userspace-rcu-devel libcmocka-devel libacl-devel sqlite-devel \
   fuse-devel redhat-rpm-config rpcgen libtirpc-devel make       \
-  libuuid-devel liburing-devel gperftools
+  libuuid-devel liburing-devel gperftools libcurl-devel
 ```
 
 ### Ubuntu
@@ -272,7 +272,7 @@ make glusterrpms
 This will create rpms from the source in 'extras/LinuxRPM'. _(Note: You
 will need to install the rpmbuild requirements including rpmbuild and
 mock)_<br>
-For CentOS / Enterprise Linux 8 the dependencies can be installed via:
+For Fedora / CentOS / Enterprise Linux 8 the dependencies can be installed via:
 
 ```console
 yum install mock rpm-build  selinux-policy-devel
