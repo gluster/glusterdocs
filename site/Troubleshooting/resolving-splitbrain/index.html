@@ -1,0 +1,5436 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation for Gluster Filesystem">
+      
+      
+      
+        <link rel="canonical" href="http://docs.gluster.org/Troubleshooting/resolving-splitbrain/">
+      
+      
+        <link rel="prev" href="../troubleshooting-afr/">
+      
+      
+        <link rel="next" href="../troubleshooting-filelocks/">
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
+    
+    
+      
+        <title>Troubleshooting Split-Brains - Gluster Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#heal-info-and-split-brain-resolution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gluster Docs" class="md-header__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gluster Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting Split-Brains
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Bring back the sunshine"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Bring back the sunshine" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Turn off the lights"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Turn off the lights" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gluster Docs" class="md-nav__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gluster Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Getting started with GlusterFS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started with GlusterFS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quick-Start-Guide/Quickstart/" class="md-nav__link">
+        Quick Start Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quick-Start-Guide/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Install Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Install Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Common-criteria/" class="md-nav__link">
+        Common Criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-virt/" class="md-nav__link">
+        Setting up in virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-Bare-metal/" class="md-nav__link">
+        Setting up on physical servers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-aws/" class="md-nav__link">
+        Deploying in AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Configure/" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Community-Packages/" class="md-nav__link">
+        Community Packages
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Administration Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Administration Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Start-Stop-Daemon/" class="md-nav__link">
+        Managing the Gluster Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Storage-Pools/" class="md-nav__link">
+        Managing Trusted Storage Pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          Setting Up Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Setting Up Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Brick-Naming-Conventions/" class="md-nav__link">
+        Brick Naming Conventions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/formatting-and-mounting-bricks/" class="md-nav__link">
+        Formatting and Mounting Bricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Access-Control-Lists/" class="md-nav__link">
+        Access Control Lists
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Handling-of-users-with-many-groups/" class="md-nav__link">
+        Handling of users that belong to many groups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Volumes/" class="md-nav__link">
+        Setting Up Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Clients/" class="md-nav__link">
+        Setting Up Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Volumes/" class="md-nav__link">
+        Managing Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Building-QEMU-With-gfapi-For-Debian-Based-Systems/" class="md-nav__link">
+        Building QEMU with gfapi For Debian Based Systems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Filter/" class="md-nav__link">
+        GlusterFS Filter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_13">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Automatic-File-Replication/" class="md-nav__link">
+        Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Geo-Replication/" class="md-nav__link">
+        Geo Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Directory-Quota/" class="md-nav__link">
+        Quotas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Snapshots/" class="md-nav__link">
+        Snapshots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/io_uring/" class="md-nav__link">
+        io_uring
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Monitoring-Workload/" class="md-nav__link">
+        Monitoring Workload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Object-Storage/" class="md-nav__link">
+        Object Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Cinder/" class="md-nav__link">
+        GlusterFS Cinder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Keystone-Quickstart/" class="md-nav__link">
+        GlusterFS Keystone Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Gluster-On-ZFS/" class="md-nav__link">
+        Gluster On ZFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Bareos/" class="md-nav__link">
+        Configuring Bareos to store backups on Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/SSL/" class="md-nav__link">
+        SSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Puppet/" class="md-nav__link">
+        Puppet Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/RDMA-Transport/" class="md-nav__link">
+        RDMA Transport
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-iSCSI/" class="md-nav__link">
+        GlusterFS iSCSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/NFS-Ganesha-GlusterFS-Integration/" class="md-nav__link">
+        Configuring NFS-Ganesha server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Linux-Kernel-Tuning/" class="md-nav__link">
+        Linux Kernel Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Network-Configurations-Techniques/" class="md-nav__link">
+        Network Configuration Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Testing/" class="md-nav__link">
+        Performance Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Tuning/" class="md-nav__link">
+        Performance Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Export-And-Netgroup-Authentication/" class="md-nav__link">
+        Export and Netgroup Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Consul/" class="md-nav__link">
+        Consul integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Split-brain-and-ways-to-deal-with-it/" class="md-nav__link">
+        Split brain and ways to deal with it
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/arbiter-volumes-and-quorum/" class="md-nav__link">
+        Arbiter volumes and quorum options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Thin-Arbiter-Volumes/" class="md-nav__link">
+        Thin Arbiter volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash for GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Tuning-Volume-Options/" class="md-nav__link">
+        Tuning Volume Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Mandatory-Locks/" class="md-nav__link">
+        Mandatory Locks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Coreutils/" class="md-nav__link">
+        GlusterFS coreutilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Events-APIs/" class="md-nav__link">
+        Events APIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Hook-scripts/" class="md-nav__link">
+        Managing GlusterFS Volume Life-Cycle Extensions with Hook Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          CLI Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          CLI Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI-Reference/cli-main/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentations/" class="md-nav__link">
+        Presentations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Developers Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Developers-Index/" class="md-nav__link">
+        Developers Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Simplified-Development-Workflow/" class="md-nav__link">
+        Simplified Development Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/compiling-rpms/" class="md-nav__link">
+        Compiling RPMS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Development-Workflow/" class="md-nav__link">
+        Development-Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Building-GlusterFS/" class="md-nav__link">
+        Build and Install GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Projects/" class="md-nav__link">
+        Project Ideas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Easy-Fix-Bugs/" class="md-nav__link">
+        EasyFix bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis/" class="md-nav__link">
+        Fixing issues reported by tools for static code analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Backport-Guidelines/" class="md-nav__link">
+        Backport Guidelines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Contributors Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Contributors Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Index/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Reporting-Guidelines/" class="md-nav__link">
+        Bug reporting guidelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Triage/" class="md-nav__link">
+        Bug Triage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/GlusterFS-Release-process/" class="md-nav__link">
+        GlusterFS Release process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Guidelines-For-Maintainers/" class="md-nav__link">
+        Guidelines For Maintainers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Adding-your-blog/" class="md-nav__link">
+        Adding your gluster blog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Ops Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Ops Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Overview/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Upgrade-Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrade-Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/" class="md-nav__link">
+        Upgrade-Guide Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/op-version/" class="md-nav__link">
+        Op-version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/generic-upgrade-procedure/" class="md-nav__link">
+        Generic upgrade procedure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-11/" class="md-nav__link">
+        Upgrade to 11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-10/" class="md-nav__link">
+        Upgrade to 10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-9/" class="md-nav__link">
+        Upgrade to 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-8/" class="md-nav__link">
+        Upgrade to 8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-7/" class="md-nav__link">
+        Upgrade to 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-6/" class="md-nav__link">
+        Upgrade to 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-5/" class="md-nav__link">
+        Upgrade to 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.1/" class="md-nav__link">
+        Upgrade to 4.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.0/" class="md-nav__link">
+        Upgrade to 4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.13/" class="md-nav__link">
+        Upgrade to 3.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.12/" class="md-nav__link">
+        Upgrade to 3.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.11/" class="md-nav__link">
+        Upgrade to 3.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.10/" class="md-nav__link">
+        Upgrade to 3.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.9/" class="md-nav__link">
+        Upgrade to 3.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.8/" class="md-nav__link">
+        Upgrade to 3.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.7/" class="md-nav__link">
+        Upgrade to 3.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.6/" class="md-nav__link">
+        Upgrade to 3.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.5/" class="md-nav__link">
+        Upgrade to 3.5
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2" id="__nav_11_2_label" tabindex="0">
+          RELEASE 11.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 11.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/11.0/" class="md-nav__link">
+        11.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_3" id="__nav_11_3_label" tabindex="0">
+          RELEASE 10.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 10.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.4/" class="md-nav__link">
+        10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.3/" class="md-nav__link">
+        10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.2/" class="md-nav__link">
+        10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.1/" class="md-nav__link">
+        10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.0/" class="md-nav__link">
+        10.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_4" id="__nav_11_4_label" tabindex="0">
+          RELEASE 9.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 9.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.6/" class="md-nav__link">
+        9.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.5/" class="md-nav__link">
+        9.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.4/" class="md-nav__link">
+        9.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.3/" class="md-nav__link">
+        9.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.2/" class="md-nav__link">
+        9.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.1/" class="md-nav__link">
+        9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.0/" class="md-nav__link">
+        9.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_5" id="__nav_11_5_label" tabindex="0">
+          RELEASE 8.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_5">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 8.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.6/" class="md-nav__link">
+        8.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.5/" class="md-nav__link">
+        8.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.4/" class="md-nav__link">
+        8.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.3/" class="md-nav__link">
+        8.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.2/" class="md-nav__link">
+        8.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.1/" class="md-nav__link">
+        8.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.0/" class="md-nav__link">
+        8.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_6" id="__nav_11_6_label" tabindex="0">
+          RELEASE 7.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_6">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 7.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.9/" class="md-nav__link">
+        7.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.8/" class="md-nav__link">
+        7.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.7/" class="md-nav__link">
+        7.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.6/" class="md-nav__link">
+        7.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.5/" class="md-nav__link">
+        7.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.4/" class="md-nav__link">
+        7.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.3/" class="md-nav__link">
+        7.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.2/" class="md-nav__link">
+        7.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.1/" class="md-nav__link">
+        7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.0/" class="md-nav__link">
+        7.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_7" id="__nav_11_7_label" tabindex="0">
+          RELEASE 6.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_7">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 6.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.10/" class="md-nav__link">
+        6.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.9/" class="md-nav__link">
+        6.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.8/" class="md-nav__link">
+        6.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.7/" class="md-nav__link">
+        6.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.6/" class="md-nav__link">
+        6.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.5/" class="md-nav__link">
+        6.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.4/" class="md-nav__link">
+        6.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.3/" class="md-nav__link">
+        6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.2/" class="md-nav__link">
+        6.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.1/" class="md-nav__link">
+        6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.0/" class="md-nav__link">
+        6.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_8" id="__nav_11_8_label" tabindex="0">
+          RELEASE 5.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_8">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 5.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.13/" class="md-nav__link">
+        5.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.12/" class="md-nav__link">
+        5.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.11/" class="md-nav__link">
+        5.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.10/" class="md-nav__link">
+        5.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.9/" class="md-nav__link">
+        5.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.8/" class="md-nav__link">
+        5.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.6/" class="md-nav__link">
+        5.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.5/" class="md-nav__link">
+        5.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.3/" class="md-nav__link">
+        5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.2/" class="md-nav__link">
+        5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.1/" class="md-nav__link">
+        5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.0/" class="md-nav__link">
+        5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_9" id="__nav_11_9_label" tabindex="0">
+          RELEASE 4.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_9">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 4.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.10/" class="md-nav__link">
+        4.1.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.9/" class="md-nav__link">
+        4.1.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.8/" class="md-nav__link">
+        4.1.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.7/" class="md-nav__link">
+        4.1.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.6/" class="md-nav__link">
+        4.1.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.5/" class="md-nav__link">
+        4.1.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.4/" class="md-nav__link">
+        4.1.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.3/" class="md-nav__link">
+        4.1.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.2/" class="md-nav__link">
+        4.1.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.1/" class="md-nav__link">
+        4.1.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.0/" class="md-nav__link">
+        4.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.2/" class="md-nav__link">
+        4.0.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.1/" class="md-nav__link">
+        4.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.0/" class="md-nav__link">
+        4.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_10" id="__nav_11_10_label" tabindex="0">
+          RELEASE 3.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_10">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 3.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.2/" class="md-nav__link">
+        3.13.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.1/" class="md-nav__link">
+        3.13.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.0/" class="md-nav__link">
+        3.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.15/" class="md-nav__link">
+        3.12.15
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.14/" class="md-nav__link">
+        3.12.14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.13/" class="md-nav__link">
+        3.12.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.12/" class="md-nav__link">
+        3.12.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.11/" class="md-nav__link">
+        3.12.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.10/" class="md-nav__link">
+        3.12.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.9/" class="md-nav__link">
+        3.12.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.8/" class="md-nav__link">
+        3.12.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.7/" class="md-nav__link">
+        3.12.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.6/" class="md-nav__link">
+        3.12.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.5/" class="md-nav__link">
+        3.12.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.4/" class="md-nav__link">
+        3.12.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.3/" class="md-nav__link">
+        3.12.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.2/" class="md-nav__link">
+        3.12.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.1/" class="md-nav__link">
+        3.12.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.0/" class="md-nav__link">
+        3.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.3/" class="md-nav__link">
+        3.11.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.2/" class="md-nav__link">
+        3.11.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.1/" class="md-nav__link">
+        3.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.0/" class="md-nav__link">
+        3.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.12/" class="md-nav__link">
+        3.10.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.11/" class="md-nav__link">
+        3.10.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.10/" class="md-nav__link">
+        3.10.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.9/" class="md-nav__link">
+        3.10.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.8/" class="md-nav__link">
+        3.10.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.7/" class="md-nav__link">
+        3.10.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.6/" class="md-nav__link">
+        3.10.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.5/" class="md-nav__link">
+        3.10.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.4/" class="md-nav__link">
+        3.10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.3/" class="md-nav__link">
+        3.10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.2/" class="md-nav__link">
+        3.10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.1/" class="md-nav__link">
+        3.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.0/" class="md-nav__link">
+        3.10.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.9.0/" class="md-nav__link">
+        3.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.7.1/" class="md-nav__link">
+        3.7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.7.0/" class="md-nav__link">
+        3.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.6.3/" class="md-nav__link">
+        3.6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.6.0/" class="md-nav__link">
+        3.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.4/" class="md-nav__link">
+        3.5.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.3/" class="md-nav__link">
+        3.5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.2/" class="md-nav__link">
+        3.5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.1/" class="md-nav__link">
+        3.5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.0/" class="md-nav__link">
+        3.5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          GlusterFS Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          GlusterFS Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/" class="md-nav__link">
+        GlusterFS Tools List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/glusterfind/" class="md-nav__link">
+        glusterfind
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/gfind-missing-files/" class="md-nav__link">
+        gfind missing files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+          Troubleshooting Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_2" id="__nav_13_2_label" tabindex="0">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_13_2">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-glusterd/" class="md-nav__link">
+        Troubleshooting CLI and glusterd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-georep/" class="md-nav__link">
+        Troubleshooting Geo-replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-gnfs/" class="md-nav__link">
+        Troubleshooting gNFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-afr/" class="md-nav__link">
+        Troubleshooting Self-heal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Troubleshooting Split-Brains
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Troubleshooting Split-Brains
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-split-brains" class="md-nav__link">
+    Types of Split-Brains:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-volume-heal-info" class="md-nav__link">
+    1) Volume heal info:
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Volume heal info:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpreting-the-output" class="md-nav__link">
+    Interpreting the output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-the-output" class="md-nav__link">
+    Analysis of the output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-filelocks/" class="md-nav__link">
+        Troubleshooting File Locks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+          Issues
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          Issues
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting-memory/" class="md-nav__link">
+        Debugging Memory Leaks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gluster-crash/" class="md-nav__link">
+        Crashes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4" id="__nav_13_4_label" tabindex="0">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statedump/" class="md-nav__link">
+        Statedump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gfid-to-path/" class="md-nav__link">
+        gfid to path
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google64817fdc11b2f6b6.html" class="md-nav__link">
+        Google Site Verification
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-split-brains" class="md-nav__link">
+    Types of Split-Brains:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-volume-heal-info" class="md-nav__link">
+    1) Volume heal info:
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Volume heal info:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpreting-the-output" class="md-nav__link">
+    Interpreting the output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-the-output" class="md-nav__link">
+    Analysis of the output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="heal-info-and-split-brain-resolution">Heal info and split-brain resolution</h1>
+<p>This document explains the heal info command available in gluster for monitoring pending heals in replicate volumes and the methods available to resolve split-brains.</p>
+<h2 id="types-of-split-brains">Types of Split-Brains:</h2>
+<p>A file is said to be in split-brain when Gluster AFR cannot determine which copy in the replica
+is the correct one.</p>
+<p>There are three types of split-brains:</p>
+<ul>
+<li>Data split-brain: The data in the file differs on the bricks in the replica set</li>
+<li>Metadata split-brain: The metadata differs on the bricks</li>
+<li>Entry split-brain: The GFID of the file is different on the bricks in the replica or the type of the file is different on the bricks in the replica. Type-mismatch cannot be healed using any of the split-brain resolution methods while gfid split-brains can be.</li>
+</ul>
+<h2 id="1-volume-heal-info">1) Volume heal info:</h2>
+<p>Usage: <code>gluster volume heal &lt;VOLNAME&gt; info</code></p>
+<p>This lists all the files that require healing (and will be processed by the self-heal daemon). It prints either their path or their GFID.</p>
+<h3 id="interpreting-the-output">Interpreting the output</h3>
+<p>All the files listed in the output of this command need to be healed.
+The files listed may also be accompanied by the following tags:</p>
+<p>a) 'Is in split-brain'<br />
+A file in data or metadata split-brain will
+be listed with " - Is in split-brain" appended after its path/GFID. E.g.
+"/file4" in the output provided below. However, for a file in GFID split-brain,
+the parent directory of the file is shown to be in split-brain and the file
+itself is shown to be needing healing, e.g. "/dir" in the output provided below
+is in split-brain because of GFID split-brain of file "/dir/a".
+Files in split-brain cannot be healed without resolving the split-brain.</p>
+<p>b) 'Is possibly undergoing heal'<br />
+When the heal info command is run, it (or to be more specific, the 'glfsheal' binary that is executed when you run the command) takes locks on each file to find if it needs healing. However, if the self-heal daemon had already started healing the file, it would have taken locks which glfsheal wouldn't be able to acquire. In such a case, it could print this message. Another possible case could be multiple glfsheal processes running simultaneously (e.g. multiple users ran a heal info command at the same time) and competing for same lock.</p>
+<p>The following is an example of heal info command's output.</p>
+<h3 id="example">Example</h3>
+<p>Consider a replica volume "test" with two bricks b1 and b2;
+self-heal daemon off, mounted at /mnt.</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal test info
+Brick \&lt;hostname:brickpath-b1&gt;
+&lt;gfid:aaca219f-0e25-4576-8689-3bfd93ca70c2&gt; - Is in split-brain
+&lt;gfid:39f301ae-4038-48c2-a889-7dac143e82dd&gt; - Is in split-brain
+&lt;gfid:c3c94de2-232d-4083-b534-5da17fc476ac&gt; - Is in split-brain
+&lt;gfid:6dc78b20-7eb6-49a3-8edb-087b90142246&gt;
+
+Number of entries: 4
+
+Brick &lt;hostname:brickpath-b2&gt;
+/dir/file2
+/dir/file1 - Is in split-brain
+/dir - Is in split-brain
+/dir/file3
+/file4 - Is in split-brain
+/dir/a
+
+
+Number of entries: 6
+</code></pre>
+<h3 id="analysis-of-the-output">Analysis of the output</h3>
+<p>It can be seen that</p>
+<p>A) from brick b1, four entries need healing:</p>
+<ul>
+<li>file with gfid:6dc78b20-7eb6-49a3-8edb-087b90142246 needs healing</li>
+<li>"aaca219f-0e25-4576-8689-3bfd93ca70c2", "39f301ae-4038-48c2-a889-7dac143e82dd" and "c3c94de2-232d-4083-b534-5da17fc476ac" are in split-brain</li>
+</ul>
+<p>B) from brick b2 six entries need healing-</p>
+<ul>
+<li>"a", "file2" and "file3" need healing</li>
+<li>"file1", "file4" &amp; "/dir" are in split-brain</li>
+</ul>
+<h1 id="2-volume-heal-info-split-brain">2. Volume heal info split-brain</h1>
+<p>Usage: <code>gluster volume heal &lt;VOLNAME&gt; info split-brain</code><br />
+This command only shows the list of files that are in split-brain. The output is therefore a subset of <code>gluster volume heal &lt;VOLNAME&gt; info</code></p>
+<h3 id="example_1">Example</h3>
+<pre class="no-copy"><code class="language-console"># gluster volume heal test info split-brain
+Brick &lt;hostname:brickpath-b1&gt;
+&lt;gfid:aaca219f-0e25-4576-8689-3bfd93ca70c2&gt;
+&lt;gfid:39f301ae-4038-48c2-a889-7dac143e82dd&gt;
+&lt;gfid:c3c94de2-232d-4083-b534-5da17fc476ac&gt;
+Number of entries in split-brain: 3
+
+Brick &lt;hostname:brickpath-b2&gt;
+/dir/file1
+/dir
+/file4
+Number of entries in split-brain: 3
+</code></pre>
+<p>Note that similar to the heal info command, for GFID split-brains (same filename but different GFID)
+their parent directories are listed to be in split-brain.</p>
+<h1 id="3-resolution-of-split-brain-using-gluster-cli">3. Resolution of split-brain using gluster CLI</h1>
+<p>Once the files in split-brain are identified, their resolution can be done
+from the gluster command line using various policies. Type-mismatch cannot be healed using this methods. Split-brain resolution commands let the user resolve data, metadata, and GFID split-brains.</p>
+<h2 id="31-resolution-of-datametadata-split-brain-using-gluster-cli">3.1 Resolution of data/metadata split-brain using gluster CLI</h2>
+<p>Data and metadata split-brains can be resolved using the following policies:</p>
+<h2 id="i-select-the-bigger-file-as-source">i) Select the bigger-file as source</h2>
+<p>This command is useful for per file healing where it is known/decided that the
+file with bigger size is to be considered as source.<br />
+<code>gluster volume heal &lt;VOLNAME&gt; split-brain bigger-file &lt;FILE&gt;</code><br />
+Here, <code>&lt;FILE&gt;</code> can be either the full file name as seen from the root of the volume
+(or) the GFID-string representation of the file, which sometimes gets displayed
+in the heal info command's output. Once this command is executed, the replica containing the <code>&lt;FILE&gt;</code> with a bigger
+size is found and healing is completed with that brick as a source.</p>
+<h3 id="example_2">Example :</h3>
+<p>Consider the earlier output of the heal info split-brain command.</p>
+<p>Before healing the file, notice file size and md5 checksums :</p>
+<p>On brick b1:</p>
+<pre class="no-copy"><code class="language-console">[brick1]# stat b1/dir/file1
+  File: ‘b1/dir/file1’
+  Size: 17              Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919362      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 13:55:40.149897333 +0530
+Modify: 2015-03-06 13:55:37.206880347 +0530
+Change: 2015-03-06 13:55:37.206880347 +0530
+ Birth: -
+[brick1]#
+[brick1]# md5sum b1/dir/file1
+040751929ceabf77c3c0b3b662f341a8  b1/dir/file1
+</code></pre>
+<p>On brick b2:</p>
+<pre class="no-copy"><code class="language-console">[brick2]# stat b2/dir/file1
+  File: ‘b2/dir/file1’
+  Size: 13              Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919365      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 13:54:22.974451898 +0530
+Modify: 2015-03-06 13:52:22.910758923 +0530
+Change: 2015-03-06 13:52:22.910758923 +0530
+ Birth: -
+[brick2]#
+[brick2]# md5sum b2/dir/file1
+cb11635a45d45668a403145059c2a0d5  b2/dir/file1
+</code></pre>
+<p><strong>Healing file1 using the above command</strong> :-<br />
+<code>gluster volume heal test split-brain bigger-file /dir/file1</code><br />
+Healed /dir/file1.</p>
+<p>After healing is complete, the md5sum and file size on both bricks should be the same.</p>
+<p>On brick b1:</p>
+<pre class="no-copy"><code class="language-console">[brick1]# stat b1/dir/file1
+  File: ‘b1/dir/file1’
+  Size: 17              Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919362      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 14:17:27.752429505 +0530
+Modify: 2015-03-06 13:55:37.206880347 +0530
+Change: 2015-03-06 14:17:12.880343950 +0530
+ Birth: -
+[brick1]#
+[brick1]# md5sum b1/dir/file1
+040751929ceabf77c3c0b3b662f341a8  b1/dir/file1
+</code></pre>
+<p>On brick b2:</p>
+<pre class="no-copy"><code class="language-console">[brick2]# stat b2/dir/file1
+  File: ‘b2/dir/file1’
+  Size: 17              Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919365      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 14:17:23.249403600 +0530
+Modify: 2015-03-06 13:55:37.206880000 +0530
+Change: 2015-03-06 14:17:12.881343955 +0530
+ Birth: -
+[brick2]#
+[brick2]# md5sum b2/dir/file1
+040751929ceabf77c3c0b3b662f341a8  b2/dir/file1
+</code></pre>
+<h2 id="ii-select-the-file-with-the-latest-mtime-as-source">ii) Select the file with the latest mtime as source</h2>
+<pre class="no-copy"><code class="language-console">gluster volume heal &lt;VOLNAME&gt; split-brain latest-mtime &lt;FILE&gt;
+</code></pre>
+<p>As is perhaps self-explanatory, this command uses the brick having the latest modification time for <code>&lt;FILE&gt;</code> as the source for healing.</p>
+<h2 id="iii-select-one-of-the-bricks-in-the-replica-as-the-source-for-a-particular-file">iii) Select one of the bricks in the replica as the source for a particular file</h2>
+<pre class="no-copy"><code class="language-console">gluster volume heal &lt;VOLNAME&gt; split-brain source-brick &lt;HOSTNAME:BRICKNAME&gt; &lt;FILE&gt;
+</code></pre>
+<p>Here, <code>&lt;HOSTNAME:BRICKNAME&gt;</code> is selected as source brick and <code>&lt;FILE&gt;</code> present in the source brick is taken as the source for healing.</p>
+<h3 id="example_3">Example :</h3>
+<p>Notice the md5 checksums and file size before and after healing.</p>
+<p>Before heal :</p>
+<p>On brick b1:</p>
+<pre class="no-copy"><code class="language-console">[brick1]# stat b1/file4
+  File: ‘b1/file4’
+  Size: 4               Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919356      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 13:53:19.417085062 +0530
+Modify: 2015-03-06 13:53:19.426085114 +0530
+Change: 2015-03-06 13:53:19.426085114 +0530
+ Birth: -
+[brick1]#
+[brick1]# md5sum b1/file4
+b6273b589df2dfdbd8fe35b1011e3183  b1/file4
+</code></pre>
+<p>On brick b2:</p>
+<pre class="no-copy"><code class="language-console">[brick2]# stat b2/file4
+  File: ‘b2/file4’
+  Size: 4               Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919358      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 13:52:35.761833096 +0530
+Modify: 2015-03-06 13:52:35.769833142 +0530
+Change: 2015-03-06 13:52:35.769833142 +0530
+ Birth: -
+[brick2]#
+[brick2]# md5sum b2/file4
+0bee89b07a248e27c83fc3d5951213c1  b2/file4
+</code></pre>
+<p><strong>Healing the file with gfid c3c94de2-232d-4083-b534-5da17fc476ac using the above command</strong> :</p>
+<pre><code class="language-console">gluster volume heal test split-brain source-brick test-host:/test/b1 gfid:c3c94de2-232d-4083-b534-5da17fc476ac
+</code></pre>
+<p>Healed gfid:c3c94de2-232d-4083-b534-5da17fc476ac.</p>
+<p>After healing :</p>
+<p>On brick b1:</p>
+<pre class="no-copy"><code class="language-console"># stat b1/file4
+  File: ‘b1/file4’
+  Size: 4               Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919356      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 14:23:38.944609863 +0530
+Modify: 2015-03-06 13:53:19.426085114 +0530
+Change: 2015-03-06 14:27:15.058927962 +0530
+ Birth: -
+# md5sum b1/file4
+b6273b589df2dfdbd8fe35b1011e3183  b1/file4
+</code></pre>
+<p>On brick b2:</p>
+<pre class="no-copy"><code class="language-console"># stat b2/file4
+ File: ‘b2/file4’
+  Size: 4               Blocks: 16         IO Block: 4096   regular file
+Device: fd03h/64771d    Inode: 919358      Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-03-06 14:23:38.944609000 +0530
+Modify: 2015-03-06 13:53:19.426085000 +0530
+Change: 2015-03-06 14:27:15.059927968 +0530
+ Birth: -
+# md5sum b2/file4
+b6273b589df2dfdbd8fe35b1011e3183  b2/file4
+</code></pre>
+<h2 id="iv-select-one-brick-of-the-replica-as-the-source-for-all-files">iv) Select one brick of the replica as the source for all files</h2>
+<pre class="no-copy"><code class="language-console">gluster volume heal &lt;VOLNAME&gt; split-brain source-brick &lt;HOSTNAME:BRICKNAME&gt;
+</code></pre>
+<p>Consider a scenario where many files are in split-brain such that one brick of
+replica pair is source. As the result of the above command all split-brained
+files in <code>&lt;HOSTNAME:BRICKNAME&gt;</code> are selected as source and healed to the sink.</p>
+<h3 id="example_4">Example:</h3>
+<p>Consider a volume having three entries "a, b and c" in split-brain.</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal test split-brain source-brick test-host:/test/b1
+Healed gfid:944b4764-c253-4f02-b35f-0d0ae2f86c0f.
+Healed gfid:3256d814-961c-4e6e-8df2-3a3143269ced.
+Healed gfid:b23dd8de-af03-4006-a803-96d8bc0df004.
+Number of healed entries: 3
+</code></pre>
+<h1 id="32-resolution-of-gfid-split-brain-using-gluster-cli">3.2 Resolution of GFID split-brain using gluster CLI</h1>
+<p>GFID split-brains can also be resolved by the gluster command line using the same policies that are used to resolve data and metadata split-brains.</p>
+<h2 id="i-selecting-the-bigger-file-as-source">i) Selecting the bigger-file as source</h2>
+<p>This method is useful for per file healing and where you can decided that the file with bigger size is to be considered as source.</p>
+<p>Run the following command to obtain the path of the file that is in split-brain:</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal VOLNAME info split-brain
+</code></pre>
+<p>From the output, identify the files for which file operations performed from the client failed with input/output error.</p>
+<h3 id="example_5">Example :</h3>
+<pre class="no-copy"><code class="language-console"># gluster volume heal testvol info
+Brick 10.70.47.45:/bricks/brick2/b0
+/f5
+/ - Is in split-brain
+
+Status: Connected
+Number of entries: 2
+
+Brick 10.70.47.144:/bricks/brick2/b1
+/f5
+/ - Is in split-brain
+
+Status: Connected
+Number of entries: 2
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Entries which are in GFID split-brain may not be shown as in split-brain by the heal info or heal info split-brain commands always. For entry split-brains, it is the parent directory which is shown as being in split-brain. So one might need to run info split-brain to get the dir names and then heal info to get the list of files under that dir which might be in split-brain (it could just be needing heal without split-brain).</p>
+</blockquote>
+<p>In the above command, testvol is the volume name, b0 and b1 are the bricks.
+Execute the below getfattr command on the brick to fetch information if a file is in GFID split-brain or not.</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -e hex -m. &lt;path-to-file&gt;
+</code></pre>
+<h3 id="example_6">Example :</h3>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-0=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x9563544118653550e888ab38c232e0c
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+</code></pre>
+<p>You can notice the difference in GFID for the file f5 in both the bricks.
+You can find the differences in the file size by executing stat command on the file from the bricks.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># stat /bricks/brick2/b0/f5
+File: ‘/bricks/brick2/b0/f5’
+Size: 15            Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67113350    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:46:26.353751073 +0530
+Modify: 2018-08-29 20:46:26.361751203 +0530
+Change: 2018-08-29 20:47:16.363751236 +0530
+Birth: -
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># stat /bricks/brick2/b1/f5
+File: ‘/bricks/brick2/b1/f5’
+Size: 2             Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67111750    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:44:56.153301616 +0530
+Modify: 2018-08-29 20:44:56.161301745 +0530
+Change: 2018-08-29 20:44:56.162301761 +0530
+Birth: -
+</code></pre>
+<p>Execute the following command along with the full filename as seen from the root of the volume which is displayed in the heal info command's output:</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal VOLNAME split-brain bigger-file FILE
+</code></pre>
+<h3 id="example_7">Example :</h3>
+<pre class="no-copy"><code class="language-console"># gluster volume heal testvol split-brain bigger-file /f5
+GFID split-brain resolved for file /f5
+</code></pre>
+<p>After the healing is complete, the GFID of the file on both the bricks must be the same as that of the file which had the bigger size. The following is a sample output of the getfattr command after completion of healing the file.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f5
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f5
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xce0a9956928e40afb78e95f78defd64f
+trusted.gfid2path.9cde09916eabc845=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6635
+</code></pre>
+<h2 id="ii-selecting-the-file-with-latest-mtime-as-source">ii) Selecting the file with latest mtime as source</h2>
+<p>This method is useful for per file healing and if you want the file with latest mtime has to be considered as source.</p>
+<h3 id="example_8">Example :</h3>
+<p>Lets take another file which is in GFID split-brain and try to heal that using the latest-mtime option.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-0=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x87242f808c6e56a007ef7d49d197acff
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>You can notice the difference in GFID for the file f4 in both the bricks.
+You can find the difference in the modification time by executing stat command on the file from the bricks.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># stat /bricks/brick2/b0/f4
+File: ‘/bricks/brick2/b0/f4’
+Size: 14            Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67113349    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-29 20:57:38.913629991 +0530
+Modify: 2018-08-29 20:57:38.921630122 +0530
+Change: 2018-08-29 20:57:38.923630154 +0530
+Birth: -
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># stat /bricks/brick2/b1/f4
+File: ‘/bricks/brick2/b1/f4’
+Size: 2             Blocks: 8          IO Block: 4096   regular file
+Device: fd15h/64789d    Inode: 67111749    Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Context: system_u:object_r:glusterd_brick_t:s0
+Access: 2018-08-24 20:54:50.953217256 +0530
+Modify: 2018-08-24 20:54:50.961217385 +0530
+Change: 2018-08-24 20:54:50.962217402 +0530
+Birth: -
+</code></pre>
+<p>Execute the following command:</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal VOLNAME split-brain latest-mtime FILE
+</code></pre>
+<h3 id="example_9">Example :</h3>
+<pre class="no-copy"><code class="language-console"># gluster volume heal testvol split-brain latest-mtime /f4
+GFID split-brain resolved for file /f4
+</code></pre>
+<p>After the healing is complete, the GFID of the files on both bricks must be same. The following is a sample output of the getfattr command after completion of healing the file. You can notice that the file has been healed using the brick having the latest mtime as the source.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f4
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f4
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0xb66b66d07b315f3c9cffac2fb6422a28
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<h2 id="iii-select-one-of-the-bricks-in-the-replica-as-source-for-a-particular-file">iii) Select one of the bricks in the replica as source for a particular file</h2>
+<p>This method is useful for per file healing and if you know which copy of the file is good.</p>
+<h3 id="example_10">Example :</h3>
+<p>Lets take another file which is in GFID split-brain and try to heal that using the source-brick option.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0x9d542fb1b3b15837a2f7f9dcdf5d6ee8
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.afr.testvol-client-1=0x000000020000000100000000
+trusted.afr.dirty=0x000000000000000000000000
+trusted.gfid=0xc90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>You can notice the difference in GFID for the file f3 in both the bricks.</p>
+<p>Execute the following command:</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal VOLNAME split-brain source-brick HOSTNAME:export-directory-absolute-path FILE
+</code></pre>
+<p>In this command, FILE present in HOSTNAME : export-directory-absolute-path is taken as source for healing.</p>
+<h3 id="example_11">Example :</h3>
+<pre class="no-copy"><code class="language-console"># gluster volume heal testvol split-brain source-brick 10.70.47.144:/bricks/brick2/b1 /f3
+GFID split-brain resolved for file /f3
+</code></pre>
+<p>After the healing is complete, the GFID of the file on both the bricks should be same as that of the brick which was chosen as source for healing. The following is a sample output of the getfattr command after the file is healed.</p>
+<p>On brick /b0</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b0/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b0/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0x90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<p>On brick /b1</p>
+<pre class="no-copy"><code class="language-console"># getfattr -d -m . -e hex /bricks/brick2/b1/f3
+getfattr: Removing leading '/' from absolute path names
+file: bricks/brick2/b1/f3
+security.selinux=0x73797374656d5f753a6f626a6563745f723a676c7573746572645f627269636b5f743a733000
+trusted.gfid=0x90d9b0f65f6530b95b9f3f8334033df
+trusted.gfid2path.364f55367c7bd6f4=0x30303030303030302d303030302d303030302d303030302d3030303030303030303030312f6634
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<ul>
+<li>
+<p>One cannot use the GFID of the file as an argument with any of the CLI options to resolve GFID split-brain. It should be the absolute path as seen from the mount point to the file considered as source.</p>
+</li>
+<li>
+<p>With source-brick option there is no way to resolve all the GFID split-brain in one shot by not specifying any file path in the CLI as done while resolving data or metadata split-brain. For each file in GFID split-brain, run the CLI with the policy you want to use.</p>
+</li>
+<li>
+<p>Resolving directory GFID split-brain using CLI with the "source-brick" option in a "distributed-replicated" volume needs to be done on all the sub-volumes explicitly, which are in this state. Since directories get created on all the sub-volumes, using one particular brick as source for directory GFID split-brain heals the directory for that particular sub-volume. Source brick should be chosen in such a way that after heal all the bricks of all the sub-volumes have the same GFID.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="note">Note:</h2>
+<p>As mentioned earlier, type-mismatch can not be resolved using CLI. Type-mismatch means different st_mode values (for example, the entry is a file in one brick while it is a directory on the other). Trying to heal such entry would fail.</p>
+<h3 id="example_12">Example</h3>
+<p>The entry named "entry1" is of different types on the bricks of the replica. Lets try to heal that using the split-brain CLI.</p>
+<pre class="no-copy"><code class="language-console"># gluster volume heal test split-brain source-brick test-host:/test/b1 /entry1
+Healing /entry1 failed:Operation not permitted.
+Volume heal failed.
+</code></pre>
+<p>However, they can be fixed by deleting the file from all but one bricks. See <a href="#dir-split-brain">Fixing Directory entry split-brain</a></p>
+<h1 id="an-overview-of-working-of-heal-info-commands">An overview of working of heal info commands</h1>
+<p>When these commands are invoked, a "glfsheal" process is spawned which reads
+the entries from the various sub-directories under <code>/&lt;brick-path&gt;/.glusterfs/indices/</code> of all
+the bricks that are up (that it can connect to) one after another. These
+entries are GFIDs of files that might need healing. Once GFID entries from a
+brick are obtained, based on the lookup response of this file on each
+participating brick of replica-pair &amp; trusted.afr.* extended attributes it is
+found out if the file needs healing, is in split-brain etc based on the
+requirement of each command and displayed to the user.</p>
+<h1 id="4-resolution-of-split-brain-from-the-mount-point">4. Resolution of split-brain from the mount point</h1>
+<p>A set of getfattr and setfattr commands have been provided to detect the data and metadata split-brain status of a file and resolve split-brain, if any, from mount point.</p>
+<p>Consider a volume "test", having bricks b0, b1, b2 and b3.</p>
+<pre class="no-copy"><code class="language-console"># gluster volume info test
+
+Volume Name: test
+Type: Distributed-Replicate
+Volume ID: 00161935-de9e-4b80-a643-b36693183b61
+Status: Started
+Number of Bricks: 2 x 2 = 4
+Transport-type: tcp
+Bricks:
+Brick1: test-host:/test/b0
+Brick2: test-host:/test/b1
+Brick3: test-host:/test/b2
+Brick4: test-host:/test/b3
+</code></pre>
+<p>Directory structure of the bricks is as follows:</p>
+<pre class="no-copy"><code class="language-console"># tree -R /test/b?
+/test/b0
+├── dir
+│   └── a
+└── file100
+
+/test/b1
+├── dir
+│   └── a
+└── file100
+
+/test/b2
+├── dir
+├── file1
+├── file2
+└── file99
+
+/test/b3
+├── dir
+├── file1
+├── file2
+└── file99
+</code></pre>
+<p>Some files in the volume are in split-brain.</p>
+<pre class="no-copy"><code class="language-console"># gluster v heal test info split-brain
+Brick test-host:/test/b0/
+/file100
+/dir
+Number of entries in split-brain: 2
+
+Brick test-host:/test/b1/
+/file100
+/dir
+Number of entries in split-brain: 2
+
+Brick test-host:/test/b2/
+/file99
+&lt;gfid:5399a8d1-aee9-4653-bb7f-606df02b3696&gt;
+Number of entries in split-brain: 2
+
+Brick test-host:/test/b3/
+&lt;gfid:05c4b283-af58-48ed-999e-4d706c7b97d5&gt;
+&lt;gfid:5399a8d1-aee9-4653-bb7f-606df02b3696&gt;
+Number of entries in split-brain: 2
+</code></pre>
+<h3 id="to-know-datametadata-split-brain-status-of-a-file">To know data/metadata split-brain status of a file:</h3>
+<pre class="no-copy"><code class="language-console">getfattr -n replica.split-brain-status &lt;path-to-file&gt;
+</code></pre>
+<p>The above command executed from mount provides information if a file is in data/metadata split-brain. Also provides the list of afr children to analyze to get more information about the file.
+This command is not applicable to gfid/directory split-brain.</p>
+<h3 id="example_13">Example:</h3>
+<ol>
+<li>"file100" is in metadata split-brain. Executing the above mentioned command for file100 gives :</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># getfattr -n replica.split-brain-status file100
+file: file100
+replica.split-brain-status=&quot;data-split-brain:no    metadata-split-brain:yes    Choices:test-client-0,test-client-1&quot;
+</code></pre>
+<ol>
+<li>"file1" is in data split-brain.</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># getfattr -n replica.split-brain-status file1
+file: file1
+replica.split-brain-status=&quot;data-split-brain:yes    metadata-split-brain:no    Choices:test-client-2,test-client-3&quot;
+</code></pre>
+<ol>
+<li>"file99" is in both data and metadata split-brain.</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># getfattr -n replica.split-brain-status file99
+file: file99
+replica.split-brain-status=&quot;data-split-brain:yes    metadata-split-brain:yes    Choices:test-client-2,test-client-3&quot;
+</code></pre>
+<ol>
+<li>"dir" is in directory split-brain but as mentioned earlier, the above command is not applicable to such split-brain. So it says that the file is not under data or metadata split-brain.</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># getfattr -n replica.split-brain-status dir
+file: dir
+replica.split-brain-status=&quot;The file is not under data or metadata split-brain&quot;
+</code></pre>
+<ol>
+<li>"file2" is not in any kind of split-brain.</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># getfattr -n replica.split-brain-status file2
+file: file2
+replica.split-brain-status=&quot;The file is not under data or metadata split-brain&quot;
+</code></pre>
+<h3 id="to-analyze-the-files-in-data-and-metadata-split-brain">To analyze the files in data and metadata split-brain</h3>
+<p>Trying to do operations (say cat, getfattr etc) from the mount on files in split-brain, gives an input/output error. To enable the users analyze such files, a setfattr command is provided.</p>
+<pre class="no-copy"><code class="language-console"># setfattr -n replica.split-brain-choice -v &quot;choiceX&quot; &lt;path-to-file&gt;
+</code></pre>
+<p>Using this command, a particular brick can be chosen to access the file in split-brain from.</p>
+<h3 id="example_14">Example:</h3>
+<ol>
+<li>"file1" is in data-split-brain. Trying to read from the file gives input/output error.</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># cat file1
+cat: file1: Input/output error
+</code></pre>
+<p>Split-brain choices provided for file1 were test-client-2 and test-client-3.</p>
+<p>Setting test-client-2 as split-brain choice for file1 serves reads from b2 for the file.</p>
+<pre class="no-copy"><code class="language-console"># setfattr -n replica.split-brain-choice -v test-client-2 file1
+</code></pre>
+<p>Now, read operations on the file can be done.</p>
+<pre class="no-copy"><code class="language-console"># cat file1
+xyz
+</code></pre>
+<p>Similarly, to inspect the file from other choice, replica.split-brain-choice is to be set to test-client-3.</p>
+<p>Trying to inspect the file from a wrong choice errors out.</p>
+<p>To undo the split-brain-choice that has been set, the above mentioned setfattr command can be used
+with "none" as the value for extended attribute.</p>
+<h3 id="example_15">Example:</h3>
+<pre class="no-copy"><code class="language-console"># setfattr -n replica.split-brain-choice -v none file1
+</code></pre>
+<p>Now performing cat operation on the file will again result in input/output error, as before.</p>
+<pre class="no-copy"><code class="language-console"># cat file
+cat: file1: Input/output error
+</code></pre>
+<p>Once the choice for resolving split-brain is made, source brick is supposed to be set for the healing to be done.
+This is done using the following command:</p>
+<pre class="no-copy"><code class="language-console"># setfattr -n replica.split-brain-heal-finalize -v &lt;heal-choice&gt; &lt;path-to-file&gt;
+</code></pre>
+<h2 id="example_16">Example</h2>
+<pre class="no-copy"><code class="language-console"># setfattr -n replica.split-brain-heal-finalize -v test-client-2 file1
+</code></pre>
+<p>The above process can be used to resolve data and/or metadata split-brain on all the files.</p>
+<p><strong>NOTE</strong>:</p>
+<ol>
+<li>If "fopen-keep-cache" fuse mount option is disabled then inode needs to be invalidated each time before selecting a new replica.split-brain-choice to inspect a file. This can be done by using:</li>
+</ol>
+<pre class="no-copy"><code class="language-console"># sefattr -n inode-invalidate -v 0 &lt;path-to-file&gt;
+</code></pre>
+<ol>
+<li>The above mentioned process for split-brain resolution from mount will not work on nfs mounts as it doesn't provide xattrs support.</li>
+</ol>
+<h1 id="5-automagic-unsplit-brain-by-ctimemtimesizemajority">5. Automagic unsplit-brain by [ctime|mtime|size|majority]</h1>
+<p>The CLI and fuse mount based resolution methods require intervention in the sense that the admin/ user needs to run the commands manually. There is a <code>cluster.favorite-child-policy</code> volume option which when set to one of the various policies available, automatically resolve split-brains without user intervention. The default value is 'none', i.e. it is disabled.</p>
+<pre class="no-copy"><code class="language-console"># gluster volume set help | grep -A3 cluster.favorite-child-policy
+Option: cluster.favorite-child-policy
+Default Value: none
+Description: This option can be used to automatically resolve split-brains using various policies without user intervention. &quot;size&quot; picks the file with the biggest size as the source. &quot;ctime&quot; and &quot;mtime&quot; pick the file with the latest ctime and mtime respectively as the source. &quot;majority&quot; picks a file with identical mtime and size in more than half the number of bricks in the replica.
+</code></pre>
+<p><code>cluster.favorite-child-policy</code> applies to all files of the volume. It is assumed that if this option is enabled with a particular policy, you don't care to examine the split-brain files on a per file basis but just want the split-brain to be resolved as and when it occurs based on the set policy.</p>
+<h1 id="manual-split-brain-resolution">Manual Split-Brain Resolution:</h1>
+<h1 id="quick-start">Quick Start:</h1>
+<ol>
+<li>
+<p>Get the path of the file that is in split-brain:</p>
+<blockquote>
+<p>It can be obtained either by<br />
+ a) The command <code>gluster volume heal info split-brain</code>.<br />
+ b) Identify the files for which file operations performed from the client keep failing with Input/Output error.</p>
+</blockquote>
+</li>
+<li>
+<p>Close the applications that opened this file from the mount point.
+    In case of VMs, they need to be powered-off.</p>
+</li>
+<li>
+<p>Decide on the correct copy:</p>
+<blockquote>
+<p>This is done by observing the afr changelog extended attributes of the file on
+the bricks using the getfattr command; then identifying the type of split-brain
+(data split-brain, metadata split-brain, entry split-brain or split-brain due to
+gfid-mismatch); and finally determining which of the bricks contains the 'good copy'
+of the file.<br />
+<code>getfattr -d -m . -e hex &lt;file-path-on-brick&gt;</code>.<br />
+It is also possible that one brick might contain the correct data while the
+other might contain the correct metadata.</p>
+</blockquote>
+</li>
+<li>
+<p>Reset the relevant extended attribute on the brick(s) that contains the
+    'bad copy' of the file data/metadata using the setfattr command.</p>
+<blockquote>
+<p><code>setfattr -n &lt;attribute-name&gt; -v &lt;attribute-value&gt; &lt;file-path-on-brick&gt;</code></p>
+</blockquote>
+</li>
+<li>
+<p>Trigger self-heal on the file by performing lookup from the client:</p>
+<blockquote>
+<p><code>ls -l &lt;file-path-on-gluster-mount&gt;</code></p>
+</blockquote>
+</li>
+</ol>
+<h1 id="detailed-instructions-for-steps-3-through-5">Detailed Instructions for steps 3 through 5:</h1>
+<p>To understand how to resolve split-brain we need to know how to interpret the
+afr changelog extended attributes.</p>
+<p>Execute <code>getfattr -d -m . -e hex &lt;file-path-on-brick&gt;</code></p>
+<p>Example:</p>
+<pre class="no-copy"><code class="language-console">[root@store3 ~]# getfattr -d -e hex -m. brick-a/file.txt
+\#file: brick-a/file.txt
+security.selinux=0x726f6f743a6f626a6563745f723a66696c655f743a733000
+trusted.afr.vol-client-2=0x000000000000000000000000
+trusted.afr.vol-client-3=0x000000000200000000000000
+trusted.gfid=0x307a5c9efddd4e7c96e94fd4bcdcbd1b
+</code></pre>
+<p>The extended attributes with <code>trusted.afr.&lt;volname&gt;-client-&lt;subvolume-index&gt;</code>
+are used by afr to maintain changelog of the file.The values of the
+<code>trusted.afr.&lt;volname&gt;-client-&lt;subvolume-index&gt;</code> are calculated by the glusterfs
+client (fuse or nfs-server) processes. When the glusterfs client modifies a file
+or directory, the client contacts each brick and updates the changelog extended
+attribute according to the response of the brick.</p>
+<p>'subvolume-index' is nothing but (brick number - 1) in
+<code>gluster volume info &lt;volname&gt;</code> output.</p>
+<p>Example:</p>
+<pre class="no-copy"><code class="language-console">[root@pranithk-laptop ~]# gluster volume info vol
+ Volume Name: vol
+ Type: Distributed-Replicate
+ Volume ID: 4f2d7849-fbd6-40a2-b346-d13420978a01
+ Status: Created
+ Number of Bricks: 4 x 2 = 8
+ Transport-type: tcp
+ Bricks:
+ brick-a: pranithk-laptop:/gfs/brick-a
+ brick-b: pranithk-laptop:/gfs/brick-b
+ brick-c: pranithk-laptop:/gfs/brick-c
+ brick-d: pranithk-laptop:/gfs/brick-d
+ brick-e: pranithk-laptop:/gfs/brick-e
+ brick-f: pranithk-laptop:/gfs/brick-f
+ brick-g: pranithk-laptop:/gfs/brick-g
+ brick-h: pranithk-laptop:/gfs/brick-h
+</code></pre>
+<p>In the example above:</p>
+<pre class="no-copy"><code class="language-console">Brick             |    Replica set        |    Brick subvolume index
+----------------------------------------------------------------------------
+-/gfs/brick-a     |       0               |       0
+-/gfs/brick-b     |       0               |       1
+-/gfs/brick-c     |       1               |       2
+-/gfs/brick-d     |       1               |       3
+-/gfs/brick-e     |       2               |       4
+-/gfs/brick-f     |       2               |       5
+-/gfs/brick-g     |       3               |       6
+-/gfs/brick-h     |       3               |       7
+</code></pre>
+<p>Each file in a brick maintains the changelog of itself and that of the files
+present in all the other bricks in its replica set as seen by that brick.</p>
+<p>In the example volume given above, all files in brick-a will have 2 entries,
+one for itself and the other for the file present in its replica pair, i.e.brick-b:<br />
+trusted.afr.vol-client-0=0x000000000000000000000000 --&gt;changelog for itself (brick-a)<br />
+trusted.afr.vol-client-1=0x000000000000000000000000 --&gt;changelog for brick-b as seen by brick-a</p>
+<p>Likewise, all files in brick-b will have:<br />
+trusted.afr.vol-client-0=0x000000000000000000000000 --&gt;changelog for brick-a as seen by brick-b<br />
+trusted.afr.vol-client-1=0x000000000000000000000000 --&gt;changelog for itself (brick-b)</p>
+<p>The same can be extended for other replica pairs.</p>
+<p>Interpreting Changelog (roughly pending operation count) Value:<br />
+Each extended attribute has a value which is 24 hexa decimal digits.<br />
+First 8 digits represent changelog of data. Second 8 digits represent changelog
+of metadata. Last 8 digits represent Changelog of directory entries.</p>
+<p>Pictorially representing the same, we have:</p>
+<pre class="no-copy"><code class="language-text">0x 000003d7 00000001 00000000
+        |      |       |
+        |      |        \_ changelog of directory entries
+        |       \_ changelog of metadata
+         \ _ changelog of data
+</code></pre>
+<p>For Directories metadata and entry changelogs are valid.
+For regular files data and metadata changelogs are valid.
+For special files like device files etc metadata changelog is valid.
+When a file split-brain happens it could be either data split-brain or
+meta-data split-brain or both. When a split-brain happens the changelog of the
+file would be something like this:</p>
+<p>Example:(Lets consider both data, metadata split-brain on same file).</p>
+<pre class="no-copy"><code class="language-console">[root@pranithk-laptop vol]# getfattr -d -m . -e hex /gfs/brick-?/a
+getfattr: Removing leading '/' from absolute path names
+\#file: gfs/brick-a/a
+trusted.afr.vol-client-0=0x000000000000000000000000
+trusted.afr.vol-client-1=0x000003d70000000100000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
+\#file: gfs/brick-b/a
+trusted.afr.vol-client-0=0x000003b00000000100000000
+trusted.afr.vol-client-1=0x000000000000000000000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
+</code></pre>
+<h3 id="observations">Observations:</h3>
+<h4 id="according-to-changelog-extended-attributes-on-file-gfsbrick-aa">According to changelog extended attributes on file /gfs/brick-a/a:</h4>
+<p>The first 8 digits of trusted.afr.vol-client-0 are all
+zeros (0x00000000................), and the first 8 digits of
+trusted.afr.vol-client-1 are not all zeros (0x000003d7................).
+So the changelog on /gfs/brick-a/a implies that some data operations succeeded
+on itself but failed on /gfs/brick-b/a.</p>
+<p>The second 8 digits of trusted.afr.vol-client-0 are
+all zeros (0x........00000000........), and the second 8 digits of
+trusted.afr.vol-client-1 are not all zeros (0x........00000001........).
+So the changelog on /gfs/brick-a/a implies that some metadata operations succeeded
+on itself but failed on /gfs/brick-b/a.</p>
+<h4 id="according-to-changelog-extended-attributes-on-file-gfsbrick-ba">According to Changelog extended attributes on file /gfs/brick-b/a:</h4>
+<p>The first 8 digits of trusted.afr.vol-client-0 are not all
+zeros (0x000003b0................), and the first 8 digits of
+trusted.afr.vol-client-1 are all zeros (0x00000000................).
+So the changelog on /gfs/brick-b/a implies that some data operations succeeded
+on itself but failed on /gfs/brick-a/a.</p>
+<p>The second 8 digits of trusted.afr.vol-client-0 are not
+all zeros (0x........00000001........), and the second 8 digits of
+trusted.afr.vol-client-1 are all zeros (0x........00000000........).
+So the changelog on /gfs/brick-b/a implies that some metadata operations succeeded
+on itself but failed on /gfs/brick-a/a.</p>
+<p>Since both the copies have data, metadata changes that are not on the other
+file, it is in both data and metadata split-brain.</p>
+<h4 id="deciding-on-the-correct-copy">Deciding on the correct copy:</h4>
+<p>The user may have to inspect stat,getfattr output of the files to decide which
+metadata to retain and contents of the file to decide which data to retain.
+Continuing with the example above, lets say we want to retain the data
+of /gfs/brick-a/a and metadata of /gfs/brick-b/a.</p>
+<h4 id="resetting-the-relevant-changelogs-to-resolve-the-split-brain">Resetting the relevant changelogs to resolve the split-brain:</h4>
+<p>For resolving data-split-brain:</p>
+<p>We need to change the changelog extended attributes on the files as if some data
+operations succeeded on /gfs/brick-a/a but failed on /gfs/brick-b/a. But
+/gfs/brick-b/a should NOT have any changelog which says some data operations
+succeeded on /gfs/brick-b/a but failed on /gfs/brick-a/a. We need to reset the
+data part of the changelog on trusted.afr.vol-client-0 of /gfs/brick-b/a.</p>
+<p>For resolving metadata-split-brain:</p>
+<p>We need to change the changelog extended attributes on the files as if some
+metadata operations succeeded on /gfs/brick-b/a but failed on /gfs/brick-a/a.
+But /gfs/brick-a/a should NOT have any changelog which says some metadata
+operations succeeded on /gfs/brick-a/a but failed on /gfs/brick-b/a.
+We need to reset metadata part of the changelog on
+trusted.afr.vol-client-1 of /gfs/brick-a/a</p>
+<p>So, the intended changes are:<br />
+On /gfs/brick-b/a:<br />
+For trusted.afr.vol-client-0<br />
+0x000003b00000000100000000 to 0x000000000000000100000000<br />
+(Note that the metadata part is still not all zeros)<br />
+Hence execute
+<code>setfattr -n trusted.afr.vol-client-0 -v 0x000000000000000100000000 /gfs/brick-b/a</code></p>
+<p>On /gfs/brick-a/a:<br />
+For trusted.afr.vol-client-1<br />
+0x000003d70000000100000000 to 0x000003d70000000000000000<br />
+(Note that the data part is still not all zeros)<br />
+Hence execute<br />
+<code>setfattr -n trusted.afr.vol-client-1 -v 0x000003d70000000000000000 /gfs/brick-a/a</code></p>
+<p>Thus after the above operations are done, the changelogs look like this:</p>
+<pre class="no-copy"><code class="language-console">[root@pranithk-laptop vol]# getfattr -d -m . -e hex /gfs/brick-?/a
+getfattr: Removing leading '/' from absolute path names
+\#file: gfs/brick-a/a
+trusted.afr.vol-client-0=0x000000000000000000000000
+trusted.afr.vol-client-1=0x000003d70000000000000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
+
+\#file: gfs/brick-b/a
+trusted.afr.vol-client-0=0x000000000000000100000000
+trusted.afr.vol-client-1=0x000000000000000000000000
+trusted.gfid=0x80acdbd886524f6fbefa21fc356fed57
+</code></pre>
+<h2 id="triggering-self-heal">Triggering Self-heal:</h2>
+<p>Perform <code>ls -l &lt;file-path-on-gluster-mount&gt;</code> to trigger healing.</p>
+<p><a name="dir-split-brain"></a>
+Fixing Directory entry split-brain:</p>
+<hr />
+<p>Afr has the ability to conservatively merge different entries in the directories
+when there is a split-brain on directory.
+If on one brick directory 'd' has entries '1', '2' and has entries '3', '4' on
+the other brick then afr will merge all of the entries in the directory to have
+'1', '2', '3', '4' entries in the same directory.
+(Note: this may result in deleted files to re-appear in case the split-brain
+happens because of deletion of files on the directory)
+Split-brain resolution needs human intervention when there is at least one entry
+which has same file name but different gfid in that directory.
+Example:<br />
+On brick-a the directory has entries '1' (with gfid g1), '2' and on brick-b
+directory has entries '1' (with gfid g2) and '3'.
+These kinds of directory split-brains need human intervention to resolve.
+The user needs to remove either file '1' on brick-a or the file '1' on brick-b
+to resolve the split-brain. In addition, the corresponding gfid-link file also
+needs to be removed.The gfid-link files are present in the .glusterfs folder
+in the top-level directory of the brick. If the gfid of the file is
+0x307a5c9efddd4e7c96e94fd4bcdcbd1b (the trusted.gfid extended attribute got
+from the getfattr command earlier),the gfid-link file can be found at</p>
+<blockquote>
+<p>/gfs/brick-a/.glusterfs/30/7a/307a5c9efddd4e7c96e94fd4bcdcbd1b</p>
+</blockquote>
+<h4 id="word-of-caution">Word of caution:</h4>
+<p>Before deleting the gfid-link, we have to ensure that there are no hard links
+to the file present on that brick. If hard-links exist,they must be deleted as
+well.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+        <script src="../../js/custom-features.js"></script>
+      
+    
+  </body>
+</html>

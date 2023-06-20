@@ -1,0 +1,5160 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation for Gluster Filesystem">
+      
+      
+      
+        <link rel="canonical" href="http://docs.gluster.org/release-notes/3.10.0/">
+      
+      
+        <link rel="prev" href="../3.10.1/">
+      
+      
+        <link rel="next" href="../3.9.0/">
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
+    
+    
+      
+        <title>3.10.0 - Gluster Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#release-notes-for-gluster-3100" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gluster Docs" class="md-header__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gluster Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.10.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Bring back the sunshine"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Bring back the sunshine" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Turn off the lights"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Turn off the lights" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gluster Docs" class="md-nav__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gluster Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Getting started with GlusterFS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started with GlusterFS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quick-Start-Guide/Quickstart/" class="md-nav__link">
+        Quick Start Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quick-Start-Guide/Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Install Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Install Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Common-criteria/" class="md-nav__link">
+        Common Criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-virt/" class="md-nav__link">
+        Setting up in virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-Bare-metal/" class="md-nav__link">
+        Setting up on physical servers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-aws/" class="md-nav__link">
+        Deploying in AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Configure/" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Community-Packages/" class="md-nav__link">
+        Community Packages
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Administration Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Administration Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Start-Stop-Daemon/" class="md-nav__link">
+        Managing the Gluster Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Storage-Pools/" class="md-nav__link">
+        Managing Trusted Storage Pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          Setting Up Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Setting Up Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Brick-Naming-Conventions/" class="md-nav__link">
+        Brick Naming Conventions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/formatting-and-mounting-bricks/" class="md-nav__link">
+        Formatting and Mounting Bricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Access-Control-Lists/" class="md-nav__link">
+        Access Control Lists
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Handling-of-users-with-many-groups/" class="md-nav__link">
+        Handling of users that belong to many groups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Volumes/" class="md-nav__link">
+        Setting Up Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Clients/" class="md-nav__link">
+        Setting Up Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Volumes/" class="md-nav__link">
+        Managing Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Building-QEMU-With-gfapi-For-Debian-Based-Systems/" class="md-nav__link">
+        Building QEMU with gfapi For Debian Based Systems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Filter/" class="md-nav__link">
+        GlusterFS Filter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_13">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Automatic-File-Replication/" class="md-nav__link">
+        Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Geo-Replication/" class="md-nav__link">
+        Geo Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Directory-Quota/" class="md-nav__link">
+        Quotas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Snapshots/" class="md-nav__link">
+        Snapshots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/io_uring/" class="md-nav__link">
+        io_uring
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Monitoring-Workload/" class="md-nav__link">
+        Monitoring Workload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Object-Storage/" class="md-nav__link">
+        Object Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Cinder/" class="md-nav__link">
+        GlusterFS Cinder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Keystone-Quickstart/" class="md-nav__link">
+        GlusterFS Keystone Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Gluster-On-ZFS/" class="md-nav__link">
+        Gluster On ZFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Bareos/" class="md-nav__link">
+        Configuring Bareos to store backups on Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/SSL/" class="md-nav__link">
+        SSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Puppet/" class="md-nav__link">
+        Puppet Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/RDMA-Transport/" class="md-nav__link">
+        RDMA Transport
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-iSCSI/" class="md-nav__link">
+        GlusterFS iSCSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/NFS-Ganesha-GlusterFS-Integration/" class="md-nav__link">
+        Configuring NFS-Ganesha server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Linux-Kernel-Tuning/" class="md-nav__link">
+        Linux Kernel Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Network-Configurations-Techniques/" class="md-nav__link">
+        Network Configuration Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Testing/" class="md-nav__link">
+        Performance Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Tuning/" class="md-nav__link">
+        Performance Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Export-And-Netgroup-Authentication/" class="md-nav__link">
+        Export and Netgroup Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Consul/" class="md-nav__link">
+        Consul integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Split-brain-and-ways-to-deal-with-it/" class="md-nav__link">
+        Split brain and ways to deal with it
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/arbiter-volumes-and-quorum/" class="md-nav__link">
+        Arbiter volumes and quorum options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Thin-Arbiter-Volumes/" class="md-nav__link">
+        Thin Arbiter volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash for GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Tuning-Volume-Options/" class="md-nav__link">
+        Tuning Volume Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Mandatory-Locks/" class="md-nav__link">
+        Mandatory Locks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Coreutils/" class="md-nav__link">
+        GlusterFS coreutilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Events-APIs/" class="md-nav__link">
+        Events APIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Hook-scripts/" class="md-nav__link">
+        Managing GlusterFS Volume Life-Cycle Extensions with Hook Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          CLI Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          CLI Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI-Reference/cli-main/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentations/" class="md-nav__link">
+        Presentations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Developers Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Developers-Index/" class="md-nav__link">
+        Developers Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Simplified-Development-Workflow/" class="md-nav__link">
+        Simplified Development Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/compiling-rpms/" class="md-nav__link">
+        Compiling RPMS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Development-Workflow/" class="md-nav__link">
+        Development-Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Building-GlusterFS/" class="md-nav__link">
+        Build and Install GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Projects/" class="md-nav__link">
+        Project Ideas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Easy-Fix-Bugs/" class="md-nav__link">
+        EasyFix bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis/" class="md-nav__link">
+        Fixing issues reported by tools for static code analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Backport-Guidelines/" class="md-nav__link">
+        Backport Guidelines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Contributors Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Contributors Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Index/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Reporting-Guidelines/" class="md-nav__link">
+        Bug reporting guidelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Triage/" class="md-nav__link">
+        Bug Triage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/GlusterFS-Release-process/" class="md-nav__link">
+        GlusterFS Release process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Guidelines-For-Maintainers/" class="md-nav__link">
+        Guidelines For Maintainers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Adding-your-blog/" class="md-nav__link">
+        Adding your gluster blog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Ops Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Ops Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Overview/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Upgrade-Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrade-Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/" class="md-nav__link">
+        Upgrade-Guide Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/op-version/" class="md-nav__link">
+        Op-version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/generic-upgrade-procedure/" class="md-nav__link">
+        Generic upgrade procedure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-11/" class="md-nav__link">
+        Upgrade to 11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-10/" class="md-nav__link">
+        Upgrade to 10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-9/" class="md-nav__link">
+        Upgrade to 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-8/" class="md-nav__link">
+        Upgrade to 8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-7/" class="md-nav__link">
+        Upgrade to 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-6/" class="md-nav__link">
+        Upgrade to 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-5/" class="md-nav__link">
+        Upgrade to 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.1/" class="md-nav__link">
+        Upgrade to 4.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.0/" class="md-nav__link">
+        Upgrade to 4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.13/" class="md-nav__link">
+        Upgrade to 3.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.12/" class="md-nav__link">
+        Upgrade to 3.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.11/" class="md-nav__link">
+        Upgrade to 3.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.10/" class="md-nav__link">
+        Upgrade to 3.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.9/" class="md-nav__link">
+        Upgrade to 3.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.8/" class="md-nav__link">
+        Upgrade to 3.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.7/" class="md-nav__link">
+        Upgrade to 3.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.6/" class="md-nav__link">
+        Upgrade to 3.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.5/" class="md-nav__link">
+        Upgrade to 3.5
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2" id="__nav_11_2_label" tabindex="0">
+          RELEASE 11.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 11.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.0/" class="md-nav__link">
+        11.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_3" id="__nav_11_3_label" tabindex="0">
+          RELEASE 10.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 10.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.4/" class="md-nav__link">
+        10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.3/" class="md-nav__link">
+        10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.2/" class="md-nav__link">
+        10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.1/" class="md-nav__link">
+        10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.0/" class="md-nav__link">
+        10.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_4" id="__nav_11_4_label" tabindex="0">
+          RELEASE 9.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 9.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.6/" class="md-nav__link">
+        9.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.5/" class="md-nav__link">
+        9.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.4/" class="md-nav__link">
+        9.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.3/" class="md-nav__link">
+        9.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.2/" class="md-nav__link">
+        9.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.1/" class="md-nav__link">
+        9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.0/" class="md-nav__link">
+        9.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_5" id="__nav_11_5_label" tabindex="0">
+          RELEASE 8.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_5">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 8.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.6/" class="md-nav__link">
+        8.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.5/" class="md-nav__link">
+        8.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.4/" class="md-nav__link">
+        8.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.3/" class="md-nav__link">
+        8.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.2/" class="md-nav__link">
+        8.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.1/" class="md-nav__link">
+        8.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.0/" class="md-nav__link">
+        8.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_6" id="__nav_11_6_label" tabindex="0">
+          RELEASE 7.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_6">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 7.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.9/" class="md-nav__link">
+        7.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.8/" class="md-nav__link">
+        7.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.7/" class="md-nav__link">
+        7.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.6/" class="md-nav__link">
+        7.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.5/" class="md-nav__link">
+        7.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.4/" class="md-nav__link">
+        7.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.3/" class="md-nav__link">
+        7.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.2/" class="md-nav__link">
+        7.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.1/" class="md-nav__link">
+        7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.0/" class="md-nav__link">
+        7.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_7" id="__nav_11_7_label" tabindex="0">
+          RELEASE 6.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_7">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 6.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.10/" class="md-nav__link">
+        6.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.9/" class="md-nav__link">
+        6.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.8/" class="md-nav__link">
+        6.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.7/" class="md-nav__link">
+        6.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.6/" class="md-nav__link">
+        6.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.5/" class="md-nav__link">
+        6.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.4/" class="md-nav__link">
+        6.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.3/" class="md-nav__link">
+        6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2/" class="md-nav__link">
+        6.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1/" class="md-nav__link">
+        6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.0/" class="md-nav__link">
+        6.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_8" id="__nav_11_8_label" tabindex="0">
+          RELEASE 5.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_8">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 5.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.13/" class="md-nav__link">
+        5.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.12/" class="md-nav__link">
+        5.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.11/" class="md-nav__link">
+        5.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.10/" class="md-nav__link">
+        5.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.9/" class="md-nav__link">
+        5.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.8/" class="md-nav__link">
+        5.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.6/" class="md-nav__link">
+        5.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.5/" class="md-nav__link">
+        5.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3/" class="md-nav__link">
+        5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2/" class="md-nav__link">
+        5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1/" class="md-nav__link">
+        5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.0/" class="md-nav__link">
+        5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_9" id="__nav_11_9_label" tabindex="0">
+          RELEASE 4.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11_9">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 4.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.10/" class="md-nav__link">
+        4.1.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.9/" class="md-nav__link">
+        4.1.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.8/" class="md-nav__link">
+        4.1.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.7/" class="md-nav__link">
+        4.1.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.6/" class="md-nav__link">
+        4.1.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.5/" class="md-nav__link">
+        4.1.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.4/" class="md-nav__link">
+        4.1.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.3/" class="md-nav__link">
+        4.1.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.2/" class="md-nav__link">
+        4.1.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.1/" class="md-nav__link">
+        4.1.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1.0/" class="md-nav__link">
+        4.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.0.2/" class="md-nav__link">
+        4.0.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.0.1/" class="md-nav__link">
+        4.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.0.0/" class="md-nav__link">
+        4.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_10" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_10" id="__nav_11_10_label" tabindex="0">
+          RELEASE 3.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_10_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_11_10">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 3.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.13.2/" class="md-nav__link">
+        3.13.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.13.1/" class="md-nav__link">
+        3.13.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.13.0/" class="md-nav__link">
+        3.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.15/" class="md-nav__link">
+        3.12.15
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.14/" class="md-nav__link">
+        3.12.14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.13/" class="md-nav__link">
+        3.12.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.12/" class="md-nav__link">
+        3.12.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.11/" class="md-nav__link">
+        3.12.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.10/" class="md-nav__link">
+        3.12.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.9/" class="md-nav__link">
+        3.12.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.8/" class="md-nav__link">
+        3.12.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.7/" class="md-nav__link">
+        3.12.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.6/" class="md-nav__link">
+        3.12.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.5/" class="md-nav__link">
+        3.12.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.4/" class="md-nav__link">
+        3.12.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.3/" class="md-nav__link">
+        3.12.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.2/" class="md-nav__link">
+        3.12.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.1/" class="md-nav__link">
+        3.12.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.12.0/" class="md-nav__link">
+        3.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.11.3/" class="md-nav__link">
+        3.11.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.11.2/" class="md-nav__link">
+        3.11.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.11.1/" class="md-nav__link">
+        3.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.11.0/" class="md-nav__link">
+        3.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.12/" class="md-nav__link">
+        3.10.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.11/" class="md-nav__link">
+        3.10.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.10/" class="md-nav__link">
+        3.10.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.9/" class="md-nav__link">
+        3.10.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.8/" class="md-nav__link">
+        3.10.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.7/" class="md-nav__link">
+        3.10.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.6/" class="md-nav__link">
+        3.10.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.5/" class="md-nav__link">
+        3.10.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.4/" class="md-nav__link">
+        3.10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.3/" class="md-nav__link">
+        3.10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.2/" class="md-nav__link">
+        3.10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.10.1/" class="md-nav__link">
+        3.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.10.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.10.0
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#major-changes-and-features" class="md-nav__link">
+    Major changes and features
+  </a>
+  
+    <nav class="md-nav" aria-label="Major changes and features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brick-multiplexing" class="md-nav__link">
+    Brick multiplexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-to-display-op-version-information-from-clients" class="md-nav__link">
+    Support to display op-version information from clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-to-get-maximum-op-version-in-a-heterogeneous-cluster" class="md-nav__link">
+    Support to get maximum op-version in a heterogeneous cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-for-rebalance-time-to-completion-estimation" class="md-nav__link">
+    Support for rebalance time to completion estimation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-tier-as-its-own-service" class="md-nav__link">
+    Separation of tier as its own service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statedump-support-for-gfapi-based-applications" class="md-nav__link">
+    Statedump support for gfapi based applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabled-creation-of-trash-directory-by-default" class="md-nav__link">
+    Disabled creation of trash directory by default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implemented-parallel-readdirp-with-distribute-xlator" class="md-nav__link">
+    Implemented parallel readdirp with distribute xlator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md-cache-can-optionally-ve-cache-securityima-xattr" class="md-nav__link">
+    md-cache can optionally -ve cache security.ima xattr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added-support-for-cpu-extensions-in-disperse-computations" class="md-nav__link">
+    Added support for CPU extensions in disperse computations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs-addressed" class="md-nav__link">
+    Bugs addressed
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.9.0/" class="md-nav__link">
+        3.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.7.1/" class="md-nav__link">
+        3.7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.7.0/" class="md-nav__link">
+        3.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.6.3/" class="md-nav__link">
+        3.6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.6.0/" class="md-nav__link">
+        3.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.4/" class="md-nav__link">
+        3.5.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.3/" class="md-nav__link">
+        3.5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.2/" class="md-nav__link">
+        3.5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.1/" class="md-nav__link">
+        3.5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.5.0/" class="md-nav__link">
+        3.5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          GlusterFS Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          GlusterFS Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/" class="md-nav__link">
+        GlusterFS Tools List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/glusterfind/" class="md-nav__link">
+        glusterfind
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/gfind-missing-files/" class="md-nav__link">
+        gfind missing files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+          Troubleshooting Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_2" id="__nav_13_2_label" tabindex="0">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13_2">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-glusterd/" class="md-nav__link">
+        Troubleshooting CLI and glusterd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-georep/" class="md-nav__link">
+        Troubleshooting Geo-replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-gnfs/" class="md-nav__link">
+        Troubleshooting gNFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-afr/" class="md-nav__link">
+        Troubleshooting Self-heal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/resolving-splitbrain/" class="md-nav__link">
+        Troubleshooting Split-Brains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-filelocks/" class="md-nav__link">
+        Troubleshooting File Locks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+          Issues
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          Issues
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-memory/" class="md-nav__link">
+        Debugging Memory Leaks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/gluster-crash/" class="md-nav__link">
+        Crashes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4" id="__nav_13_4_label" tabindex="0">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/statedump/" class="md-nav__link">
+        Statedump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/gfid-to-path/" class="md-nav__link">
+        gfid to path
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google64817fdc11b2f6b6.html" class="md-nav__link">
+        Google Site Verification
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#major-changes-and-features" class="md-nav__link">
+    Major changes and features
+  </a>
+  
+    <nav class="md-nav" aria-label="Major changes and features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brick-multiplexing" class="md-nav__link">
+    Brick multiplexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-to-display-op-version-information-from-clients" class="md-nav__link">
+    Support to display op-version information from clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-to-get-maximum-op-version-in-a-heterogeneous-cluster" class="md-nav__link">
+    Support to get maximum op-version in a heterogeneous cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-for-rebalance-time-to-completion-estimation" class="md-nav__link">
+    Support for rebalance time to completion estimation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-tier-as-its-own-service" class="md-nav__link">
+    Separation of tier as its own service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statedump-support-for-gfapi-based-applications" class="md-nav__link">
+    Statedump support for gfapi based applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabled-creation-of-trash-directory-by-default" class="md-nav__link">
+    Disabled creation of trash directory by default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implemented-parallel-readdirp-with-distribute-xlator" class="md-nav__link">
+    Implemented parallel readdirp with distribute xlator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md-cache-can-optionally-ve-cache-securityima-xattr" class="md-nav__link">
+    md-cache can optionally -ve cache security.ima xattr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#added-support-for-cpu-extensions-in-disperse-computations" class="md-nav__link">
+    Added support for CPU extensions in disperse computations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs-addressed" class="md-nav__link">
+    Bugs addressed
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="release-notes-for-gluster-3100">Release notes for Gluster 3.10.0</h1>
+<p>This is a major Gluster release that includes some substantial changes. The
+features revolve around, better support in container environments, scaling to
+larger number of bricks per node, and a few usability and performance
+improvements, among other bug fixes.</p>
+<p>The most notable features and changes are documented on this page. A full list
+of bugs that has been addressed is included further below.</p>
+<h2 id="major-changes-and-features">Major changes and features</h2>
+<h3 id="brick-multiplexing">Brick multiplexing</h3>
+<p><em>Notes for users:</em>
+Multiplexing reduces both port and memory usage. It does <em>not</em> improve
+performance vs. non-multiplexing except when memory is the limiting factor,
+though there are other related changes that improve performance overall (e.g.
+compared to 3.9).</p>
+<p>Multiplexing is off by default. It can be enabled with</p>
+<pre><code class="language-bash"># gluster volume set all cluster.brick-multiplex on
+</code></pre>
+<p><em>Limitations:</em>
+There are currently no tuning options for multiplexing - it's all or nothing.
+This will change in the near future.</p>
+<p><em>Known Issues:</em>
+The only feature or combination of features known not to work with multiplexing
+is USS and SSL. Anyone using that combination should leave multiplexing off.</p>
+<h3 id="support-to-display-op-version-information-from-clients">Support to display op-version information from clients</h3>
+<p><em>Notes for users:</em>
+To get information on what op-version are supported by the clients, users can
+invoke the <code>gluster volume status</code> command for clients. Along with information
+on hostname, port, bytes read, bytes written and number of clients connected
+per brick, we now also get the op-version on which the respective clients
+operate. Following is the example usage:</p>
+<pre><code class="language-bash"># gluster volume status &lt;VOLNAME|all&gt; clients
+</code></pre>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em></p>
+<h3 id="support-to-get-maximum-op-version-in-a-heterogeneous-cluster">Support to get maximum op-version in a heterogeneous cluster</h3>
+<p><em>Notes for users:</em>
+A heterogeneous cluster operates on a common op-version that can be supported
+across all the nodes in the trusted storage pool. Upon upgrade of the nodes in
+the cluster, the cluster might support a higher op-version. Users can retrieve
+the maximum op-version to which the cluster could be bumped up to by invoking
+the <code>gluster volume get</code> command on the newly introduced global option,
+<code>cluster.max-op-version</code>. The usage is as follows:</p>
+<pre><code class="language-bash"># gluster volume get all cluster.max-op-version
+</code></pre>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em></p>
+<h3 id="support-for-rebalance-time-to-completion-estimation">Support for rebalance time to completion estimation</h3>
+<p><em>Notes for users:</em>
+Users can now see approximately how much time the rebalance
+operation will take to complete across all nodes.</p>
+<p>The estimated time left for rebalance to complete is displayed
+as part of the rebalance status. Use the command:</p>
+<pre><code class="language-bash"># gluster volume rebalance &lt;VOLNAME&gt; status
+</code></pre>
+<p><em>Limitations:</em>
+The rebalance process calculates the time left based on the rate
+at while files are processed on the node and the total number of files
+on the brick which is determined using statfs. The limitations of this
+are:</p>
+<ul>
+<li>
+<p>A single fs partition must host only one brick. Multiple bricks on
+  the same fs partition will cause the statfs results to be invalid.</p>
+</li>
+<li>
+<p>The estimates are dynamic and are recalculated every time the rebalance status
+  command is invoked.The estimates become more accurate over time so short running
+  rebalance operations may not benefit.</p>
+</li>
+</ul>
+<p><em>Known Issues:</em>
+As glusterfs does not stored the number of files on the brick, we use statfs to
+guess the number. The .glusterfs directory contents can significantly skew this
+number and affect the calculated estimates.</p>
+<h3 id="separation-of-tier-as-its-own-service">Separation of tier as its own service</h3>
+<p><em>Notes for users:</em>
+This change is to move the management of the tier daemon into the gluster
+service framework, thereby improving it stability and manageability by the
+service framework.</p>
+<p>This has no change to any of the tier commands or user facing interfaces and
+operations.</p>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em></p>
+<h3 id="statedump-support-for-gfapi-based-applications">Statedump support for gfapi based applications</h3>
+<p><em>Notes for users:</em>
+gfapi based applications now can dump state information for better trouble
+shooting of issues. A statedump can be triggered in two ways:</p>
+<ol>
+<li>by executing the following on one of the Gluster servers,</li>
+</ol>
+<pre><code class="language-bash">   # gluster volume statedump &lt;VOLNAME&gt; client &lt;HOST&gt;:&lt;PID&gt;
+</code></pre>
+<ul>
+<li><code>&lt;VOLNAME&gt;</code> should be replaced by the name of the volume</li>
+<li><code>&lt;HOST&gt;</code> should be replaced by the hostname of the system running the
+  gfapi application</li>
+<li>
+<p><code>&lt;PID&gt;</code> should be replaced by the PID of the gfapi application</p>
+</li>
+<li>
+<p>through calling <code>glfs_sysrq(&lt;FS&gt;, GLFS_SYSRQ_STATEDUMP)</code> within the
+   application</p>
+</li>
+<li>
+<p><code>&lt;FS&gt;</code> should be replaced by a pointer to a <code>glfs_t</code> structure</p>
+</li>
+</ul>
+<p>All statedumps (<code>*.dump.*</code> files) will be located at the usual location,
+on most distributions this would be <code>/var/run/gluster/</code>.</p>
+<p><em>Limitations:</em>
+It is not possible to trigger statedumps from the Gluster CLI when the
+gfapi application has lost its management connection to the GlusterD
+servers.</p>
+<p>GlusterFS 3.10 is the first release that contains support for the new
+<code>glfs_sysrq()</code> function. Applications that include features for
+debugging will need to be adapted to call this function. At the time of
+the release of 3.10, no applications are known to call <code>glfs_sysrq()</code>.</p>
+<p><em>Known Issues:</em></p>
+<h3 id="disabled-creation-of-trash-directory-by-default">Disabled creation of trash directory by default</h3>
+<p><em>Notes for users:</em>
+From now onwards trash directory, namely .trashcan, will not be be created by
+default upon creation of new volumes unless and until the feature is turned ON
+and the restrictions on the same will be applicable as long as features.trash
+is set for a particular volume.</p>
+<p><em>Limitations:</em>
+After upgrade for pre-existing volumes, trash directory will be still present at
+root of the volume. Those who are not interested in this feature may have to
+manually delete the directory from the mount point.</p>
+<p><em>Known Issues:</em></p>
+<h3 id="implemented-parallel-readdirp-with-distribute-xlator">Implemented parallel readdirp with distribute xlator</h3>
+<p><em>Notes for users:</em>
+Currently the directory listing gets slower as the number of bricks/nodes
+increases in a volume, though the file/directory numbers remain unchanged.
+With this feature, the performance of directory listing is made mostly
+independent of the number of nodes/bricks in the volume. Thus scale doesn't
+exponentially reduce the directory listing performance. (On a 2, 5, 10, 25 brick
+setup we saw ~5, 100, 400, 450% improvement consecutively)</p>
+<p>To enable this feature:</p>
+<pre><code class="language-bash"># gluster volume set &lt;VOLNAME&gt; performance.readdir-ahead on
+# gluster volume set &lt;VOLNAME&gt; performance.parallel-readdir on
+</code></pre>
+<p>To disable this feature:</p>
+<pre><code class="language-bash"># gluster volume set &lt;VOLNAME&gt; performance.parallel-readdir off
+</code></pre>
+<p>If there are more than 50 bricks in the volume it is good to increase the cache
+size to be more than 10Mb (default value):</p>
+<pre><code class="language-bash"># gluster volume set &lt;VOLNAME&gt; performance.rda-cache-limit &lt;CACHE SIZE&gt;
+</code></pre>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em></p>
+<h3 id="md-cache-can-optionally-ve-cache-securityima-xattr">md-cache can optionally -ve cache security.ima xattr</h3>
+<p><em>Notes for users:</em>
+From kernel version 3.X or greater, creating of a file results in removexattr
+call on security.ima xattr. This xattr is not set on the file unless IMA
+feature is active. With this patch, removxattr call returns ENODATA if it is
+not found in the cache.</p>
+<p>The end benefit is faster create operations where IMA is not enabled.</p>
+<p>To cache this xattr use,</p>
+<pre><code class="language-bash"># gluster volume set &lt;VOLNAME&gt; performance.cache-ima-xattrs on
+</code></pre>
+<p>The above option is on by default.</p>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em></p>
+<h3 id="added-support-for-cpu-extensions-in-disperse-computations">Added support for CPU extensions in disperse computations</h3>
+<p><em>Notes for users:</em>
+To improve disperse computations, a new way of generating dynamic code
+targeting specific CPU extensions like SSE and AVX on Intel processors is
+implemented. The available extensions are detected on run time. This can
+roughly double encoding and decoding speeds (or halve CPU usage).</p>
+<p>This change is 100% compatible with the old method. No change is needed if
+an existing volume is upgraded.</p>
+<p>You can control which extensions to use or disable them with the following
+command:</p>
+<pre><code class="language-bash"># gluster volume set &lt;VOLNAME&gt; disperse.cpu-extensions &lt;type&gt;
+</code></pre>
+<p>Valid <type> values are:</p>
+<ul>
+<li>none: Completely disable dynamic code generation</li>
+<li>auto: Automatically detect available extensions and use the best one</li>
+<li>x64: Use dynamic code generation using standard 64 bits instructions</li>
+<li>sse: Use dynamic code generation using SSE extensions (128 bits)</li>
+<li>avx: Use dynamic code generation using AVX extensions (256 bits)</li>
+</ul>
+<p>The default value is 'auto'. If a value is specified that is not detected on
+run-time, it will automatically fall back to the next available option.</p>
+<p><em>Limitations:</em></p>
+<p><em>Known Issues:</em>
+To solve a conflict between the dynamic code generator and SELinux, it
+has been necessary to create a dynamic file on runtime in the directory
+/usr/libexec/glusterfs. This directory only exists if the server package
+is installed. On nodes with only the client package installed, this directory
+won't exist and the dynamic code won't be used.</p>
+<p>It also needs root privileges to create the file there, so any gfapi
+application not running as root won't be able to use dynamic code generation.</p>
+<p>In these cases, disperse volumes will continue working normally but using
+the old implementation (equivalent to setting disperse.cpu-extensions to none).</p>
+<p>More information and a discussion on how to solve this can be found here:</p>
+<p>https://bugzilla.redhat.com/1421649</p>
+<h2 id="bugs-addressed">Bugs addressed</h2>
+<p>Bugs addressed since release-3.9 are listed below.</p>
+<ul>
+<li><a href="https://bugzilla.redhat.com/789278">#789278</a>: Issues reported by Coverity static analysis tool</li>
+<li><a href="https://bugzilla.redhat.com/1198849">#1198849</a>: Minor improvements and cleanup for the build system</li>
+<li><a href="https://bugzilla.redhat.com/1211863">#1211863</a>: RFE: Support in md-cache to use upcall notifications to invalidate its cache</li>
+<li><a href="https://bugzilla.redhat.com/1231224">#1231224</a>: Misleading error messages on brick logs while creating directory (mkdir) on fuse mount</li>
+<li><a href="https://bugzilla.redhat.com/1234054">#1234054</a>: `gluster volume heal <vol-name> split-brain' does not heal if data/metadata/entry self-heal options are turned off</li>
+<li><a href="https://bugzilla.redhat.com/1289922">#1289922</a>: Implement SIMD support on EC</li>
+<li><a href="https://bugzilla.redhat.com/1290304">#1290304</a>: [RFE]Reducing number of network round trips</li>
+<li><a href="https://bugzilla.redhat.com/1297182">#1297182</a>: Mounting with "-o noatime" or "-o noexec" causes "nosuid,nodev" to be set as well</li>
+<li><a href="https://bugzilla.redhat.com/1313838">#1313838</a>: Tiering as separate process and in v status moving tier task to tier process</li>
+<li><a href="https://bugzilla.redhat.com/1316873">#1316873</a>: EC: Set/unset dirty flag for all the update operations</li>
+<li><a href="https://bugzilla.redhat.com/1325531">#1325531</a>: Statedump: Add per xlator ref counting for inode</li>
+<li><a href="https://bugzilla.redhat.com/1325792">#1325792</a>: "gluster vol heal test statistics heal-count replica" seems doesn't work</li>
+<li><a href="https://bugzilla.redhat.com/1330604">#1330604</a>: out-of-tree builds generate XDR headers and source files in the original directory</li>
+<li><a href="https://bugzilla.redhat.com/1336371">#1336371</a>: Sequential volume start&amp;stop is failing with SSL enabled setup.</li>
+<li><a href="https://bugzilla.redhat.com/1341948">#1341948</a>: DHT: Rebalance- Misleading log messages from __dht_check_free_space function</li>
+<li><a href="https://bugzilla.redhat.com/1344714">#1344714</a>: removal of file from nfs mount crashs ganesha server</li>
+<li><a href="https://bugzilla.redhat.com/1349385">#1349385</a>: [FEAT]jbr: Add rollbacking of failed fops</li>
+<li><a href="https://bugzilla.redhat.com/1355956">#1355956</a>: RFE : move ganesha related configuration into shared storage</li>
+<li><a href="https://bugzilla.redhat.com/1356076">#1356076</a>: DHT doesn't evenly balance files on FreeBSD with ZFS</li>
+<li><a href="https://bugzilla.redhat.com/1356960">#1356960</a>: OOM Kill on client when heal is in progress on 1*(2+1) arbiter volume</li>
+<li><a href="https://bugzilla.redhat.com/1357753">#1357753</a>: JSON output for all Events CLI commands</li>
+<li><a href="https://bugzilla.redhat.com/1357754">#1357754</a>: Delayed Events if any one Webhook is slow</li>
+<li><a href="https://bugzilla.redhat.com/1358296">#1358296</a>: tier: breaking down the monolith processing function tier_migrate_using_query_file()</li>
+<li><a href="https://bugzilla.redhat.com/1359612">#1359612</a>: [RFE] Geo-replication Logging Improvements</li>
+<li><a href="https://bugzilla.redhat.com/1360670">#1360670</a>: Add output option <code>--xml</code> to man page of gluster</li>
+<li><a href="https://bugzilla.redhat.com/1363595">#1363595</a>: Node remains in stopped state in pcs status with "/usr/lib/ocf/resource.d/heartbeat/ganesha_mon: line 137: [: too many arguments ]" messages in logs.</li>
+<li><a href="https://bugzilla.redhat.com/1363965">#1363965</a>: geo-replication *changes.log does not respect the log-level configured</li>
+<li><a href="https://bugzilla.redhat.com/1364420">#1364420</a>: [RFE] History Crawl performance improvement</li>
+<li><a href="https://bugzilla.redhat.com/1365395">#1365395</a>: Support for rc.d and init for Service management</li>
+<li><a href="https://bugzilla.redhat.com/1365740">#1365740</a>: dht: Update stbuf from servers having layout</li>
+<li><a href="https://bugzilla.redhat.com/1365791">#1365791</a>: Geo-rep worker Faulty with OSError: [Errno 21] Is a directory</li>
+<li><a href="https://bugzilla.redhat.com/1365822">#1365822</a>: [RFE] cli command to get max supported cluster.op-version</li>
+<li><a href="https://bugzilla.redhat.com/1366494">#1366494</a>: Rebalance is not considering the brick sizes while fixing the layout</li>
+<li><a href="https://bugzilla.redhat.com/1366495">#1366495</a>: 1 mkdir generates tons of log messages from dht xlator</li>
+<li><a href="https://bugzilla.redhat.com/1366648">#1366648</a>: [GSS] A hot tier brick becomes full, causing the entire volume to have issues and returns stale file handle and input/output error.</li>
+<li><a href="https://bugzilla.redhat.com/1366815">#1366815</a>: spurious heal info as pending heal entries never end on an EC volume while IOs are going on</li>
+<li><a href="https://bugzilla.redhat.com/1368012">#1368012</a>: gluster fails to propagate permissions on the root of a gluster export when adding bricks</li>
+<li><a href="https://bugzilla.redhat.com/1368138">#1368138</a>: Crash of glusterd when using long username with geo-replication</li>
+<li><a href="https://bugzilla.redhat.com/1368312">#1368312</a>: Value of `replica.split-brain-status' attribute of a directory in metadata split-brain in a dist-rep volume reads that it is not in split-brain</li>
+<li><a href="https://bugzilla.redhat.com/1368336">#1368336</a>: [RFE] Tier Events</li>
+<li><a href="https://bugzilla.redhat.com/1369077">#1369077</a>: The directories get renamed when data bricks are offline in 4*(2+1) volume</li>
+<li><a href="https://bugzilla.redhat.com/1369124">#1369124</a>: fix unused variable warnings from out-of-tree builds generate XDR headers and source files i...</li>
+<li><a href="https://bugzilla.redhat.com/1369397">#1369397</a>: segment fault in changelog_cleanup_dispatchers</li>
+<li><a href="https://bugzilla.redhat.com/1369403">#1369403</a>: [RFE]: events from protocol server</li>
+<li><a href="https://bugzilla.redhat.com/1369523">#1369523</a>: worm: variable reten_mode is invalid to be free by mem_put in fini()</li>
+<li><a href="https://bugzilla.redhat.com/1370410">#1370410</a>: [granular entry sh] - Provide a CLI to enable/disable the feature that checks that there are no heals pending before allowing the operation</li>
+<li><a href="https://bugzilla.redhat.com/1370567">#1370567</a>: [RFE] Provide snapshot events for the new eventing framework</li>
+<li><a href="https://bugzilla.redhat.com/1370931">#1370931</a>: glfs_realpath() should not return malloc()'d allocated memory</li>
+<li><a href="https://bugzilla.redhat.com/1371353">#1371353</a>: posix: Integrate important events with events framework</li>
+<li><a href="https://bugzilla.redhat.com/1371470">#1371470</a>: disperse: Integrate important events with events framework</li>
+<li><a href="https://bugzilla.redhat.com/1371485">#1371485</a>: [RFE]: AFR events</li>
+<li><a href="https://bugzilla.redhat.com/1371539">#1371539</a>: Quota version not changing in the quota.conf after upgrading to 3.7.1 from 3.6.1</li>
+<li><a href="https://bugzilla.redhat.com/1371540">#1371540</a>: Spurious regression in tests/basic/gfapi/bug1291259.t</li>
+<li><a href="https://bugzilla.redhat.com/1371874">#1371874</a>: [RFE] DHT Events</li>
+<li><a href="https://bugzilla.redhat.com/1372193">#1372193</a>: [geo-rep]: AttributeError: 'Popen' object has no attribute 'elines'</li>
+<li><a href="https://bugzilla.redhat.com/1372211">#1372211</a>: write-behind: flush stuck by former failed write</li>
+<li><a href="https://bugzilla.redhat.com/1372356">#1372356</a>: glusterd experiencing repeated connect/disconnect messages when shd is down</li>
+<li><a href="https://bugzilla.redhat.com/1372553">#1372553</a>: "gluster vol status all clients --xml" doesn't generate xml if there is a failure in between</li>
+<li><a href="https://bugzilla.redhat.com/1372584">#1372584</a>: Fix the test case http://review.gluster.org/#/c/15385/</li>
+<li><a href="https://bugzilla.redhat.com/1373072">#1373072</a>: Event pushed even if Answer is No in the Volume Stop and Delete prompt</li>
+<li><a href="https://bugzilla.redhat.com/1373373">#1373373</a>: Worker crashes with EINVAL errors</li>
+<li><a href="https://bugzilla.redhat.com/1373520">#1373520</a>: [Bitrot]: Recovery fails of a corrupted hardlink (and the corresponding parent file) in a disperse volume</li>
+<li><a href="https://bugzilla.redhat.com/1373741">#1373741</a>: [geo-replication]: geo-rep Status is not showing bricks from one of the nodes</li>
+<li><a href="https://bugzilla.redhat.com/1374093">#1374093</a>: glusterfs: create a directory with 0464 mode return EIO error</li>
+<li><a href="https://bugzilla.redhat.com/1374286">#1374286</a>: [geo-rep]: defunct tar process while using tar+ssh sync</li>
+<li><a href="https://bugzilla.redhat.com/1374584">#1374584</a>: Detach tier commit is allowed when detach tier start goes into failed state</li>
+<li><a href="https://bugzilla.redhat.com/1374587">#1374587</a>: gf_event python fails with ImportError</li>
+<li><a href="https://bugzilla.redhat.com/1374993">#1374993</a>: bug-963541.t spurious failure</li>
+<li><a href="https://bugzilla.redhat.com/1375181">#1375181</a>: /var/tmp/rpm-tmp.KPCugR: line 2: /bin/systemctl: No such file or directory</li>
+<li><a href="https://bugzilla.redhat.com/1375431">#1375431</a>: [RFE] enable sharding and strict-o-direct with virt profile - /var/lib/glusterd/groups/virt</li>
+<li><a href="https://bugzilla.redhat.com/1375526">#1375526</a>: Kill rpc.statd on Linux machines</li>
+<li><a href="https://bugzilla.redhat.com/1375532">#1375532</a>: Rpm installation fails with conflicts error for eventsconfig.json file</li>
+<li><a href="https://bugzilla.redhat.com/1376671">#1376671</a>: Rebalance fails to start if a brick is down</li>
+<li><a href="https://bugzilla.redhat.com/1376693">#1376693</a>: RFE: Provide a prompt when enabling gluster-NFS</li>
+<li><a href="https://bugzilla.redhat.com/1377097">#1377097</a>: The GlusterFS Callback RPC-calls always use RPC/XID 42</li>
+<li><a href="https://bugzilla.redhat.com/1377341">#1377341</a>: out-of-tree builds generate XDR headers and source files in the original directory</li>
+<li><a href="https://bugzilla.redhat.com/1377427">#1377427</a>: incorrect fuse dumping for WRITE</li>
+<li><a href="https://bugzilla.redhat.com/1377556">#1377556</a>: Files not being opened with o_direct flag during random read operation (Glusterfs 3.8.2)</li>
+<li><a href="https://bugzilla.redhat.com/1377584">#1377584</a>: memory leak problems are found in daemon:glusterd, server:glusterfsd and client:glusterfs</li>
+<li><a href="https://bugzilla.redhat.com/1377607">#1377607</a>: Volume restart couldn't re-export the volume exported via ganesha.</li>
+<li><a href="https://bugzilla.redhat.com/1377864">#1377864</a>: Creation of files on hot tier volume taking very long time</li>
+<li><a href="https://bugzilla.redhat.com/1378057">#1378057</a>: glusterd fails to start without installing glusterfs-events package</li>
+<li><a href="https://bugzilla.redhat.com/1378072">#1378072</a>: Modifications to AFR Events</li>
+<li><a href="https://bugzilla.redhat.com/1378305">#1378305</a>: DHT: remove unused structure members</li>
+<li><a href="https://bugzilla.redhat.com/1378436">#1378436</a>: build: python-ctypes no longer exists in Fedora Rawhide</li>
+<li><a href="https://bugzilla.redhat.com/1378492">#1378492</a>: warning messages seen in glusterd logs for each 'gluster volume status' command</li>
+<li><a href="https://bugzilla.redhat.com/1378684">#1378684</a>: Poor smallfile read performance on Arbiter volume compared to Replica 3 volume</li>
+<li><a href="https://bugzilla.redhat.com/1378778">#1378778</a>: Add a test script for compound fops changes in AFR</li>
+<li><a href="https://bugzilla.redhat.com/1378842">#1378842</a>: [RFE] 'gluster volume get' should implement the way to retrieve volume options using the volume name 'all'</li>
+<li><a href="https://bugzilla.redhat.com/1379223">#1379223</a>: "nfs.disable: on" is not showing in Vol info by default for the 3.7.x volumes after updating to 3.9.0</li>
+<li><a href="https://bugzilla.redhat.com/1379285">#1379285</a>: gfapi: Fix fd ref leaks</li>
+<li><a href="https://bugzilla.redhat.com/1379328">#1379328</a>: Boolean attributes are published as string</li>
+<li><a href="https://bugzilla.redhat.com/1379330">#1379330</a>: eventsapi/georep: Events are not available for Checkpoint and Status Change</li>
+<li><a href="https://bugzilla.redhat.com/1379511">#1379511</a>: Fix spurious failures in open-behind.t</li>
+<li><a href="https://bugzilla.redhat.com/1379655">#1379655</a>: Recording (ffmpeg) processes on FUSE get hung</li>
+<li><a href="https://bugzilla.redhat.com/1379720">#1379720</a>: errors appear in brick and nfs logs and getting stale files on NFS clients</li>
+<li><a href="https://bugzilla.redhat.com/1379769">#1379769</a>: GlusterFS fails to build on old Linux distros with linux/oom.h missing</li>
+<li><a href="https://bugzilla.redhat.com/1380249">#1380249</a>: Huge memory usage of FUSE client</li>
+<li><a href="https://bugzilla.redhat.com/1380275">#1380275</a>: client ID should logged when SSL connection fails</li>
+<li><a href="https://bugzilla.redhat.com/1381115">#1381115</a>: Polling failure errors getting when volume is started&amp;stopped with SSL enabled setup.</li>
+<li><a href="https://bugzilla.redhat.com/1381421">#1381421</a>: afr fix shd log message error</li>
+<li><a href="https://bugzilla.redhat.com/1381830">#1381830</a>: Regression caused by enabling client-io-threads by default</li>
+<li><a href="https://bugzilla.redhat.com/1382236">#1382236</a>: glusterfind pre session hangs indefinitely</li>
+<li><a href="https://bugzilla.redhat.com/1382258">#1382258</a>: RFE: Support to update NFS-Ganesha export options dynamically</li>
+<li><a href="https://bugzilla.redhat.com/1382266">#1382266</a>: md-cache: Invalidate cache entry in case of OPEN with O_TRUNC</li>
+<li><a href="https://bugzilla.redhat.com/1384142">#1384142</a>: crypt: changes needed for openssl-1.1 (coming in Fedora 26)</li>
+<li><a href="https://bugzilla.redhat.com/1384297">#1384297</a>: glusterfs can't self heal character dev file for invalid dev_t parameters</li>
+<li><a href="https://bugzilla.redhat.com/1384906">#1384906</a>: arbiter volume write performance is bad with sharding</li>
+<li><a href="https://bugzilla.redhat.com/1385104">#1385104</a>: invalid argument warning messages seen in fuse client logs 2016-09-30 06:34:58.938667] W [dict.c:418ict_set] (--&gt;/usr/lib64/glusterfs/3.8.4/xlator/cluster/replicate.so(+0x58722) 0-dict: !this || !value for key=link-count [Invalid argument]</li>
+<li><a href="https://bugzilla.redhat.com/1385575">#1385575</a>: pmap_signin event fails to update brickinfo-&gt;signed_in flag</li>
+<li><a href="https://bugzilla.redhat.com/1385593">#1385593</a>: Fix some spelling mistakes in comments and log messages</li>
+<li><a href="https://bugzilla.redhat.com/1385839">#1385839</a>: Incorrect volume type in the "glusterd_state" file generated using CLI "gluster get-state"</li>
+<li><a href="https://bugzilla.redhat.com/1386088">#1386088</a>: Memory Leaks in snapshot code path</li>
+<li><a href="https://bugzilla.redhat.com/1386097">#1386097</a>: 4 of 8 bricks (2 dht subvols) crashed on systemic setup</li>
+<li><a href="https://bugzilla.redhat.com/1386123">#1386123</a>: geo-replica slave node goes faulty for non-root user session due to fail to locate gluster binary</li>
+<li><a href="https://bugzilla.redhat.com/1386141">#1386141</a>: Error and warning message getting while removing glusterfs-events package</li>
+<li><a href="https://bugzilla.redhat.com/1386188">#1386188</a>: Asynchronous Unsplit-brain still causes Input/Output Error on system calls</li>
+<li><a href="https://bugzilla.redhat.com/1386200">#1386200</a>: Log all published events</li>
+<li><a href="https://bugzilla.redhat.com/1386247">#1386247</a>: [Eventing]: 'gluster volume tier <volname> start force' does not generate a TIER_START event</li>
+<li><a href="https://bugzilla.redhat.com/1386450">#1386450</a>: Continuous warning messages getting when one of the cluster node is down on SSL setup.</li>
+<li><a href="https://bugzilla.redhat.com/1386516">#1386516</a>: [Eventing]: UUID is showing zeros in the event message for the peer probe operation.</li>
+<li><a href="https://bugzilla.redhat.com/1386626">#1386626</a>: fuse mount point not accessible</li>
+<li><a href="https://bugzilla.redhat.com/1386766">#1386766</a>: trashcan max file limit cannot go beyond 1GB</li>
+<li><a href="https://bugzilla.redhat.com/1387160">#1387160</a>: clone creation with older names in a system fails</li>
+<li><a href="https://bugzilla.redhat.com/1387207">#1387207</a>: [Eventing]: Random VOLUME_SET events seen when no operation is done on the gluster cluster</li>
+<li><a href="https://bugzilla.redhat.com/1387241">#1387241</a>: Pass proper permission to acl_permit() in posix_acl_open()</li>
+<li><a href="https://bugzilla.redhat.com/1387652">#1387652</a>: [Eventing]: BRICK_DISCONNECTED events seen when a tier volume is stopped</li>
+<li><a href="https://bugzilla.redhat.com/1387864">#1387864</a>: [Eventing]: 'gluster vol bitrot <volname> scrub ondemand' does not produce an event</li>
+<li><a href="https://bugzilla.redhat.com/1388010">#1388010</a>: [Eventing]: 'VOLUME_REBALANCE' event messages have an incorrect volume name</li>
+<li><a href="https://bugzilla.redhat.com/1388062">#1388062</a>: throw warning to show that older tier commands are depricated and will be removed.</li>
+<li><a href="https://bugzilla.redhat.com/1388292">#1388292</a>: performance.read-ahead on results in processes on client stuck in IO wait</li>
+<li><a href="https://bugzilla.redhat.com/1388348">#1388348</a>: glusterd: Display proper error message and fail the command if S32gluster_enable_shared_storage.sh hook script is not present during gluster volume set all cluster.enable-shared-storage <enable/disable> command</li>
+<li><a href="https://bugzilla.redhat.com/1388401">#1388401</a>: Labelled geo-rep checkpoints hide geo-replication status</li>
+<li><a href="https://bugzilla.redhat.com/1388861">#1388861</a>: build: python on Debian-based dists use .../lib/python2.7/dist-packages instead of .../site-packages</li>
+<li><a href="https://bugzilla.redhat.com/1388862">#1388862</a>: [Eventing]: Events not seen when command is triggered from one of the peer nodes</li>
+<li><a href="https://bugzilla.redhat.com/1388877">#1388877</a>: Continuous errors getting in the mount log when the volume mount server glusterd is down.</li>
+<li><a href="https://bugzilla.redhat.com/1389293">#1389293</a>: build: incorrect Requires: for portblock resource agent</li>
+<li><a href="https://bugzilla.redhat.com/1389481">#1389481</a>: glusterfind fails to list files from tiered volume</li>
+<li><a href="https://bugzilla.redhat.com/1389697">#1389697</a>: Remove-brick status output is showing status of fix-layout instead of original remove-brick status output</li>
+<li><a href="https://bugzilla.redhat.com/1389746">#1389746</a>: Refresh config fails while exporting subdirectories within a volume</li>
+<li><a href="https://bugzilla.redhat.com/1390050">#1390050</a>: Elasticsearch get CorruptIndexException errors when running with GlusterFS persistent storage</li>
+<li><a href="https://bugzilla.redhat.com/1391086">#1391086</a>: gfapi clients crash while using async calls due to double fd_unref</li>
+<li><a href="https://bugzilla.redhat.com/1391387">#1391387</a>: The FUSE client log is filling up with posix_acl_default and posix_acl_access messages</li>
+<li><a href="https://bugzilla.redhat.com/1392167">#1392167</a>: SMB[md-cache Private Build]:Error messages in brick logs related to upcall_cache_invalidate gf_uuid_is_null</li>
+<li><a href="https://bugzilla.redhat.com/1392445">#1392445</a>: Hosted Engine VM paused post replace-brick operation</li>
+<li><a href="https://bugzilla.redhat.com/1392713">#1392713</a>: inconsistent file permissions b/w write permission and sticky bits(---------T ) displayed when IOs are going on with md-cache enabled (and within the invalidation cycle)</li>
+<li><a href="https://bugzilla.redhat.com/1392772">#1392772</a>: [setxattr_cbk] "Permission denied" warning messages are seen in logs while running pjd-fstest suite</li>
+<li><a href="https://bugzilla.redhat.com/1392865">#1392865</a>: Better logging when reporting failures of the kind "<file-path> Failing MKNOD as quorum is not met"</li>
+<li><a href="https://bugzilla.redhat.com/1393259">#1393259</a>: stat of file is hung with possible deadlock</li>
+<li><a href="https://bugzilla.redhat.com/1393678">#1393678</a>: Worker restarts on log-rsync-performance config update</li>
+<li><a href="https://bugzilla.redhat.com/1394131">#1394131</a>: [md-cache]: All bricks crashed while performing symlink and rename from client at the same time</li>
+<li><a href="https://bugzilla.redhat.com/1394224">#1394224</a>: "nfs-grace-monitor" timed out messages observed</li>
+<li><a href="https://bugzilla.redhat.com/1394548">#1394548</a>: Make debugging EACCES errors easier to debug</li>
+<li><a href="https://bugzilla.redhat.com/1394719">#1394719</a>: libgfapi core dumps</li>
+<li><a href="https://bugzilla.redhat.com/1394881">#1394881</a>: Failed to enable nfs-ganesha after disabling nfs-ganesha cluster</li>
+<li><a href="https://bugzilla.redhat.com/1395261">#1395261</a>: Seeing error messages [snapview-client.c:283:gf_svc_lookup_cbk] and [dht-helper.c:1666ht_inode_ctx_time_update] (--&gt;/usr/lib64/glusterfs/3.8.4/xlator/cluster/replicate.so(+0x5d75c)</li>
+<li><a href="https://bugzilla.redhat.com/1395648">#1395648</a>: ganesha-ha.conf --status should validate if the VIPs are assigned to right nodes</li>
+<li><a href="https://bugzilla.redhat.com/1395660">#1395660</a>: Checkpoint completed event missing master node detail</li>
+<li><a href="https://bugzilla.redhat.com/1395687">#1395687</a>: Client side IObuff leaks at a high pace consumes complete client memory and hence making gluster volume inaccessible</li>
+<li><a href="https://bugzilla.redhat.com/1395993">#1395993</a>: heal info --xml when bricks are down in a systemic environment is not displaying anything even after more than 30minutes</li>
+<li><a href="https://bugzilla.redhat.com/1396038">#1396038</a>: refresh-config fails and crashes ganesha when mdcache is enabled on the volume.</li>
+<li><a href="https://bugzilla.redhat.com/1396048">#1396048</a>: A hard link is lost during rebalance+lookup</li>
+<li><a href="https://bugzilla.redhat.com/1396062">#1396062</a>: [geo-rep]: Worker crashes seen while renaming directories in loop</li>
+<li><a href="https://bugzilla.redhat.com/1396081">#1396081</a>: Wrong value in Last Synced column during Hybrid Crawl</li>
+<li><a href="https://bugzilla.redhat.com/1396364">#1396364</a>: Scheduler : Scheduler should not depend on glusterfs-events package</li>
+<li><a href="https://bugzilla.redhat.com/1396793">#1396793</a>: [Ganesha] : Ganesha crashes intermittently during nfs-ganesha restarts.</li>
+<li><a href="https://bugzilla.redhat.com/1396807">#1396807</a>: capture volume tunables in get-state dump</li>
+<li><a href="https://bugzilla.redhat.com/1396952">#1396952</a>: I/O errors on FUSE mount point when reading and writing from 2 clients</li>
+<li><a href="https://bugzilla.redhat.com/1397052">#1397052</a>: OOM kill of nfs-ganesha on one node while fs-sanity test suite is executed.</li>
+<li><a href="https://bugzilla.redhat.com/1397177">#1397177</a>: memory leak when using libgfapi</li>
+<li><a href="https://bugzilla.redhat.com/1397419">#1397419</a>: glusterfs_ctx_defaults_init is re-initializing ctx-&gt;locks</li>
+<li><a href="https://bugzilla.redhat.com/1397424">#1397424</a>: PEER_REJECT, EVENT_BRICKPATH_RESOLVE_FAILED, EVENT_COMPARE_FRIEND_VOLUME_FAILED are not seen</li>
+<li><a href="https://bugzilla.redhat.com/1397754">#1397754</a>: [SAMBA-CIFS] : IO hungs in cifs mount while graph switch on &amp; off</li>
+<li><a href="https://bugzilla.redhat.com/1397795">#1397795</a>: NFS-Ganesha:Volume reset for any option causes reset of ganesha enable option and bring down the ganesha services</li>
+<li><a href="https://bugzilla.redhat.com/1398076">#1398076</a>: SEEK_HOLE/ SEEK_DATA doesn't return the correct offset</li>
+<li><a href="https://bugzilla.redhat.com/1398226">#1398226</a>: With compound fops on, client process crashes when a replica is brought down while IO is in progress</li>
+<li><a href="https://bugzilla.redhat.com/1398566">#1398566</a>: self-heal info command hangs after triggering self-heal</li>
+<li><a href="https://bugzilla.redhat.com/1399031">#1399031</a>: build: add systemd dependency to glusterfs sub-package</li>
+<li><a href="https://bugzilla.redhat.com/1399072">#1399072</a>: [Disperse] healing should not start if only data bricks are UP</li>
+<li><a href="https://bugzilla.redhat.com/1399134">#1399134</a>: GlusterFS client crashes during remove-brick operation</li>
+<li><a href="https://bugzilla.redhat.com/1399154">#1399154</a>: After ganesha node reboot/shutdown, portblock process goes to FAILED state</li>
+<li><a href="https://bugzilla.redhat.com/1399186">#1399186</a>: [GANESHA] Export ID changed during volume start and stop with message "lookup_export failed with Export id not found" in ganesha.log</li>
+<li><a href="https://bugzilla.redhat.com/1399578">#1399578</a>: [compound FOPs]: Memory leak while doing FOPs with brick down</li>
+<li><a href="https://bugzilla.redhat.com/1399592">#1399592</a>: Memory leak when self healing daemon queue is full</li>
+<li><a href="https://bugzilla.redhat.com/1399780">#1399780</a>: Use standard refcounting for structures where possible</li>
+<li><a href="https://bugzilla.redhat.com/1399995">#1399995</a>: Dump volume specific options in get-state output in a more parseable manner</li>
+<li><a href="https://bugzilla.redhat.com/1400013">#1400013</a>: [USS,SSL] .snaps directory is not reachable when I/O encryption (SSL) is enabled</li>
+<li><a href="https://bugzilla.redhat.com/1400026">#1400026</a>: Duplicate value assigned to GD_MSG_DAEMON_STATE_REQ_RCVD and GD_MSG_BRICK_CLEANUP_SUCCESS messages</li>
+<li><a href="https://bugzilla.redhat.com/1400237">#1400237</a>: Ganesha services are not stopped when pacemaker quorum is lost</li>
+<li><a href="https://bugzilla.redhat.com/1400613">#1400613</a>: [GANESHA] failed to create directory of hostname of new node in var/lib/nfs/ganesha/ in already existing cluster nodes</li>
+<li><a href="https://bugzilla.redhat.com/1400818">#1400818</a>: possible memory leak on client when writing to a file while another client issues a truncate</li>
+<li><a href="https://bugzilla.redhat.com/1401095">#1401095</a>: log the error when locking the brick directory fails</li>
+<li><a href="https://bugzilla.redhat.com/1401218">#1401218</a>: Fix compound fops memory leaks</li>
+<li><a href="https://bugzilla.redhat.com/1401404">#1401404</a>: [Arbiter] IO's Halted and heal info command hung</li>
+<li><a href="https://bugzilla.redhat.com/1401777">#1401777</a>: atime becomes zero when truncating file via ganesha (or gluster-NFS)</li>
+<li><a href="https://bugzilla.redhat.com/1401801">#1401801</a>: [RFE] Use Host UUID to find local nodes to spawn workers</li>
+<li><a href="https://bugzilla.redhat.com/1401812">#1401812</a>: RFE: Make readdirp parallel in dht</li>
+<li><a href="https://bugzilla.redhat.com/1401822">#1401822</a>: [GANESHA]Unable to export the ganesha volume after doing volume start and stop</li>
+<li><a href="https://bugzilla.redhat.com/1401836">#1401836</a>: update documentation to readthedocs.io</li>
+<li><a href="https://bugzilla.redhat.com/1401921">#1401921</a>: glusterfsd crashed while taking snapshot using scheduler</li>
+<li><a href="https://bugzilla.redhat.com/1402237">#1402237</a>: Bad spacing in error message in cli</li>
+<li><a href="https://bugzilla.redhat.com/1402261">#1402261</a>: cli: compile warnings (unused var) if building without bd xlator</li>
+<li><a href="https://bugzilla.redhat.com/1402369">#1402369</a>: Getting the warning message while erasing the gluster "glusterfs-server" package.</li>
+<li><a href="https://bugzilla.redhat.com/1402710">#1402710</a>: ls and move hung on disperse volume</li>
+<li><a href="https://bugzilla.redhat.com/1402730">#1402730</a>: self-heal not happening, as self-heal info lists the same pending shards to be healed</li>
+<li><a href="https://bugzilla.redhat.com/1402828">#1402828</a>: Snapshot: Snapshot create command fails when gluster-shared-storage volume is stopped</li>
+<li><a href="https://bugzilla.redhat.com/1402841">#1402841</a>: Files remain unhealed forever if shd is disabled and re-enabled while healing is in progress.</li>
+<li><a href="https://bugzilla.redhat.com/1403130">#1403130</a>: [GANESHA] Adding a node to cluster failed to allocate resource-agents to new node.</li>
+<li><a href="https://bugzilla.redhat.com/1403780">#1403780</a>: Incorrect incrementation of volinfo refcnt during volume start</li>
+<li><a href="https://bugzilla.redhat.com/1404118">#1404118</a>: Snapshot: After snapshot restore failure , snapshot goes into inconsistent state</li>
+<li><a href="https://bugzilla.redhat.com/1404168">#1404168</a>: Upcall: Possible use after free when log level set to TRACE</li>
+<li><a href="https://bugzilla.redhat.com/1404181">#1404181</a>: [Ganesha+SSL] : Ganesha crashes on all nodes on volume restarts</li>
+<li><a href="https://bugzilla.redhat.com/1404410">#1404410</a>: [Perf] : pcs cluster resources went into stopped state during Multithreaded perf tests on RHGS layered over RHEL 6</li>
+<li><a href="https://bugzilla.redhat.com/1404573">#1404573</a>: tests/bugs/snapshot/bug-1316437.t test is causing spurious failure</li>
+<li><a href="https://bugzilla.redhat.com/1404678">#1404678</a>: [geo-rep]: Config commands fail when the status is 'Created'</li>
+<li><a href="https://bugzilla.redhat.com/1404905">#1404905</a>: DHT : file rename operation is successful but log has error 'key:trusted.glusterfs.dht.linkto error:File exists' , 'setting xattrs on <old_filename> failed (File exists)'</li>
+<li><a href="https://bugzilla.redhat.com/1405165">#1405165</a>: Allow user to disable mem-pool</li>
+<li><a href="https://bugzilla.redhat.com/1405301">#1405301</a>: Fix the failure in tests/basic/gfapi/bug1291259.t</li>
+<li><a href="https://bugzilla.redhat.com/1405478">#1405478</a>: Keepalive should be set for IPv6 &amp; IPv4</li>
+<li><a href="https://bugzilla.redhat.com/1405554">#1405554</a>: Fix spurious failure in bug-1402841.t-mt-dir-scan-race.t</li>
+<li><a href="https://bugzilla.redhat.com/1405775">#1405775</a>: GlusterFS process crashed after add-brick</li>
+<li><a href="https://bugzilla.redhat.com/1405902">#1405902</a>: Fix spurious failure in tests/bugs/replicate/bug-1402730.t</li>
+<li><a href="https://bugzilla.redhat.com/1406224">#1406224</a>: VM pauses due to storage I/O error, when one of the data brick is down with arbiter/replica volume</li>
+<li><a href="https://bugzilla.redhat.com/1406249">#1406249</a>: [GANESHA] Deleting a node from ganesha cluster deletes the volume entry from /etc/ganesha/ganesha.conf file</li>
+<li><a href="https://bugzilla.redhat.com/1406252">#1406252</a>: Free xdr-allocated compound request and response arrays</li>
+<li><a href="https://bugzilla.redhat.com/1406348">#1406348</a>: [Eventing]: POSIX_SAME_GFID event seen for .trashcan folder and .trashcan/internal_op</li>
+<li><a href="https://bugzilla.redhat.com/1406410">#1406410</a>: [GANESHA] Adding node to ganesha cluster is not assigning the correct VIP to the new node</li>
+<li><a href="https://bugzilla.redhat.com/1406411">#1406411</a>: Fail add-brick command if replica count changes</li>
+<li><a href="https://bugzilla.redhat.com/1406878">#1406878</a>: ec prove tests fail in FB build environment.</li>
+<li><a href="https://bugzilla.redhat.com/1408115">#1408115</a>: Remove-brick rebalance failed while rm -rf is in progress</li>
+<li><a href="https://bugzilla.redhat.com/1408131">#1408131</a>: Remove tests/distaf</li>
+<li><a href="https://bugzilla.redhat.com/1408395">#1408395</a>: [Arbiter] After Killing a brick writes drastically slow down</li>
+<li><a href="https://bugzilla.redhat.com/1408712">#1408712</a>: with granular-entry-self-heal enabled i see that there is a gfid mismatch and vm goes to paused state after migrating to another host</li>
+<li><a href="https://bugzilla.redhat.com/1408755">#1408755</a>: Remove tests/basic/rpm.t</li>
+<li><a href="https://bugzilla.redhat.com/1408757">#1408757</a>: Fix failure of split-brain-favorite-child-policy.t in CentOS7</li>
+<li><a href="https://bugzilla.redhat.com/1408758">#1408758</a>: tests/bugs/glusterd/bug-913555.t fails spuriously</li>
+<li><a href="https://bugzilla.redhat.com/1409078">#1409078</a>: RFE: Need a command to check op-version compatibility of clients</li>
+<li><a href="https://bugzilla.redhat.com/1409186">#1409186</a>: Dict_t leak in dht_migration_complete_check_task and dht_rebalance_inprogress_task</li>
+<li><a href="https://bugzilla.redhat.com/1409202">#1409202</a>: Warning messages throwing when EC volume offline brick comes up are difficult to understand for end user.</li>
+<li><a href="https://bugzilla.redhat.com/1409206">#1409206</a>: Extra lookup/fstats are sent over the network when a brick is down.</li>
+<li><a href="https://bugzilla.redhat.com/1409727">#1409727</a>: [ganesha + EC]posix compliance rename tests failed on EC volume with nfs-ganesha mount.</li>
+<li><a href="https://bugzilla.redhat.com/1409730">#1409730</a>: [ganesha+ec]: Contents of original file are not seen when hardlink is created</li>
+<li><a href="https://bugzilla.redhat.com/1410071">#1410071</a>: [Geo-rep] Geo replication status detail without master and slave volume args</li>
+<li><a href="https://bugzilla.redhat.com/1410313">#1410313</a>: brick crashed on systemic setup</li>
+<li><a href="https://bugzilla.redhat.com/1410355">#1410355</a>: Remove-brick rebalance failed while rm -rf is in progress</li>
+<li><a href="https://bugzilla.redhat.com/1410375">#1410375</a>: [Mdcache] clients being served wrong information about a file, can lead to file inconsistency</li>
+<li><a href="https://bugzilla.redhat.com/1410777">#1410777</a>: ganesha service crashed on all nodes of ganesha cluster on disperse volume when doing lookup while copying files remotely using scp</li>
+<li><a href="https://bugzilla.redhat.com/1410853">#1410853</a>: glusterfs-server should depend on firewalld-filesystem</li>
+<li><a href="https://bugzilla.redhat.com/1411607">#1411607</a>: [Geo-rep] If for some reason MKDIR failed to sync, it should not proceed further.</li>
+<li><a href="https://bugzilla.redhat.com/1411625">#1411625</a>: Spurious split-brain error messages are seen in rebalance logs</li>
+<li><a href="https://bugzilla.redhat.com/1411999">#1411999</a>: URL to Fedora distgit no longer uptodate</li>
+<li><a href="https://bugzilla.redhat.com/1412002">#1412002</a>: Examples/getvolfile.py is not pep8 compliant</li>
+<li><a href="https://bugzilla.redhat.com/1412069">#1412069</a>: No rollback of renames on succeeded subvols during failure</li>
+<li><a href="https://bugzilla.redhat.com/1412174">#1412174</a>: Memory leak on mount/fuse when setxattr fails</li>
+<li><a href="https://bugzilla.redhat.com/1412467">#1412467</a>: Remove tests/bugs/distribute/bug-1063230.t</li>
+<li><a href="https://bugzilla.redhat.com/1412489">#1412489</a>: Upcall: Possible memleak if inode_ctx_set fails</li>
+<li><a href="https://bugzilla.redhat.com/1412689">#1412689</a>: [Geo-rep] Slave mount log file is cluttered by logs of multiple active mounts</li>
+<li><a href="https://bugzilla.redhat.com/1412917">#1412917</a>: OOM kill of glusterfsd during continuous add-bricks</li>
+<li><a href="https://bugzilla.redhat.com/1412918">#1412918</a>: fuse: Resource leak in fuse-helper under GF_SOLARIS_HOST_OS</li>
+<li><a href="https://bugzilla.redhat.com/1413967">#1413967</a>: geo-rep session faulty with ChangelogException "No such file or directory"</li>
+<li><a href="https://bugzilla.redhat.com/1415226">#1415226</a>: packaging: python/python2(/python3) cleanup</li>
+<li><a href="https://bugzilla.redhat.com/1415245">#1415245</a>: core: max op version</li>
+<li><a href="https://bugzilla.redhat.com/1415279">#1415279</a>: libgfapi: remove/revert glfs_ipc() changes targeted for 4.0</li>
+<li><a href="https://bugzilla.redhat.com/1415581">#1415581</a>: RFE : Create trash directory only when its is enabled</li>
+<li><a href="https://bugzilla.redhat.com/1415915">#1415915</a>: RFE: An administrator friendly way to determine rebalance completion time</li>
+<li><a href="https://bugzilla.redhat.com/1415918">#1415918</a>: Cache security.ima xattrs as well</li>
+<li><a href="https://bugzilla.redhat.com/1416285">#1416285</a>: EXPECT_WITHIN is taking too much time even if the result matches with expected value</li>
+<li><a href="https://bugzilla.redhat.com/1416416">#1416416</a>: Improve output of "gluster volume status detail"</li>
+<li><a href="https://bugzilla.redhat.com/1417027">#1417027</a>: option performance.parallel-readdir should honor cluster.readdir-optimize</li>
+<li><a href="https://bugzilla.redhat.com/1417028">#1417028</a>: option performance.parallel-readdir can cause OOM in large volumes</li>
+<li><a href="https://bugzilla.redhat.com/1417042">#1417042</a>: glusterd restart is starting the offline shd daemon on other node in the cluster</li>
+<li><a href="https://bugzilla.redhat.com/1417135">#1417135</a>: [Stress] : SHD Logs flooded with "Heal Failed" messages,filling up "/" quickly</li>
+<li><a href="https://bugzilla.redhat.com/1417521">#1417521</a>: [SNAPSHOT] With all USS plugin enable .snaps directory is not visible in cifs mount as well as windows mount</li>
+<li><a href="https://bugzilla.redhat.com/1417527">#1417527</a>: glusterfind: After glusterfind pre command execution all temporary files and directories /usr/var/lib/misc/glusterfsd/glusterfind/<session>/<volume>/ should be removed</li>
+<li><a href="https://bugzilla.redhat.com/1417804">#1417804</a>: debug/trace: Print iatts of individual entries in readdirp callback for better debugging experience</li>
+<li><a href="https://bugzilla.redhat.com/1418091">#1418091</a>: [RFE] Support multiple bricks in one process (multiplexing)</li>
+<li><a href="https://bugzilla.redhat.com/1418536">#1418536</a>: Portmap allocates way too much memory (256KB) on stack</li>
+<li><a href="https://bugzilla.redhat.com/1418541">#1418541</a>: [Ganesha+SSL] : Bonnie++ hangs during rewrites.</li>
+<li><a href="https://bugzilla.redhat.com/1418623">#1418623</a>: client process crashed due to write behind translator</li>
+<li><a href="https://bugzilla.redhat.com/1418650">#1418650</a>: Samba crash when mounting a distributed dispersed volume over CIFS</li>
+<li><a href="https://bugzilla.redhat.com/1418981">#1418981</a>: Unable to take Statedump for gfapi applications</li>
+<li><a href="https://bugzilla.redhat.com/1419305">#1419305</a>: disable client.io-threads on replica volume creation</li>
+<li><a href="https://bugzilla.redhat.com/1419306">#1419306</a>: [RFE] Need to have group cli option to set all md-cache options using a single command</li>
+<li><a href="https://bugzilla.redhat.com/1419503">#1419503</a>: [SAMBA-SSL] Volume Share hungs when multiple mount &amp; unmount is performed over a windows client on a SSL enabled cluster</li>
+<li><a href="https://bugzilla.redhat.com/1419696">#1419696</a>: Fix spurious failure of ec-background-heal.t and tests/bitrot/bug-1373520.t</li>
+<li><a href="https://bugzilla.redhat.com/1419824">#1419824</a>: repeated operation failed warnings in gluster mount logs with disperse volume</li>
+<li><a href="https://bugzilla.redhat.com/1419825">#1419825</a>: Sequential and Random Writes are off target by 12% and 22% respectively on EC backed volumes over FUSE</li>
+<li><a href="https://bugzilla.redhat.com/1419846">#1419846</a>: removing warning related to enum, to let the build take place without errors for 3.10</li>
+<li><a href="https://bugzilla.redhat.com/1419855">#1419855</a>: [Remove-brick] Hardlink migration fails with "lookup failed (No such file or directory)" error messages in rebalance logs</li>
+<li><a href="https://bugzilla.redhat.com/1419868">#1419868</a>: removing old tier commands under the rebalance commands</li>
+<li><a href="https://bugzilla.redhat.com/1420606">#1420606</a>: glusterd is crashed at the time of stop volume</li>
+<li><a href="https://bugzilla.redhat.com/1420808">#1420808</a>: Trash feature improperly disabled</li>
+<li><a href="https://bugzilla.redhat.com/1420810">#1420810</a>: Massive xlator_t leak in graph-switch code</li>
+<li><a href="https://bugzilla.redhat.com/1420982">#1420982</a>: Automatic split brain resolution must check for all the bricks to be up to avoiding serving of inconsistent data(visible on x3 or more)</li>
+<li><a href="https://bugzilla.redhat.com/1420987">#1420987</a>: warning messages seen in glusterd logs while setting the volume option</li>
+<li><a href="https://bugzilla.redhat.com/1420989">#1420989</a>: when server-quorum is enabled, volume get returns 0 value for server-quorum-ratio</li>
+<li><a href="https://bugzilla.redhat.com/1420991">#1420991</a>: Modified volume options not synced once offline nodes comes up.</li>
+<li><a href="https://bugzilla.redhat.com/1421017">#1421017</a>: CLI option "--timeout" is accepting non numeric and negative values.</li>
+<li><a href="https://bugzilla.redhat.com/1421956">#1421956</a>: Disperse: Fallback to pre-compiled code execution when dynamic code generation fails</li>
+<li><a href="https://bugzilla.redhat.com/1422350">#1422350</a>: glustershd process crashed on systemic setup</li>
+<li><a href="https://bugzilla.redhat.com/1422363">#1422363</a>: [Replicate] "RPC call decoding failed" leading to IO hang &amp; mount inaccessible</li>
+<li><a href="https://bugzilla.redhat.com/1422391">#1422391</a>: Gluster NFS server crashing in __mnt3svc_umountall</li>
+<li><a href="https://bugzilla.redhat.com/1422766">#1422766</a>: Entry heal messages in glustershd.log while no entries shown in heal info</li>
+<li><a href="https://bugzilla.redhat.com/1422777">#1422777</a>: DHT doesn't evenly balance files on FreeBSD with ZFS</li>
+<li><a href="https://bugzilla.redhat.com/1422819">#1422819</a>: [Geo-rep] Recreating geo-rep session with same slave after deleting with reset-sync-time fails to sync</li>
+<li><a href="https://bugzilla.redhat.com/1422942">#1422942</a>: Prevent reverse heal from happening</li>
+<li><a href="https://bugzilla.redhat.com/1423063">#1423063</a>: glusterfs-fuse RPM now depends on gfapi</li>
+<li><a href="https://bugzilla.redhat.com/1423070">#1423070</a>: Bricks not coming up when ran with address sanitizer</li>
+<li><a href="https://bugzilla.redhat.com/1423385">#1423385</a>: Crash in index xlator because of race in inode_ctx_set and inode_ref</li>
+<li><a href="https://bugzilla.redhat.com/1423406">#1423406</a>: Need to improve remove-brick failure message when the brick process is down.</li>
+<li><a href="https://bugzilla.redhat.com/1423412">#1423412</a>: Mount of older client fails</li>
+<li><a href="https://bugzilla.redhat.com/1423429">#1423429</a>: unnecessary logging in rda_opendir</li>
+<li><a href="https://bugzilla.redhat.com/1424921">#1424921</a>: dht_setxattr returns EINVAL when a file is deleted during the FOP</li>
+<li><a href="https://bugzilla.redhat.com/1424931">#1424931</a>: [RFE] Include few more options in virt file</li>
+<li><a href="https://bugzilla.redhat.com/1424937">#1424937</a>: multiple glusterfsd process crashed making the complete subvolume unavailable</li>
+<li><a href="https://bugzilla.redhat.com/1424973">#1424973</a>: remove-brick status shows 0 rebalanced files</li>
+<li><a href="https://bugzilla.redhat.com/1425556">#1425556</a>: glusterd log is flooded with stale disconnect rpc messages</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+        <script src="../../js/custom-features.js"></script>
+      
+    
+  </body>
+</html>
