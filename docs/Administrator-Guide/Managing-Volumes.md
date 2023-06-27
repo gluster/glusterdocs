@@ -755,10 +755,10 @@ sub-commands.
 
    `# gluster volume bitrot <VOLNAME> disable`
 
-> NOTE: Enabling bitrot spawns the Signer & Scrubber daemon per node. Signer is responsible
-
-      for signing (calculating checksum for each file) an object and scrubber verifies the
-      calculated checksum against the objects data.
+> **Note**  
+> Enabling bitrot spawns the Signer & Scrubber daemon per node. Signer is responsible
+> for signing (calculating checksum for each file) an object and scrubber verifies the
+> calculated checksum against the objects data.
 
 2.  Scrubber daemon has three (3) throttling modes that adjusts the rate at which objects
     are verified.
@@ -785,7 +785,6 @@ sub-commands.
    and to resume scrubbing:
 
    `# volume bitrot <VOLNAME> scrub resume`
-
-> NOTE: Signing cannot be paused (and resumed) and would always be active as long as
-
-      bitrot is enabled for that particular volume.
+> **Note**  
+> Signing cannot be paused (and resumed) and would always be active as long as
+> bitrot is enabled for that particular volume.
