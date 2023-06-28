@@ -356,7 +356,7 @@ volumes, but using dispersed subvolumes instead of replicated ones.
 
     To create a distributed dispersed volume, the *disperse* keyword and
     &lt;count&gt; is mandatory, and the number of bricks specified in the
-    command line must be a multiple of the disperse count.
+    command line must must be a multiple of the disperse count.
 
     *redundancy* is exactly the same as in the dispersed volume.
 
