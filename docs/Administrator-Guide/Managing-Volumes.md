@@ -702,9 +702,21 @@ space available on those bricks.
 
 NUFA should be enabled before creating any data in the volume.
 
-Use the following command to enable NUFA:
+Use the following steps to enable NUFA:
 
-`# gluster volume set <VOLNAME> cluster.nufa enable`
+- decide which group is going to be used for managing settings of your volume. Assuming <GROUPNAME>.
+- define cluster.nufa enable for this group:
+
+  `# echo "cluster.nufa=enable" | tee -a /var/lib/glusterd/groups/<GROUPNAME>`
+
+- add your volume to the group
+
+  `# gluster volume set <VOLNAME> group <GROUPNAME>`
+
+- verify whether the nufa setting was set properly
+
+  `# gluster volume info`
+
 
 **Important**
 
