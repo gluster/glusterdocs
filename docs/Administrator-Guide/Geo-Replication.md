@@ -61,11 +61,12 @@ In all the Secondary nodes, create a new group as "geogroup".
 # sudo groupadd geogroup
 ```
 
-In all the Secondary nodes, create an unprivileged account. For example,
+In all the Secondary nodes, create an unprivileged account. This user 
+must have a home directory and a configured shell. For example,
 "geoaccount". Add geoaccount as a member of "geogroup" group.
 
 ```
-# useradd -G geogroup geoaccount
+# useradd -s /bin/bash -d /home/geoaccount/ -G geogroup geoaccount
 ```
 
 In any one Secondary node, run the following command to setup the
