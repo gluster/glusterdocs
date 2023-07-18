@@ -185,7 +185,7 @@ operation to migrate data from the removed-bricks to the rest of the volume.
 
 To replace a brick on a distribute only volume, add the new brick and then remove the brick you want to replace. This will trigger a rebalance operation which will move data from the removed brick.
 
-> NOTE: Replacing a brick using the 'replace-brick' command in gluster is supported only for distributed-replicate or _pure_ replicate volumes.
+> NOTE: Replacing a brick using the 'replace-brick' command in gluster is supported only for _pure_ replicate or distributed-replicate volumes.
 
 Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 
