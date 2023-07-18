@@ -265,7 +265,7 @@ This section of the document describes how brick: `Server1:/home/gfs/r2_0` is re
 
 Steps:
 
-1.  Make sure there is no data in the new brick Server1:/home/gfs/r2_5
+1.  Make sure there is no data in the new brick `Server1:/home/gfs/r2_5`
 2.  Check that all the bricks are running. It is okay if the brick that is going to be replaced is down.
 3.  Replace the brick with 'commit force' option. Please note that other variants of replace-brick command are not supported.
 
@@ -280,14 +280,14 @@ Steps:
            Status of volume: r2
            Gluster process                        Port    Online    Pid
            ------------------------------------------------------------------------------
-           Brick Server1:/home/gfs/r2_5            49156    Y    5731 <<<---- new brick is online
+           Brick Server1:/home/gfs/r2_5            49156    Y    5731 <---- new brick is online
            Brick Server2:/home/gfs/r2_1            49153    Y    5354
            Brick Server1:/home/gfs/r2_2            49154    Y    5365
            Brick Server2:/home/gfs/r2_3            49155    Y    5376
 
     - Users can track the progress of self-heal using: `gluster volume heal [volname] info`, or by checking the size of the new brick.
 
-    - `# gluster volume heal <VOLNAME> info` will show that no heal is required.
+    - `# gluster volume heal <volname> info` will show that no heal is required when the data on the replaced brick has been migrated completely.
 
            # gluster volume heal r2 info
            Brick Server1:/home/gfs/r2_5
