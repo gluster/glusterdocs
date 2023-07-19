@@ -287,7 +287,7 @@ Steps:
 
     - Users can track the progress of self-heal using: `gluster volume heal [volname] info`, or by checking the size of the new brick.
 
-    - `# gluster volume heal <volname> info` will show that no heal is required when the data on the replaced brick has been migrated completely.
+    - `# gluster volume heal <volname> info` will show that no heal is required when the data is fully synced to the replaced brick.
 
            # gluster volume heal r2 info
            Brick Server1:/home/gfs/r2_5
