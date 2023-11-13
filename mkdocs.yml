@@ -142,6 +142,7 @@ nav:
       - index: release-notes/index.md
       - RELEASE 11.x:
           - 11.0: release-notes/11.0.md
+          - 11.1: release-notes/11.1.md
       - RELEASE 10.x:
           - 10.4: release-notes/10.4.md
           - 10.3: release-notes/10.3.md
