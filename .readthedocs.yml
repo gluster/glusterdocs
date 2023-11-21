@@ -5,6 +5,9 @@ build:
   tools:
     python: "3.11"
 
+mkdocs:
+  configuration: mkdocs.yml
+
 python:
   install:
   - requirements: requirements.txt
