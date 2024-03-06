@@ -8,7 +8,7 @@ A plug-in for the Linux target driver has been written to use the libgfapi. It i
 
 LIO is a replacement for the Linux Target Driver that is included in RHEL7. A user-space plug-in mechanism for it is under development. Once that piece of code exists a similar mechanism can be built for gluster as was done for the Linux target driver.
 
-Below is a cookbook to set it up using the Linux Target Driver on the server. This has been tested on XEN and KVM instances within RHEL6, RHEL7, and Fedora 19 instances. In this setup a single path leads to gluster, which represents a performance bottleneck and single point of failure. For HA and load balancing, it is possible to setup two or more paths to different gluster servers using mpio; if the target name is equivalent over each path, mpio will coalless both paths into a single device.
+Below is a cookbook to set it up using the Linux Target Driver on the server. This has been tested on XEN and KVM instances within RHEL6, RHEL7, and Fedora 19 instances. In this setup a single path leads to gluster, which represents a performance bottleneck and single point of failure. For HA and load balancing, it is possible to setup two or more paths to different gluster servers using mpio; if the target name is equivalent over each path, mpio will coalesce both paths into a single device.
 
 For more information on iSCSI and the Linux target driver, see [1] and [2].
 
