@@ -1,0 +1,5145 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation for Gluster Filesystem">
+      
+      
+      
+        <link rel="canonical" href="http://docs.gluster.org/Quick-Start-Guide/Architecture/">
+      
+      
+        <link rel="prev" href="../Quickstart/">
+      
+      
+        <link rel="next" href="../../Install-Guide/Overview/">
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Architecture - Gluster Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Gluster Docs" class="md-header__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gluster Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Bring back the sunshine"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Bring back the sunshine" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Turn off the lights"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Turn off the lights" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Gluster Docs" class="md-nav__button md-logo" aria-label="Gluster Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Gluster Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gluster/glusterdocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="true">
+          Getting started with GlusterFS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started with GlusterFS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started with GlusterFS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickstart/" class="md-nav__link">
+        Quick Start Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Architecture
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-volumes" class="md-nav__link">
+    Types of Volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fuse" class="md-nav__link">
+    FUSE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translators" class="md-nav__link">
+    Translators
+  </a>
+  
+    <nav class="md-nav" aria-label="Translators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-translators" class="md-nav__link">
+    Types of Translators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhtdistributed-hash-table-translator" class="md-nav__link">
+    DHT(Distributed Hash Table) Translator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afrautomatic-file-replication-translator" class="md-nav__link">
+    AFR(Automatic File Replication) Translator
+  </a>
+  
+    <nav class="md-nav" aria-label="AFR(Automatic File Replication) Translator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities-of-afr" class="md-nav__link">
+    Responsibilities of AFR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geo-replication" class="md-nav__link">
+    Geo-Replication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-working-of-glusterfs" class="md-nav__link">
+    Overall working of GlusterFS
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Install Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Install Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Install Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Common-criteria/" class="md-nav__link">
+        Common Criteria
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-virt/" class="md-nav__link">
+        Setting up in virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-Bare-metal/" class="md-nav__link">
+        Setting up on physical servers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Setup-aws/" class="md-nav__link">
+        Deploying in AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Configure/" class="md-nav__link">
+        Configure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Install-Guide/Community-Packages/" class="md-nav__link">
+        Community Packages
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Administration Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Administration Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Start-Stop-Daemon/" class="md-nav__link">
+        Managing the Gluster Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Storage-Pools/" class="md-nav__link">
+        Managing Trusted Storage Pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" tabindex="0" aria-expanded="false">
+          Setting Up Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Setting Up Storage" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Setting Up Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Brick-Naming-Conventions/" class="md-nav__link">
+        Brick Naming Conventions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/formatting-and-mounting-bricks/" class="md-nav__link">
+        Formatting and Mounting Bricks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Access-Control-Lists/" class="md-nav__link">
+        Access Control Lists
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Handling-of-users-with-many-groups/" class="md-nav__link">
+        Handling of users that belong to many groups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Volumes/" class="md-nav__link">
+        Setting Up Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Setting-Up-Clients/" class="md-nav__link">
+        Setting Up Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Volumes/" class="md-nav__link">
+        Managing Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Building-QEMU-With-gfapi-For-Debian-Based-Systems/" class="md-nav__link">
+        Building QEMU with gfapi For Debian Based Systems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Filter/" class="md-nav__link">
+        GlusterFS Filter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_13" type="checkbox" id="__nav_4_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_13" tabindex="0" aria-expanded="false">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Features" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_13">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/setting-up-storage/" class="md-nav__link">
+        Setting Up Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Automatic-File-Replication/" class="md-nav__link">
+        Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Geo-Replication/" class="md-nav__link">
+        Geo Replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Directory-Quota/" class="md-nav__link">
+        Quotas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Managing-Snapshots/" class="md-nav__link">
+        Snapshots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/io_uring/" class="md-nav__link">
+        io_uring
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Monitoring-Workload/" class="md-nav__link">
+        Monitoring Workload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Object-Storage/" class="md-nav__link">
+        Object Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Cinder/" class="md-nav__link">
+        GlusterFS Cinder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Keystone-Quickstart/" class="md-nav__link">
+        GlusterFS Keystone Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Gluster-On-ZFS/" class="md-nav__link">
+        Gluster On ZFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Bareos/" class="md-nav__link">
+        Configuring Bareos to store backups on Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/SSL/" class="md-nav__link">
+        SSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Puppet/" class="md-nav__link">
+        Puppet Gluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/RDMA-Transport/" class="md-nav__link">
+        RDMA Transport
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-iSCSI/" class="md-nav__link">
+        GlusterFS iSCSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/NFS-Ganesha-GlusterFS-Integration/" class="md-nav__link">
+        Configuring NFS-Ganesha server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Linux-Kernel-Tuning/" class="md-nav__link">
+        Linux Kernel Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Network-Configurations-Techniques/" class="md-nav__link">
+        Network Configuration Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Testing/" class="md-nav__link">
+        Performance Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Performance-Tuning/" class="md-nav__link">
+        Performance Tuning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Export-And-Netgroup-Authentication/" class="md-nav__link">
+        Export and Netgroup Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Consul/" class="md-nav__link">
+        Consul integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Split-brain-and-ways-to-deal-with-it/" class="md-nav__link">
+        Split brain and ways to deal with it
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/arbiter-volumes-and-quorum/" class="md-nav__link">
+        Arbiter volumes and quorum options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Thin-Arbiter-Volumes/" class="md-nav__link">
+        Thin Arbiter volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Trash/" class="md-nav__link">
+        Trash for GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Tuning-Volume-Options/" class="md-nav__link">
+        Tuning Volume Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Mandatory-Locks/" class="md-nav__link">
+        Mandatory Locks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/GlusterFS-Coreutils/" class="md-nav__link">
+        GlusterFS coreutilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Events-APIs/" class="md-nav__link">
+        Events APIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administrator-Guide/Hook-scripts/" class="md-nav__link">
+        Managing GlusterFS Volume Life-Cycle Extensions with Hook Scripts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          CLI Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CLI Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          CLI Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI-Reference/cli-main/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentations/" class="md-nav__link">
+        Presentations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
+          Developers Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Developers Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Developers-Index/" class="md-nav__link">
+        Developers Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Simplified-Development-Workflow/" class="md-nav__link">
+        Simplified Development Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/compiling-rpms/" class="md-nav__link">
+        Compiling RPMS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Development-Workflow/" class="md-nav__link">
+        Development-Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Building-GlusterFS/" class="md-nav__link">
+        Build and Install GlusterFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Projects/" class="md-nav__link">
+        Project Ideas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Easy-Fix-Bugs/" class="md-nav__link">
+        EasyFix bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Fixing-issues-reported-by-tools-for-static-code-analysis/" class="md-nav__link">
+        Fixing issues reported by tools for static code analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Developer-guide/Backport-Guidelines/" class="md-nav__link">
+        Backport Guidelines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" tabindex="0" aria-expanded="false">
+          Contributors Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributors Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Contributors Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Index/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Reporting-Guidelines/" class="md-nav__link">
+        Bug reporting guidelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Bug-Triage/" class="md-nav__link">
+        Bug Triage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/GlusterFS-Release-process/" class="md-nav__link">
+        GlusterFS Release process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Guidelines-For-Maintainers/" class="md-nav__link">
+        Guidelines For Maintainers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Contributors-Guide/Adding-your-blog/" class="md-nav__link">
+        Adding your gluster blog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" tabindex="0" aria-expanded="false">
+          Ops Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ops Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Ops Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Overview/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ops-Guide/Tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" tabindex="0" aria-expanded="false">
+          Upgrade-Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Upgrade-Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrade-Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/" class="md-nav__link">
+        Upgrade-Guide Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/op-version/" class="md-nav__link">
+        Op-version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/generic-upgrade-procedure/" class="md-nav__link">
+        Generic upgrade procedure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-11/" class="md-nav__link">
+        Upgrade to 11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-10/" class="md-nav__link">
+        Upgrade to 10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-9/" class="md-nav__link">
+        Upgrade to 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-8/" class="md-nav__link">
+        Upgrade to 8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-7/" class="md-nav__link">
+        Upgrade to 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-6/" class="md-nav__link">
+        Upgrade to 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-5/" class="md-nav__link">
+        Upgrade to 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.1/" class="md-nav__link">
+        Upgrade to 4.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-4.0/" class="md-nav__link">
+        Upgrade to 4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.13/" class="md-nav__link">
+        Upgrade to 3.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.12/" class="md-nav__link">
+        Upgrade to 3.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.11/" class="md-nav__link">
+        Upgrade to 3.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.10/" class="md-nav__link">
+        Upgrade to 3.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.9/" class="md-nav__link">
+        Upgrade to 3.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.8/" class="md-nav__link">
+        Upgrade to 3.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.7/" class="md-nav__link">
+        Upgrade to 3.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.6/" class="md-nav__link">
+        Upgrade to 3.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Upgrade-Guide/upgrade-to-3.5/" class="md-nav__link">
+        Upgrade to 3.5
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" tabindex="0" aria-expanded="false">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Release Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_2" type="checkbox" id="__nav_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2" tabindex="0" aria-expanded="false">
+          RELEASE 11.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 11.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 11.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/11.0/" class="md-nav__link">
+        11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/11.1/" class="md-nav__link">
+        11.1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_3" type="checkbox" id="__nav_11_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_3" tabindex="0" aria-expanded="false">
+          RELEASE 10.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 10.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 10.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.5/" class="md-nav__link">
+        10.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.4/" class="md-nav__link">
+        10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.3/" class="md-nav__link">
+        10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.2/" class="md-nav__link">
+        10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.1/" class="md-nav__link">
+        10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/10.0/" class="md-nav__link">
+        10.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_4" type="checkbox" id="__nav_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_4" tabindex="0" aria-expanded="false">
+          RELEASE 9.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 9.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 9.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.6/" class="md-nav__link">
+        9.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.5/" class="md-nav__link">
+        9.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.4/" class="md-nav__link">
+        9.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.3/" class="md-nav__link">
+        9.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.2/" class="md-nav__link">
+        9.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.1/" class="md-nav__link">
+        9.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/9.0/" class="md-nav__link">
+        9.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_5" type="checkbox" id="__nav_11_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_5" tabindex="0" aria-expanded="false">
+          RELEASE 8.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 8.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_5">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 8.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.6/" class="md-nav__link">
+        8.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.5/" class="md-nav__link">
+        8.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.4/" class="md-nav__link">
+        8.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.3/" class="md-nav__link">
+        8.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.2/" class="md-nav__link">
+        8.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.1/" class="md-nav__link">
+        8.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/8.0/" class="md-nav__link">
+        8.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_6" type="checkbox" id="__nav_11_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_6" tabindex="0" aria-expanded="false">
+          RELEASE 7.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 7.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_6">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 7.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.9/" class="md-nav__link">
+        7.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.8/" class="md-nav__link">
+        7.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.7/" class="md-nav__link">
+        7.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.6/" class="md-nav__link">
+        7.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.5/" class="md-nav__link">
+        7.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.4/" class="md-nav__link">
+        7.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.3/" class="md-nav__link">
+        7.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.2/" class="md-nav__link">
+        7.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.1/" class="md-nav__link">
+        7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/7.0/" class="md-nav__link">
+        7.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_7" type="checkbox" id="__nav_11_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_7" tabindex="0" aria-expanded="false">
+          RELEASE 6.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 6.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_7">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 6.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.10/" class="md-nav__link">
+        6.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.9/" class="md-nav__link">
+        6.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.8/" class="md-nav__link">
+        6.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.7/" class="md-nav__link">
+        6.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.6/" class="md-nav__link">
+        6.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.5/" class="md-nav__link">
+        6.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.4/" class="md-nav__link">
+        6.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.3/" class="md-nav__link">
+        6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.2/" class="md-nav__link">
+        6.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.1/" class="md-nav__link">
+        6.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/6.0/" class="md-nav__link">
+        6.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_8" type="checkbox" id="__nav_11_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_8" tabindex="0" aria-expanded="false">
+          RELEASE 5.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 5.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_8">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 5.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.13/" class="md-nav__link">
+        5.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.12/" class="md-nav__link">
+        5.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.11/" class="md-nav__link">
+        5.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.10/" class="md-nav__link">
+        5.10.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.9/" class="md-nav__link">
+        5.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.8/" class="md-nav__link">
+        5.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.6/" class="md-nav__link">
+        5.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.5/" class="md-nav__link">
+        5.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.3/" class="md-nav__link">
+        5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.2/" class="md-nav__link">
+        5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.1/" class="md-nav__link">
+        5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/5.0/" class="md-nav__link">
+        5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_9" type="checkbox" id="__nav_11_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_9" tabindex="0" aria-expanded="false">
+          RELEASE 4.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 4.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_9">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 4.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.10/" class="md-nav__link">
+        4.1.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.9/" class="md-nav__link">
+        4.1.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.8/" class="md-nav__link">
+        4.1.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.7/" class="md-nav__link">
+        4.1.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.6/" class="md-nav__link">
+        4.1.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.5/" class="md-nav__link">
+        4.1.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.4/" class="md-nav__link">
+        4.1.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.3/" class="md-nav__link">
+        4.1.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.2/" class="md-nav__link">
+        4.1.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.1/" class="md-nav__link">
+        4.1.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.1.0/" class="md-nav__link">
+        4.1.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.2/" class="md-nav__link">
+        4.0.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.1/" class="md-nav__link">
+        4.0.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/4.0.0/" class="md-nav__link">
+        4.0.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_11_10" type="checkbox" id="__nav_11_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_10" tabindex="0" aria-expanded="false">
+          RELEASE 3.x
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RELEASE 3.x" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_10">
+          <span class="md-nav__icon md-icon"></span>
+          RELEASE 3.x
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.2/" class="md-nav__link">
+        3.13.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.1/" class="md-nav__link">
+        3.13.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.13.0/" class="md-nav__link">
+        3.13.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.15/" class="md-nav__link">
+        3.12.15
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.14/" class="md-nav__link">
+        3.12.14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.13/" class="md-nav__link">
+        3.12.13
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.12/" class="md-nav__link">
+        3.12.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.11/" class="md-nav__link">
+        3.12.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.10/" class="md-nav__link">
+        3.12.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.9/" class="md-nav__link">
+        3.12.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.8/" class="md-nav__link">
+        3.12.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.7/" class="md-nav__link">
+        3.12.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.6/" class="md-nav__link">
+        3.12.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.5/" class="md-nav__link">
+        3.12.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.4/" class="md-nav__link">
+        3.12.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.3/" class="md-nav__link">
+        3.12.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.2/" class="md-nav__link">
+        3.12.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.1/" class="md-nav__link">
+        3.12.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.12.0/" class="md-nav__link">
+        3.12.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.3/" class="md-nav__link">
+        3.11.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.2/" class="md-nav__link">
+        3.11.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.1/" class="md-nav__link">
+        3.11.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.11.0/" class="md-nav__link">
+        3.11.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.12/" class="md-nav__link">
+        3.10.12
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.11/" class="md-nav__link">
+        3.10.11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.10/" class="md-nav__link">
+        3.10.10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.9/" class="md-nav__link">
+        3.10.9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.8/" class="md-nav__link">
+        3.10.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.7/" class="md-nav__link">
+        3.10.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.6/" class="md-nav__link">
+        3.10.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.5/" class="md-nav__link">
+        3.10.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.4/" class="md-nav__link">
+        3.10.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.3/" class="md-nav__link">
+        3.10.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.2/" class="md-nav__link">
+        3.10.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.1/" class="md-nav__link">
+        3.10.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.10.0/" class="md-nav__link">
+        3.10.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.9.0/" class="md-nav__link">
+        3.9.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.7.1/" class="md-nav__link">
+        3.7.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.7.0/" class="md-nav__link">
+        3.7.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.6.3/" class="md-nav__link">
+        3.6.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.6.0/" class="md-nav__link">
+        3.6.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.4/" class="md-nav__link">
+        3.5.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.3/" class="md-nav__link">
+        3.5.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.2/" class="md-nav__link">
+        3.5.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.1/" class="md-nav__link">
+        3.5.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/3.5.0/" class="md-nav__link">
+        3.5.0
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" tabindex="0" aria-expanded="false">
+          GlusterFS Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GlusterFS Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          GlusterFS Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/" class="md-nav__link">
+        GlusterFS Tools List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/glusterfind/" class="md-nav__link">
+        glusterfind
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GlusterFS-Tools/gfind-missing-files/" class="md-nav__link">
+        gfind missing files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13" tabindex="0" aria-expanded="false">
+          Troubleshooting Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_13_2" type="checkbox" id="__nav_13_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_2" tabindex="0" aria-expanded="false">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Components" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_2">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-glusterd/" class="md-nav__link">
+        Troubleshooting CLI and glusterd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-georep/" class="md-nav__link">
+        Troubleshooting Geo-replication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-gnfs/" class="md-nav__link">
+        Troubleshooting gNFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-afr/" class="md-nav__link">
+        Troubleshooting Self-heal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/resolving-splitbrain/" class="md-nav__link">
+        Troubleshooting Split-Brains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-filelocks/" class="md-nav__link">
+        Troubleshooting File Locks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3" tabindex="0" aria-expanded="false">
+          Issues
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Issues" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          Issues
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/troubleshooting-memory/" class="md-nav__link">
+        Debugging Memory Leaks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/gluster-crash/" class="md-nav__link">
+        Crashes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4" tabindex="0" aria-expanded="false">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/statedump/" class="md-nav__link">
+        Statedump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Troubleshooting/gfid-to-path/" class="md-nav__link">
+        gfid to path
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google64817fdc11b2f6b6.html" class="md-nav__link">
+        Google Site Verification
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-volumes" class="md-nav__link">
+    Types of Volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fuse" class="md-nav__link">
+    FUSE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translators" class="md-nav__link">
+    Translators
+  </a>
+  
+    <nav class="md-nav" aria-label="Translators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-translators" class="md-nav__link">
+    Types of Translators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhtdistributed-hash-table-translator" class="md-nav__link">
+    DHT(Distributed Hash Table) Translator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afrautomatic-file-replication-translator" class="md-nav__link">
+    AFR(Automatic File Replication) Translator
+  </a>
+  
+    <nav class="md-nav" aria-label="AFR(Automatic File Replication) Translator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities-of-afr" class="md-nav__link">
+    Responsibilities of AFR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geo-replication" class="md-nav__link">
+    Geo-Replication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-working-of-glusterfs" class="md-nav__link">
+    Overall working of GlusterFS
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="architecture">Architecture</h1>
+<p><img alt="architecture" src="../../images/GlusterFS_Translator_Stack.png" /></p>
+<p>A gluster volume is a collection of servers belonging to a Trusted Storage Pool.
+A management daemon (glusterd) runs on each server and manages a brick process
+(glusterfsd) which in turn exports the underlying on disk storage (XFS
+filesystem). The client process mounts the volume and exposes the storage from
+all the bricks as a single unified storage namespace to the applications
+accessing it. The client and brick processes' stacks have various translators
+loaded in them. I/O from the application is routed to different bricks via
+these translators.</p>
+<h3 id="types-of-volumes">Types of Volumes</h3>
+<p>Gluster file system supports different
+types of volumes based on the requirements. Some volumes are good for
+scaling storage size, some for improving performance and some for both.</p>
+<p>1.<strong>Distributed Glusterfs Volume</strong> - This is the type of volume which is created by default if no volume type is specified.
+Here, files are distributed across various bricks in the volume. So file1
+may be stored only in brick1 or brick2 but not on both. Hence there is
+<strong>no data redundancy</strong>. The purpose for such a storage volume is to easily &amp; cheaply
+scale the volume size. However this also means that a brick failure will
+lead to complete loss of data and one must rely on the underlying
+hardware for data loss protection.</p>
+<p><img alt="distributed volume" src="../../images/New-DistributedVol.png" /></p>
+<p>Create a Distributed Volume</p>
+<pre><code class="language-console">gluster volume create NEW-VOLNAME [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
+</code></pre>
+<p><strong>For example</strong> to create a distributed volume with four storage servers
+using TCP.</p>
+<pre><code class="language-console">gluster volume create test-volume server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4
+</code></pre>
+<pre class="no-copy"><code class="language-console">volume create: test-volume: success: please start the volume to access data
+</code></pre>
+<p>To display the volume info:</p>
+<pre><code class="language-console">gluster volume info
+</code></pre>
+<pre class="no-copy"><code class="language-console">Volume Name: test-volume
+Type: Distribute
+Status: Created
+Number of Bricks: 4
+Transport-type: tcp
+Bricks:
+Brick1: server1:/exp1
+Brick2: server2:/exp2
+Brick3: server3:/exp3
+Brick4: server4:/exp4
+</code></pre>
+<p>2.<strong>Replicated Glusterfs Volume</strong> - In this volume we overcome the
+risk of data loss which is present in the distributed volume. Here exact copies of
+the data are maintained on all bricks. The number of replicas in the
+volume can be decided by client while creating the volume. So we need to
+have at least two bricks to create a volume with 2 replicas or a minimum
+of three bricks to create a volume of 3 replicas. One major advantage of
+such a volume is that even if one brick fails the data can still be
+accessed from its replicated bricks. Such a volume is used for better
+reliability and data redundancy.</p>
+<p><img alt="replicated volume" src="../../images/New-ReplicatedVol.png" /></p>
+<p>Create a Replicated Volume</p>
+<pre><code class="language-console">gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp |rdma | tcp,rdma]] NEW-BRICK...
+</code></pre>
+<p><strong>For example</strong>, to create a replicated volume with three storage servers:</p>
+<pre><code class="language-console">gluster volume create test-volume replica 3 transport tcp \
+      server1:/exp1 server2:/exp2 server3:/exp3
+</code></pre>
+<pre class="no-copy"><code class="language-console">volume create: test-volume: success: please start the volume to access data
+</code></pre>
+<p>3.<strong>Distributed Replicated Glusterfs Volume</strong> - In this volume files
+are distributed across replicated sets of bricks. The number of bricks
+must be a multiple of the replica count. Also the order in which we
+specify the bricks is important since adjacent bricks become replicas of each
+other. This type of volume is used when high availability of data due to
+redundancy and scaling storage is required. So if there were eight
+bricks and replica count 2 then the first two bricks become replicas of
+each other then the next two and so on. This volume is denoted as 4x2.
+Similarly if there were eight bricks and replica count 4 then four
+bricks become replica of each other and we denote this volume as 2x4
+volume.</p>
+<p><img alt="distributed_replicated_volume" src="../../images/New-Distributed-ReplicatedVol.png" /></p>
+<p>Create the distributed replicated volume:</p>
+<pre><code class="language-console">gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
+</code></pre>
+<p><strong>For example</strong>, six node distributed replicated volume with a three-way
+mirror:</p>
+<pre><code class="language-console">gluster volume create test-volume replica 3 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+</code></pre>
+<pre class="no-copy"><code class="language-console">volume create: test-volume: success: please start the volume to access data
+</code></pre>
+<p>4.<strong>Dispersed Glusterfs Volume</strong> - Dispersed volumes are based on
+erasure codes. It stripes the encoded data of files, with some redundancy added,
+across multiple bricks in the volume. You can use dispersed volumes to
+have a configurable level of reliability with minimum space waste.
+The number of redundant bricks in the volume can be decided by clients while
+creating the volume. Redundant bricks determines how many bricks can be lost
+without interrupting the operation of the volume.</p>
+<p><img alt="Dispersed volume" src="../../images/New-DispersedVol.png" />
+Create a dispersed volume:</p>
+<pre><code class="language-console">gluster volume create test-volume [disperse [&lt;COUNT&gt;]] [disperse-data &lt;COUNT&gt;] [redundancy &lt;COUNT&gt;] [transport tcp | rdma | tcp,rdma] &lt;NEW-BRICK&gt;
+</code></pre>
+<p><strong>For example</strong>, three node dispersed volume with level of redundancy 1, (2 + 1):</p>
+<pre><code class="language-console">gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3
+</code></pre>
+<pre class="no-copy"><code class="language-console">volume create: test-volume: success: please start the volume to access data
+</code></pre>
+<p>5.<strong>Distributed Dispersed Glusterfs Volume</strong> -
+Distributed dispersed volumes are the equivalent to distributed replicated volumes, but using dispersed subvolumes
+instead of replicated ones. The number of bricks must be a multiple of the 1st subvol.
+The purpose for such a volume is to easily scale the volume size and distribute the load
+across various bricks.</p>
+<p><img alt="distributed_dispersed_volume" src="../../images/New-Distributed-DisperseVol.png" />
+Create a distributed dispersed volume:</p>
+<pre><code class="language-console">gluster volume create [disperse [&lt;COUNT&gt;]] [disperse-data &lt;COUNT&gt;] [redundancy &lt;COUNT&gt;] [transport tcp | rdma | tcp,rdma] &lt;NEW-BRICK&gt;
+</code></pre>
+<p><strong>For example</strong>, six node distributed dispersed volume with level of redundancy 1, 2 x (2 + 1) = 6:</p>
+<pre><code class="language-console">gluster volume create test-volume disperse 3 redundancy 1 server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6
+</code></pre>
+<pre class="no-copy"><code class="language-console">volume create: test-volume: success: please start the volume to access data
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>
+<p>A dispersed volume can be created by specifying the number of bricks in a
+  disperse set, by specifying the number of redundancy bricks, or both.</p>
+</li>
+<li>
+<p>If <em>disperse</em> is not specified, or the <code>&lt;COUNT&gt;</code> is missing, the
+  entire volume will be treated as a single disperse set composed by all
+  bricks enumerated in the command line.</p>
+</li>
+<li>
+<p>If <em>redundancy</em> is not specified, it is computed automatically to be the
+  optimal value. If this value does not exist, it's assumed to be '1' and a
+  warning message is shown:</p>
+<p># gluster volume create test-volume disperse 4 server{1..4}:/bricks/test-volume</p>
+<p>There isn't an optimal redundancy value for this configuration. Do you want to create the volume with redundancy 1 ? (y/n)</p>
+</li>
+<li>
+<p>In all cases where <em>redundancy</em> is automatically computed and it's not equal to '1', a warning message is displayed:</p>
+<p># gluster volume create test-volume disperse 6 server{1..6}:/bricks/test-volume</p>
+<p>The optimal redundancy for this configuration is 2. Do you want to create the volume with this value ? (y/n)</p>
+</li>
+<li>
+<p><em>redundancy</em> must be greater than 0, and the total number of bricks must
+  be greater than 2 * <em>redundancy</em>. This means that a dispersed volume must
+  have a minimum of 3 bricks.</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="fuse"><strong>FUSE</strong></h3>
+<p>GlusterFS is a userspace filesystem. The GluserFS developers opted for this approach in order to avoid the need to have modules in the Linux kernel.</p>
+<p>As it is a userspace filesystem, to interact with kernel VFS, GlusterFS
+makes use of FUSE (File System in Userspace). For a long time,
+implementation of a userspace filesystem was considered impossible. FUSE
+was developed as a solution for this. FUSE is a kernel module that
+supports interaction between kernel VFS and non-privileged user
+applications and it has an API that can be accessed from userspace.
+Using this API, any type of filesystem can be written using almost any
+language you prefer as there are many bindings between FUSE and other
+languages.</p>
+<p><img alt="fuse_structure" src="https://cloud.githubusercontent.com/assets/10970993/7412530/67a544ae-ef61-11e4-8979-97dad4031a81.png" /></p>
+<p><em>Structural diagram of FUSE.</em></p>
+<p>This shows a filesystem "hello world" that is compiled to create a
+binary "hello". It is executed with a filesystem mount point /tmp/fuse.
+Then the user issues a command ls -l on the mount point /tmp/fuse. This
+command reaches VFS via glibc and since the mount /tmp/fuse corresponds
+to a FUSE based filesystem, VFS passes it over to FUSE module. The FUSE
+kernel module contacts the actual filesystem binary "hello" after
+passing through glibc and FUSE library in userspace(libfuse). The result
+is returned by the "hello" through the same path and reaches the ls -l
+command.</p>
+<p>The communication between FUSE kernel module and the FUSE
+library(libfuse) is via a special file descriptor which is obtained by
+opening /dev/fuse. This file can be opened multiple times, and the
+obtained file descriptor is passed to the mount syscall, to match up the
+descriptor with the mounted filesystem.</p>
+<ul>
+<li><a href="http://www.linux-mag.com/id/7814/">More about userspace
+  filesystems</a></li>
+<li><a href="http://fuse.sourceforge.net/">FUSE reference</a></li>
+</ul>
+<h3 id="translators">Translators</h3>
+<p><strong>Translating “translators”</strong>:</p>
+<ul>
+<li>A translator converts requests from users into requests for storage.</li>
+</ul>
+<p>*One to one, one to many, one to zero (e.g. caching)</p>
+<p><img alt="translator" src="https://cloud.githubusercontent.com/assets/10970993/7412595/fd46c492-ef61-11e4-8f49-61dbd15b9695.png" /></p>
+<ul>
+<li>A translator can modify requests on the way through :</li>
+</ul>
+<p><em>convert one request type to another ( during the request transfer amongst the translators)
+  </em>modify paths, flags, even data (e.g. encryption)</p>
+<ul>
+<li>
+<p>Translators can intercept or block the requests. (e.g. access
+  control)</p>
+</li>
+<li>
+<p>Or spawn new requests (e.g. pre-fetch)</p>
+</li>
+</ul>
+<p><strong>How Do Translators Work?</strong></p>
+<ul>
+<li>Shared Objects</li>
+<li>Dynamically loaded according to 'volfile'</li>
+</ul>
+<p><em>dlopen/dlsync
+  </em>setup pointers to parents / children
+  <em>call init (constructor)
+  </em>call IO functions through fops.</p>
+<ul>
+<li>Conventions for validating/ passing options, etc.</li>
+<li>The configuration of translators (since GlusterFS 3.1) is managed
+  through the gluster command line interface (cli), so you don't need
+  to know in what order to graph the translators together.</li>
+</ul>
+<h4 id="types-of-translators">Types of Translators</h4>
+<p>List of known translators with their current status.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Translator Type</th>
+<th>Functional Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Storage</td>
+<td>Lowest level translator, stores and accesses data from local file system.</td>
+</tr>
+<tr>
+<td align="center">Debug</td>
+<td>Provide interface and statistics for errors and debugging.</td>
+</tr>
+<tr>
+<td align="center">Cluster</td>
+<td>Handle distribution and replication of data as it relates to writing to and reading from bricks &amp; nodes.</td>
+</tr>
+<tr>
+<td align="center">Encryption</td>
+<td>Extension translators for on-the-fly encryption/decryption of stored data.</td>
+</tr>
+<tr>
+<td align="center">Protocol</td>
+<td>Extension translators for client/server communication protocols.</td>
+</tr>
+<tr>
+<td align="center">Performance</td>
+<td>Tuning translators to adjust for workload and I/O profiles.</td>
+</tr>
+<tr>
+<td align="center">Bindings</td>
+<td>Add extensibility, e.g. The Python interface written by Jeff Darcy to extend API interaction with GlusterFS.</td>
+</tr>
+<tr>
+<td align="center">System</td>
+<td>System access translators, e.g. Interfacing with file system access control.</td>
+</tr>
+<tr>
+<td align="center">Scheduler</td>
+<td>I/O schedulers that determine how to distribute new write operations across clustered systems.</td>
+</tr>
+<tr>
+<td align="center">Features</td>
+<td>Add additional features such as Quotas, Filters, Locks, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>The default / general hierarchy of translators in vol files :</p>
+<p><img alt="translator_h" src="https://cloud.githubusercontent.com/assets/628699/9002815/07d93ce4-3771-11e5-8bda-9018871aa6fb.png" /></p>
+<p>All the translators hooked together to perform a function is called a
+graph. The left-set of translators comprises of <strong>Client-stack</strong>.The
+right-set of translators comprises of <strong>Server-stack</strong>.</p>
+<p><strong>The glusterfs translators can be sub-divided into many categories, but
+two important categories are - Cluster and Performance translators :</strong></p>
+<p>One of the most important and the first translator the data/request has
+to go through is <strong>fuse translator</strong> which falls under the category of
+<strong>Mount Translators</strong>.</p>
+<ol>
+<li>
+<p><strong>Cluster Translators</strong>:</p>
+<ul>
+<li>DHT(Distributed Hash Table)</li>
+<li>AFR(Automatic File Replication)</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance Translators</strong>:</p>
+<ul>
+<li>io-cache</li>
+<li>io-threads</li>
+<li>md-cache</li>
+<li>O-B (open behind)</li>
+<li>QR (quick read)</li>
+<li>r-a (read-ahead)</li>
+<li>w-b (write-behind)</li>
+</ul>
+</li>
+</ol>
+<p>Other <strong>Feature Translators</strong> include:</p>
+<ul>
+<li>changelog</li>
+<li>locks - GlusterFS has locks translator which provides the following internal locking operations
+  called <code>inodelk</code>, <code>entrylk</code>,
+  which are used by afr to achieve synchronization of operations on files or directories that conflict with each other.</li>
+<li>marker</li>
+<li>quota</li>
+</ul>
+<p><strong>Debug Translators</strong></p>
+<ul>
+<li>trace - To trace the error logs generated during the communication amongst the translators.</li>
+<li>io-stats</li>
+</ul>
+<h4 id="dhtdistributed-hash-table-translator">DHT(Distributed Hash Table) Translator</h4>
+<p><strong>What is DHT?</strong></p>
+<p>DHT is the real core of how GlusterFS aggregates capacity and
+performance across multiple servers. Its responsibility is to place each
+file on exactly one of its subvolumes – unlike either replication (which
+places copies on all of its subvolumes) or striping (which places pieces
+onto all of its subvolumes). It’s a routing function, not splitting or
+copying.</p>
+<p><strong>How DHT works</strong>?</p>
+<p>The basic method used in DHT is consistent hashing. Each subvolume
+(brick) is assigned a range within a 32-bit hash space, covering the
+entire range with no holes or overlaps. Then each file is also assigned
+a value in that same space, by hashing its name. Exactly one brick will
+have an assigned range including the file’s hash value, and so the file
+“should” be on that brick. However, there are many cases where that
+won’t be the case, such as when the set of bricks (and therefore the
+range assignment of ranges) has changed since the file was created, or
+when a brick is nearly full. Much of the complexity in DHT involves
+these special cases, which we’ll discuss in a moment.</p>
+<p>When you open() a file, the distribute translator is giving one piece of
+information to find your file, the file-name. To determine where that
+file is, the translator runs the file-name through a hashing algorithm
+in order to turn that file-name into a number.</p>
+<p><strong>A few Observations of DHT hash-values assignment</strong>:</p>
+<ol>
+<li>The assignment of hash ranges to bricks is determined by extended
+    attributes stored on directories, hence distribution is
+    directory-specific.</li>
+<li>Consistent hashing is usually thought of as hashing around a circle,
+    but in GlusterFS it’s more linear. There’s no need to “wrap around”
+    at zero, because there’s always a break (between one brick’s range
+    and another’s) at zero.</li>
+<li>If a brick is missing, there will be a hole in the hash space. Even
+    worse, if hash ranges are reassigned while a brick is offline, some
+    of the new ranges might overlap with the (now out of date) range
+    stored on that brick, creating a bit of confusion about where files
+    should be.</li>
+</ol>
+<h4 id="afrautomatic-file-replication-translator">AFR(Automatic File Replication) Translator</h4>
+<p>The Automatic File Replication (AFR) translator in GlusterFS makes use
+of the extended attributes to keep track of the file operations.It is
+responsible for replicating the data across the bricks.</p>
+<h5 id="responsibilities-of-afr">Responsibilities of AFR</h5>
+<p>Its responsibilities include the following:</p>
+<ol>
+<li>Maintain replication consistency (i.e. Data on both the bricks
+    should be same, even in the cases where there are operations
+    happening on same file/directory in parallel from multiple
+    applications/mount points as long as all the bricks in replica set
+    are up).</li>
+<li>Provide a way of recovering data in case of failures as long as
+    there is at least one brick which has the correct data.</li>
+<li>Serve fresh data for read/stat/readdir etc.</li>
+</ol>
+<h4 id="geo-replication">Geo-Replication</h4>
+<p>Geo-replication provides asynchronous replication of data across
+geographically distinct locations and was introduced in Glusterfs 3.2.
+It mainly works across WAN and is used to replicate the entire volume
+unlike AFR which is intra-cluster replication. This is mainly useful for
+backup of entire data for disaster recovery.</p>
+<p>Geo-replication uses a primary-secondary model, whereby replication occurs
+between a <strong>Primary</strong> and a <strong>Secondary</strong>, both of which should
+be GlusterFS volumes.
+Geo-replication provides an incremental replication service over Local
+Area Networks (LANs), Wide Area Network (WANs), and across the
+Internet.</p>
+<p><strong>Geo-replication over LAN</strong></p>
+<p>You can configure Geo-replication to mirror data over a Local Area
+Network.</p>
+<p><img alt="geo-rep_lan" src="https://cloud.githubusercontent.com/assets/10970993/7412281/a542e724-ef5e-11e4-8207-9e018c1e9304.png" /></p>
+<p><strong>Geo-replication over WAN</strong></p>
+<p>You can configure Geo-replication to replicate data over a Wide Area
+Network.</p>
+<p><img alt="geo-rep_wan" src="https://cloud.githubusercontent.com/assets/10970993/7412292/c3816f76-ef5e-11e4-8daa-271f6efa1f58.png" /></p>
+<p><strong>Geo-replication over Internet</strong></p>
+<p>You can configure Geo-replication to mirror data over the Internet.</p>
+<p><img alt="geo-rep03_internet" src="https://cloud.githubusercontent.com/assets/10970993/7412305/d8660050-ef5e-11e4-9d1b-54369fb1e43f.png" /></p>
+<p><strong>Multi-site cascading Geo-replication</strong></p>
+<p>You can configure Geo-replication to mirror data in a cascading fashion
+across multiple sites.</p>
+<p><img alt="geo-rep04_cascading" src="https://cloud.githubusercontent.com/assets/10970993/7412320/05e131bc-ef5f-11e4-8580-a4dc592148ff.png" /></p>
+<p>There are mainly two aspects while asynchronously replicating data:</p>
+<p>1.<strong>Change detection</strong> - These include file-operation necessary
+details. There are two methods to sync the detected changes:</p>
+<p>i. Changelogs - Changelog is a translator which records necessary
+details for the fops that occur. The changes can be written in binary
+format or ASCII. There are three category with each category represented
+by a specific changelog format. All three types of categories are
+recorded in a single changelog file.</p>
+<p><strong>Entry</strong> - create(), mkdir(), mknod(), symlink(), link(), rename(),
+unlink(), rmdir()</p>
+<p><strong>Data</strong> - write(), writev(), truncate(), ftruncate()</p>
+<p><strong>Meta</strong> - setattr(), fsetattr(), setxattr(), fsetxattr(),
+removexattr(), fremovexattr()</p>
+<p>In order to record the type of operation and entity underwent, a type
+identifier is used. Normally, the entity on which the operation is
+performed would be identified by the pathname, but we choose to use
+GlusterFS internal file identifier (GFID) instead (as GlusterFS supports
+GFID based backend and the pathname field may not always be valid and
+other reasons which are out of scope of this document). Therefore,
+the format of the record for the three types of operation can be
+summarized as follows:</p>
+<p>Entry - GFID + FOP + MODE + UID + GID + PARGFID/BNAME [PARGFID/BNAME]</p>
+<p>Meta - GFID of the file</p>
+<p>Data - GFID of the file</p>
+<p>GFID's are analogous to inodes. Data and Meta fops record the GFID of
+the entity on which the operation was performed, thereby recording that
+there was a data/metadata change on the inode. Entry fops record at the
+minimum a set of six or seven records (depending on the type of
+operation), that is sufficient to identify what type of operation the
+entity underwent. Normally this record includes the GFID of the entity,
+the type of file operation (which is an integer [an enumerated value
+which is used in Glusterfs]) and the parent GFID and the basename
+(analogous to parent inode and basename).</p>
+<p>Changelog file is rolled over after a specific time interval. We then
+perform processing operations on the file like converting it to
+understandable/human readable format, keeping private copy of the
+changelog etc. The library then consumes these logs and serves
+application requests.</p>
+<p>ii. Xsync - Marker translator maintains an extended attribute “xtime”
+for each file and directory. Whenever any update happens it would update
+the xtime attribute of that file and all its ancestors. So the change is
+propagated from the node (where the change has occurred) all the way to
+the root.</p>
+<p><img alt="geo-replication-sync" src="https://cloud.githubusercontent.com/assets/10970993/7412646/824add4a-ef62-11e4-9a0b-5cc270be6a10.png" /></p>
+<p>Consider the above directory tree structure. At time T1 the primary and
+secondary were in sync each other.</p>
+<p><img alt="geo-replication-async" src="https://cloud.githubusercontent.com/assets/10970993/7412653/93b04e30-ef62-11e4-9ab1-e5cc57eb0db5.jpg" /></p>
+<p>At time T2 a new file File2 was created. This will trigger the xtime
+marking (where xtime is the current timestamp) from File2 upto to the
+root, i.e, the xtime of File2, Dir3, Dir1 and finally Dir0 all will be
+updated.</p>
+<p>Geo-replication daemon crawls the file system based on the condition
+that xtime(primary) > xtime(secondary). Hence in our example it would crawl
+only the left part of the directory structure since the right part of
+the directory structure still has equal timestamp. Although the crawling
+algorithm is fast we still need to crawl a good part of the directory
+structure.</p>
+<p>2.<strong>Replication</strong> - We use rsync for data replication. Rsync is an
+external utility which will calculate the diff of the two files and
+sends this difference from source to sync.</p>
+<h3 id="overall-working-of-glusterfs">Overall working of GlusterFS</h3>
+<p>As soon as GlusterFS is installed in a server node, a gluster management
+daemon(glusterd) binary will be created. This daemon should be running
+in all participating nodes in the cluster. After starting glusterd, a
+trusted server pool(TSP) can be created
+consisting of all storage server nodes (TSP can contain even a single
+node). Now bricks which are the basic units of storage can be created as
+export directories in these servers. Any number of bricks from this TSP
+can be clubbed together to form a volume.</p>
+<p>Once a volume is created,
+a glusterfsd process starts running in each of the participating brick.
+Along with this, configuration files known as vol files will be
+generated inside /var/lib/glusterd/vols/. There will be configuration
+files corresponding to each brick in the volume. This will contain all
+the details about that particular brick. Configuration file required by
+a client process will also be created. Now our filesystem is ready to
+use. We can mount this volume on a client machine very easily as follows
+and use it like we use a local storage:</p>
+<p>mount.glusterfs <code>&lt;IP or hostname&gt;</code>:<code>&lt;volume_name&gt;</code> <code>&lt;mount_point&gt;</code></p>
+<p>IP or hostname can be that of any node in the trusted server pool in
+which the required volume is created.</p>
+<p>When we mount the volume in the client, the client glusterfs process
+communicates with the servers’ glusterd process. Server glusterd process
+sends a configuration file (vol file) containing the list of client
+translators and another containing the information of each brick in the
+volume with the help of which the client glusterfs process can now
+directly communicate with each brick’s glusterfsd process. The setup is
+now complete and the volume is now ready for client's service.</p>
+<p><img alt="overallprocess" src="https://cloud.githubusercontent.com/assets/10970993/7412664/a9aaaece-ef62-11e4-8c87-75d8e7157739.png" /></p>
+<p>When a system call (File operation or Fop) is issued by client in the
+mounted filesystem, the VFS (identifying the type of filesystem to be
+glusterfs) will send the request to the FUSE kernel module. The FUSE
+kernel module will in turn send it to the GlusterFS in the userspace of
+the client node via /dev/fuse (this has been described in FUSE section).
+The GlusterFS process on the client consists of a stack of translators
+called the client translators which are defined in the configuration
+file(vol file) sent by the storage server glusterd process. The first
+among these translators being the FUSE translator which consists of the
+FUSE library(libfuse). Each translator has got functions corresponding
+to each file operation or fop supported by glusterfs. The request will
+hit the corresponding function in each of the translators. Main client
+translators include:</p>
+<ul>
+<li>FUSE translator</li>
+<li>DHT translator- DHT translator maps the request to the correct brick
+  that contains the file or directory required.</li>
+<li>AFR translator- It receives the request from the previous translator
+  and if the volume type is replicate, it duplicates the request and
+  passes it on to the Protocol client translators of the replicas.</li>
+<li>Protocol Client translator- Protocol Client translator is the last
+  in the client translator stack. This translator is divided into
+  multiple threads, one for each brick in the volume. This will
+  directly communicate with the glusterfsd of each brick.</li>
+</ul>
+<p>In the storage server node that contains the brick in need, the request
+again goes through a series of translators known as server translators,
+main ones being:</p>
+<ul>
+<li>Protocol server translator</li>
+<li>POSIX translator</li>
+</ul>
+<p>The request will finally reach VFS and then will communicate with the
+underlying native filesystem. The response will retrace the same path.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../js/custom-features.js"></script>
+      
+    
+  </body>
+</html>
