@@ -284,7 +284,6 @@ nav:
           - Statedump: Troubleshooting/statedump.md
           - gfid to path: Troubleshooting/gfid-to-path.md
   - Glossary: ./glossary.md
-  - Google Site Verification: ./google64817fdc11b2f6b6.html
 
 extra_javascript:
   - js/custom-features.js
