@@ -193,3 +193,4 @@ Where `START_TIME` is in unix epoch format, `START_TIME` will be zero for full f
 1. Deleted files will not get listed, since we can't convert GFID to Path if file/dir is deleted.
 2. Only new name will get listed if Renamed.
 3. All hardlinks will get listed.
+4. All the nodes are to be up and running for the successful operation of glusterfind.
